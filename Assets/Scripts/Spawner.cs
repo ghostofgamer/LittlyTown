@@ -38,7 +38,11 @@ public class Spawner : MonoBehaviour
         ItemPosition randomFreePosition = freePositions[randomIndex];
 
         if (randomFreePosition == null)
+        {
+            Debug.Log("места кончились");
             return null;
+        }
+            
 
         return randomFreePosition;
     }

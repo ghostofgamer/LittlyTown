@@ -884,7 +884,9 @@
             <e p="Third-Party Notices.txt" t="Include" />
           </e>
         </e>
-        <e p="Prefabs" t="Include" />
+        <e p="Prefabs" t="Include">
+          <e p="Tiles" t="Include" />
+        </e>
         <e p="Resources" t="Include">
           <e p="BillingMode.json" t="Include" />
         </e>
@@ -916,6 +918,7 @@
           <e p="Item.cs" t="Include" />
           <e p="ItemDragger.cs" t="Include" />
           <e p="ItemPosition.cs" t="Include" />
+          <e p="RoadGenerator.cs" t="Include" />
           <e p="Spawner.cs" t="Include" />
         </e>
         <e p="Sounds" t="Include" />
