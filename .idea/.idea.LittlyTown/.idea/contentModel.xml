@@ -916,6 +916,7 @@
           <e p="Item.cs" t="Include" />
           <e p="ItemDragger.cs" t="Include" />
           <e p="ItemPosition.cs" t="Include" />
+          <e p="Spawner.cs" t="Include" />
         </e>
         <e p="Sounds" t="Include" />
         <e p="Sprites" t="Include" />
