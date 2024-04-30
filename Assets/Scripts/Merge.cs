@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -15,8 +16,14 @@ public class Merge : MonoBehaviour
     private List<ItemPosition> _checkedPositions = new List<ItemPosition>();
     private List<ItemPosition> _position = new List<ItemPosition>();
 
+    private void Start()
+    {
+        
+    }
+
     public void SetPosition(ItemPosition itemPosition)
     {
+        Debug.Log("до или после ");
         _currentItemPosition = itemPosition;
         StartCoroutine(Looks());
         // LookAround();
