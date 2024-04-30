@@ -26,7 +26,7 @@ public class ItemDragger : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log("попытка1");
+            // Debug.Log("попытка1");
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -43,7 +43,7 @@ public class ItemDragger : MonoBehaviour
                     _objectPlane = new Plane(Vector3.up, _selectedObject.transform.position);
                     _isObjectSelected = true;
                 }*/
-                Debug.Log("попытка3");
+                // Debug.Log("попытка3");
                 if (hit.transform.gameObject.TryGetComponent(out ItemPosition itemPosition))
                 {
                     _selectedObject.transform.position = new Vector3(
@@ -67,9 +67,11 @@ public class ItemDragger : MonoBehaviour
                 {
                     if (!itemPosition.IsBusy)
                     {
-                        Debug.Log("попытка");
+                        // Debug.Log("попытка");
                         _selectedObject.transform.position = hit.transform.position;
                         PlaceChanged?.Invoke();
+                        _selectedObject.GetComponent<Item>().Activation();
+                        itemPosition.DeliverObject(_selectedObject.GetComponent<Item>());
                         _selectedObject = null;
                         _isObjectSelected = false;
                     }
@@ -82,14 +84,14 @@ public class ItemDragger : MonoBehaviour
 
                 else
                 {
-                    _selectedObject.transform.position = _originalPosition;
-                    _isObjectSelected = false;
+                    /*_selectedObject.transform.position = _originalPosition;
+                    _isObjectSelected = false;*/
                 }
             }
             else
             {
-                _selectedObject.transform.position = _originalPosition;
-                _isObjectSelected = false;
+                /*_selectedObject.transform.position = _originalPosition;
+                _isObjectSelected = false;*/
             }
         }
 

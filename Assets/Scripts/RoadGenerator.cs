@@ -99,7 +99,7 @@ public class RoadGenerator : MonoBehaviour
             // Debug.Log("Coordinats " + surroundingTiles);
         }
 
-        Debug.Log("Coordinats " + surroundingTiles);
+        // Debug.Log("Coordinats " + surroundingTiles);
         return surroundingTiles;
     }
 
