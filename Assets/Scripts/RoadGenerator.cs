@@ -1,70 +1,74 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class RoadGenerator : MonoBehaviour
 {
-    [SerializeField] private ItemPosition _angularTile;
-    [SerializeField] private ItemPosition _endTile;
-    [SerializeField] private ItemPosition _fullCrossroadsTile;
-    [SerializeField] private ItemPosition _clearTile;
+    [SerializeField] private Spawner _spawner;
     [SerializeField] private ItemPosition[] _itemPositions;
 
+    [Header("Tiles")] [SerializeField] private ItemPosition _angularTileUpRight;
+    [SerializeField] private ItemPosition _angularTileUpLeft;
+    [SerializeField] private ItemPosition _angularTileDownLeft;
+    [SerializeField] private ItemPosition _angularTileDownRight;
+    [SerializeField] private ItemPosition _endTileUp;
+    [SerializeField] private ItemPosition _endTileLeft;
+    [SerializeField] private ItemPosition _endTileRight;
+    [SerializeField] private ItemPosition _endTileDown;
+    [SerializeField] private ItemPosition _fullCrossroadsTile;
+    [SerializeField] private ItemPosition _clearTile;
+    [SerializeField] private ItemPosition _straightTileHorizontal;
+    [SerializeField] private ItemPosition _straightTileVertical;
+    [SerializeField] private ItemPosition _crossroadsTileUp;
+    [SerializeField] private ItemPosition _crossroadsTileLeft;
+    [SerializeField] private ItemPosition _crossroadsTileRight;
+    [SerializeField] private ItemPosition _crossroadsTileDown;
+
     private Dictionary<string, ItemPosition> _tileConfigurations;
+    private Coroutine _coroutine;
+    private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.1f);
+
+    private void OnEnable()
+    {
+        _spawner.ItemCreated += Generation;
+    }
+
+    private void OnDisable()
+    {
+        _spawner.ItemCreated -= Generation;
+    }
 
     private void Start()
     {
         _tileConfigurations = new Dictionary<string, ItemPosition>()
         {
             {"0000", _clearTile},
+            {"1001", _straightTileHorizontal},
+            {"0110", _straightTileVertical},
             {"1111", _fullCrossroadsTile},
-            {"0100", _endTile},
-            {"1100", _angularTile},
-            // ...
+            {"1000", _endTileUp},
+            {"0100", _endTileLeft},
+            {"0010", _endTileRight},
+            {"0001", _endTileDown},
+            {"1100", _angularTileUpLeft},
+            {"1010", _angularTileUpRight},
+            {"0011", _angularTileDownRight},
+            {"0101", _angularTileDownLeft},
+            {"1110", _crossroadsTileUp},
+            {"1101", _crossroadsTileLeft},
+            {"1011", _crossroadsTileRight},
+            {"0111", _crossroadsTileDown},
         };
 
-        Generation();
+        // Generation();
     }
 
-    private void Generation()
+    public void Generation()
     {
-        foreach (ItemPosition itemPosition in _itemPositions)
-        {
-            if (!itemPosition.IsBusy)
-            {
-                string surroundingTiles = CheckSurroundingTiles(itemPosition);
+        if (_coroutine != null)
+            StopCoroutine(_coroutine);
 
-                // var selectedTile = _tileConfigurations[surroundingTiles];
-
-                ItemPosition selectedTile = Instantiate(_tileConfigurations[surroundingTiles],
-                    itemPosition.transform.position, Quaternion.identity);
-                
-                
-                if (selectedTile == _angularTile)
-                {
-                    switch (surroundingTiles)
-                    {
-                        case "1100":
-                            selectedTile.transform.rotation = Quaternion.Euler(0, 90, 0);
-                            break;
-                        case "0010":
-                            selectedTile.transform.rotation = Quaternion.Euler(0, -90, 0);
-                            break;
-                        case "0100":
-                            selectedTile.transform.rotation = Quaternion.Euler(0, 180, 0);
-                            break;
-                        case "1000":
-                            selectedTile.transform.rotation = Quaternion.Euler(0, 0, 0);
-                            break;
-                    }
-                }
-                
-                
-                /*if (selectedTile != null)
-                {
-                    ItemPosition newTile = Instantiate(selectedTile, itemPosition.transform.position, Quaternion.identity);
-                }*/
-            }
-        }
+        _coroutine = StartCoroutine(CreateRoad());
     }
 
     private string CheckSurroundingTiles(ItemPosition itemPosition)
@@ -74,86 +78,53 @@ public class RoadGenerator : MonoBehaviour
         if (itemPosition.NorthPosition != null && !itemPosition.NorthPosition.IsBusy)
         {
             surroundingTiles = "1" + surroundingTiles.Substring(1);
-            Debug.Log("Coordinats " + surroundingTiles);
+            // Debug.Log("Coordinats " + surroundingTiles);
         }
 
         if (itemPosition.WestPosition != null && !itemPosition.WestPosition.IsBusy)
         {
-            surroundingTiles = surroundingTiles.Substring(0, 2) + "1" + surroundingTiles.Substring(3);
-            Debug.Log("Coordinats " + surroundingTiles);
+            surroundingTiles = surroundingTiles.Substring(0, 1) + "1" + surroundingTiles.Substring(2);
+            // Debug.Log("Coordinats " + surroundingTiles);
         }
 
         if (itemPosition.EastPosition != null && !itemPosition.EastPosition.IsBusy)
         {
-            surroundingTiles = surroundingTiles.Substring(0, 1) + "1" + surroundingTiles.Substring(2);
-            Debug.Log("Coordinats " + surroundingTiles);
+            surroundingTiles = surroundingTiles.Substring(0, 2) + "1" + surroundingTiles.Substring(3);
+            // Debug.Log("Coordinats " + surroundingTiles);
         }
 
         if (itemPosition.SouthPosition != null && !itemPosition.SouthPosition.IsBusy)
         {
-            surroundingTiles = surroundingTiles.Substring(0, 3) + "1";
-            Debug.Log("Coordinats " + surroundingTiles);
+            surroundingTiles = surroundingTiles.Substring(0, surroundingTiles.Length - 1) + "1";
+            // Debug.Log("Coordinats " + surroundingTiles);
         }
 
         Debug.Log("Coordinats " + surroundingTiles);
         return surroundingTiles;
     }
 
+    private IEnumerator CreateRoad()
+    {
+        yield return _waitForSeconds;
 
-    /*private void GenerateRoad()
-   {
-       // ...
+        foreach (ItemPosition itemPosition in _itemPositions)
+        {
+            if (!itemPosition.IsBusy)
+            {
+                string surroundingTiles = CheckSurroundingTiles(itemPosition);
+                ItemPosition selectedTile = Instantiate(_tileConfigurations[surroundingTiles],
+                    itemPosition.transform.position, Quaternion.identity);
 
-       if (!tile.IsBusy)
-       {
-           string surroundingTiles = CheckSurroundingTiles(tile.transform.position);
-           GameObject selectedTile = tileConfigurations[surroundingTiles];
+                itemPosition.SetRoad(selectedTile);
+            }
 
-           if (selectedTile != null)
-           {
-               GameObject newTile = Instantiate(selectedTile, tile.transform.position, Quaternion.identity);
-               newTile.GetComponent<Tile>().IsBusy = true;
-
-               // Вращение тайла в нужное положение
-               if (selectedTile == turnTile)
-               {
-                   switch (surroundingTiles)
-                   {
-                       case "0001":
-                           newTile.transform.rotation = Quaternion.Euler(0, 90, 0);
-                           break;
-                       case "0010":
-                           newTile.transform.rotation = Quaternion.Euler(0, -90, 0);
-                           break;
-                       case "0100":
-                           newTile.transform.rotation = Quaternion.Euler(0, 180, 0);
-                           break;
-                       case "1000":
-                           newTile.transform.rotation = Quaternion.Euler(0, 0, 0);
-                           break;
-                   }
-               }
-               else if (selectedTile == deadEndTile)
-               {
-                   switch (surroundingTiles)
-                   {
-                       case "0011":
-                           newTile.transform.rotation = Quaternion.Euler(0, 0, 0);
-                           break;
-                       case "0101":
-                           newTile.transform.rotation = Quaternion.Euler(0, 90, 0);
-                           break;
-                       case "1001":
-                           newTile.transform.rotation = Quaternion.Euler(0, -90, 0);
-                           break;
-                       case "1100":
-                           newTile.transform.rotation = Quaternion.Euler(0, 180, 0);
-                           break;
-                   }
-               }
-           }
-       }
-
-       // ...
-   }*/
+            else
+            {
+                ItemPosition selectedTile =
+                    Instantiate(_clearTile, itemPosition.transform.position, Quaternion.identity);
+                
+                itemPosition.SetRoad(selectedTile);
+            }
+        }
+    }
 }

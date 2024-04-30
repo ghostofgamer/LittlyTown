@@ -7,8 +7,10 @@ public class ItemPosition : MonoBehaviour
     [SerializeField] private ItemPosition _eastPosition;
     [SerializeField] private ItemPosition _southPosition;
 
-    private bool _isBusy = false;
+    [SerializeField]private bool _isBusy = false;
 
+    private ItemPosition _road;
+    
     public bool IsBusy => _isBusy;
     
     public ItemPosition SouthPosition=> _southPosition;
@@ -21,6 +23,14 @@ public class ItemPosition : MonoBehaviour
         
     }
 
+    public void SetRoad(ItemPosition itemPosition)
+    {
+        if(_road!=null)
+            _road.gameObject.SetActive(false);
+
+        _road = itemPosition;
+    }
+    
     private void OnTriggerStay(Collider other)
     {
         if (other.TryGetComponent(out Item item))

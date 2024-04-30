@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,8 @@ public class Spawner : MonoBehaviour
     private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.1f);
     private Coroutine _coroutine;
 
+    public event Action ItemCreated;
+    
     private void OnEnable()
     {
         _itemDragger.PlaceChanged += CreateItem;
@@ -42,8 +45,7 @@ public class Spawner : MonoBehaviour
             Debug.Log("места кончились");
             return null;
         }
-            
-
+        
         return randomFreePosition;
     }
 
@@ -57,5 +59,6 @@ public class Spawner : MonoBehaviour
 
         Item item = Instantiate(_prefabItem, position.transform.position, Quaternion.identity);
         _itemDragger.SetItem(item);
+        ItemCreated?.Invoke();
     }
 }

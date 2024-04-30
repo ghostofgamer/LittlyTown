@@ -69,7 +69,7 @@ public class ItemDragger : MonoBehaviour
                     {
                         Debug.Log("попытка");
                         _selectedObject.transform.position = hit.transform.position;
-                        PlaceChanged!.Invoke();
+                        PlaceChanged?.Invoke();
                         _selectedObject = null;
                         _isObjectSelected = false;
                     }
