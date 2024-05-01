@@ -103,6 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _itemName: 1
+  _nextItem: {fileID: 1190645750346455673, guid: 5e59eec53a85fd94ba2617a3bc1df6ef, type: 3}
 --- !u!54 &5964538443215958981
 Rigidbody:
   m_ObjectHideFlags: 0

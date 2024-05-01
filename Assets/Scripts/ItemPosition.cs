@@ -62,7 +62,7 @@ public class ItemPosition : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    /*private void OnTriggerExit(Collider other)
     {
         if (other.TryGetComponent(out Item item) && item.IsActive)
         {
@@ -70,7 +70,7 @@ public class ItemPosition : MonoBehaviour
             _isBusy = false;
             _item = null;
         }
-    }
+    }*/
 
     public void ClearingItem()
     {

@@ -888,6 +888,7 @@
           </e>
         </e>
         <e p="Prefabs" t="Include">
+          <e p="Items" t="Include" />
           <e p="Tiles" t="Include" />
         </e>
         <e p="Resources" t="Include">
@@ -918,11 +919,13 @@
         </e>
         <e p="Scenes" t="Include" />
         <e p="Scripts" t="Include">
+          <e p="Enums" t="Include">
+            <e p="Items.cs" t="Include" />
+          </e>
           <e p="Item.cs" t="Include" />
           <e p="ItemAnimation.cs" t="Include" />
           <e p="ItemDragger.cs" t="Include" />
           <e p="ItemPosition.cs" t="Include" />
-          <e p="Items.cs" t="Include" />
           <e p="Merge.cs" t="Include" />
           <e p="Road" t="Include">
             <e p="AngularRoad.cs" t="Include" />

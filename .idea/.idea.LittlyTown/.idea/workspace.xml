@@ -22,8 +22,14 @@
     <list default="true" id="099b8a6d-6b1c-4473-babb-d7d2ffb7e44f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/ItemAnimations/Tree.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/ItemAnimations/Tree.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tree.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tree.prefab.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Item.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Item.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemPosition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemPosition.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Items.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Merge.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Merge.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -40,9 +46,9 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spawner.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ItemPosition.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/RoadGenerator.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Road/EndRoad.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Items.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Merge.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enums/Items.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Road/EndRoad.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ItemDragger.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Road/AngularRoad.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Road/RoadTile.cs" root0="FORCE_HIGHLIGHTING" />
@@ -60,10 +66,11 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/RoadGenerator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ItemDragger.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Items.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ItemAnimation.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Item.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enums/Items.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ItemPosition.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Merge.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Item.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/ItemAnimation.cs" />
       </list>
     </option>
   </component>
@@ -113,7 +120,8 @@
       <updated>1714383585256</updated>
       <workItem from="1714383591739" duration="15648000" />
       <workItem from="1714459752404" duration="10269000" />
-      <workItem from="1714472826620" duration="15240000" />
+      <workItem from="1714472826620" duration="15776000" />
+      <workItem from="1714553733314" duration="2636000" />
     </task>
     <servers />
   </component>
