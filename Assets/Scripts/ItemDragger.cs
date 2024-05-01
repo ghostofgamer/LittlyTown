@@ -16,7 +16,7 @@ public class ItemDragger : MonoBehaviour
 
     public event Action PlaceChanged;
 
-    public event Action PlaceLooking;
+    public event Action<ItemPosition> PlaceLooking;
 
     private void Start()
     {
@@ -87,8 +87,8 @@ public class ItemDragger : MonoBehaviour
 
                 else
                 {
-                    /*_selectedObject.transform.position = _originalPosition;
-                    _isObjectSelected = false;*/
+                    _selectedObject.transform.position = _originalPosition;
+                    _isObjectSelected = false;
                 }
             }
             else
@@ -136,8 +136,7 @@ public class ItemDragger : MonoBehaviour
 
                 _currentLookPosition = itemPosition;
                 _currentLookPosition.ActivateVisual();
-                Debug.Log("Смотрю на позицию");
-                PlaceLooking?.Invoke();
+                PlaceLooking?.Invoke(_currentLookPosition);
             }
         }
     }

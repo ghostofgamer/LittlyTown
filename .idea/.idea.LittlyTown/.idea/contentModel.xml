@@ -925,6 +925,7 @@
           <e p="Item.cs" t="Include" />
           <e p="ItemAnimation.cs" t="Include" />
           <e p="ItemDragger.cs" t="Include" />
+          <e p="ItemMoving.cs" t="Include" />
           <e p="ItemPosition.cs" t="Include" />
           <e p="Merge.cs" t="Include" />
           <e p="Road" t="Include">

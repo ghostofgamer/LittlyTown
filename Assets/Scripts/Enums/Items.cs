@@ -5,6 +5,7 @@ namespace Enums
         Bush,
         Tree,
         Sawmill,
+        Wood,
         Stone
     }
 }
