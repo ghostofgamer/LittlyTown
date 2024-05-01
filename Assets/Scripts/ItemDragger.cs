@@ -12,8 +12,11 @@ public class ItemDragger : MonoBehaviour
     private int _layerMaskIgnore;
     private int _layerMask;
     private int _layer = 3;
+    private ItemPosition _currentLookPosition = null;
 
     public event Action PlaceChanged;
+
+    public event Action PlaceLooking;
 
     private void Start()
     {
@@ -97,6 +100,8 @@ public class ItemDragger : MonoBehaviour
 
         if (_isObjectSelected)
         {
+            LookItems();
+
             Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
             float distance;
 
@@ -113,5 +118,27 @@ public class ItemDragger : MonoBehaviour
     {
         _selectedObject = item.gameObject;
         _originalPosition = _selectedObject.transform.position;
+    }
+
+    private void LookItems()
+    {
+        RaycastHit hit;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, _layerMask))
+        {
+            if (hit.transform.gameObject.TryGetComponent(out ItemPosition itemPosition))
+            {
+                if (_currentLookPosition == itemPosition)
+                {
+                    return;
+                }
+
+                _currentLookPosition = itemPosition;
+                _currentLookPosition.ActivateVisual();
+                Debug.Log("Смотрю на позицию");
+                PlaceLooking?.Invoke();
+            }
+        }
     }
 }

@@ -38,7 +38,7 @@ public class ItemAnimation : MonoBehaviour
 
     private void StopAnimation()
     {
-        Debug.Log("Анимацию в тру");
+        // Debug.Log("Анимацию в тру");
         _animator.SetBool(Active, true);
     }
 }

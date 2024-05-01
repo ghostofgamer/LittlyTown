@@ -9,6 +9,9 @@ public class ItemPosition : MonoBehaviour
 
     [SerializeField] private Merge _merge;
 
+    [SerializeField] private GameObject _visualPosition;
+    [SerializeField] private ItemPosition[] _allPositions;
+    
     [SerializeField] private bool _isBusy = false;
 
     private ItemPosition _road;
@@ -79,5 +82,15 @@ public class ItemPosition : MonoBehaviour
 
         _item = null;
         _isBusy = false;
+    }
+
+    public void ActivateVisual()
+    {
+        foreach (var position in _allPositions)
+        {
+            position._visualPosition.SetActive(false);
+        }
+        
+        _visualPosition.SetActive(true);
     }
 }

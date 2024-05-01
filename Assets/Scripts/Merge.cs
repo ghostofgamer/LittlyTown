@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Merge : MonoBehaviour
 {
+    [SerializeField] private ItemDragger _itemDragger;
+    
     private ItemPosition _currentItemPosition;
     private List<Item> _matchedItems = new List<Item>();
 
@@ -12,6 +15,8 @@ public class Merge : MonoBehaviour
 
     private Item _currentItem;
 
+    public event Action Merging;
+    
     private void Start()
     {
     }
@@ -19,13 +24,6 @@ public class Merge : MonoBehaviour
     public void SetPosition(ItemPosition itemPosition)
     {
         _currentItemPosition = itemPosition;
-        _currentItem = _currentItemPosition.Item;
-        /*Debug.Log("_currentItemPosition " + _currentItemPosition.name);
-        if (_currentItem == null)
-        {
-            Debug.Log("NULL");
-        }
-        Debug.Log("_currentItem " + _currentItem.name);*/
         StartCoroutine(Looks());
     }
 
@@ -56,32 +54,25 @@ public class Merge : MonoBehaviour
 
     private void Show()
     {
-        if (_position.Count > 0)
+        if (_position.Count < 3)
+            return;
+
+        foreach (var itemPosition in _position)
         {
-            foreach (var item in _position)
-            {
-                Debug.Log(item.gameObject.name + " at position " + item.Item.name);
-            }
+            itemPosition.Item.gameObject.SetActive(false);
+            itemPosition.ClearingItem();
         }
 
-        if (_position.Count >= 3)
-        {
-            foreach (var itemPosition in _position)
-            {
-                itemPosition.Item.gameObject.SetActive(false);
-                itemPosition.ClearingItem();
-            }
-
-            Item item = Instantiate(_currentItem.NextItem, _currentItemPosition.transform.position, Quaternion.identity);
-            item.Activation();
-            SetPosition(_currentItemPosition);
-        }
+        Item item = Instantiate(_currentItem.NextItem, _currentItemPosition.transform.position, Quaternion.identity);
+        item.Activation();
+        SetPosition(_currentItemPosition);
+        Merging?.Invoke();
     }
 
     private void TestLookAround(ItemPosition currentPosition)
     {
         _currentItem = _currentItemPosition.Item;
-        Debug.Log("ИМЯ " + _currentItem.name);
+
         if (_checkedPositions.Contains(currentPosition))
         {
             return;

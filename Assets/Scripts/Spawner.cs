@@ -15,7 +15,7 @@ public class Spawner : MonoBehaviour
     private Coroutine _coroutine;
 
     public event Action ItemCreated;
-    
+
     private void OnEnable()
     {
         _itemDragger.PlaceChanged += CreateItem;
@@ -45,7 +45,7 @@ public class Spawner : MonoBehaviour
             Debug.Log("места кончились");
             return null;
         }
-        
+
         return randomFreePosition;
     }
 
@@ -53,6 +53,7 @@ public class Spawner : MonoBehaviour
     {
         yield return _waitForSeconds;
         ItemPosition position = GetPosition();
+        position.ActivateVisual();
 
         if (position == null)
             yield break;

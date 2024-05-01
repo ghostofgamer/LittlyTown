@@ -23,6 +23,7 @@ public class RoadGenerator : MonoBehaviour
     [SerializeField] private ItemPosition _crossroadsTileLeft;
     [SerializeField] private ItemPosition _crossroadsTileRight;
     [SerializeField] private ItemPosition _crossroadsTileDown;
+    [SerializeField] private Merge _merge;
 
     private Dictionary<string, ItemPosition> _tileConfigurations;
     private Coroutine _coroutine;
@@ -31,11 +32,13 @@ public class RoadGenerator : MonoBehaviour
     private void OnEnable()
     {
         _spawner.ItemCreated += Generation;
+        _merge.Merging += Generation;
     }
 
     private void OnDisable()
     {
         _spawner.ItemCreated -= Generation;
+        _merge.Merging -= Generation;
     }
 
     private void Start()
@@ -122,7 +125,7 @@ public class RoadGenerator : MonoBehaviour
             {
                 ItemPosition selectedTile =
                     Instantiate(_clearTile, itemPosition.transform.position, Quaternion.identity);
-                
+
                 itemPosition.SetRoad(selectedTile);
             }
         }
