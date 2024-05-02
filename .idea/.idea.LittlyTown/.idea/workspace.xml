@@ -20,24 +20,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="099b8a6d-6b1c-4473-babb-d7d2ffb7e44f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddedAssets/Downtown Game Studio/Nature Pack - Low Polly Trees &amp; Bushes/Materials/Vegetation.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddedAssets/Downtown Game Studio/Nature Pack - Low Polly Trees &amp; Bushes/Materials/Vegetation.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddedAssets/LowPolyNature/Meshes/Materials/matLowPoly.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddedAssets/LowPolyNature/Meshes/Materials/matLowPoly.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddedAssets/SimpleNaturePack/Materials/SimpleNaturePack_Texture_01.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddedAssets/SimpleNaturePack/Materials/SimpleNaturePack_Texture_01.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Grass.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Grass.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Bush.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Bush.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Sawmill.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Sawmill.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Tree.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Tree.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enums/Items.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enums/Items.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemDragger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemDragger.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemMoving.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemMoving.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Merge.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Merge.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bild/Build.zip" beforeDir="false" afterPath="$PROJECT_DIR$/Bild/Build.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bild/Build/1a28c930a2420e3caea7e4dfb98019ac.data.unityweb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bild/Build/f824dd6513b45480884d34d2abb9fe5c.wasm.unityweb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bild/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Bild/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bild/Build.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bild/Build/7597599629647f4b4d973a9fccf33a17.wasm.unityweb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bild/Build/Bild.loader.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bild/Build/aa88e22d9e64aee70eb717f3ee20a07b.js.unityweb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bild/Build/abe00d735bcf30007a287cea0a5487e4.data.unityweb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bild/StreamingAssets/UnityServicesProjectConfiguration.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bild/index.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,8 +70,8 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/RoadGenerator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enums/Items.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ItemDragger.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Merge.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ItemMoving.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Merge.cs" />
       </list>
     </option>
   </component>
@@ -131,6 +123,7 @@
       <workItem from="1714459752404" duration="10269000" />
       <workItem from="1714472826620" duration="15776000" />
       <workItem from="1714553733314" duration="14222000" />
+      <workItem from="1714639372961" duration="1096000" />
     </task>
     <servers />
   </component>
@@ -223,10 +216,10 @@
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
     <state x="461" y="161" key="SettingsEditor/0.0.1920.1032@0.0.1920.1032" timestamp="1714387545768" />
-    <state x="92" y="92" width="1736" height="848" key="VCS.FileHistoryDialog" timestamp="1714470909554">
+    <state x="92" y="92" width="1736" height="848" key="VCS.FileHistoryDialog" timestamp="1714640479307">
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
-    <state x="92" y="92" width="1736" height="848" key="VCS.FileHistoryDialog/0.0.1920.1032@0.0.1920.1032" timestamp="1714470909554" />
+    <state x="92" y="92" width="1736" height="848" key="VCS.FileHistoryDialog/0.0.1920.1032@0.0.1920.1032" timestamp="1714640479307" />
     <state x="623" y="223" width="672" height="678" key="search.everywhere.popup" timestamp="1714574782228">
       <screen x="0" y="0" width="1920" height="1032" />
     </state>

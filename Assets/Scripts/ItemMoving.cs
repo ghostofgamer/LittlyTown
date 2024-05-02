@@ -8,7 +8,7 @@ public class ItemMoving : MonoBehaviour
 
     private Vector3 _startPosition;
 
-    public void Move(Vector3 target)
+    public void MoveCyclically(Vector3 target)
     {
         _startPosition = transform.position;
         StartCoroutine(Moving(target));
@@ -19,11 +19,7 @@ public class ItemMoving : MonoBehaviour
         while (true)
         {
             Vector3 targetPosition = targetItemPosition;
-
-            // Вычислить направление к цели
             Vector3 direction = (targetPosition - transform.position).normalized;
-
-            // Вычислить конечную позицию (на один шаг в направлении цели)
             Vector3 target = transform.position + direction;
 
             float time = 0.0f;
@@ -36,28 +32,30 @@ public class ItemMoving : MonoBehaviour
                 yield return null;
             }
 
-            Debug.Log("versi");
             transform.position = _startPosition;
-            // yield return _waitForSeconds;
             yield return null;
-
-            /*float time = 0;
-            Vector3 targetPosition = targetItemPosition;
-            Vector3 direction = transform.position - targetPosition;
-            direction.Normalize();
-            Vector3 target = transform.position -= direction;
-
-            while (time < 1)
-            {
-                float t = time / 1;
-                Debug.Log("Direction" + direction);
-                transform.position = Vector3.Lerp(transform.position, target, t);
-                time += Time.deltaTime;
-                yield return null;
-            }
-
-            transform.position = _startPosition;
-            yield return _waitForSeconds;*/
         }
+    }
+
+    public void Move(Vector3 target)
+    {
+        _startPosition = transform.position;
+        StartCoroutine(MoveTarget(target));
+    }
+
+    public IEnumerator MoveTarget(Vector3 targetItemPosition)
+    {
+        float time = 0.0f;
+
+        while (time < 1f)
+        {
+            float t = time / 1f;
+            transform.position = Vector3.Lerp(_startPosition, targetItemPosition, t);
+            time += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.position = targetItemPosition;
+        // gameObject.SetActive(false);
     }
 }

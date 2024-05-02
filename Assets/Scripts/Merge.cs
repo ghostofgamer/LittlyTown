@@ -70,11 +70,28 @@ public class Merge : MonoBehaviour
             return;
 
         // StartCoroutine(TEStMove());
-        foreach (var item in _matchedItems)
+        
+        foreach (var itemMatch in _matchedItems)
         {
-            item.GetComponent<ItemMoving>().Move(_currentItemPosition.transform.position);
+            // itemMatch.GetComponent<ItemMoving>().MoveCyclically(_currentItemPosition.transform.position);
         }
 
+        foreach (var itemMatch in _matchedItems)
+        {
+            itemMatch.GetComponent<ItemMoving>().Move(_currentItemPosition.transform.position);
+        }
+        
+        foreach (var itemPosition in _position)
+        {
+            itemPosition.Item.gameObject.SetActive(false);
+            itemPosition.ClearingItem();
+        }
+        
+        Item item = Instantiate(_currentItem.NextItem, _currentItemPosition.transform.position, Quaternion.identity);
+        item.Activation();
+        SetPosition(_currentItemPosition);
+        Merging?.Invoke();
+        
         /*foreach (var itemPosition in _position)
         {
             itemPosition.Item.gameObject.SetActive(false);

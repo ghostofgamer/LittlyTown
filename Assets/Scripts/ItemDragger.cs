@@ -29,8 +29,27 @@ public class ItemDragger : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            // Debug.Log("попытка1");
             RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, _layerMask))
+            {
+                if (hit.transform.gameObject.TryGetComponent(out ItemPosition itemPosition))
+                {
+                    _selectedObject.transform.position = new Vector3(
+                        _selectedObject.transform.position.x,
+                        _selectedObject.transform.position.y + _offset,
+                        _selectedObject.transform.position.z);
+                    _objectPlane = new Plane(Vector3.up, _selectedObject.transform.position);
+                    _isObjectSelected = true;
+                }
+            }
+
+
+
+
+            
+            /*RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
             if (Physics.Raycast(ray, out hit))
@@ -45,8 +64,8 @@ public class ItemDragger : MonoBehaviour
                         _selectedObject.transform.position.z);
                     _objectPlane = new Plane(Vector3.up, _selectedObject.transform.position);
                     _isObjectSelected = true;
-                }*/
-                // Debug.Log("попытка3");
+                }#1#
+
                 if (hit.transform.gameObject.TryGetComponent(out ItemPosition itemPosition))
                 {
                     _selectedObject.transform.position = new Vector3(
@@ -56,7 +75,7 @@ public class ItemDragger : MonoBehaviour
                     _objectPlane = new Plane(Vector3.up, _selectedObject.transform.position);
                     _isObjectSelected = true;
                 }
-            }
+            }*/
         }
 
         if (Input.GetMouseButtonUp(0))
