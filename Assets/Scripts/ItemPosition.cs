@@ -7,12 +7,10 @@ public class ItemPosition : MonoBehaviour
     [SerializeField] private ItemPosition _eastPosition;
     [SerializeField] private ItemPosition _southPosition;
     [SerializeField] private PositionMatcher _positionMatcher;
-
     [SerializeField] private Merge _merge;
-
+    [SerializeField] private bool _isSelected = false;
     [SerializeField] private GameObject _visualPosition;
     [SerializeField] private ItemPosition[] _allPositions;
-
     [SerializeField] private bool _isBusy = false;
 
     private ItemPosition _road;
@@ -25,6 +23,8 @@ public class ItemPosition : MonoBehaviour
 
     public bool IsBusy => _isBusy;
 
+    public bool IsSelected=> _isSelected;
+    
     public ItemPosition SouthPosition => _southPosition;
 
     public ItemPosition NorthPosition => _northPosition;
@@ -55,11 +55,17 @@ public class ItemPosition : MonoBehaviour
         // _merge.Testmerge();
     }
 
-    public void SetItem(Item item)
+    public void SetSelected(Item item)
     {
-        _item = item;
+        // _item = item;
+        _isSelected = true;
     }
 
+    public void SetValue()
+    {
+       
+    }
+    
     /*private void OnTriggerEnter(Collider other)
     {
         Debug.Log("наступили");
@@ -91,6 +97,7 @@ public class ItemPosition : MonoBehaviour
 
         _item = null;
         _isBusy = false;
+        _isSelected = false;
     }
 
     public void ActivateVisual()

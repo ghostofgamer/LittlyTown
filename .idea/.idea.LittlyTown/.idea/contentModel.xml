@@ -939,8 +939,6 @@
           <e p="Spawner.cs" t="Include" />
           <e p="Test" t="Include">
             <e p="Dragger.cs" t="Include" />
-            <e p="TestItem.cs" t="Include" />
-            <e p="TestSpawn.cs" t="Include" />
           </e>
         </e>
         <e p="Sounds" t="Include" />

@@ -68,7 +68,7 @@ public class RoadGenerator : MonoBehaviour
 
     public void Generation()
     {
-        Debug.Log("Generation");
+        // Debug.Log("Generation");
         if (_coroutine != null)
             StopCoroutine(_coroutine);
 

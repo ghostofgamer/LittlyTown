@@ -3885,7 +3885,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &668771887
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5018,6 +5018,7 @@ GameObject:
   m_Component:
   - component: {fileID: 843412983}
   - component: {fileID: 843412982}
+  - component: {fileID: 843412984}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -5068,6 +5069,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &843412984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 843412981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd4a6a8cd403f414baa2095b29b9284c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prefabItem: {fileID: 0}
+  _positions: []
+  _itemDragger: {fileID: 0}
+  _merge: {fileID: 0}
 --- !u!1 &845291068
 GameObject:
   m_ObjectHideFlags: 0
@@ -5438,6 +5455,7 @@ MonoBehaviour:
   _southPosition: {fileID: 1566689233}
   _positionMatcher: {fileID: 2121393211}
   _merge: {fileID: 1519534726}
+  _isSelected: 0
   _visualPosition: {fileID: 998140796}
   _allPositions:
   - {fileID: 5775887072221448049}
@@ -6546,6 +6564,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 969082533}
+  - component: {fileID: 969082534}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -6568,6 +6587,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &969082534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 969082532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f3db6e48cfb86742bef8c59d2958225, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &969828240
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7913,6 +7944,7 @@ MonoBehaviour:
   _southPosition: {fileID: 878424215}
   _positionMatcher: {fileID: 2121393211}
   _merge: {fileID: 1519534726}
+  _isSelected: 0
   _visualPosition: {fileID: 516783863}
   _allPositions:
   - {fileID: 5775887072221448049}
@@ -9272,6 +9304,7 @@ MonoBehaviour:
   _southPosition: {fileID: 1640520104}
   _positionMatcher: {fileID: 2121393211}
   _merge: {fileID: 1519534726}
+  _isSelected: 0
   _visualPosition: {fileID: 57399280}
   _allPositions:
   - {fileID: 5775887072221448049}
@@ -10057,6 +10090,7 @@ MonoBehaviour:
   _southPosition: {fileID: 0}
   _positionMatcher: {fileID: 2121393211}
   _merge: {fileID: 1519534726}
+  _isSelected: 0
   _visualPosition: {fileID: 245303873}
   _allPositions:
   - {fileID: 5775887072221448049}
@@ -11882,7 +11916,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1990161225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13021,6 +13055,7 @@ MonoBehaviour:
   _southPosition: {fileID: 1678820400338885682}
   _positionMatcher: {fileID: 2121393211}
   _merge: {fileID: 1519534726}
+  _isSelected: 0
   _visualPosition: {fileID: 1496778282}
   _allPositions:
   - {fileID: 5775887072221448049}
@@ -13058,6 +13093,7 @@ MonoBehaviour:
   _southPosition: {fileID: 1678820400709309457}
   _positionMatcher: {fileID: 2121393211}
   _merge: {fileID: 1519534726}
+  _isSelected: 0
   _visualPosition: {fileID: 2135812386}
   _allPositions:
   - {fileID: 5775887072221448049}
@@ -13095,6 +13131,7 @@ MonoBehaviour:
   _southPosition: {fileID: 0}
   _positionMatcher: {fileID: 2121393211}
   _merge: {fileID: 1519534726}
+  _isSelected: 0
   _visualPosition: {fileID: 685866514}
   _allPositions:
   - {fileID: 5775887072221448049}
@@ -13132,6 +13169,7 @@ MonoBehaviour:
   _southPosition: {fileID: 1678820399922201428}
   _positionMatcher: {fileID: 2121393211}
   _merge: {fileID: 1519534726}
+  _isSelected: 0
   _visualPosition: {fileID: 510223644}
   _allPositions:
   - {fileID: 5775887072221448049}
@@ -13169,6 +13207,7 @@ MonoBehaviour:
   _southPosition: {fileID: 0}
   _positionMatcher: {fileID: 2121393211}
   _merge: {fileID: 1519534726}
+  _isSelected: 0
   _visualPosition: {fileID: 729739009}
   _allPositions:
   - {fileID: 5775887072221448049}
@@ -13206,6 +13245,7 @@ MonoBehaviour:
   _southPosition: {fileID: 1678820399913679057}
   _positionMatcher: {fileID: 2121393211}
   _merge: {fileID: 1519534726}
+  _isSelected: 0
   _visualPosition: {fileID: 721264166}
   _allPositions:
   - {fileID: 5775887072221448049}
@@ -13243,6 +13283,7 @@ MonoBehaviour:
   _southPosition: {fileID: 1678820399375003531}
   _positionMatcher: {fileID: 2121393211}
   _merge: {fileID: 1519534726}
+  _isSelected: 0
   _visualPosition: {fileID: 2134630331}
   _allPositions:
   - {fileID: 5775887072221448049}
@@ -13280,6 +13321,7 @@ MonoBehaviour:
   _southPosition: {fileID: 1678820400765126983}
   _positionMatcher: {fileID: 2121393211}
   _merge: {fileID: 1519534726}
+  _isSelected: 0
   _visualPosition: {fileID: 1489906297}
   _allPositions:
   - {fileID: 5775887072221448049}
@@ -13317,6 +13359,7 @@ MonoBehaviour:
   _southPosition: {fileID: 1678820400261442842}
   _positionMatcher: {fileID: 2121393211}
   _merge: {fileID: 1519534726}
+  _isSelected: 0
   _visualPosition: {fileID: 1298700339}
   _allPositions:
   - {fileID: 5775887072221448049}
@@ -13354,6 +13397,7 @@ MonoBehaviour:
   _southPosition: {fileID: 1678820399311776367}
   _positionMatcher: {fileID: 2121393211}
   _merge: {fileID: 1519534726}
+  _isSelected: 0
   _visualPosition: {fileID: 1113643591}
   _allPositions:
   - {fileID: 5775887072221448049}
@@ -13391,6 +13435,7 @@ MonoBehaviour:
   _southPosition: {fileID: 0}
   _positionMatcher: {fileID: 2121393211}
   _merge: {fileID: 1519534726}
+  _isSelected: 0
   _visualPosition: {fileID: 1377856695}
   _allPositions:
   - {fileID: 5775887072221448049}
@@ -14093,6 +14138,7 @@ MonoBehaviour:
   _southPosition: {fileID: 1678820399038363455}
   _positionMatcher: {fileID: 2121393211}
   _merge: {fileID: 1519534726}
+  _isSelected: 0
   _visualPosition: {fileID: 182039149}
   _allPositions:
   - {fileID: 5775887072221448049}

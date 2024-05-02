@@ -13,7 +13,7 @@ public class ItemMoving : MonoBehaviour
 
     public void MoveCyclically(Vector3 target)
     {
-        Debug.Log("Return");
+        // Debug.Log("Return");
         if (!_item.IsActive)
             return;
 
@@ -73,7 +73,7 @@ public class ItemMoving : MonoBehaviour
 
         while (time < 0.3f)
         {
-            Debug.Log("Move " + targetItemPosition);
+            // Debug.Log("Move " + targetItemPosition);
             float t = time / 0.3f;
             transform.position = Vector3.Lerp(_startPosition, targetItemPosition, t);
             time += Time.deltaTime;

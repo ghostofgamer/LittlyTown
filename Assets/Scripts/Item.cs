@@ -7,6 +7,8 @@ public class Item : MonoBehaviour
     [SerializeField]private Items _itemName;
     [SerializeField] private Item _nextItem;
     
+    private ItemPosition _itemPosition;
+    
     private bool _isActive;
 
     public event Action Activated;
@@ -28,5 +30,15 @@ public class Item : MonoBehaviour
         _isActive = false;
       
         // Debug.Log("Activation");
+    }
+
+    public void GetOutPosition()
+    {
+        _itemPosition.ClearingItem();
+    }
+
+    public void Init(ItemPosition itemPosition)
+    {
+        _itemPosition = itemPosition;
     }
 }

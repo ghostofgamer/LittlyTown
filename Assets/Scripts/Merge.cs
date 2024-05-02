@@ -38,6 +38,44 @@ public class Merge : MonoBehaviour
     {
     }
 
+    public void TestMatchMerge(ItemPosition currentPosition)
+    {
+        // Debug.Log("!!!!!! " + _positionMatcher.MatchedItems.Count);
+        
+        if (_positionMatcher.Positions.Count < 3)
+        {
+            NotMerging?.Invoke();
+            return;
+        }
+
+        _matchPos = _positionMatcher.Positions;
+        _currentItem = currentPosition.Item;
+        // _matchedList = _positionMatcher.MatchedItems;
+        
+        foreach (var itemPosition in _matchPos)
+        {
+            itemPosition.Item.gameObject.SetActive(false);
+            // itemPosition.Item.GetComponent<ItemMoving>().Move(currentPosition.transform.position);
+            // itemPosition.Item.GetOutPosition();
+            itemPosition.ClearingItem();
+        }
+
+        /*foreach (var itemPosition in _matchPos)
+        {
+            itemPosition.Item.GetComponent<ItemMoving>().Move(currentPosition.transform.position);
+        }
+        
+        StartCoroutine(CorutinaMoveMerge(currentPosition));*/
+        
+        // Debug.Log("Создаем");
+        Item item = Instantiate(_currentItem.NextItem, currentPosition.transform.position, Quaternion.identity);
+        item.Activation();
+
+        _positionMatcher.TryMerge(currentPosition);
+        // SetPosition(_currentItemPosition);
+        Merging?.Invoke();
+    }
+
     private void StopMoveMatch()
     {
         if (_matchedItems.Count >= 3)
@@ -49,8 +87,9 @@ public class Merge : MonoBehaviour
         }
     }
 
-    public void TestMatchMerge(ItemPosition currentPosition)
+    /*public void TestMatchMerge(ItemPosition currentPosition)
     {
+
         if (_positionMatcher.Positions.Count < 3)
         {
             NotMerging?.Invoke();
@@ -59,29 +98,31 @@ public class Merge : MonoBehaviour
         
         _matchPos = _positionMatcher.Positions;
         _currentItem = currentPosition.Item;
-        _matchedList = _positionMatcher.MatchedItems;
+        // _matchedList = _positionMatcher.MatchedItems;
         
         foreach (var itemPosition in _matchPos)
         {
-            itemPosition.Item.gameObject.SetActive(false);
-            // itemPosition.Item.GetComponent<ItemMoving>().Move(currentPosition.transform.position);
-            itemPosition.ClearingItem();
+            // itemPosition.Item.gameObject.SetActive(false);
+            itemPosition.Item.GetComponent<ItemMoving>().Move(currentPosition.transform.position);
+            itemPosition.Item.GetOutPosition();
+            // itemPosition.ClearingItem();
         }
 
-        // foreach (var itemPosition in _matchPos)
-        // {
-        //     itemPosition.Item.GetComponent<ItemMoving>().Move(currentPosition.transform.position);
-        // }
-        //
-        // StartCoroutine(CorutinaMoveMerge(currentPosition));
-
+        /*foreach (var itemPosition in _matchPos)
+        {
+            itemPosition.Item.GetComponent<ItemMoving>().Move(currentPosition.transform.position);
+        }
+        
+        StartCoroutine(CorutinaMoveMerge(currentPosition));#1#
+        
+Debug.Log("Создаем");
         Item item = Instantiate(_currentItem.NextItem, currentPosition.transform.position, Quaternion.identity);
         item.Activation();
 
         _positionMatcher.TryMerge(currentPosition);
         // SetPosition(_currentItemPosition);
         Merging?.Invoke();
-    }
+    }*/
 
     private IEnumerator CorutinaMoveMerge(ItemPosition currentPosition)
     {

@@ -16,7 +16,7 @@ public class ItemDragger : MonoBehaviour
 
     public event Action PlaceChanged;
 
-    public event Action<ItemPosition> PlaceLooking;
+    public event Action<ItemPosition,Item> PlaceLooking;
 
     private void Start()
     {
@@ -176,8 +176,8 @@ public class ItemDragger : MonoBehaviour
                 _currentLookPosition = itemPosition;
                 _currentLookPosition.ActivateVisual();
                 // _currentLookPosition.DeliverObject(_selectedObject.GetComponent<Item>());
-                _currentLookPosition.SetItem(_selectedObject.GetComponent<Item>());
-                PlaceLooking?.Invoke(_currentLookPosition);
+                _currentLookPosition.SetSelected(_selectedObject.GetComponent<Item>());
+                PlaceLooking?.Invoke(_currentLookPosition,_selectedObject.GetComponent<Item>());
             }
         }
     }
