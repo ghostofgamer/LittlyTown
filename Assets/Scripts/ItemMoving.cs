@@ -4,14 +4,34 @@ using UnityEngine;
 
 public class ItemMoving : MonoBehaviour
 {
-    private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.1f);
+    [SerializeField] private Item _item;
 
+    private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.1f);
     private Vector3 _startPosition;
+
+    private Coroutine _coroutineCyclically;
 
     public void MoveCyclically(Vector3 target)
     {
+        if (!_item.IsActive)
+            return;
+
         _startPosition = transform.position;
-        StartCoroutine(Moving(target));
+
+        if (_coroutineCyclically != null)
+            StopCoroutine(_coroutineCyclically);
+
+        _coroutineCyclically = StartCoroutine(Moving(target));
+    }
+
+    public void StopCoroutine()
+    {
+        if (_coroutineCyclically != null)
+        {
+            Debug.Log("Stop");
+            transform.position = _startPosition;
+            StopCoroutine(_coroutineCyclically);
+        }
     }
 
     private IEnumerator Moving(Vector3 targetItemPosition)
@@ -40,16 +60,20 @@ public class ItemMoving : MonoBehaviour
     public void Move(Vector3 target)
     {
         _startPosition = transform.position;
-        StartCoroutine(MoveTarget(target));
+
+        if (_coroutineCyclically != null)
+            StopCoroutine(_coroutineCyclically);
+
+        _coroutineCyclically = StartCoroutine(MoveTarget(target));
     }
 
     public IEnumerator MoveTarget(Vector3 targetItemPosition)
     {
         float time = 0.0f;
 
-        while (time < 1f)
+        while (time < 0.3f)
         {
-            float t = time / 1f;
+            float t = time / 0.3f;
             transform.position = Vector3.Lerp(_startPosition, targetItemPosition, t);
             time += Time.deltaTime;
             yield return null;

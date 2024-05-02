@@ -928,6 +928,7 @@
           <e p="ItemMoving.cs" t="Include" />
           <e p="ItemPosition.cs" t="Include" />
           <e p="Merge.cs" t="Include" />
+          <e p="PositionMatcher.cs" t="Include" />
           <e p="Road" t="Include">
             <e p="AngularRoad.cs" t="Include" />
             <e p="CrossroadsRoad.cs" t="Include" />

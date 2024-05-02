@@ -6,12 +6,13 @@ public class ItemPosition : MonoBehaviour
     [SerializeField] private ItemPosition _westPosition;
     [SerializeField] private ItemPosition _eastPosition;
     [SerializeField] private ItemPosition _southPosition;
+    [SerializeField] private PositionMatcher _positionMatcher;
 
     [SerializeField] private Merge _merge;
 
     [SerializeField] private GameObject _visualPosition;
     [SerializeField] private ItemPosition[] _allPositions;
-    
+
     [SerializeField] private bool _isBusy = false;
 
     private ItemPosition _road;
@@ -48,7 +49,15 @@ public class ItemPosition : MonoBehaviour
     public void DeliverObject(Item item)
     {
         _item = item;
-        _merge.SetPosition(this);
+        // _merge.SetPosition(this);
+        _positionMatcher.TryMerge(this);
+        // Debug.Log("PosItem");
+        // _merge.Testmerge();
+    }
+
+    public void SetItem(Item item)
+    {
+        _item = item;
     }
 
     /*private void OnTriggerEnter(Collider other)
@@ -90,7 +99,7 @@ public class ItemPosition : MonoBehaviour
         {
             position._visualPosition.SetActive(false);
         }
-        
+
         _visualPosition.SetActive(true);
     }
 }

@@ -44,10 +44,6 @@ public class ItemDragger : MonoBehaviour
                     _isObjectSelected = true;
                 }
             }
-
-
-
-
             
             /*RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -91,9 +87,10 @@ public class ItemDragger : MonoBehaviour
                     {
                         // Debug.Log("попытка");
                         _selectedObject.transform.position = hit.transform.position;
-                        PlaceChanged?.Invoke();
                         _selectedObject.GetComponent<Item>().Activation();
+                        PlaceChanged?.Invoke();
                         itemPosition.DeliverObject(_selectedObject.GetComponent<Item>());
+                        // Debug.Log("Dragger");
                         _selectedObject = null;
                         _isObjectSelected = false;
                     }
@@ -153,8 +150,16 @@ public class ItemDragger : MonoBehaviour
                     return;
                 }
 
+                if (_currentLookPosition != null)
+                {
+                    _currentLookPosition.ClearingItem();
+                    Debug.Log("Look");
+                }
+                
                 _currentLookPosition = itemPosition;
                 _currentLookPosition.ActivateVisual();
+                // _currentLookPosition.DeliverObject(_selectedObject.GetComponent<Item>());
+                _currentLookPosition.SetItem(_selectedObject.GetComponent<Item>());
                 PlaceLooking?.Invoke(_currentLookPosition);
             }
         }

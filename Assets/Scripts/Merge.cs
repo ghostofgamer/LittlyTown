@@ -7,6 +7,7 @@ using UnityEngine;
 public class Merge : MonoBehaviour
 {
     [SerializeField] private ItemDragger _itemDragger;
+    [SerializeField] private PositionMatcher _positionMatcher;
 
     private ItemPosition _currentItemPosition;
     private List<Item> _matchedItems = new List<Item>();
@@ -15,28 +16,44 @@ public class Merge : MonoBehaviour
     private List<ItemPosition> _position = new List<ItemPosition>();
 
     private Item _currentItem;
+    private List<Item> _matchedList = new List<Item>();
+    private List<ItemPosition> _matchPos = new List<ItemPosition>();
 
     public event Action Merging;
 
     private void OnEnable()
     {
         // _itemDragger.PlaceLooking += SetPosition;
+        // _itemDragger.PlaceChanged += Testmerge;
     }
 
     private void OnDisable()
     {
         // _itemDragger.PlaceLooking -= SetPosition;
+        // _itemDragger.PlaceChanged -= Testmerge;
     }
 
     private void Start()
     {
     }
 
-    public void SetPosition(ItemPosition itemPosition)
+    /*public void SetPosition(ItemPosition itemPosition)
     {
-        Debug.Log("111");
+        // StopMoveMatch();
         _currentItemPosition = itemPosition;
-        StartCoroutine(Looks());
+        TestMatchMerge();
+        // StartCoroutine(Looks());
+    }*/
+
+    private void StopMoveMatch()
+    {
+        if (_matchedItems.Count >= 3)
+        {
+            foreach (var matchItem in _matchedItems)
+            {
+                matchItem.GetComponent<ItemMoving>().StopCoroutine();
+            }
+        }
     }
 
     private IEnumerator Looks()
@@ -46,62 +63,54 @@ public class Merge : MonoBehaviour
         _checkedPositions.Clear();
         _position.Clear();
         TestLookAround(_currentItemPosition);
-        ShowMatchedItems();
+        // ShowMatchedItems();
         Show();
     }
 
-    private void ShowMatchedItems()
-    {
-        if (_matchedItems.Count == 0)
-        {
-            Debug.Log("No matched items found");
-            return;
-        }
-
-        foreach (var item in _matchedItems)
-        {
-            Debug.Log(item.gameObject.name + " at position " + _matchedItems.Count);
-        }
-    }
+    // private void ShowMatchedItems()
+    // {
+    //     if (_matchedItems.Count == 0)
+    //     {
+    //         Debug.Log("No matched items found");
+    //         return;
+    //     }
+    //
+    //     foreach (var item in _matchedItems)
+    //     {
+    //         Debug.Log(item.gameObject.name + " at position " + _matchedItems.Count);
+    //     }
+    // }
 
     private void Show()
     {
+        // Debug.Log("3 " + _position.Count);
+        // Debug.Log("5 " + _matchedItems.Count);
         if (_position.Count < 3)
             return;
 
         // StartCoroutine(TEStMove());
-        
-        foreach (var itemMatch in _matchedItems)
-        {
-            // itemMatch.GetComponent<ItemMoving>().MoveCyclically(_currentItemPosition.transform.position);
-        }
 
-        foreach (var itemMatch in _matchedItems)
+        /*foreach (var itemMatch in _matchedItems)
         {
-            itemMatch.GetComponent<ItemMoving>().Move(_currentItemPosition.transform.position);
-        }
-        
+            itemMatch.GetComponent<ItemMoving>().MoveCyclically(_currentItemPosition.transform.position);
+        }*/
+
+        // foreach (var itemMatch in _matchedItems)
+        // {
+        //     itemMatch.GetComponent<ItemMoving>().Move(_currentItemPosition.transform.position);
+        // }
+
         foreach (var itemPosition in _position)
         {
-            itemPosition.Item.gameObject.SetActive(false);
-            itemPosition.ClearingItem();
-        }
-        
-        Item item = Instantiate(_currentItem.NextItem, _currentItemPosition.transform.position, Quaternion.identity);
-        item.Activation();
-        SetPosition(_currentItemPosition);
-        Merging?.Invoke();
-        
-        /*foreach (var itemPosition in _position)
-        {
+            // Debug.Log("Merger");
             itemPosition.Item.gameObject.SetActive(false);
             itemPosition.ClearingItem();
         }
 
         Item item = Instantiate(_currentItem.NextItem, _currentItemPosition.transform.position, Quaternion.identity);
         item.Activation();
-        SetPosition(_currentItemPosition);
-        Merging?.Invoke();*/
+        // SetPosition(_currentItemPosition);
+        Merging?.Invoke();
     }
 
     private void TestLookAround(ItemPosition currentPosition)
@@ -136,6 +145,55 @@ public class Merge : MonoBehaviour
                 TestLookAround(arroundPosition);
             }
         }
+    }
+
+    public void TestMatchMerge(ItemPosition currentPosition)
+    {
+        if (_positionMatcher.Positions.Count < 3)
+            return;
+
+        _matchPos = _positionMatcher.Positions;
+        _currentItem = currentPosition.Item;
+        
+        foreach (var itemPosition in _matchPos)
+        {
+            itemPosition.Item.gameObject.SetActive(false);
+            itemPosition.ClearingItem();
+        }
+
+        Item item = Instantiate(_currentItem.NextItem, currentPosition.transform.position, Quaternion.identity);
+
+        item.Activation();
+        _positionMatcher.TryMerge(currentPosition);
+        // SetPosition(_currentItemPosition);
+  
+        Merging?.Invoke();
+   
+    }
+
+    public void Testmerge()
+    {
+        /*Debug.Log("TestMergeStart");
+        if (_matchedItems.Count < 3)
+            return;
+        Debug.Log("TestMergeContinue");
+
+        foreach (var itemMatch in _matchedItems)
+        {
+            itemMatch.GetComponent<ItemMoving>().Move(_currentItemPosition.transform.position);
+        }*/
+
+
+        foreach (var itemPosition in _position)
+        {
+            itemPosition.Item.gameObject.SetActive(false);
+            itemPosition.ClearingItem();
+        }
+
+        Item item = Instantiate(_currentItem.NextItem, _currentItemPosition.transform.position, Quaternion.identity);
+        item.Activation();
+        // SetPosition(_currentItemPosition);
+        Merging?.Invoke();
     }
 
     /*private void TestMoveMerge(ItemPosition currentPosition)
