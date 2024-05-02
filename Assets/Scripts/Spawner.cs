@@ -10,20 +10,28 @@ public class Spawner : MonoBehaviour
     [SerializeField] private Item _prefabItem;
     [SerializeField] private ItemPosition[] _positions;
     [SerializeField] private ItemDragger _itemDragger;
-
-    private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.1f);
+    [SerializeField] private Merge _merge;
+    
+    private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.165f);
     private Coroutine _coroutine;
 
     public event Action ItemCreated;
 
+    private void Start()
+    {
+        CreateItem();
+    }
+
     private void OnEnable()
     {
-        _itemDragger.PlaceChanged += CreateItem;
+        // _itemDragger.PlaceChanged += CreateItem;
+        _merge.NotMerging += CreateItem;
     }
 
     private void OnDisable()
     {
-        _itemDragger.PlaceChanged -= CreateItem;
+        // _itemDragger.PlaceChanged -= CreateItem;
+        _merge.NotMerging -= CreateItem;
     }
 
     public void CreateItem()

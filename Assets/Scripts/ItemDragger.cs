@@ -22,29 +22,44 @@ public class ItemDragger : MonoBehaviour
     {
         _layerMask = 1 << _layer;
         _layerMask = ~_layerMask;
-        PlaceChanged!.Invoke();
+        PlaceChanged?.Invoke();
     }
 
     private void Update()
     {
+        
+        
         if (Input.GetMouseButtonDown(0))
         {
+            if (_selectedObject == null)
+                return;
+
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, _layerMask))
+            if (Physics.Raycast(ray, out hit))
             {
-                if (hit.transform.gameObject.TryGetComponent(out ItemPosition itemPosition))
+                if (hit.transform.gameObject.TryGetComponent(out Item item) && !item.IsActive)
                 {
-                    _selectedObject.transform.position = new Vector3(
-                        _selectedObject.transform.position.x,
-                        _selectedObject.transform.position.y + _offset,
-                        _selectedObject.transform.position.z);
                     _objectPlane = new Plane(Vector3.up, _selectedObject.transform.position);
                     _isObjectSelected = true;
                 }
+
+                else if (Physics.Raycast(ray, out hit, Mathf.Infinity, _layerMask))
+                {
+                    if (hit.transform.gameObject.TryGetComponent(out ItemPosition itemPosition))
+                    {
+                        _selectedObject.transform.position = new Vector3(
+                            _selectedObject.transform.position.x,
+                            _selectedObject.transform.position.y + _offset,
+                            _selectedObject.transform.position.z);
+                        _objectPlane = new Plane(Vector3.up, _selectedObject.transform.position);
+                        _isObjectSelected = true;
+                    }
+                }
             }
-            
+
+
             /*RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -76,6 +91,9 @@ public class ItemDragger : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0))
         {
+            if (_selectedObject == null)
+                return;
+            
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -153,9 +171,8 @@ public class ItemDragger : MonoBehaviour
                 if (_currentLookPosition != null)
                 {
                     _currentLookPosition.ClearingItem();
-                    Debug.Log("Look");
                 }
-                
+
                 _currentLookPosition = itemPosition;
                 _currentLookPosition.ActivateVisual();
                 // _currentLookPosition.DeliverObject(_selectedObject.GetComponent<Item>());

@@ -5,18 +5,6 @@ using UnityEngine;
 
 public class PositionMatcher : MonoBehaviour
 {
-    private void OnEnable()
-    {
-        _itemDragger.PlaceLooking += SetPosition;
-        // _itemDragger.PlaceChanged += Testmerge;
-    }
-
-    private void OnDisable()
-    {
-        _itemDragger.PlaceLooking -= SetPosition;
-        // _itemDragger.PlaceChanged += Testmerge;
-    }
-
     [SerializeField] private ItemDragger _itemDragger;
     [SerializeField] private Merge _merge;
 
@@ -35,6 +23,18 @@ public class PositionMatcher : MonoBehaviour
 
     private Coroutine _coroutine;
 
+    private void OnEnable()
+    {
+        _itemDragger.PlaceLooking += SetPosition;
+        // _itemDragger.PlaceChanged += Testmerge;
+    }
+
+    private void OnDisable()
+    {
+        _itemDragger.PlaceLooking -= SetPosition;
+        // _itemDragger.PlaceChanged += Testmerge;
+    }
+
     public void SetPosition(ItemPosition itemPosition)
     {
         StopMoveMatch();
@@ -44,6 +44,18 @@ public class PositionMatcher : MonoBehaviour
             StopCoroutine(_coroutine);
 
         _coroutine = StartCoroutine(Looks());
+    }
+
+    private IEnumerator Looks()
+    {
+        yield return new WaitForSeconds(0.15f);
+
+        _matchedItems.Clear();
+        _checkedPositions.Clear();
+        _position.Clear();
+        TestLookAround(_currentItemPosition);
+        Show();
+        // TestShow();
     }
 
     public void TryMerge(ItemPosition itemPosition)
@@ -60,12 +72,25 @@ public class PositionMatcher : MonoBehaviour
     private IEnumerator TestMergeCall()
     {
         yield return new WaitForSeconds(0.15f);
+
         _matchedItems.Clear();
         _checkedPositions.Clear();
         _position.Clear();
         TestLookAround(_currentItemPosition);
         _merge.TestMatchMerge(_currentItemPosition);
         // Show();
+    }
+
+    private void Show()
+    {
+        if (_position.Count < 3)
+            return;
+
+
+        foreach (var itemMatch in _matchedItems)
+        {
+            itemMatch.GetComponent<ItemMoving>().MoveCyclically(_currentItemPosition.transform.position);
+        }
     }
 
     private void StopMoveMatch()
@@ -78,31 +103,7 @@ public class PositionMatcher : MonoBehaviour
             }
         }
     }
-
-    private IEnumerator Looks()
-    {
-        yield return new WaitForSeconds(0.15f);
-        _matchedItems.Clear();
-        _checkedPositions.Clear();
-        _position.Clear();
-        TestLookAround(_currentItemPosition);
-        Show();
-    }
-
-
-    private void Show()
-    {
-        if (_position.Count < 3)
-            return;
-
-        
-        
-        foreach (var itemMatch in _matchedItems)
-        {
-            itemMatch.GetComponent<ItemMoving>().MoveCyclically(_currentItemPosition.transform.position);
-        }
-    }
-
+    
     private void TestLookAround(ItemPosition currentPosition)
     {
         _currentItem = _currentItemPosition.Item;
@@ -136,4 +137,57 @@ public class PositionMatcher : MonoBehaviour
             }
         }
     }
+
+    /*private void TestLookAround(ItemPosition currentPosition, Item item)
+    {
+        // _currentItem = _currentItemPosition.Item;
+
+        if (_checkedPositions.Contains(currentPosition))
+        {
+            return;
+        }
+
+        _checkedPositions.Add(currentPosition);
+        _position.Add(currentPosition);
+
+        if (currentPosition.Item == null)
+        {
+            return;
+        }
+
+        if (currentPosition.Item != null)
+        {
+            _matchedItems.Add(currentPosition.Item);
+        }
+
+        foreach (var arroundPosition in currentPosition.ItemPositions)
+        {
+            if (arroundPosition == null)
+                continue;
+
+            if (arroundPosition.Item != null && item.ItemName.Equals(arroundPosition.Item.ItemName))
+            {
+                TestLookAround(arroundPosition, item);
+            }
+        }
+
+        // TestShow();
+    }*/
+
+    /*private void TestShow()
+    {
+        if (_position.Count < 3)
+            return;
+
+        if (_matchedItems.Count >= 3)
+        {
+            Debug.Log("3 в ряд!!!");
+            TestLookAround(_currentItemPosition,_currentItemPosition.Item.NextItem);
+        }
+
+        foreach (var itemMatch in _matchedItems)
+        {
+            itemMatch.GetComponent<ItemMoving>().MoveCyclically(_currentItemPosition.transform.position);
+        }
+    }*/
 }

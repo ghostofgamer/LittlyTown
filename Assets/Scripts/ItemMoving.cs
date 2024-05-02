@@ -13,6 +13,7 @@ public class ItemMoving : MonoBehaviour
 
     public void MoveCyclically(Vector3 target)
     {
+        Debug.Log("Return");
         if (!_item.IsActive)
             return;
 
@@ -28,7 +29,6 @@ public class ItemMoving : MonoBehaviour
     {
         if (_coroutineCyclically != null)
         {
-            Debug.Log("Stop");
             transform.position = _startPosition;
             StopCoroutine(_coroutineCyclically);
         }
@@ -64,7 +64,7 @@ public class ItemMoving : MonoBehaviour
         if (_coroutineCyclically != null)
             StopCoroutine(_coroutineCyclically);
 
-        _coroutineCyclically = StartCoroutine(MoveTarget(target));
+        StartCoroutine(MoveTarget(target));
     }
 
     public IEnumerator MoveTarget(Vector3 targetItemPosition)
@@ -73,6 +73,7 @@ public class ItemMoving : MonoBehaviour
 
         while (time < 0.3f)
         {
+            Debug.Log("Move " + targetItemPosition);
             float t = time / 0.3f;
             transform.position = Vector3.Lerp(_startPosition, targetItemPosition, t);
             time += Time.deltaTime;
@@ -80,6 +81,6 @@ public class ItemMoving : MonoBehaviour
         }
 
         transform.position = targetItemPosition;
-        // gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 }

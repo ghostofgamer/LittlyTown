@@ -23,4 +23,10 @@ public class Item : MonoBehaviour
         Activated?.Invoke();
         // Debug.Log("Activation");
     }
+    public void Deactivation()
+    {
+        _isActive = false;
+      
+        // Debug.Log("Activation");
+    }
 }
