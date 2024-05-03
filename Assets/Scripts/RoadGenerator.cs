@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using ItemContent;
+using ItemPositionContent;
 using UnityEngine;
 
 public class RoadGenerator : MonoBehaviour
 {
     [SerializeField] private Spawner _spawner;
     [SerializeField] private ItemPosition[] _itemPositions;
+    [SerializeField] private Merger _merger;
 
     [Header("Tiles")] [SerializeField] private ItemPosition _angularTileUpRight;
     [SerializeField] private ItemPosition _angularTileUpLeft;
@@ -23,7 +26,6 @@ public class RoadGenerator : MonoBehaviour
     [SerializeField] private ItemPosition _crossroadsTileLeft;
     [SerializeField] private ItemPosition _crossroadsTileRight;
     [SerializeField] private ItemPosition _crossroadsTileDown;
-    [SerializeField] private Merge _merge;
 
     private Dictionary<string, ItemPosition> _tileConfigurations;
     private Coroutine _coroutine;
@@ -31,14 +33,14 @@ public class RoadGenerator : MonoBehaviour
 
     private void OnEnable()
     {
-        _spawner.ItemCreated += Generation;
-        _merge.Merging += Generation;
+        _spawner.ItemCreated += OnGeneration;
+        _merger.Merged += OnGeneration;
     }
 
     private void OnDisable()
     {
-        _spawner.ItemCreated -= Generation;
-        _merge.Merging -= Generation;
+        _spawner.ItemCreated -= OnGeneration;
+        _merger.Merged -= OnGeneration;
     }
 
     private void Start()
@@ -62,49 +64,14 @@ public class RoadGenerator : MonoBehaviour
             {"1011", _crossroadsTileRight},
             {"0111", _crossroadsTileDown},
         };
-
-        // Generation();
     }
 
-    public void Generation()
+    public void OnGeneration()
     {
-        // Debug.Log("Generation");
         if (_coroutine != null)
             StopCoroutine(_coroutine);
 
         _coroutine = StartCoroutine(CreateRoad());
-    }
-
-    private string CheckSurroundingTiles(ItemPosition itemPosition)
-    {
-        string surroundingTiles = "0000";
-
-        if (itemPosition.NorthPosition != null && !itemPosition.NorthPosition.IsBusy)
-        {
-            surroundingTiles = "1" + surroundingTiles.Substring(1);
-            // Debug.Log("Coordinats " + surroundingTiles);
-        }
-
-        if (itemPosition.WestPosition != null && !itemPosition.WestPosition.IsBusy)
-        {
-            surroundingTiles = surroundingTiles.Substring(0, 1) + "1" + surroundingTiles.Substring(2);
-            // Debug.Log("Coordinats " + surroundingTiles);
-        }
-
-        if (itemPosition.EastPosition != null && !itemPosition.EastPosition.IsBusy)
-        {
-            surroundingTiles = surroundingTiles.Substring(0, 2) + "1" + surroundingTiles.Substring(3);
-            // Debug.Log("Coordinats " + surroundingTiles);
-        }
-
-        if (itemPosition.SouthPosition != null && !itemPosition.SouthPosition.IsBusy)
-        {
-            surroundingTiles = surroundingTiles.Substring(0, surroundingTiles.Length - 1) + "1";
-            // Debug.Log("Coordinats " + surroundingTiles);
-        }
-
-        // Debug.Log("Coordinats " + surroundingTiles);
-        return surroundingTiles;
     }
 
     private IEnumerator CreateRoad()
@@ -130,5 +97,32 @@ public class RoadGenerator : MonoBehaviour
                 itemPosition.SetRoad(selectedTile);
             }
         }
+    }
+
+    private string CheckSurroundingTiles(ItemPosition itemPosition)
+    {
+        string surroundingTiles = "0000";
+
+        if (itemPosition.NorthPosition != null && !itemPosition.NorthPosition.IsBusy)
+        {
+            surroundingTiles = "1" + surroundingTiles.Substring(1);
+        }
+
+        if (itemPosition.WestPosition != null && !itemPosition.WestPosition.IsBusy)
+        {
+            surroundingTiles = surroundingTiles.Substring(0, 1) + "1" + surroundingTiles.Substring(2);
+        }
+
+        if (itemPosition.EastPosition != null && !itemPosition.EastPosition.IsBusy)
+        {
+            surroundingTiles = surroundingTiles.Substring(0, 2) + "1" + surroundingTiles.Substring(3);
+        }
+
+        if (itemPosition.SouthPosition != null && !itemPosition.SouthPosition.IsBusy)
+        {
+            surroundingTiles = surroundingTiles.Substring(0, surroundingTiles.Length - 1) + "1";
+        }
+
+        return surroundingTiles;
     }
 }

@@ -3952,7 +3952,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 118112035}
         m_TargetAssemblyTypeName: RoadGenerator, Assembly-CSharp
-        m_MethodName: Generation
+        m_MethodName: OnGeneration
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

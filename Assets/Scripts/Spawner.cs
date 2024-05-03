@@ -2,6 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Dragger;
+using ItemContent;
+using ItemPositionContent;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -10,8 +13,8 @@ public class Spawner : MonoBehaviour
     [SerializeField] private Item _prefabItem;
     [SerializeField] private ItemPosition[] _positions;
     [SerializeField] private ItemDragger _itemDragger;
-    [SerializeField] private Merge _merge;
-    
+    [SerializeField] private PositionMatcher _positionMatcher;
+
     private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.165f);
     private Coroutine _coroutine;
 
@@ -19,22 +22,20 @@ public class Spawner : MonoBehaviour
 
     private void Start()
     {
-        CreateItem();
+        OnCreateItem();
     }
 
     private void OnEnable()
     {
-        // _itemDragger.PlaceChanged += CreateItem;
-        _merge.NotMerging += CreateItem;
+        _positionMatcher.NotMerged += OnCreateItem;
     }
 
     private void OnDisable()
     {
-        // _itemDragger.PlaceChanged -= CreateItem;
-        _merge.NotMerging -= CreateItem;
+        _positionMatcher.NotMerged -= OnCreateItem;
     }
 
-    public void CreateItem()
+    private void OnCreateItem()
     {
         if (_coroutine != null)
             StopCoroutine(_coroutine);
@@ -61,14 +62,12 @@ public class Spawner : MonoBehaviour
     {
         yield return _waitForSeconds;
         ItemPosition position = GetPosition();
-        position.ActivateVisual();
 
         if (position == null)
             yield break;
 
         Item item = Instantiate(_prefabItem, position.transform.position, Quaternion.identity);
-        item.Init(position);
-        _itemDragger.SetItem(item);
+        _itemDragger.SetItem(item, position);
         ItemCreated?.Invoke();
     }
 }
