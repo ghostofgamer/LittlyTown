@@ -52,28 +52,30 @@ public class Merge : MonoBehaviour
         _currentItem = currentPosition.Item;
         // _matchedList = _positionMatcher.MatchedItems;
         
-        foreach (var itemPosition in _matchPos)
+        /*foreach (var itemPosition in _matchPos)
         {
             itemPosition.Item.gameObject.SetActive(false);
+            itemPosition.Item.Deactivation();
             // itemPosition.Item.GetComponent<ItemMoving>().Move(currentPosition.transform.position);
             // itemPosition.Item.GetOutPosition();
             itemPosition.ClearingItem();
-        }
+        }*/
 
-        /*foreach (var itemPosition in _matchPos)
+        foreach (var itemPosition in _matchPos)
         {
+            itemPosition.Item.Deactivation();
             itemPosition.Item.GetComponent<ItemMoving>().Move(currentPosition.transform.position);
         }
         
-        StartCoroutine(CorutinaMoveMerge(currentPosition));*/
+        StartCoroutine(CorutinaMoveMerge(currentPosition));
         
-        // Debug.Log("Создаем");
-        Item item = Instantiate(_currentItem.NextItem, currentPosition.transform.position, Quaternion.identity);
+       
+        /*Item item = Instantiate(_currentItem.NextItem, currentPosition.transform.position, Quaternion.identity);
         item.Activation();
 
         _positionMatcher.TryMerge(currentPosition);
         // SetPosition(_currentItemPosition);
-        Merging?.Invoke();
+        Merging?.Invoke();*/
     }
 
     private void StopMoveMatch()

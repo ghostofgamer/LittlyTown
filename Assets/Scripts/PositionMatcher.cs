@@ -86,13 +86,6 @@ public class PositionMatcher : MonoBehaviour
     
     private void Show()
     {
-        Debug.Log(" SHOW Сколько " + _position.Count);
-
-        // foreach (var position in _position)
-        // {
-        //     Debug.Log("имя позиций " + position.name);
-        // }
-
         if (_position.Count < 2)
             return;
 
@@ -104,20 +97,17 @@ public class PositionMatcher : MonoBehaviour
 
     private void Checker()
     {
-        Debug.Log("CheckerCount " + _matchedItems.Count);
-        Debug.Log("ELSE " + _completeList.Count);
-
         if (_matchedItems.Count >= 2)
         {
             Item item = _matchedItems[0].NextItem;
+            
             foreach (var matchItem in _matchedItems)
             {
                 _completeList.Add(matchItem);
             }
+            
             _matchedItems.Clear();
-            Debug.Log("Start " + _completeList.Count);
-            // Debug.Log("NextItem" + _matchedItems[0].NextItem);
-            // TestLookAroundCycleMover(_currentItemPosition, _matchedItems[0].NextItem);
+
             if (_coroutine != null)
                 StopCoroutine(_coroutine);
             _coroutine = StartCoroutine(Looks(_currentItemPosition, item));
@@ -125,16 +115,8 @@ public class PositionMatcher : MonoBehaviour
 
         else
         {
-            Debug.Log(" SHOW Сколько " + _completeList.Count);
-
-            /*
-            if (_position.Count < 2)
-                return;
-                */
             if (_completeList.Count < 2)
                 return;
-
-            Debug.Log(" SHOW После уже ");
 
             foreach (var itemMatch in _completeList)
             {
@@ -155,32 +137,25 @@ public class PositionMatcher : MonoBehaviour
 
     private void TestLookAroundCycleMover(ItemPosition currentPosition, Item item)
     {
-        Debug.Log(" New Cycle " + item.name);
-
         if (_checkedPositions.Contains(currentPosition))
         {
             return;
         }
-
-        Debug.Log(" New Cycle 1" + item.name);
+        
         if (!currentPosition.IsSelected)
         {
             _checkedPositions.Add(currentPosition);
             _matchedItems.Add(currentPosition.Item);
             _position.Add(currentPosition);
         }
-
-        Debug.Log(" New Cycle 3" + item.name);
+        
         foreach (var arroundPosition in currentPosition.ItemPositions)
         {
             if (arroundPosition == null)
                 continue;
 
-            Debug.Log(" New Cycle 4" + item.name);
-
             if (arroundPosition.Item != null && arroundPosition.Item.ItemName.Equals(item.ItemName))
             {
-                Debug.Log(" New Cycle 5" + item.name);
                 // _matchedItems.Add(arroundPosition.Item);
                 // _matchItemCount++;
                 // _position.Add(arroundPosition);

@@ -13,7 +13,6 @@ public class ItemMoving : MonoBehaviour
 
     public void MoveCyclically(Vector3 target)
     {
-        // Debug.Log("Return");
         if (!_item.IsActive)
             return;
 

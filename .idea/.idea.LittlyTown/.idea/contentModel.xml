@@ -937,9 +937,7 @@
           </e>
           <e p="RoadGenerator.cs" t="Include" />
           <e p="Spawner.cs" t="Include" />
-          <e p="Test" t="Include">
-            <e p="Dragger.cs" t="Include" />
-          </e>
+          <e p="Test" t="Include" />
         </e>
         <e p="Sounds" t="Include" />
         <e p="Sprites" t="Include" />
