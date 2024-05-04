@@ -38,6 +38,9 @@ public class FinderPositions : MonoBehaviour
         {
             if (hitCollider.TryGetComponent(out ItemPosition itemPosition))
             {
+                if (_itemPosition.IsElevation != itemPosition.IsElevation|| itemPosition.IsWater)
+                    continue;
+
                 _targetPosition = itemPosition.transform.position;
 
                 if (_targetPosition.z > transform.position.z &&

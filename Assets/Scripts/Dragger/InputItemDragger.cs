@@ -24,7 +24,7 @@ namespace Dragger
                 _itemDragger.ThrowItem();
             }
 
-            if (_itemDragger.IsObjectSelected)
+            if (_itemDragger.IsObjectSelected || _itemDragger.IsPositionSelected)
             {
                 _itemDragger.DragItem();
             }

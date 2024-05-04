@@ -62,7 +62,8 @@ public class PositionMatcher : MonoBehaviour
     private void CheckNextLevel()
     {
         Debug.Log("Complete " + _completeList.Count);
-        
+        Debug.Log("_matchedItems " + _matchedItems.Count);
+
         if (_matchedItems.Count >= 2)
         {
             Item item = _matchedItems[0].NextItem;
@@ -90,6 +91,8 @@ public class PositionMatcher : MonoBehaviour
 
     private void ActivationLookPositions(ItemPosition currentPosition, Item item)
     {
+        Debug.Log("Проверяем позицию " + currentPosition.name);
+
         if (_checkedPositions.Contains(currentPosition))
         {
             Debug.Log("Return");
@@ -98,7 +101,7 @@ public class PositionMatcher : MonoBehaviour
 
         if (!currentPosition.IsSelected)
         {
-            
+            Debug.Log("Добавляем в список " + currentPosition.name);
             _checkedPositions.Add(currentPosition);
             _matchedItems.Add(currentPosition.Item);
             _positions.Add(currentPosition);
@@ -107,13 +110,21 @@ public class PositionMatcher : MonoBehaviour
         foreach (var arroundPosition in currentPosition.ItemPositions)
         {
             if (arroundPosition == null)
+            {
+                Debug.Log("ТУТ Null !!!");
                 continue;
+            }
+
+
+            // Debug.Log("Позиции вокруг  " + arroundPosition.name);
+            if (arroundPosition.Item == null)
+                Debug.Log("NullITEmPOPOzition " + arroundPosition.name);
 
             if (arroundPosition.Item != null && arroundPosition.Item.ItemName.Equals(item.ItemName))
             {
                 Debug.Log("Что - то есть " + arroundPosition.name);
                 // SearchMatches(arroundPosition);
-                ActivationLookPositions(arroundPosition,arroundPosition.Item);
+                ActivationLookPositions(arroundPosition, item);
             }
         }
     }

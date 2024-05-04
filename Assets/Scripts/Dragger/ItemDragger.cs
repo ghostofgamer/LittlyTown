@@ -16,10 +16,12 @@ namespace Dragger
         private int _layerMask;
         private int _layer = 3;
         private float _distance;
-        
+
         public event Action PlaceChanged;
 
         public bool IsObjectSelected { get; private set; } = false;
+
+        public bool IsPositionSelected { get; private set; } = false;
 
         public Item SelectedObject => _selectedObject;
 
@@ -43,13 +45,36 @@ namespace Dragger
         public void DragItem()
         {
             _itemPositionLooker.LookPosition();
-            Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            if (_objectPlane.Raycast(mouseRay, out _distance))
+            if (IsObjectSelected)
             {
-                Vector3 mouseWorldPosition = mouseRay.GetPoint(_distance);
-                mouseWorldPosition.y = _selectedObject.transform.position.y;
-                _selectedObject.transform.position = mouseWorldPosition;
+                Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+                if (_objectPlane.Raycast(mouseRay, out _distance))
+                {
+                    Vector3 mouseWorldPosition = mouseRay.GetPoint(_distance);
+                    mouseWorldPosition.y = _selectedObject.transform.position.y;
+                    _selectedObject.transform.position = mouseWorldPosition;
+                }
+            }
+
+            if (IsPositionSelected)
+            {
+                RaycastHit hit;
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+                if (Physics.Raycast(ray, out hit, Mathf.Infinity, _layerMask))
+                {
+                    if (hit.transform.gameObject.TryGetComponent(out ItemPosition itemPosition))
+                    {
+                        if (itemPosition.IsBusy)
+                            return;
+
+                        itemPosition.GetComponent<VisualItemPosition>().ActivateVisual();
+                        _startPosition = itemPosition;
+                        _selectedObject.transform.position = itemPosition.transform.position;
+                    }
+                }
             }
         }
 
@@ -65,19 +90,21 @@ namespace Dragger
             {
                 if (hit.transform.gameObject.TryGetComponent(out Item item) && !item.IsActive)
                 {
-                    _objectPlane = new Plane(Vector3.up, _selectedObject.transform.position);
+                    Vector3 position = _selectedObject.transform.position;
+                    position = new Vector3(position.x, position.y + _offset, position.z);
+                    _selectedObject.transform.position = position;
+                    _objectPlane = new Plane(Vector3.up, position);
                     IsObjectSelected = true;
+                    // IsPositionSelected = true;
                 }
 
                 else if (Physics.Raycast(ray, out hit, Mathf.Infinity, _layerMask))
                 {
                     if (hit.transform.gameObject.TryGetComponent(out ItemPosition itemPosition))
                     {
-                        Vector3 position = _selectedObject.transform.position;
-                        position = new Vector3(position.x, position.y + _offset, position.z);
-                        _selectedObject.transform.position = position;
-                        _objectPlane = new Plane(Vector3.up, position);
-                        IsObjectSelected = true;
+                        _objectPlane = new Plane(Vector3.up, _selectedObject.transform.position);
+                        // IsObjectSelected = true;
+                        IsPositionSelected = true;
                     }
                 }
             }
@@ -95,7 +122,7 @@ namespace Dragger
             {
                 if (hit.transform.gameObject.TryGetComponent(out ItemPosition itemPosition))
                 {
-                    if (!itemPosition.IsBusy)
+                    if (!itemPosition.IsBusy && !itemPosition.IsWater)
                     {
                         _selectedObject.transform.position = hit.transform.position;
                         _selectedObject.Activation();
@@ -103,6 +130,7 @@ namespace Dragger
                         itemPosition.DeliverObject(_selectedObject);
                         _selectedObject = null;
                         IsObjectSelected = false;
+                        IsPositionSelected = false;
                     }
                     else
                     {
@@ -121,6 +149,7 @@ namespace Dragger
         {
             _selectedObject.transform.position = _startPosition.transform.position;
             IsObjectSelected = false;
+            IsPositionSelected = false;
             _startPosition.GetComponent<VisualItemPosition>().ActivateVisual();
         }
     }

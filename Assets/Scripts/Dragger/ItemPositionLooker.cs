@@ -9,14 +9,14 @@ namespace Dragger
     {
         private ItemPosition _currentLookPosition = null;
         private ItemDragger _itemDragger;
-        
+
         public event Action<ItemPosition, Item> PlaceLooking;
-        
+
         private void Start()
         {
             _itemDragger = GetComponent<ItemDragger>();
         }
-        
+
         public void LookPosition()
         {
             RaycastHit hit;
@@ -35,7 +35,10 @@ namespace Dragger
                     }
 
                     _currentLookPosition = itemPosition;
-                    _currentLookPosition.GetComponent<VisualItemPosition>().ActivateVisual();
+
+                    if (_itemDragger.IsObjectSelected)
+                        _currentLookPosition.GetComponent<VisualItemPosition>().ActivateVisual();
+
                     _currentLookPosition.SetSelected();
                     PlaceLooking?.Invoke(_currentLookPosition, _itemDragger.SelectedObject);
                 }

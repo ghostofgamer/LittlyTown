@@ -80,6 +80,12 @@ public class RoadGenerator : MonoBehaviour
 
         foreach (ItemPosition itemPosition in _itemPositions)
         {
+            if (itemPosition.IsWater||itemPosition.IsElevation)
+            {
+                continue;
+            }
+              
+            
             if (!itemPosition.IsBusy)
             {
                 string surroundingTiles = CheckSurroundingTiles(itemPosition);

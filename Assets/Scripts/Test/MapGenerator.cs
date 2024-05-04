@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using ItemContent;
 using ItemPositionContent;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class MapGenerator : MonoBehaviour
@@ -16,6 +15,8 @@ public class MapGenerator : MonoBehaviour
     [SerializeField] private Spawner _spawner;
 
     private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.5f);
+    private WaitForSeconds _waitForSecondsTri = new WaitForSeconds(0.3f);
+    private WaitForSeconds _waitForSecondsMoment = new WaitForSeconds(0.1f);
     private List<ItemPosition> _clearPositions;
     private int _randomIndex;
 
@@ -37,10 +38,11 @@ public class MapGenerator : MonoBehaviour
         {
             territory.gameObject.SetActive(true);
             territory.PositionActivation();
-            yield return _waitForSeconds;
+            yield return _waitForSecondsTri;
         }
 
-        yield return _waitForSeconds;
+        yield return null;
+        /*yield return _waitForSeconds;*/
 
         /*foreach (var item in _items)
         {
@@ -51,17 +53,30 @@ public class MapGenerator : MonoBehaviour
             item.transform.position = _clearPositions[_randomIndex].transform.position;
             item.Activation();
             // _clearPositions[_randomIndex].DeliverObject(item);
-            yield return _waitForSeconds;
-        }
-
-        yield return _waitForSeconds;*/
+            yield return _waitForSecondsMoment;
+        }*/
 
         foreach (var finderPosition in _finderPositions)
             finderPosition.FindNeighbor();
 
-        yield return _waitForSeconds;
+        yield return _waitForSecondsMoment;
         _roadGenerator.OnGeneration();
-        yield return _waitForSeconds;
+        yield return _waitForSecondsMoment;
         _spawner.OnCreateItem();
+        
+        yield return _waitForSecondsMoment;
+        
+        foreach (var positions in _itemPositions)
+        {
+            Debug.Log("positions ТФЬу "+ positions.name);
+            
+            if(positions.ItemPositions[0]!=null)
+            Debug.Log("Коллиество  соседей "+ positions.ItemPositions[0].name);
+            
+            /*foreach (var item in positions.ItemPositions)
+            {
+                Debug.Log("НАШИ ТФЬу "+ item.name);
+            }*/
+        }
     }
 }

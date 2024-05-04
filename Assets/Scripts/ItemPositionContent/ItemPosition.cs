@@ -12,7 +12,10 @@ namespace ItemPositionContent
         [SerializeField] private PositionMatcher _positionMatcher;
         [SerializeField] private bool _isSelected = false;
         [SerializeField] private bool _isBusy = false;
-        [SerializeField]private ItemPosition _road;
+        [SerializeField] private ItemPosition _road;
+        [SerializeField] private bool _isWater;
+        [SerializeField] private bool _isElevation;
+        // [SerializeField] private Transform _centerPosition;
 
         private Item _item;
         private ItemPosition[] _itemPositions;
@@ -24,6 +27,10 @@ namespace ItemPositionContent
         public bool IsBusy => _isBusy;
 
         public bool IsSelected => _isSelected;
+
+        public bool IsWater => _isWater;
+
+        public bool IsElevation => _isElevation;
 
         public ItemPosition SouthPosition => _southPosition;
 
@@ -76,13 +83,13 @@ namespace ItemPositionContent
             _isSelected = false;
         }
 
-        public void SetNeighbors(ItemPosition north,ItemPosition west , ItemPosition east, ItemPosition south)
+        public void SetNeighbors(ItemPosition north, ItemPosition west, ItemPosition east, ItemPosition south)
         {
-            _itemPositions = new ItemPosition[4] {_northPosition, _westPosition, _eastPosition, _southPosition};
             _northPosition = north;
             _westPosition = west;
             _eastPosition = east;
             _southPosition = south;
+            _itemPositions = new ItemPosition[4] {_northPosition, _westPosition, _eastPosition, _southPosition};
         }
     }
 }
