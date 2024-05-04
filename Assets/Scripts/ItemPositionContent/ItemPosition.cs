@@ -12,8 +12,8 @@ namespace ItemPositionContent
         [SerializeField] private PositionMatcher _positionMatcher;
         [SerializeField] private bool _isSelected = false;
         [SerializeField] private bool _isBusy = false;
+        [SerializeField]private ItemPosition _road;
 
-        private ItemPosition _road;
         private Item _item;
         private ItemPosition[] _itemPositions;
 
@@ -74,6 +74,14 @@ namespace ItemPositionContent
             _item = null;
             _isBusy = false;
             _isSelected = false;
+        }
+
+        public void SetNeighbors(ItemPosition north,ItemPosition west , ItemPosition east, ItemPosition south)
+        {
+            _northPosition = north;
+            _westPosition = west;
+            _eastPosition = east;
+            _southPosition = south;
         }
     }
 }

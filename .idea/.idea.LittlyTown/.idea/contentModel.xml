@@ -933,6 +933,7 @@
             <e p="ItemMoving.cs" t="Include" />
           </e>
           <e p="ItemPositionContent" t="Include">
+            <e p="FinderPositions.cs" t="Include" />
             <e p="ItemPosition.cs" t="Include" />
             <e p="VisualItemPosition.cs" t="Include" />
             <e p="VisualItemsDeactivator.cs" t="Include" />
@@ -947,7 +948,11 @@
           </e>
           <e p="RoadGenerator.cs" t="Include" />
           <e p="Spawner.cs" t="Include" />
-          <e p="Test" t="Include" />
+          <e p="Test" t="Include">
+            <e p="MapGenerator.cs" t="Include" />
+            <e p="PositionScaller.cs" t="Include" />
+            <e p="Territory.cs" t="Include" />
+          </e>
         </e>
         <e p="Sounds" t="Include" />
         <e p="Sprites" t="Include" />
