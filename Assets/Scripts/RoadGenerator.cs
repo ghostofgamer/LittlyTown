@@ -33,13 +33,13 @@ public class RoadGenerator : MonoBehaviour
 
     private void OnEnable()
     {
-        // _spawner.ItemCreated += OnGeneration;
+        _spawner.ItemCreated += OnGeneration;
         // _merger.Merged += OnGeneration;
     }
 
     private void OnDisable()
     {
-        // _spawner.ItemCreated -= OnGeneration;
+        _spawner.ItemCreated -= OnGeneration;
         // _merger.Merged -= OnGeneration;
     }
 

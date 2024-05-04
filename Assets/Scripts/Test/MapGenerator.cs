@@ -13,6 +13,7 @@ public class MapGenerator : MonoBehaviour
     [SerializeField] private Item[] _items;
     [SerializeField] private RoadGenerator _roadGenerator;
     [SerializeField] private FinderPositions[] _finderPositions;
+    [SerializeField] private Spawner _spawner;
 
     private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.5f);
     private List<ItemPosition> _clearPositions;
@@ -41,7 +42,7 @@ public class MapGenerator : MonoBehaviour
 
         yield return _waitForSeconds;
 
-        foreach (var item in _items)
+        /*foreach (var item in _items)
         {
             _clearPositions = new List<ItemPosition>();
             _clearPositions = _itemPositions.Where(p => !p.GetComponent<ItemPosition>().IsBusy).ToList();
@@ -49,16 +50,18 @@ public class MapGenerator : MonoBehaviour
             item.gameObject.SetActive(true);
             item.transform.position = _clearPositions[_randomIndex].transform.position;
             item.Activation();
-            _clearPositions[_randomIndex].DeliverObject(item);
+            // _clearPositions[_randomIndex].DeliverObject(item);
             yield return _waitForSeconds;
         }
 
-        yield return _waitForSeconds;
+        yield return _waitForSeconds;*/
 
         foreach (var finderPosition in _finderPositions)
             finderPosition.FindNeighbor();
 
         yield return _waitForSeconds;
         _roadGenerator.OnGeneration();
+        yield return _waitForSeconds;
+        _spawner.OnCreateItem();
     }
 }

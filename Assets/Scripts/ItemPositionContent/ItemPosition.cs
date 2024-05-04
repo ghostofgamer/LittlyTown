@@ -35,7 +35,7 @@ namespace ItemPositionContent
 
         private void Start()
         {
-            _itemPositions = new ItemPosition[4] {_northPosition, _westPosition, _eastPosition, _southPosition};
+            // _itemPositions = new ItemPosition[4] {_northPosition, _westPosition, _eastPosition, _southPosition};
         }
 
         private void OnTriggerStay(Collider other)
@@ -78,6 +78,7 @@ namespace ItemPositionContent
 
         public void SetNeighbors(ItemPosition north,ItemPosition west , ItemPosition east, ItemPosition south)
         {
+            _itemPositions = new ItemPosition[4] {_northPosition, _westPosition, _eastPosition, _southPosition};
             _northPosition = north;
             _westPosition = west;
             _eastPosition = east;

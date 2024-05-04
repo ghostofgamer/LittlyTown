@@ -1,10 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Dragger;
 using ItemContent;
 using ItemPositionContent;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 public class PositionMatcher : MonoBehaviour
 {
@@ -59,6 +61,8 @@ public class PositionMatcher : MonoBehaviour
 
     private void CheckNextLevel()
     {
+        Debug.Log("Complete " + _completeList.Count);
+        
         if (_matchedItems.Count >= 2)
         {
             Item item = _matchedItems[0].NextItem;
@@ -88,11 +92,13 @@ public class PositionMatcher : MonoBehaviour
     {
         if (_checkedPositions.Contains(currentPosition))
         {
+            Debug.Log("Return");
             return;
         }
 
         if (!currentPosition.IsSelected)
         {
+            
             _checkedPositions.Add(currentPosition);
             _matchedItems.Add(currentPosition.Item);
             _positions.Add(currentPosition);
@@ -104,7 +110,11 @@ public class PositionMatcher : MonoBehaviour
                 continue;
 
             if (arroundPosition.Item != null && arroundPosition.Item.ItemName.Equals(item.ItemName))
-                SearchMatches(arroundPosition);
+            {
+                Debug.Log("Что - то есть " + arroundPosition.name);
+                // SearchMatches(arroundPosition);
+                ActivationLookPositions(arroundPosition,arroundPosition.Item);
+            }
         }
     }
 
@@ -130,7 +140,7 @@ public class PositionMatcher : MonoBehaviour
         yield return new WaitForSeconds(0.15f);
         ClearLists();
         SearchMatches(_currentItemPosition);
-
+        // Debug.Log("LookAround " + _positions.Count);
         if (_positions.Count < 3)
             NotMerged?.Invoke();
 

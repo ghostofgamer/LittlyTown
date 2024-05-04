@@ -16,7 +16,7 @@ public class FinderPositions : MonoBehaviour
 
     private void Start()
     {
-        FindNeighbor();
+        // FindNeighbor();
     }
 
     private void OnDrawGizmosSelected()
@@ -44,32 +44,24 @@ public class FinderPositions : MonoBehaviour
                     Math.Abs(_targetPosition.x - transform.position.x) < 0.1f)
                 {
                     northPosition = itemPosition;
-                    Debug.Log(gameObject.name);
-                    Debug.Log(" Сверху itemPosition " + itemPosition.name);
                 }
 
                 if (_targetPosition.x < transform.position.x &&
                     Math.Abs(_targetPosition.z - transform.position.z) < 0.1f)
                 {
                     westPosition = itemPosition;
-                    Debug.Log(gameObject.name);
-                    Debug.Log(" Слева itemPosition " + itemPosition.name);
                 }
 
                 if (_targetPosition.x > transform.position.x &&
                     Math.Abs(_targetPosition.z - transform.position.z) < 0.1f)
                 {
                     eastPosition = itemPosition;
-                    Debug.Log(gameObject.name);
-                    Debug.Log(" Справа itemPosition " + itemPosition.name);
                 }
 
                 if (_targetPosition.z < transform.position.z &&
                     Math.Abs(_targetPosition.x - transform.position.x) < 0.1f)
                 {
                     southPosition = itemPosition;
-                    Debug.Log(gameObject.name);
-                    Debug.Log(" Снизу itemPosition " + itemPosition.name);
                 }
             }
 

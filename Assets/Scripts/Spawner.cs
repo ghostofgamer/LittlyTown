@@ -22,7 +22,7 @@ public class Spawner : MonoBehaviour
 
     private void Start()
     {
-        OnCreateItem();
+        // OnCreateItem();
     }
 
     private void OnEnable()
@@ -35,7 +35,7 @@ public class Spawner : MonoBehaviour
         _positionMatcher.NotMerged -= OnCreateItem;
     }
 
-    private void OnCreateItem()
+    public void OnCreateItem()
     {
         if (_coroutine != null)
             StopCoroutine(_coroutine);
