@@ -33,15 +33,17 @@ public class FinderPositions : MonoBehaviour
         ItemPosition westPosition = null;
         ItemPosition eastPosition = null;
         ItemPosition southPosition = null;
-
+        
         foreach (var hitCollider in hitColliders)
         {
             if (hitCollider.TryGetComponent(out ItemPosition itemPosition))
             {
-                if (_itemPosition.IsElevation != itemPosition.IsElevation|| itemPosition.IsWater)
+                if (_itemPosition.IsElevation != itemPosition.IsElevation || itemPosition.IsWater)
                     continue;
 
+                // Vector3 localTargetPosition = transform.InverseTransformPoint(itemPosition.transform.position);
                 _targetPosition = itemPosition.transform.position;
+                Debug.Log("Название " + itemPosition.name + " " + _targetPosition);
 
                 if (_targetPosition.z > transform.position.z &&
                     Math.Abs(_targetPosition.x - transform.position.x) < 0.1f)

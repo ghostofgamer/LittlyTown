@@ -15,8 +15,8 @@ namespace ItemPositionContent
         [SerializeField] private ItemPosition _road;
         [SerializeField] private bool _isWater;
         [SerializeField] private bool _isElevation;
-        // [SerializeField] private Transform _centerPosition;
-
+        [SerializeField] private Transform _container;
+        
         private Item _item;
         private ItemPosition[] _itemPositions;
 
@@ -77,7 +77,7 @@ namespace ItemPositionContent
         {
             if (_item == null)
                 return;
-
+            
             _item = null;
             _isBusy = false;
             _isSelected = false;

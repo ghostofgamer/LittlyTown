@@ -22,6 +22,7 @@ public class MapGenerator : MonoBehaviour
 
     private void Start()
     {
+        Generation();
     }
 
     public void Generation()
@@ -63,20 +64,5 @@ public class MapGenerator : MonoBehaviour
         _roadGenerator.OnGeneration();
         yield return _waitForSecondsMoment;
         _spawner.OnCreateItem();
-        
-        yield return _waitForSecondsMoment;
-        
-        foreach (var positions in _itemPositions)
-        {
-            Debug.Log("positions ТФЬу "+ positions.name);
-            
-            if(positions.ItemPositions[0]!=null)
-            Debug.Log("Коллиество  соседей "+ positions.ItemPositions[0].name);
-            
-            /*foreach (var item in positions.ItemPositions)
-            {
-                Debug.Log("НАШИ ТФЬу "+ item.name);
-            }*/
-        }
     }
 }

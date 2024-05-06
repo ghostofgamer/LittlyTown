@@ -9,7 +9,7 @@ namespace ItemPositionContent
     
         public void ActivateVisual()
         {
-            _visualItemsDeactivator.DeactivationVisual();
+            _visualItemsDeactivator.OnDeactivationVisual();
             _visualPosition.SetActive(true);
         }
         

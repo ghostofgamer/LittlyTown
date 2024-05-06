@@ -9,7 +9,8 @@ public class RoadGenerator : MonoBehaviour
     [SerializeField] private Spawner _spawner;
     [SerializeField] private ItemPosition[] _itemPositions;
     [SerializeField] private Merger _merger;
-
+    [SerializeField] private Transform _container;
+    
     [Header("Tiles")] [SerializeField] private ItemPosition _angularTileUpRight;
     [SerializeField] private ItemPosition _angularTileUpLeft;
     [SerializeField] private ItemPosition _angularTileDownLeft;
@@ -84,13 +85,12 @@ public class RoadGenerator : MonoBehaviour
             {
                 continue;
             }
-              
             
             if (!itemPosition.IsBusy)
             {
                 string surroundingTiles = CheckSurroundingTiles(itemPosition);
                 ItemPosition selectedTile = Instantiate(_tileConfigurations[surroundingTiles],
-                    itemPosition.transform.position, Quaternion.identity);
+                    itemPosition.transform.position, _container.transform.rotation,_container);
 
                 itemPosition.SetRoad(selectedTile);
             }
@@ -98,7 +98,7 @@ public class RoadGenerator : MonoBehaviour
             else
             {
                 ItemPosition selectedTile =
-                    Instantiate(_clearTile, itemPosition.transform.position, Quaternion.identity);
+                    Instantiate(_clearTile, itemPosition.transform.position, _container.transform.rotation,_container);
 
                 itemPosition.SetRoad(selectedTile);
             }

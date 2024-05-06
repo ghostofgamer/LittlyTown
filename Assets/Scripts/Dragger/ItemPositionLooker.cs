@@ -29,17 +29,11 @@ namespace Dragger
                     if (_currentLookPosition == itemPosition)
                         return;
 
-                    if (_currentLookPosition != null)
-                    {
-                        _currentLookPosition.ClearingPosition();
-                    }
-
                     _currentLookPosition = itemPosition;
 
                     if (_itemDragger.IsObjectSelected)
                         _currentLookPosition.GetComponent<VisualItemPosition>().ActivateVisual();
-
-                    _currentLookPosition.SetSelected();
+                    
                     PlaceLooking?.Invoke(_currentLookPosition, _itemDragger.SelectedObject);
                 }
             }

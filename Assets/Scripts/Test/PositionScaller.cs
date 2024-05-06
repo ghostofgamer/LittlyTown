@@ -38,5 +38,8 @@ public class PositionScaller : MonoBehaviour
             _elapsedTime += Time.deltaTime;
             yield return null;
         }
+
+        transform.localScale = _scale;
+        _tileTransform.position = transform.position;
     }
 }

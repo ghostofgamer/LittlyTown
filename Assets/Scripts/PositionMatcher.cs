@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using Dragger;
 using ItemContent;
 using ItemPositionContent;
@@ -12,6 +11,7 @@ public class PositionMatcher : MonoBehaviour
 {
     [SerializeField] private ItemPositionLooker _itemPositionLooker;
     [SerializeField] private Merger _merger;
+    [SerializeField]private Spawner _spawner;
 
     private ItemPosition _currentItemPosition;
     private List<Item> _matchedItems = new List<Item>();
@@ -31,17 +31,26 @@ public class PositionMatcher : MonoBehaviour
     private void OnEnable()
     {
         _itemPositionLooker.PlaceLooking += OnSetPosition;
+        _spawner.LooksNeighbors += OnSetPosition;
     }
 
     private void OnDisable()
     {
         _itemPositionLooker.PlaceLooking -= OnSetPosition;
+        _spawner.LooksNeighbors -= OnSetPosition;
     }
 
     private void OnSetPosition(ItemPosition itemPosition, Item item)
     {
         StopMoveMatch();
+        
+        if (_currentItemPosition != null)
+        {
+            _currentItemPosition.ClearingPosition();
+        }
+        
         _currentItemPosition = itemPosition;
+        _currentItemPosition.SetSelected();
         _currentItem = item;
         _completeList.Clear();
         ClearLists();
@@ -61,9 +70,6 @@ public class PositionMatcher : MonoBehaviour
 
     private void CheckNextLevel()
     {
-        Debug.Log("Complete " + _completeList.Count);
-        Debug.Log("_matchedItems " + _matchedItems.Count);
-
         if (_matchedItems.Count >= 2)
         {
             Item item = _matchedItems[0].NextItem;
@@ -91,17 +97,13 @@ public class PositionMatcher : MonoBehaviour
 
     private void ActivationLookPositions(ItemPosition currentPosition, Item item)
     {
-        Debug.Log("Проверяем позицию " + currentPosition.name);
-
         if (_checkedPositions.Contains(currentPosition))
         {
-            Debug.Log("Return");
             return;
         }
 
         if (!currentPosition.IsSelected)
         {
-            Debug.Log("Добавляем в список " + currentPosition.name);
             _checkedPositions.Add(currentPosition);
             _matchedItems.Add(currentPosition.Item);
             _positions.Add(currentPosition);
@@ -111,18 +113,11 @@ public class PositionMatcher : MonoBehaviour
         {
             if (arroundPosition == null)
             {
-                Debug.Log("ТУТ Null !!!");
                 continue;
             }
 
-
-            // Debug.Log("Позиции вокруг  " + arroundPosition.name);
-            if (arroundPosition.Item == null)
-                Debug.Log("NullITEmPOPOzition " + arroundPosition.name);
-
             if (arroundPosition.Item != null && arroundPosition.Item.ItemName.Equals(item.ItemName))
             {
-                Debug.Log("Что - то есть " + arroundPosition.name);
                 // SearchMatches(arroundPosition);
                 ActivationLookPositions(arroundPosition, item);
             }

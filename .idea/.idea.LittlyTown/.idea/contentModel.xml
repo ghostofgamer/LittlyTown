@@ -731,6 +731,18 @@
         <e p="Animations" t="Include">
           <e p="ItemAnimations" t="Include" />
         </e>
+        <e p="FreeButtonSet" t="Include">
+          <e p="Textures" t="Include">
+            <e p="Buttons" t="Include" />
+            <e p="controls" t="Include" />
+            <e p="Icons" t="Include">
+              <e p="128x128" t="Include" />
+              <e p="256x256" t="Include" />
+              <e p="32x32" t="Include" />
+              <e p="64x64" t="Include" />
+            </e>
+          </e>
+        </e>
         <e p="Materials" t="Include" />
         <e p="Packages" t="Include">
           <e p="TextMesh Pro" t="Include">
@@ -919,10 +931,19 @@
         </e>
         <e p="Scenes" t="Include" />
         <e p="Scripts" t="Include">
+          <e p="CountersContent" t="Include">
+            <e p="Goals.cs" t="Include" />
+            <e p="ScoreCounter.cs" t="Include" />
+            <e p="ScoreSlider.cs" t="Include" />
+            <e p="VisualScore.cs" t="Include" />
+          </e>
           <e p="Dragger" t="Include">
             <e p="InputItemDragger.cs" t="Include" />
             <e p="ItemDragger.cs" t="Include" />
             <e p="ItemPositionLooker.cs" t="Include" />
+          </e>
+          <e p="EndGameContent" t="Include">
+            <e p="EndGame.cs" t="Include" />
           </e>
           <e p="Enums" t="Include">
             <e p="Items.cs" t="Include" />
@@ -931,6 +952,7 @@
             <e p="Item.cs" t="Include" />
             <e p="ItemAnimation.cs" t="Include" />
             <e p="ItemMoving.cs" t="Include" />
+            <e p="ItemStay.cs" t="Include" />
           </e>
           <e p="ItemPositionContent" t="Include">
             <e p="FinderPositions.cs" t="Include" />
@@ -939,6 +961,7 @@
             <e p="VisualItemsDeactivator.cs" t="Include" />
           </e>
           <e p="Merger.cs" t="Include" />
+          <e p="MoveCounter.cs" t="Include" />
           <e p="PositionMatcher.cs" t="Include" />
           <e p="Road" t="Include">
             <e p="AngularRoad.cs" t="Include" />
@@ -953,9 +976,19 @@
             <e p="PositionScaller.cs" t="Include" />
             <e p="Territory.cs" t="Include" />
           </e>
+          <e p="UI" t="Include">
+            <e p="Buttons" t="Include">
+              <e p="AbstractButton.cs" t="Include" />
+              <e p="ResumeButton.cs" t="Include" />
+              <e p="RotationButton.cs" t="Include" />
+            </e>
+          </e>
         </e>
         <e p="Sounds" t="Include" />
-        <e p="Sprites" t="Include" />
+        <e p="Sprites" t="Include">
+          <e p="GameScreenIcon" t="Include" />
+          <e p="UI" t="Include" />
+        </e>
         <e p="TextMesh Pro" t="Include">
           <e p="Documentation" t="Include" />
           <e p="Fonts" t="Include">

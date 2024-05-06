@@ -10027,6 +10027,7 @@ GameObject:
   - component: {fileID: 3149558183473861670}
   - component: {fileID: 3700549352644939878}
   - component: {fileID: -6329070049984081113}
+  - component: {fileID: 1169378356494409198}
   m_Layer: 3
   m_Name: Sawmill
   m_TagString: Untagged
@@ -10087,6 +10088,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemName: 2
   _nextItem: {fileID: 7930523424143760095, guid: 850174af952ea3248bc9032bb8586d10, type: 3}
+  _reward: 15
 --- !u!54 &6732721169958689561
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10160,6 +10162,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _item: {fileID: 1190645750346455673}
+--- !u!114 &1169378356494409198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8209677761463562037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 152c4924823ea1c4d82b029ef350f5d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &353585817320943296
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -32,7 +32,6 @@ namespace Dragger
             _layerMask = 1 << _layer;
             _layerMask = ~_layerMask;
             _itemPositionLooker = GetComponent<ItemPositionLooker>();
-            PlaceChanged?.Invoke();
         }
 
         public void SetItem(Item item, ItemPosition itemPosition)
@@ -125,6 +124,7 @@ namespace Dragger
                     if (!itemPosition.IsBusy && !itemPosition.IsWater)
                     {
                         _selectedObject.transform.position = hit.transform.position;
+                        _selectedObject.Init(itemPosition);
                         _selectedObject.Activation();
                         PlaceChanged?.Invoke();
                         itemPosition.DeliverObject(_selectedObject);
