@@ -76,7 +76,6 @@ public class Spawner : MonoBehaviour
             yield break;
 
         Item item = Instantiate(_prefabItem, _position.transform.position, Quaternion.identity);
-        Debug.Log("Spawn");
         _itemDragger.SetItem(item, _position);
         ItemCreated?.Invoke();
         LooksNeighbors?.Invoke(_position, item);

@@ -632,6 +632,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2d076475ca50ea4ba615f71ffe13f0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _replacementPositionButton: {fileID: 586404708}
   _removalItems: {fileID: 2054429386}
   _icon: {fileID: 646541365}
   _imageBackGroundButton: {fileID: 39153977}
@@ -6794,6 +6795,7 @@ GameObject:
   - component: {fileID: 586404706}
   - component: {fileID: 586404705}
   - component: {fileID: 586404707}
+  - component: {fileID: 586404708}
   m_Layer: 5
   m_Name: ReplacementButton
   m_TagString: Untagged
@@ -6903,6 +6905,25 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &586404708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 586404703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 704e9f7d9b0a3594ab1a0a3e50b781dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bulldozerButton: {fileID: 39153980}
+  _icon: {fileID: 1119458149}
+  _imageBackGroundButton: {fileID: 586404705}
+  _whiteIcon: {fileID: 21300000, guid: 46b0263781931874b906c3c405e41f90, type: 3}
+  _blackIcon: {fileID: 21300000, guid: 31f5786682a90fb46bfe5bbb092ac864, type: 3}
+  _activatedImage: {fileID: 21300000, guid: e9e3c28ed1d387a4a8d7b6885be2e5aa, type: 3}
+  _notActivatedImage: {fileID: 21300000, guid: 94a9278820df4e54e81de44c7ca4d417, type: 3}
 --- !u!1 &587817777
 GameObject:
   m_ObjectHideFlags: 0
@@ -9491,6 +9512,52 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 790157922}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &794048062
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 794048064}
+  - component: {fileID: 794048063}
+  m_Layer: 0
+  m_Name: ReplacementPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &794048063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 794048062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e564aa2611c6835418afb59b87c58607, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _replacementPositionButton: {fileID: 586404708}
+  _itemDragger: {fileID: 1990161225}
+--- !u!4 &794048064
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 794048062}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.0133917, y: 31.593222, z: -13.860784}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &811476407 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7089897312137854012, guid: 9b403dc8cf68b8542ae066ce5e74b2a6, type: 3}
@@ -22579,7 +22646,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef0b9c3a45c42ed44a4827e70c132c19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _buldozerButton: {fileID: 39153980}
+  _bulldozerButton: {fileID: 39153980}
   _itemDragger: {fileID: 1990161225}
 --- !u!4 &2054429387
 Transform:
@@ -26448,3 +26515,4 @@ SceneRoots:
   - {fileID: 1475756396}
   - {fileID: 633147290}
   - {fileID: 2054429387}
+  - {fileID: 794048064}

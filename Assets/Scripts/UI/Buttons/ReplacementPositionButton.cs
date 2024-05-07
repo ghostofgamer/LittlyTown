@@ -4,48 +4,46 @@ using UnityEngine.UI;
 
 namespace UI.Buttons
 {
-    public class BuldozerButton : AbstractButton
+    public class ReplacementPositionButton : AbstractButton
     {
-        [SerializeField]private RemovalItems _removalItems;
+        [SerializeField] private BulldozerButton _bulldozerButton;
         [SerializeField] private Image _icon;
         [SerializeField] private Image _imageBackGroundButton;
         [SerializeField] private Sprite _whiteIcon;
         [SerializeField] private Sprite _blackIcon;
         [SerializeField] private Sprite _activatedImage;
         [SerializeField] private Sprite _notActivatedImage;
-
+    
         private bool _isActivated = false;
 
-        public event Action RemovalActivated;
-        public event Action RemovalDeactivated;
-
+        public event Action ReplaceActivated;
+        public event Action ReplaceDeactivated;
+        
         protected override void OnEnable()
         {
             base.OnEnable();
-            _removalItems.ItemRemoved += OnClick;
+            // _bulldozerButton.RemovalActivated += Deactivation;
         }
 
         protected override void OnDisable()
         {
             base.OnDisable();
-            _removalItems.ItemRemoved -= OnClick;
+            // _bulldozerButton.RemovalActivated -= Deactivation;
         }
 
         protected override void OnClick()
         {
-            Debug.Log("ВЫКЛ");
             _isActivated = !_isActivated;
 
             if (_isActivated)
             {
-                RemovalActivated?.Invoke();
+                ReplaceActivated?.Invoke();
                 SetSprite(_blackIcon, _activatedImage);
             }
             else
             {
+                ReplaceDeactivated?.Invoke();
                 Deactivation();
-                RemovalDeactivated?.Invoke();
-                // SetSprite(_whiteIcon, _notActivatedImage);
             }
         }
 
@@ -57,7 +55,7 @@ namespace UI.Buttons
 
         private void Deactivation()
         {
-            Debug.Log("Тут");
+            _isActivated = false;
             SetSprite(_whiteIcon, _notActivatedImage);
         }
     }

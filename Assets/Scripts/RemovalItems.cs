@@ -8,26 +8,27 @@ using UnityEngine;
 
 public class RemovalItems : MonoBehaviour
 {
-    [SerializeField] private BuldozerButton _buldozerButton;
+    [SerializeField] private BulldozerButton _bulldozerButton;
     [SerializeField] private ItemDragger _itemDragger;
 
     private bool _isWorking;
     private bool _isLooking;
     private int _layerMask;
     private int _layer = 3;
+    private Coroutine _coroutine;
 
     public event Action ItemRemoved;
-    
+
     private void OnEnable()
     {
-        _buldozerButton.RemovalActivated += ActivateWork;
-        _buldozerButton.RemovalDeactivated += DeactivateWork;
+        _bulldozerButton.RemovalActivated += ActivateWork;
+        _bulldozerButton.RemovalDeactivated += DeactivateWork;
     }
 
     private void OnDisable()
     {
-        _buldozerButton.RemovalActivated -= ActivateWork;
-        _buldozerButton.RemovalDeactivated -= DeactivateWork;
+        _bulldozerButton.RemovalActivated -= ActivateWork;
+        _bulldozerButton.RemovalDeactivated -= DeactivateWork;
     }
 
     private void Start()
@@ -71,27 +72,11 @@ public class RemovalItems : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             _isLooking = false;
-            StartCoroutine(Remove());
-            
-            /*RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            if ((Physics.Raycast(ray, out hit, Mathf.Infinity, _layerMask)))
-            {
-                if (hit.transform.gameObject.TryGetComponent(out ItemPosition itemPosition) && itemPosition.IsBusy)
-                {
-                    itemPosition.Item.Deactivation();
-                    itemPosition.Item.gameObject.SetActive(false);
-                    itemPosition.ClearingPosition();
-                    Debug.Log("Remove");
-                    // DeactivateWork();
-                    ItemRemoved?.Invoke();
-                }
-            }*/
+            if (_coroutine != null)
+                StopCoroutine(_coroutine);
 
-            /*Debug.Log("нажатие");
-            _isWorking = false;
-            _itemDragger.ActivateItem();*/
+            _coroutine = StartCoroutine(Remove());
         }
     }
 
@@ -107,24 +92,20 @@ public class RemovalItems : MonoBehaviour
                 itemPosition.Item.Deactivation();
                 itemPosition.Item.gameObject.SetActive(false);
                 itemPosition.ClearingPosition();
-                Debug.Log("Remove");
-                // DeactivateWork();
                 yield return null;
                 ItemRemoved?.Invoke();
             }
         }
     }
-    
+
     private void ActivateWork()
     {
-        Debug.Log("ACTIVEWORK");
         _isWorking = true;
         _itemDragger.DeactivateItem();
     }
 
     private void DeactivateWork()
     {
-        Debug.Log("DeACTIVEWORK");
         _isWorking = false;
         _itemDragger.ActivateItem();
     }

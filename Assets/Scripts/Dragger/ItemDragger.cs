@@ -11,7 +11,7 @@ namespace Dragger
         private ItemPosition _startPosition;
         private Item _selectedObject;
         private Plane _objectPlane;
-        private float _offset = 1.65f;
+        private float _offset = 3f;
         private int _layerMaskIgnore;
         private int _layerMask;
         private int _layer = 3;
@@ -41,19 +41,19 @@ namespace Dragger
             _selectedObject.gameObject.SetActive(false);
             _selectedObject = null;
             _startPosition.GetComponent<VisualItemPosition>().DeactivateVisual();
-            Debug.Log("1");
         }
         
         public void ActivateItem()
         {
+            if (_temporaryItem == null)
+                return;
+            
             _temporaryItem.gameObject.SetActive(true);
             SetItem(_temporaryItem, _startPosition);
-            Debug.Log("3 " );
         }
         
         public void SetItem(Item item, ItemPosition itemPosition)
         {
-            Debug.Log("Select ");
             _selectedObject = item;
             _startPosition = itemPosition;
             _selectedObject.Init(_startPosition);
@@ -150,7 +150,6 @@ namespace Dragger
                         _selectedObject.GetComponent<ItemAnimation>().PositioningAnimation();
                         PlaceChanged?.Invoke();
                         itemPosition.DeliverObject(_selectedObject);
-                        Debug.Log("DRAGGER");
                         _selectedObject = null;
                         IsObjectSelected = false;
                         IsPositionSelected = false;
