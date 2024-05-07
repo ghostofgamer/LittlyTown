@@ -43,7 +43,6 @@ public class FinderPositions : MonoBehaviour
 
                 // Vector3 localTargetPosition = transform.InverseTransformPoint(itemPosition.transform.position);
                 _targetPosition = itemPosition.transform.position;
-                Debug.Log("Название " + itemPosition.name + " " + _targetPosition);
 
                 if (_targetPosition.z > transform.position.z &&
                     Math.Abs(_targetPosition.x - transform.position.x) < 0.1f)

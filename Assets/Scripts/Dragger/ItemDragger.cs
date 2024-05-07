@@ -16,7 +16,8 @@ namespace Dragger
         private int _layerMask;
         private int _layer = 3;
         private float _distance;
-
+        private Item _temporaryItem;
+        
         public event Action PlaceChanged;
 
         public bool IsObjectSelected { get; private set; } = false;
@@ -34,8 +35,25 @@ namespace Dragger
             _itemPositionLooker = GetComponent<ItemPositionLooker>();
         }
 
+        public void DeactivateItem()
+        {
+            _temporaryItem = _selectedObject;
+            _selectedObject.gameObject.SetActive(false);
+            _selectedObject = null;
+            _startPosition.GetComponent<VisualItemPosition>().DeactivateVisual();
+            Debug.Log("1");
+        }
+        
+        public void ActivateItem()
+        {
+            _temporaryItem.gameObject.SetActive(true);
+            SetItem(_temporaryItem, _startPosition);
+            Debug.Log("3 " );
+        }
+        
         public void SetItem(Item item, ItemPosition itemPosition)
         {
+            Debug.Log("Select ");
             _selectedObject = item;
             _startPosition = itemPosition;
             _selectedObject.Init(_startPosition);
@@ -116,7 +134,7 @@ namespace Dragger
         {
             if (_selectedObject == null)
                 return;
-
+            
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -129,11 +147,18 @@ namespace Dragger
                         _selectedObject.transform.position = hit.transform.position;
                         _selectedObject.Init(itemPosition);
                         _selectedObject.Activation();
+                        _selectedObject.GetComponent<ItemAnimation>().PositioningAnimation();
                         PlaceChanged?.Invoke();
                         itemPosition.DeliverObject(_selectedObject);
+                        Debug.Log("DRAGGER");
                         _selectedObject = null;
                         IsObjectSelected = false;
                         IsPositionSelected = false;
+                    }
+                    else if (itemPosition.IsBusy&&IsObjectSelected)
+                    {
+                        ReturnPosition();
+                        itemPosition.Item.GetComponent<ItemAnimation>().BusyPositionAnimation();
                     }
                     else
                     {

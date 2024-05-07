@@ -963,6 +963,7 @@
           <e p="Merger.cs" t="Include" />
           <e p="MoveCounter.cs" t="Include" />
           <e p="PositionMatcher.cs" t="Include" />
+          <e p="RemovalItems.cs" t="Include" />
           <e p="Road" t="Include">
             <e p="AngularRoad.cs" t="Include" />
             <e p="CrossroadsRoad.cs" t="Include" />
@@ -979,6 +980,7 @@
           <e p="UI" t="Include">
             <e p="Buttons" t="Include">
               <e p="AbstractButton.cs" t="Include" />
+              <e p="BuldozerButton.cs" t="Include" />
               <e p="ResumeButton.cs" t="Include" />
               <e p="RotationButton.cs" t="Include" />
             </e>

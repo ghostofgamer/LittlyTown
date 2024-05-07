@@ -6,6 +6,8 @@ namespace ItemContent
     public class ItemAnimation : MonoBehaviour
     {
         private static readonly int Active = Animator.StringToHash("Active");
+        private static readonly int Busy = Animator.StringToHash("Busy");
+        private static readonly int Positioning = Animator.StringToHash("Positioning");
     
         private Item _item;
         private Animator _animator;
@@ -39,6 +41,16 @@ namespace ItemContent
         private void OnPlayAnimation()
         {
             _animator.SetBool(Active, false);
+        }
+
+        public void BusyPositionAnimation()
+        {
+            _animator.SetTrigger(Busy);
+        }
+
+        public void PositioningAnimation()
+        {
+            _animator.SetTrigger(Positioning); 
         }
     }
 }

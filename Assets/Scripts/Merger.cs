@@ -38,9 +38,11 @@ public class Merger : MonoBehaviour
         }
 
         Item item = Instantiate(_currentItem.NextItem, currentPosition.transform.position, Quaternion.identity);
+        Debug.Log("Создает");
         item.transform.forward = currentPosition.transform.forward;
         item.Init(currentPosition);
         item.Activation();
+        item.GetComponent<ItemAnimation>().PositioningAnimation();
         _positionMatcher.LookAround(currentPosition);
         yield return new WaitForSeconds(0.1f);
         Merged?.Invoke(_matchPositions.Count, _currentItem.Reward,currentPosition);

@@ -10,6 +10,7 @@ public class RoadGenerator : MonoBehaviour
     [SerializeField] private ItemPosition[] _itemPositions;
     [SerializeField] private Merger _merger;
     [SerializeField] private Transform _container;
+    [SerializeField]private RemovalItems _removalItems;
     
     [Header("Tiles")] [SerializeField] private ItemPosition _angularTileUpRight;
     [SerializeField] private ItemPosition _angularTileUpLeft;
@@ -35,12 +36,14 @@ public class RoadGenerator : MonoBehaviour
     private void OnEnable()
     {
         _spawner.ItemCreated += OnGeneration;
+        _removalItems.ItemRemoved += OnGeneration;
         // _merger.Merged += OnGeneration;
     }
 
     private void OnDisable()
     {
         _spawner.ItemCreated -= OnGeneration;
+        _removalItems.ItemRemoved -= OnGeneration;
         // _merger.Merged -= OnGeneration;
     }
 
