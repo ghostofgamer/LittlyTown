@@ -38,12 +38,14 @@ namespace Dragger
         {
             _selectedObject = item;
             _startPosition = itemPosition;
+            _selectedObject.Init(_startPosition);
             _startPosition.GetComponent<VisualItemPosition>().ActivateVisual();
         }
 
         public void DragItem()
         {
             _itemPositionLooker.LookPosition();
+            _selectedObject.ClearPosition();
 
             if (IsObjectSelected)
             {
@@ -99,7 +101,8 @@ namespace Dragger
 
                 else if (Physics.Raycast(ray, out hit, Mathf.Infinity, _layerMask))
                 {
-                    if (hit.transform.gameObject.TryGetComponent(out ItemPosition itemPosition))
+                    if (hit.transform.gameObject.TryGetComponent(out ItemPosition itemPosition) &&
+                        !itemPosition.IsBusy)
                     {
                         _objectPlane = new Plane(Vector3.up, _selectedObject.transform.position);
                         // IsObjectSelected = true;
@@ -148,6 +151,7 @@ namespace Dragger
         private void ReturnPosition()
         {
             _selectedObject.transform.position = _startPosition.transform.position;
+            _selectedObject.Init(_startPosition);
             IsObjectSelected = false;
             IsPositionSelected = false;
             _startPosition.GetComponent<VisualItemPosition>().ActivateVisual();

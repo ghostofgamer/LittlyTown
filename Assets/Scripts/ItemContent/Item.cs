@@ -42,5 +42,11 @@ namespace ItemContent
         {
             ItemPosition = itemPosition;
         }
+
+        public void ClearPosition()
+        {
+            if (ItemPosition != null)
+                ItemPosition = null;
+        }
     }
 }

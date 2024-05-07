@@ -20,35 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="099b8a6d-6b1c-4473-babb-d7d2ffb7e44f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Packages/TextMesh Pro/Fonts/Code New Roman SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Packages/TextMesh Pro/Fonts/Code New Roman SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Bush.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Bush.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Sawmill.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Sawmill.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Tree.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Tree.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Wood.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Wood.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Dragger/ItemDragger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Dragger/ItemDragger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Dragger/ItemPositionLooker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Dragger/ItemPositionLooker.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemContent/Item.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemContent/Item.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemPositionContent/FinderPositions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemPositionContent/FinderPositions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemPositionContent/ItemPosition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemPositionContent/ItemPosition.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemPositionContent/VisualItemPosition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemPositionContent/VisualItemPosition.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemPositionContent/VisualItemsDeactivator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemPositionContent/VisualItemsDeactivator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Merger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Merger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PositionMatcher.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PositionMatcher.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RoadGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RoadGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spawner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Test/MapGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Test/MapGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Test/PositionScaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Test/PositionScaller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bild/Build.zip" beforeDir="false" afterPath="$PROJECT_DIR$/Bild/Build.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bild/Build/2c353e58c73088b4b61e4621e8991285.js.unityweb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bild/Build/583f40a4b7d8ce4fa728d88e7d134713.data.unityweb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bild/Build/bc070e70eb7d347ca5017749d3292100.wasm.unityweb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bild/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Bild/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,12 +110,12 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/PositionMatcher.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/RoadGenerator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ItemPositionContent/ItemPosition.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Dragger/ItemDragger.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Spawner.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/ItemContent/Item.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ItemPositionContent/FinderPositions.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ItemContent/ItemStay.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Merger.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ItemContent/Item.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Dragger/ItemDragger.cs" />
       </list>
     </option>
   </component>
@@ -200,6 +174,7 @@
       <workItem from="1714893793638" duration="8209000" />
       <workItem from="1714919374783" duration="639000" />
       <workItem from="1714988155096" duration="18655000" />
+      <workItem from="1715067104603" duration="1257000" />
     </task>
     <servers />
   </component>
