@@ -11,7 +11,8 @@ public class PositionMatcher : MonoBehaviour
 {
     [SerializeField] private ItemPositionLooker _itemPositionLooker;
     [SerializeField] private Merger _merger;
-    [SerializeField]private Spawner _spawner;
+    [SerializeField] private Spawner _spawner;
+    [SerializeField] ItemDragger _itemDragger;
 
     private ItemPosition _currentItemPosition;
     private List<Item> _matchedItems = new List<Item>();
@@ -20,13 +21,15 @@ public class PositionMatcher : MonoBehaviour
     private List<Item> _completeList = new List<Item>();
 
     private Item _currentItem;
-
+    
+    private Dictionary<ItemPosition, Coroutine> _mergingCoroutines = new Dictionary<ItemPosition, Coroutine>();
+    
     public event Action NotMerged;
 
     public List<ItemPosition> Positions => _positions;
 
     private Coroutine _coroutine;
-
+    private Coroutine _cyclicСoroutine;
 
     private void OnEnable()
     {
@@ -43,20 +46,20 @@ public class PositionMatcher : MonoBehaviour
     private void OnSetPosition(ItemPosition itemPosition, Item item)
     {
         StopMoveMatch();
-        
+
         if (_currentItemPosition != null)
         {
             _currentItemPosition.ClearingPosition();
         }
-        
+
         _currentItemPosition = itemPosition;
         _currentItemPosition.SetSelected();
         _currentItem = item;
         _completeList.Clear();
         ClearLists();
 
-        if (_coroutine != null)
-            StopCoroutine(_coroutine);
+        if (_cyclicСoroutine != null)
+            StopCoroutine(_cyclicСoroutine);
 
         _coroutine = StartCoroutine(LookPositions(_currentItemPosition, _currentItem));
     }
@@ -124,7 +127,7 @@ public class PositionMatcher : MonoBehaviour
         }
     }
 
-    private void StopMoveMatch()
+    public void StopMoveMatch()
     {
         foreach (var matchItem in _completeList)
             matchItem.GetComponent<ItemMoving>().StopCoroutine();
@@ -132,12 +135,13 @@ public class PositionMatcher : MonoBehaviour
 
     public void LookAround(ItemPosition itemPosition)
     {
+        Debug.Log("Look " + itemPosition.name);
         StopMoveMatch();
         _currentItemPosition = itemPosition;
 
         if (_coroutine != null)
             StopCoroutine(_coroutine);
-
+        
         _coroutine = StartCoroutine(SearchMatchAround());
     }
 
@@ -147,11 +151,18 @@ public class PositionMatcher : MonoBehaviour
         ClearLists();
         SearchMatches(_currentItemPosition);
         // Debug.Log("LookAround " + _positions.Count);
-        if (_positions.Count < 3)
-            NotMerged?.Invoke();
 
+        if (_positions.Count < 3)
+        {
+            Debug.Log("No Match " + _currentItemPosition.name);
+            Debug.Log("No Match Count" + _positions.Count);
+
+            NotMerged?.Invoke();
+        }
         else
+        {
             _merger.Merge(_currentItemPosition);
+        }
     }
 
 

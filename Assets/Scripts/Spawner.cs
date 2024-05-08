@@ -14,16 +14,16 @@ public class Spawner : MonoBehaviour
     [SerializeField] private ItemPosition[] _positions;
     [SerializeField] private ItemDragger _itemDragger;
     [SerializeField] private PositionMatcher _positionMatcher;
-    [SerializeField]private MoveCounter _moveCounter;
+    [SerializeField] private MoveCounter _moveCounter;
 
     private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.165f);
     private Coroutine _coroutine;
     private ItemPosition _position;
 
     public event Action ItemCreated;
-    
+
     public event Action PositionsFilled;
-    
+
     public event Action<ItemPosition, Item> LooksNeighbors;
 
     private void Start()
@@ -43,9 +43,9 @@ public class Spawner : MonoBehaviour
 
     public void OnCreateItem()
     {
-        if (!_moveCounter.IsThereMoves)
+        if (!_moveCounter.IsThereMoves || _itemDragger.SelectedObject!=null)
             return;
-        
+Debug.Log("Creating");
         if (_coroutine != null)
             StopCoroutine(_coroutine);
 

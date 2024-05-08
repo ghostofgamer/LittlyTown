@@ -13,6 +13,9 @@ public class Merger : MonoBehaviour
     private List<ItemPosition> _matchPositions = new List<ItemPosition>();
 
     public event Action<int, int,ItemPosition> Merged;
+    
+    public event Action Mergered;
+    
 
     public void Merge(ItemPosition currentPosition)
     {
@@ -44,6 +47,8 @@ public class Merger : MonoBehaviour
         item.GetComponent<ItemAnimation>().PositioningAnimation();
         _positionMatcher.LookAround(currentPosition);
         yield return new WaitForSeconds(0.1f);
+        Debug.Log("MergeActivation");
         Merged?.Invoke(_matchPositions.Count, _currentItem.Reward,currentPosition);
+        Mergered?.Invoke();
     }
 }
