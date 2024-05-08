@@ -1,16 +1,17 @@
+using UI.Screens;
 using UnityEngine;
 
 namespace UI.Buttons
 {
-    public class GoalButton : AbstractButton
+    public class OpenButton : AbstractButton
     {
-        [SerializeField] private GoalScreen _goalScreen;
+        [SerializeField] private AbstractScreen _abstractScreen;
         [SerializeField]private BlurScreen _blurScreen;
         
         protected override void OnClick()
         {
             _blurScreen.BlurActivation();
-            _goalScreen.Open();
+            _abstractScreen.Open();
         }
     }
 }

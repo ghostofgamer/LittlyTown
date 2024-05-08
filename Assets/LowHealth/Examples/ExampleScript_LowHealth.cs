@@ -41,12 +41,12 @@ namespace Leguar.LowHealth.Example {
 			if (healthGoingDown) {
 
 				// Player took damage, make transition faster (1 second)
-				shaderControllerScript.SetPlayerHealthSmoothly(newPlayerHealthPercent, 1f);
+				shaderControllerScript.SetPlayerHealthSmoothly(newPlayerHealthPercent, 0.5f);
 
 			} else {
 
 				// Player gained health (medikit?), make transition slightly slower (2 seconds)
-				shaderControllerScript.SetPlayerHealthSmoothly(newPlayerHealthPercent, 2f);
+				shaderControllerScript.SetPlayerHealthSmoothly(newPlayerHealthPercent, 0.5f);
 
 			}
 
