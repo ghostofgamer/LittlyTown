@@ -954,6 +954,7 @@
         </e>
         <e p="Scenes" t="Include" />
         <e p="Scripts" t="Include">
+          <e p="BlurScreen.cs" t="Include" />
           <e p="CountersContent" t="Include">
             <e p="Goals.cs" t="Include" />
             <e p="ScoreCounter.cs" t="Include" />
@@ -971,6 +972,7 @@
           <e p="Enums" t="Include">
             <e p="Items.cs" t="Include" />
           </e>
+          <e p="GoalScreen.cs" t="Include" />
           <e p="ItemContent" t="Include">
             <e p="Item.cs" t="Include" />
             <e p="ItemAnimation.cs" t="Include" />
@@ -1005,8 +1007,10 @@
             <e p="Buttons" t="Include">
               <e p="AbstractButton.cs" t="Include" />
               <e p="BulldozerButton.cs" t="Include" />
+              <e p="GoalButton.cs" t="Include" />
               <e p="ReplacementPositionButton.cs" t="Include" />
               <e p="ResumeButton.cs" t="Include" />
+              <e p="ReturnGoalScreenGameLevelButton.cs" t="Include" />
               <e p="RotationButton.cs" t="Include" />
             </e>
           </e>
