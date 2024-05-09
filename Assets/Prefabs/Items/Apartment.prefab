@@ -939,7 +939,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 891d55e63e7733b4382f05b700c589f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemName: 2
+  _itemName: 7
   _nextItem: {fileID: 1689325367591307803, guid: 2b51df3812e86014ba3110d4d00121d8, type: 3}
   _reward: 10
 --- !u!54 &1783571401662579604

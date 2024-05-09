@@ -239,7 +239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 891d55e63e7733b4382f05b700c589f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemName: 1
+  _itemName: 6
   _nextItem: {fileID: 5411065820483948517, guid: 689dea58ec3f1344186eee7c39910dac, type: 3}
   _reward: 10
 --- !u!54 &2640430018655828056

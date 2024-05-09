@@ -6,6 +6,15 @@ namespace Enums
         Tree,
         Sawmill,
         Wood,
-        Stone
+        HouseWood,
+        CozyHome,
+        Apartment,
+        BigApartment,
+        Condominium,
+        Stone,
+        BigStone,
+        GoldStone,
+        Chest
+        
     }
 }

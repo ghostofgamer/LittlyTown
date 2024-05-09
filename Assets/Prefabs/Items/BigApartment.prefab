@@ -1129,7 +1129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 891d55e63e7733b4382f05b700c589f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemName: 3
+  _itemName: 8
   _nextItem: {fileID: 6341171966978024074, guid: cff37313dd211b64a9407ff25311661d, type: 3}
   _reward: 10
 --- !u!54 &8279922627483234527
