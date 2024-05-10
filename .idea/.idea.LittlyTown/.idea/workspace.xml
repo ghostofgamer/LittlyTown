@@ -21,15 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="099b8a6d-6b1c-4473-babb-d7d2ffb7e44f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Houses/New Material 3.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Houses/New Material 3.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Water.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Water.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Apartment.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Apartment.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/BigApartment.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/BigApartment.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Condominium.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Condominium.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/CozyHome.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/CozyHome.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/HouseWood.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/HouseWood.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enums/Items.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enums/Items.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Merger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Merger.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +104,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BulldozerButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/RemovalItems.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ReplacementPositionButton.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Merger.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/RoadGenerator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ReplacementPosition.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Dragger/ItemDragger.cs" />
@@ -134,6 +125,7 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/AbstractScreen.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GoalContent/AbstractGoal.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enums/Items.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Merger.cs" />
       </list>
     </option>
   </component>
@@ -196,7 +188,8 @@
       <workItem from="1715157454605" duration="17302000" />
       <workItem from="1715241267867" duration="1848000" />
       <workItem from="1715265105194" duration="12000" />
-      <workItem from="1715265145638" duration="2436000" />
+      <workItem from="1715265145638" duration="2437000" />
+      <workItem from="1715322953306" duration="703000" />
     </task>
     <servers />
   </component>

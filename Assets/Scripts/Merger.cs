@@ -16,7 +16,6 @@ public class Merger : MonoBehaviour
     
     public event Action Mergered;
     
-
     public void Merge(ItemPosition currentPosition)
     {
         _matchPositions = _positionMatcher.Positions;

@@ -11,6 +11,12 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="AddedAssets" t="Include">
+          <e p="Chests" t="Include">
+            <e p="old-chest" t="Include">
+              <e p="source" t="Include" />
+              <e p="Textures" t="Include" />
+            </e>
+          </e>
           <e p="Downtown Game Studio" t="Include">
             <e p="Nature Pack - Low Polly Trees &amp; Bushes" t="Include">
               <e p="Documentation.txt" t="Include" />
@@ -397,6 +403,17 @@
             </e>
             <e p="Upgrade" t="Include" />
           </e>
+          <e p="Houses" t="Include">
+            <e p="cubic-house-low-poly" t="Include">
+              <e p="source" t="Include">
+                <e p="House" t="Include">
+                  <e p="House" t="Include" />
+                </e>
+              </e>
+              <e p="Textures" t="Include" />
+            </e>
+            <e p="WoodenHouse" t="Include" />
+          </e>
           <e p="JMO Assets" t="Include">
             <e p="Toony Colors Pro" t="Include">
               <e p="!ToonyColorsPro Readme.txt" t="Include" />
@@ -714,6 +731,16 @@
               </e>
             </e>
           </e>
+          <e p="low-poly-coin" t="Include">
+            <e p="source" t="Include">
+              <e p="Model" t="Include">
+                <e p="Model" t="Include">
+                  <e p="Textures" t="Include" />
+                </e>
+              </e>
+            </e>
+            <e p="Textures" t="Include" />
+          </e>
           <e p="LowPolyNature" t="Include">
             <e p="Animation" t="Include" />
             <e p="docs" t="Include" />
@@ -763,7 +790,9 @@
           <e p="LowHealthDirectAccess.cs" t="Include" />
           <e p="ReadMe.txt" t="Include" />
         </e>
-        <e p="Materials" t="Include" />
+        <e p="Materials" t="Include">
+          <e p="Houses" t="Include" />
+        </e>
         <e p="Packages" t="Include">
           <e p="TextMesh Pro" t="Include">
             <e p="Fonts" t="Include" />
@@ -1027,6 +1056,7 @@
         <e p="Sounds" t="Include" />
         <e p="Sprites" t="Include">
           <e p="GameScreenIcon" t="Include" />
+          <e p="ItemIcons" t="Include" />
           <e p="UI" t="Include" />
         </e>
         <e p="TextMesh Pro" t="Include">
