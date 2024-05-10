@@ -952,7 +952,9 @@
           </e>
         </e>
         <e p="Prefabs" t="Include">
-          <e p="Items" t="Include" />
+          <e p="Items" t="Include">
+            <e p="TestDrop" t="Include" />
+          </e>
           <e p="Tiles" t="Include" />
         </e>
         <e p="Resources" t="Include">
@@ -1014,6 +1016,9 @@
             <e p="ItemPosition.cs" t="Include" />
             <e p="VisualItemPosition.cs" t="Include" />
             <e p="VisualItemsDeactivator.cs" t="Include" />
+          </e>
+          <e p="ItemSO" t="Include">
+            <e p="ItemDropDataSO.cs" t="Include" />
           </e>
           <e p="Merger.cs" t="Include" />
           <e p="MoveCounter.cs" t="Include" />

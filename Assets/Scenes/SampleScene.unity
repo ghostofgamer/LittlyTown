@@ -7730,7 +7730,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &525864110
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13569,6 +13569,7 @@ MonoBehaviour:
   _itemDragger: {fileID: 1990161225}
   _positionMatcher: {fileID: 2121393211}
   _moveCounter: {fileID: 822774932}
+  _dropGenerator: {fileID: 1455339039}
 --- !u!4 &843412983
 Transform:
   m_ObjectHideFlags: 0
@@ -21786,6 +21787,7 @@ Transform:
   - {fileID: 1475756396}
   - {fileID: 2054429387}
   - {fileID: 794048064}
+  - {fileID: 1455339040}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1362811199
@@ -23569,11 +23571,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _image: {fileID: 1147336853}
-  itemDrops:
+  _itemDrops:
   - {fileID: 9045004054105661743, guid: 2c87168c7c32e5d4c89a13f666121e8f, type: 3}
   - {fileID: 497661230402554633, guid: 9f076c659fba1de46ab0f0024e602d4d, type: 3}
   - {fileID: 3699989826014453662, guid: a599673168db3de4ebf2ec226a5bc8b1, type: 3}
-  currentLevel: 1
+  _itemDropsSO:
+  - {fileID: 11400000, guid: 63d42090f10671347a81fa63a0ba9a81, type: 2}
+  - {fileID: 11400000, guid: 0bd9db32d8015a34088d2974f3e8b9b3, type: 2}
+  - {fileID: 11400000, guid: 9d53fd743e597cd44870c759d0c06cec, type: 2}
+  - {fileID: 11400000, guid: baa92bfb2d0deea429879e605f1e57cd, type: 2}
+  - {fileID: 11400000, guid: 5128669b2bf8eef4ea381b4d9b1dcf57, type: 2}
 --- !u!4 &1455339040
 Transform:
   m_ObjectHideFlags: 0
@@ -23582,12 +23589,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1455339038}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 204.83437, y: 288.4635, z: -4.1859894}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1361026435}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1458187383
 GameObject:
@@ -27592,6 +27599,7 @@ MonoBehaviour:
   _positionMatcher: {fileID: 2121393211}
   _scoreTargetText: {fileID: 999255137}
   _visualScore: {fileID: 1475756397}
+  _dropGenerator: {fileID: 1455339039}
 --- !u!4 &1705592015
 Transform:
   m_ObjectHideFlags: 0
@@ -36826,4 +36834,3 @@ SceneRoots:
   - {fileID: 633147290}
   - {fileID: 1157471028}
   - {fileID: 1361026435}
-  - {fileID: 1455339040}

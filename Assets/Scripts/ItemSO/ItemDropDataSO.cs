@@ -1,9 +1,10 @@
 using ItemContent;
 using UnityEngine;
 
-namespace SpawnContent
+namespace ItemSO
 {
-    public class ItemDrop : MonoBehaviour
+    [CreateAssetMenu(fileName = "New Item Drop Data", menuName = "Item Drop System/Item Drop Data")]
+    public class ItemDropDataSO : ScriptableObject
     {
         [SerializeField] private Sprite _icon;
         [SerializeField] private float _baseDropChance;
@@ -12,8 +13,7 @@ namespace SpawnContent
         [SerializeField] private Item _prefabItem;
 
         public Sprite Icon => _icon;
-        
-        
+
         public float BaseDropChance => _baseDropChance;
         
         public float LevelIncreaseFactor => _levelIncreaseFactor;

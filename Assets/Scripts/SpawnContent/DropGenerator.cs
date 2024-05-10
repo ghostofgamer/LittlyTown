@@ -1,66 +1,69 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using ItemContent;
-using SpawnContent;
+using ItemSO;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class DropGenerator : MonoBehaviour
 {
-    [SerializeField ] private Image _image;
-    
-    public List<ItemDrop> itemDrops;
-    public int currentLevel;
+    [SerializeField] private Image _image;
+    [SerializeField] private List<ItemDropDataSO> _itemDropsSO;
+
+    private int _currentLevel;
     private Item _currentItem;
     private Item _nextItem;
 
     private void Awake()
     {
-        _nextItem = itemDrops[0].PrefabItem;
-        _image.sprite = itemDrops[0].Icon;
+        _nextItem = _itemDropsSO[0].PrefabItem;
+        _image.sprite = _itemDropsSO[0].Icon;
     }
 
     public Item GetItem()
     {
         _currentItem = _nextItem;
-        _nextItem = DropItem().PrefabItem;
+        _nextItem = DropItem();
         return _currentItem;
     }
 
-    public ItemDrop DropItem()
+    public void NextLevel()
+    {
+        _currentLevel++;
+    }
+
+    private Item DropItem()
     {
         float totalChance = 0f;
-        foreach (ItemDrop itemDrop in itemDrops)
+
+        foreach (ItemDropDataSO itemDrop in _itemDropsSO)
         {
-            float dropChance = CalculateDropChance(itemDrop, currentLevel);
+            float dropChance = CalculateDropChance(itemDrop, _currentLevel);
             totalChance += dropChance;
         }
 
         float randomPoint = Random.value * totalChance;
-
-        for (int i = 0; i < itemDrops.Count; i++)
+        
+        for (int i = 0; i < _itemDropsSO.Count; i++)
         {
-            randomPoint -= CalculateDropChance(itemDrops[i], currentLevel);
+            randomPoint -= CalculateDropChance(_itemDropsSO[i], _currentLevel);
+
             if (randomPoint <= 0)
             {
-                Debug.Log("Дропнулся предмет: " + itemDrops[i].ItemName);
-                // Дропнуть предмет itemDrops[i].itemName
-                _image.sprite = itemDrops[i].Icon;
-                return itemDrops[i];
+                _image.sprite = _itemDropsSO[i].Icon;
+                return _itemDropsSO[i].PrefabItem;
             }
         }
 
-        return itemDrops[0];
+        return _itemDropsSO[0].PrefabItem;
     }
 
-    float CalculateDropChance(ItemDrop itemDrop, int level)
+    private float CalculateDropChance(ItemDropDataSO itemDrop, int level)
     {
         float dropChance = itemDrop.BaseDropChance;
-        dropChance += level * itemDrop.LevelDecreaseFactor;
+        dropChance += level * itemDrop.LevelIncreaseFactor;
         dropChance -= level * itemDrop.LevelDecreaseFactor;
-        dropChance = Mathf.Clamp01(dropChance); // Ограничить значение между 0 и 1
+        dropChance = Mathf.Clamp01(dropChance);
         return dropChance;
     }
 }

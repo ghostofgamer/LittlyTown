@@ -12,6 +12,7 @@ namespace CountersContent
         [SerializeField] private PositionMatcher _positionMatcher;
         [SerializeField] private TMP_Text _scoreTargetText;
         [SerializeField] private VisualScore _visualScore;
+        [SerializeField] private DropGenerator _dropGenerator;
 
         private int _currentScore;
         private int _targetScore = 100;
@@ -68,6 +69,7 @@ namespace CountersContent
             _currentScore -= _targetScore;
             _targetScore *= 2;
             Show();
+            _dropGenerator.NextLevel();
             ScoreChanged?.Invoke(_currentScore, _targetScore);
         }
 
