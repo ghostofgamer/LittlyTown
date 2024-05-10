@@ -70,6 +70,11 @@ namespace Dragger
             _startPosition.GetComponent<VisualItemPosition>().ActivateVisual();
         }
 
+        public void ClearItem()
+        {
+            _selectedObject = null;
+        }
+
         public void DragItem()
         {
             _itemPositionLooker.LookPosition();

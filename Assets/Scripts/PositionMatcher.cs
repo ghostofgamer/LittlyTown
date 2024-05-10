@@ -135,7 +135,7 @@ public class PositionMatcher : MonoBehaviour
 
     public void LookAround(ItemPosition itemPosition)
     {
-        Debug.Log("Look " + itemPosition.name);
+        // Debug.Log("Look " + itemPosition.name);
         StopMoveMatch();
         _currentItemPosition = itemPosition;
 
@@ -154,8 +154,8 @@ public class PositionMatcher : MonoBehaviour
 
         if (_positions.Count < 3)
         {
-            Debug.Log("No Match " + _currentItemPosition.name);
-            Debug.Log("No Match Count" + _positions.Count);
+            // Debug.Log("No Match " + _currentItemPosition.name);
+            // Debug.Log("No Match Count" + _positions.Count);
 
             NotMerged?.Invoke();
         }

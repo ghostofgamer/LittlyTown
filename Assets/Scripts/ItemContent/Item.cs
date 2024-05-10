@@ -1,6 +1,7 @@
 using System;
 using Enums;
 using ItemPositionContent;
+using ItemSO;
 using UnityEngine;
 
 namespace ItemContent
@@ -10,6 +11,7 @@ namespace ItemContent
         [SerializeField] private Items _itemName;
         [SerializeField] private Item _nextItem;
         [SerializeField] private int _reward;
+        [SerializeField] private ItemDropDataSO _itemDropDataSo;
 
         private bool _isActive;
 
@@ -23,6 +25,8 @@ namespace ItemContent
         public bool IsActive => _isActive;
 
         public Items ItemName => _itemName;
+
+        public ItemDropDataSO ItemDropDataSo => _itemDropDataSo;
 
         public ItemPosition ItemPosition { get; private set; }
 

@@ -10121,6 +10121,7 @@ MonoBehaviour:
   _itemName: 2
   _nextItem: {fileID: 7930523424143760095, guid: 850174af952ea3248bc9032bb8586d10, type: 3}
   _reward: 15
+  _itemDropDataSo: {fileID: 11400000, guid: 0bd9db32d8015a34088d2974f3e8b9b3, type: 2}
 --- !u!54 &6732721169958689561
 Rigidbody:
   m_ObjectHideFlags: 0

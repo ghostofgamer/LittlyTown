@@ -952,9 +952,7 @@
           </e>
         </e>
         <e p="Prefabs" t="Include">
-          <e p="Items" t="Include">
-            <e p="TestDrop" t="Include" />
-          </e>
+          <e p="Items" t="Include" />
           <e p="Tiles" t="Include" />
         </e>
         <e p="Resources" t="Include">
@@ -1034,9 +1032,9 @@
           <e p="RoadGenerator.cs" t="Include" />
           <e p="SpawnContent" t="Include">
             <e p="DropGenerator.cs" t="Include" />
-            <e p="ItemDrop.cs" t="Include" />
             <e p="Spawner.cs" t="Include" />
           </e>
+          <e p="Storage.cs" t="Include" />
           <e p="Test" t="Include">
             <e p="MapGenerator.cs" t="Include" />
             <e p="PositionScaller.cs" t="Include" />
@@ -1052,6 +1050,7 @@
               <e p="ResumeButton.cs" t="Include" />
               <e p="ReturnGoalScreenGameLevelButton.cs" t="Include" />
               <e p="RotationButton.cs" t="Include" />
+              <e p="StorageButton.cs" t="Include" />
             </e>
             <e p="Screens" t="Include">
               <e p="AbstractScreen.cs" t="Include" />
