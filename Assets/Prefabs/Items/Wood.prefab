@@ -1497,7 +1497,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _itemName: 3
-  _nextItem: {fileID: 0}
+  _nextItem: {fileID: 463921738893145382, guid: f79238bccc66a0d4dadccfbb964e1da1, type: 3}
   _reward: 30
 --- !u!54 &7250617725291144115
 Rigidbody:
