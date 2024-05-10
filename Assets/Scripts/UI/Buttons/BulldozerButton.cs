@@ -23,14 +23,14 @@ namespace UI.Buttons
         protected override void OnEnable()
         {
             base.OnEnable();
-            _removalItems.ItemRemoved += OnClick;
+            _removalItems.Removed += OnClick;
             // _replacementPositionButton.ReplaceActivated += Deactivation;
         }
 
         protected override void OnDisable()
         {
             base.OnDisable();
-            _removalItems.ItemRemoved -= OnClick;
+            _removalItems.Removed -= OnClick;
             // _replacementPositionButton.ReplaceActivated -= Deactivation;
         }
 

@@ -984,7 +984,6 @@
         <e p="Scenes" t="Include" />
         <e p="Scripts" t="Include">
           <e p="CountersContent" t="Include">
-            <e p="Goals.cs" t="Include" />
             <e p="ScoreCounter.cs" t="Include" />
             <e p="ScoreSlider.cs" t="Include" />
             <e p="VisualScore.cs" t="Include" />
@@ -1001,7 +1000,10 @@
             <e p="Items.cs" t="Include" />
           </e>
           <e p="GoalContent" t="Include">
-            <e p="AbstractGoal.cs" t="Include" />
+            <e p="Goal.cs" t="Include" />
+            <e p="GoalBuildItem.cs" t="Include" />
+            <e p="GoalMergeItem.cs" t="Include" />
+            <e p="GoalRemovalItem.cs" t="Include" />
           </e>
           <e p="ItemContent" t="Include">
             <e p="Item.cs" t="Include" />
@@ -1056,7 +1058,7 @@
               <e p="AbstractScreen.cs" t="Include" />
               <e p="BlurScreen.cs" t="Include" />
               <e p="GameLevelScreen.cs" t="Include" />
-              <e p="GoalScreen.cs" t="Include" />
+              <e p="GoalsScreen.cs" t="Include" />
               <e p="ItemScreen.cs" t="Include" />
             </e>
           </e>

@@ -17,8 +17,10 @@ public class RemovalItems : MonoBehaviour
     private int _layer = 3;
     private Coroutine _coroutine;
 
-    public event Action ItemRemoved;
-
+    public event Action Removed;
+    
+    public event Action<Item> ItemRemoved;
+    
     private void OnEnable()
     {
         _bulldozerButton.RemovalActivated += ActivateWork;
@@ -89,11 +91,12 @@ public class RemovalItems : MonoBehaviour
         {
             if (hit.transform.gameObject.TryGetComponent(out ItemPosition itemPosition) && itemPosition.IsBusy)
             {
+                ItemRemoved?.Invoke(itemPosition.Item);
                 itemPosition.Item.Deactivation();
                 itemPosition.Item.gameObject.SetActive(false);
                 itemPosition.ClearingPosition();
                 yield return null;
-                ItemRemoved?.Invoke();
+                Removed?.Invoke();
             }
         }
     }

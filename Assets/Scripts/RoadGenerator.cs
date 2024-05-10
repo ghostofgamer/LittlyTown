@@ -37,7 +37,7 @@ public class RoadGenerator : MonoBehaviour
     private void OnEnable()
     {
         _spawner.ItemCreated += OnGeneration;
-        _removalItems.ItemRemoved += OnGeneration;
+        _removalItems.Removed += OnGeneration;
         _replacementPosition.PositionsChanged += OnGeneration;
         _merger.Mergered += OnGeneration;
     }
@@ -45,7 +45,7 @@ public class RoadGenerator : MonoBehaviour
     private void OnDisable()
     {
         _spawner.ItemCreated -= OnGeneration;
-        _removalItems.ItemRemoved -= OnGeneration;
+        _removalItems.Removed -= OnGeneration;
         _replacementPosition.PositionsChanged -= OnGeneration;
         _merger.Mergered -= OnGeneration;
     }
@@ -75,7 +75,7 @@ public class RoadGenerator : MonoBehaviour
 
     public void OnGeneration()
     {
-        Debug.Log("OnGeneration");
+        // Debug.Log("OnGeneration");
         if (_coroutine != null)
             StopCoroutine(_coroutine);
 

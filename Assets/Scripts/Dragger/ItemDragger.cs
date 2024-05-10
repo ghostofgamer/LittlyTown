@@ -21,6 +21,7 @@ namespace Dragger
         private bool _istemporary;
 
         public event Action PlaceChanged;
+        public event Action<Item> BuildItem;
 
         public bool IsObjectSelected { get; private set; } = false;
 
@@ -164,6 +165,7 @@ namespace Dragger
                         _selectedObject.Activation();
                         _selectedObject.GetComponent<ItemAnimation>().PositioningAnimation();
                         PlaceChanged?.Invoke();
+                        BuildItem?.Invoke(_selectedObject);
                         itemPosition.DeliverObject(_selectedObject);
                         _selectedObject = null;
                         IsObjectSelected = false;
