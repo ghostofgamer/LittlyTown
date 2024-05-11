@@ -11,9 +11,9 @@ namespace UI.Buttons
         
         protected override void OnClick()
         {
-            _goalsCounter.CompleteGoal();
             _progressInfo.SetActive(false);
             _completeInfo.SetActive(true);
+            _goalsCounter.CompleteGoal();
         }
     }
 }
