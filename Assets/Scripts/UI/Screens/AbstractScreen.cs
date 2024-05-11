@@ -20,7 +20,7 @@ namespace UI.Screens
             _canvasGroup = GetComponent<CanvasGroup>();
         }
 
-        public void Open()
+        public virtual void Open()
         {
             if (_coroutine != null)
                 StopCoroutine(_coroutine);

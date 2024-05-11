@@ -3,22 +3,22 @@ using UnityEngine;
 namespace ItemContent
 {
     [RequireComponent(typeof(Item), typeof(Animator))]
-    public class ItemAnimation : MonoBehaviour
+    public class ItemAnimation : AbstractAnimation
     {
         private static readonly int Active = Animator.StringToHash("Active");
         private static readonly int Busy = Animator.StringToHash("Busy");
         private static readonly int Positioning = Animator.StringToHash("Positioning");
     
         private Item _item;
-        private Animator _animator;
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             _item = GetComponent<Item>();
-            _animator = GetComponent<Animator>();
 
             if (!_item.IsActive)
-                _animator.SetBool(Active, false);
+                Animator.SetBool(Active, false);
+
         }
 
         private void OnEnable()
@@ -35,22 +35,22 @@ namespace ItemContent
 
         private void OnStopAnimation()
         {
-            _animator.SetBool(Active, true);
+            Animator.SetBool(Active, true);
         }
     
         private void OnPlayAnimation()
         {
-            _animator.SetBool(Active, false);
+            Animator.SetBool(Active, false);
         }
 
         public void BusyPositionAnimation()
         {
-            _animator.SetTrigger(Busy);
+            Animator.SetTrigger(Busy);
         }
 
         public void PositioningAnimation()
         {
-            _animator.SetTrigger(Positioning); 
+            Animator.SetTrigger(Positioning); 
         }
     }
 }

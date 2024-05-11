@@ -1,3 +1,4 @@
+using GoalContent;
 using UI.Screens;
 using UnityEngine;
 
@@ -5,7 +6,7 @@ namespace UI.Buttons
 {
     public class ReturnGoalScreenGameLevelButton : AbstractButton
     {
-        [SerializeField] private GoalsScreen _goalsScreen;
+        [SerializeField] private AbstractScreen _goalsScreen;
         [SerializeField]private BlurScreen _blurScreen;
         
         protected override void OnClick()

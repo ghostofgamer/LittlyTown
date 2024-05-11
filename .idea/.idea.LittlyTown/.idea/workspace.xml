@@ -23,18 +23,12 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CountersContent/Goals.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CountersContent/Goals.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Dragger/ItemDragger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Dragger/ItemDragger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GoalContent/AbstractGoal.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GoalContent/AbstractGoal.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Merger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Merger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RemovalItems.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RemovalItems.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RoadGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RoadGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BulldozerButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BulldozerButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GoalContent/Goal.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GoalContent/Goal.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemContent/ItemAnimation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemContent/ItemAnimation.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ReturnGoalScreenGameLevelButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ReturnGoalScreenGameLevelButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/GoalScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/GoalsScreen.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/GoalScreen.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/GoalsScreen.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/AbstractScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/AbstractScreen.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/GoalsScreen.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/GoalsScreen.cs.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,10 +47,13 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ItemPositionContent/ItemPosition.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Buttons/AbstractButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Buttons/RotationButton.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GoalContent/GoalAnimation.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Buttons/GoalCompleteButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Test/PositionScaller.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enums/Items.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Road/EndRoad.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PositionMatcher.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Screens/GoalsScreen.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Screens/AbstractScreen.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Storage.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Test/MapGenerator.cs" root0="FORCE_HIGHLIGHTING" />
@@ -84,17 +81,12 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CountersContent/ScoreSlider.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ReplacementPosition.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Screens/GameLevelScreen.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/AbstractAnimation.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Road/AngularRoad.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/ItemContent/ItemStay.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/ItemContent/ItemAnimation1.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/ItemContent/ItemAnimation.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/ItemPositionContent/FinderPositions.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/AbstractButton.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BuldozerButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ReplaceButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ReplacePositionButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BulldozerButton.cs" />
@@ -107,14 +99,12 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ReturnGoalScreenGameLevelButt.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ReturnGoalScreenGameLevelButto.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GoalScreen.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ReturnGoalScreenGameLevelButton.cs" />
         <option value="$PROJECT_DIR$/Assets/LowHealth/Examples/ExampleScript_LowHealth.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/ItemScreen.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ItemButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/OpenButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/CloseButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/GameLevelScreen.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/AbstractScreen.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GoalContent/AbstractGoal.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enums/Items.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SpawnContent/Spawner.cs" />
@@ -138,8 +128,16 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/GoalContent/GoalMergeItem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/RoadGenerator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/RemovalItems.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GoalContent/GoalAnimation.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/AbstractAnimation.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ItemContent/ItemAnimation.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/GoalsCounter.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ReturnGoalScreenGameLevelButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GoalContent/GoalsCounter.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/AbstractScreen.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/GoalsScreen.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GoalContent/Goal.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/GoalCompleteButton.cs" />
       </list>
     </option>
   </component>
@@ -203,7 +201,8 @@
       <workItem from="1715241267867" duration="1848000" />
       <workItem from="1715265105194" duration="12000" />
       <workItem from="1715265145638" duration="2437000" />
-      <workItem from="1715322953306" duration="18139000" />
+      <workItem from="1715322953306" duration="18740000" />
+      <workItem from="1715414557685" duration="4591000" />
     </task>
     <servers />
   </component>

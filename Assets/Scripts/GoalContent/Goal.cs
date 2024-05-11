@@ -13,9 +13,9 @@ namespace GoalContent
         [SerializeField] private int _maxValue;
         [SerializeField] private Slider _slider;
         [SerializeField] private TMP_Text _progressText;
-        [SerializeField] private GoalsScreen _goalsScreen;
-        [SerializeField] private GameObject _progressInfo;
-        [SerializeField] private GameObject _completeInfo;
+        [SerializeField] private GoalsCounter _goalsCounter;
+        [SerializeField] private GameObject _sliderInfo;
+        [SerializeField] private GameObject _completeGoalButton;
 
         private int _reward;
         private int _scorePercentage;
@@ -28,15 +28,15 @@ namespace GoalContent
         public void StartGoal()
         {
             _currentValue = 0;
-            _completeInfo.SetActive(false);
-            _progressInfo.SetActive(true);
+            _completeGoalButton.SetActive(false);
+            _sliderInfo.SetActive(true);
             Show();
         }
 
         public void FinishGoal()
         {
-            _completeInfo.SetActive(true);
-            _progressInfo.SetActive(false);
+            _completeGoalButton.SetActive(true);
+            _sliderInfo.SetActive(false);
         }
 
         protected void ChangeValue(Item item)
@@ -50,7 +50,7 @@ namespace GoalContent
             if (_currentValue >= _maxValue)
             {
                 FinishGoal();
-                _goalsScreen.CompleteGoal();
+                // _goalsCounter.CompleteGoal();
             }
         }
 

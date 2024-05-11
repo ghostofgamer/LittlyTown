@@ -1,71 +1,32 @@
-using System.Collections.Generic;
+using System.Collections;
 using GoalContent;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace UI.Screens
 {
-    [RequireComponent(typeof(CanvasGroup))]
     public class GoalsScreen : AbstractScreen
     {
-        [SerializeField] private List<Goal> _goals = new List<Goal>();
+        [SerializeField] private GoalsCounter _goalsCounter;
 
-        private List<Goal> _currentGoals = new List<Goal>();
-        private List<Goal> _tempGoals = new List<Goal>();
-        private int _maxGoalsCompleted = 2;
-        private int _currentGoalsCompleted = 0;
+        private Coroutine _coroutine;
+        private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.1f);
 
-        private void Start()
+        public override void Open()
         {
-            if (_currentGoals.Count == 0)
-                InitializeGoals();
+            base.Open();
+
+            if (_coroutine != null)
+                StopCoroutine(_coroutine);
+
+            _coroutine = StartCoroutine(ShowGoals());
         }
 
-        public void CompleteGoal()
+        private IEnumerator ShowGoals()
         {
-            _currentGoalsCompleted++;
-
-            if (_currentGoalsCompleted >= _maxGoalsCompleted)
+            foreach (var goals in _goalsCounter.CurrentGoals)
             {
-                _currentGoalsCompleted = 0;
-                InitializeGoals();
-            }
-        }
-
-        private void InitializeGoals()
-        {
-            Debug.Log("Добавялем рандом задачи");
-            DeactivationGoals();
-            _currentGoals.Clear();
-            _tempGoals.Clear();
-
-            foreach (var goal in _goals)
-            {
-                _tempGoals.Add(goal);
-            }
-
-            for (int i = 0; i < _maxGoalsCompleted; i++)
-            {
-                int randomIndex = Random.Range(0, _tempGoals.Count);
-                _currentGoals.Add(_tempGoals[randomIndex]);
-                _tempGoals.RemoveAt(randomIndex);
-            }
-
-            ActivationGoals();
-        }
-
-        private void DeactivationGoals()
-        {
-            foreach (var goal in _goals)
-                goal.gameObject.SetActive(false);
-        }
-
-        private void ActivationGoals()
-        {
-            foreach (var goal in _currentGoals)
-            {
-                goal.gameObject.SetActive(true);
-                goal.StartGoal();
+                goals.GetComponent<GoalAnimation>().ShowGoal();
+                yield return _waitForSeconds;
             }
         }
     }
