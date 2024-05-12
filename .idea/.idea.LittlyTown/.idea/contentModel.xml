@@ -984,7 +984,9 @@
         <e p="Scenes" t="Include" />
         <e p="Scripts" t="Include">
           <e p="AbstractAnimation.cs" t="Include" />
+          <e p="ButtonResize.cs" t="Include" />
           <e p="CountersContent" t="Include">
+            <e p="GoldCounter.cs" t="Include" />
             <e p="ScoreCounter.cs" t="Include" />
             <e p="ScoreSlider.cs" t="Include" />
             <e p="VisualScore.cs" t="Include" />
@@ -1000,6 +1002,7 @@
           <e p="Enums" t="Include">
             <e p="Items.cs" t="Include" />
           </e>
+          <e p="FadeCanvas.cs" t="Include" />
           <e p="GoalContent" t="Include">
             <e p="Goal.cs" t="Include" />
             <e p="GoalAnimation.cs" t="Include" />
@@ -1025,6 +1028,7 @@
           </e>
           <e p="Merger.cs" t="Include" />
           <e p="MoveCounter.cs" t="Include" />
+          <e p="positionChecker.cs" t="Include" />
           <e p="PositionMatcher.cs" t="Include" />
           <e p="RemovalItems.cs" t="Include" />
           <e p="ReplacementPosition.cs" t="Include" />
@@ -1045,12 +1049,15 @@
             <e p="PositionScaller.cs" t="Include" />
             <e p="Territory.cs" t="Include" />
           </e>
+          <e p="TextWidthController.cs" t="Include" />
           <e p="UI" t="Include">
             <e p="Buttons" t="Include">
               <e p="AbstractButton.cs" t="Include" />
               <e p="BulldozerButton.cs" t="Include" />
+              <e p="BuyItemButton.cs" t="Include" />
               <e p="CloseButton.cs" t="Include" />
               <e p="GoalCompleteButton.cs" t="Include" />
+              <e p="GoldButton.cs" t="Include" />
               <e p="OpenButton.cs" t="Include" />
               <e p="ReplacementPositionButton.cs" t="Include" />
               <e p="ResumeButton.cs" t="Include" />
@@ -1061,10 +1068,16 @@
             <e p="Screens" t="Include">
               <e p="AbstractScreen.cs" t="Include" />
               <e p="BlurScreen.cs" t="Include" />
+              <e p="EndMoveScreen.cs" t="Include" />
               <e p="GameLevelScreen.cs" t="Include" />
               <e p="GoalsScreen.cs" t="Include" />
               <e p="ItemScreen.cs" t="Include" />
             </e>
+          </e>
+          <e p="Wallets" t="Include">
+            <e p="AbstractWallet.cs" t="Include" />
+            <e p="CrystalWallet.cs" t="Include" />
+            <e p="GoldWallet.cs" t="Include" />
           </e>
         </e>
         <e p="Sounds" t="Include" />

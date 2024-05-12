@@ -10,8 +10,13 @@ namespace UI.Buttons
         
         protected override void OnClick()
         {
+            Close();
+        }
+
+        public void Close()
+        {
             _abstractScreen.Close();
-            _blurScreen.BlurDeactivation();
+                        _blurScreen.BlurDeactivation();
         }
     }
 }

@@ -44,7 +44,7 @@ public class Spawner : MonoBehaviour
 
     public void OnCreateItem()
     {
-        if (!_moveCounter.IsThereMoves || _itemDragger.SelectedObject != null)
+        if (!_moveCounter.IsThereMoves || _itemDragger.SelectedObject != null || _itemDragger.TemporaryItem != null)
             return;
 
         if (_coroutine != null)
@@ -53,7 +53,7 @@ public class Spawner : MonoBehaviour
         StartCoroutine(CreateNewItem());
     }
 
-    private ItemPosition GetPosition()
+    public ItemPosition GetPosition()
     {
         List<ItemPosition> freePositions = _positions.Where(p => !p.GetComponent<ItemPosition>().IsBusy).ToList();
         int randomIndex = Random.Range(0, freePositions.Count);
@@ -67,7 +67,7 @@ public class Spawner : MonoBehaviour
         ItemPosition randomFreePosition = freePositions[randomIndex];
         return randomFreePosition;
     }
-
+    
     private IEnumerator CreateNewItem()
     {
         yield return _waitForSeconds;

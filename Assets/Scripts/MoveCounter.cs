@@ -12,7 +12,12 @@ public class MoveCounter : MonoBehaviour
     private float _maxValue = 300;
     private float _minValue = 0;
 
+    private int _targetStepProfit = 5;
+    private int _currentStep;
+
     public event Action MoveOver;
+
+    public event Action StepProfitMaded;
 
     public bool IsThereMoves => _moveCount > _minValue;
 
@@ -34,8 +39,9 @@ public class MoveCounter : MonoBehaviour
     private void OnCountChange()
     {
         _moveCount--;
+        TakeStepsProfit();
         _moveCount = Mathf.Clamp(_moveCount, _minValue, _maxValue);
-        
+
         if (_moveCount <= _minValue)
         {
             MoveOver?.Invoke();
@@ -47,5 +53,16 @@ public class MoveCounter : MonoBehaviour
     private void Show()
     {
         _moveCountText.text = _moveCount.ToString();
+    }
+
+    private void TakeStepsProfit()
+    {
+        _currentStep++;
+
+        if (_currentStep >= _targetStepProfit)
+        {
+            _currentStep = 0;
+            StepProfitMaded?.Invoke();
+        }
     }
 }

@@ -16,13 +16,29 @@ public class Storage : MonoBehaviour
     {
         if (_currentItem == null)
         {
-            _currentItem = _itemDragger.SelectedObject;
-            _currentItem.gameObject.SetActive(false);
-            _itemDragger.ClearItem();
-            _spawner.OnCreateItem();
-            _image.gameObject.SetActive(true);
-            _image.sprite = _currentItem.ItemDropDataSo.Icon;
-            
+            if (_itemDragger.TemporaryItem == null)
+            {
+                Debug.Log("Если null ");
+                _currentItem = _itemDragger.SelectedObject;
+                _currentItem.gameObject.SetActive(false);
+                _itemDragger.ClearItem();
+                _spawner.OnCreateItem();
+                _image.gameObject.SetActive(true);
+                _image.sprite = _currentItem.ItemDropDataSo.Icon;
+            }
+            else
+            {
+                Debug.Log("Если неее null ");
+                _currentItem = _itemDragger.SelectedObject;
+                _currentItem.gameObject.SetActive(false);
+                _itemDragger.ClearItem();
+                _itemDragger.SetItem(_itemDragger.TemporaryItem,_currentItem.ItemPosition);
+                _itemDragger.TemporaryItem.gameObject.SetActive(true);
+                _itemDragger.ClearTemporaryItem();
+                _image.gameObject.SetActive(true);
+                _image.sprite = _currentItem.ItemDropDataSo.Icon;
+            }
+
             Debug.Log("Если null " + _currentItem.name);
             // _itemDragger.SelectedObject.gameObject.SetActive(false);
         }
@@ -31,7 +47,7 @@ public class Storage : MonoBehaviour
             _temporaryItem = _itemDragger.SelectedObject;
             Debug.Log("Есть " + _temporaryItem.name);
             _temporaryItem.gameObject.SetActive(false);
-            _itemDragger.SetItem(_currentItem,_temporaryItem.ItemPosition);
+            _itemDragger.SetItem(_currentItem, _temporaryItem.ItemPosition);
             _currentItem.gameObject.SetActive(true);
             _image.sprite = _temporaryItem.ItemDropDataSo.Icon;
             _currentItem = _temporaryItem;

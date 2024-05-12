@@ -12,7 +12,9 @@ namespace ItemContent
         [SerializeField] private Item _nextItem;
         [SerializeField] private int _reward;
         [SerializeField] private ItemDropDataSO _itemDropDataSo;
-
+        [SerializeField] private bool _isHouse;
+        [SerializeField] private int _gold;
+        
         private bool _isActive;
 
         public event Action Activated;
@@ -25,6 +27,10 @@ namespace ItemContent
         public bool IsActive => _isActive;
 
         public Items ItemName => _itemName;
+
+        public bool IsHouse => _isHouse;
+
+        public int Gold => _gold;
 
         public ItemDropDataSO ItemDropDataSo => _itemDropDataSo;
 

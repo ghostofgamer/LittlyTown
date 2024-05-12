@@ -1,35 +1,36 @@
 using System.Collections;
+using UI.Screens;
 using UnityEngine;
 
 namespace EndGameContent
 {
-    public class EndGame : MonoBehaviour
+    public class EndGame : AbstractScreen
     {
         [SerializeField] private Spawner _spawner;
-        [SerializeField] private CanvasGroup _canvasGroup;
+        // [SerializeField] private CanvasGroup _canvasGroup;
 
-        private Coroutine _coroutine;
+        /*private Coroutine _coroutine;
         private float _elapsedTime;
-        private float _duration = 1f;
+        private float _duration = 1f;*/
 
         private void OnEnable()
         {
-            _spawner.PositionsFilled += OpenScreen;
+            _spawner.PositionsFilled += Open;
         }
 
         private void OnDisable()
         {
-            _spawner.PositionsFilled -= OpenScreen;
+            _spawner.PositionsFilled -= Open;
         }
 
-        private void Start()
+        /*private void Start()
         {
             _canvasGroup.alpha = 0;
             _canvasGroup.interactable = false;
             _canvasGroup.blocksRaycasts = false;
-        }
+        }*/
 
-        private void OpenScreen()
+        /*private void OpenScreen()
         {
             StartCoroutine(OpenEndScreen());
         }
@@ -49,6 +50,6 @@ namespace EndGameContent
             }
 
             _canvasGroup.alpha = 1;
-        }
+        }*/
     }
 }

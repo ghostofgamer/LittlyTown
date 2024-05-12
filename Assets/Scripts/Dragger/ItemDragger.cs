@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using ItemContent;
 using ItemPositionContent;
@@ -8,6 +9,8 @@ namespace Dragger
 {
     public class ItemDragger : MonoBehaviour
     {
+        [SerializeField] private Spawner _spawner;
+
         private ItemPositionLooker _itemPositionLooker;
         private ItemPosition _startPosition;
         private Item _selectedObject;
@@ -30,7 +33,7 @@ namespace Dragger
         public Item SelectedObject => _selectedObject;
 
         public int LayerMask => _layerMask;
-        
+
         public Item TemporaryItem => _temporaryItem;
 
         private void Start()
@@ -38,6 +41,21 @@ namespace Dragger
             _layerMask = 1 << _layer;
             _layerMask = ~_layerMask;
             _itemPositionLooker = GetComponent<ItemPositionLooker>();
+        }
+
+        public void SetTemporaryItem(Item item)
+        {
+            _temporaryItem = _selectedObject;
+            _temporaryItem.gameObject.SetActive(false);
+            SetItem(item, _startPosition);
+            _selectedObject.gameObject.SetActive(true);
+            Debug.Log("Temporary " + _temporaryItem);
+            Debug.Log("_selectedObject " + _selectedObject);
+        }
+        
+        public void ClearTemporaryItem()
+        {
+            _temporaryItem = null;
         }
 
         public void DeactivateItem()
@@ -167,7 +185,30 @@ namespace Dragger
                         PlaceChanged?.Invoke();
                         BuildItem?.Invoke(_selectedObject);
                         itemPosition.DeliverObject(_selectedObject);
+                        Debug.Log("ДО " + _temporaryItem);
                         _selectedObject = null;
+                        Debug.Log("После " + _temporaryItem);
+
+                        StartCoroutine(Continue(itemPosition));
+                        /*if (_temporaryItem != null)
+                        {
+                            if (itemPosition == _startPosition)
+                            {
+                                ItemPosition newPosition = _spawner.GetPosition();
+                                SetItem(_temporaryItem, newPosition);
+                                Debug.Log("ЗАНЯТА " +  newPosition.name);
+                            }
+                            else
+                            {
+                                Debug.Log("СВОБОДНА");
+                                SetItem(_temporaryItem, _startPosition);
+                            }
+
+                            // _selectedObject = _temporaryItem;
+                            _temporaryItem = null;
+                            _selectedObject.gameObject.SetActive(true);
+                        }*/
+
                         IsObjectSelected = false;
                         IsPositionSelected = false;
                     }
@@ -196,6 +237,34 @@ namespace Dragger
             IsObjectSelected = false;
             IsPositionSelected = false;
             _startPosition.GetComponent<VisualItemPosition>().ActivateVisual();
+        }
+
+        private IEnumerator Continue(ItemPosition itemPosition)
+        {
+            yield return new WaitForSeconds(0.1f);
+            if (_temporaryItem != null)
+            {
+                if (itemPosition == _startPosition)
+                {
+                    ItemPosition newPosition = _spawner.GetPosition();
+                    if (newPosition != null)
+                    {
+                        SetItem(_temporaryItem, newPosition);
+                                            
+                    }
+
+                    Debug.Log("ЗАНЯТА ");
+                }
+                else
+                {
+                    Debug.Log("СВОБОДНА");
+                    SetItem(_temporaryItem, _startPosition);
+                }
+
+                // _selectedObject = _temporaryItem;
+                _temporaryItem = null;
+                _selectedObject.gameObject.SetActive(true);
+            }
         }
     }
 }

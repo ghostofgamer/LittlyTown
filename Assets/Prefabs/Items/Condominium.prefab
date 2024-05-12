@@ -1694,6 +1694,9 @@ MonoBehaviour:
   _itemName: 9
   _nextItem: {fileID: 0}
   _reward: 10
+  _itemDropDataSo: {fileID: 0}
+  _isHouse: 1
+  _gold: 5
 --- !u!54 &1322258602243795081
 Rigidbody:
   m_ObjectHideFlags: 0

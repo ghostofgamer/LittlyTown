@@ -76,6 +76,9 @@ MonoBehaviour:
   _itemName: 5
   _nextItem: {fileID: 5618188237412716214, guid: 476473cf5d6da6243bb7a1cb2580c84e, type: 3}
   _reward: 10
+  _itemDropDataSo: {fileID: 0}
+  _isHouse: 1
+  _gold: 1
 --- !u!54 &6396345271058118643
 Rigidbody:
   m_ObjectHideFlags: 0
