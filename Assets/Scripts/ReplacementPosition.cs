@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using CountersContent;
 using Dragger;
 using ItemContent;
 using ItemPositionContent;
@@ -10,10 +11,10 @@ using UnityEngine;
 public class ReplacementPosition : MonoBehaviour
 {
     [SerializeField] private PositionMatcher _positionMatcher;
-    [SerializeField] private ReplacementPositionButton _replacementPositionButton;
     [SerializeField] private ReplacementButton _replacementButton;
     [SerializeField] private ItemDragger _itemDragger;
-
+    [SerializeField]private PossibilitiesCounter _positionsCounter;
+    
     private bool _isWorking;
     private bool _isLooking;
     private int _layerMask;
@@ -33,17 +34,13 @@ public class ReplacementPosition : MonoBehaviour
 
     private void OnEnable()
     {
-        _replacementPositionButton.ReplaceActivated += ActivateWork;
         _replacementButton.ReplaceActivated += ActivateWork;
-        _replacementPositionButton.ReplaceDeactivated += DeactivateWork;
         _replacementButton.ReplaceDeactivated += DeactivateWork;
     }
 
     private void OnDisable()
     {
-        _replacementPositionButton.ReplaceActivated -= ActivateWork;
         _replacementButton.ReplaceActivated -= ActivateWork;
-        _replacementPositionButton.ReplaceDeactivated -= DeactivateWork;
         _replacementButton.ReplaceDeactivated -= DeactivateWork;
     }
 
@@ -104,7 +101,7 @@ public class ReplacementPosition : MonoBehaviour
         {
             if (hit.transform.gameObject.TryGetComponent(out ItemPosition itemPosition))
             {
-                if (!_firstSelect && itemPosition.IsBusy)
+                if (!_firstSelect && itemPosition.IsBusy && itemPosition.Item != null)
                 {
                     _firstSelect = true;
                     _firstItemPosition = itemPosition;
@@ -114,14 +111,14 @@ public class ReplacementPosition : MonoBehaviour
                     _firstItem.ClearPosition();
                     _firstItem.transform.position = position;
                 }
-                
+
                 if (_firstSelect && itemPosition != _firstItemPosition)
                 {
                     if (itemPosition.IsWater)
                         yield break;
-              
+
                     _secondItemPosition = itemPosition;
-                    
+
                     if (itemPosition.Item != null)
                     {
                         _secondItem = itemPosition.Item;
@@ -137,6 +134,7 @@ public class ReplacementPosition : MonoBehaviour
                         _firstItemPosition = null;
                         yield return null;
                         PositionsChanged?.Invoke();
+                        _positionsCounter.RemoveFeature();
                     }
                     else
                     {
@@ -150,8 +148,9 @@ public class ReplacementPosition : MonoBehaviour
                         _firstItemPosition = null;
                         yield return null;
                         PositionsChanged?.Invoke();
+                        _positionsCounter.RemoveFeature();
                     }
-                    
+
                     /*
                     _firstSelect = false;
                     _firstItem = null;
@@ -188,8 +187,7 @@ public class ReplacementPosition : MonoBehaviour
             _firstItem = null;
             _firstItemPosition = null;
         }
-           
-                
+
         _isWorking = false;
         // _itemDragger.ActivateItem();
     }

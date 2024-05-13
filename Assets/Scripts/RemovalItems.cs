@@ -1,17 +1,15 @@
 using System;
 using System.Collections;
-using Dragger;
+using CountersContent;
 using ItemContent;
 using ItemPositionContent;
-using UI.Buttons;
 using UI.Buttons.BonusesContent;
 using UnityEngine;
 
 public class RemovalItems : MonoBehaviour
 {
-    [SerializeField] private BulldozerButton _bulldozerButton;
     [SerializeField] private DeleteButton _deleteButton;
-    [SerializeField] private ItemDragger _itemDragger;
+[SerializeField]private PossibilitiesCounter _positionsCounter;
 
     private bool _isWorking;
     private bool _isLooking;
@@ -25,17 +23,13 @@ public class RemovalItems : MonoBehaviour
     
     private void OnEnable()
     {
-        _bulldozerButton.RemovalActivated += ActivateWork;
         _deleteButton.RemovalActivated += ActivateWork;
-        _bulldozerButton.RemovalDeactivated += DeactivateWork;
         _deleteButton.RemovalDeactivated += DeactivateWork;
     }
 
     private void OnDisable()
     {
         _deleteButton.RemovalActivated -= ActivateWork;
-        _bulldozerButton.RemovalActivated -= ActivateWork;
-        _bulldozerButton.RemovalDeactivated -= DeactivateWork;
         _deleteButton.RemovalDeactivated -= DeactivateWork;
     }
 
@@ -102,6 +96,7 @@ public class RemovalItems : MonoBehaviour
                 itemPosition.Item.gameObject.SetActive(false);
                 itemPosition.ClearingPosition();
                 yield return null;
+                _positionsCounter.RemoveFeature();
                 Removed?.Invoke();
             }
         }
@@ -110,12 +105,10 @@ public class RemovalItems : MonoBehaviour
     private void ActivateWork()
     {
         _isWorking = true;
-        // _itemDragger.DeactivateItem();
     }
 
     private void DeactivateWork()
     {
         _isWorking = false;
-        // _itemDragger.ActivateItem();
     }
 }

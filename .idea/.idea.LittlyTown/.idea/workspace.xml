@@ -23,15 +23,15 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CountersContent/ScoreCounter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CountersContent/ScoreCounter.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Dragger/ItemDragger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Dragger/ItemDragger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EndGameContent/EndGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EndGameContent/EndGame.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GoalContent/GoalsCounter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GoalContent/GoalsCounter.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/RemovalItems.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RemovalItems.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ReplacementPosition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ReplacementPosition.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TextWidthController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TextWidthController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/CloseButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/CloseButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/OpenButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/OpenButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/AbstractScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/AbstractScreen.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BonusesContent/AdditionalFeaturesButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BonusesContent/AdditionalPossibilitiesButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BonusesContent/AdditionalFeaturesButton.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BonusesContent/AdditionalPossibilitiesButton.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BonusesContent/DeleteButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BonusesContent/DeleteButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BonusesContent/ReplacementButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BonusesContent/ReplacementButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +45,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PositionChecker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Blur.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CountersContent/GoldCounter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/CountersContent/PossibilitiesCounter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Screens/EndScoreScreen.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/FadeCanvas.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Buttons/GoalCompleteButton.cs" root0="FORCE_HIGHLIGHTING" />
@@ -102,18 +103,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/CountersContent/GoalContent/Goal.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GoalContent/GoalRemovalItem.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GoalContent/GoalBuildItem.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GoalContent/GoalMergeItem.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/RoadGenerator.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GoalContent/GoalAnimation.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/AbstractAnimation.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/ItemContent/ItemAnimation.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/GoalsCounter.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ReturnGoalScreenGameLevelButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/GoalsScreen.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GoalContent/GoalsCounter.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/GoalCompleteButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GoalContent/Goal.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Storage.cs" />
@@ -146,12 +137,22 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/EndScoreScreen.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BonusFeaturesButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BonusesContent/additionalFeaturesButton.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Dragger/ItemDragger.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/RemovalItems.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BulldozerButton.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BonusesContent/AdditionalFeaturesButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BonusesContent/DeleteButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BonusesContent/ReplacementButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GoalContent/GoalsCounter.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ItemContent/ItemAnimation.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/BonusShopScreen.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/BonusShopContent/FeaturesShopScreen.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/CountersContent/Feature.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/CountersContent/FeatureCounter.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/FeaturesShopContent/FeaturesShopScreen.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BonusesContent/AdditionalFeaturesButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BonusesContent/AdditionalPossibilitiesButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/FeaturesShopContent/PossibilitiesShopScreen.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Dragger/ItemDragger.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/RemovalItems.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/CountersContent/PossibilitiesCounter.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ReplacementPosition.cs" />
       </list>
     </option>
@@ -222,7 +223,7 @@
       <workItem from="1715524216468" duration="3850000" />
       <workItem from="1715589996787" duration="6352000" />
       <workItem from="1715596894623" duration="22000" />
-      <workItem from="1715596943316" duration="4568000" />
+      <workItem from="1715596943316" duration="10897000" />
     </task>
     <servers />
   </component>

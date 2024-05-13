@@ -35,7 +35,7 @@ namespace GoalContent
 
         private void InitializeGoals()
         {
-            Debug.Log("Добавялем рандом задачи");
+            // Debug.Log("Добавялем рандом задачи");
             DeactivationGoals();
             _currentGoals.Clear();
             _tempGoals.Clear();
@@ -65,7 +65,7 @@ namespace GoalContent
         {
             foreach (var goal in _currentGoals)
             {
-                Debug.Log("открыли");
+                // Debug.Log("открыли");
                 goal.gameObject.SetActive(true);
                 goal.StartGoal();
                 goal.GetComponent<GoalAnimation>().ShowGoal();

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace UI.Buttons.BonusesContent
 {
-    public class DeleteButton : AdditionalFeaturesButton
+    public class DeleteButton : AdditionalPossibilitiesButton
     {
         [SerializeField] private RemovalItems _removalItems;
         

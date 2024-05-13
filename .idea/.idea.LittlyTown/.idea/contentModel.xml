@@ -994,6 +994,7 @@
           <e p="ButtonResize.cs" t="Include" />
           <e p="CountersContent" t="Include">
             <e p="GoldCounter.cs" t="Include" />
+            <e p="PossibilitiesCounter.cs" t="Include" />
             <e p="ScoreCounter.cs" t="Include" />
             <e p="ScoreSlider.cs" t="Include" />
             <e p="VisualScore.cs" t="Include" />
@@ -1061,7 +1062,7 @@
             <e p="Buttons" t="Include">
               <e p="AbstractButton.cs" t="Include" />
               <e p="BonusesContent" t="Include">
-                <e p="additionalFeaturesButton.cs" t="Include" />
+                <e p="AdditionalPossibilitiesButton.cs" t="Include" />
                 <e p="DeleteButton.cs" t="Include" />
                 <e p="ReplacementButton.cs" t="Include" />
               </e>
@@ -1085,6 +1086,9 @@
               <e p="GameLevelScreen.cs" t="Include" />
               <e p="GoalsScreen.cs" t="Include" />
               <e p="ItemScreen.cs" t="Include" />
+              <e p="PossibilitiesShopContent" t="Include">
+                <e p="PossibilitiesShopScreen.cs" t="Include" />
+              </e>
             </e>
           </e>
           <e p="Wallets" t="Include">

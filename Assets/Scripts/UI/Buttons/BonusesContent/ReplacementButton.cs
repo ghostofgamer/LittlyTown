@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace UI.Buttons.BonusesContent
 {
-    public class ReplacementButton : AdditionalFeaturesButton
+    public class ReplacementButton : AdditionalPossibilitiesButton
     {
         [SerializeField] private ReplacementPosition _replacementPosition;
         

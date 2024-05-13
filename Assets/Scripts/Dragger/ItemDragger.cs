@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using ItemContent;
 using ItemPositionContent;
 using UnityEngine;
@@ -57,29 +56,6 @@ namespace Dragger
         {
             _temporaryItem = null;
         }
-
-        /*public void DeactivateItem()
-        {
-            _istemporary = true;
-            _temporaryItem = _selectedObject;
-            _selectedObject.gameObject.SetActive(false);
-            _selectedObject = null;
-            _startPosition.GetComponent<VisualItemPosition>().DeactivateVisual();
-        }
-
-        public void ActivateItem()
-        {
-            if (_temporaryItem == null)
-                return;
-
-            // _temporaryItem.gameObject.SetActive(true);
-            _selectedObject = _temporaryItem;
-            _temporaryItem = null;
-            _selectedObject.gameObject.SetActive(true);
-            _istemporary = false;
-            SetItem(_selectedObject, _startPosition);
-            // _temporaryItem = null;
-        }*/
 
         public void SetItem(Item item, ItemPosition itemPosition)
         {
@@ -185,9 +161,9 @@ namespace Dragger
                         PlaceChanged?.Invoke();
                         BuildItem?.Invoke(_selectedObject);
                         itemPosition.DeliverObject(_selectedObject);
-                        Debug.Log("ДО " + _temporaryItem);
+                        // Debug.Log("ДО " + _temporaryItem);
                         _selectedObject = null;
-                        Debug.Log("После " + _temporaryItem);
+                        // Debug.Log("После " + _temporaryItem);
 
                         StartCoroutine(Continue(itemPosition));
                         /*if (_temporaryItem != null)

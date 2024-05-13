@@ -1,12 +1,14 @@
+using CountersContent;
 using Dragger;
 using ItemContent;
 using ItemPositionContent;
+using UI.Screens.FeaturesShopContent;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace UI.Buttons.BonusesContent
 {
-    public class AdditionalFeaturesButton : AbstractButton
+    public class AdditionalPossibilitiesButton : AbstractButton
     {
         [SerializeField] private OpenButton _openItemStoreButton;
         [SerializeField] private ItemDragger _itemDragger;
@@ -16,7 +18,9 @@ namespace UI.Buttons.BonusesContent
         [SerializeField] private Sprite _blackIcon;
         [SerializeField] private Sprite _activatedImage;
         [SerializeField] private Sprite _notActivatedImage;
-        [SerializeField] private AdditionalFeaturesButton _additionalFeaturesButton;
+        [SerializeField] private AdditionalPossibilitiesButton _additionalPossibilitiesButton;
+        [SerializeField] private PossibilitiesCounter _possibilitiesCounter;
+        [SerializeField] private PossibilitiesShopScreen _possibilitiesShopScreen;
 
         private Item _temporaryItem;
         private ItemPosition _itemPosition;
@@ -28,25 +32,29 @@ namespace UI.Buttons.BonusesContent
         {
             _isActivated = !_isActivated;
 
-            if (_additionalFeaturesButton.IsActivated)
-                _additionalFeaturesButton.Deactivation();
-            
-            if (_isActivated)
+            if (_additionalPossibilitiesButton.IsActivated)
+                _additionalPossibilitiesButton.Deactivation();
+
+            if (_possibilitiesCounter.PossibilitiesCount > 0)
             {
-                Activation();
+                if (_isActivated)
+                {
+                    Activation();
+                }
+                else
+                {
+                    Deactivation();
+                }
             }
             else
             {
-                Deactivation();
+                _possibilitiesShopScreen.Open();
             }
         }
 
-        /*public virtual void Click()
-        {
-        }*/
-
         protected virtual void Activation()
         {
+            _openItemStoreButton.enabled = false;
             SetSprite(_blackIcon, _activatedImage);
             SaveTemporaryItem();
         }
@@ -59,6 +67,10 @@ namespace UI.Buttons.BonusesContent
 
         protected virtual void Deactivation()
         {
+            if (_temporaryItem == null)
+                return;
+            
+            _openItemStoreButton.enabled = true;
             _isActivated = false;
             ReturnItem();
             SetSprite(_whiteIcon, _notActivatedImage);
