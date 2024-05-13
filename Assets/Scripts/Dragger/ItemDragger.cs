@@ -58,7 +58,7 @@ namespace Dragger
             _temporaryItem = null;
         }
 
-        public void DeactivateItem()
+        /*public void DeactivateItem()
         {
             _istemporary = true;
             _temporaryItem = _selectedObject;
@@ -79,7 +79,7 @@ namespace Dragger
             _istemporary = false;
             SetItem(_selectedObject, _startPosition);
             // _temporaryItem = null;
-        }
+        }*/
 
         public void SetItem(Item item, ItemPosition itemPosition)
         {

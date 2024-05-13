@@ -741,6 +741,10 @@
             </e>
             <e p="Textures" t="Include" />
           </e>
+          <e p="low-poly-lighthouse" t="Include">
+            <e p="source" t="Include" />
+            <e p="Textures" t="Include" />
+          </e>
           <e p="LowPolyNature" t="Include">
             <e p="Animation" t="Include" />
             <e p="docs" t="Include" />
@@ -981,9 +985,12 @@
             </e>
           </e>
         </e>
-        <e p="Scenes" t="Include" />
+        <e p="Scenes" t="Include">
+          <e p="SampleScene_Profiles" t="Include" />
+        </e>
         <e p="Scripts" t="Include">
           <e p="AbstractAnimation.cs" t="Include" />
+          <e p="Blur.cs" t="Include" />
           <e p="ButtonResize.cs" t="Include" />
           <e p="CountersContent" t="Include">
             <e p="GoldCounter.cs" t="Include" />
@@ -1053,6 +1060,11 @@
           <e p="UI" t="Include">
             <e p="Buttons" t="Include">
               <e p="AbstractButton.cs" t="Include" />
+              <e p="BonusesContent" t="Include">
+                <e p="additionalFeaturesButton.cs" t="Include" />
+                <e p="DeleteButton.cs" t="Include" />
+                <e p="ReplacementButton.cs" t="Include" />
+              </e>
               <e p="BulldozerButton.cs" t="Include" />
               <e p="BuyItemButton.cs" t="Include" />
               <e p="CloseButton.cs" t="Include" />
@@ -1069,6 +1081,7 @@
               <e p="AbstractScreen.cs" t="Include" />
               <e p="BlurScreen.cs" t="Include" />
               <e p="EndMoveScreen.cs" t="Include" />
+              <e p="EndScoreScreen.cs" t="Include" />
               <e p="GameLevelScreen.cs" t="Include" />
               <e p="GoalsScreen.cs" t="Include" />
               <e p="ItemScreen.cs" t="Include" />

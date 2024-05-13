@@ -22,6 +22,8 @@ namespace CountersContent
 
         public event Action<int, int> ScoreChanged;
 
+        public event Action LevelChanged;
+        
         private void OnEnable()
         {
             _merger.Merged += AddIncome;
@@ -59,6 +61,7 @@ namespace CountersContent
             if (_currentScore >= _targetScore)
             {
                 NextGoal();
+                LevelChanged?.Invoke();
             }
 
             _scoreIncome = 0;

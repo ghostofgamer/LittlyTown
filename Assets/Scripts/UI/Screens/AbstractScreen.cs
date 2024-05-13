@@ -9,9 +9,10 @@ namespace UI.Screens
     {
         [SerializeField] private InputItemDragger _itemDragger;
         [SerializeField] private AbstractScreen _gameLevelScreen;
-
+        [SerializeField] private Blur _blur;
+        
         private CanvasGroup _canvasGroup;
-        private float _elapsedtime;
+        private float _elapsedTime;
         private float _duration = 1f;
         private Coroutine _coroutine;
 
@@ -30,8 +31,11 @@ namespace UI.Screens
             _coroutine = StartCoroutine(Fade(0, 1));
 
             if (_gameLevelScreen != null)
-                _gameLevelScreen.Close();
-
+            {
+                _blur.TurnOn();
+                 _gameLevelScreen.Close();
+            }
+            
             if (_itemDragger != null)
                 _itemDragger.enabled = false;
         }
@@ -46,7 +50,10 @@ namespace UI.Screens
             _canvasGroup.blocksRaycasts = false;
 
             if (_gameLevelScreen != null)
-                _gameLevelScreen.Open();
+            {
+                _blur.TurnOff();
+                 _gameLevelScreen.Open();
+            }
 
             if (_itemDragger != null)
                 _itemDragger.enabled = true;
@@ -54,12 +61,12 @@ namespace UI.Screens
 
         private IEnumerator Fade(float start, float end)
         {
-            _elapsedtime = 0f;
+            _elapsedTime = 0f;
 
-            while (_elapsedtime < _duration)
+            while (_elapsedTime < _duration)
             {
-                _canvasGroup.alpha = Mathf.Lerp(start, end, _elapsedtime / _duration);
-                _elapsedtime += Time.deltaTime;
+                _canvasGroup.alpha = Mathf.Lerp(start, end, _elapsedTime / _duration);
+                _elapsedTime += Time.deltaTime;
                 yield return null;
             }
 

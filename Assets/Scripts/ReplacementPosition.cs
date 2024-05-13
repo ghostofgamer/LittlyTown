@@ -4,12 +4,14 @@ using Dragger;
 using ItemContent;
 using ItemPositionContent;
 using UI.Buttons;
+using UI.Buttons.BonusesContent;
 using UnityEngine;
 
 public class ReplacementPosition : MonoBehaviour
 {
     [SerializeField] private PositionMatcher _positionMatcher;
     [SerializeField] private ReplacementPositionButton _replacementPositionButton;
+    [SerializeField] private ReplacementButton _replacementButton;
     [SerializeField] private ItemDragger _itemDragger;
 
     private bool _isWorking;
@@ -32,13 +34,17 @@ public class ReplacementPosition : MonoBehaviour
     private void OnEnable()
     {
         _replacementPositionButton.ReplaceActivated += ActivateWork;
+        _replacementButton.ReplaceActivated += ActivateWork;
         _replacementPositionButton.ReplaceDeactivated += DeactivateWork;
+        _replacementButton.ReplaceDeactivated += DeactivateWork;
     }
 
     private void OnDisable()
     {
         _replacementPositionButton.ReplaceActivated -= ActivateWork;
+        _replacementButton.ReplaceActivated -= ActivateWork;
         _replacementPositionButton.ReplaceDeactivated -= DeactivateWork;
+        _replacementButton.ReplaceDeactivated -= DeactivateWork;
     }
 
     private void Start()
@@ -100,7 +106,6 @@ public class ReplacementPosition : MonoBehaviour
             {
                 if (!_firstSelect && itemPosition.IsBusy)
                 {
-                    Debug.Log("Поднять");
                     _firstSelect = true;
                     _firstItemPosition = itemPosition;
                     _firstItem = itemPosition.Item;
@@ -170,12 +175,22 @@ public class ReplacementPosition : MonoBehaviour
     private void ActivateWork()
     {
         _isWorking = true;
-        _itemDragger.DeactivateItem();
+        // _itemDragger.DeactivateItem();
     }
 
     private void DeactivateWork()
     {
+        if (_firstSelect)
+        {
+            _firstItem.Init(_firstItemPosition);
+            _firstItem.transform.position = _firstItemPosition.transform.position;
+            _firstSelect = false;
+            _firstItem = null;
+            _firstItemPosition = null;
+        }
+           
+                
         _isWorking = false;
-        _itemDragger.ActivateItem();
+        // _itemDragger.ActivateItem();
     }
 }
