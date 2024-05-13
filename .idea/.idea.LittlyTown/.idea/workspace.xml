@@ -22,15 +22,17 @@
     <list default="true" id="099b8a6d-6b1c-4473-babb-d7d2ffb7e44f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/BulldozerButton.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/BulldozerButton.controller" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Dragger/ItemDragger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Dragger/ItemDragger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GoalContent/GoalsCounter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GoalContent/GoalsCounter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RemovalItems.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RemovalItems.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ReplacementPosition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ReplacementPosition.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BonusesContent/AdditionalFeaturesButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BonusesContent/AdditionalPossibilitiesButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BonusesContent/AdditionalFeaturesButton.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BonusesContent/AdditionalPossibilitiesButton.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BonusesContent/DeleteButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BonusesContent/DeleteButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BonusesContent/ReplacementButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BonusesContent/ReplacementButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BonusesContent.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BonusesContent/AdditionalPossibilitiesButton.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BonusesContent/AdditionalPossibilitiesButton.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BonusesContent/DeleteButton.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BonusesContent/DeleteButton.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BonusesContent/ReplacementButton.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BonusesContent/ReplacementButton.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/PossibilitiesShopContent/PossibilitiesShopScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/PossibilitiesShopContent/PossibilitiesShopScreen.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -43,19 +45,24 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PositionChecker.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/PossibilitieBulldozer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Blur.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CountersContent/GoldCounter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CountersContent/PossibilitiesCounter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Screens/EndScoreScreen.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/Possibilitie.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/PossibilitieReplace.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/FadeCanvas.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Buttons/GoalCompleteButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Test/PositionScaller.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Screens/GoalsScreen.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Screens/AbstractScreen.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Test/MapGenerator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Keeper/PriceKeeper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Road/RoadTile.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Screens/ItemScreen.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Buttons/OpenButton.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Buttons/PossibilitiesFiles/BuyPossibilitieButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Buttons/CloseButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ItemPositionContent/VisualItemPosition.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CountersContent/ScoreSlider.cs" root0="FORCE_HIGHLIGHTING" />
@@ -68,7 +75,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CountersContent/VisualScore.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Merger.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Wallets/GoldWallet.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BonusesContent/DeleteButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ItemPositionContent/ItemPosition.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Buttons/AbstractButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Buttons/RotationButton.cs" root0="FORCE_HIGHLIGHTING" />
@@ -103,12 +109,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ReturnGoalScreenGameLevelButton.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/GoalsScreen.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/GoalCompleteButton.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GoalContent/Goal.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Storage.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/CrystallWallet.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CrystaWallet.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CrystalWallet.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Wallets/GoldWallet.cs" />
@@ -150,10 +150,16 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BonusesContent/AdditionalFeaturesButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BonusesContent/AdditionalPossibilitiesButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/FeaturesShopContent/PossibilitiesShopScreen.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Dragger/ItemDragger.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/RemovalItems.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CountersContent/PossibilitiesCounter.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Dragger/ItemDragger.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ReplacementPosition.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/PossibilitieReplace.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/PossibilitieBulldozer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Keeper/PriceKeeper.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/PossibilitiesFiles/BuyPossibilitieButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/Possibilitie.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/PossibilitiesShopContent/PossibilitiesShopScreen.cs" />
       </list>
     </option>
   </component>
@@ -223,7 +229,7 @@
       <workItem from="1715524216468" duration="3850000" />
       <workItem from="1715589996787" duration="6352000" />
       <workItem from="1715596894623" duration="22000" />
-      <workItem from="1715596943316" duration="10897000" />
+      <workItem from="1715596943316" duration="18177000" />
     </task>
     <servers />
   </component>

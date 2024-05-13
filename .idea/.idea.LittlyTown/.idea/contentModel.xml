@@ -1034,10 +1034,18 @@
           <e p="ItemSO" t="Include">
             <e p="ItemDropDataSO.cs" t="Include" />
           </e>
+          <e p="Keeper" t="Include">
+            <e p="PriceKeeper.cs" t="Include" />
+          </e>
           <e p="Merger.cs" t="Include" />
           <e p="MoveCounter.cs" t="Include" />
           <e p="positionChecker.cs" t="Include" />
           <e p="PositionMatcher.cs" t="Include" />
+          <e p="PossibilitiesContent" t="Include">
+            <e p="Possibilitie.cs" t="Include" />
+            <e p="PossibilitieBulldozer.cs" t="Include" />
+            <e p="PossibilitieReplace.cs" t="Include" />
+          </e>
           <e p="RemovalItems.cs" t="Include" />
           <e p="ReplacementPosition.cs" t="Include" />
           <e p="Road" t="Include">
@@ -1061,17 +1069,18 @@
           <e p="UI" t="Include">
             <e p="Buttons" t="Include">
               <e p="AbstractButton.cs" t="Include" />
-              <e p="BonusesContent" t="Include">
-                <e p="AdditionalPossibilitiesButton.cs" t="Include" />
-                <e p="DeleteButton.cs" t="Include" />
-                <e p="ReplacementButton.cs" t="Include" />
-              </e>
               <e p="BulldozerButton.cs" t="Include" />
               <e p="BuyItemButton.cs" t="Include" />
               <e p="CloseButton.cs" t="Include" />
               <e p="GoalCompleteButton.cs" t="Include" />
               <e p="GoldButton.cs" t="Include" />
               <e p="OpenButton.cs" t="Include" />
+              <e p="PossibilitiesFiles" t="Include">
+                <e p="AdditionalPossibilitiesButton.cs" t="Include" />
+                <e p="BuyPossibilitieButton.cs" t="Include" />
+                <e p="DeleteButton.cs" t="Include" />
+                <e p="ReplacementButton.cs" t="Include" />
+              </e>
               <e p="ReplacementPositionButton.cs" t="Include" />
               <e p="ResumeButton.cs" t="Include" />
               <e p="ReturnGoalScreenGameLevelButton.cs" t="Include" />

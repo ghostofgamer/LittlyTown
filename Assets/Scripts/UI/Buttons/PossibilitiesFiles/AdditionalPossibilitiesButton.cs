@@ -2,7 +2,7 @@ using CountersContent;
 using Dragger;
 using ItemContent;
 using ItemPositionContent;
-using UI.Screens.FeaturesShopContent;
+using UI.Screens.PossibilitiesShopContent;
 using UnityEngine;
 using UnityEngine.UI;
 

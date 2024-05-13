@@ -138,7 +138,7 @@ public class ReplacementPosition : MonoBehaviour
                     }
                     else
                     {
-                        Debug.Log("Меняемся на пустое");
+                        // Debug.Log("Меняемся на пустое");
                         ChangePosition(_firstItem, _secondItemPosition);
                         _firstItemPosition.ClearingPosition();
                         yield return null;
