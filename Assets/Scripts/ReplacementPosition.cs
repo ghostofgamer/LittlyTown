@@ -134,7 +134,7 @@ public class ReplacementPosition : MonoBehaviour
                         _firstItemPosition = null;
                         yield return null;
                         PositionsChanged?.Invoke();
-                        _positionsCounter.RemoveFeature();
+                        _positionsCounter.DecreaseCount();
                     }
                     else
                     {
@@ -148,7 +148,7 @@ public class ReplacementPosition : MonoBehaviour
                         _firstItemPosition = null;
                         yield return null;
                         PositionsChanged?.Invoke();
-                        _positionsCounter.RemoveFeature();
+                        _positionsCounter.DecreaseCount();
                     }
 
                     /*

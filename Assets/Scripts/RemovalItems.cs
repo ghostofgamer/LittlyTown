@@ -9,7 +9,7 @@ using UnityEngine;
 public class RemovalItems : MonoBehaviour
 {
     [SerializeField] private DeleteButton _deleteButton;
-[SerializeField]private PossibilitiesCounter _positionsCounter;
+    [SerializeField] private PossibilitiesCounter _positionsCounter;
 
     private bool _isWorking;
     private bool _isLooking;
@@ -18,9 +18,9 @@ public class RemovalItems : MonoBehaviour
     private Coroutine _coroutine;
 
     public event Action Removed;
-    
+
     public event Action<Item> ItemRemoved;
-    
+
     private void OnEnable()
     {
         _deleteButton.RemovalActivated += ActivateWork;
@@ -96,7 +96,7 @@ public class RemovalItems : MonoBehaviour
                 itemPosition.Item.gameObject.SetActive(false);
                 itemPosition.ClearingPosition();
                 yield return null;
-                _positionsCounter.RemoveFeature();
+                _positionsCounter.DecreaseCount();
                 Removed?.Invoke();
             }
         }

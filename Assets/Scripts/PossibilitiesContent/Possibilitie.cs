@@ -19,13 +19,14 @@ namespace PossibilitiesContent
         private void Start()
         {
             _price = _startPrice;
+            PriceChanged?.Invoke(_price);
         }
 
         public virtual void IncreasePrice()
         {
             _price = Mathf.RoundToInt(_price * _priceMultiplier);
             PriceChanged?.Invoke(_price);
-            Debug.Log("Increase" + _price);
+            // Debug.Log("Increase" + _price);
         }
 
         public void SetPrice(int price)
@@ -34,7 +35,7 @@ namespace PossibilitiesContent
                 return;
 
             _price = price;
-            Debug.Log("Set" + _price);
+            // Debug.Log("Set" + _price);
             IncreasePrice();
         }
     }

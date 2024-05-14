@@ -49,6 +49,7 @@ namespace UI.Buttons.BonusesContent
             else
             {
                 _possibilitiesShopScreen.Open();
+                _isActivated = false;
             }
         }
 

@@ -8,12 +8,15 @@ namespace UI.Screens.PossibilitiesShopContent
     {
         [SerializeField] private Possibilitie _possibilitie;
         [SerializeField] private TMP_Text _priceText;
+        [SerializeField] private TMP_Text _currentAmountText;
 
         private int _currentPrice;
         private int _basePrice;
         private int _currentAmount = 1;
-        
+
         public int CurrentPrice => _currentPrice;
+
+        public int CurrentAmount => _currentAmount;
 
         private void OnEnable()
         {
@@ -35,6 +38,7 @@ namespace UI.Screens.PossibilitiesShopContent
         public override void Open()
         {
             base.Open();
+            _currentAmount = 1;
             _basePrice = _possibilitie.Price;
             _currentPrice = _basePrice;
             Show();
@@ -42,7 +46,8 @@ namespace UI.Screens.PossibilitiesShopContent
 
         private void Show()
         {
-            _priceText.text = _possibilitie.Price.ToString();
+            _priceText.text = _currentPrice.ToString();
+            _currentAmountText.text = _currentAmount.ToString();
         }
 
         private void ChangePrice(int price)
@@ -53,8 +58,11 @@ namespace UI.Screens.PossibilitiesShopContent
 
         public void IncreaseAmount()
         {
-            _currentAmount++;
-            UpdatePrice();
+            if (_currentAmount < 10)
+            {
+                _currentAmount++;
+                UpdatePrice();
+            }
         }
 
         public void DecreaseAmount()
@@ -69,7 +77,8 @@ namespace UI.Screens.PossibilitiesShopContent
         private void UpdatePrice()
         {
             _currentPrice = CalculateTotalPrice(_currentAmount);
-            _priceText.text = "Цена: " + _currentPrice + " монет";
+            Show();
+            // _priceText.text = "Цена: " + _currentPrice + " монет";
         }
 
         private int CalculateTotalPrice(int amount)

@@ -1044,6 +1044,7 @@
           <e p="PossibilitiesContent" t="Include">
             <e p="Possibilitie.cs" t="Include" />
             <e p="PossibilitieBulldozer.cs" t="Include" />
+            <e p="PossibilitieMovement.cs" t="Include" />
             <e p="PossibilitieReplace.cs" t="Include" />
           </e>
           <e p="RemovalItems.cs" t="Include" />
