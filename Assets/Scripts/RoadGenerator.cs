@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Dragger;
 using ItemContent;
 using ItemPositionContent;
 using UnityEngine;
@@ -12,6 +13,7 @@ public class RoadGenerator : MonoBehaviour
     [SerializeField] private Transform _container;
     [SerializeField]private RemovalItems _removalItems;
     [SerializeField] private ReplacementPosition _replacementPosition;
+    [SerializeField] private ItemDragger _itemDragger;
     
     [Header("Tiles")] [SerializeField] private ItemPosition _angularTileUpRight;
     [SerializeField] private ItemPosition _angularTileUpLeft;
@@ -36,6 +38,7 @@ public class RoadGenerator : MonoBehaviour
 
     private void OnEnable()
     {
+        _itemDragger.PlaceChanged += OnGeneration;
         _spawner.ItemCreated += OnGeneration;
         _removalItems.Removed += OnGeneration;
         _replacementPosition.PositionsChanged += OnGeneration;
@@ -44,6 +47,7 @@ public class RoadGenerator : MonoBehaviour
 
     private void OnDisable()
     {
+        _itemDragger.PlaceChanged -= OnGeneration;
         _spawner.ItemCreated -= OnGeneration;
         _removalItems.Removed -= OnGeneration;
         _replacementPosition.PositionsChanged -= OnGeneration;

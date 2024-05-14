@@ -152,15 +152,30 @@ namespace Dragger
             {
                 if (hit.transform.gameObject.TryGetComponent(out ItemPosition itemPosition))
                 {
-                    if (!itemPosition.IsBusy && !itemPosition.IsWater)
+                    if (!itemPosition.IsBusy && !itemPosition.IsWater&&!_selectedObject.IsLightHouse)
                     {
                         _selectedObject.transform.position = hit.transform.position;
                         _selectedObject.Init(itemPosition);
                         _selectedObject.Activation();
                         _selectedObject.GetComponent<ItemAnimation>().PositioningAnimation();
-                        PlaceChanged?.Invoke();
                         BuildItem?.Invoke(_selectedObject);
                         itemPosition.DeliverObject(_selectedObject);
+                        PlaceChanged?.Invoke();
+                        _selectedObject = null;
+                        StartCoroutine(Continue(itemPosition));
+                        IsObjectSelected = false;
+                        IsPositionSelected = false;
+                    }
+                    else if (!itemPosition.IsBusy && itemPosition.IsWater && _selectedObject.IsLightHouse)
+                    {
+                        Debug.Log("Water");
+                        _selectedObject.transform.position = hit.transform.position;
+                        _selectedObject.Init(itemPosition);
+                        _selectedObject.Activation();
+                        _selectedObject.GetComponent<ItemAnimation>().PositioningAnimation();
+                        BuildItem?.Invoke(_selectedObject);
+                        itemPosition.DeliverObject(_selectedObject);
+                        PlaceChanged?.Invoke();
                         _selectedObject = null;
                         StartCoroutine(Continue(itemPosition));
                         IsObjectSelected = false;
@@ -208,7 +223,6 @@ namespace Dragger
                         SetItem(_temporaryItem, newPosition);
                         _temporaryItem = null;
                         _selectedObject.gameObject.SetActive(true);
-                                            
                     }
 
                     Debug.Log("ЗАНЯТА ");

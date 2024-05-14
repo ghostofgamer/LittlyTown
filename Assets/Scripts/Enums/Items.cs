@@ -14,7 +14,7 @@ namespace Enums
         Stone,
         BigStone,
         GoldStone,
-        Chest
-        
+        Chest,
+        LightHouse
     }
 }

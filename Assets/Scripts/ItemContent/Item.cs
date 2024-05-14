@@ -13,6 +13,7 @@ namespace ItemContent
         [SerializeField] private int _reward;
         [SerializeField] private ItemDropDataSO _itemDropDataSo;
         [SerializeField] private bool _isHouse;
+        [SerializeField] private bool _isLightHouse;
         [SerializeField] private int _gold;
         
         private bool _isActive;
@@ -29,6 +30,8 @@ namespace ItemContent
         public Items ItemName => _itemName;
 
         public bool IsHouse => _isHouse;
+        
+        public bool IsLightHouse => _isLightHouse;
 
         public int Gold => _gold;
 

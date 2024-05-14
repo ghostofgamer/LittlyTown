@@ -26,13 +26,13 @@ namespace Keeper
         private void SavePriceBulldozer(int price)
         {
             _priceBulldozer = price;
-            Debug.Log("увеличили цену бульдозеров " + _priceBulldozer);
+            // Debug.Log("увеличили цену бульдозеров " + _priceBulldozer);
         }
         
         private void SavePriceReplace(int price)
         {
             _priceReplace = price;
-            Debug.Log("увеличили цену обмена " + _priceReplace);
+            // Debug.Log("увеличили цену обмена " + _priceReplace);
         }
     }
 }

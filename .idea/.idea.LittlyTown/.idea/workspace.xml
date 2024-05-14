@@ -20,12 +20,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="099b8a6d-6b1c-4473-babb-d7d2ffb7e44f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Dragger/ItemDragger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Dragger/ItemDragger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/PossibilitiesFiles/AdditionalPossibilitiesButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/PossibilitiesFiles/AdditionalPossibilitiesButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enums/Items.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enums/Items.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemContent/Item.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemContent/Item.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Keeper/PriceKeeper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Keeper/PriceKeeper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RoadGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RoadGenerator.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,9 +109,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/OpenButton.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/CloseButton.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/AbstractScreen.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/EndScoreScreen.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BonusFeaturesButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BonusesContent/additionalFeaturesButton.cs" />
@@ -130,7 +128,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/ReplacementPosition.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/PossibilitieReplace.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/PossibilitieBulldozer.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Keeper/PriceKeeper.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/PossibilitiesShopContent/PossibilitiesShopScreen.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/RemovalItems.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/PossibilitieMove.cs" />
@@ -142,7 +139,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Wallets/MoneyInfo.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/GameLevelScreen.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ADButtons/RewardMoveButton.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/MoveCounter.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/CompleteScoreScreen.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/RewardButtons/RewardBulldozerButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/RewardButtons/RewardReplaceButton.cs" />
@@ -158,6 +154,11 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/CancelMoveButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MoveCanceller.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/PossibilitiesFiles/AdditionalPossibilitiesButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enums/Items.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MoveCounter.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Keeper/PriceKeeper.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/RoadGenerator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ItemContent/Item.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Dragger/ItemDragger.cs" />
       </list>
     </option>
@@ -229,7 +230,7 @@
       <workItem from="1715589996787" duration="6352000" />
       <workItem from="1715596894623" duration="22000" />
       <workItem from="1715596943316" duration="18405000" />
-      <workItem from="1715668082856" duration="19204000" />
+      <workItem from="1715668082856" duration="22462000" />
     </task>
     <servers />
   </component>
