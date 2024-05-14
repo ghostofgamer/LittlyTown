@@ -45,12 +45,10 @@ public class ButtonResize : MonoBehaviour
             RectTransform buttonRectTransform = _button.GetComponent<RectTransform>();
             buttonRectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, target);
             LayoutRebuilder.ForceRebuildLayoutImmediate(buttonRectTransform);
-            Debug.Log("DONTLeft");
+          
         }
         else
         {
-            Debug.Log("Left");
-
             RectTransform buttonRectTransform = _button.GetComponent<RectTransform>();
             
             // Сохраняем текущую позицию кнопки относительно левого края экрана

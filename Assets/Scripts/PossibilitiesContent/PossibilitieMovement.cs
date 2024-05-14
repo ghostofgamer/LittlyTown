@@ -18,11 +18,13 @@ namespace PossibilitiesContent
         private Vector3 _jumpPosition;
         private Coroutine _coroutine;
         private CanvasGroup _canvasGroup;
+        
         public event Action<int> MovementCompleted;
 
         private void Start()
         {
             _targetPosition = _targetPossibilitie.localPosition;
+            Debug.Log("PossibilitytargetPosition " + _targetPosition);
             // _jumpPosition = _startPosition + Vector3.up * _jumpHeight;
             _jumpPosition = _startPosition + new Vector3(1,1,0) * _jumpHeight;
             _canvasGroup = GetComponent<CanvasGroup>();

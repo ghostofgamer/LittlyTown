@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace UI.Screens
 {
-    public class EndScoreScreen : AbstractScreen
+    public class CompleteScoreScreen : AbstractScreen
     {
         [SerializeField] private ScoreCounter _scoreCounter;
 

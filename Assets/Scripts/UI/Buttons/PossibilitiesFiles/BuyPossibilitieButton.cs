@@ -34,7 +34,7 @@ namespace UI.Buttons.PossibilitiesFiles
             if (_goldWallet.CurrentValue < _possibilitiesShopScreen.CurrentPrice)
                 return;
 
-            _goldWallet.Buy(_possibilitiesShopScreen.CurrentPrice);
+            _goldWallet.DecreaseValue(_possibilitiesShopScreen.CurrentPrice);
             _closeButton.Close();
             _possibilitieMovement.StartMove(_possibilitiesShopScreen.CurrentAmount);
 

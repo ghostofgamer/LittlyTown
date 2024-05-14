@@ -36,7 +36,7 @@ namespace CountersContent
         private void AddGold()
         {
             if (_profit > 0)
-                _goldWallet.AddValue(_profit);
+                _goldWallet.IncreaseValue(_profit);
         }
 
         private void ChangeProfit(Item item)

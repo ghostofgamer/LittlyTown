@@ -27,7 +27,7 @@ namespace UI.Buttons
             if (_goldWallet.CurrentValue < _price)
                 return;
             
-            _goldWallet.Buy(_price);
+            _goldWallet.DecreaseValue(_price);
             Item item = Instantiate(_item, _container);
             _closeButton.Close();
             _itemDragger.SetTemporaryItem(item);

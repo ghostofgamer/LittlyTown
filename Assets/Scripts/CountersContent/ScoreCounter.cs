@@ -15,7 +15,7 @@ namespace CountersContent
         [SerializeField] private DropGenerator _dropGenerator;
 
         private int _currentScore;
-        private int _targetScore = 100;
+        private int _targetScore = 50;
         private int _scoreIncome = 0;
         private Vector3 _targetPosition;
         private string _scoreText= "гол {0} очков";
