@@ -21,6 +21,7 @@ namespace UI.Buttons.BonusesContent
         [SerializeField] private AdditionalPossibilitiesButton _additionalPossibilitiesButton;
         [SerializeField] private PossibilitiesCounter _possibilitiesCounter;
         [SerializeField] private PossibilitiesShopScreen _possibilitiesShopScreen;
+        [SerializeField] private PositionMatcher _positionMatcher;
 
         private Item _temporaryItem;
         private ItemPosition _itemPosition;
@@ -39,6 +40,7 @@ namespace UI.Buttons.BonusesContent
             {
                 if (_isActivated)
                 {
+                    _positionMatcher.StopMoveMatch();
                     Activation();
                 }
                 else

@@ -1039,6 +1039,7 @@
             <e p="PriceKeeper.cs" t="Include" />
           </e>
           <e p="Merger.cs" t="Include" />
+          <e p="MoveCanceller.cs" t="Include" />
           <e p="MoveCounter.cs" t="Include" />
           <e p="positionChecker.cs" t="Include" />
           <e p="PositionMatcher.cs" t="Include" />
@@ -1076,6 +1077,7 @@
               </e>
               <e p="BulldozerButton.cs" t="Include" />
               <e p="BuyItemButton.cs" t="Include" />
+              <e p="CancelMoveButton.cs" t="Include" />
               <e p="CloseButton.cs" t="Include" />
               <e p="GoalCompleteButton.cs" t="Include" />
               <e p="GoldButton.cs" t="Include" />

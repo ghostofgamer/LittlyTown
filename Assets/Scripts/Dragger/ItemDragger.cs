@@ -161,30 +161,8 @@ namespace Dragger
                         PlaceChanged?.Invoke();
                         BuildItem?.Invoke(_selectedObject);
                         itemPosition.DeliverObject(_selectedObject);
-                        // Debug.Log("ДО " + _temporaryItem);
                         _selectedObject = null;
-                        // Debug.Log("После " + _temporaryItem);
-
                         StartCoroutine(Continue(itemPosition));
-                        /*if (_temporaryItem != null)
-                        {
-                            if (itemPosition == _startPosition)
-                            {
-                                ItemPosition newPosition = _spawner.GetPosition();
-                                SetItem(_temporaryItem, newPosition);
-                                Debug.Log("ЗАНЯТА " +  newPosition.name);
-                            }
-                            else
-                            {
-                                Debug.Log("СВОБОДНА");
-                                SetItem(_temporaryItem, _startPosition);
-                            }
-
-                            // _selectedObject = _temporaryItem;
-                            _temporaryItem = null;
-                            _selectedObject.gameObject.SetActive(true);
-                        }*/
-
                         IsObjectSelected = false;
                         IsPositionSelected = false;
                     }
@@ -218,14 +196,18 @@ namespace Dragger
         private IEnumerator Continue(ItemPosition itemPosition)
         {
             yield return new WaitForSeconds(0.1f);
+            
             if (_temporaryItem != null)
             {
                 if (itemPosition == _startPosition)
                 {
                     ItemPosition newPosition = _spawner.GetPosition();
+                    
                     if (newPosition != null)
                     {
                         SetItem(_temporaryItem, newPosition);
+                        _temporaryItem = null;
+                        _selectedObject.gameObject.SetActive(true);
                                             
                     }
 
@@ -235,11 +217,12 @@ namespace Dragger
                 {
                     Debug.Log("СВОБОДНА");
                     SetItem(_temporaryItem, _startPosition);
+                    _temporaryItem = null;
+                    _selectedObject.gameObject.SetActive(true);
                 }
-
-                // _selectedObject = _temporaryItem;
-                _temporaryItem = null;
-                _selectedObject.gameObject.SetActive(true);
+                
+                /*_temporaryItem = null;
+                _selectedObject.gameObject.SetActive(true);*/
             }
         }
     }
