@@ -1,4 +1,4 @@
-using TMPro;
+using System;
 using UnityEngine;
 
 namespace Wallets
@@ -6,16 +6,17 @@ namespace Wallets
     public class AbstractWallet : MonoBehaviour
     {
         [SerializeField] private int _startValue;
-        [SerializeField] private TMP_Text _valueText;
-        
+
         private int _currentValue;
 
+        public event Action ValueChanged;
+        
         public int CurrentValue => _currentValue;
 
         private void Start()
         {
             _currentValue = _startValue;
-            Show();
+            ValueChanged?.Invoke();
         }
 
         public void AddValue(int value)
@@ -24,7 +25,7 @@ namespace Wallets
                 return;
 
             _currentValue += value;
-            Show();
+            ValueChanged?.Invoke();
         }
 
         public void Buy(int price)
@@ -33,12 +34,7 @@ namespace Wallets
                 return;
 
             _currentValue -= price;
-            Show();
-        }
-
-        private void Show()
-        {
-            _valueText.text = _currentValue.ToString();
+            ValueChanged?.Invoke();
         }
     }
 }

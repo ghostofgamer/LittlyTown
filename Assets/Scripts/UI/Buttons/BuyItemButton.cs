@@ -13,6 +13,7 @@ namespace UI.Buttons
         [SerializeField] private Transform _container;
         [SerializeField] private GoldWallet _goldWallet;
         [SerializeField] private int _price;
+        [SerializeField] private float _priceMultiplier;
         [SerializeField] private TMP_Text _priceText;
         [SerializeField]private CloseButton _closeButton;
 
@@ -30,7 +31,7 @@ namespace UI.Buttons
             Item item = Instantiate(_item, _container);
             _closeButton.Close();
             _itemDragger.SetTemporaryItem(item);
-            _price *= 2;
+            _price = Mathf.RoundToInt(_price * _priceMultiplier);
             Show();
         }
 

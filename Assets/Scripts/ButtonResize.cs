@@ -4,84 +4,71 @@ using TMPro;
 
 public class ButtonResize : MonoBehaviour
 {
-    public Button _button;
-    public TMP_Text _text;
-    public float minWidth;
+    [SerializeField] private Button _button;
+    [SerializeField] private TMP_Text _text;
+    [SerializeField] private float _minWidth;
+    [SerializeField] private bool _isLeft;
 
-    private float previousWidth;
-
-    void Start()
-    {
-        previousWidth = _text.preferredWidth;
-    }
-
-    void Update()
-    {
-        // Получаем текущий размер текста
-        float textWidth = _text.preferredWidth;
-
-        // Проверяем, изменился ли размер текста с предыдущего кадра
-        if (previousWidth != textWidth)
-        {
-            // Проверяем, превышает ли текущий размер текста минимальный размер
-            if (textWidth > minWidth)
-            {
-                // Устанавливаем новый размер кнопки, основываясь на текущем размере текста
-                RectTransform buttonRectTransform = _button.GetComponent<RectTransform>();
-                buttonRectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, textWidth);
-                LayoutRebuilder.ForceRebuildLayoutImmediate(buttonRectTransform);
-            }
-            else
-            {
-                // Устанавливаем минимальный размер кнопки
-                RectTransform buttonRectTransform = _button.GetComponent<RectTransform>();
-                buttonRectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, minWidth);
-                LayoutRebuilder.ForceRebuildLayoutImmediate(buttonRectTransform);
-            }
-
-            // Обновляем предыдущий размер текста
-            previousWidth = textWidth;
-        }
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    /*
-    [SerializeField ] private Button _button;
-    [SerializeField ] private TMP_Text _text;
-
-    private string _previousText;
+    private float _previousWidth;
 
     private void Start()
     {
-        _previousText = _text.text;
-        _text.text = _text.text;
+        _previousWidth = _text.preferredWidth;
+
+        if (_text.preferredWidth > _minWidth)
+        {
+            ChangeScale(_text.preferredWidth);
+        }
     }
 
     private void Update()
     {
-        if (_previousText != _text.text)
+        if (_previousWidth != _text.preferredWidth)
         {
-            _previousText = _text.text;
-            ValueChangeCheck();
+            if (_text.preferredWidth > _minWidth)
+            {
+                ChangeScale(_text.preferredWidth);
+            }
+            else
+            {
+                ChangeScale(_minWidth);
+            }
+
+            _previousWidth = _text.preferredWidth;
         }
     }
 
-    private void ValueChangeCheck()
+    private void ChangeScale(float target)
     {
-        float textWidth = _text.rectTransform.sizeDelta.x;
+        if (!_isLeft)
+        {
+            RectTransform buttonRectTransform = _button.GetComponent<RectTransform>();
+            buttonRectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, target);
+            LayoutRebuilder.ForceRebuildLayoutImmediate(buttonRectTransform);
+            Debug.Log("DONTLeft");
+        }
+        else
+        {
+            Debug.Log("Left");
 
-        RectTransform buttonRectTransform = _button.GetComponent<RectTransform>();
-        buttonRectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, textWidth);
-        LayoutRebuilder.ForceRebuildLayoutImmediate(buttonRectTransform);
-    }*/
+            RectTransform buttonRectTransform = _button.GetComponent<RectTransform>();
+            
+            // Сохраняем текущую позицию кнопки относительно левого края экрана
+            float currentLeftPosition = buttonRectTransform.anchoredPosition.x;
+            
+            // Сохраняем текущую ширину кнопки
+            float currentWidth = buttonRectTransform.rect.width;
+            
+            // Изменяем ширину кнопки
+            buttonRectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, target);
+            
+            // Вычисляем новую позицию кнопки относительно левого края экрана
+            float newLeftPosition = currentLeftPosition - (target - currentWidth);
+            
+            // Устанавливаем новую позицию кнопки
+            buttonRectTransform.anchoredPosition = new Vector2(newLeftPosition, buttonRectTransform.anchoredPosition.y);
+            
+            LayoutRebuilder.ForceRebuildLayoutImmediate(buttonRectTransform);
+        }
+    }
 }

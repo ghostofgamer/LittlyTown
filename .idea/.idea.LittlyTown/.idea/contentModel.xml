@@ -1105,6 +1105,7 @@
             <e p="AbstractWallet.cs" t="Include" />
             <e p="CrystalWallet.cs" t="Include" />
             <e p="GoldWallet.cs" t="Include" />
+            <e p="MoneyInfo.cs" t="Include" />
           </e>
         </e>
         <e p="Sounds" t="Include" />
