@@ -11,8 +11,8 @@ namespace ItemContent
         private List<House> _houses = new List<House>();
         private List<House> _housesToRemove = new List<House>();
 
-        private Collider[] _colliders; 
-        
+        private Collider[] _colliders;
+
         public void Look()
         {
             Vector3 center = transform.position;
@@ -26,8 +26,6 @@ namespace ItemContent
                     itemPosition.Item.IsHouse)
                 {
                     House house = itemPosition.Item.GetComponent<House>();
-                    // Debug.Log("itemPosition.name " + itemPosition.name);
-                    // Debug.Log("House.name " + house.name);
 
                     if (!_houses.Contains(house))
                     {
@@ -52,6 +50,17 @@ namespace ItemContent
             {
                 _houses.Remove(house);
             }
+        }
+
+        public void RemoveHouses()
+        {
+            foreach (var house in _houses)
+            {
+                house.ResetIncome();
+            }
+
+            _houses.Clear();
+            _housesToRemove.Clear();
         }
 
         /*private void Update()

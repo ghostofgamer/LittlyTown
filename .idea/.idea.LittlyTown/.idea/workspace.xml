@@ -20,19 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="099b8a6d-6b1c-4473-babb-d7d2ffb7e44f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Apartment.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Apartment.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/BigApartment.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/BigApartment.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Condominium.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Condominium.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/CozyHome.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/CozyHome.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/HouseWood.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/HouseWood.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/LightHouseItem.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/LightHouseItem.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CountersContent/GoldCounter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CountersContent/GoldCounter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Dragger/ItemDragger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Dragger/ItemDragger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GoldMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GoldMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemContent/Item.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemContent/Item.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SpawnContent/Spawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SpawnContent/Spawner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemContent/LightHouseTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemContent/LightHouseTrigger.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RemovalItems.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RemovalItems.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,7 +122,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/PossibilitieReplace.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/PossibilitieBulldozer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/PossibilitiesShopContent/PossibilitiesShopScreen.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/RemovalItems.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/PossibilitieMove.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CountersContent/PossibilitiesCounter.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/Possibilitie.cs" />
@@ -167,8 +157,9 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/ItemContent/LightHouseController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Dragger/ItemDragger.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GoldMovement.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/ItemContent/LightHouseTrigger.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ItemContent/LightHouseKeeper.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/RemovalItems.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ItemContent/LightHouseTrigger.cs" />
       </list>
     </option>
   </component>
@@ -240,7 +231,7 @@
       <workItem from="1715596894623" duration="22000" />
       <workItem from="1715596943316" duration="18405000" />
       <workItem from="1715668082856" duration="22722000" />
-      <workItem from="1715763626180" duration="8336000" />
+      <workItem from="1715763626180" duration="9340000" />
     </task>
     <servers />
   </component>

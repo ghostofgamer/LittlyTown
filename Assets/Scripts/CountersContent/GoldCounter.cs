@@ -15,7 +15,8 @@ namespace CountersContent
         [SerializeField] private Merger _merger;
         [SerializeField] private ItemPosition[] _itemPositions;
         [SerializeField] private ItemDragger _itemDragger;
-
+        [SerializeField] private LightHouseKeeper _lightHouseKeeper;
+        
         private int _profit;
         private int _stepCount;
         private int _currentStep;
@@ -32,6 +33,7 @@ namespace CountersContent
             _itemDragger.PlaceChanged += CheckIncome;
             // _merger.ItemMergered += ChangeProfit;
             _merger.Mergered += CheckIncome;
+            _lightHouseKeeper.CheckCompleted += CheckIncome;
         }
 
         private void OnDisable()
@@ -40,6 +42,7 @@ namespace CountersContent
             _itemDragger.PlaceChanged -= CheckIncome;
             // _merger.ItemMergered -= ChangeProfit;
             _merger.Mergered -= CheckIncome;
+            _lightHouseKeeper.CheckCompleted -= CheckIncome;
         }
 
         private void AddGold()

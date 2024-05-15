@@ -91,6 +91,12 @@ public class RemovalItems : MonoBehaviour
         {
             if (hit.transform.gameObject.TryGetComponent(out ItemPosition itemPosition) && itemPosition.IsBusy)
             {
+                if (itemPosition.Item.IsLightHouse)
+                {
+                    LightHouseTrigger lightHouse = itemPosition.Item.GetComponent<LightHouseTrigger>();
+                    lightHouse.RemoveHouses();
+                }
+
                 ItemRemoved?.Invoke(itemPosition.Item);
                 itemPosition.Item.Deactivation();
                 itemPosition.Item.gameObject.SetActive(false);

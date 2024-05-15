@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Dragger;
@@ -11,7 +12,10 @@ public class LightHouseKeeper : MonoBehaviour
     [SerializeField]private ReplacementPosition _replacementPosition;
 
     private List<LightHouseTrigger> _lightHouses = new List<LightHouseTrigger>();
-
+    private Coroutine _coroutine;
+    
+    public event Action CheckCompleted;
+    
     private void OnEnable()
     {
         _itemDragger.BuildItem += AddMayak;
@@ -63,6 +67,9 @@ public class LightHouseKeeper : MonoBehaviour
         {
             lightHouse.Look();
         }
+
+        yield return null;
+        CheckCompleted?.Invoke();
     }
 
     private void Show()
