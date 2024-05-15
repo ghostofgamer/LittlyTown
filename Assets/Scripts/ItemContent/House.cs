@@ -9,16 +9,18 @@ namespace ItemContent
 
         private Item _item;
         private int _baseIncome;
+        private int _maxIncome;
 
         private void Start()
         {
             _item = GetComponent<Item>();
             _baseIncome = _income;
+            _maxIncome = _income * 2;
         }
 
         public void IncreaseIncome()
         {
-            _income *= 2;
+            _income = _maxIncome;
             _item.SetGold(_income);
         }
 
@@ -27,10 +29,5 @@ namespace ItemContent
             _income = _baseIncome;
             _item.SetGold(_income);
         }
-
-        /*public void CollectIncome()
-    {
-        GameManager.Instance.AddProfit(income);
-    }*/
     }
 }

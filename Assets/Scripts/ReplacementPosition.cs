@@ -14,6 +14,7 @@ public class ReplacementPosition : MonoBehaviour
     [SerializeField] private ReplacementButton _replacementButton;
     [SerializeField] private ItemDragger _itemDragger;
     [SerializeField]private PossibilitiesCounter _positionsCounter;
+    [SerializeField]private LookMerger _lookMerger;
     
     private bool _isWorking;
     private bool _isLooking;
@@ -129,6 +130,7 @@ public class ReplacementPosition : MonoBehaviour
                         _positionMatcher.LookAround(_secondItemPosition);
                         // yield return new WaitForSeconds(3f);
                         _positionMatcher.LookAround(_firstItemPosition);
+                        
                         _firstSelect = false;
                         _firstItem = null;
                         _firstItemPosition = null;
@@ -142,7 +144,9 @@ public class ReplacementPosition : MonoBehaviour
                         ChangePosition(_firstItem, _secondItemPosition);
                         _firstItemPosition.ClearingPosition();
                         yield return null;
-                        _positionMatcher.LookAround(_secondItemPosition);
+                        _secondItemPosition.DeliverObject(_firstItem);
+                        // _positionMatcher.LookAround(_secondItemPosition);
+                        // _lookMerger.LookAround(_secondItemPosition,_secondItemPosition.Item);
                         _firstSelect = false;
                         _firstItem = null;
                         _firstItemPosition = null;

@@ -2,8 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Dragger;
+using Enums;
 using ItemContent;
 using ItemPositionContent;
+using Unity.VisualScripting;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
@@ -33,14 +35,14 @@ public class PositionMatcher : MonoBehaviour
 
     private void OnEnable()
     {
-        _itemPositionLooker.PlaceLooking += OnSetPosition;
-        _spawner.LooksNeighbors += OnSetPosition;
+        /*_itemPositionLooker.PlaceLooking += OnSetPosition;
+        _spawner.LooksNeighbors += OnSetPosition;*/
     }
 
     private void OnDisable()
     {
-        _itemPositionLooker.PlaceLooking -= OnSetPosition;
-        _spawner.LooksNeighbors -= OnSetPosition;
+        /*_itemPositionLooker.PlaceLooking -= OnSetPosition;
+        _spawner.LooksNeighbors -= OnSetPosition;*/
     }
 
     private void OnSetPosition(ItemPosition itemPosition, Item item)
@@ -52,6 +54,9 @@ public class PositionMatcher : MonoBehaviour
             _currentItemPosition.ClearingPosition();
         }
 
+        if (itemPosition.IsBusy)
+            return;
+        
         _currentItemPosition = itemPosition;
         _currentItemPosition.SetSelected();
         _currentItem = item;
@@ -61,7 +66,29 @@ public class PositionMatcher : MonoBehaviour
         if (_cyclicСoroutine != null)
             StopCoroutine(_cyclicСoroutine);
 
-        _coroutine = StartCoroutine(LookPositions(_currentItemPosition, _currentItem));
+        if (item.ItemName.Equals(Items.Crane))
+        {
+            Debug.Log("NEN Crane");
+            _currentItem = null;
+            foreach (var arroundPosition in _currentItemPosition.ItemPositions)
+            {
+                if (arroundPosition != null && arroundPosition.Item != null)
+                {
+                    _coroutine = StartCoroutine(LookPositions(arroundPosition, arroundPosition.Item));
+                    break;
+                }
+            }
+        }
+        else
+        {
+            Debug.Log("lse");
+            _coroutine = StartCoroutine(LookPositions(_currentItemPosition, _currentItem));
+        }
+        
+        
+        
+        
+        // _coroutine = StartCoroutine(LookPositions(_currentItemPosition, _currentItem));
     }
 
     private IEnumerator LookPositions(ItemPosition itemPosition, Item item)
@@ -150,18 +177,38 @@ public class PositionMatcher : MonoBehaviour
         yield return new WaitForSeconds(0.15f);
         ClearLists();
         SearchMatches(_currentItemPosition);
-        // Debug.Log("LookAround " + _positions.Count);
+        
+        
+        
+        /*if (_currentItem != null && _currentItem.ItemName.Equals(Items.Crane))
+        {
+            _currentItem = null;
+            foreach (var arroundPosition in _currentItemPosition.ItemPositions)
+            {
+                if (arroundPosition != null && arroundPosition.Item != null)
+                {
+                    _currentItem = arroundPosition.Item;
+                    SearchMatches(arroundPosition);
+                    break;
+                }
+            }
+        }
+        else
+        {
+            SearchMatches(_currentItemPosition);
+        }*/
 
+        
+        
+        
+        
         if (_positions.Count < 3)
         {
-            // Debug.Log("No Match " + _currentItemPosition.name);
-            // Debug.Log("No Match Count" + _positions.Count);
-
             NotMerged?.Invoke();
         }
         else
         {
-            _merger.Merge(_currentItemPosition);
+            // _merger.Merge(_currentItemPosition,_positions);
         }
     }
 
@@ -187,6 +234,19 @@ public class PositionMatcher : MonoBehaviour
         {
             _matchedItems.Add(currentPosition.Item);
         }
+        
+        /*if (currentPosition.Item != null)
+        {
+            if (_currentItem.ItemName.Equals(Items.Crane) || currentPosition.Item.ItemName.Equals(_currentItem.ItemName))
+            {
+                _matchedItems.Add(currentPosition.Item);
+            }
+            else if (_currentItem.ItemName != Items.Crane)
+            {
+                return;
+            }
+        }*/
+        
 
         foreach (var arroundPosition in currentPosition.ItemPositions)
         {
@@ -197,6 +257,11 @@ public class PositionMatcher : MonoBehaviour
             {
                 SearchMatches(arroundPosition);
             }
+            
+            /*if (arroundPosition.Item != null && (_currentItem.ItemName.Equals(Items.Crane) || currentPosition.Item.ItemName.Equals(arroundPosition.Item.ItemName)))
+            {
+                SearchMatches(arroundPosition);
+            }*/
         }
     }
 

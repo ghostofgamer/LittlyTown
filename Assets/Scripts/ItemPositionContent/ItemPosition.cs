@@ -16,7 +16,7 @@ namespace ItemPositionContent
         [SerializeField] private bool _isWater;
         [SerializeField] private bool _isElevation;
         [SerializeField] private Transform _container;
-        
+        [SerializeField] private LookMerger _lookMerger;
         private Item _item;
         private ItemPosition[] _itemPositions;
 
@@ -65,7 +65,8 @@ namespace ItemPositionContent
         public void DeliverObject(Item item)
         {
             _item = item;
-            _positionMatcher.LookAround(this);
+            // _positionMatcher.LookAround(this);
+            _lookMerger.LookAround(this,_item);
         }
 
         public void SetSelected()

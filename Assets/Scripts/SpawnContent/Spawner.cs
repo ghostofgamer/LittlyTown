@@ -16,7 +16,8 @@ public class Spawner : MonoBehaviour
     [SerializeField] private PositionMatcher _positionMatcher;
     [SerializeField] private MoveCounter _moveCounter;
     [SerializeField] private DropGenerator _dropGenerator;
-
+[SerializeField]private LookMerger _lookMerger;
+    
     private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.165f);
     private Coroutine _coroutine;
     private ItemPosition _position;
@@ -35,11 +36,13 @@ public class Spawner : MonoBehaviour
     private void OnEnable()
     {
         _positionMatcher.NotMerged += OnCreateItem;
+        _lookMerger.NotMerged += OnCreateItem;
     }
 
     private void OnDisable()
     {
         _positionMatcher.NotMerged -= OnCreateItem;
+        _lookMerger.NotMerged -= OnCreateItem;
     }
 
     public void OnCreateItem()

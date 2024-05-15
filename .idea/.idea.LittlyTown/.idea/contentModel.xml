@@ -763,6 +763,13 @@
         <e p="Animations" t="Include">
           <e p="ItemAnimations" t="Include" />
         </e>
+        <e p="Construction Vehicles 1.1" t="Include">
+          <e p="Materials" t="Include" />
+          <e p="Models" t="Include" />
+          <e p="Prefabs" t="Include" />
+          <e p="Scenes" t="Include" />
+          <e p="Textures" t="Include" />
+        </e>
         <e p="FreeButtonSet" t="Include">
           <e p="Textures" t="Include">
             <e p="Buttons" t="Include" />
@@ -1041,11 +1048,13 @@
           <e p="Keeper" t="Include">
             <e p="PriceKeeper.cs" t="Include" />
           </e>
+          <e p="MapGenerator.cs" t="Include" />
           <e p="Merger.cs" t="Include" />
           <e p="MoveCanceller.cs" t="Include" />
           <e p="MoveCounter.cs" t="Include" />
           <e p="positionChecker.cs" t="Include" />
           <e p="PositionMatcher.cs" t="Include" />
+          <e p="PositionScaller.cs" t="Include" />
           <e p="PossibilitiesContent" t="Include">
             <e p="Possibilitie.cs" t="Include" />
             <e p="PossibilitieBulldozer.cs" t="Include" />
@@ -1066,10 +1075,10 @@
             <e p="Spawner.cs" t="Include" />
           </e>
           <e p="Storage.cs" t="Include" />
+          <e p="Territory.cs" t="Include" />
           <e p="Test" t="Include">
-            <e p="MapGenerator.cs" t="Include" />
-            <e p="PositionScaller.cs" t="Include" />
-            <e p="Territory.cs" t="Include" />
+            <e p="LookMerger.cs" t="Include" />
+            <e p="TestMerger.cs" t="Include" />
           </e>
           <e p="TextWidthController.cs" t="Include" />
           <e p="UI" t="Include">
