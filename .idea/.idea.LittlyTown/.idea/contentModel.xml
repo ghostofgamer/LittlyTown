@@ -1021,10 +1021,13 @@
           </e>
           <e p="GoldMovement.cs" t="Include" />
           <e p="ItemContent" t="Include">
+            <e p="House.cs" t="Include" />
             <e p="Item.cs" t="Include" />
             <e p="ItemAnimation.cs" t="Include" />
             <e p="ItemMoving.cs" t="Include" />
             <e p="ItemStay.cs" t="Include" />
+            <e p="LightHouseKeeper.cs" t="Include" />
+            <e p="LightHouseTrigger.cs" t="Include" />
           </e>
           <e p="ItemPositionContent" t="Include">
             <e p="FinderPositions.cs" t="Include" />

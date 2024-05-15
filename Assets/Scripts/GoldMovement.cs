@@ -16,7 +16,7 @@ public class GoldMovement : MonoBehaviour
     private void Start()
     {
         _targetPosition = _targetWallet.localPosition;
-        Debug.Log("StartTarget " + _targetPosition);
+        // Debug.Log("StartTarget " + _targetPosition);
         _canvasGroup = GetComponent<CanvasGroup>();
         _canvasGroup.alpha = 0;
     }
@@ -38,7 +38,7 @@ public class GoldMovement : MonoBehaviour
         while (_elapsedTime < _duration)
         {
             _elapsedTime += Time.deltaTime;
-            Debug.Log("Coroutine " + _targetPosition);
+            // Debug.Log("Coroutine " + _targetPosition);
             gameObject.transform.localPosition =
                 Vector3.Lerp(_startPosition, _targetPosition, _elapsedTime / _duration);
             yield return null;

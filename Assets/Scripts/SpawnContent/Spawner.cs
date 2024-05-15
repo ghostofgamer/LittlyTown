@@ -55,7 +55,8 @@ public class Spawner : MonoBehaviour
 
     public ItemPosition GetPosition()
     {
-        List<ItemPosition> freePositions = _positions.Where(p => !p.GetComponent<ItemPosition>().IsBusy).ToList();
+        List<ItemPosition> freePositions = _positions
+            .Where(p => !p.GetComponent<ItemPosition>().IsBusy && !p.GetComponent<ItemPosition>().IsWater).ToList();
         int randomIndex = Random.Range(0, freePositions.Count);
 
         if (freePositions.Count <= 0)
@@ -67,7 +68,7 @@ public class Spawner : MonoBehaviour
         ItemPosition randomFreePosition = freePositions[randomIndex];
         return randomFreePosition;
     }
-    
+
     private IEnumerator CreateNewItem()
     {
         yield return _waitForSeconds;

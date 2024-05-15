@@ -48,10 +48,10 @@ namespace Dragger
             _temporaryItem.gameObject.SetActive(false);
             SetItem(item, _startPosition);
             _selectedObject.gameObject.SetActive(true);
-            Debug.Log("Temporary " + _temporaryItem);
-            Debug.Log("_selectedObject " + _selectedObject);
+            /*Debug.Log("Temporary " + _temporaryItem);
+            Debug.Log("_selectedObject " + _selectedObject);*/
         }
-        
+
         public void ClearTemporaryItem()
         {
             _temporaryItem = null;
@@ -152,7 +152,7 @@ namespace Dragger
             {
                 if (hit.transform.gameObject.TryGetComponent(out ItemPosition itemPosition))
                 {
-                    if (!itemPosition.IsBusy && !itemPosition.IsWater&&!_selectedObject.IsLightHouse)
+                    if (!itemPosition.IsBusy && !itemPosition.IsWater && !_selectedObject.IsLightHouse)
                     {
                         _selectedObject.transform.position = hit.transform.position;
                         _selectedObject.Init(itemPosition);
@@ -168,13 +168,13 @@ namespace Dragger
                     }
                     else if (!itemPosition.IsBusy && itemPosition.IsWater && _selectedObject.IsLightHouse)
                     {
-                        Debug.Log("Water");
+                        // Debug.Log("Water");
                         _selectedObject.transform.position = hit.transform.position;
                         _selectedObject.Init(itemPosition);
                         _selectedObject.Activation();
                         _selectedObject.GetComponent<ItemAnimation>().PositioningAnimation();
-                        BuildItem?.Invoke(_selectedObject);
                         itemPosition.DeliverObject(_selectedObject);
+                        BuildItem?.Invoke(_selectedObject);
                         PlaceChanged?.Invoke();
                         _selectedObject = null;
                         StartCoroutine(Continue(itemPosition));
@@ -211,13 +211,13 @@ namespace Dragger
         private IEnumerator Continue(ItemPosition itemPosition)
         {
             yield return new WaitForSeconds(0.1f);
-            
+
             if (_temporaryItem != null)
             {
                 if (itemPosition == _startPosition)
                 {
                     ItemPosition newPosition = _spawner.GetPosition();
-                    
+
                     if (newPosition != null)
                     {
                         SetItem(_temporaryItem, newPosition);
@@ -225,16 +225,16 @@ namespace Dragger
                         _selectedObject.gameObject.SetActive(true);
                     }
 
-                    Debug.Log("ЗАНЯТА ");
+                    // Debug.Log("ЗАНЯТА ");
                 }
                 else
                 {
-                    Debug.Log("СВОБОДНА");
+                    // Debug.Log("СВОБОДНА");
                     SetItem(_temporaryItem, _startPosition);
                     _temporaryItem = null;
                     _selectedObject.gameObject.SetActive(true);
                 }
-                
+
                 /*_temporaryItem = null;
                 _selectedObject.gameObject.SetActive(true);*/
             }

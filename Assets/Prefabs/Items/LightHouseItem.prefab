@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: 2985679032794298191}
   - component: {fileID: 6189574293086058348}
   - component: {fileID: 5327338573167818505}
+  - component: {fileID: 3176353692465974153}
   m_Layer: 3
   m_Name: LightHouseItem
   m_TagString: Untagged
@@ -247,6 +248,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 152c4924823ea1c4d82b029ef350f5d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3176353692465974153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386201852411888896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 909c916d4d1e9164bab36ed1c0860de0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bonusMultiplier: 2
+  radius: 4
+  buildingLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &590320690538547255
 GameObject:
   m_ObjectHideFlags: 0

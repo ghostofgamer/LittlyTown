@@ -61,5 +61,10 @@ namespace ItemContent
             if (ItemPosition != null)
                 ItemPosition = null;
         }
+
+        public void SetGold(int gold)
+        {
+            _gold = gold;
+        }
     }
 }

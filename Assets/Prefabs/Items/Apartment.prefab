@@ -883,6 +883,7 @@ GameObject:
   - component: {fileID: 7908026251721516474}
   - component: {fileID: 8016391903384856446}
   - component: {fileID: 4551293236109835711}
+  - component: {fileID: -6194535318942440470}
   m_Layer: 3
   m_Name: Apartment
   m_TagString: Untagged
@@ -944,7 +945,8 @@ MonoBehaviour:
   _reward: 10
   _itemDropDataSo: {fileID: 0}
   _isHouse: 1
-  _gold: 3
+  _isLightHouse: 0
+  _gold: 10
 --- !u!54 &1783571401662579604
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1030,6 +1032,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 152c4924823ea1c4d82b029ef350f5d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-6194535318942440470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3403889122531169511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6978b5fb3831e8c4f954a4f163787204, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _income: 10
 --- !u!1 &4314573258234192523
 GameObject:
   m_ObjectHideFlags: 0

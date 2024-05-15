@@ -183,6 +183,7 @@ GameObject:
   - component: {fileID: 5780446915836323711}
   - component: {fileID: 2112406486434467590}
   - component: {fileID: 8587450789244852155}
+  - component: {fileID: 1955725308556050754}
   m_Layer: 3
   m_Name: CozyHome
   m_TagString: Untagged
@@ -244,7 +245,8 @@ MonoBehaviour:
   _reward: 10
   _itemDropDataSo: {fileID: 0}
   _isHouse: 1
-  _gold: 2
+  _isLightHouse: 0
+  _gold: 3
 --- !u!54 &2640430018655828056
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -330,6 +332,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 152c4924823ea1c4d82b029ef350f5d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1955725308556050754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403918792283121694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6978b5fb3831e8c4f954a4f163787204, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _income: 3
 --- !u!1 &1037248643575821024
 GameObject:
   m_ObjectHideFlags: 0

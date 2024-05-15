@@ -1635,6 +1635,7 @@ GameObject:
   - component: {fileID: 7204561016073708676}
   - component: {fileID: 9206382816624295938}
   - component: {fileID: 6166545381623734568}
+  - component: {fileID: 9014738783035936654}
   m_Layer: 3
   m_Name: Condominium
   m_TagString: Untagged
@@ -1696,7 +1697,8 @@ MonoBehaviour:
   _reward: 10
   _itemDropDataSo: {fileID: 0}
   _isHouse: 1
-  _gold: 5
+  _isLightHouse: 0
+  _gold: 50
 --- !u!54 &1322258602243795081
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1782,6 +1784,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 152c4924823ea1c4d82b029ef350f5d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &9014738783035936654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5772046836710254893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6978b5fb3831e8c4f954a4f163787204, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _income: 50
 --- !u!1 &5772586144416104170
 GameObject:
   m_ObjectHideFlags: 0
