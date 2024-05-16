@@ -13,6 +13,7 @@ namespace CountersContent
         [SerializeField] private TMP_Text _scoreTargetText;
         [SerializeField] private VisualScore _visualScore;
         [SerializeField] private DropGenerator _dropGenerator;
+        [SerializeField] private LookMerger _lookMerger;
 
         private int _currentScore;
         private int _targetScore = 50;
@@ -28,12 +29,14 @@ namespace CountersContent
         {
             _merger.Merged += AddIncome;
             _positionMatcher.NotMerged += AddGoal;
+            _lookMerger.NotMerged += AddGoal;
         }
 
         private void OnDisable()
         {
             _merger.Merged -= AddIncome;
             _positionMatcher.NotMerged -= AddGoal;
+            _lookMerger.NotMerged -= AddGoal;
         }
 
         private void Start()
@@ -45,6 +48,7 @@ namespace CountersContent
         {
             _scoreIncome += reward * countMatch;
             _targetPosition = itemPosition.transform.position;
+
             // _visualScore.transform.position = itemPosition.transform.position;
         }
 

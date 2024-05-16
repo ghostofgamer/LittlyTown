@@ -26,12 +26,6 @@ public class Merger : MonoBehaviour
         _matchItems = matchItems;
         _currentItem = currentPosition.Item;
 
-        /*foreach (var itemPosition in _matchPositions)
-        {
-            itemPosition.Item.Deactivation();
-            itemPosition.Item.GetComponent<ItemMoving>().MoveTarget(currentPosition.transform.position);
-        }*/
-        
         foreach (var item in _matchItems)
         {
             item.Deactivation();
@@ -47,7 +41,6 @@ public class Merger : MonoBehaviour
 
         foreach (var itemPosition in _matchPositions)
         {
-            // itemPosition.Item.gameObject.SetActive(false);
             itemPosition.ClearingPosition();
         }
 
@@ -57,11 +50,12 @@ public class Merger : MonoBehaviour
         item.Init(currentPosition);
         item.Activation();
         item.GetComponent<ItemAnimation>().PositioningAnimation();
-        // _positionMatcher.LookAround(currentPosition);
+        Debug.Log("_matchPositions.Count " + _matchItems.Count);
+        Merged?.Invoke(_matchItems.Count, _currentItem.Reward, currentPosition);
         _lookMerger.LookAround(currentPosition, item);
+        Debug.Log("_matchPositions.Count " + _matchItems.Count);
         yield return new WaitForSeconds(0.1f);
-        // Debug.Log("MergeActivation");
-        Merged?.Invoke(_matchPositions.Count, _currentItem.Reward, currentPosition);
+        // Merged?.Invoke(_matchPositions.Count, _currentItem.Reward, currentPosition);
         Mergered?.Invoke();
         ItemMergered?.Invoke(item);
     }

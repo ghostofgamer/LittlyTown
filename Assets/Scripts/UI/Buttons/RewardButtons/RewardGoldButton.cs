@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using Wallets;
 
@@ -8,7 +9,8 @@ namespace UI.Buttons.RewardButtons
     {
         [SerializeField] private GoldWallet _goldWallet;
         [SerializeField] private GoldMovement[] _goldMovements;
-
+        [SerializeField] private TMP_Text _goldText;
+        
         private int _maxGoldValue = 500;
         private int _minGoldValue = 160;
         private int _currentGoldValue;
@@ -16,11 +18,14 @@ namespace UI.Buttons.RewardButtons
         private WaitForSeconds _waitForMoments = new WaitForSeconds(0.16f);
         private Coroutine _coroutine;
 
-        protected override void ChangeRewardItem()
+        public void DetermineGoldAmount()
         {
             _currentGoldValue = Random.Range(_minGoldValue, _maxGoldValue);
-            Debug.Log("Value    " + _currentGoldValue);
-
+            _goldText.text = _currentGoldValue.ToString();
+        }
+        
+        protected override void ChangeRewardItem()
+        {
             if (_coroutine != null)
                 StopCoroutine(_coroutine);
 

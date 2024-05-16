@@ -8,18 +8,17 @@ using UnityEngine;
 
 public class LookMerger : MonoBehaviour
 {
-    [SerializeField] private TestMerger _testMerger;
     [SerializeField] private ItemPositionLooker _itemPositionLooker;
     [SerializeField] private Spawner _spawner;
     [SerializeField] private Merger _merger;
 
-    private List<Item> _matchedItems = new List<Item>();
-    private List<ItemPosition> _checkedPositions = new List<ItemPosition>();
-    private List<ItemPosition> _positions = new List<ItemPosition>();
-    private List<Item> _completeList = new List<Item>();
     private ItemPosition _currentItemPosition;
     private Item _currentItem;
     private Coroutine _coroutine;
+    private List<Item> _matchedItems = new List<Item>();
+    private List<Item> _completeList = new List<Item>();
+    private List<ItemPosition> _checkedPositions = new List<ItemPosition>();
+    private List<ItemPosition> _positions = new List<ItemPosition>();
 
     public event Action NotMerged;
 
@@ -37,21 +36,7 @@ public class LookMerger : MonoBehaviour
 
     private void CheckMatches(ItemPosition itemPosition, Item item)
     {
-        StopMoveMatch();
-
-        if (_currentItemPosition != null)
-        {
-            _currentItemPosition.ClearingPosition();
-        }
-
-        if (itemPosition.IsBusy)
-            return;
-
-        _currentItemPosition = itemPosition;
-        _currentItemPosition.SetSelected();
-        _currentItem = item;
-        _completeList.Clear();
-        ClearLists();
+        SetValue(itemPosition, item);
 
         if (_coroutine != null)
             StopCoroutine(_coroutine);
@@ -60,6 +45,16 @@ public class LookMerger : MonoBehaviour
     }
 
     public void LookAround(ItemPosition itemPosition, Item item)
+    {
+        SetValue(itemPosition, item);
+
+        if (_coroutine != null)
+            StopCoroutine(_coroutine);
+
+        _coroutine = StartCoroutine(LookMerge(_currentItemPosition, _currentItem));
+    }
+
+    private void SetValue(ItemPosition itemPosition, Item item)
     {
         StopMoveMatch();
 
@@ -76,11 +71,6 @@ public class LookMerger : MonoBehaviour
         _currentItem = item;
         _completeList.Clear();
         ClearLists();
-
-        if (_coroutine != null)
-            StopCoroutine(_coroutine);
-
-        _coroutine = StartCoroutine(LookMerge(_currentItemPosition, _currentItem));
     }
 
     private IEnumerator LookPositions(ItemPosition itemPosition, Item item)
@@ -129,12 +119,10 @@ public class LookMerger : MonoBehaviour
         if (_matchedItems.Count >= 2)
         {
             _matchedItems.Add(_currentItem);
-            Debug.Log("Merege" + _matchedItems.Count);
-            _merger.Merge(_currentItemPosition,_positions,_matchedItems);
+            _merger.Merge(_currentItemPosition, _positions, _matchedItems);
         }
         else
         {
-            Debug.Log("NotMerge" + _positions.Count);
             NotMerged?.Invoke();
         }
     }
@@ -162,13 +150,12 @@ public class LookMerger : MonoBehaviour
 
             if (arroundPosition.Item != null && arroundPosition.Item.ItemName.Equals(item.ItemName))
             {
-                // SearchMatches(arroundPosition);
                 ActivationLookPositions(arroundPosition, item);
             }
         }
     }
 
-    public void StopMoveMatch()
+    private void StopMoveMatch()
     {
         foreach (var matchItem in _completeList)
             matchItem.GetComponent<ItemMoving>().StopCoroutine();
