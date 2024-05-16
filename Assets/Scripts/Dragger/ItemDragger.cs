@@ -96,15 +96,21 @@ namespace Dragger
                 {
                     if (hit.transform.gameObject.TryGetComponent(out ItemPosition itemPosition))
                     {
-                        if (itemPosition.IsBusy)
-                            return;
+                        if (!itemPosition.IsBusy && !itemPosition.IsWater)
+                            ChangeStartPosition(itemPosition);
 
-                        itemPosition.GetComponent<VisualItemPosition>().ActivateVisual();
-                        _startPosition = itemPosition;
-                        _selectedObject.transform.position = itemPosition.transform.position;
+                        if (_selectedObject.IsLightHouse && !itemPosition.IsBusy)
+                            ChangeStartPosition(itemPosition);
                     }
                 }
             }
+        }
+
+        private void ChangeStartPosition(ItemPosition itemPosition)
+        {
+            itemPosition.GetComponent<VisualItemPosition>().ActivateVisual();
+            _startPosition = itemPosition;
+            _selectedObject.transform.position = itemPosition.transform.position;
         }
 
         public void SelectItem()

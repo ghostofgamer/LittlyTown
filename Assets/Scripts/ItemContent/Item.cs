@@ -66,5 +66,10 @@ namespace ItemContent
         {
             _gold = gold;
         }
+
+        public void SetName(Items name)
+        {
+            _itemName = name;
+        }
     }
 }

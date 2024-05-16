@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Enums;
 using ItemContent;
 using ItemPositionContent;
 using UnityEngine;
@@ -44,16 +45,20 @@ public class Merger : MonoBehaviour
             itemPosition.ClearingPosition();
         }
 
-        Item item = Instantiate(_currentItem.NextItem, currentPosition.transform.position, Quaternion.identity);
+        if (_currentItem.ItemName == Items.Crane)
+        {
+            _currentItem = _matchItems[0];
+        }
 
+        Item item = Instantiate(_currentItem.NextItem, currentPosition.transform.position, Quaternion.identity);
         item.transform.forward = currentPosition.transform.forward;
         item.Init(currentPosition);
         item.Activation();
         item.GetComponent<ItemAnimation>().PositioningAnimation();
-        Debug.Log("_matchPositions.Count " + _matchItems.Count);
+        // Debug.Log("_matchPositions.Count " + _matchItems.Count);
         Merged?.Invoke(_matchItems.Count, _currentItem.Reward, currentPosition);
         _lookMerger.LookAround(currentPosition, item);
-        Debug.Log("_matchPositions.Count " + _matchItems.Count);
+        // Debug.Log("_matchPositions.Count " + _matchItems.Count);
         yield return new WaitForSeconds(0.1f);
         // Merged?.Invoke(_matchPositions.Count, _currentItem.Reward, currentPosition);
         Mergered?.Invoke();

@@ -3681,6 +3681,7 @@ MonoBehaviour:
   _gameLevelScreen: {fileID: 240495592}
   _blur: {fileID: 963194232}
   _scoreCounter: {fileID: 1705592014}
+  _goldButton: {fileID: 284560877}
 --- !u!225 &74045930
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -11897,6 +11898,7 @@ MonoBehaviour:
   - {fileID: 1583478801}
   - {fileID: 13822706}
   - {fileID: 965721283}
+  _goldText: {fileID: 1738082373}
 --- !u!1001 &285703039
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -64344,6 +64346,7 @@ MonoBehaviour:
   _scoreTargetText: {fileID: 999255137}
   _visualScore: {fileID: 1475756397}
   _dropGenerator: {fileID: 1455339039}
+  _lookMerger: {fileID: 1813521671}
 --- !u!4 &1705592015
 Transform:
   m_ObjectHideFlags: 0
@@ -67735,7 +67738,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4a1672c50da6db45b7b5109e786fbfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _testMerger: {fileID: 1813521670}
   _itemPositionLooker: {fileID: 1990161228}
   _spawner: {fileID: 843412982}
   _merger: {fileID: 1519534726}
