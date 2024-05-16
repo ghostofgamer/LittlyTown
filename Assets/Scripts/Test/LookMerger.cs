@@ -12,6 +12,7 @@ public class LookMerger : MonoBehaviour
     [SerializeField] private ItemPositionLooker _itemPositionLooker;
     [SerializeField] private Spawner _spawner;
     [SerializeField] private Merger _merger;
+    [SerializeField] private MinIndexItemSelector _minIndexItemSelector;
 
     private ItemPosition _currentItemPosition;
     private Item _currentItem;
@@ -40,91 +41,7 @@ public class LookMerger : MonoBehaviour
 
     private void CheckMatches(ItemPosition itemPosition, Item item)
     {
-        // SetValue(itemPosition, item);
-        StopMoveMatch();
-
-        if (_currentItemPosition != null)
-        {
-            _currentItemPosition.ClearingPosition();
-        }
-
-        if (itemPosition.IsBusy)
-            return;
-
-        _currentItemPosition = itemPosition;
-        _currentItemPosition.SetSelected();
-        _currentItem = item;
-        _completeList.Clear();
-        ClearLists();
-
-
-        if (_coroutine != null)
-            StopCoroutine(_coroutine);
-
-        if (_currentItem.ItemName == Items.Crane)
-        {
-            foreach (var arroundPosition in _currentItemPosition.ItemPositions)
-            {
-                if (arroundPosition == null)
-                {
-                    continue;
-                }
-
-                if (arroundPosition.Item != null)
-                    _temporaryItems.Add(arroundPosition.Item);
-                else
-                {
-                    Debug.Log("ArroundItemNull" + arroundPosition.name);
-                }
-            }
-
-            Debug.Log("колличество " + _temporaryItems.Count);
-
-            int minIndex = int.MaxValue;
-
-            foreach (Item temporaryItem in _temporaryItems)
-            {
-                Debug.Log("Индекс " + temporaryItem.name + " /// " + (int) temporaryItem.ItemName);
-                int index = (int) temporaryItem.ItemName;
-
-                if (minIndex > index)
-                {
-                    minIndex = index;
-                    _temporaryItem = temporaryItem;
-                }
-            }
-
-            _coroutine = StartCoroutine(LookPositions(_currentItemPosition, _temporaryItem));
-            Debug.Log("МИНИМУМ " + minIndex);
-        }
-        else
-        {
-            _coroutine = StartCoroutine(LookPositions(_currentItemPosition, _currentItem));
-        }
-
-
-        // _coroutine = StartCoroutine(LookPositions(_currentItemPosition, _currentItem));
-    }
-
-    public void LookAround(ItemPosition itemPosition, Item item)
-    {
-        // SetValue(itemPosition, item);
-
-        StopMoveMatch();
-
-        if (_currentItemPosition != null)
-        {
-            _currentItemPosition.ClearingPosition();
-        }
-
-        if (itemPosition.IsBusy)
-            return;
-
-        _currentItemPosition = itemPosition;
-        _currentItemPosition.SetSelected();
-        _currentItem = item;
-        _completeList.Clear();
-        ClearLists();
+        SetValue(itemPosition, item);
 
         if (_coroutine != null)
             StopCoroutine(_coroutine);
@@ -132,47 +49,32 @@ public class LookMerger : MonoBehaviour
         if (_currentItem.ItemName == Items.Crane)
         {
             _temporaryItems.Clear();
+            _temporaryItem = _minIndexItemSelector.GetItemMinIndex(_currentItemPosition.ItemPositions);
+            _coroutine = StartCoroutine(LookPositions(_currentItemPosition, _temporaryItem));
+        }
+        else
+        {
+            _coroutine = StartCoroutine(LookPositions(_currentItemPosition, _currentItem));
+        }
+    }
 
-            foreach (var arroundPosition in _currentItemPosition.ItemPositions)
-            {
-                if (arroundPosition == null)
-                {
-                    continue;
-                }
+    public void LookAround(ItemPosition itemPosition, Item item)
+    {
+        SetValue(itemPosition, item);
 
-                if (arroundPosition.Item != null)
-                    _temporaryItems.Add(arroundPosition.Item);
-                else
-                {
-                    Debug.Log("ArroundItemNull" + arroundPosition.name);
-                }
-            }
+        if (_coroutine != null)
+            StopCoroutine(_coroutine);
 
-            Debug.Log("колличество " + _temporaryItems.Count);
-
-            int minIndex = int.MaxValue;
-
-            foreach (Item temporaryItem in _temporaryItems)
-            {
-                Debug.Log("Индекс " + temporaryItem.name + " /// " + (int) temporaryItem.ItemName);
-                int index = (int) temporaryItem.ItemName;
-
-                if (minIndex > index)
-                {
-                    minIndex = index;
-                    _temporaryItem = temporaryItem;
-                }
-            }
-
+        if (_currentItem.ItemName == Items.Crane)
+        {
+            _temporaryItems.Clear();
+            _temporaryItem = _minIndexItemSelector.GetItemMinIndex(_currentItemPosition.ItemPositions);
             _coroutine = StartCoroutine(LookMerge(_currentItemPosition, _temporaryItem));
-            Debug.Log("МИНИМУМ " + minIndex);
         }
         else
         {
             _coroutine = StartCoroutine(LookMerge(_currentItemPosition, _currentItem));
         }
-
-        // _coroutine = StartCoroutine(LookMerge(_currentItemPosition, _currentItem));
     }
 
     private void SetValue(ItemPosition itemPosition, Item item)
@@ -213,11 +115,7 @@ public class LookMerger : MonoBehaviour
         if (_matchedItems.Count >= 2)
         {
             if (_currentItem.ItemName == Items.Crane)
-            {
                 _temporaryItems.Clear();
-            }
-
-
 
             Item item = _matchedItems[0].NextItem;
 
@@ -231,27 +129,15 @@ public class LookMerger : MonoBehaviour
 
             _coroutine = StartCoroutine(LookPositions(_currentItemPosition, item));
         }
-        
+
         else if (_matchedItems.Count < 2 && _temporaryItems.Count > 1)
         {
             _temporaryItems.Remove(_temporaryItem);
-            int minIndex = int.MaxValue;
+            _temporaryItem = _minIndexItemSelector.GetItemMinIndex(_temporaryItems);
 
-            foreach (Item temporaryItem in _temporaryItems)
-            {
-                int index = (int) temporaryItem.ItemName;
-
-                if (minIndex > index)
-                {
-                    minIndex = index;
-                    _temporaryItem = temporaryItem;
-                }
-            }
-            
             _coroutine = StartCoroutine(LookPositions(_currentItemPosition, _temporaryItem));
-            
         }
-        
+
         else
         {
             if (_completeList.Count < 2)

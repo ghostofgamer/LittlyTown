@@ -1050,6 +1050,7 @@
           </e>
           <e p="MapGenerator.cs" t="Include" />
           <e p="Merger.cs" t="Include" />
+          <e p="MinIndexItemSelector.cs" t="Include" />
           <e p="MoveCanceller.cs" t="Include" />
           <e p="MoveCounter.cs" t="Include" />
           <e p="positionChecker.cs" t="Include" />
