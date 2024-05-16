@@ -7,9 +7,11 @@ public class MinIndexItemSelector : MonoBehaviour
 {
     private List<Item> _temporaryItems = new List<Item>();
     private Item _temporaryItem;
-    
-    public Item GetItemMinIndex(ItemPosition[] itemPositions)
+
+    public List<Item> GetTemporaryItems(ItemPosition[] itemPositions)
     {
+        _temporaryItems.Clear();
+        
         foreach (var arroundPosition in itemPositions)
         {
             if (arroundPosition == null)
@@ -19,7 +21,12 @@ public class MinIndexItemSelector : MonoBehaviour
                 _temporaryItems.Add(arroundPosition.Item);
         }
 
-        return GetItemMinIndex(_temporaryItems);
+        return _temporaryItems ;
+    }
+    
+    public Item GetItemMinIndex(ItemPosition[] itemPositions)
+    {
+        return GetItemMinIndex(GetTemporaryItems(itemPositions));
     }
 
     public Item GetItemMinIndex(List<Item> items)

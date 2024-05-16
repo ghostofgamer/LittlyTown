@@ -126,10 +126,18 @@ public class ReplacementPosition : MonoBehaviour
                         ChangePosition(_firstItem, _secondItemPosition);
                         ChangePosition(_secondItem, _firstItemPosition);
                         yield return null;
-                        // yield return new WaitForSeconds(0.1f);
-                        _positionMatcher.LookAround(_secondItemPosition);
+                        yield return new WaitForSeconds(0.1f);
+                        // _positionMatcher.LookAround(_secondItemPosition);
+                        // Debug.Log("First   " + _firstItem);
+                        // Debug.Log("Second   " + _secondItem);
+                        
+                        // _lookMerger.LookAround(_secondItemPosition,_firstItem);
+                        _secondItemPosition.DeliverObject(_firstItem);
+                        _firstItemPosition.DeliverObject(_secondItem);
+                        // _lookMerger.LookAround(_secondItemPosition,_firstItem);
                         // yield return new WaitForSeconds(3f);
-                        _positionMatcher.LookAround(_firstItemPosition);
+                        // _positionMatcher.LookAround(_firstItemPosition);
+                        // _lookMerger.LookAround(_firstItemPosition,_secondItem);
                         
                         _firstSelect = false;
                         _firstItem = null;
@@ -144,8 +152,14 @@ public class ReplacementPosition : MonoBehaviour
                         ChangePosition(_firstItem, _secondItemPosition);
                         _firstItemPosition.ClearingPosition();
                         yield return null;
+                        // Debug.Log("Second " + _secondItemPosition.name);
                         _secondItemPosition.DeliverObject(_firstItem);
+                        // _lookMerger.LookAround(_secondItemPosition,_firstItem);
+                        
+                        
+                        
                         // _positionMatcher.LookAround(_secondItemPosition);
+                        // _lookMerger.LookAround(_secondItemPosition,_secondItemPosition.Item);
                         // _lookMerger.LookAround(_secondItemPosition,_secondItemPosition.Item);
                         _firstSelect = false;
                         _firstItem = null;

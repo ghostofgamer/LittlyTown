@@ -57,6 +57,7 @@ public class Merger : MonoBehaviour
         item.GetComponent<ItemAnimation>().PositioningAnimation();
         // Debug.Log("_matchPositions.Count " + _matchItems.Count);
         Merged?.Invoke(_matchItems.Count, _currentItem.Reward, currentPosition);
+        Debug.Log("повторный Мердж" + item.name);
         _lookMerger.LookAround(currentPosition, item);
         // Debug.Log("_matchPositions.Count " + _matchItems.Count);
         yield return new WaitForSeconds(0.1f);

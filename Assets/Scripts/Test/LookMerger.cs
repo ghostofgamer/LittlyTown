@@ -24,6 +24,10 @@ public class LookMerger : MonoBehaviour
 
     private List<Item> _temporaryItems = new List<Item>();
     private Item _temporaryItem;
+    private bool _isTryMerge;
+
+    // private Dictionary<ItemPosition, Coroutine> _coroutines = new Dictionary<ItemPosition, Coroutine>();
+    private Dictionary<Item, Coroutine> _coroutines = new Dictionary<Item, Coroutine>();
 
     public event Action NotMerged;
 
@@ -41,40 +45,65 @@ public class LookMerger : MonoBehaviour
 
     private void CheckMatches(ItemPosition itemPosition, Item item)
     {
-        SetValue(itemPosition, item);
-
-        if (_coroutine != null)
-            StopCoroutine(_coroutine);
-
-        if (_currentItem.ItemName == Items.Crane)
-        {
-            _temporaryItems.Clear();
-            _temporaryItem = _minIndexItemSelector.GetItemMinIndex(_currentItemPosition.ItemPositions);
-            _coroutine = StartCoroutine(LookPositions(_currentItemPosition, _temporaryItem));
-        }
-        else
-        {
-            _coroutine = StartCoroutine(LookPositions(_currentItemPosition, _currentItem));
-        }
+        _isTryMerge = false;
+        CheckCoroutine(itemPosition, item);
     }
 
     public void LookAround(ItemPosition itemPosition, Item item)
     {
-        SetValue(itemPosition, item);
+        _isTryMerge = true;
+        CheckCoroutine(itemPosition, item);
+    }
 
-        if (_coroutine != null)
-            StopCoroutine(_coroutine);
+    private void CheckCoroutine(ItemPosition itemPosition, Item item)
+    {
+        Debug.Log("CheckCoroutine " );
+        SetValue(itemPosition, item);
 
         if (_currentItem.ItemName == Items.Crane)
         {
             _temporaryItems.Clear();
+            _temporaryItems = _minIndexItemSelector.GetTemporaryItems(_currentItemPosition.ItemPositions);
             _temporaryItem = _minIndexItemSelector.GetItemMinIndex(_currentItemPosition.ItemPositions);
-            _coroutine = StartCoroutine(LookMerge(_currentItemPosition, _temporaryItem));
+            CheckStartCoroutine(_temporaryItem, itemPosition);
         }
         else
         {
-            _coroutine = StartCoroutine(LookMerge(_currentItemPosition, _currentItem));
+            CheckStartCoroutine(_currentItem, itemPosition);
         }
+    }
+
+    private void CheckStartCoroutine(Item item, ItemPosition itemPosition)
+    {
+        if (!_isTryMerge)
+            _coroutine = StartCoroutine(LookPositions(_currentItemPosition, item));
+        else
+            _coroutine = StartCoroutine(LookMerge(_currentItemPosition, item));
+        /*else
+        {
+            /*if (_coroutines.ContainsKey(itemPosition))
+            {
+                Debug.Log("Coroutine with key " + itemPosition + " already exists!");
+            }
+            else
+            {
+                Debug.Log("Coroutine new ");
+                Coroutine coroutine = StartCoroutine(LookMerge(_currentItemPosition, item));
+                _coroutines.Add(itemPosition, coroutine);
+            }#1#
+            
+            if (_coroutines.ContainsKey(item))
+            {
+                Debug.Log("Coroutine Faled " + itemPosition +"   "+ item.name);
+            }
+            else
+            {
+                Debug.Log("Coroutine new key " + item + " POS  " + itemPosition );
+                Debug.Log("Position " + itemPosition.name + " Item  " + item );
+                Coroutine coroutine = StartCoroutine(LookMerge(itemPosition, item));
+                _coroutines.Add(item, coroutine);
+            }
+        }*/
     }
 
     private void SetValue(ItemPosition itemPosition, Item item)
@@ -82,18 +111,28 @@ public class LookMerger : MonoBehaviour
         StopMoveMatch();
 
         if (_currentItemPosition != null)
-        {
             _currentItemPosition.ClearingPosition();
-        }
 
-        if (itemPosition.IsBusy)
+        Debug.Log("ваыываыа" +  itemPosition.name);
+        
+        /*if (itemPosition.IsBusy)
+        {
+            Debug.Log("ваыываыа");
+             return;
+        }*/
+        
+        if (!itemPosition.IsBusy && !item.IsLightHouse && itemPosition.IsWater)
             return;
 
         _currentItemPosition = itemPosition;
+        Debug.Log("КАКАЯ Куррент позицияч " + _currentItemPosition);
         _currentItemPosition.SetSelected();
         _currentItem = item;
         _completeList.Clear();
         ClearLists();
+
+        if (_coroutine != null)
+            StopCoroutine(_coroutine);
     }
 
     private IEnumerator LookPositions(ItemPosition itemPosition, Item item)
@@ -132,9 +171,7 @@ public class LookMerger : MonoBehaviour
 
         else if (_matchedItems.Count < 2 && _temporaryItems.Count > 1)
         {
-            _temporaryItems.Remove(_temporaryItem);
-            _temporaryItem = _minIndexItemSelector.GetItemMinIndex(_temporaryItems);
-
+            SaveNewTemporaryItem();
             _coroutine = StartCoroutine(LookPositions(_currentItemPosition, _temporaryItem));
         }
 
@@ -148,15 +185,32 @@ public class LookMerger : MonoBehaviour
         }
     }
 
+    private void SaveNewTemporaryItem()
+    {
+        _matchedItems.Clear();
+        _temporaryItems.Remove(_temporaryItem);
+        _temporaryItem = _minIndexItemSelector.GetItemMinIndex(_temporaryItems);
+    }
+
     private void CheckMatchMerge()
     {
+        Debug.Log("Совпадений " + _matchedItems.Count);
+        
         if (_matchedItems.Count >= 2)
         {
+            Debug.Log("////// Item Merge " + _currentItem);
+            Debug.Log("////// Merge Position" + _currentItemPosition.name);
             _matchedItems.Add(_currentItem);
             _merger.Merge(_currentItemPosition, _positions, _matchedItems);
         }
+        else if (_matchedItems.Count < 2 && _temporaryItems.Count > 1)
+        {
+            SaveNewTemporaryItem();
+            _coroutine = StartCoroutine(LookMerge(_currentItemPosition, _temporaryItem));
+        }
         else
         {
+            StopAllCoroutines();
             NotMerged?.Invoke();
         }
     }
@@ -200,5 +254,15 @@ public class LookMerger : MonoBehaviour
         _matchedItems.Clear();
         _checkedPositions.Clear();
         _positions.Clear();
+    }
+
+    private void StopAllCoroutines()
+    {
+        foreach (var coroutine in _coroutines.Values)
+        {
+            StopCoroutine(coroutine);
+        }
+        
+        _coroutines.Clear();
     }
 }

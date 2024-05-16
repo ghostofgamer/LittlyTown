@@ -81,7 +81,7 @@ namespace ItemContent
 
             transform.position = targetItemPosition;
             gameObject.SetActive(false);
-            Debug.Log("ВЫКЛ");
+            // Debug.Log("ВЫКЛ");
         }
     }
 }
