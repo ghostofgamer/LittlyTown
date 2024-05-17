@@ -40,6 +40,8 @@ namespace ItemPositionContent
 
         public ItemPosition WestPosition => _westPosition;
 
+        public bool IsReplaceSelected { get; private set; } = false;
+
         private void Start()
         {
             // _itemPositions = new ItemPosition[4] {_northPosition, _westPosition, _eastPosition, _southPosition};
@@ -66,7 +68,7 @@ namespace ItemPositionContent
         {
             _item = item;
             // _positionMatcher.LookAround(this);
-            _lookMerger.LookAround(this,_item);
+            _lookMerger.LookAround(this, _item);
         }
 
         public void SetSelected()
@@ -78,10 +80,12 @@ namespace ItemPositionContent
         {
             if (_item == null)
                 return;
-            
+
             _item = null;
             _isBusy = false;
-            _isSelected = false;
+
+            if (!IsReplaceSelected)
+                _isSelected = false;
         }
 
         public void SetNeighbors(ItemPosition north, ItemPosition west, ItemPosition east, ItemPosition south)
@@ -91,6 +95,16 @@ namespace ItemPositionContent
             _eastPosition = east;
             _southPosition = south;
             _itemPositions = new ItemPosition[4] {_northPosition, _westPosition, _eastPosition, _southPosition};
+        }
+
+        public void ReplaceSelectedActivate()
+        {
+            IsReplaceSelected = true;
+        }
+
+        public void ReplaceSelectedDeactivate()
+        {
+            IsReplaceSelected = false;
         }
     }
 }

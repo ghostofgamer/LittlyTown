@@ -74,6 +74,6 @@ public class LightHouseKeeper : MonoBehaviour
 
     private void Show()
     {
-        Debug.Log("колличество маяков " + _lightHouses.Count);
+        // Debug.Log("колличество маяков " + _lightHouses.Count);
     }
 }

@@ -9,7 +9,7 @@ public class MoveCounter : MonoBehaviour
     [SerializeField] private TMP_Text _moveCountText;
     [SerializeField] private ItemDragger _itemDragger;
 
-    private float _maxValue = 10;
+    private float _maxValue = 100;
     private float _minValue = 0;
 
     private int _targetStepProfit = 5;

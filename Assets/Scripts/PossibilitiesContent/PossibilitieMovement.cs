@@ -24,7 +24,7 @@ namespace PossibilitiesContent
         private void Start()
         {
             _targetPosition = _targetPossibilitie.localPosition;
-            Debug.Log("PossibilitytargetPosition " + _targetPosition);
+            // Debug.Log("PossibilitytargetPosition " + _targetPosition);
             // _jumpPosition = _startPosition + Vector3.up * _jumpHeight;
             _jumpPosition = _startPosition + new Vector3(1,1,0) * _jumpHeight;
             _canvasGroup = GetComponent<CanvasGroup>();

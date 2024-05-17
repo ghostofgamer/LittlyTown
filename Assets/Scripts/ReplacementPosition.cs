@@ -132,6 +132,8 @@ public class ReplacementPosition : MonoBehaviour
                         // Debug.Log("Second   " + _secondItem);
                         
                         // _lookMerger.LookAround(_secondItemPosition,_firstItem);
+                        _secondItemPosition.ReplaceSelectedActivate();
+                        _firstItemPosition.ReplaceSelectedActivate();
                         _secondItemPosition.DeliverObject(_firstItem);
                         _firstItemPosition.DeliverObject(_secondItem);
                         // _lookMerger.LookAround(_secondItemPosition,_firstItem);

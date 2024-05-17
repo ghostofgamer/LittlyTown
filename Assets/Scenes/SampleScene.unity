@@ -31157,7 +31157,7 @@ MonoBehaviour:
   _replacementButton: {fileID: 586404709}
   _itemDragger: {fileID: 1990161225}
   _positionsCounter: {fileID: 586404711}
-  _lookMerger: {fileID: 0}
+  _lookMerger: {fileID: 1813521671}
 --- !u!4 &794048064
 Transform:
   m_ObjectHideFlags: 0
@@ -31943,7 +31943,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19c9a2a43838ad04bb268990b4aa7f35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveCount: 10
+  _moveCount: 100
   _moveCountText: {fileID: 248309246}
   _itemDragger: {fileID: 1990161225}
 --- !u!4 &822774933
