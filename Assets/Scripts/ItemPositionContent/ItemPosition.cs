@@ -76,6 +76,11 @@ namespace ItemPositionContent
             _isSelected = true;
         }
 
+        public void DeactivationSelected()
+        {
+            _isSelected = false;
+        }
+
         public void ClearingPosition()
         {
             if (_item == null)

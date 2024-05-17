@@ -136,6 +136,7 @@ public class LookMerger : MonoBehaviour
                 _coroutines.Add(item, coroutine);
                 // Debug.Log("Сколкь окорутин активных " + _coroutines.Count);
             }
+
             Debug.Log("Сколкь окорутин активных " + _coroutines.Count);
         }
     }
@@ -279,12 +280,19 @@ public class LookMerger : MonoBehaviour
                 Stop();
                 // StopAllCoroutines(item);
             }*/
+            Debug.Log("itemPosition" + itemPosition+ itemPosition.IsReplaceSelected);
 
             if (itemPosition.IsReplaceSelected)
+            {
+                Debug.Log("itemPosition   REPLACED" + itemPosition+ itemPosition.IsReplaceSelected);
+                itemPosition.DeactivationSelected();
                 itemPosition.ReplaceSelectedDeactivate();
+            }
+
             
+
             NotMerged?.Invoke();
-            
+
             if (_coroutines.ContainsKey(item))
             {
                 StopCoroutine(_coroutines[item]);
@@ -297,7 +305,7 @@ public class LookMerger : MonoBehaviour
     private void ActivationLookPositions(ItemPosition currentPosition, Item item)
     {
         Debug.Log("Проверяем позицию " + currentPosition.name);
-        
+
         if (_checkedPositions.Contains(currentPosition))
         {
             Debug.Log("БЫЛ Return" + currentPosition.name);
@@ -322,8 +330,9 @@ public class LookMerger : MonoBehaviour
             {
                 continue;
             }
+
             Debug.Log("FOREASCH " + arroundPosition.name);
-            
+
             if (arroundPosition.Item != null && arroundPosition.Item.ItemName.Equals(item.ItemName))
             {
                 ActivationLookPositions(arroundPosition, item);
