@@ -103,7 +103,24 @@ public class LookMerger : MonoBehaviour
         {
             if (_coroutines.ContainsKey(item))
             {
+                StopCoroutine(_coroutines[item]);
+                _coroutines.Remove(item);
+                Debug.Log("Сколкь окорутин активных " + _coroutines.Count);
                 Debug.Log("Coroutine Faled " + itemPosition + "   " + item.name);
+            }
+            else if (!_coroutines.ContainsKey(item))
+            {
+                if (!_newMatchedItems.ContainsKey(item))
+                {
+                    _newMatchedItems.Add(item, new List<Item>());
+                    // Debug.Log("NEW KEY " + item.name);
+                }
+
+                Debug.Log("Coroutine NEWWW" + item + " POS  " + itemPosition);
+
+                Coroutine coroutine = StartCoroutine(LookMerge(itemPosition, item));
+                _coroutines.Add(item, coroutine);
+                // Debug.Log("Сколкь окорутин активных " + _coroutines.Count);
             }
             else
             {
@@ -119,6 +136,7 @@ public class LookMerger : MonoBehaviour
                 _coroutines.Add(item, coroutine);
                 // Debug.Log("Сколкь окорутин активных " + _coroutines.Count);
             }
+            Debug.Log("Сколкь окорутин активных " + _coroutines.Count);
         }
     }
 
@@ -256,16 +274,23 @@ public class LookMerger : MonoBehaviour
         {
             // Debug.Log("ITEM " + item);
 
-            if (_isTryMerge)
+            /*if (_isTryMerge)
             {
                 Stop();
                 // StopAllCoroutines(item);
-            }
+            }*/
 
             if (itemPosition.IsReplaceSelected)
                 itemPosition.ReplaceSelectedDeactivate();
             
             NotMerged?.Invoke();
+            
+            if (_coroutines.ContainsKey(item))
+            {
+                StopCoroutine(_coroutines[item]);
+                _coroutines.Remove(item);
+                Debug.Log("Сколкь окорутин активных ВКОНЦЕ " + _coroutines.Count);
+            }
         }
     }
 

@@ -21,20 +21,14 @@
   <component name="ChangeListManager">
     <list default="true" id="099b8a6d-6b1c-4473-babb-d7d2ffb7e44f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemContent/LightHouseKeeper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemContent/LightHouseKeeper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemPositionContent/ItemPosition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemPositionContent/ItemPosition.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Merger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Merger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MoveCounter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MoveCounter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/PossibilitieMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/PossibilitieMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ReplacementPosition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ReplacementPosition.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Test/LookMerger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Test/LookMerger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bild/Build.zip" beforeDir="false" afterPath="$PROJECT_DIR$/Bild/Build.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bild/Build/220e4394bd14670c26ac310545722a07.wasm.unityweb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bild/Build/2b08c5299773afe5fe840c7515bd28e2.data.unityweb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bild/Build/59d834356f0b85449bff49eff676f037.js.unityweb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bild/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Bild/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bild/Build.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bild/Build/Bild.loader.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bild/Build/c9f8c94dcc26b1c090db5bb44eac924e.data.unityweb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bild/Build/d1afd059d223a8694b11df8cef17f70b.js.unityweb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bild/Build/f42d6db5677294ab97e7dd6d7313c51c.wasm.unityweb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bild/StreamingAssets/UnityServicesProjectConfiguration.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bild/index.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -247,6 +241,7 @@
       <workItem from="1715935352035" duration="4465000" />
       <workItem from="1715942936732" duration="3000" />
       <workItem from="1715942970665" duration="6874000" />
+      <workItem from="1715950914298" duration="3299000" />
     </task>
     <servers />
   </component>
