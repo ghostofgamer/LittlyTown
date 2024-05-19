@@ -124,7 +124,8 @@ public class Merger : MonoBehaviour
         item.Activation();
         item.GetComponent<ItemAnimation>().PositioningAnimation();
         // Debug.Log("_matchPositions.Count " + _matchItems.Count);
-        Merged?.Invoke(_matchItems.Count, _currentItem.Reward, currentPosition);
+        // Merged?.Invoke(_matchItems.Count, _currentItem.Reward, currentPosition);
+        Merged?.Invoke(_matchPositions.Count, _currentItem.Reward, currentPosition);
         // Debug.Log("повторный Мердж" + item.name);
         _lookMerger.LookAround(currentPosition, item);
         // Debug.Log("_matchPositions.Count " + _matchItems.Count);

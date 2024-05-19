@@ -67,7 +67,7 @@ public class MapGenerator : MonoBehaviour
         _roadGenerator.OnGeneration();
         yield return _waitForSecondsMoment;
         _spawner.OnCreateItem();
-        yield return null;
+        yield return _waitForSecondsTri;
         GenerationCompleted?.Invoke();
     }
 }

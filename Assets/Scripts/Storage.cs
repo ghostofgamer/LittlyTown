@@ -1,3 +1,4 @@
+using System;
 using Dragger;
 using ItemContent;
 using UnityEngine;
@@ -11,6 +12,10 @@ public class Storage : MonoBehaviour
 
     private Item _currentItem;
     private Item _temporaryItem;
+
+    public event Action StoragePlaceChanged;
+
+    public Item CurrentItem => _currentItem;
 
     public void ChangeItem()
     {
@@ -32,7 +37,7 @@ public class Storage : MonoBehaviour
                 _currentItem = _itemDragger.SelectedObject;
                 _currentItem.gameObject.SetActive(false);
                 _itemDragger.ClearItem();
-                _itemDragger.SetItem(_itemDragger.TemporaryItem,_currentItem.ItemPosition);
+                _itemDragger.SetItem(_itemDragger.TemporaryItem, _currentItem.ItemPosition);
                 _itemDragger.TemporaryItem.gameObject.SetActive(true);
                 _itemDragger.ClearTemporaryItem();
                 _image.gameObject.SetActive(true);
@@ -51,6 +56,25 @@ public class Storage : MonoBehaviour
             _currentItem.gameObject.SetActive(true);
             _image.sprite = _temporaryItem.ItemDropDataSo.Icon;
             _currentItem = _temporaryItem;
+        }
+
+        StoragePlaceChanged?.Invoke();
+    }
+
+    public void SetItem(Item item)
+    {
+        if (item != null)
+        {
+            _currentItem = item;
+            _temporaryItem = null;
+            _image.sprite = _currentItem.ItemDropDataSo.Icon;
+        }
+        else
+        {
+            _image.gameObject.SetActive(false);
+            _currentItem = null;
+            _temporaryItem = null;
+            _image.sprite = null;
         }
     }
 }

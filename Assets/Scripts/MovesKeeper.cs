@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using CountersContent;
+using Dragger;
 using Enums;
 using ItemContent;
 using ItemPositionContent;
@@ -10,6 +11,7 @@ using Wallets;
 
 public class MovesKeeper : MonoBehaviour
 {
+    [SerializeField] private ItemDragger _itemDragger;
     [SerializeField] private ItemsStorage _itemsStorage;
     [SerializeField] private ItemPosition[] _itemPositions;
     [SerializeField] private Transform _container;
@@ -18,6 +20,9 @@ public class MovesKeeper : MonoBehaviour
     [SerializeField] private PossibilitiesCounter _bulldozerCounter;
     [SerializeField] private GoldWallet _goldWallet;
     [SerializeField]private MoveCounter _moveCounter;
+    [SerializeField]private RoadGenerator _roadGenerator;
+    [SerializeField]private ScoreCounter _scoreCounter;
+    [SerializeField]private Storage _storage;
     
     private List<SaveData> _savesHistory = new List<SaveData>();
     private int _maxStepSaved = 3;
@@ -59,10 +64,6 @@ public class MovesKeeper : MonoBehaviour
         Debug.Log("CurrentStep   " + _currentStep);
     }
 
-    private void LoadLastStep()
-    {
-    }
-
     public void CancelLastStep()
     {
         Debug.Log("CurrentStep   " + _currentStep);
@@ -77,6 +78,8 @@ public class MovesKeeper : MonoBehaviour
 
     private IEnumerator StartCancelling()
     {
+        _itemDragger.SelectedObject.gameObject.SetActive(false);
+       Debug.Log(_itemsStorage.SelectObject.ItemName); ;
         foreach (var itemPosition in _itemPositions)
         {
             if (itemPosition.Item != null)
@@ -105,10 +108,33 @@ public class MovesKeeper : MonoBehaviour
         _bulldozerCounter.SetValue(saveData.BulldozerCount);
         _goldWallet.SetValue(saveData.GoldValue);
         _moveCounter.SetValue(saveData.MoveCount);
+        _scoreCounter.SetValue(saveData.ScoreValue);
+        _storage.SetItem(saveData.StorageItem);
+        Debug.Log("ШАГ Вперед " + saveData.SelectItemDragger.ItemName);
+        Debug.Log("ШАГ !!! " + _itemsStorage.SelectObject.ItemName);
+        Debug.Log("ШАГ Середина " + _itemsStorage.SelectObject.ItemPosition);
+
+        /*Item selectItem = Instantiate(GetItem(saveData.SelectItemDragger.ItemName),saveData.SelectItemDragger.ItemPosition.transform.position,
+            Quaternion.identity, _container);*/
+        
+        Item selectItem = Instantiate(GetItem(_itemsStorage.SelectObject.ItemName),_itemsStorage.SelectObject.ItemPosition.transform.position,
+            Quaternion.identity, _container);
+        
+        _itemDragger.SetItem(selectItem,_itemsStorage.SelectObject.ItemPosition);
+        selectItem.gameObject.SetActive(true);
+        Debug.Log("ШАГ НАЗАД " + selectItem.name);
+
+        /*Item temporaryItem = Instantiate(GetItem(saveData.TemporaryItemDragger.ItemName),saveData.TemporaryItemDragger.ItemPosition.transform.position,
+            Quaternion.identity, _container);
+        _itemDragger.SetTemporaryObject(temporaryItem);*/
+        
+        
         
         yield return null;
+        _roadGenerator.OnGeneration();
         ClearHistory();
-        _itemsStorage.SaveChanges();
+        yield return new WaitForSeconds(0.1f);
+        // _itemsStorage.SaveChanges();
     }
 
     private Item GetItem(Items itemName)
@@ -125,8 +151,9 @@ public class MovesKeeper : MonoBehaviour
     private void ClearHistory()
     {
         _savesHistory.Clear();
-        _currentStep = _savesHistory.Count - 1;
+        _currentStep = 0;
         StepChanged?.Invoke(_currentStep);
+        _itemsStorage.SaveChanges();
         Debug.Log("CurrentStep   Очистка" + _currentStep);
     }
 }

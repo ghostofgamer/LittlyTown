@@ -20,10 +20,12 @@ namespace CountersContent
         private int _scoreIncome = 0;
         private Vector3 _targetPosition;
         private string _scoreText= "гол {0} очков";
-
+        
         public event Action<int, int> ScoreChanged;
 
         public event Action LevelChanged;
+        
+        public int CurrentScore => _currentScore;
         
         private void OnEnable()
         {
@@ -44,6 +46,12 @@ namespace CountersContent
             Show();
         }
 
+        public void SetValue(int value)
+        {
+            _currentScore = value;
+            ScoreChanged?.Invoke(_currentScore, _targetScore);
+        }
+        
         private void AddIncome(int countMatch, int reward, ItemPosition itemPosition)
         {
             _scoreIncome += reward * countMatch;

@@ -34939,6 +34939,13 @@ MonoBehaviour:
   - {fileID: 2114086251580323830, guid: 553ddbaa987576747b58d212f7e7150c, type: 3}
   - {fileID: 1315623422540449418, guid: b68608db95bf2d54db0e5597c9196903, type: 3}
   - {fileID: 7930523424143760095, guid: 850174af952ea3248bc9032bb8586d10, type: 3}
+  _replaceCounter: {fileID: 586404711}
+  _bulldozerCounter: {fileID: 39153983}
+  _goldWallet: {fileID: 2024437528}
+  _moveCounter: {fileID: 822774932}
+  _roadGenerator: {fileID: 118112035}
+  _scoreCounter: {fileID: 1705592014}
+  _storage: {fileID: 9003913}
 --- !u!4 &889228747
 Transform:
   m_ObjectHideFlags: 0
@@ -70393,6 +70400,15 @@ MonoBehaviour:
   - {fileID: 7930523424143760095, guid: 850174af952ea3248bc9032bb8586d10, type: 3}
   _container: {fileID: 2056341566}
   _mapGenerator: {fileID: 1536841185}
+  _replaceCounter: {fileID: 586404711}
+  _bulldozerCounter: {fileID: 39153983}
+  _replacementPosition: {fileID: 794048063}
+  _removalItems: {fileID: 2054429386}
+  _goldWallet: {fileID: 2024437528}
+  _moveCounter: {fileID: 822774932}
+  _roadGenerator: {fileID: 118112035}
+  _scoreCounter: {fileID: 1705592014}
+  _storage: {fileID: 9003913}
 --- !u!4 &1903934208
 Transform:
   m_ObjectHideFlags: 0

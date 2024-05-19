@@ -9,6 +9,7 @@ namespace Dragger
     public class ItemDragger : MonoBehaviour
     {
         [SerializeField] private Spawner _spawner;
+        [SerializeField] private ItemsStorage _itemStorage;
 
         private ItemPositionLooker _itemPositionLooker;
         private ItemPosition _startPosition;
@@ -24,6 +25,8 @@ namespace Dragger
 
         public event Action PlaceChanged;
         public event Action<Item> BuildItem;
+        
+        public event Action<Item,Item> SelectItemReceived;
 
         public bool IsObjectSelected { get; private set; } = false;
 
@@ -48,6 +51,7 @@ namespace Dragger
             _temporaryItem.gameObject.SetActive(false);
             SetItem(item, _startPosition);
             _selectedObject.gameObject.SetActive(true);
+         
             /*Debug.Log("Temporary " + _temporaryItem);
             Debug.Log("_selectedObject " + _selectedObject);*/
         }
@@ -55,6 +59,13 @@ namespace Dragger
         public void ClearTemporaryItem()
         {
             _temporaryItem = null;
+          
+        }
+
+        public void SetTemporaryObject(Item item)
+        {
+            _temporaryItem = item;
+            _temporaryItem.gameObject.SetActive(false);
         }
 
         public void SetItem(Item item, ItemPosition itemPosition)
@@ -62,7 +73,9 @@ namespace Dragger
             _selectedObject = item;
             _startPosition = itemPosition;
             _selectedObject.Init(_startPosition);
+            Debug.Log(_startPosition);
             _startPosition.GetComponent<VisualItemPosition>().ActivateVisual();
+            SelectItemReceived?.Invoke(_selectedObject,_temporaryItem);
         }
 
         public void ClearItem()

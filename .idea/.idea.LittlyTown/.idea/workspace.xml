@@ -20,25 +20,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="099b8a6d-6b1c-4473-babb-d7d2ffb7e44f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Apartment.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Apartment.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/BigApartment.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/BigApartment.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Condominium.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Condominium.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/CozyHome.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/CozyHome.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/CraneItem.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/CraneItem.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/HouseWood.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/HouseWood.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CountersContent/PossibilitiesCounter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CountersContent/PossibilitiesCounter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemContent/LightHouseKeeper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemContent/LightHouseKeeper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CountersContent/ScoreCounter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CountersContent/ScoreCounter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Dragger/ItemDragger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Dragger/ItemDragger.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/MapGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MapGenerator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Merger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Merger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MoveCounter.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MoveCounter.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Test/LookMerger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Test/LookMerger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/AbstractButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/AbstractButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/CancelMoveButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/CancelMoveButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Wallets/AbstractWallet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Wallets/AbstractWallet.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MovesKeeper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MovesKeeper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Save&amp;Load/ItemsStorage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Save&amp;Load/ItemsStorage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Save&amp;Load/SaveData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Save&amp;Load/SaveData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Storage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Storage.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,7 +118,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/Wallets/PriceInfo.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Wallets/MoneyInfo.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/GameLevelScreen.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ADButtons/RewardMoveButton.cs" />
@@ -152,7 +142,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Test/TestMerger.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SpawnContent/Spawner.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PositionMatcher.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/CountersContent/ScoreCounter.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/RewardButtons/RewardGoldButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/CompleteScoreScreen.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ItemContent/Item.cs" />
@@ -160,23 +149,25 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/ItemContent/ItemMoving.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MoveCounter.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/PossibilitieMovement.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Dragger/ItemDragger.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ReplacementPosition.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ItemPositionContent/ItemPosition.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ItemContent/LightHouseKeeper.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Merger.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CraneDestroyer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Save&amp;Load/ItemData.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Test/LookMerger.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Save&amp;Load/MovesKeeper.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/MapGenerator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/AbstractButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/CancelMoveButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CountersContent/PossibilitiesCounter.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Wallets/AbstractWallet.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CountersContent/MoveCounter.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Save&amp;Load/ItemsStorage.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Merger.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Storage.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Save&amp;Load/SaveData.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MapGenerator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/CountersContent/ScoreCounter.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Save&amp;Load/ItemsStorage.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Dragger/ItemDragger.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MovesKeeper.cs" />
       </list>
     </option>
@@ -256,7 +247,7 @@
       <workItem from="1715942970665" duration="6874000" />
       <workItem from="1715950914298" duration="6061000" />
       <workItem from="1716018461858" duration="9135000" />
-      <workItem from="1716103158645" duration="13001000" />
+      <workItem from="1716103158645" duration="22996000" />
     </task>
     <servers />
   </component>
@@ -349,10 +340,10 @@
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
     <state x="461" y="161" key="SettingsEditor/0.0.1920.1032@0.0.1920.1032" timestamp="1714730777395" />
-    <state x="112" y="95" width="1736" height="848" key="VCS.FileHistoryDialog" timestamp="1716112537890">
+    <state x="112" y="95" width="1736" height="848" key="VCS.FileHistoryDialog" timestamp="1716123334887">
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
-    <state x="112" y="95" width="1736" height="848" key="VCS.FileHistoryDialog/0.0.1920.1032@0.0.1920.1032" timestamp="1716112537890" />
+    <state x="112" y="95" width="1736" height="848" key="VCS.FileHistoryDialog/0.0.1920.1032@0.0.1920.1032" timestamp="1716123334887" />
     <state x="616" y="238" key="run.anything.popup" timestamp="1715596568753">
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
