@@ -10,6 +10,7 @@ public class LightHouseKeeper : MonoBehaviour
     [SerializeField] private ItemDragger _itemDragger;
     [SerializeField]private RemovalItems _removalItems;
     [SerializeField]private ReplacementPosition _replacementPosition;
+    [SerializeField]private Merger _merger;
 
     private List<LightHouseTrigger> _lightHouses = new List<LightHouseTrigger>();
     private Coroutine _coroutine;
@@ -22,6 +23,7 @@ public class LightHouseKeeper : MonoBehaviour
         _itemDragger.PlaceChanged += CheckHousesAround;
         _removalItems.ItemRemoved += RemoveMayak;
         _replacementPosition.PositionsChanged += CheckHousesAround;
+        _merger.Mergered += CheckHousesAround;
     }
 
     private void OnDisable()
@@ -30,6 +32,7 @@ public class LightHouseKeeper : MonoBehaviour
         _itemDragger.PlaceChanged -= CheckHousesAround;
         _removalItems.ItemRemoved -= RemoveMayak; 
         _replacementPosition.PositionsChanged -= CheckHousesAround;
+        _merger.Mergered -= CheckHousesAround;
     }
 
     private void AddMayak(Item item)

@@ -240,13 +240,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 891d55e63e7733b4382f05b700c589f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemName: 6
+  _itemName: 5
   _nextItem: {fileID: 5411065820483948517, guid: 689dea58ec3f1344186eee7c39910dac, type: 3}
   _reward: 10
   _itemDropDataSo: {fileID: 0}
   _isHouse: 1
   _isLightHouse: 0
-  _gold: 3
+  _gold: 5
 --- !u!54 &2640430018655828056
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -344,7 +344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6978b5fb3831e8c4f954a4f163787204, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _income: 3
+  _income: 5
 --- !u!1 &1037248643575821024
 GameObject:
   m_ObjectHideFlags: 0

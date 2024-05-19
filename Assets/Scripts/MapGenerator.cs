@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,8 @@ public class MapGenerator : MonoBehaviour
     private List<ItemPosition> _clearPositions;
     private int _randomIndex;
 
+    public event Action GenerationCompleted;
+    
     private void Start()
     {
         Generation();
@@ -64,5 +67,7 @@ public class MapGenerator : MonoBehaviour
         _roadGenerator.OnGeneration();
         yield return _waitForSecondsMoment;
         _spawner.OnCreateItem();
+        yield return null;
+        GenerationCompleted?.Invoke();
     }
 }

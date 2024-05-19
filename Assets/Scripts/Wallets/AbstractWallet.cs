@@ -67,5 +67,11 @@ namespace Wallets
                 yield return null;
             }
         }
+
+        public void SetValue(int value)
+        {
+            _currentValue = value;
+            ValueChanged?.Invoke();
+        }
     }
 }

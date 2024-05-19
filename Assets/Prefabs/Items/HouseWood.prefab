@@ -74,7 +74,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 891d55e63e7733b4382f05b700c589f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemName: 5
+  _itemName: 4
   _nextItem: {fileID: 5618188237412716214, guid: 476473cf5d6da6243bb7a1cb2580c84e, type: 3}
   _reward: 10
   _itemDropDataSo: {fileID: 0}

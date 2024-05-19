@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 6022667710833035597}
   - component: {fileID: 7529673942165935852}
   - component: {fileID: 14608326116156955}
+  - component: {fileID: -225435040293807332}
   m_Layer: 3
   m_Name: CraneItem
   m_TagString: Untagged
@@ -281,6 +282,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 152c4924823ea1c4d82b029ef350f5d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-225435040293807332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4010980174144322993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fbdf67fd931c9746b57eb43163e8ea6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5295877299226253385

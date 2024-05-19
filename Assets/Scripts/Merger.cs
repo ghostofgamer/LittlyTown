@@ -111,7 +111,7 @@ public class Merger : MonoBehaviour
 
         if (_currentItem.ItemName == Items.Crane)
         {
-            _currentItem = _matchItems[0];
+            _currentItem = _targetItem[targetItem];
         }
 
         // Item item = Instantiate(_currentItem.NextItem, currentPosition.transform.position, Quaternion.identity);

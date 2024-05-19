@@ -52,5 +52,11 @@ namespace CountersContent
         {
             _possibilitiesCountText.text = _possibilitiesCount.ToString();
         }
+
+        public void SetValue(int count)
+        {
+            _possibilitiesCount = count;
+            Show();
+        }
     }
 }
