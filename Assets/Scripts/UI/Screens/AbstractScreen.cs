@@ -23,6 +23,7 @@ namespace UI.Screens
 
         public virtual void Open()
         {
+            Debug.Log("Open");
             if (_coroutine != null)
                 StopCoroutine(_coroutine);
 
@@ -30,11 +31,16 @@ namespace UI.Screens
             _canvasGroup.blocksRaycasts = true;
             _coroutine = StartCoroutine(Fade(0, 1));
 
-            if (_gameLevelScreen != null)
+            /*if (_gameLevelScreen != null)
             {
                 _blur.TurnOn();
                  _gameLevelScreen.Close();
             }
+
+            if (_blur != null)
+            {
+                _blur.TurnOn();
+            }*/
             
             if (_itemDragger != null)
                 _itemDragger.enabled = false;
@@ -42,6 +48,7 @@ namespace UI.Screens
 
         public void Close()
         {
+            Debug.Log("Close");
             if (_coroutine != null)
                 StopCoroutine(_coroutine);
             
@@ -49,11 +56,11 @@ namespace UI.Screens
             _canvasGroup.interactable = false;
             _canvasGroup.blocksRaycasts = false;
 
-            if (_gameLevelScreen != null)
+            /*if (_gameLevelScreen != null)
             {
                 _blur.TurnOff();
                  _gameLevelScreen.Open();
-            }
+            }*/
 
             if (_itemDragger != null)
                 _itemDragger.enabled = true;

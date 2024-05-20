@@ -23,10 +23,12 @@ public class MapGenerator : MonoBehaviour
 
     public event Action GenerationCompleted;
     
+    /*
     private void Start()
     {
         Generation();
     }
+    */
 
     public void Generation()
     {

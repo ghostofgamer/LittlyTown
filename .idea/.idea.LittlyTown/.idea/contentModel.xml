@@ -1099,6 +1099,7 @@
               <e p="BulldozerButton.cs" t="Include" />
               <e p="BuyItemButton.cs" t="Include" />
               <e p="CancelMoveButton.cs" t="Include" />
+              <e p="ChooseMapButton.cs" t="Include" />
               <e p="CloseButton.cs" t="Include" />
               <e p="GoalCompleteButton.cs" t="Include" />
               <e p="GoldButton.cs" t="Include" />
@@ -1119,19 +1120,25 @@
                 <e p="RewardReplaceButton.cs" t="Include" />
               </e>
               <e p="RotationButton.cs" t="Include" />
+              <e p="SettingsContent" t="Include" />
               <e p="StorageButton.cs" t="Include" />
             </e>
             <e p="Screens" t="Include">
               <e p="AbstractScreen.cs" t="Include" />
               <e p="BlurScreen.cs" t="Include" />
+              <e p="ChoosemapScreen.cs" t="Include" />
               <e p="CompleteScoreScreen.cs" t="Include" />
               <e p="EndMoveScreen.cs" t="Include" />
+              <e p="FirstScreen.cs" t="Include" />
               <e p="GameLevelScreen.cs" t="Include" />
               <e p="GoalsScreen.cs" t="Include" />
               <e p="ItemScreen.cs" t="Include" />
+              <e p="LanguageScreen.cs" t="Include" />
               <e p="PossibilitiesShopContent" t="Include">
                 <e p="PossibilitiesShopScreen.cs" t="Include" />
               </e>
+              <e p="SettingsScreen.cs" t="Include" />
+              <e p="UpgradeScreen.cs" t="Include" />
             </e>
           </e>
           <e p="Wallets" t="Include">
