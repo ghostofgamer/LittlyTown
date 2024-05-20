@@ -16,4 +16,4 @@ MonoBehaviour:
   _baseDropChance: 0.05
   _levelIncreaseFactor: 0.005
   _levelDecreaseFactor: 0
-  _prefabItem: {fileID: 2114086251580323830, guid: 553ddbaa987576747b58d212f7e7150c, type: 3}
+  _prefabItem: {fileID: 1684140669792561755, guid: 73a0396b97fc3334886fd7db2438f2e1, type: 3}
