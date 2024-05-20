@@ -5,11 +5,13 @@ using Enums;
 using ItemContent;
 using ItemPositionContent;
 using UnityEngine;
+using Wallets;
 
 public class Merger : MonoBehaviour
 {
     [SerializeField] private PositionMatcher _positionMatcher;
     [SerializeField] private LookMerger _lookMerger;
+    [SerializeField] private GoldWallet _goldWallet;
 
     private Item _currentItem;
     private List<ItemPosition> _matchPositions = new List<ItemPosition>();
@@ -118,6 +120,10 @@ public class Merger : MonoBehaviour
         // Item item = Instantiate(_newItem[currentPosition].NextItem, currentPosition.transform.position, Quaternion.identity);
         Debug.Log("Instantiate " + _targetItem[targetItem].name);
         Item item = Instantiate(_targetItem[targetItem].NextItem, currentPosition.transform.position, Quaternion.identity);
+
+        if (item.TryGetComponent(out TreasureChest treasureChest))
+            treasureChest.Init(_goldWallet);
+        
         // Debug.Log("Instantiate " + _newItem[currentPosition].name);
         item.transform.forward = currentPosition.transform.forward;
         item.Init(currentPosition);

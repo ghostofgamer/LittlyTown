@@ -1089,6 +1089,7 @@
             <e p="TestMerger.cs" t="Include" />
           </e>
           <e p="TextWidthController.cs" t="Include" />
+          <e p="TreasureChest.cs" t="Include" />
           <e p="UI" t="Include">
             <e p="Buttons" t="Include">
               <e p="AbstractButton.cs" t="Include" />

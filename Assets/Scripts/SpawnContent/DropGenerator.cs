@@ -37,7 +37,9 @@ public class DropGenerator : MonoBehaviour
         ItemDropData = DropItem();
         Debug.Log("ITEMDROPGENERATION " + ItemDropData);
         _nextItem = ItemDropData.PrefabItem;
-        return _currentItem;
+        
+        // return _currentItem;
+        return _itemDropsSO[0].PrefabItem;;
     }
 
     public void SetItem(ItemDropDataSO itemDropData)

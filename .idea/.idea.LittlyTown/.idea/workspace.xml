@@ -20,14 +20,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="099b8a6d-6b1c-4473-babb-d7d2ffb7e44f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Dragger/ItemDragger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Dragger/ItemDragger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MovesKeeper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MovesKeeper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Save&amp;Load/ItemsStorage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Save&amp;Load/ItemsStorage.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Save&amp;Load/SaveData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Save&amp;Load/SaveData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Chest.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Chest.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Merger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Merger.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/SpawnContent/DropGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SpawnContent/DropGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/CancelMoveButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/CancelMoveButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SpawnContent/Spawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SpawnContent/Spawner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bild/Build.zip" beforeDir="false" afterPath="$PROJECT_DIR$/Bild/Build.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bild/Build/1287b23aad1450bc35483818b08a4aee.wasm.unityweb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bild/Build/b00480c9017d7a1ef9f756aa16df54f7.js.unityweb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bild/Build/c9b278b963a01f522bd813d26f13f7a4.data.unityweb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bild/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Bild/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,6 +110,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CountersContent/ScoreCounter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ItemContent/ItemStay.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MovesKeeper.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/TreasureChest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Buttons/StorageButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ReplacementPosition.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BuyItemButton.cs" root0="FORCE_HIGHLIGHTING" />
@@ -116,7 +120,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/GameLevelScreen.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ADButtons/RewardMoveButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/RewardButtons/RewardBulldozerButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/RewardButtons/RewardReplaceButton.cs" />
@@ -137,7 +140,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/ItemContent/House.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enums/Items.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Test/TestMerger.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SpawnContent/Spawner.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PositionMatcher.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/RewardButtons/RewardGoldButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/CompleteScoreScreen.cs" />
@@ -157,7 +159,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/CountersContent/PossibilitiesCounter.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Wallets/AbstractWallet.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CountersContent/MoveCounter.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Merger.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Storage.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MapGenerator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CountersContent/ScoreCounter.cs" />
@@ -166,7 +167,10 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/CancelMoveButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Save&amp;Load/ItemsStorage.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MovesKeeper.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Merger.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SpawnContent/Spawner.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SpawnContent/DropGenerator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/TreasureChest.cs" />
       </list>
     </option>
   </component>
@@ -246,7 +250,7 @@
       <workItem from="1715950914298" duration="6061000" />
       <workItem from="1716018461858" duration="9135000" />
       <workItem from="1716103158645" duration="25229000" />
-      <workItem from="1716194166624" duration="5086000" />
+      <workItem from="1716194166624" duration="9064000" />
     </task>
     <servers />
   </component>
