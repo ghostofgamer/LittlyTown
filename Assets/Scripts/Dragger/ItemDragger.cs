@@ -73,7 +73,7 @@ namespace Dragger
             _selectedObject = item;
             _startPosition = itemPosition;
             _selectedObject.Init(_startPosition);
-            Debug.Log(_startPosition);
+            // Debug.Log(_startPosition);
             _startPosition.GetComponent<VisualItemPosition>().ActivateVisual();
             SelectItemReceived?.Invoke(_selectedObject,_temporaryItem);
         }

@@ -1,7 +1,5 @@
-using System;
 using UI.Buttons;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class CancelMoveButton : AbstractButton
 {
@@ -20,7 +18,7 @@ public class CancelMoveButton : AbstractButton
 
     private void Start()
     {
-        Debug.Log("Step Start " + _movesKeeper.CurrentStep);
+        // Debug.Log("Step Start " + _movesKeeper.CurrentStep);
         
         if (_movesKeeper.CurrentStep <= 0)
             Button.interactable = false;

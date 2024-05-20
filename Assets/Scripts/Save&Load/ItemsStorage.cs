@@ -6,6 +6,7 @@ using Dragger;
 using Enums;
 using ItemContent;
 using ItemPositionContent;
+using ItemSO;
 using UnityEngine;
 using Wallets;
 
@@ -25,11 +26,13 @@ public class ItemsStorage : MonoBehaviour
     [SerializeField] private RoadGenerator _roadGenerator;
     [SerializeField] private ScoreCounter _scoreCounter;
     [SerializeField] private Storage _storage;
+    [SerializeField]private DropGenerator _dropGenerator;
 
     private Coroutine _coroutine;
     private Item _selectObject;
     private Item _temporaryObject;
-
+    private ItemDropDataSO _itemDropDataSO;
+    
     public Item SelectObject => _selectObject;
 
 
@@ -64,6 +67,14 @@ public class ItemsStorage : MonoBehaviour
 
         _coroutine = StartCoroutine(Save());
     }
+    
+    public void CancelMoveSave()
+    {
+        if (_coroutine != null)
+            StopCoroutine(_coroutine);
+
+        _coroutine = StartCoroutine(SaveCancelMove());
+    }
 
     private IEnumerator Save()
     {
@@ -75,10 +86,14 @@ public class ItemsStorage : MonoBehaviour
             _selectObject = _itemDragger.SelectedObject;
             saveData.SelectItemDragger = _selectObject;
 
-            Debug.Log("Select Item Save " + saveData.SelectItemDragger);
+            // Debug.Log("Select Item Save " + saveData.SelectItemDragger);
             // Debug.Log();
         }
 
+        _itemDropDataSO = _dropGenerator.ItemDropData;
+        saveData.ItemDropData = _itemDropDataSO;
+        Debug.Log("DROP " + saveData.ItemDropData);
+        
         yield return new WaitForSeconds(0.165f);
 
         List<ItemData> itemDatas = new List<ItemData>();
@@ -127,6 +142,73 @@ public class ItemsStorage : MonoBehaviour
         SaveCompleted?.Invoke(saveData);
         // Debug.Log("СОХРАНИЛ " + itemDatas.Count);
     }
+    
+    
+    private IEnumerator SaveCancelMove()
+    {
+        SaveData saveData = new SaveData();
+        
+        if (_itemDragger.SelectedObject != null)
+        {
+            // _selectObject = new Item();
+            _selectObject = _itemDragger.SelectedObject;
+            saveData.SelectItemDragger = _selectObject;
+
+            // Debug.Log("Select Item Save " + saveData.SelectItemDragger);
+            // Debug.Log();
+        }
+
+        _itemDropDataSO = _dropGenerator.ItemDropData;
+        saveData.ItemDropData = _itemDropDataSO;
+        Debug.Log("DROP " + saveData.ItemDropData);
+        
+        yield return new WaitForSeconds(0.165f);
+
+        List<ItemData> itemDatas = new List<ItemData>();
+
+        foreach (var itemPosition in _itemPositions)
+        {
+            if (itemPosition.Item != null)
+            {
+                ItemData itemData = new ItemData(itemPosition.Item.ItemName, itemPosition);
+                itemDatas.Add(itemData);
+            }
+        }
+
+        saveData.ItemDatas = itemDatas;
+        saveData.BulldozerCount = _bulldozerCounter.PossibilitiesCount;
+        saveData.ReplaceCount = _replaceCounter.PossibilitiesCount;
+        saveData.GoldValue = _goldWallet.CurrentValue;
+        saveData.MoveCount = _moveCounter.MoveCount;
+        saveData.ScoreValue = _scoreCounter.CurrentScore;
+        saveData.StorageItem = _storage.CurrentItem;
+
+        // saveData.SelectItemDragger = _itemDragger.SelectedObject;
+        // saveData.SelectPosition = _itemDragger.SelectedObject.ItemPosition;
+        // saveData.TemporaryItemDragger = _itemDragger.TemporaryItem;
+        // Debug.Log("Select Item Save " + saveData.SelectItemDragger);
+        /*if (_selectObject != null)
+        {
+            saveData.SelectItemDragger = _itemDragger.SelectedObject;
+            saveData.SelectPosition = _itemDragger.SelectedObject.ItemPosition;
+
+            Debug.Log("Select Item Save " + saveData.SelectItemDragger);
+        }
+
+        if (_temporaryObject != null)
+        {
+            saveData.TemporaryItemDragger = _itemDragger.TemporaryItem;
+
+            Debug.Log("Temporaru Item Save " + saveData.TemporaryItemDragger);
+        }*/
+
+
+        // Debug.Log("StorageItem " + saveData.StorageItem);
+        string json = JsonUtility.ToJson(saveData);
+        System.IO.File.WriteAllText(Application.persistentDataPath + "/save.json", json);
+        yield return null;
+        // Debug.Log("СОХРАНИЛ " + itemDatas.Count);
+    }
 
     private void SaveItemDraggerItems(Item selectItem,Item temporaryItem)
     {
@@ -146,7 +228,7 @@ public class ItemsStorage : MonoBehaviour
         {
             if (itemData != null)
             {
-                Debug.Log("Загрузка " + itemData.ItemName);
+                // Debug.Log("Загрузка " + itemData.ItemName);
                 Item item = Instantiate(GetItem(itemData.ItemName), itemData.ItemPosition.transform.position,
                     Quaternion.identity, _container);
                 item.Init(itemData.ItemPosition);
@@ -172,8 +254,8 @@ public class ItemsStorage : MonoBehaviour
         Item temporaryItem = Instantiate(GetItem(saveData.TemporaryItemDragger.ItemName),
             saveData.TemporaryItemDragger.ItemPosition.transform.position,
             Quaternion.identity, _container);
+        
         _itemDragger.SetTemporaryObject(temporaryItem);
-
         _roadGenerator.OnGeneration();
     }
 

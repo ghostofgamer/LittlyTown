@@ -14,17 +14,40 @@ public class DropGenerator : MonoBehaviour
     private Item _currentItem;
     private Item _nextItem;
 
+    public ItemDropDataSO ItemDropData { get; private set; }
+
     private void Awake()
     {
         _nextItem = _itemDropsSO[0].PrefabItem;
         _image.sprite = _itemDropsSO[0].Icon;
     }
 
-    public Item GetItem()
+    /*public Item GetItem()
     {
+        Debug.Log("GETITEM   " + _nextItem.ItemName);
         _currentItem = _nextItem;
         _nextItem = DropItem();
         return _currentItem;
+    }*/
+
+    public Item GetItem()
+    {
+        Debug.Log("GETITEM   " + _nextItem.ItemName);
+        _currentItem = _nextItem;
+        ItemDropData = DropItem();
+        Debug.Log("ITEMDROPGENERATION " + ItemDropData);
+        _nextItem = ItemDropData.PrefabItem;
+        return _currentItem;
+    }
+
+    public void SetItem(ItemDropDataSO itemDropData)
+    {
+        Debug.Log("SETITEM   "+ itemDropData.PrefabItem.ItemName );
+        // _currentItem = itemDropData.PrefabItem;
+        _nextItem= itemDropData.PrefabItem;
+        _image.sprite = itemDropData.Icon;
+        ItemDropData = itemDropData;
+        Debug.Log("SETSO " + ItemDropData);
     }
 
     public void NextLevel()
@@ -32,7 +55,7 @@ public class DropGenerator : MonoBehaviour
         _currentLevel++;
     }
 
-    private Item DropItem()
+    private ItemDropDataSO DropItem()
     {
         float totalChance = 0f;
 
@@ -50,13 +73,42 @@ public class DropGenerator : MonoBehaviour
 
             if (randomPoint <= 0)
             {
+                // ItemDropData = _itemDropsSO[i];
+                _image.sprite = _itemDropsSO[i].Icon;
+                return _itemDropsSO[i];
+            }
+        }
+
+        return _itemDropsSO[0];
+    }
+    
+    /*private Item DropItem()
+    {
+        float totalChance = 0f;
+
+        foreach (ItemDropDataSO itemDrop in _itemDropsSO)
+        {
+            float dropChance = CalculateDropChance(itemDrop, _currentLevel);
+            totalChance += dropChance;
+        }
+
+        float randomPoint = Random.value * totalChance;
+        
+        for (int i = 0; i < _itemDropsSO.Count; i++)
+        {
+            randomPoint -= CalculateDropChance(_itemDropsSO[i], _currentLevel);
+
+            if (randomPoint <= 0)
+            {
+                ItemDropData = _itemDropsSO[i];
+                Debug.Log("ITEMDROPGENERATION " + ItemDropData);
                 _image.sprite = _itemDropsSO[i].Icon;
                 return _itemDropsSO[i].PrefabItem;
             }
         }
 
         return _itemDropsSO[0].PrefabItem;
-    }
+    }*/
 
     private float CalculateDropChance(ItemDropDataSO itemDrop, int level)
     {

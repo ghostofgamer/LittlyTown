@@ -34895,6 +34895,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7992fc49dc1a73f4099bd66b9f4005f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _itemDragger: {fileID: 1990161225}
   _itemsStorage: {fileID: 1903934207}
   _itemPositions:
   - {fileID: 824288903}
@@ -34946,6 +34947,7 @@ MonoBehaviour:
   _roadGenerator: {fileID: 118112035}
   _scoreCounter: {fileID: 1705592014}
   _storage: {fileID: 9003913}
+  _dropGenerator: {fileID: 1455339039}
 --- !u!4 &889228747
 Transform:
   m_ObjectHideFlags: 0
@@ -70409,6 +70411,7 @@ MonoBehaviour:
   _roadGenerator: {fileID: 118112035}
   _scoreCounter: {fileID: 1705592014}
   _storage: {fileID: 9003913}
+  _dropGenerator: {fileID: 1455339039}
 --- !u!4 &1903934208
 Transform:
   m_ObjectHideFlags: 0
@@ -73341,6 +73344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spawner: {fileID: 843412982}
+  _itemStorage: {fileID: 0}
 --- !u!4 &1990161226
 Transform:
   m_ObjectHideFlags: 0

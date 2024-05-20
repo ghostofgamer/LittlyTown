@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using ItemContent;
 using ItemPositionContent;
+using ItemSO;
 
 [System.Serializable]
 public class SaveData
@@ -15,6 +16,7 @@ public class SaveData
     public Item SelectItemDragger;
     public Item TemporaryItemDragger;
     public ItemPosition SelectPosition;
+    public ItemDropDataSO ItemDropData;
     
     public SaveData()
     {
