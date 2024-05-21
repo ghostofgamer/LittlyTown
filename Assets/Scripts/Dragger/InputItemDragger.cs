@@ -9,6 +9,7 @@ namespace Dragger
 
         private void Awake()
         {
+            enabled = false;
             _itemDragger = GetComponent<ItemDragger>();
         }
 

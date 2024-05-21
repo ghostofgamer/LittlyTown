@@ -12,6 +12,11 @@ namespace UI.Buttons
 
         protected override void OnClick()
         {
+            Open();
+        }
+
+        public void Open()
+        {
             if (_blur != null)
             {
                 if (_isBluring)
@@ -25,7 +30,7 @@ namespace UI.Buttons
             }
 
             _screenClose.Close();
-            
+
             if (_abstractScreen != null)
                 _abstractScreen.Open();
         }

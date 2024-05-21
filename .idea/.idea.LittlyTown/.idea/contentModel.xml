@@ -1107,6 +1107,7 @@
               <e p="CancelMoveButton.cs" t="Include" />
               <e p="ChooseMapButton.cs" t="Include" />
               <e p="CloseButton.cs" t="Include" />
+              <e p="ContinueButton.cs" t="Include" />
               <e p="GoalCompleteButton.cs" t="Include" />
               <e p="GoldButton.cs" t="Include" />
               <e p="OpenButton.cs" t="Include" />

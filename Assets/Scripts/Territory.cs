@@ -13,6 +13,14 @@ public class Territory : MonoBehaviour
         }  
     }
     
+    public void ShowPositions()
+    {
+        foreach (var positionScaller in _positionScallers)
+        {
+            positionScaller.gameObject.SetActive(true);
+        }  
+    }
+    
     public void PositionDeactivation()
     {
         foreach (var positionScaller in _positionScallers)

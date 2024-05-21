@@ -12,6 +12,7 @@ public class Merger : MonoBehaviour
     [SerializeField] private PositionMatcher _positionMatcher;
     [SerializeField] private LookMerger _lookMerger;
     [SerializeField] private GoldWallet _goldWallet;
+    [SerializeField] private Transform _container;
 
     private Item _currentItem;
     private List<ItemPosition> _matchPositions = new List<ItemPosition>();
@@ -25,10 +26,10 @@ public class Merger : MonoBehaviour
 
     private Dictionary<ItemPosition, Item> _newItem =
         new Dictionary<ItemPosition, Item>();
-    
+
     private Dictionary<Item, Item> _targetItem =
         new Dictionary<Item, Item>();
-    
+
     private Dictionary<ItemPosition, Coroutine> _coroutines = new Dictionary<ItemPosition, Coroutine>();
 
 
@@ -38,7 +39,8 @@ public class Merger : MonoBehaviour
 
     public event Action<Item> ItemMergered;
 
-    public void Merge(ItemPosition currentPosition, List<ItemPosition> matchPositions, List<Item> matchItems,Item targetItem)
+    public void Merge(ItemPosition currentPosition, List<ItemPosition> matchPositions, List<Item> matchItems,
+        Item targetItem)
     {
         if (!_newMatchedItems.ContainsKey(currentPosition))
         {
@@ -53,31 +55,31 @@ public class Merger : MonoBehaviour
             _newItem.Add(currentPosition, targetItem);
             // Debug.Log("NEW");
         }
-        
+
         if (!_targetItem.ContainsKey(targetItem))
         {
             // _newItem.Add(currentPosition, newItem);
             _targetItem.Add(targetItem, targetItem);
             // Debug.Log("NEW");
         }
-        
+
         _matchPositions = matchPositions;
         _matchItems = matchItems;
         _currentItem = currentPosition.Item;
         // Debug.Log("Создаем  " + _currentItem);
-        
+
         foreach (var item in _matchItems)
         {
             item.Deactivation();
             item.GetComponent<ItemMoving>().MoveTarget(currentPosition.transform.position);
         }
+
         _currentItem.GetComponent<ItemMoving>().MoveTarget(currentPosition.transform.position);
 
         // Debug.Log("Создаем 1 " + _currentItem);
-        StartCoroutine(MergeActivation(currentPosition,targetItem));
-        
-        
-        
+        StartCoroutine(MergeActivation(currentPosition, targetItem));
+
+
         /*
         foreach (var item in _matchItems)
         {
@@ -102,7 +104,7 @@ public class Merger : MonoBehaviour
         }*/
     }
 
-    private IEnumerator MergeActivation(ItemPosition currentPosition , Item targetItem)
+    private IEnumerator MergeActivation(ItemPosition currentPosition, Item targetItem)
     {
         yield return new WaitForSeconds(0.35f);
 
@@ -119,11 +121,12 @@ public class Merger : MonoBehaviour
         // Item item = Instantiate(_currentItem.NextItem, currentPosition.transform.position, Quaternion.identity);
         // Item item = Instantiate(_newItem[currentPosition].NextItem, currentPosition.transform.position, Quaternion.identity);
         Debug.Log("Instantiate " + _targetItem[targetItem].name);
-        Item item = Instantiate(_targetItem[targetItem].NextItem, currentPosition.transform.position, Quaternion.identity);
+        Item item = Instantiate(_targetItem[targetItem].NextItem, currentPosition.transform.position,
+            Quaternion.identity, _container);
 
         if (item.TryGetComponent(out TreasureChest treasureChest))
             treasureChest.Init(_goldWallet);
-        
+
         // Debug.Log("Instantiate " + _newItem[currentPosition].name);
         item.transform.forward = currentPosition.transform.forward;
         item.Init(currentPosition);

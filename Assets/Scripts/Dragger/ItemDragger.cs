@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using ItemContent;
 using ItemPositionContent;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Dragger
@@ -25,8 +26,8 @@ namespace Dragger
 
         public event Action PlaceChanged;
         public event Action<Item> BuildItem;
-        
-        public event Action<Item,Item> SelectItemReceived;
+
+        public event Action<Item, Item> SelectItemReceived;
 
         public bool IsObjectSelected { get; private set; } = false;
 
@@ -51,7 +52,7 @@ namespace Dragger
             _temporaryItem.gameObject.SetActive(false);
             SetItem(item, _startPosition);
             _selectedObject.gameObject.SetActive(true);
-         
+
             /*Debug.Log("Temporary " + _temporaryItem);
             Debug.Log("_selectedObject " + _selectedObject);*/
         }
@@ -59,7 +60,6 @@ namespace Dragger
         public void ClearTemporaryItem()
         {
             _temporaryItem = null;
-          
         }
 
         public void SetTemporaryObject(Item item)
@@ -75,7 +75,46 @@ namespace Dragger
             _selectedObject.Init(_startPosition);
             // Debug.Log(_startPosition);
             _startPosition.GetComponent<VisualItemPosition>().ActivateVisual();
-            SelectItemReceived?.Invoke(_selectedObject,_temporaryItem);
+            SelectItemReceived?.Invoke(_selectedObject, _temporaryItem);
+        }
+
+        public void ClearAll()
+        {
+            if (_selectedObject != null)
+            {
+                _selectedObject.gameObject.SetActive(false);
+                _selectedObject = null;
+            }
+
+            if (_temporaryItem != null)
+            {
+                _temporaryItem.gameObject.SetActive(false);
+                _temporaryItem = null;
+            }
+
+            if (_startPosition != null)
+            {
+                _startPosition.GetComponent<VisualItemPosition>().DeactivateVisual();
+                _startPosition = null;
+            }
+        }
+
+        public void SwitchOff()
+        {
+            if (_selectedObject != null)
+                _selectedObject.gameObject.SetActive(false);
+
+            if (_startPosition != null)
+                _startPosition.GetComponent<VisualItemPosition>().DeactivateVisual();
+        }
+
+        public void SwitchOn()
+        {
+            if (_selectedObject != null)
+                _selectedObject.gameObject.SetActive(true);
+
+            if (_startPosition != null)
+                _startPosition.GetComponent<VisualItemPosition>().ActivateVisual();
         }
 
         public void ClearItem()

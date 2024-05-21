@@ -23,7 +23,7 @@ public class MapGenerator : MonoBehaviour
     private int _randomIndex;
 
     public event Action GenerationCompleted;
-    
+
     /*
     private void Start()
     {
@@ -39,7 +39,7 @@ public class MapGenerator : MonoBehaviour
             territory.gameObject.SetActive(false);
             _roadGenerator.DeactivateRoad();
         }
-        
+
         StartCoroutine(StartGenerationTerritory());
     }
 
@@ -83,20 +83,24 @@ public class MapGenerator : MonoBehaviour
         foreach (var territory in _territorys)
         {
             territory.gameObject.SetActive(true);
-            territory.PositionActivation();
+            territory.ShowPositions();
         }
-        
-        foreach (var item in _items)
+
+        /*foreach (var item in _items)
         {
             _clearPositions = new List<ItemPosition>();
-            _clearPositions = _itemPositions.Where(p => !p.GetComponent<ItemPosition>().IsBusy).ToList();
+            _clearPositions = _itemPositions
+                .Where(p => !p.GetComponent<ItemPosition>().IsBusy && !p.GetComponent<ItemPosition>().IsWater).ToList();
             _randomIndex = Random.Range(0, _clearPositions.Count);
             item.gameObject.SetActive(true);
             item.transform.position = _clearPositions[_randomIndex].transform.position;
             item.Activation();
             // _clearPositions[_randomIndex].DeliverObject(item);
-        }
-        
+        }*/
+
+        foreach (var finderPosition in _finderPositions)
+            finderPosition.FindNeighbor();
+
         _roadGenerator.OnGeneration();
     }
 }

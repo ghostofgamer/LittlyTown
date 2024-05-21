@@ -17,6 +17,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] private MoveCounter _moveCounter;
     [SerializeField] private DropGenerator _dropGenerator;
     [SerializeField] private LookMerger _lookMerger;
+    [SerializeField] private Transform _container;
 
     private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.165f);
     private Coroutine _coroutine;
@@ -84,7 +85,7 @@ public class Spawner : MonoBehaviour
         // Item item = Instantiate(_prefabItem, _position.transform.position, Quaternion.identity);
         // Debug.Log("Spawner");
         Item item = Instantiate(_dropGenerator.GetItem(), _position.transform.position,
-            Quaternion.identity);
+            Quaternion.identity,_container);
         _itemDragger.SetItem(item, _position);
         ItemCreated?.Invoke();
         LooksNeighbors?.Invoke(_position, item);

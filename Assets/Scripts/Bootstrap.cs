@@ -17,7 +17,10 @@ public class Bootstrap : MonoBehaviour
         if (value == 0)
         {
             _mapGenerator.Generation();
-            // _mapGenerator.ShowMap();
+        }
+        else
+        {
+             _mapGenerator.ShowMap();
         }
     }
 

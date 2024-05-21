@@ -62,12 +62,12 @@ namespace ItemPositionContent
                 _road.gameObject.SetActive(false);
 
             _road = itemPosition;
-            Debug.Log("тут");
+            // Debug.Log("тут");
         }
 
         public void SetFirstRoad(ItemPosition itemPosition)
         {
-            Debug.Log("там");
+            // Debug.Log("там");
             if (IsWater)
                 return;
             
