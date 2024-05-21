@@ -1,4 +1,6 @@
 using System.Collections;
+using ItemPositionContent;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PositionScaller : MonoBehaviour
@@ -6,21 +8,29 @@ public class PositionScaller : MonoBehaviour
     [SerializeField] private Vector3 _scale;
     [SerializeField] private float _duration;
     [SerializeField] private Transform _tileTransform;
-
+    [SerializeField] private ItemPosition _startTile;
+    
+    [SerializeField]  private ItemPosition _itemPosition;
     private float _elapsedTime;
     private float _offsetX = 1f;
     private float _offsetZ = 3f;
-    private float _offsetY = 1.5f;
+    private float _offsetY = 1.5f; 
     private Vector3 _startPosition;
     private Vector3 _target;
-
+    
     private void Start()
     {
         // ScaleChanged();
+        // _itemPosition = GetComponent<ItemPosition>();
     }
 
     public void ScaleChanged()
     {
+        _itemPosition.SetFirstRoad(_startTile);
+        
+        /*if (_startTile != null)
+            _startTile.gameObject.SetActive(true);*/
+
         StartCoroutine(Scaling());
     }
 
@@ -39,6 +49,12 @@ public class PositionScaller : MonoBehaviour
             yield return null;
         }
 
+        transform.localScale = _scale;
+        _tileTransform.position = transform.position;
+    }
+
+    public void SetTransform()
+    {
         transform.localScale = _scale;
         _tileTransform.position = transform.position;
     }

@@ -6,10 +6,18 @@ public class Territory : MonoBehaviour
 
     public void PositionActivation()
     {
-        foreach (var positionSclaScaller in _positionScallers)
+        foreach (var positionScaller in _positionScallers)
         {
-            positionSclaScaller.gameObject.SetActive(true);
-            positionSclaScaller.ScaleChanged();
+            positionScaller.gameObject.SetActive(true);
+            positionScaller.ScaleChanged();
+        }  
+    }
+    
+    public void PositionDeactivation()
+    {
+        foreach (var positionScaller in _positionScallers)
+        {
+            positionScaller.gameObject.SetActive(false);
         }  
     }
 }

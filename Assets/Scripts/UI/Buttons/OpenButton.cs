@@ -25,7 +25,9 @@ namespace UI.Buttons
             }
 
             _screenClose.Close();
-            _abstractScreen.Open();
+            
+            if (_abstractScreen != null)
+                _abstractScreen.Open();
         }
     }
 }

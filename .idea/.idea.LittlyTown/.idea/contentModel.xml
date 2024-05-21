@@ -998,6 +998,7 @@
         <e p="Scripts" t="Include">
           <e p="AbstractAnimation.cs" t="Include" />
           <e p="Blur.cs" t="Include" />
+          <e p="Bootstrap.cs" t="Include" />
           <e p="ButtonResize.cs" t="Include" />
           <e p="CountersContent" t="Include">
             <e p="GoldCounter.cs" t="Include" />
@@ -1051,6 +1052,9 @@
             <e p="PriceKeeper.cs" t="Include" />
           </e>
           <e p="MapGenerator.cs" t="Include" />
+          <e p="MapsContent" t="Include">
+            <e p="Map.cs" t="Include" />
+          </e>
           <e p="Merger.cs" t="Include" />
           <e p="MinIndexItemSelector.cs" t="Include" />
           <e p="MoveCanceller.cs" t="Include" />
@@ -1073,9 +1077,11 @@
             <e p="RoadTile.cs" t="Include" />
           </e>
           <e p="RoadGenerator.cs" t="Include" />
-          <e p="Save&amp;Load" t="Include">
+          <e p="SaveAndLoad" t="Include">
             <e p="ItemData.cs" t="Include" />
             <e p="ItemsStorage.cs" t="Include" />
+            <e p="Load.cs" t="Include" />
+            <e p="Save.cs" t="Include" />
             <e p="SaveData.cs" t="Include" />
           </e>
           <e p="SpawnContent" t="Include">
@@ -1121,6 +1127,7 @@
               </e>
               <e p="RotationButton.cs" t="Include" />
               <e p="SettingsContent" t="Include" />
+              <e p="StartButton.cs" t="Include" />
               <e p="StorageButton.cs" t="Include" />
             </e>
             <e p="Screens" t="Include">
@@ -1138,6 +1145,7 @@
                 <e p="PossibilitiesShopScreen.cs" t="Include" />
               </e>
               <e p="SettingsScreen.cs" t="Include" />
+              <e p="StartGameScreen.cs" t="Include" />
               <e p="UpgradeScreen.cs" t="Include" />
             </e>
           </e>

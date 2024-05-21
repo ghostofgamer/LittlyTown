@@ -5,6 +5,7 @@ using System.Linq;
 using ItemContent;
 using ItemPositionContent;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class MapGenerator : MonoBehaviour
 {
@@ -33,8 +34,12 @@ public class MapGenerator : MonoBehaviour
     public void Generation()
     {
         foreach (var territory in _territorys)
+        {
+            // territory.PositionDeactivation();
             territory.gameObject.SetActive(false);
-
+            _roadGenerator.DeactivateRoad();
+        }
+        
         StartCoroutine(StartGenerationTerritory());
     }
 
@@ -71,5 +76,27 @@ public class MapGenerator : MonoBehaviour
         _spawner.OnCreateItem();
         yield return _waitForSecondsTri;
         GenerationCompleted?.Invoke();
+    }
+
+    public void ShowMap()
+    {
+        foreach (var territory in _territorys)
+        {
+            territory.gameObject.SetActive(true);
+            territory.PositionActivation();
+        }
+        
+        foreach (var item in _items)
+        {
+            _clearPositions = new List<ItemPosition>();
+            _clearPositions = _itemPositions.Where(p => !p.GetComponent<ItemPosition>().IsBusy).ToList();
+            _randomIndex = Random.Range(0, _clearPositions.Count);
+            item.gameObject.SetActive(true);
+            item.transform.position = _clearPositions[_randomIndex].transform.position;
+            item.Activation();
+            // _clearPositions[_randomIndex].DeliverObject(item);
+        }
+        
+        _roadGenerator.OnGeneration();
     }
 }

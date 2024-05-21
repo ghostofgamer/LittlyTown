@@ -80,12 +80,31 @@ public class RoadGenerator : MonoBehaviour
     public void OnGeneration()
     {
         // Debug.Log("OnGeneration");
+        
         if (_coroutine != null)
             StopCoroutine(_coroutine);
 
         _coroutine = StartCoroutine(CreateRoad());
     }
 
+    public void DeactivateRoad()
+    {
+        Transform[] children = _container.GetComponentsInChildren<Transform>(true);
+
+        // Если детей больше 0, выключаем их
+        if (children.Length > 0)
+        {
+            foreach (Transform child in children)
+            {
+                // Проверяем, что это действительно дочерний объект, а не сам контейнер
+                if (child != _container.transform)
+                {
+                    child.gameObject.SetActive(false);
+                }
+            }
+        }
+    }
+    
     private IEnumerator CreateRoad()
     {
         yield return _waitForSeconds;
