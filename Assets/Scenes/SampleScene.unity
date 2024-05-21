@@ -5857,6 +5857,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _scoreCounter: {fileID: 1705592014}
   _goldButton: {fileID: 284560877}
+  _blur: {fileID: 963194232}
 --- !u!225 &74045930
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -44954,6 +44955,7 @@ GameObject:
   - component: {fileID: 733475593}
   - component: {fileID: 733475592}
   - component: {fileID: 733475595}
+  - component: {fileID: 733475596}
   m_Layer: 5
   m_Name: ContinueButton
   m_TagString: Untagged
@@ -45078,6 +45080,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemDragger: {fileID: 1990161225}
   _save: {fileID: 1661955497}
+--- !u!114 &733475596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 733475590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40216dd1c2daf9d438088cbc6215fbe6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _abstractScreen: {fileID: 240495592}
+  _screenClose: {fileID: 164070716}
+  _isBluring: 0
+  _blur: {fileID: 0}
 --- !u!1 &733605955
 GameObject:
   m_ObjectHideFlags: 0
@@ -54606,7 +54624,7 @@ MonoBehaviour:
   - {fileID: 1959225069}
   - {fileID: 637143373}
   - {fileID: 261089309}
-  _container: {fileID: 2056341566}
+  _container: {fileID: 633147290}
   _items:
   - {fileID: 5411065820483948517, guid: 689dea58ec3f1344186eee7c39910dac, type: 3}
   - {fileID: 1689325367591307803, guid: 2b51df3812e86014ba3110d4d00121d8, type: 3}
@@ -54631,6 +54649,9 @@ MonoBehaviour:
   _scoreCounter: {fileID: 1705592014}
   _storage: {fileID: 9003913}
   _dropGenerator: {fileID: 1455339039}
+  _mapGenerator: {fileID: 1536841185}
+  _replacementPosition: {fileID: 794048063}
+  _removalItems: {fileID: 2054429386}
 --- !u!4 &889228747
 Transform:
   m_ObjectHideFlags: 0
@@ -58906,7 +58927,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 0
-  orthographic size: 5
+  orthographic size: 15
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -68263,7 +68284,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1119976566
 RectTransform:
   m_ObjectHideFlags: 0
@@ -84833,6 +84854,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _load: {fileID: 1661955496}
   _mapGenerator: {fileID: 1536841185}
+  _itemsStorage: {fileID: 1903934207}
 --- !u!4 &1402531911
 Transform:
   m_ObjectHideFlags: 0
@@ -113724,7 +113746,7 @@ MonoBehaviour:
   - {fileID: 2114086251580323830, guid: 553ddbaa987576747b58d212f7e7150c, type: 3}
   - {fileID: 1315623422540449418, guid: b68608db95bf2d54db0e5597c9196903, type: 3}
   - {fileID: 7930523424143760095, guid: 850174af952ea3248bc9032bb8586d10, type: 3}
-  _container: {fileID: 2056341566}
+  _container: {fileID: 633147290}
   _mapGenerator: {fileID: 1536841185}
   _replaceCounter: {fileID: 586404711}
   _bulldozerCounter: {fileID: 39153983}
@@ -126471,6 +126493,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _itemDragger: {fileID: 1990161225}
+  _startButton: {fileID: 667969735}
+  _continueButton: {fileID: 1573997005}
+  _restartButton: {fileID: 1871957715}
+  _load: {fileID: 1661955496}
 --- !u!1 &2141777004
 GameObject:
   m_ObjectHideFlags: 0

@@ -1085,6 +1085,7 @@
             <e p="SaveData.cs" t="Include" />
             <e p="SelectItemData.cs" t="Include" />
           </e>
+          <e p="Settings.cs" t="Include" />
           <e p="SpawnContent" t="Include">
             <e p="DropGenerator.cs" t="Include" />
             <e p="Spawner.cs" t="Include" />
@@ -1128,6 +1129,10 @@
                 <e p="RewardReplaceButton.cs" t="Include" />
               </e>
               <e p="RotationButton.cs" t="Include" />
+              <e p="SettingsButtonContent" t="Include">
+                <e p="OrthographicButton.cs" t="Include" />
+                <e p="SettingsChangeButton.cs" t="Include" />
+              </e>
               <e p="SettingsContent" t="Include" />
               <e p="StartButton.cs" t="Include" />
               <e p="StorageButton.cs" t="Include" />
