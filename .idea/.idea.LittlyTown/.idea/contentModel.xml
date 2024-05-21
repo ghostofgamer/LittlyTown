@@ -1083,6 +1083,7 @@
             <e p="Load.cs" t="Include" />
             <e p="Save.cs" t="Include" />
             <e p="SaveData.cs" t="Include" />
+            <e p="SelectItemData.cs" t="Include" />
           </e>
           <e p="SpawnContent" t="Include">
             <e p="DropGenerator.cs" t="Include" />

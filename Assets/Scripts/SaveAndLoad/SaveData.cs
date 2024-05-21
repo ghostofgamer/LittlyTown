@@ -17,6 +17,7 @@ public class SaveData
     public Item TemporaryItemDragger;
     public ItemPosition SelectPosition;
     public ItemDropDataSO ItemDropData;
+    public SelectItemData SelectItemData;
     
     public SaveData()
     {

@@ -28,6 +28,8 @@ namespace Dragger
         public event Action<Item> BuildItem;
 
         public event Action<Item, Item> SelectItemReceived;
+        
+        public event Action SelectNewItem;
 
         public bool IsObjectSelected { get; private set; } = false;
 
@@ -70,12 +72,20 @@ namespace Dragger
 
         public void SetItem(Item item, ItemPosition itemPosition)
         {
+            Debug.Log("1");
+            
             _selectedObject = item;
+            Debug.Log("3");
             _startPosition = itemPosition;
+            Debug.Log("5");
             _selectedObject.Init(_startPosition);
+            Debug.Log("6" + item.name );
+            Debug.Log("6" + itemPosition.name );
             // Debug.Log(_startPosition);
             _startPosition.GetComponent<VisualItemPosition>().ActivateVisual();
+            Debug.Log("Dragger");
             SelectItemReceived?.Invoke(_selectedObject, _temporaryItem);
+            SelectNewItem?.Invoke();
         }
 
         public void ClearAll()
@@ -218,6 +228,7 @@ namespace Dragger
                         _selectedObject.GetComponent<ItemAnimation>().PositioningAnimation();
                         BuildItem?.Invoke(_selectedObject);
                         itemPosition.DeliverObject(_selectedObject);
+                        Debug.Log("Place1");
                         PlaceChanged?.Invoke();
                         _selectedObject = null;
                         StartCoroutine(Continue(itemPosition));
@@ -233,6 +244,7 @@ namespace Dragger
                         _selectedObject.GetComponent<ItemAnimation>().PositioningAnimation();
                         itemPosition.DeliverObject(_selectedObject);
                         BuildItem?.Invoke(_selectedObject);
+                        Debug.Log("Place3");
                         PlaceChanged?.Invoke();
                         _selectedObject = null;
                         StartCoroutine(Continue(itemPosition));

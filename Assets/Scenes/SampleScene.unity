@@ -2115,9 +2115,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6393c05a0b1332640bad832c10b7661e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemDragger: {fileID: 1990161227}
-  _gameLevelScreen: {fileID: 240495592}
-  _blur: {fileID: 963194232}
   _moveCounter: {fileID: 822774932}
 --- !u!225 &27950905
 CanvasGroup:
@@ -5858,9 +5855,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d10316e085fae9149849e17483f804e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemDragger: {fileID: 1990161227}
-  _gameLevelScreen: {fileID: 240495592}
-  _blur: {fileID: 963194232}
   _scoreCounter: {fileID: 1705592014}
   _goldButton: {fileID: 284560877}
 --- !u!225 &74045930
@@ -11096,6 +11090,7 @@ MonoBehaviour:
   _possibilitiesShopScreen: {fileID: 2064382574}
   _goldWallet: {fileID: 2024437528}
   _closeButton: {fileID: 127872722}
+  _openButton: {fileID: 0}
   _possibilitieMovement: {fileID: 70127799}
   _possibilitiePriceText: {fileID: 0}
 --- !u!1001 &145436417
@@ -12460,9 +12455,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c14a746eec67054a9529009c0fe4cb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemDragger: {fileID: 0}
-  _gameLevelScreen: {fileID: 0}
-  _blur: {fileID: 963194232}
+  _load: {fileID: 1661955496}
+  _continueButton: {fileID: 733475595}
 --- !u!1 &166276372
 GameObject:
   m_ObjectHideFlags: 0
@@ -15915,10 +15909,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 948da271fd73652448a3d79e976e05d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemDragger: {fileID: 0}
-  _gameLevelScreen: {fileID: 0}
-  _blur: {fileID: 0}
   _animator: {fileID: 240495594}
+  _inputItemDragger: {fileID: 1990161227}
+  _itemDragger: {fileID: 1990161225}
 --- !u!225 &240495593
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -27128,12 +27121,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _item: {fileID: 463921738893145382, guid: f79238bccc66a0d4dadccfbb964e1da1, type: 3}
   _itemDragger: {fileID: 1990161225}
-  _container: {fileID: 2056341566}
+  _container: {fileID: 633147290}
   _goldWallet: {fileID: 2024437528}
   _price: 100
   _priceMultiplier: 1.45
   _priceText: {fileID: 1710210143}
   _closeButton: {fileID: 0}
+  _openButton: {fileID: 315598427}
 --- !u!1 &430557993
 GameObject:
   m_ObjectHideFlags: 0
@@ -30146,12 +30140,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _item: {fileID: 8144960740293466337, guid: 16e54aa34607e7b439b4bd7a060b059f, type: 3}
   _itemDragger: {fileID: 1990161225}
-  _container: {fileID: 2056341566}
+  _container: {fileID: 633147290}
   _goldWallet: {fileID: 2024437528}
   _price: 300
   _priceMultiplier: 1.63
   _priceText: {fileID: 1417538842}
   _closeButton: {fileID: 0}
+  _openButton: {fileID: 315598427}
 --- !u!114 &487317551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33846,12 +33841,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _item: {fileID: 9071215179258156289, guid: 86960b97b4cbc5c47af7780f495823a6, type: 3}
   _itemDragger: {fileID: 1990161225}
-  _container: {fileID: 2056341566}
+  _container: {fileID: 633147290}
   _goldWallet: {fileID: 2024437528}
   _price: 15
   _priceMultiplier: 1.165
   _priceText: {fileID: 478267884}
   _closeButton: {fileID: 0}
+  _openButton: {fileID: 315598427}
 --- !u!4 &545570086 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7089897312137854012, guid: 9b403dc8cf68b8542ae066ce5e74b2a6, type: 3}
@@ -36799,9 +36795,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f09fc19a9d632a14b85eced62faad740, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemDragger: {fileID: 1990161227}
-  _gameLevelScreen: {fileID: 240495592}
-  _blur: {fileID: 963194232}
   _goalsCounter: {fileID: 600735722}
 --- !u!114 &600735722
 MonoBehaviour:
@@ -44510,6 +44503,7 @@ MonoBehaviour:
   _possibilitiesShopScreen: {fileID: 2064382574}
   _goldWallet: {fileID: 2024437528}
   _closeButton: {fileID: 0}
+  _openButton: {fileID: 315598427}
   _possibilitieMovement: {fileID: 70127799}
   _possibilitiePriceText: {fileID: 168850167}
 --- !u!1 &726171470
@@ -44940,12 +44934,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _item: {fileID: 6341171966978024074, guid: cff37313dd211b64a9407ff25311661d, type: 3}
   _itemDragger: {fileID: 1990161225}
-  _container: {fileID: 2056341566}
+  _container: {fileID: 633147290}
   _goldWallet: {fileID: 2024437528}
   _price: 150
   _priceMultiplier: 1.65
   _priceText: {fileID: 702928990}
   _closeButton: {fileID: 0}
+  _openButton: {fileID: 315598427}
 --- !u!1 &733475590
 GameObject:
   m_ObjectHideFlags: 0
@@ -44958,6 +44953,7 @@ GameObject:
   - component: {fileID: 733475594}
   - component: {fileID: 733475593}
   - component: {fileID: 733475592}
+  - component: {fileID: 733475595}
   m_Layer: 5
   m_Name: ContinueButton
   m_TagString: Untagged
@@ -45068,6 +45064,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 733475590}
   m_CullTransparentMesh: 1
+--- !u!114 &733475595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 733475590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f9c8e4aac05d5e4783f05b3ba2dfb31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemDragger: {fileID: 1990161225}
+  _save: {fileID: 1661955497}
 --- !u!1 &733605955
 GameObject:
   m_ObjectHideFlags: 0
@@ -50646,9 +50656,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67b9bd594e7848941a0956a38fa8a781, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemDragger: {fileID: 0}
-  _gameLevelScreen: {fileID: 0}
-  _blur: {fileID: 0}
 --- !u!1 &824880011
 GameObject:
   m_ObjectHideFlags: 0
@@ -50997,6 +51004,7 @@ MonoBehaviour:
   _possibilitiesShopScreen: {fileID: 1050483412}
   _goldWallet: {fileID: 2024437528}
   _closeButton: {fileID: 1158313748}
+  _openButton: {fileID: 0}
   _possibilitieMovement: {fileID: 134389303}
   _possibilitiePriceText: {fileID: 0}
 --- !u!1 &832583296
@@ -54383,12 +54391,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _item: {fileID: 1315623422540449418, guid: b68608db95bf2d54db0e5597c9196903, type: 3}
   _itemDragger: {fileID: 1990161225}
-  _container: {fileID: 2056341566}
+  _container: {fileID: 633147290}
   _goldWallet: {fileID: 2024437528}
   _price: 30
   _priceMultiplier: 1.3
   _priceText: {fileID: 1869452755}
   _closeButton: {fileID: 0}
+  _openButton: {fileID: 315598427}
 --- !u!1 &885292728
 GameObject:
   m_ObjectHideFlags: 0
@@ -59968,12 +59977,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _item: {fileID: 4689853037821185752, guid: 4a895dc9b116b4046a90e4fc936c78bb, type: 3}
   _itemDragger: {fileID: 1990161225}
-  _container: {fileID: 2056341566}
+  _container: {fileID: 633147290}
   _goldWallet: {fileID: 2024437528}
   _price: 350
   _priceMultiplier: 1.61
   _priceText: {fileID: 1348279947}
   _closeButton: {fileID: 0}
+  _openButton: {fileID: 315598427}
 --- !u!114 &974796909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63188,12 +63198,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _item: {fileID: 5618188237412716214, guid: 476473cf5d6da6243bb7a1cb2580c84e, type: 3}
   _itemDragger: {fileID: 1990161225}
-  _container: {fileID: 2056341566}
+  _container: {fileID: 633147290}
   _goldWallet: {fileID: 2024437528}
   _price: 110
   _priceMultiplier: 1.5
   _priceText: {fileID: 1656738423}
   _closeButton: {fileID: 0}
+  _openButton: {fileID: 315598427}
 --- !u!1 &1028491907
 GameObject:
   m_ObjectHideFlags: 0
@@ -64719,9 +64730,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f9a5509f7d465e4c8d9e1e57b55d987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemDragger: {fileID: 1990161227}
-  _gameLevelScreen: {fileID: 240495592}
-  _blur: {fileID: 963194232}
   _possibilitie: {fileID: 834626790}
   _priceText: {fileID: 1692902207}
   _currentAmountText: {fileID: 1089153487}
@@ -75144,9 +75152,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6056f6f5a1522cf4bac4762626a79523, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemDragger: {fileID: 0}
-  _gameLevelScreen: {fileID: 0}
-  _blur: {fileID: 0}
 --- !u!225 &1240678328
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -84796,6 +84801,7 @@ MonoBehaviour:
   _priceMultiplier: 1.3
   _priceText: {fileID: 214272156}
   _closeButton: {fileID: 0}
+  _openButton: {fileID: 315598427}
 --- !u!1 &1402531909
 GameObject:
   m_ObjectHideFlags: 0
@@ -85048,6 +85054,7 @@ MonoBehaviour:
   _possibilitiesShopScreen: {fileID: 1050483412}
   _goldWallet: {fileID: 2024437528}
   _closeButton: {fileID: 0}
+  _openButton: {fileID: 315598427}
   _possibilitieMovement: {fileID: 134389303}
   _possibilitiePriceText: {fileID: 940753958}
 --- !u!1 &1405706402
@@ -87876,12 +87883,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _item: {fileID: 5411065820483948517, guid: 689dea58ec3f1344186eee7c39910dac, type: 3}
   _itemDragger: {fileID: 1990161225}
-  _container: {fileID: 2056341566}
+  _container: {fileID: 633147290}
   _goldWallet: {fileID: 2024437528}
   _price: 130
   _priceMultiplier: 1.55
   _priceText: {fileID: 661603306}
   _closeButton: {fileID: 0}
+  _openButton: {fileID: 315598427}
 --- !u!1001 &1448040863
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -89543,7 +89551,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mapGenerator: {fileID: 1536841185}
   _itemDragger: {fileID: 1990161225}
-  _inputItemDragger: {fileID: 1990161227}
   _container: {fileID: 633147290}
   _itemPositions:
   - {fileID: 824288903}
@@ -89571,6 +89578,7 @@ MonoBehaviour:
   - {fileID: 1959225069}
   - {fileID: 637143373}
   - {fileID: 261089309}
+  _save: {fileID: 1661955497}
 --- !u!114 &1482092090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90324,9 +90332,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3babf91b4accc7408a2b5f9d499f29b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemDragger: {fileID: 1990161227}
-  _gameLevelScreen: {fileID: 240495592}
-  _blur: {fileID: 963194232}
   _gridLayoutGroup: {fileID: 1094144711}
 --- !u!1001 &1494603759
 PrefabInstance:
@@ -93274,12 +93279,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _item: {fileID: 1190645750346455673, guid: 5e59eec53a85fd94ba2617a3bc1df6ef, type: 3}
   _itemDragger: {fileID: 1990161225}
-  _container: {fileID: 2056341566}
+  _container: {fileID: 633147290}
   _goldWallet: {fileID: 2024437528}
   _price: 50
   _priceMultiplier: 1.35
   _priceText: {fileID: 1485577587}
   _closeButton: {fileID: 0}
+  _openButton: {fileID: 315598427}
 --- !u!1 &1554060844
 GameObject:
   m_ObjectHideFlags: 0
@@ -94567,6 +94573,8 @@ GameObject:
   - component: {fileID: 1573997009}
   - component: {fileID: 1573997008}
   - component: {fileID: 1573997007}
+  - component: {fileID: 1573997010}
+  - component: {fileID: 1573997011}
   m_Layer: 5
   m_Name: ContinueButton
   m_TagString: Untagged
@@ -94677,6 +94685,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1573997005}
   m_CullTransparentMesh: 1
+--- !u!114 &1573997010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1573997005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40216dd1c2daf9d438088cbc6215fbe6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _abstractScreen: {fileID: 240495592}
+  _screenClose: {fileID: 2141598014}
+  _isBluring: 0
+  _blur: {fileID: 0}
+--- !u!114 &1573997011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1573997005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f9c8e4aac05d5e4783f05b3ba2dfb31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemDragger: {fileID: 1990161225}
+  _save: {fileID: 1661955497}
 --- !u!1 &1580502006
 GameObject:
   m_ObjectHideFlags: 0
@@ -99416,12 +99454,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _item: {fileID: 1689325367591307803, guid: 2b51df3812e86014ba3110d4d00121d8, type: 3}
   _itemDragger: {fileID: 1990161225}
-  _container: {fileID: 2056341566}
+  _container: {fileID: 633147290}
   _goldWallet: {fileID: 2024437528}
   _price: 10
   _priceMultiplier: 1.6
   _priceText: {fileID: 489982488}
   _closeButton: {fileID: 0}
+  _openButton: {fileID: 315598427}
 --- !u!1 &1652095399
 GameObject:
   m_ObjectHideFlags: 0
@@ -110487,9 +110526,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa9506d4381f8104b887d29dc3a60b32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemDragger: {fileID: 0}
-  _gameLevelScreen: {fileID: 0}
-  _blur: {fileID: 963194232}
 --- !u!1 &1843829143
 GameObject:
   m_ObjectHideFlags: 0
@@ -114009,9 +114045,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f09fc19a9d632a14b85eced62faad740, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemDragger: {fileID: 1990161227}
-  _gameLevelScreen: {fileID: 240495592}
-  _blur: {fileID: 963194232}
   _goalsCounter: {fileID: 1907802176}
 --- !u!1 &1909996041
 GameObject:
@@ -114514,9 +114547,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f49640ee9ebaf8469a39786e03ce5b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemDragger: {fileID: 1990161227}
-  _gameLevelScreen: {fileID: 240495592}
-  _blur: {fileID: 963194232}
   _spawner: {fileID: 843412982}
 --- !u!225 &1915663051
 CanvasGroup:
@@ -122833,9 +122863,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f9a5509f7d465e4c8d9e1e57b55d987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemDragger: {fileID: 1990161227}
-  _gameLevelScreen: {fileID: 240495592}
-  _blur: {fileID: 963194232}
   _possibilitie: {fileID: 14626220}
   _priceText: {fileID: 54433356}
   _currentAmountText: {fileID: 839378360}
@@ -122958,9 +122985,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a7523dd3b7f0e04fb539eede301b859, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemDragger: {fileID: 0}
-  _gameLevelScreen: {fileID: 0}
-  _blur: {fileID: 0}
 --- !u!1 &2068973731
 GameObject:
   m_ObjectHideFlags: 0
@@ -124355,12 +124379,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _item: {fileID: 7930523424143760095, guid: 850174af952ea3248bc9032bb8586d10, type: 3}
   _itemDragger: {fileID: 1990161225}
-  _container: {fileID: 2056341566}
+  _container: {fileID: 633147290}
   _goldWallet: {fileID: 2024437528}
   _price: 60
   _priceMultiplier: 1.36
   _priceText: {fileID: 1591940379}
   _closeButton: {fileID: 0}
+  _openButton: {fileID: 315598427}
 --- !u!1 &2097724552
 GameObject:
   m_ObjectHideFlags: 0
@@ -126445,10 +126470,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d633386a427364d9874cc30d95d277, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemDragger: {fileID: 0}
-  _gameLevelScreen: {fileID: 0}
-  _blur: {fileID: 963194232}
-  _inputItemDragger: {fileID: 1990161227}
+  _itemDragger: {fileID: 1990161225}
 --- !u!1 &2141777004
 GameObject:
   m_ObjectHideFlags: 0

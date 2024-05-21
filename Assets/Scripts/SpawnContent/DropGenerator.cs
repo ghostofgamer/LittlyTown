@@ -32,10 +32,10 @@ public class DropGenerator : MonoBehaviour
 
     public Item GetItem()
     {
-        Debug.Log("GETITEM   " + _nextItem.ItemName);
+        // Debug.Log("GETITEM   " + _nextItem.ItemName);
         _currentItem = _nextItem;
         ItemDropData = DropItem();
-        Debug.Log("ITEMDROPGENERATION " + ItemDropData);
+        // Debug.Log("ITEMDROPGENERATION " + ItemDropData);
         _nextItem = ItemDropData.PrefabItem;
         
         return _currentItem;
@@ -43,12 +43,12 @@ public class DropGenerator : MonoBehaviour
 
     public void SetItem(ItemDropDataSO itemDropData)
     {
-        Debug.Log("SETITEM   "+ itemDropData.PrefabItem.ItemName );
+        // Debug.Log("SETITEM   "+ itemDropData.PrefabItem.ItemName );
         // _currentItem = itemDropData.PrefabItem;
         _nextItem= itemDropData.PrefabItem;
         _image.sprite = itemDropData.Icon;
         ItemDropData = itemDropData;
-        Debug.Log("SETSO " + ItemDropData);
+        // Debug.Log("SETSO " + ItemDropData);
     }
 
     public void NextLevel()

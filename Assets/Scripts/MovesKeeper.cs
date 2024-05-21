@@ -6,6 +6,7 @@ using Dragger;
 using Enums;
 using ItemContent;
 using ItemPositionContent;
+using UI.Buttons;
 using UnityEngine;
 using Wallets;
 
@@ -34,7 +35,38 @@ public class MovesKeeper : MonoBehaviour
 
     public event Action<int> StepChanged;
 
+    [SerializeField] private MapGenerator _mapGenerator;
+    [SerializeField] private ReplacementPosition _replacementPosition;
+    [SerializeField] private RemovalItems _removalItems;
+    
+    
+    
     private void OnEnable()
+    {
+        _itemDragger.PlaceChanged += SaveHistory;
+        // _itemDragger.BuildItem += SaveChanges;
+        // _itemDragger.SelectItemReceived += SaveHistory;
+        _mapGenerator.GenerationCompleted += SaveHistory;
+        _replacementPosition.PositionsChanged += SaveHistory;
+        _removalItems.Removed += SaveHistory;
+        _storage.StoragePlaceChanged += SaveHistory;
+    }
+
+    private void OnDisable()
+    {
+        _itemDragger.PlaceChanged -= SaveHistory;
+        // _itemDragger.BuildItem -= SaveChanges;
+        // _itemDragger.SelectItemReceived -= SaveHistory;
+        _mapGenerator.GenerationCompleted -= SaveHistory;
+        _replacementPosition.PositionsChanged -= SaveHistory;
+        _removalItems.Removed -= SaveHistory;
+        _storage.StoragePlaceChanged -= SaveHistory;
+    }
+    
+    
+    
+    
+    /*private void OnEnable()
     {
         _itemsStorage.SaveCompleted += SaveHistory;
     }
@@ -42,7 +74,7 @@ public class MovesKeeper : MonoBehaviour
     private void OnDisable()
     {
         _itemsStorage.SaveCompleted -= SaveHistory;
-    }
+    }*/
 
     private void RemoveStep()
     {
@@ -67,7 +99,22 @@ public class MovesKeeper : MonoBehaviour
         Debug.Log("CurrentStep   " + _currentStep);
     }*/
 
-    private void SaveHistory(SaveData saveData)
+    private void SaveHistory()
+    {
+       
+        
+        if (_savesHistory.Count >= _maxStepSaved)
+        {
+            _savesHistory.RemoveAt(0);
+        }
+
+        _savesHistory.Add( _itemsStorage.SaveData);
+        _currentStep = _savesHistory.Count - 1;
+        StepChanged?.Invoke(_currentStep);
+        // Debug.Log("В шагах смотрим " + saveData.SelectItemDragger);
+    }
+    
+    /*private void SaveHistory(SaveData saveData)
     {
         if (_savesHistory.Count >= _maxStepSaved)
         {
@@ -77,7 +124,8 @@ public class MovesKeeper : MonoBehaviour
         _savesHistory.Add(saveData);
         _currentStep = _savesHistory.Count - 1;
         StepChanged?.Invoke(_currentStep);
-    }
+        // Debug.Log("В шагах смотрим " + saveData.SelectItemDragger);
+    }*/
 
 
     public void CancelLastStep()
@@ -95,7 +143,7 @@ public class MovesKeeper : MonoBehaviour
     private IEnumerator StartCancelling()
     {
         SaveData newSaveData = _savesHistory[_currentStep];
-        Debug.Log("ITEMDROPPP " + newSaveData.ItemDropData);
+        // Debug.Log("ITEMDROPPP " + newSaveData.ItemDropData);
         _dropGenerator.SetItem(newSaveData.ItemDropData);
 
         _itemDragger.SelectedObject.gameObject.SetActive(false);
