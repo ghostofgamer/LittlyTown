@@ -199,6 +199,8 @@ MonoBehaviour:
   _isHouse: 0
   _isLightHouse: 0
   _gold: 0
+  _startPrice: 100
+  _priceMultiplier: 1.3
 --- !u!54 &8161303774417467183
 Rigidbody:
   m_ObjectHideFlags: 0

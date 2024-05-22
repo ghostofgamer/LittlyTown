@@ -39,8 +39,6 @@ public class MovesKeeper : MonoBehaviour
     [SerializeField] private ReplacementPosition _replacementPosition;
     [SerializeField] private RemovalItems _removalItems;
     
-    
-    
     private void OnEnable()
     {
         _itemDragger.PlaceChanged += SaveHistory;
@@ -62,10 +60,7 @@ public class MovesKeeper : MonoBehaviour
         _removalItems.Removed -= SaveHistory;
         _storage.StoragePlaceChanged -= SaveHistory;
     }
-    
-    
-    
-    
+
     /*private void OnEnable()
     {
         _itemsStorage.SaveCompleted += SaveHistory;
@@ -144,7 +139,7 @@ public class MovesKeeper : MonoBehaviour
     {
         SaveData newSaveData = _savesHistory[_currentStep];
         // Debug.Log("ITEMDROPPP " + newSaveData.ItemDropData);
-        _dropGenerator.SetItem(newSaveData.ItemDropData);
+        _dropGenerator.SetItem(newSaveData.ItemDropData.PrefabItem, newSaveData.ItemDropData.Icon);
 
         _itemDragger.SelectedObject.gameObject.SetActive(false);
         // Debug.Log(_itemsStorage.SelectObject.ItemName);
@@ -226,7 +221,6 @@ public class MovesKeeper : MonoBehaviour
         {
             _savesHistory.RemoveRange(0, countToRemove);
         }*/
-
 
         // _savesHistory.Clear();
         SaveData newSaveData = _savesHistory[_savesHistory.Count - 2];

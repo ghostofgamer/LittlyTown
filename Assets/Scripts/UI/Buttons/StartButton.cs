@@ -1,4 +1,5 @@
 using Dragger;
+using ItemContent;
 using ItemPositionContent;
 using SaveAndLoad;
 using UI.Buttons;
@@ -15,6 +16,7 @@ public class StartButton : AbstractButton
     [SerializeField] private Transform _container;
     [SerializeField] private ItemPosition[] _itemPositions;
     [SerializeField] private Save _save;
+    [SerializeField] private Item[] _items;
 
     private int _selectMap = 1;
 
@@ -28,6 +30,11 @@ public class StartButton : AbstractButton
             itemPosition.ClearingPosition();
         }
 
+        foreach (var item in _items)
+        {
+            item.SetInitialPrice();
+        }
+        
         _mapGenerator.Generation();
         _itemDragger.SwitchOn();
         _save.SetData(LastActiveMap, _selectMap);

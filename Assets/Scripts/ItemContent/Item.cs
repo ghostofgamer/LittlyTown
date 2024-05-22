@@ -15,7 +15,10 @@ namespace ItemContent
         [SerializeField] private bool _isHouse;
         [SerializeField] private bool _isLightHouse;
         [SerializeField] private int _gold;
-        
+        [SerializeField] private int _startPrice;
+        [SerializeField] private float _priceMultiplier;
+
+        private int _price;
         private bool _isActive;
 
         public event Action Activated;
@@ -30,6 +33,8 @@ namespace ItemContent
         public Items ItemName => _itemName;
 
         public bool IsHouse => _isHouse;
+        
+        public int Price => _price;
         
         public bool IsLightHouse => _isLightHouse;
 
@@ -70,6 +75,22 @@ namespace ItemContent
         public void SetName(Items name)
         {
             _itemName = name;
+        }
+
+        public void SetPrice(int price)
+        {
+            _price = price;
+        }
+        
+        public void IncreasePrice()
+        {
+            _price = Mathf.RoundToInt(_price * _priceMultiplier);;
+        }
+
+        public void SetInitialPrice()
+        {
+            Debug.Log("начальная цена");
+            _price = _startPrice;
         }
     }
 }

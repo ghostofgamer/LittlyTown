@@ -8,6 +8,7 @@ using ItemContent;
 using ItemPositionContent;
 using ItemSO;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using Wallets;
 
@@ -27,7 +28,8 @@ public class ItemsStorage : MonoBehaviour
     [SerializeField] private RoadGenerator _roadGenerator;
     [SerializeField] private ScoreCounter _scoreCounter;
     [SerializeField] private Storage _storage;
-    [SerializeField]private DropGenerator _dropGenerator;
+    [SerializeField] private DropGenerator _dropGenerator;
+    [SerializeField] private ShopItems _shopItems;
 
     private Coroutine _coroutine;
     private Item _selectObject;
@@ -36,11 +38,11 @@ public class ItemsStorage : MonoBehaviour
     private SaveData _saveData;
 
     public SaveData SaveData => _saveData;
-    
-    public Item SelectObject => _selectObject;
-    
 
-    public Item SelectSaveItem { get;private set; }
+    public Item SelectObject => _selectObject;
+
+
+    public Item SelectSaveItem { get; private set; }
 
     public event Action<SaveData> SaveCompleted;
 
@@ -65,13 +67,12 @@ public class ItemsStorage : MonoBehaviour
         _removalItems.Removed -= SaveChanges;
         _storage.StoragePlaceChanged -= SaveChanges;
     }*/
-    
-    
-    
+
+
     private void OnEnable()
     {
         _itemDragger.SelectNewItem += SaveChanges;
-        
+
         /*_itemDragger.PlaceChanged += SaveChanges;
         // _itemDragger.BuildItem += SaveChanges;
         _itemDragger.SelectItemReceived += SaveItemDraggerItems;
@@ -102,30 +103,22 @@ public class ItemsStorage : MonoBehaviour
 
         _coroutine = StartCoroutine(Save());
     }*/
-    
-    public void CancelMoveSave()
-    {
-        if (_coroutine != null)
-            StopCoroutine(_coroutine);
-
-        _coroutine = StartCoroutine(SaveCancelMove());
-    }
 
     public void SaveChanges()
     {
         Debug.Log("Сохраняет ");
-        
+
         if (_coroutine != null)
             StopCoroutine(_coroutine);
 
         _coroutine = StartCoroutine(Save());
     }
-    
+
     private IEnumerator Save()
     {
         SaveData saveData = new SaveData();
         _saveData = saveData;
-        
+
         if (_itemDragger.SelectedObject != null)
         {
             _selectObject = _itemDragger.SelectedObject;
@@ -133,8 +126,8 @@ public class ItemsStorage : MonoBehaviour
             saveData.SelectItemData = new SelectItemData(_selectObject.ItemName, _selectObject.ItemPosition);
         }
 
-        _itemDropDataSO = _dropGenerator.ItemDropData;
-        saveData.ItemDropData = _itemDropDataSO;
+        /*_itemDropDataSO = _dropGenerator.ItemDropData;
+        saveData.ItemDropData = _itemDropDataSO;*/
 
         yield return new WaitForSeconds(0.165f);
 
@@ -147,6 +140,23 @@ public class ItemsStorage : MonoBehaviour
                 ItemData itemData = new ItemData(itemPosition.Item.ItemName, itemPosition);
                 itemDatas.Add(itemData);
             }
+        }
+        List<ItemData> itemDataPrice = new List<ItemData>();
+        
+        foreach (var item in _shopItems.Items)
+        {
+            ItemData itemData = new ItemData(item.ItemName,null, item.Price);
+            itemDataPrice.Add(itemData);
+        }
+        Debug.Log("ShopItemData " + itemDataPrice.Count);
+        // saveData.ShopItemData.ItemsData = itemDataPrice;
+        saveData.ItemDatasPrices = itemDataPrice;
+        Debug.Log("Цены " + saveData.ItemDatasPrices.Count );
+        if (_dropGenerator.ItemDropData != null)
+        {
+            saveData.ItemDropData =
+                new ItemDropData(_dropGenerator.ItemDropData.Icon, _dropGenerator.ItemDropData.PrefabItem);
+            Debug.Log("ItemDropData " + saveData.ItemDropData.PrefabItem.ItemName);
         }
 
         saveData.ItemDatas = itemDatas;
@@ -159,11 +169,10 @@ public class ItemsStorage : MonoBehaviour
         // saveData.StorageItem = _storage.CurrentItem;
         if (_storage.CurrentItem != null)
         {
-            saveData.StorageItemData =  new StorageItemData(_storage.CurrentItem.ItemName,_storage.CurrentItem.ItemPosition);
+            saveData.StorageItemData =
+                new StorageItemData(_storage.CurrentItem.ItemName, _storage.CurrentItem.ItemPosition);
         }
-        
-        
-        Debug.Log("Storage: " + saveData.StorageItemData);
+
         // saveData.SelectItemDragger = _itemDragger.SelectedObject;
         // saveData.SelectPosition = _itemDragger.SelectedObject.ItemPosition;
         // saveData.TemporaryItemDragger = _itemDragger.TemporaryItem;
@@ -183,7 +192,7 @@ public class ItemsStorage : MonoBehaviour
             Debug.Log("Temporaru Item Save " + saveData.TemporaryItemDragger);
         }*/
 
-        
+
         string json = JsonUtility.ToJson(saveData);
         System.IO.File.WriteAllText(Application.persistentDataPath + "/save.json", json);
         // Agava.YandexGames.Utility.PlayerPrefs.SetString("save.json 1", json);
@@ -191,76 +200,8 @@ public class ItemsStorage : MonoBehaviour
         yield return null;
         SaveCompleted?.Invoke(saveData);
     }
-    
-    private IEnumerator SaveCancelMove()
-    {
-        SaveData saveData = new SaveData();
-        
-        if (_itemDragger.SelectedObject != null)
-        {
-            // _selectObject = new Item();
-            _selectObject = _itemDragger.SelectedObject;
-            saveData.SelectItemDragger = _selectObject;
 
-            // Debug.Log("Select Item Save " + saveData.SelectItemDragger);
-            // Debug.Log();
-        }
-
-        _itemDropDataSO = _dropGenerator.ItemDropData;
-        saveData.ItemDropData = _itemDropDataSO;
-        Debug.Log("DROP " + saveData.ItemDropData);
-        
-        yield return new WaitForSeconds(0.165f);
-
-        List<ItemData> itemDatas = new List<ItemData>();
-
-        foreach (var itemPosition in _itemPositions)
-        {
-            if (itemPosition.Item != null)
-            {
-                ItemData itemData = new ItemData(itemPosition.Item.ItemName, itemPosition);
-                itemDatas.Add(itemData);
-            }
-        }
-
-        saveData.ItemDatas = itemDatas;
-        saveData.BulldozerCount = _bulldozerCounter.PossibilitiesCount;
-        saveData.ReplaceCount = _replaceCounter.PossibilitiesCount;
-        saveData.GoldValue = _goldWallet.CurrentValue;
-        saveData.MoveCount = _moveCounter.MoveCount;
-        saveData.ScoreValue = _scoreCounter.CurrentScore;
-        // saveData.StorageItem = _storage.CurrentItem;
-        saveData.StorageItemData =  new StorageItemData(_storage.CurrentItem.ItemName,_storage.CurrentItem.ItemPosition);
-        
-        Debug.Log("Storage: " + saveData.StorageItem.ItemName);
-        // saveData.SelectItemDragger = _itemDragger.SelectedObject;
-        // saveData.SelectPosition = _itemDragger.SelectedObject.ItemPosition;
-        // saveData.TemporaryItemDragger = _itemDragger.TemporaryItem;
-        // Debug.Log("Select Item Save " + saveData.SelectItemDragger);
-        /*if (_selectObject != null)
-        {
-            saveData.SelectItemDragger = _itemDragger.SelectedObject;
-            saveData.SelectPosition = _itemDragger.SelectedObject.ItemPosition;
-
-            Debug.Log("Select Item Save " + saveData.SelectItemDragger);
-        }
-
-        if (_temporaryObject != null)
-        {
-            saveData.TemporaryItemDragger = _itemDragger.TemporaryItem;
-
-            Debug.Log("Temporaru Item Save " + saveData.TemporaryItemDragger);
-        }*/
-
-
-        // Debug.Log("StorageItem " + saveData.StorageItem);
-        string json = JsonUtility.ToJson(saveData);
-        System.IO.File.WriteAllText(Application.persistentDataPath + "/save.json", json);
-        yield return null;
-        // Debug.Log("СОХРАНИЛ " + itemDatas.Count);
-    }
-
-    private void SaveItemDraggerItems(Item selectItem,Item temporaryItem)
+    private void SaveItemDraggerItems(Item selectItem, Item temporaryItem)
     {
         /*_selectObject = selectItem;
         _temporaryObject = temporaryItem;
@@ -271,7 +212,7 @@ public class ItemsStorage : MonoBehaviour
     {
         return _saveData;
     }
-    
+
     public void Load()
     {
         // Agava.YandexGames.Utility.PlayerPrefs.HasKey()
@@ -301,12 +242,12 @@ public class ItemsStorage : MonoBehaviour
         // Debug.Log("Gold: " + saveData.GoldValue);
         _moveCounter.SetValue(saveData.MoveCount);
         _scoreCounter.SetValue(saveData.ScoreValue);
-        
-        
+
+
         Item selectItem = Instantiate(GetItem(saveData.SelectItemData.ItemName),
             saveData.SelectItemData.ItemPosition.transform.position,
             Quaternion.identity, _container);
-        
+
         selectItem.Init(saveData.SelectItemData.ItemPosition);
         selectItem.gameObject.SetActive(false);
         SelectSaveItem = selectItem;
@@ -317,7 +258,16 @@ public class ItemsStorage : MonoBehaviour
         storageItem.gameObject.SetActive(false);
         Debug.Log("Storage Load: " + storageItem.ItemName);
         _storage.SetItem(storageItem);
+
+        /*foreach (var item in saveData.ShopItemData.ItemsData)
+        {
+            _shopItems.SetPrice(item.ItemName,item.Price);
+        }*/
         
+        foreach (var item in saveData.ItemDatasPrices)
+        {
+            _shopItems.SetPrice(item.ItemName,item.Price);
+        }
         
         /*Item storageItem = Instantiate(saveData.StorageItem, _container);
         storageItem.gameObject.SetActive(false);
@@ -330,7 +280,7 @@ public class ItemsStorage : MonoBehaviour
         Item temporaryItem = Instantiate(GetItem(saveData.TemporaryItemDragger.ItemName),
             saveData.TemporaryItemDragger.ItemPosition.transform.position,
             Quaternion.identity, _container);*/
-        
+
         // _itemDragger.SetTemporaryObject(temporaryItem);
         _roadGenerator.OnGeneration();
     }

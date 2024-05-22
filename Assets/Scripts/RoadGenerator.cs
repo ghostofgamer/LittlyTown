@@ -99,7 +99,6 @@ public class RoadGenerator : MonoBehaviour
             {
                 if (child != _container.transform && child.GetComponent<RoadTile>())
                 {
-                    Debug.Log(child.name);
                     child.gameObject.SetActive(false);
                 }
             }

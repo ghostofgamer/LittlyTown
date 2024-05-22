@@ -16,12 +16,18 @@ public class SaveData
     public Item SelectItemDragger;
     public Item TemporaryItemDragger;
     public ItemPosition SelectPosition;
-    public ItemDropDataSO ItemDropData;
+
+    // public ItemDropDataSO ItemDropData;
+
+    public ItemDropData ItemDropData;
     public SelectItemData SelectItemData;
     public StorageItemData StorageItemData;
+    public ShopItemData ShopItemData;
+    public List<ItemData> ItemDatasPrices;
     
     public SaveData()
     {
         ItemDatas = new List<ItemData>();
+        ItemDatasPrices = new List<ItemData>();
     }
 }

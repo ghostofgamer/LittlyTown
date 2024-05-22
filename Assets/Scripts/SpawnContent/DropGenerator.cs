@@ -41,7 +41,7 @@ public class DropGenerator : MonoBehaviour
         return _currentItem;
     }
 
-    public void SetItem(ItemDropDataSO itemDropData)
+    /*public void SetItem()
     {
         // Debug.Log("SETITEM   "+ itemDropData.PrefabItem.ItemName );
         // _currentItem = itemDropData.PrefabItem;
@@ -49,8 +49,16 @@ public class DropGenerator : MonoBehaviour
         _image.sprite = itemDropData.Icon;
         ItemDropData = itemDropData;
         // Debug.Log("SETSO " + ItemDropData);
-    }
+    }*/
+    
+    public void SetItem(Item itemPrefab,Sprite sprite)
+    {
 
+        _nextItem= itemPrefab;
+        _image.sprite = sprite;
+
+    }
+    
     public void NextLevel()
     {
         _currentLevel++;

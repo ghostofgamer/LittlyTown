@@ -15,12 +15,12 @@ public class OrthographicButton : SettingsChangeButton
 
         if (_isToggleOn)
         {
-            Debug.Log("Act");
+            // Debug.Log("Act");
             Settings.ActivationOrthographicMode();
         }
         else
         {
-            Debug.Log("Deact");
+            // Debug.Log("Deact");
             Settings.DeactivationOrthographicMode();
         }
     }
