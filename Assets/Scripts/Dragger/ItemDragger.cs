@@ -72,12 +72,12 @@ namespace Dragger
 
         public void SetItem(Item item, ItemPosition itemPosition)
         {
-            Debug.Log("1");
+            // Debug.Log("1");
             
             _selectedObject = item;
-            Debug.Log("3");
+            // Debug.Log("3");
             _startPosition = itemPosition;
-            Debug.Log("5");
+            // Debug.Log("5");
             _selectedObject.Init(_startPosition);
             Debug.Log("6" + item.name );
             Debug.Log("6" + itemPosition.name );

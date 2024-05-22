@@ -262,6 +262,7 @@ GameObject:
   - component: {fileID: 4382777211450588580}
   - component: {fileID: 2837973776700339219}
   - component: {fileID: 3523459844866137834}
+  - component: {fileID: -7941005990390811250}
   m_Layer: 0
   m_Name: TileCrossroadsLeft
   m_TagString: Untagged
@@ -378,3 +379,19 @@ MonoBehaviour:
   _isSelected: 0
   _isBusy: 0
   _road: {fileID: 0}
+  _isWater: 0
+  _isElevation: 0
+  _container: {fileID: 0}
+  _lookMerger: {fileID: 0}
+--- !u!114 &-7941005990390811250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8639605333614663095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cfbf56948ddd3f4199399e53b77773a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

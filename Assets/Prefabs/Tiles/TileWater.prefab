@@ -126,3 +126,7 @@ MonoBehaviour:
   _isSelected: 0
   _isBusy: 0
   _road: {fileID: 0}
+  _isWater: 0
+  _isElevation: 0
+  _container: {fileID: 0}
+  _lookMerger: {fileID: 0}

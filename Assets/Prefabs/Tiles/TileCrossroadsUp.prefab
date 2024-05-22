@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 1497537851260812709}
   - component: {fileID: 3513778886956642640}
   - component: {fileID: 4493056812516539942}
+  - component: {fileID: 2706015534123944924}
   m_Layer: 0
   m_Name: TileCrossroadsUp
   m_TagString: Untagged
@@ -212,6 +213,22 @@ MonoBehaviour:
   _isSelected: 0
   _isBusy: 0
   _road: {fileID: 0}
+  _isWater: 0
+  _isElevation: 0
+  _container: {fileID: 0}
+  _lookMerger: {fileID: 0}
+--- !u!114 &2706015534123944924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1415338525129179870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cfbf56948ddd3f4199399e53b77773a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1593692249098188954
 GameObject:
   m_ObjectHideFlags: 0

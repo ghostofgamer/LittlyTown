@@ -18,6 +18,7 @@ public class SaveData
     public ItemPosition SelectPosition;
     public ItemDropDataSO ItemDropData;
     public SelectItemData SelectItemData;
+    public StorageItemData StorageItemData;
     
     public SaveData()
     {

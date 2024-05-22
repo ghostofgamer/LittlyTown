@@ -179,6 +179,7 @@ GameObject:
   - component: {fileID: 4116519649615628586}
   - component: {fileID: 8052972550219347045}
   - component: {fileID: 1032094229011279042}
+  - component: {fileID: 5783326774847296250}
   m_Layer: 0
   m_Name: TileAngularDownRight
   m_TagString: Untagged
@@ -295,6 +296,22 @@ MonoBehaviour:
   _isSelected: 0
   _isBusy: 0
   _road: {fileID: 0}
+  _isWater: 0
+  _isElevation: 0
+  _container: {fileID: 0}
+  _lookMerger: {fileID: 0}
+--- !u!114 &5783326774847296250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5831227670592609802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cfbf56948ddd3f4199399e53b77773a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7136081264211919593
 GameObject:
   m_ObjectHideFlags: 0

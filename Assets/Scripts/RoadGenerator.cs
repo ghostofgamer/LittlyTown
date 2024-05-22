@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Dragger;
 using ItemContent;
 using ItemPositionContent;
+using Road;
 using UnityEngine;
 
 public class RoadGenerator : MonoBehaviour
@@ -96,9 +97,9 @@ public class RoadGenerator : MonoBehaviour
         {
             foreach (Transform child in children)
             {
-                // Проверяем, что это действительно дочерний объект, а не сам контейнер
-                if (child != _container.transform)
+                if (child != _container.transform && child.GetComponent<RoadTile>())
                 {
+                    Debug.Log(child.name);
                     child.gameObject.SetActive(false);
                 }
             }

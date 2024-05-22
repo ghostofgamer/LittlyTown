@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 2411824083499684122}
   - component: {fileID: 6654295596762462999}
   - component: {fileID: 4525268855607134478}
+  - component: {fileID: 8360917082182226982}
   m_Layer: 0
   m_Name: TileElevation
   m_TagString: Untagged
@@ -213,6 +214,20 @@ MonoBehaviour:
   _road: {fileID: 0}
   _isWater: 0
   _isElevation: 0
+  _container: {fileID: 0}
+  _lookMerger: {fileID: 0}
+--- !u!114 &8360917082182226982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3195914047999008992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cfbf56948ddd3f4199399e53b77773a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4732245910901275636
 GameObject:
   m_ObjectHideFlags: 0

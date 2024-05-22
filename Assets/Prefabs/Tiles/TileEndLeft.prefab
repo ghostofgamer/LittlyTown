@@ -346,6 +346,7 @@ GameObject:
   - component: {fileID: 3384740524066600681}
   - component: {fileID: 358800953707823040}
   - component: {fileID: 6692457933617531453}
+  - component: {fileID: -7720753349919951321}
   m_Layer: 0
   m_Name: TileEndLeft
   m_TagString: Untagged
@@ -464,6 +465,10 @@ MonoBehaviour:
   _isSelected: 0
   _isBusy: 0
   _road: {fileID: 0}
+  _isWater: 0
+  _isElevation: 0
+  _container: {fileID: 0}
+  _lookMerger: {fileID: 0}
 --- !u!114 &6692457933617531453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -474,6 +479,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 10d2f78f7cb32ce47b469a6aa44b2300, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-7720753349919951321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4166223475046350449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cfbf56948ddd3f4199399e53b77773a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6565391739168488342

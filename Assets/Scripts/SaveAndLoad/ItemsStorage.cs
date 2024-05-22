@@ -7,6 +7,7 @@ using Enums;
 using ItemContent;
 using ItemPositionContent;
 using ItemSO;
+using TMPro;
 using UnityEngine;
 using Wallets;
 
@@ -38,6 +39,9 @@ public class ItemsStorage : MonoBehaviour
     
     public Item SelectObject => _selectObject;
     
+
+    public Item SelectSaveItem { get;private set; }
+
     public event Action<SaveData> SaveCompleted;
 
     /*private void OnEnable()
@@ -149,10 +153,17 @@ public class ItemsStorage : MonoBehaviour
         saveData.BulldozerCount = _bulldozerCounter.PossibilitiesCount;
         saveData.ReplaceCount = _replaceCounter.PossibilitiesCount;
         saveData.GoldValue = _goldWallet.CurrentValue;
+        // Debug.Log("Gold: " + saveData.GoldValue);
         saveData.MoveCount = _moveCounter.MoveCount;
         saveData.ScoreValue = _scoreCounter.CurrentScore;
-        saveData.StorageItem = _storage.CurrentItem;
-
+        // saveData.StorageItem = _storage.CurrentItem;
+        if (_storage.CurrentItem != null)
+        {
+            saveData.StorageItemData =  new StorageItemData(_storage.CurrentItem.ItemName,_storage.CurrentItem.ItemPosition);
+        }
+        
+        
+        Debug.Log("Storage: " + saveData.StorageItemData);
         // saveData.SelectItemDragger = _itemDragger.SelectedObject;
         // saveData.SelectPosition = _itemDragger.SelectedObject.ItemPosition;
         // saveData.TemporaryItemDragger = _itemDragger.TemporaryItem;
@@ -175,77 +186,11 @@ public class ItemsStorage : MonoBehaviour
         
         string json = JsonUtility.ToJson(saveData);
         System.IO.File.WriteAllText(Application.persistentDataPath + "/save.json", json);
+        // Agava.YandexGames.Utility.PlayerPrefs.SetString("save.json 1", json);
+        // Agava.YandexGames.Utility.PlayerPrefs.Save();
         yield return null;
         SaveCompleted?.Invoke(saveData);
     }
-    
-    
-    /*private IEnumerator Save()
-    {
-        SaveData saveData = new SaveData();
-        
-        if (_itemDragger.SelectedObject != null)
-        {
-            // _selectObject = new Item();
-            _selectObject = _itemDragger.SelectedObject;
-            saveData.SelectItemDragger = _selectObject;
-            saveData.SelectItemData = new SelectItemData(_selectObject.ItemName, _selectObject.ItemPosition);
-Debug.Log("сохраняем SelectItemData " + saveData.SelectItemData.ItemName);
-            // Debug.Log("Select Item Save " + saveData.SelectItemDragger);
-            // Debug.Log();
-        }
-
-        _itemDropDataSO = _dropGenerator.ItemDropData;
-        saveData.ItemDropData = _itemDropDataSO;
-        // Debug.Log("DROP " + saveData.ItemDropData);
-        
-        yield return new WaitForSeconds(0.165f);
-
-        List<ItemData> itemDatas = new List<ItemData>();
-
-        foreach (var itemPosition in _itemPositions)
-        {
-            if (itemPosition.Item != null)
-            {
-                ItemData itemData = new ItemData(itemPosition.Item.ItemName, itemPosition);
-                itemDatas.Add(itemData);
-            }
-        }
-
-        saveData.ItemDatas = itemDatas;
-        saveData.BulldozerCount = _bulldozerCounter.PossibilitiesCount;
-        saveData.ReplaceCount = _replaceCounter.PossibilitiesCount;
-        saveData.GoldValue = _goldWallet.CurrentValue;
-        saveData.MoveCount = _moveCounter.MoveCount;
-        saveData.ScoreValue = _scoreCounter.CurrentScore;
-        saveData.StorageItem = _storage.CurrentItem;
-
-        // saveData.SelectItemDragger = _itemDragger.SelectedObject;
-        // saveData.SelectPosition = _itemDragger.SelectedObject.ItemPosition;
-        // saveData.TemporaryItemDragger = _itemDragger.TemporaryItem;
-        // Debug.Log("Select Item Save " + saveData.SelectItemDragger);
-        /*if (_selectObject != null)
-        {
-            saveData.SelectItemDragger = _itemDragger.SelectedObject;
-            saveData.SelectPosition = _itemDragger.SelectedObject.ItemPosition;
-
-            Debug.Log("Select Item Save " + saveData.SelectItemDragger);
-        }
-
-        if (_temporaryObject != null)
-        {
-            saveData.TemporaryItemDragger = _itemDragger.TemporaryItem;
-
-            Debug.Log("Temporaru Item Save " + saveData.TemporaryItemDragger);
-        }#1#
-
-        
-        string json = JsonUtility.ToJson(saveData);
-        System.IO.File.WriteAllText(Application.persistentDataPath + "/save.json", json);
-        yield return null;
-        SaveCompleted?.Invoke(saveData);
-    }*/
-    
     
     private IEnumerator SaveCancelMove()
     {
@@ -284,8 +229,10 @@ Debug.Log("сохраняем SelectItemData " + saveData.SelectItemData.ItemNam
         saveData.GoldValue = _goldWallet.CurrentValue;
         saveData.MoveCount = _moveCounter.MoveCount;
         saveData.ScoreValue = _scoreCounter.CurrentScore;
-        saveData.StorageItem = _storage.CurrentItem;
-
+        // saveData.StorageItem = _storage.CurrentItem;
+        saveData.StorageItemData =  new StorageItemData(_storage.CurrentItem.ItemName,_storage.CurrentItem.ItemPosition);
+        
+        Debug.Log("Storage: " + saveData.StorageItem.ItemName);
         // saveData.SelectItemDragger = _itemDragger.SelectedObject;
         // saveData.SelectPosition = _itemDragger.SelectedObject.ItemPosition;
         // saveData.TemporaryItemDragger = _itemDragger.TemporaryItem;
@@ -320,8 +267,17 @@ Debug.Log("сохраняем SelectItemData " + saveData.SelectItemData.ItemNam
         SaveChanges();*/
     }
 
+    private SaveData GetSaveData()
+    {
+        return _saveData;
+    }
+    
     public void Load()
     {
+        // Agava.YandexGames.Utility.PlayerPrefs.HasKey()
+        // string json = Agava.YandexGames.Utility.PlayerPrefs.GetString("save.json 1");
+        // Agava.YandexGames.Utility.PlayerPrefs.Load(onSuccessCallback:);
+        // Agava.YandexGames.Utility.PlayerPrefs.Save();
         string json = System.IO.File.ReadAllText(Application.persistentDataPath + "/save.json");
         SaveData saveData = JsonUtility.FromJson<SaveData>(json);
 
@@ -342,31 +298,27 @@ Debug.Log("сохраняем SelectItemData " + saveData.SelectItemData.ItemNam
         _replaceCounter.SetValue(saveData.ReplaceCount);
         _bulldozerCounter.SetValue(saveData.BulldozerCount);
         _goldWallet.SetValue(saveData.GoldValue);
+        // Debug.Log("Gold: " + saveData.GoldValue);
         _moveCounter.SetValue(saveData.MoveCount);
         _scoreCounter.SetValue(saveData.ScoreValue);
-        
-        
-        if (saveData.SelectItemData == null)
-        {
-             Debug.Log("SelectNull");
-        }
-        else
-        {
-            Debug.Log("SelectНЕNull" + saveData.SelectItemData.ItemName);
-        }
-       
-        Debug.Log("SelectNAME" + saveData.SelectItemData.ItemName);
-        Debug.Log("Selectposition" + saveData.SelectItemData.ItemPosition);
-        
-        
         
         
         Item selectItem = Instantiate(GetItem(saveData.SelectItemData.ItemName),
             saveData.SelectItemData.ItemPosition.transform.position,
             Quaternion.identity, _container);
         
+        selectItem.Init(saveData.SelectItemData.ItemPosition);
         selectItem.gameObject.SetActive(false);
-        _itemDragger.SetItem(selectItem, saveData.SelectItemData.ItemPosition);
+        SelectSaveItem = selectItem;
+        // _itemDragger.SetItem(selectItem, saveData.SelectItemData.ItemPosition);
+        // Item storageItem = Instantiate(saveData.StorageItem, _container);
+        Debug.Log("Storage: " + saveData.StorageItemData.ItemName);
+        Item storageItem = Instantiate(GetItem(saveData.StorageItemData.ItemName), _container);
+        storageItem.gameObject.SetActive(false);
+        Debug.Log("Storage Load: " + storageItem.ItemName);
+        _storage.SetItem(storageItem);
+        
+        
         /*Item storageItem = Instantiate(saveData.StorageItem, _container);
         storageItem.gameObject.SetActive(false);
         _storage.SetItem(storageItem);*/

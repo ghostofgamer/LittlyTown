@@ -19,6 +19,7 @@ namespace Wallets
 
         private void Start()
         {
+            // Debug.Log("Goldstart");
             _currentValue = _startValue;
             ValueChanged?.Invoke();
         }
@@ -70,6 +71,8 @@ namespace Wallets
 
         public void SetValue(int value)
         {
+            // Debug.Log("GoldSEt");
+            _startValue = value;
             _currentValue = value;
             ValueChanged?.Invoke();
         }

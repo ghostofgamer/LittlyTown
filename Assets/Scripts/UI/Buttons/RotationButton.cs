@@ -13,6 +13,7 @@ namespace UI.Buttons
         private Coroutine _coroutine;
         private Vector3 _target;
         private Quaternion _startPosition;
+        private bool _isRotate;
 
         protected override void OnClick()
         {
@@ -25,6 +26,7 @@ namespace UI.Buttons
 
             _coroutine = StartCoroutine(Turn());
         }
+
 
         private IEnumerator Turn()
         {

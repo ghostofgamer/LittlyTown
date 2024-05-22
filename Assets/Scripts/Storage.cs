@@ -65,9 +65,11 @@ public class Storage : MonoBehaviour
     {
         if (item != null)
         {
+            _image.gameObject.SetActive(true);
             _currentItem = item;
             _temporaryItem = null;
             _image.sprite = _currentItem.ItemDropDataSo.Icon;
+            Debug.Log("SetStorage " + item.name);
         }
         else
         {

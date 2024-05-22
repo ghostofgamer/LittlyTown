@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1073147467668845859}
   - component: {fileID: 5603229231946859502}
   - component: {fileID: -4987734608057852849}
+  - component: {fileID: -6174367734992062975}
   m_Layer: 0
   m_Name: TileAngularUpRight
   m_TagString: Untagged
@@ -130,6 +131,10 @@ MonoBehaviour:
   _isSelected: 0
   _isBusy: 0
   _road: {fileID: 0}
+  _isWater: 0
+  _isElevation: 0
+  _container: {fileID: 0}
+  _lookMerger: {fileID: 0}
 --- !u!114 &-4987734608057852849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,6 +145,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed92f6817dd343944884d1802f41c028, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-6174367734992062975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840844573677827127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cfbf56948ddd3f4199399e53b77773a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1287595962667619377

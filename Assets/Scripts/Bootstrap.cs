@@ -27,6 +27,7 @@ public class Bootstrap : MonoBehaviour
         else
         {
             _mapGenerator.ShowMap();
+            // Agava.YandexGames.Utility.PlayerPrefs.Load(onSuccessCallback: _itemsStorage.Load);
             _itemsStorage.Load();
         }
     }
