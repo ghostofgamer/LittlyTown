@@ -81,13 +81,14 @@ public class LookMerger : MonoBehaviour
             if (_temporaryItem != null)
             {
                 // Debug.Log("Не NULL " +  _temporaryItem);
-                 CheckStartCoroutine(_temporaryItem, itemPosition);
+                CheckStartCoroutine(_temporaryItem, itemPosition);
             }
-               
-            else
+
+            /*else
             {
+                Debug.Log("убирайся ");
                 _currentItem.GetComponent<CraneDestroyer>().Destroy();
-            }
+            }*/
         }
         else
         {
@@ -290,12 +291,11 @@ public class LookMerger : MonoBehaviour
 
             if (_coroutines.ContainsKey(_temporaryItem))
             {
-                
                 // Debug.Log("стоп корутайн кран 1 " + _temporaryItem);
                 StopCoroutine(_coroutines[_temporaryItem]);
                 _coroutines.Remove(_temporaryItem);
             }
-            
+
             if (_newMatchedItems.ContainsKey(item))
             {
                 // Debug.Log("стоп newMatchitems " + item);
@@ -336,7 +336,7 @@ public class LookMerger : MonoBehaviour
 
             if (_currentItem.ItemName == Items.Crane)
             {
-                // Debug.Log("Да это кран ");
+                Debug.Log("Да это кран Merge");
                 // _currentItem.gameObject.SetActive(false);
                 _currentItem.GetComponent<CraneDestroyer>().Destroy();
             }
@@ -376,7 +376,7 @@ public class LookMerger : MonoBehaviour
         {
             _newMatchedItems.Add(item, new List<Item>());
         }
-        
+
         if (_checkedPositions.Contains(currentPosition))
         {
             return;
@@ -391,7 +391,7 @@ public class LookMerger : MonoBehaviour
             if (_isTryMerge)
             {
                 // Debug.Log("И что тут за item " + item );
-                 _newMatchedItems[item].Add(currentPosition.Item);
+                _newMatchedItems[item].Add(currentPosition.Item);
             }
         }
 
@@ -402,7 +402,8 @@ public class LookMerger : MonoBehaviour
                 continue;
             }
 
-            if (arroundPosition.Item != null && arroundPosition.Item.ItemName.Equals(item.ItemName))
+            if (arroundPosition.Item != null && arroundPosition.Item.NextItem != null &&
+                arroundPosition.Item.ItemName.Equals(item.ItemName))
             {
                 ActivationLookPositions(arroundPosition, item);
             }

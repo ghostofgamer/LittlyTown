@@ -1,12 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using CountersContent;
 using Dragger;
 using Enums;
 using ItemContent;
 using ItemPositionContent;
 using ItemSO;
+using PossibilitiesContent;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -30,6 +32,8 @@ public class ItemsStorage : MonoBehaviour
     [SerializeField] private Storage _storage;
     [SerializeField] private DropGenerator _dropGenerator;
     [SerializeField] private ShopItems _shopItems;
+    [SerializeField] private PossibilitieBulldozer _possibilitieBulldozer;
+    [SerializeField] private PossibilitieReplace _possibilitieReplace;
 
     private Coroutine _coroutine;
     private Item _selectObject;
@@ -141,24 +145,35 @@ public class ItemsStorage : MonoBehaviour
                 itemDatas.Add(itemData);
             }
         }
+
         List<ItemData> itemDataPrice = new List<ItemData>();
-        
+
         foreach (var item in _shopItems.Items)
         {
-            ItemData itemData = new ItemData(item.ItemName,null, item.Price);
+            ItemData itemData = new ItemData(item.ItemName, null, item.Price);
             itemDataPrice.Add(itemData);
         }
-        Debug.Log("ShopItemData " + itemDataPrice.Count);
+
+        // Debug.Log("ShopItemData " + itemDataPrice.Count);
+
+        saveData.PossibilitiesItemsData = new PossibilitiesItemsData(_possibilitieBulldozer, _possibilitieReplace,_possibilitieBulldozer.Price,_possibilitieReplace.Price);
+        Debug.Log("SavePossibilitie " + saveData.PossibilitiesItemsData.PossibilitieBulldozer.Price);
+        
+        
+        
         // saveData.ShopItemData.ItemsData = itemDataPrice;
         saveData.ItemDatasPrices = itemDataPrice;
-        Debug.Log("Цены " + saveData.ItemDatasPrices.Count );
+        // Debug.Log("Цены " + saveData.ItemDatasPrices.Count);
         if (_dropGenerator.ItemDropData != null)
         {
             saveData.ItemDropData =
                 new ItemDropData(_dropGenerator.ItemDropData.Icon, _dropGenerator.ItemDropData.PrefabItem);
-            Debug.Log("ItemDropData " + saveData.ItemDropData.PrefabItem.ItemName);
+            // Debug.Log("ItemDropData " + saveData.ItemDropData.PrefabItem.ItemName);
         }
-
+        else
+            saveData.ItemDropData = null;
+        
+        
         saveData.ItemDatas = itemDatas;
         saveData.BulldozerCount = _bulldozerCounter.PossibilitiesCount;
         saveData.ReplaceCount = _replaceCounter.PossibilitiesCount;
@@ -169,6 +184,7 @@ public class ItemsStorage : MonoBehaviour
         // saveData.StorageItem = _storage.CurrentItem;
         if (_storage.CurrentItem != null)
         {
+            Debug.Log("CurrentStorage " + _storage.CurrentItem.ItemName);
             saveData.StorageItemData =
                 new StorageItemData(_storage.CurrentItem.ItemName, _storage.CurrentItem.ItemPosition);
         }
@@ -253,22 +269,32 @@ public class ItemsStorage : MonoBehaviour
         SelectSaveItem = selectItem;
         // _itemDragger.SetItem(selectItem, saveData.SelectItemData.ItemPosition);
         // Item storageItem = Instantiate(saveData.StorageItem, _container);
-        Debug.Log("Storage: " + saveData.StorageItemData.ItemName);
-        Item storageItem = Instantiate(GetItem(saveData.StorageItemData.ItemName), _container);
-        storageItem.gameObject.SetActive(false);
-        Debug.Log("Storage Load: " + storageItem.ItemName);
-        _storage.SetItem(storageItem);
+        
+        
 
+        if (saveData.StorageItemData.ItemName != null)
+        {
+            Debug.Log("Storage: " + saveData.StorageItemData.ItemName);
+            Item storageItem = Instantiate(GetItem(saveData.StorageItemData.ItemName), _container);
+            storageItem.gameObject.SetActive(false);
+            // Debug.Log("Storage Load: " + storageItem.ItemName);
+            _storage.SetItem(storageItem);
+        }
+        
         /*foreach (var item in saveData.ShopItemData.ItemsData)
         {
             _shopItems.SetPrice(item.ItemName,item.Price);
         }*/
-        
+
         foreach (var item in saveData.ItemDatasPrices)
         {
-            _shopItems.SetPrice(item.ItemName,item.Price);
+            _shopItems.SetPrice(item.ItemName, item.Price);
         }
-        
+
+        Debug.Log("СМОТРИМ ЦЕНУ " + saveData.PossibilitiesItemsData.PriceBulldozer);
+        _shopItems.SetPricePossibilitie(saveData.PossibilitiesItemsData.PriceBulldozer,
+            saveData.PossibilitiesItemsData.PriceReplace);
+
         /*Item storageItem = Instantiate(saveData.StorageItem, _container);
         storageItem.gameObject.SetActive(false);
         _storage.SetItem(storageItem);*/

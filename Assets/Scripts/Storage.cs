@@ -79,4 +79,11 @@ public class Storage : MonoBehaviour
             _image.sprite = null;
         }
     }
+
+    public void ClearItem()
+    {
+        _currentItem = null;
+        _temporaryItem = null;
+        _image.gameObject.SetActive(false);
+    }
 }

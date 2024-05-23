@@ -10,9 +10,11 @@ namespace CountersContent
         private static readonly int Change = Animator.StringToHash("Change");
 
         [SerializeField] private TMP_Text _possibilitiesCountText;
-        [SerializeField] private int _possibilitiesCount;
+        [SerializeField] private int _startCount;
         [SerializeField] private Animator _animator;
         [SerializeField] private PossibilitieMovement _possibilitieMovement;
+        
+        private int _possibilitiesCount;
 
         public int PossibilitiesCount => _possibilitiesCount;
 
@@ -28,6 +30,7 @@ namespace CountersContent
 
         private void Start()
         {
+            _possibilitiesCount = _startCount;
             Show();
         }
 
@@ -56,6 +59,12 @@ namespace CountersContent
         public void SetValue(int count)
         {
             _possibilitiesCount = count;
+            Show();
+        }
+
+        public void SetCount()
+        {
+            _possibilitiesCount = _startCount;
             Show();
         }
     }

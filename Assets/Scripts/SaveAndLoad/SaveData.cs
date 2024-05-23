@@ -24,6 +24,7 @@ public class SaveData
     public StorageItemData StorageItemData;
     public ShopItemData ShopItemData;
     public List<ItemData> ItemDatasPrices;
+    public PossibilitiesItemsData PossibilitiesItemsData;
     
     public SaveData()
     {

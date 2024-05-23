@@ -38,5 +38,17 @@ namespace PossibilitiesContent
             // Debug.Log("Set" + _price);
             IncreasePrice();
         }
+
+        public void SetCurrentPrice(int price)
+        {
+            _price = price;
+            PriceChanged?.Invoke(_startPrice);
+        }
+
+        public void SetStartPrice()
+        {
+            _price = _startPrice;
+            PriceChanged?.Invoke(_price);
+        }
     }
 }

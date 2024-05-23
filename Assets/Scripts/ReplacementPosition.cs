@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using CountersContent;
 using Dragger;
+using Enums;
 using ItemContent;
 using ItemPositionContent;
 using UI.Buttons;
@@ -13,9 +14,9 @@ public class ReplacementPosition : MonoBehaviour
     [SerializeField] private PositionMatcher _positionMatcher;
     [SerializeField] private ReplacementButton _replacementButton;
     [SerializeField] private ItemDragger _itemDragger;
-    [SerializeField]private PossibilitiesCounter _positionsCounter;
-    [SerializeField]private LookMerger _lookMerger;
-    
+    [SerializeField] private PossibilitiesCounter _positionsCounter;
+    [SerializeField] private LookMerger _lookMerger;
+
     private bool _isWorking;
     private bool _isLooking;
     private int _layerMask;
@@ -115,7 +116,10 @@ public class ReplacementPosition : MonoBehaviour
 
                 if (_firstSelect && itemPosition != _firstItemPosition)
                 {
-                    if (itemPosition.IsWater)
+                    if (itemPosition.IsWater &&_firstItem.ItemName != Items.LightHouse)
+                        yield break;
+
+                    if (_firstItem.ItemName == Items.LightHouse && !itemPosition.IsWater)
                         yield break;
 
                     _secondItemPosition = itemPosition;
@@ -127,20 +131,10 @@ public class ReplacementPosition : MonoBehaviour
                         ChangePosition(_secondItem, _firstItemPosition);
                         yield return null;
                         yield return new WaitForSeconds(0.1f);
-                        // _positionMatcher.LookAround(_secondItemPosition);
-                        // Debug.Log("First   " + _firstItem);
-                        // Debug.Log("Second   " + _secondItem);
-                        
-                        // _lookMerger.LookAround(_secondItemPosition,_firstItem);
                         _secondItemPosition.ReplaceSelectedActivate();
                         _firstItemPosition.ReplaceSelectedActivate();
                         _secondItemPosition.DeliverObject(_firstItem);
                         _firstItemPosition.DeliverObject(_secondItem);
-                        // _lookMerger.LookAround(_secondItemPosition,_firstItem);
-                        // yield return new WaitForSeconds(3f);
-                        // _positionMatcher.LookAround(_firstItemPosition);
-                        // _lookMerger.LookAround(_firstItemPosition,_secondItem);
-                        
                         _firstSelect = false;
                         _firstItem = null;
                         _firstItemPosition = null;
@@ -150,19 +144,10 @@ public class ReplacementPosition : MonoBehaviour
                     }
                     else
                     {
-                        // Debug.Log("Меняемся на пустое");
                         ChangePosition(_firstItem, _secondItemPosition);
                         _firstItemPosition.ClearingPosition();
                         yield return null;
-                        // Debug.Log("Second " + _secondItemPosition.name);
                         _secondItemPosition.DeliverObject(_firstItem);
-                        // _lookMerger.LookAround(_secondItemPosition,_firstItem);
-                        
-                        
-                        
-                        // _positionMatcher.LookAround(_secondItemPosition);
-                        // _lookMerger.LookAround(_secondItemPosition,_secondItemPosition.Item);
-                        // _lookMerger.LookAround(_secondItemPosition,_secondItemPosition.Item);
                         _firstSelect = false;
                         _firstItem = null;
                         _firstItemPosition = null;
@@ -170,11 +155,6 @@ public class ReplacementPosition : MonoBehaviour
                         PositionsChanged?.Invoke();
                         _positionsCounter.DecreaseCount();
                     }
-
-                    /*
-                    _firstSelect = false;
-                    _firstItem = null;
-                    _firstItemPosition = null;*/
                 }
             }
         }

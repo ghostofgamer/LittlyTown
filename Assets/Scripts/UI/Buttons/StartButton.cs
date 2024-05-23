@@ -1,6 +1,8 @@
+using CountersContent;
 using Dragger;
 using ItemContent;
 using ItemPositionContent;
+using PossibilitiesContent;
 using SaveAndLoad;
 using UI.Buttons;
 using UnityEngine;
@@ -17,6 +19,9 @@ public class StartButton : AbstractButton
     [SerializeField] private ItemPosition[] _itemPositions;
     [SerializeField] private Save _save;
     [SerializeField] private Item[] _items;
+    [SerializeField] private Possibilitie[] _possibilities;
+    [SerializeField] private PossibilitiesCounter[] _possibilitiesCounters;
+    [SerializeField]private Storage _storage;
 
     private int _selectMap = 1;
 
@@ -24,7 +29,9 @@ public class StartButton : AbstractButton
     {
         DeactivateItems();
         _itemDragger.ClearAll();
-
+        
+        _storage.ClearItem();
+        
         foreach (var itemPosition in _itemPositions)
         {
             itemPosition.ClearingPosition();
@@ -33,6 +40,16 @@ public class StartButton : AbstractButton
         foreach (var item in _items)
         {
             item.SetInitialPrice();
+        }
+        
+        foreach (var possibility in _possibilities)
+        {
+            possibility.SetStartPrice();
+        }
+        
+        foreach (var possibilityCounter in _possibilitiesCounters)
+        {
+            possibilityCounter.SetCount();
         }
         
         _mapGenerator.Generation();

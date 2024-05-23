@@ -1,3 +1,4 @@
+using Dragger;
 using PossibilitiesContent;
 using TMPro;
 using UnityEngine;
@@ -9,7 +10,8 @@ namespace UI.Screens.PossibilitiesShopContent
         [SerializeField] private Possibilitie _possibilitie;
         [SerializeField] private TMP_Text _priceText;
         [SerializeField] private TMP_Text _currentAmountText;
-
+        [SerializeField]private InputItemDragger _inputItemDragger;
+            
         private int _currentPrice;
         private int _basePrice;
         private int _currentAmount = 1;
@@ -42,6 +44,13 @@ namespace UI.Screens.PossibilitiesShopContent
             _basePrice = _possibilitie.Price;
             _currentPrice = _basePrice;
             Show();
+            _inputItemDragger.enabled = false;
+        }
+
+        public override void Close()
+        {
+            base.Close();
+            _inputItemDragger.enabled = true;
         }
 
         private void Show()

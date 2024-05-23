@@ -1080,14 +1080,18 @@
           <e p="RoadGenerator.cs" t="Include" />
           <e p="SaveAndLoad" t="Include">
             <e p="ItemData.cs" t="Include" />
+            <e p="ItemDropData.cs" t="Include" />
             <e p="ItemsStorage.cs" t="Include" />
             <e p="Load.cs" t="Include" />
+            <e p="PossibilitiesItemsData.cs" t="Include" />
             <e p="Save.cs" t="Include" />
             <e p="SaveData.cs" t="Include" />
             <e p="SelectItemData.cs" t="Include" />
+            <e p="ShopItemData.cs" t="Include" />
             <e p="StorageItemData.cs" t="Include" />
           </e>
           <e p="Settings.cs" t="Include" />
+          <e p="ShopItems.cs" t="Include" />
           <e p="SpawnContent" t="Include">
             <e p="DropGenerator.cs" t="Include" />
             <e p="Spawner.cs" t="Include" />
@@ -1096,6 +1100,7 @@
           <e p="Territory.cs" t="Include" />
           <e p="Test" t="Include">
             <e p="LookMerger.cs" t="Include" />
+            <e p="Rotater.cs" t="Include" />
             <e p="TestMerger.cs" t="Include" />
           </e>
           <e p="TextWidthController.cs" t="Include" />

@@ -89,7 +89,7 @@ namespace ItemContent
 
         public void SetInitialPrice()
         {
-            Debug.Log("начальная цена");
+            // Debug.Log("начальная цена");
             _price = _startPrice;
         }
     }
