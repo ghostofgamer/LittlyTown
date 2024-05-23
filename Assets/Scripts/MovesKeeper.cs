@@ -6,7 +6,6 @@ using Dragger;
 using Enums;
 using ItemContent;
 using ItemPositionContent;
-using UI.Buttons;
 using UnityEngine;
 using Wallets;
 
@@ -25,6 +24,7 @@ public class MovesKeeper : MonoBehaviour
     [SerializeField] private ScoreCounter _scoreCounter;
     [SerializeField] private Storage _storage;
     [SerializeField] private DropGenerator _dropGenerator;
+    [SerializeField] private ShopItems _shopItems;
 
     private List<SaveData> _savesHistory = new List<SaveData>();
     private int _maxStepSaved = 3;
@@ -38,27 +38,32 @@ public class MovesKeeper : MonoBehaviour
     [SerializeField] private MapGenerator _mapGenerator;
     [SerializeField] private ReplacementPosition _replacementPosition;
     [SerializeField] private RemovalItems _removalItems;
-    
+
     private void OnEnable()
     {
-        _itemDragger.PlaceChanged += SaveHistory;
+        _itemDragger.StepCompleted += SaveHistory;
+
+        /*_itemDragger.PlaceChanged += SaveHistory;
         // _itemDragger.BuildItem += SaveChanges;
         // _itemDragger.SelectItemReceived += SaveHistory;
         _mapGenerator.GenerationCompleted += SaveHistory;
         _replacementPosition.PositionsChanged += SaveHistory;
         _removalItems.Removed += SaveHistory;
-        _storage.StoragePlaceChanged += SaveHistory;
+        _storage.StoragePlaceChanged += SaveHistory;*/
     }
 
     private void OnDisable()
     {
-        _itemDragger.PlaceChanged -= SaveHistory;
+        _itemDragger.StepCompleted -= SaveHistory;
+
+
+        /*_itemDragger.PlaceChanged -= SaveHistory;
         // _itemDragger.BuildItem -= SaveChanges;
         // _itemDragger.SelectItemReceived -= SaveHistory;
         _mapGenerator.GenerationCompleted -= SaveHistory;
         _replacementPosition.PositionsChanged -= SaveHistory;
         _removalItems.Removed -= SaveHistory;
-        _storage.StoragePlaceChanged -= SaveHistory;
+        _storage.StoragePlaceChanged -= SaveHistory;*/
     }
 
     /*private void OnEnable()
@@ -94,11 +99,23 @@ public class MovesKeeper : MonoBehaviour
         Debug.Log("CurrentStep   " + _currentStep);
     }*/
 
-    private void SaveHistory()
+    private void SaveHistory(ItemPosition itemPosition)
     {
-       
-        
         if (_savesHistory.Count >= _maxStepSaved)
+        {
+            _savesHistory.RemoveAt(0);
+        }
+
+        SaveData saveDate = _itemsStorage.GetSaveData();
+        saveDate.SelectItemData.ItemPosition = itemPosition;
+        // Debug.Log("SelecItemPosition Save History  " + saveDate.SelectItemData.ItemPosition);
+
+        _savesHistory.Add(saveDate);
+        _currentStep = _savesHistory.Count;
+        StepChanged?.Invoke(_currentStep);
+        // Debug.Log("CurrentStep  " + _currentStep);
+
+        /*if (_savesHistory.Count >= _maxStepSaved)
         {
             _savesHistory.RemoveAt(0);
         }
@@ -106,9 +123,24 @@ public class MovesKeeper : MonoBehaviour
         _savesHistory.Add( _itemsStorage.SaveData);
         _currentStep = _savesHistory.Count - 1;
         StepChanged?.Invoke(_currentStep);
-        // Debug.Log("В шагах смотрим " + saveData.SelectItemDragger);
+        // Debug.Log("В шагах смотрим " + saveData.SelectItemDragger);*/
     }
-    
+
+    private void SaveHistory()
+    {
+        if (_savesHistory.Count >= _maxStepSaved)
+        {
+            _savesHistory.RemoveAt(0);
+        }
+
+        SaveData saveDate = _itemsStorage.GetSaveData();
+        // Debug.Log("SelecItemPosition Save History  " + saveDate.SelectItemData.ItemPosition);
+
+        _savesHistory.Add(saveDate);
+        _currentStep = _savesHistory.Count;
+        StepChanged?.Invoke(_currentStep);
+    }
+
     /*private void SaveHistory(SaveData saveData)
     {
         if (_savesHistory.Count >= _maxStepSaved)
@@ -137,6 +169,115 @@ public class MovesKeeper : MonoBehaviour
 
     private IEnumerator StartCancelling()
     {
+        // _currentStep--;
+        // SaveData newSaveData = _savesHistory[_currentStep];
+        // Debug.Log("ITEMDROPPP " + newSaveData.ItemDropData);
+        // _dropGenerator.SetItem(newSaveData.ItemDropData.PrefabItem, newSaveData.ItemDropData.Icon);
+
+        _itemDragger.SelectedObject.gameObject.SetActive(false);
+        // Debug.Log(_itemsStorage.SelectObject.ItemName);
+        foreach (var itemPosition in _itemPositions)
+        {
+            if (itemPosition.Item != null)
+            {
+                itemPosition.Item.gameObject.SetActive(false);
+                itemPosition.ClearingPosition();
+                yield return new WaitForSeconds(0.1f);
+            }
+        }
+
+        yield return new WaitForSeconds(0.1f);
+
+        _currentStep--;
+        SaveData saveData = _savesHistory[_currentStep];
+        // Debug.Log("какую index истории вызываем " + _currentStep);
+        /*Debug.Log("ITEMDROPPP " + saveData.ItemDropData);
+        _dropGenerator.SetItem(saveData.ItemDropData);*/
+
+
+        foreach (var itemData in saveData.ItemDatas)
+        {
+            Item item = Instantiate(GetItem(itemData.ItemName), itemData.ItemPosition.transform.position,
+                Quaternion.identity, _container);
+            item.Init(itemData.ItemPosition);
+            item.Activation();
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        Debug.Log("saveData.SelectItem " + saveData.SelectItemData.ItemName);
+        // Debug.Log("saveData.SelectItemPosition " + saveData.SelectItemData.ItemPosition.name);
+
+        Item selectItem = Instantiate(GetItem(saveData.SelectItemData.ItemName),
+            saveData.SelectItemData.ItemPosition.transform.position,
+            Quaternion.identity, _container);
+
+        selectItem.Init(saveData.SelectItemData.ItemPosition);
+        _itemDragger.SetItem(selectItem, selectItem.ItemPosition);
+        selectItem.gameObject.SetActive(true);
+        _goldWallet.SetValue(saveData.GoldValue);
+
+        foreach (var item in saveData.ItemDatasPrices)
+        {
+            _shopItems.SetPrice(item.ItemName, item.Price);
+        }
+
+        _shopItems.SetPricePossibilitie(saveData.PossibilitiesItemsData.PriceBulldozer,
+            saveData.PossibilitiesItemsData.PriceReplace);
+        
+        
+        if (saveData.StorageItemData.ItemPosition != null)
+        {
+            /*Debug.Log("Storage: ");
+            Debug.Log("Storage: " + saveData.StorageItemData.ItemName);*/
+            Item storageItem = Instantiate(GetItem(saveData.StorageItemData.ItemName), _container);
+            storageItem.gameObject.SetActive(false);
+            // Debug.Log("Storage Load: " + storageItem.ItemName);
+            _storage.SetItem(storageItem);
+        }
+        else
+        {
+            // Debug.Log("clear");
+            _storage.ClearItem();
+        }
+        /*_replaceCounter.SetValue(saveData.ReplaceCount);
+        _bulldozerCounter.SetValue(saveData.BulldozerCount);
+        _goldWallet.SetValue(saveData.GoldValue);
+        _moveCounter.SetValue(saveData.MoveCount);
+        _scoreCounter.SetValue(saveData.ScoreValue);*/
+
+        /*_replaceCounter.SetValue(saveData.ReplaceCount);
+        _bulldozerCounter.SetValue(saveData.BulldozerCount);
+        _goldWallet.SetValue(saveData.GoldValue);
+        _moveCounter.SetValue(saveData.MoveCount);
+        _scoreCounter.SetValue(saveData.ScoreValue);
+        _storage.SetItem(saveData.StorageItem);
+
+
+        /*Item selectItem = Instantiate(GetItem(saveData.SelectItemDragger.ItemName),saveData.SelectItemDragger.ItemPosition.transform.position,
+            Quaternion.identity, _container);#1#
+
+        Item selectItem = Instantiate(GetItem(_itemsStorage.SelectObject.ItemName),
+            _itemsStorage.SelectObject.ItemPosition.transform.position,
+            Quaternion.identity, _container);
+
+        _itemDragger.SetItem(selectItem, _itemsStorage.SelectObject.ItemPosition);
+        selectItem.gameObject.SetActive(true);
+
+        /*Item temporaryItem = Instantiate(GetItem(saveData.TemporaryItemDragger.ItemName),saveData.TemporaryItemDragger.ItemPosition.transform.position,
+            Quaternion.identity, _container);
+        _itemDragger.SetTemporaryObject(temporaryItem);#1#
+
+
+        yield return null;
+        _roadGenerator.OnGeneration();
+        ClearHistory();
+        yield return new WaitForSeconds(0.1f);
+        // _itemsStorage.SaveChanges();*/
+    }
+
+
+    /*private IEnumerator StartCancelling()
+    {
         SaveData newSaveData = _savesHistory[_currentStep];
         // Debug.Log("ITEMDROPPP " + newSaveData.ItemDropData);
         _dropGenerator.SetItem(newSaveData.ItemDropData.PrefabItem, newSaveData.ItemDropData.Icon);
@@ -159,7 +300,7 @@ public class MovesKeeper : MonoBehaviour
         SaveData saveData = _savesHistory[_currentStep];
         // Debug.Log("какую index истории вызываем " + _currentStep);
         /*Debug.Log("ITEMDROPPP " + saveData.ItemDropData);
-        _dropGenerator.SetItem(saveData.ItemDropData);*/
+        _dropGenerator.SetItem(saveData.ItemDropData);#1#
 
         foreach (var itemData in saveData.ItemDatas)
         {
@@ -181,7 +322,7 @@ public class MovesKeeper : MonoBehaviour
         // Debug.Log("ШАГ Середина " + _itemsStorage.SelectObject.ItemPosition);
 
         /*Item selectItem = Instantiate(GetItem(saveData.SelectItemDragger.ItemName),saveData.SelectItemDragger.ItemPosition.transform.position,
-            Quaternion.identity, _container);*/
+            Quaternion.identity, _container);#1#
 
         Item selectItem = Instantiate(GetItem(_itemsStorage.SelectObject.ItemName),
             _itemsStorage.SelectObject.ItemPosition.transform.position,
@@ -193,7 +334,7 @@ public class MovesKeeper : MonoBehaviour
 
         /*Item temporaryItem = Instantiate(GetItem(saveData.TemporaryItemDragger.ItemName),saveData.TemporaryItemDragger.ItemPosition.transform.position,
             Quaternion.identity, _container);
-        _itemDragger.SetTemporaryObject(temporaryItem);*/
+        _itemDragger.SetTemporaryObject(temporaryItem);#1#
 
 
         yield return null;
@@ -201,7 +342,7 @@ public class MovesKeeper : MonoBehaviour
         ClearHistory();
         yield return new WaitForSeconds(0.1f);
         // _itemsStorage.SaveChanges();
-    }
+    }*/
 
     private Item GetItem(Items itemName)
     {
@@ -232,5 +373,13 @@ public class MovesKeeper : MonoBehaviour
         // _itemsStorage.SaveChanges();
         // _itemsStorage.CancelMoveSave();
         // Debug.Log("CurrentStep   Очистка" + _currentStep);
+    }
+
+    public void ClearAllHistory()
+    {
+        _savesHistory.Clear();
+        _currentStep = _savesHistory.Count;
+        StepChanged?.Invoke(_currentStep);
+        Debug.Log("CurrentStepFromClear  " + _currentStep);
     }
 }

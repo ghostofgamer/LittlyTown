@@ -2780,7 +2780,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _possibilitiesCountText: {fileID: 475370545}
-  _possibilitiesCount: 1
+  _startCount: 1
   _animator: {fileID: 39153982}
   _possibilitieMovement: {fileID: 134389303}
 --- !u!1 &40374515
@@ -8924,6 +8924,7 @@ GameObject:
   - component: {fileID: 127872724}
   - component: {fileID: 127872723}
   - component: {fileID: 127872722}
+  - component: {fileID: 127872726}
   m_Layer: 5
   m_Name: ReturnButton
   m_TagString: Untagged
@@ -9046,6 +9047,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 127872720}
   m_CullTransparentMesh: 1
+--- !u!114 &127872726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 127872720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40216dd1c2daf9d438088cbc6215fbe6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _abstractScreen: {fileID: 240495592}
+  _screenClose: {fileID: 2064382574}
+  _isBluring: 0
+  _blur: {fileID: 963194232}
 --- !u!1 &128437664
 GameObject:
   m_ObjectHideFlags: 0
@@ -10558,7 +10575,7 @@ MonoBehaviour:
   _possibilitiesShopScreen: {fileID: 2064382574}
   _goldWallet: {fileID: 2024437528}
   _closeButton: {fileID: 127872722}
-  _openButton: {fileID: 0}
+  _openButton: {fileID: 127872726}
   _possibilitieMovement: {fileID: 70127799}
   _possibilitiePriceText: {fileID: 0}
 --- !u!1001 &145436417
@@ -34366,7 +34383,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _possibilitiesCountText: {fileID: 1185319246}
-  _possibilitiesCount: 1
+  _startCount: 1
   _animator: {fileID: 586404710}
   _possibilitieMovement: {fileID: 70127799}
 --- !u!1 &591715070
@@ -48090,7 +48107,7 @@ MonoBehaviour:
   _possibilitiesShopScreen: {fileID: 1050483412}
   _goldWallet: {fileID: 2024437528}
   _closeButton: {fileID: 1158313748}
-  _openButton: {fileID: 0}
+  _openButton: {fileID: 1158313752}
   _possibilitieMovement: {fileID: 134389303}
   _possibilitiePriceText: {fileID: 0}
 --- !u!1 &832583296
@@ -60637,6 +60654,7 @@ MonoBehaviour:
   _possibilitie: {fileID: 834626790}
   _priceText: {fileID: 1692902207}
   _currentAmountText: {fileID: 1089153487}
+  _inputItemDragger: {fileID: 1990161227}
 --- !u!225 &1050483413
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -65527,6 +65545,7 @@ GameObject:
   - component: {fileID: 1158313750}
   - component: {fileID: 1158313749}
   - component: {fileID: 1158313748}
+  - component: {fileID: 1158313752}
   m_Layer: 5
   m_Name: ReturnButton
   m_TagString: Untagged
@@ -65649,6 +65668,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1158313746}
   m_CullTransparentMesh: 1
+--- !u!114 &1158313752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158313746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40216dd1c2daf9d438088cbc6215fbe6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _abstractScreen: {fileID: 240495592}
+  _screenClose: {fileID: 1050483412}
+  _isBluring: 0
+  _blur: {fileID: 963194232}
 --- !u!1 &1159077023
 GameObject:
   m_ObjectHideFlags: 0
@@ -84170,6 +84205,15 @@ MonoBehaviour:
   - {fileID: 2114086251580323830, guid: 553ddbaa987576747b58d212f7e7150c, type: 3}
   - {fileID: 1315623422540449418, guid: b68608db95bf2d54db0e5597c9196903, type: 3}
   - {fileID: 7930523424143760095, guid: 850174af952ea3248bc9032bb8586d10, type: 3}
+  _possibilities:
+  - {fileID: 834626790}
+  - {fileID: 14626220}
+  _possibilitiesCounters:
+  - {fileID: 39153983}
+  - {fileID: 586404711}
+  _storage: {fileID: 9003913}
+  _movesKeeper: {fileID: 889228746}
+  _goldWallet: {fileID: 2024437528}
 --- !u!114 &1482092090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84928,6 +84972,8 @@ MonoBehaviour:
   - {fileID: 9071215179258156289, guid: 86960b97b4cbc5c47af7780f495823a6, type: 3}
   - {fileID: 1689325367591307803, guid: 2b51df3812e86014ba3110d4d00121d8, type: 3}
   - {fileID: 5411065820483948517, guid: 689dea58ec3f1344186eee7c39910dac, type: 3}
+  _possibilitieBulldozer: {fileID: 834626790}
+  _possibilitieReplace: {fileID: 14626220}
 --- !u!1001 &1494603759
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -106603,6 +106649,9 @@ MonoBehaviour:
   _storage: {fileID: 9003913}
   _dropGenerator: {fileID: 1455339039}
   _shopItems: {fileID: 1493932984}
+  _possibilitieBulldozer: {fileID: 834626790}
+  _possibilitieReplace: {fileID: 14626220}
+  _saveDatas: []
 --- !u!4 &1903934208
 Transform:
   m_ObjectHideFlags: 0
@@ -115394,6 +115443,7 @@ MonoBehaviour:
   _possibilitie: {fileID: 14626220}
   _priceText: {fileID: 54433356}
   _currentAmountText: {fileID: 839378360}
+  _inputItemDragger: {fileID: 1990161227}
 --- !u!225 &2064382575
 CanvasGroup:
   m_ObjectHideFlags: 0

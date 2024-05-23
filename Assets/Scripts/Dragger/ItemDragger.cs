@@ -25,6 +25,9 @@ namespace Dragger
         private bool _istemporary;
 
         public event Action PlaceChanged;
+
+        public event Action<ItemPosition> StepCompleted;
+        
         public event Action<Item> BuildItem;
 
         public event Action<Item, Item> SelectItemReceived;
@@ -79,11 +82,11 @@ namespace Dragger
             _startPosition = itemPosition;
             // Debug.Log("5");
             _selectedObject.Init(_startPosition);
-            Debug.Log("6" + item.name );
-            Debug.Log("6" + itemPosition.name );
+            /*Debug.Log("6" + item.name );
+            Debug.Log("6" + itemPosition.name );*/
             // Debug.Log(_startPosition);
             _startPosition.GetComponent<VisualItemPosition>().ActivateVisual();
-            Debug.Log("Dragger");
+            // Debug.Log("Dragger");
             SelectItemReceived?.Invoke(_selectedObject, _temporaryItem);
             SelectNewItem?.Invoke();
         }
@@ -222,13 +225,14 @@ namespace Dragger
                 {
                     if (!itemPosition.IsBusy && !itemPosition.IsWater && !_selectedObject.IsLightHouse)
                     {
+                        StepCompleted?.Invoke(itemPosition);
                         _selectedObject.transform.position = hit.transform.position;
                         _selectedObject.Init(itemPosition);
                         _selectedObject.Activation();
                         _selectedObject.GetComponent<ItemAnimation>().PositioningAnimation();
                         BuildItem?.Invoke(_selectedObject);
                         itemPosition.DeliverObject(_selectedObject);
-                        Debug.Log("Place1");
+                        // Debug.Log("Place1");
                         PlaceChanged?.Invoke();
                         _selectedObject = null;
                         StartCoroutine(Continue(itemPosition));
@@ -237,6 +241,7 @@ namespace Dragger
                     }
                     else if (!itemPosition.IsBusy && itemPosition.IsWater && _selectedObject.IsLightHouse)
                     {
+                        StepCompleted?.Invoke(itemPosition);
                         // Debug.Log("Water");
                         _selectedObject.transform.position = hit.transform.position;
                         _selectedObject.Init(itemPosition);
@@ -244,7 +249,7 @@ namespace Dragger
                         _selectedObject.GetComponent<ItemAnimation>().PositioningAnimation();
                         itemPosition.DeliverObject(_selectedObject);
                         BuildItem?.Invoke(_selectedObject);
-                        Debug.Log("Place3");
+                        // Debug.Log("Place3");
                         PlaceChanged?.Invoke();
                         _selectedObject = null;
                         StartCoroutine(Continue(itemPosition));

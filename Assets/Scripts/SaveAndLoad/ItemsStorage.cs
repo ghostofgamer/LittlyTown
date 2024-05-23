@@ -34,8 +34,10 @@ public class ItemsStorage : MonoBehaviour
     [SerializeField] private ShopItems _shopItems;
     [SerializeField] private PossibilitieBulldozer _possibilitieBulldozer;
     [SerializeField] private PossibilitieReplace _possibilitieReplace;
+    [SerializeField] private List<SaveData> _saveDatas = new List<SaveData>();
 
     private Coroutine _coroutine;
+    private Coroutine _coroutineSignal;
     private Item _selectObject;
     private Item _temporaryObject;
     private ItemDropDataSO _itemDropDataSO;
@@ -49,6 +51,8 @@ public class ItemsStorage : MonoBehaviour
     public Item SelectSaveItem { get; private set; }
 
     public event Action<SaveData> SaveCompleted;
+
+    public event Action StepChanged;
 
     /*private void OnEnable()
     {
@@ -76,7 +80,7 @@ public class ItemsStorage : MonoBehaviour
     private void OnEnable()
     {
         _itemDragger.SelectNewItem += SaveChanges;
-
+        // _itemDragger.StepCompleted += SaveSteps;
         /*_itemDragger.PlaceChanged += SaveChanges;
         // _itemDragger.BuildItem += SaveChanges;
         _itemDragger.SelectItemReceived += SaveItemDraggerItems;
@@ -89,6 +93,7 @@ public class ItemsStorage : MonoBehaviour
     private void OnDisable()
     {
         _itemDragger.SelectNewItem -= SaveChanges;
+        // _itemDragger.StepCompleted -= SaveSteps;
         /*_itemDragger.PlaceChanged -= SaveChanges;
         // _itemDragger.BuildItem -= SaveChanges;
         _itemDragger.SelectItemReceived -= SaveItemDraggerItems;
@@ -118,6 +123,29 @@ public class ItemsStorage : MonoBehaviour
         _coroutine = StartCoroutine(Save());
     }
 
+    /*
+    private void SaveSteps()
+    {
+        Debug.Log("Сохраняет ");
+        if (_coroutineSignal != null)
+            StopCoroutine(_coroutineSignal);
+
+        _coroutineSignal = StartCoroutine(SignalsaveStep());
+    }
+
+    private IEnumerator SignalsaveStep()
+    {
+        if (_coroutine != null)
+            StopCoroutine(_coroutine);
+
+        _coroutine = StartCoroutine(Save());
+
+        Debug.Log("1");
+        yield return _coroutine;
+        Debug.Log("3");
+        StepChanged?.Invoke();
+    }*/
+
     private IEnumerator Save()
     {
         SaveData saveData = new SaveData();
@@ -125,13 +153,17 @@ public class ItemsStorage : MonoBehaviour
 
         if (_itemDragger.SelectedObject != null)
         {
-            _selectObject = _itemDragger.SelectedObject;
-            saveData.SelectItemDragger = _selectObject;
-            saveData.SelectItemData = new SelectItemData(_selectObject.ItemName, _selectObject.ItemPosition);
+            /*_selectObject = _itemDragger.SelectedObject;
+            saveData.SelectItemDragger = _selectObject;*/
+            saveData.SelectItemData = new SelectItemData(_itemDragger.SelectedObject.ItemName,
+                _itemDragger.SelectedObject.ItemPosition);
+
+            Debug.Log("сохраняем " + saveData.SelectItemData.ItemName + "   " + saveData.SelectItemData.ItemPosition);
         }
 
         /*_itemDropDataSO = _dropGenerator.ItemDropData;
         saveData.ItemDropData = _itemDropDataSO;*/
+
 
         yield return new WaitForSeconds(0.165f);
 
@@ -156,11 +188,11 @@ public class ItemsStorage : MonoBehaviour
 
         // Debug.Log("ShopItemData " + itemDataPrice.Count);
 
-        saveData.PossibilitiesItemsData = new PossibilitiesItemsData(_possibilitieBulldozer, _possibilitieReplace,_possibilitieBulldozer.Price,_possibilitieReplace.Price);
-        Debug.Log("SavePossibilitie " + saveData.PossibilitiesItemsData.PossibilitieBulldozer.Price);
-        
-        
-        
+        saveData.PossibilitiesItemsData = new PossibilitiesItemsData(_possibilitieBulldozer, _possibilitieReplace,
+            _possibilitieBulldozer.Price, _possibilitieReplace.Price);
+        // Debug.Log("SavePossibilitie " + saveData.PossibilitiesItemsData.PossibilitieBulldozer.Price);
+
+
         // saveData.ShopItemData.ItemsData = itemDataPrice;
         saveData.ItemDatasPrices = itemDataPrice;
         // Debug.Log("Цены " + saveData.ItemDatasPrices.Count);
@@ -172,8 +204,8 @@ public class ItemsStorage : MonoBehaviour
         }
         else
             saveData.ItemDropData = null;
-        
-        
+
+
         saveData.ItemDatas = itemDatas;
         saveData.BulldozerCount = _bulldozerCounter.PossibilitiesCount;
         saveData.ReplaceCount = _replaceCounter.PossibilitiesCount;
@@ -184,9 +216,13 @@ public class ItemsStorage : MonoBehaviour
         // saveData.StorageItem = _storage.CurrentItem;
         if (_storage.CurrentItem != null)
         {
-            Debug.Log("CurrentStorage " + _storage.CurrentItem.ItemName);
+            // Debug.Log("CurrentStorage " + _storage.CurrentItem.ItemName);
             saveData.StorageItemData =
                 new StorageItemData(_storage.CurrentItem.ItemName, _storage.CurrentItem.ItemPosition);
+        }
+        else
+        {
+            saveData.StorageItemData = new StorageItemData(Items.Apartment,null);
         }
 
         // saveData.SelectItemDragger = _itemDragger.SelectedObject;
@@ -224,7 +260,7 @@ public class ItemsStorage : MonoBehaviour
         SaveChanges();*/
     }
 
-    private SaveData GetSaveData()
+    public SaveData GetSaveData()
     {
         return _saveData;
     }
@@ -237,7 +273,8 @@ public class ItemsStorage : MonoBehaviour
         // Agava.YandexGames.Utility.PlayerPrefs.Save();
         string json = System.IO.File.ReadAllText(Application.persistentDataPath + "/save.json");
         SaveData saveData = JsonUtility.FromJson<SaveData>(json);
-
+        _saveDatas.Add(saveData);
+        _saveData = saveData;
         // Debug.Log("Loading    " + saveData.ItemDatas.Count);
 
         foreach (var itemData in saveData.ItemDatas)
@@ -269,18 +306,17 @@ public class ItemsStorage : MonoBehaviour
         SelectSaveItem = selectItem;
         // _itemDragger.SetItem(selectItem, saveData.SelectItemData.ItemPosition);
         // Item storageItem = Instantiate(saveData.StorageItem, _container);
-        
-        
+
 
         if (saveData.StorageItemData.ItemName != null)
         {
-            Debug.Log("Storage: " + saveData.StorageItemData.ItemName);
+            // Debug.Log("Storage: " + saveData.StorageItemData.ItemName);
             Item storageItem = Instantiate(GetItem(saveData.StorageItemData.ItemName), _container);
             storageItem.gameObject.SetActive(false);
             // Debug.Log("Storage Load: " + storageItem.ItemName);
             _storage.SetItem(storageItem);
         }
-        
+
         /*foreach (var item in saveData.ShopItemData.ItemsData)
         {
             _shopItems.SetPrice(item.ItemName,item.Price);
@@ -291,7 +327,7 @@ public class ItemsStorage : MonoBehaviour
             _shopItems.SetPrice(item.ItemName, item.Price);
         }
 
-        Debug.Log("СМОТРИМ ЦЕНУ " + saveData.PossibilitiesItemsData.PriceBulldozer);
+        // Debug.Log("СМОТРИМ ЦЕНУ " + saveData.PossibilitiesItemsData.PriceBulldozer);
         _shopItems.SetPricePossibilitie(saveData.PossibilitiesItemsData.PriceBulldozer,
             saveData.PossibilitiesItemsData.PriceReplace);
 

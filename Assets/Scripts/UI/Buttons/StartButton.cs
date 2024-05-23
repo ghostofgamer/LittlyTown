@@ -6,6 +6,7 @@ using PossibilitiesContent;
 using SaveAndLoad;
 using UI.Buttons;
 using UnityEngine;
+using Wallets;
 
 
 public class StartButton : AbstractButton
@@ -22,6 +23,8 @@ public class StartButton : AbstractButton
     [SerializeField] private Possibilitie[] _possibilities;
     [SerializeField] private PossibilitiesCounter[] _possibilitiesCounters;
     [SerializeField]private Storage _storage;
+    [SerializeField]private MovesKeeper _movesKeeper;
+    [SerializeField]private GoldWallet _goldWallet;
 
     private int _selectMap = 1;
 
@@ -31,6 +34,8 @@ public class StartButton : AbstractButton
         _itemDragger.ClearAll();
         
         _storage.ClearItem();
+        _movesKeeper.ClearAllHistory();
+        _goldWallet.SetInitialvalue();
         
         foreach (var itemPosition in _itemPositions)
         {

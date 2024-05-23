@@ -12,6 +12,7 @@ namespace Wallets
         private Coroutine _coroutine;
         private float _elapsedTime;
         private float _duration = 1f;
+        private bool _isLoadValue;
         
         public event Action ValueChanged;
         
@@ -19,7 +20,10 @@ namespace Wallets
 
         private void Start()
         {
-            // Debug.Log("Goldstart");
+            if (_isLoadValue)
+                return;
+            
+            // Debug.Log("GoldStart");
             _currentValue = _startValue;
             ValueChanged?.Invoke();
         }
@@ -71,9 +75,17 @@ namespace Wallets
 
         public void SetValue(int value)
         {
+            _isLoadValue = true;
             // Debug.Log("GoldSEt");
-            _startValue = value;
             _currentValue = value;
+            // Debug.Log("GetGold " + _currentValue);
+            ValueChanged?.Invoke();
+        }
+
+        public void SetInitialvalue()
+        {
+            _currentValue = _startValue;
+            // Debug.Log("GoldSEt " + _currentValue);
             ValueChanged?.Invoke();
         }
     }
