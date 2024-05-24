@@ -16,6 +16,7 @@ namespace CountersContent
         [SerializeField] private ItemPosition[] _itemPositions;
         [SerializeField] private ItemDragger _itemDragger;
         [SerializeField] private LightHouseKeeper _lightHouseKeeper;
+[SerializeField]private RemovalItems _removalItems;
         
         private int _profit;
         private int _stepCount;
@@ -31,6 +32,7 @@ namespace CountersContent
         {
             _moveCounter.StepProfitMaded += AddGold;
             _itemDragger.PlaceChanged += CheckIncome;
+            _removalItems.Removed+= CheckIncome;
             // _merger.ItemMergered += ChangeProfit;
             _merger.Mergered += CheckIncome;
             _lightHouseKeeper.CheckCompleted += CheckIncome;
@@ -40,6 +42,7 @@ namespace CountersContent
         {
             _moveCounter.StepProfitMaded -= AddGold;
             _itemDragger.PlaceChanged -= CheckIncome;
+            _removalItems.Removed-= CheckIncome;
             // _merger.ItemMergered -= ChangeProfit;
             _merger.Mergered -= CheckIncome;
             _lightHouseKeeper.CheckCompleted -= CheckIncome;
@@ -72,7 +75,7 @@ namespace CountersContent
         private IEnumerator StartSearchIncome()
         {
             yield return new WaitForSeconds(0.15f);
-
+            Debug.Log("CheckGoldItems");
             _profit = 0;
 
             foreach (var itemPosition in _itemPositions)

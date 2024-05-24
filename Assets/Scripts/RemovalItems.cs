@@ -91,11 +91,12 @@ public class RemovalItems : MonoBehaviour
         {
             if (hit.transform.gameObject.TryGetComponent(out ItemPosition itemPosition) && itemPosition.IsBusy)
             {
-                if (itemPosition.Item.IsLightHouse)
+                /*if (itemPosition.Item.IsLightHouse)
                 {
                     LightHouseTrigger lightHouse = itemPosition.Item.GetComponent<LightHouseTrigger>();
                     lightHouse.RemoveHouses();
-                }
+                    Debug.Log("Удаляем маяк");
+                }*/
 
                 ItemRemoved?.Invoke(itemPosition.Item);
                 itemPosition.Item.Deactivation();

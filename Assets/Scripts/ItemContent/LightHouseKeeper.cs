@@ -8,15 +8,15 @@ using UnityEngine;
 public class LightHouseKeeper : MonoBehaviour
 {
     [SerializeField] private ItemDragger _itemDragger;
-    [SerializeField]private RemovalItems _removalItems;
-    [SerializeField]private ReplacementPosition _replacementPosition;
-    [SerializeField]private Merger _merger;
+    [SerializeField] private RemovalItems _removalItems;
+    [SerializeField] private ReplacementPosition _replacementPosition;
+    [SerializeField] private Merger _merger;
 
     private List<LightHouseTrigger> _lightHouses = new List<LightHouseTrigger>();
     private Coroutine _coroutine;
-    
+
     public event Action CheckCompleted;
-    
+
     private void OnEnable()
     {
         _itemDragger.BuildItem += AddMayak;
@@ -30,7 +30,7 @@ public class LightHouseKeeper : MonoBehaviour
     {
         _itemDragger.BuildItem -= AddMayak;
         _itemDragger.PlaceChanged -= CheckHousesAround;
-        _removalItems.ItemRemoved -= RemoveMayak; 
+        _removalItems.ItemRemoved -= RemoveMayak;
         _replacementPosition.PositionsChanged -= CheckHousesAround;
         _merger.Mergered -= CheckHousesAround;
     }
@@ -43,7 +43,7 @@ public class LightHouseKeeper : MonoBehaviour
         {
             _lightHouses.Add(lightHouseTrigger);
         }
-        
+
         Show();
     }
 
@@ -51,8 +51,13 @@ public class LightHouseKeeper : MonoBehaviour
     {
         LightHouseTrigger lightHouseTrigger = item.GetComponent<LightHouseTrigger>();
 
+        Debug.Log("Удаляем маяк и очишает доход ");
+
         if (lightHouseTrigger != null)
+        {
+            lightHouseTrigger.RemoveHouses();
             _lightHouses.Remove(lightHouseTrigger);
+        }
 
         Show();
     }
@@ -64,8 +69,8 @@ public class LightHouseKeeper : MonoBehaviour
 
     private IEnumerator Check()
     {
-        yield return  new WaitForSeconds(0.165f);
-        
+        yield return new WaitForSeconds(0.165f);
+
         foreach (var lightHouse in _lightHouses)
         {
             lightHouse.Look();
