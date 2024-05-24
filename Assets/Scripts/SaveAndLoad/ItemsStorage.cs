@@ -157,8 +157,8 @@ public class ItemsStorage : MonoBehaviour
             saveData.SelectItemDragger = _selectObject;*/
             saveData.SelectItemData = new SelectItemData(_itemDragger.SelectedObject.ItemName,
                 _itemDragger.SelectedObject.ItemPosition);
-
-            Debug.Log("сохраняем " + saveData.SelectItemData.ItemName + "   " + saveData.SelectItemData.ItemPosition);
+            SelectSaveItem = _itemDragger.SelectedObject;
+            // Debug.Log("сохраняем " + saveData.SelectItemData.ItemName + "   " + saveData.SelectItemData.ItemPosition);
         }
 
         /*_itemDropDataSO = _dropGenerator.ItemDropData;
@@ -200,7 +200,7 @@ public class ItemsStorage : MonoBehaviour
         {
             saveData.ItemDropData =
                 new ItemDropData(_dropGenerator.ItemDropData.Icon, _dropGenerator.ItemDropData.PrefabItem);
-            // Debug.Log("ItemDropData " + saveData.ItemDropData.PrefabItem.ItemName);
+            Debug.Log("ItemDropData " + saveData.ItemDropData.PrefabItem.ItemName);
         }
         else
             saveData.ItemDropData = null;
@@ -216,13 +216,14 @@ public class ItemsStorage : MonoBehaviour
         // saveData.StorageItem = _storage.CurrentItem;
         if (_storage.CurrentItem != null)
         {
-            // Debug.Log("CurrentStorage " + _storage.CurrentItem.ItemName);
+            // Debug.Log("CurrentStorageSave " + _storage.CurrentItem.ItemName);
             saveData.StorageItemData =
                 new StorageItemData(_storage.CurrentItem.ItemName, _storage.CurrentItem.ItemPosition);
         }
         else
         {
-            saveData.StorageItemData = new StorageItemData(Items.Apartment,null);
+            // Debug.Log("CurrentStorageSave NUll!!! " );
+            saveData.StorageItemData = new StorageItemData(Items.Empty,null);
         }
 
         // saveData.SelectItemDragger = _itemDragger.SelectedObject;
@@ -308,7 +309,7 @@ public class ItemsStorage : MonoBehaviour
         // Item storageItem = Instantiate(saveData.StorageItem, _container);
 
 
-        if (saveData.StorageItemData.ItemName != null)
+        if (saveData.StorageItemData.ItemPosition != null)
         {
             // Debug.Log("Storage: " + saveData.StorageItemData.ItemName);
             Item storageItem = Instantiate(GetItem(saveData.StorageItemData.ItemName), _container);

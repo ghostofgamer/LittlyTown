@@ -51169,6 +51169,8 @@ MonoBehaviour:
   _scoreCounter: {fileID: 1705592014}
   _storage: {fileID: 9003913}
   _dropGenerator: {fileID: 1455339039}
+  _shopItems: {fileID: 1493932984}
+  _savesHistory: []
   _mapGenerator: {fileID: 1536841185}
   _replacementPosition: {fileID: 794048063}
   _removalItems: {fileID: 2054429386}

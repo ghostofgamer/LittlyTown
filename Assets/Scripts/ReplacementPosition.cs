@@ -140,6 +140,7 @@ public class ReplacementPosition : MonoBehaviour
                         _firstItemPosition = null;
                         yield return null;
                         PositionsChanged?.Invoke();
+                        yield return new WaitForSeconds(0.1f);
                         _positionsCounter.DecreaseCount();
                     }
                     else
@@ -153,6 +154,7 @@ public class ReplacementPosition : MonoBehaviour
                         _firstItemPosition = null;
                         yield return null;
                         PositionsChanged?.Invoke();
+                        yield return new WaitForSeconds(0.1f);
                         _positionsCounter.DecreaseCount();
                     }
                 }

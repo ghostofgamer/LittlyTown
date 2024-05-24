@@ -15,10 +15,12 @@ public class DropGenerator : MonoBehaviour
     private Item _nextItem;
 
     public ItemDropDataSO ItemDropData { get; private set; }
+    public ItemDropDataSO ItemDropDataNew { get; private set; }
 
     private void Awake()
     {
         _nextItem = _itemDropsSO[0].PrefabItem;
+        ItemDropDataNew = _nextItem.ItemDropDataSo;
         _image.sprite = _itemDropsSO[0].Icon;
     }
 
@@ -35,7 +37,7 @@ public class DropGenerator : MonoBehaviour
         // Debug.Log("GETITEM   " + _nextItem.ItemName);
         _currentItem = _nextItem;
         ItemDropData = DropItem();
-        // Debug.Log("ITEMDROPGENERATION " + ItemDropData);
+        Debug.Log("ITEMDROPGENERATION " + ItemDropData);
         _nextItem = ItemDropData.PrefabItem;
         
         return _currentItem;
@@ -53,10 +55,14 @@ public class DropGenerator : MonoBehaviour
     
     public void SetItem(Item itemPrefab,Sprite sprite)
     {
-
         _nextItem= itemPrefab;
         _image.sprite = sprite;
 
+        foreach (var itemDropData in _itemDropsSO)
+        {
+            if (itemDropData.PrefabItem.ItemName == itemPrefab.ItemName)
+                ItemDropData = itemDropData;
+        }
     }
     
     public void NextLevel()

@@ -26,7 +26,7 @@ public class MovesKeeper : MonoBehaviour
     [SerializeField] private DropGenerator _dropGenerator;
     [SerializeField] private ShopItems _shopItems;
 
-    private List<SaveData> _savesHistory = new List<SaveData>();
+    public List<SaveData> _savesHistory = new List<SaveData>();
     private int _maxStepSaved = 3;
     private int _currentStep = -1;
     private Coroutine _coroutine;
@@ -42,7 +42,10 @@ public class MovesKeeper : MonoBehaviour
     private void OnEnable()
     {
         _itemDragger.StepCompleted += SaveHistory;
-
+        // _replacementPosition.PositionsChanged += SaveHistory;
+        
+        
+        
         /*_itemDragger.PlaceChanged += SaveHistory;
         // _itemDragger.BuildItem += SaveChanges;
         // _itemDragger.SelectItemReceived += SaveHistory;
@@ -55,8 +58,9 @@ public class MovesKeeper : MonoBehaviour
     private void OnDisable()
     {
         _itemDragger.StepCompleted -= SaveHistory;
+        // _replacementPosition.PositionsChanged -= SaveHistory;
 
-
+        
         /*_itemDragger.PlaceChanged -= SaveHistory;
         // _itemDragger.BuildItem -= SaveChanges;
         // _itemDragger.SelectItemReceived -= SaveHistory;
@@ -83,6 +87,19 @@ public class MovesKeeper : MonoBehaviour
         StepChanged?.Invoke(_currentStep);
         // Debug.Log("CurrentStep  Удаление " + _currentStep);
     }
+    
+    private void SaveHistory()
+    {
+        if (_savesHistory.Count >= 1)
+        {
+            _savesHistory.Clear();
+        }
+
+        SaveData saveDate = _itemsStorage.GetSaveData();
+        _savesHistory.Add(saveDate);
+        _currentStep = _savesHistory.Count;
+        StepChanged?.Invoke(_currentStep);
+    }
 
     /*private void SaveHistory(SaveData saveData)
     {
@@ -101,12 +118,18 @@ public class MovesKeeper : MonoBehaviour
 
     private void SaveHistory(ItemPosition itemPosition)
     {
-        if (_savesHistory.Count >= _maxStepSaved)
+        /*if (_savesHistory.Count >= _maxStepSaved)
         {
             _savesHistory.RemoveAt(0);
+        }*/
+        if (_savesHistory.Count >= 1)
+        {
+            // _savesHistory.RemoveAt(0);
+            _savesHistory.Clear();
         }
 
         SaveData saveDate = _itemsStorage.GetSaveData();
+        // Debug.Log("ПОЛОЖИЛИ " + saveDate.ItemDropData.PrefabItem.ItemName);
         saveDate.SelectItemData.ItemPosition = itemPosition;
         // Debug.Log("SelecItemPosition Save History  " + saveDate.SelectItemData.ItemPosition);
 
@@ -126,7 +149,7 @@ public class MovesKeeper : MonoBehaviour
         // Debug.Log("В шагах смотрим " + saveData.SelectItemDragger);*/
     }
 
-    private void SaveHistory()
+    /*private void SaveHistory()
     {
         if (_savesHistory.Count >= _maxStepSaved)
         {
@@ -139,7 +162,7 @@ public class MovesKeeper : MonoBehaviour
         _savesHistory.Add(saveDate);
         _currentStep = _savesHistory.Count;
         StepChanged?.Invoke(_currentStep);
-    }
+    }*/
 
     /*private void SaveHistory(SaveData saveData)
     {
@@ -189,6 +212,7 @@ public class MovesKeeper : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
 
         _currentStep--;
+        // Debug.Log("CurrentStepIndex = " + _currentStep);
         SaveData saveData = _savesHistory[_currentStep];
         // Debug.Log("какую index истории вызываем " + _currentStep);
         /*Debug.Log("ITEMDROPPP " + saveData.ItemDropData);
@@ -204,14 +228,18 @@ public class MovesKeeper : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
 
-        Debug.Log("saveData.SelectItem " + saveData.SelectItemData.ItemName);
+        // Debug.Log("saveData.SelectItem " + saveData.SelectItemData.ItemName);
         // Debug.Log("saveData.SelectItemPosition " + saveData.SelectItemData.ItemPosition.name);
 
         Item selectItem = Instantiate(GetItem(saveData.SelectItemData.ItemName),
             saveData.SelectItemData.ItemPosition.transform.position,
             Quaternion.identity, _container);
 
+        Debug.Log("CANCELING DROP Item " + saveData.ItemDropData.PrefabItem.ItemName);
+        _dropGenerator.SetItem(saveData.ItemDropData.PrefabItem,saveData.ItemDropData.Icon);
+        // _dropGenerator.SetItem(saveData.ItemDropData.PrefabItem,saveData.ItemDropData.Icon);
         selectItem.Init(saveData.SelectItemData.ItemPosition);
+        Debug.Log("CANCELING Select Item " + selectItem.ItemName);
         _itemDragger.SetItem(selectItem, selectItem.ItemPosition);
         selectItem.gameObject.SetActive(true);
         _goldWallet.SetValue(saveData.GoldValue);
@@ -223,12 +251,12 @@ public class MovesKeeper : MonoBehaviour
 
         _shopItems.SetPricePossibilitie(saveData.PossibilitiesItemsData.PriceBulldozer,
             saveData.PossibilitiesItemsData.PriceReplace);
-        
-        
-        if (saveData.StorageItemData.ItemPosition != null)
+
+
+        if (saveData.StorageItemData.ItemName != Items.Empty)
         {
-            /*Debug.Log("Storage: ");
-            Debug.Log("Storage: " + saveData.StorageItemData.ItemName);*/
+            // Debug.Log("Storage: ");
+            // Debug.Log("Storage: CancelLoad " + saveData.StorageItemData.ItemName);
             Item storageItem = Instantiate(GetItem(saveData.StorageItemData.ItemName), _container);
             storageItem.gameObject.SetActive(false);
             // Debug.Log("Storage Load: " + storageItem.ItemName);
@@ -236,15 +264,23 @@ public class MovesKeeper : MonoBehaviour
         }
         else
         {
-            // Debug.Log("clear");
+            // Debug.Log("clear Storage ");
             _storage.ClearItem();
         }
-        /*_replaceCounter.SetValue(saveData.ReplaceCount);
+
+        // Debug.Log("ReplaceCount " + saveData.ReplaceCount);
+        _replaceCounter.SetValue(saveData.ReplaceCount);
         _bulldozerCounter.SetValue(saveData.BulldozerCount);
         _goldWallet.SetValue(saveData.GoldValue);
         _moveCounter.SetValue(saveData.MoveCount);
-        _scoreCounter.SetValue(saveData.ScoreValue);*/
+        _scoreCounter.SetValue(saveData.ScoreValue);
 
+
+        yield return null;
+        _roadGenerator.OnGeneration();
+        // ClearAllHistory();
+        _currentStep = 0;
+        StepChanged?.Invoke(_currentStep);
         /*_replaceCounter.SetValue(saveData.ReplaceCount);
         _bulldozerCounter.SetValue(saveData.BulldozerCount);
         _goldWallet.SetValue(saveData.GoldValue);
@@ -380,6 +416,6 @@ public class MovesKeeper : MonoBehaviour
         _savesHistory.Clear();
         _currentStep = _savesHistory.Count;
         StepChanged?.Invoke(_currentStep);
-        Debug.Log("CurrentStepFromClear  " + _currentStep);
+        // Debug.Log("CurrentStepFromClear  " + _currentStep);
     }
 }

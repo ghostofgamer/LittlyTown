@@ -123,6 +123,7 @@ namespace Dragger
 
         public void SwitchOn()
         {
+            Debug.Log("Switch");
             if (_selectedObject != null)
                 _selectedObject.gameObject.SetActive(true);
 

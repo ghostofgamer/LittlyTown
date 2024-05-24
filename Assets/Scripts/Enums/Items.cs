@@ -16,6 +16,7 @@ namespace Enums
         GoldStone,
         Chest,
         LightHouse,
-        Crane
+        Crane,
+        Empty
     }
 }

@@ -23,7 +23,7 @@ public class Storage : MonoBehaviour
         {
             if (_itemDragger.TemporaryItem == null)
             {
-                Debug.Log("Если null ");
+                // Debug.Log("Если null ");
                 _currentItem = _itemDragger.SelectedObject;
                 _currentItem.gameObject.SetActive(false);
                 _itemDragger.ClearItem();
@@ -33,7 +33,7 @@ public class Storage : MonoBehaviour
             }
             else
             {
-                Debug.Log("Если неее null ");
+                // Debug.Log("Если неее null ");
                 _currentItem = _itemDragger.SelectedObject;
                 _currentItem.gameObject.SetActive(false);
                 _itemDragger.ClearItem();
@@ -44,13 +44,13 @@ public class Storage : MonoBehaviour
                 _image.sprite = _currentItem.ItemDropDataSo.Icon;
             }
 
-            Debug.Log("Если null " + _currentItem.name);
+            // Debug.Log("Если null " + _currentItem.name);
             // _itemDragger.SelectedObject.gameObject.SetActive(false);
         }
         else
         {
             _temporaryItem = _itemDragger.SelectedObject;
-            Debug.Log("Есть " + _temporaryItem.name);
+            // Debug.Log("Есть " + _temporaryItem.name);
             _temporaryItem.gameObject.SetActive(false);
             _itemDragger.SetItem(_currentItem, _temporaryItem.ItemPosition);
             _currentItem.gameObject.SetActive(true);
