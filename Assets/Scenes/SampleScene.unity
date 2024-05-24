@@ -5657,6 +5657,7 @@ MonoBehaviour:
   _scoreCounter: {fileID: 1705592014}
   _goldButton: {fileID: 284560877}
   _blur: {fileID: 963194232}
+  _crystalWallet: {fileID: 934994268}
 --- !u!225 &74045930
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -14834,6 +14835,7 @@ GameObject:
   - component: {fileID: 233358511}
   - component: {fileID: 233358513}
   - component: {fileID: 233358512}
+  - component: {fileID: 233358514}
   m_Layer: 5
   m_Name: Crystalls
   m_TagString: Untagged
@@ -14900,6 +14902,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 233358510}
   m_CullTransparentMesh: 1
+--- !u!114 &233358514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 233358510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fa95c1017ad29742a2a630c5c68c861, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _wallet: {fileID: 934994268}
+  _priceText: {fileID: 1857972659}
 --- !u!1 &237616109
 GameObject:
   m_ObjectHideFlags: 0
@@ -51170,6 +51186,7 @@ MonoBehaviour:
   _storage: {fileID: 9003913}
   _dropGenerator: {fileID: 1455339039}
   _shopItems: {fileID: 1493932984}
+  _completeScoreScreen: {fileID: 74045929}
   _savesHistory: []
   _mapGenerator: {fileID: 1536841185}
   _replacementPosition: {fileID: 794048063}
@@ -84216,6 +84233,7 @@ MonoBehaviour:
   _storage: {fileID: 9003913}
   _movesKeeper: {fileID: 889228746}
   _goldWallet: {fileID: 2024437528}
+  _scoreCounter: {fileID: 1705592014}
 --- !u!114 &1482092090
 MonoBehaviour:
   m_ObjectHideFlags: 0

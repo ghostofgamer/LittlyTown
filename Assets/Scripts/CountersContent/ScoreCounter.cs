@@ -92,5 +92,14 @@ namespace CountersContent
         {
             _scoreTargetText.text = string.Format(_scoreText, _targetScore);
         }
+
+        public void ResetScore()
+        {
+            _currentScore = 0;
+            _targetScore = 50;
+            _dropGenerator.ResetLevel();
+            Show();
+            ScoreChanged?.Invoke(_currentScore, _targetScore);
+        }
     }
 }

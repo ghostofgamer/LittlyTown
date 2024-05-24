@@ -72,6 +72,7 @@ public class LookMerger : MonoBehaviour
 
         _targetPosition[itemPosition].SetSelected();
 
+
         if (_currentItem.ItemName == Items.Crane)
         {
             _temporaryItems.Clear();
@@ -80,14 +81,20 @@ public class LookMerger : MonoBehaviour
 
             if (_temporaryItem != null)
             {
-                // Debug.Log("Не NULL " +  _temporaryItem);
+                // Debug.Log("Не NULL Crane " + _temporaryItem.ItemName);
                 CheckStartCoroutine(_temporaryItem, itemPosition);
+            }
+
+            else if (_isTryMerge && _temporaryItem == null)
+            {
+                // Debug.Log("убирайся ");
+                _currentItem.GetComponent<CraneDestroyer>().Destroy();
             }
 
             /*else
             {
                 Debug.Log("убирайся ");
-                _currentItem.GetComponent<CraneDestroyer>().Destroy();
+                                         _currentItem.GetComponent<CraneDestroyer>().Destroy();
             }*/
         }
         else
@@ -112,6 +119,7 @@ public class LookMerger : MonoBehaviour
 
             if (_coroutines.ContainsKey(item))
             {
+                // Debug.Log("StopCoroutine");
                 StopCoroutine(_coroutines[item]);
                 _coroutines.Remove(item);
             }
@@ -122,7 +130,7 @@ public class LookMerger : MonoBehaviour
                     _newMatchedItems.Add(item, new List<Item>());
                 }
 
-                // Debug.Log("НОВАЯ КОРУТИНА  " + item.name + " POS  " + itemPosition.name);
+                // Debug.Log("НОВАЯ КОРУТИНА 1 " + item.name + " POS  " + itemPosition.name);
                 Coroutine coroutine = StartCoroutine(LookMerge(itemPosition, item));
                 _coroutines.Add(item, coroutine);
             }
@@ -133,7 +141,7 @@ public class LookMerger : MonoBehaviour
                     _newMatchedItems.Add(item, new List<Item>());
                 }
 
-                // Debug.Log("НОВАЯ КОРУТИНА  " + item.name + " POS  " + itemPosition.name);
+                // Debug.Log("НОВАЯ КОРУТИНА 3 " + item.name + " POS  " + itemPosition.name);
                 Coroutine coroutine = StartCoroutine(LookMerge(itemPosition, item));
                 _coroutines.Add(item, coroutine);
             }
@@ -185,6 +193,7 @@ public class LookMerger : MonoBehaviour
     {
         yield return new WaitForSeconds(0.15f);
         ActivationLookPositions(itemPosition, item);
+        // Debug.Log("Mergeeeeee");
         CheckMatchMerge(itemPosition, item);
     }
 
@@ -336,7 +345,7 @@ public class LookMerger : MonoBehaviour
 
             if (_currentItem.ItemName == Items.Crane)
             {
-                Debug.Log("Да это кран Merge");
+                // Debug.Log("Да это кран Merge");
                 // _currentItem.gameObject.SetActive(false);
                 _currentItem.GetComponent<CraneDestroyer>().Destroy();
             }

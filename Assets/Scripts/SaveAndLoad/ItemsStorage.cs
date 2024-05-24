@@ -171,11 +171,24 @@ public class ItemsStorage : MonoBehaviour
 
         foreach (var itemPosition in _itemPositions)
         {
-            if (itemPosition.Item != null)
+            /*if (itemPosition.Item != null && itemPosition.Item.ItemName != Items.Crane)
             {
                 ItemData itemData = new ItemData(itemPosition.Item.ItemName, itemPosition);
                 itemDatas.Add(itemData);
+            }*/
+            if (itemPosition.Item != null)
+            {
+                ItemData itemData = new ItemData(itemPosition.Item.ItemName, itemPosition);
+                Debug.Log("Сохр " + itemPosition.Item.ItemName);
+                itemDatas.Add(itemData);
             }
+        }
+
+        if (_itemDragger.TemporaryItem != null)
+        {
+            saveData.TemporaryItem =
+                new ItemData(_itemDragger.TemporaryItem.ItemName, null, _itemDragger.TemporaryItem.Price);
+            ;
         }
 
         List<ItemData> itemDataPrice = new List<ItemData>();
@@ -200,7 +213,7 @@ public class ItemsStorage : MonoBehaviour
         {
             saveData.ItemDropData =
                 new ItemDropData(_dropGenerator.ItemDropData.Icon, _dropGenerator.ItemDropData.PrefabItem);
-            Debug.Log("ItemDropData " + saveData.ItemDropData.PrefabItem.ItemName);
+            // Debug.Log("ItemDropData " + saveData.ItemDropData.PrefabItem.ItemName);
         }
         else
             saveData.ItemDropData = null;
@@ -213,6 +226,7 @@ public class ItemsStorage : MonoBehaviour
         // Debug.Log("Gold: " + saveData.GoldValue);
         saveData.MoveCount = _moveCounter.MoveCount;
         saveData.ScoreValue = _scoreCounter.CurrentScore;
+        // Debug.Log("Score Value " + saveData.ScoreValue);
         // saveData.StorageItem = _storage.CurrentItem;
         if (_storage.CurrentItem != null)
         {
@@ -223,7 +237,7 @@ public class ItemsStorage : MonoBehaviour
         else
         {
             // Debug.Log("CurrentStorageSave NUll!!! " );
-            saveData.StorageItemData = new StorageItemData(Items.Empty,null);
+            saveData.StorageItemData = new StorageItemData(Items.Empty, null);
         }
 
         // saveData.SelectItemDragger = _itemDragger.SelectedObject;
@@ -290,6 +304,12 @@ public class ItemsStorage : MonoBehaviour
             }
         }
 
+        if (saveData.TemporaryItem != null)
+        {
+            Item item = Instantiate(GetItem(saveData.TemporaryItem.ItemName), _container);
+            _itemDragger.SetTemporaryObject(item);
+        }
+
         _replaceCounter.SetValue(saveData.ReplaceCount);
         _bulldozerCounter.SetValue(saveData.BulldozerCount);
         _goldWallet.SetValue(saveData.GoldValue);
@@ -331,7 +351,7 @@ public class ItemsStorage : MonoBehaviour
         // Debug.Log("СМОТРИМ ЦЕНУ " + saveData.PossibilitiesItemsData.PriceBulldozer);
         _shopItems.SetPricePossibilitie(saveData.PossibilitiesItemsData.PriceBulldozer,
             saveData.PossibilitiesItemsData.PriceReplace);
-
+        _dropGenerator.SetItem(saveData.ItemDropData.PrefabItem, saveData.ItemDropData.Icon);
         /*Item storageItem = Instantiate(saveData.StorageItem, _container);
         storageItem.gameObject.SetActive(false);
         _storage.SetItem(storageItem);*/

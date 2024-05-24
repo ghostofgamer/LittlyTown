@@ -25,6 +25,7 @@ public class StartButton : AbstractButton
     [SerializeField]private Storage _storage;
     [SerializeField]private MovesKeeper _movesKeeper;
     [SerializeField]private GoldWallet _goldWallet;
+    [SerializeField]private ScoreCounter _scoreCounter;
 
     private int _selectMap = 1;
 
@@ -36,6 +37,7 @@ public class StartButton : AbstractButton
         _storage.ClearItem();
         _movesKeeper.ClearAllHistory();
         _goldWallet.SetInitialvalue();
+        _scoreCounter.ResetScore();
         
         foreach (var itemPosition in _itemPositions)
         {

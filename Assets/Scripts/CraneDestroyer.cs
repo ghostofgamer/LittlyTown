@@ -1,11 +1,19 @@
 using System.Collections;
-using System.Collections.Generic;
+using ItemContent;
 using UnityEngine;
 
 public class CraneDestroyer : MonoBehaviour
 {
     private Coroutine _coroutine;
-    private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.15f);
+    private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.3f);
+    private BoxCollider _boxCollider;
+    private Item _item;
+
+    private void Start()
+    {
+        _boxCollider=GetComponent<BoxCollider>();
+        _item = GetComponent<Item>();
+    }
 
     public void Destroy()
     {
@@ -17,6 +25,8 @@ public class CraneDestroyer : MonoBehaviour
 
     private IEnumerator StartDestroy()
     {
+        _boxCollider.enabled = false;
+        _item.ItemPosition.ClearingPosition();
         yield return _waitForSeconds;
         gameObject.SetActive(false);
     }
