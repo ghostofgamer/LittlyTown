@@ -403,6 +403,10 @@
             </e>
             <e p="Upgrade" t="Include" />
           </e>
+          <e p="futuristic-building-low-poly" t="Include">
+            <e p="source" t="Include" />
+            <e p="Textures" t="Include" />
+          </e>
           <e p="Houses" t="Include">
             <e p="cubic-house-low-poly" t="Include">
               <e p="source" t="Include">
@@ -759,6 +763,9 @@
             <e p="Prefabs" t="Include" />
             <e p="Textures" t="Include" />
           </e>
+          <e p="skyscraper" t="Include">
+            <e p="source" t="Include" />
+          </e>
         </e>
         <e p="Animations" t="Include">
           <e p="ItemAnimations" t="Include" />
@@ -963,6 +970,7 @@
           </e>
         </e>
         <e p="Prefabs" t="Include">
+          <e p="Collections" t="Include" />
           <e p="Items" t="Include" />
           <e p="Tiles" t="Include" />
         </e>
@@ -1000,6 +1008,7 @@
           <e p="Blur.cs" t="Include" />
           <e p="Bootstrap.cs" t="Include" />
           <e p="ButtonResize.cs" t="Include" />
+          <e p="CollectionMovement.cs" t="Include" />
           <e p="CountersContent" t="Include">
             <e p="GoldCounter.cs" t="Include" />
             <e p="MoveCounter.cs" t="Include" />
@@ -1178,6 +1187,7 @@
           <e p="ItemIcons" t="Include">
             <e p="Icons" t="Include" />
           </e>
+          <e p="Materials" t="Include" />
           <e p="UI" t="Include" />
         </e>
         <e p="TextMesh Pro" t="Include">
