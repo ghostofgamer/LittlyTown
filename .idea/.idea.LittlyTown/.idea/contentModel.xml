@@ -1149,6 +1149,7 @@
               <e p="AbstractScreen.cs" t="Include" />
               <e p="BlurScreen.cs" t="Include" />
               <e p="ChoosemapScreen.cs" t="Include" />
+              <e p="CollectionScreen.cs" t="Include" />
               <e p="CompleteScoreScreen.cs" t="Include" />
               <e p="EndMoveScreen.cs" t="Include" />
               <e p="FirstScreen.cs" t="Include" />

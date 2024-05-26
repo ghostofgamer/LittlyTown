@@ -17,6 +17,11 @@ namespace Enums
         Chest,
         LightHouse,
         Crane,
+        OfficeBuilding,
+        AntennaTower,
+        SkyScrapper,
+        VertexVeste,
+        SkyHouse,
         Empty
     }
 }
