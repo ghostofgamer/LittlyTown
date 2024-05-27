@@ -1011,6 +1011,7 @@
           <e p="CollectionContent" t="Include">
             <e p="CollectionItem.cs" t="Include" />
             <e p="CollectionMovement.cs" t="Include" />
+            <e p="CollectionSizer.cs" t="Include" />
           </e>
           <e p="CountersContent" t="Include">
             <e p="GoldCounter.cs" t="Include" />
