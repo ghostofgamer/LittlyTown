@@ -1008,7 +1008,10 @@
           <e p="Blur.cs" t="Include" />
           <e p="Bootstrap.cs" t="Include" />
           <e p="ButtonResize.cs" t="Include" />
-          <e p="CollectionMovement.cs" t="Include" />
+          <e p="CollectionContent" t="Include">
+            <e p="CollectionItem.cs" t="Include" />
+            <e p="CollectionMovement.cs" t="Include" />
+          </e>
           <e p="CountersContent" t="Include">
             <e p="GoldCounter.cs" t="Include" />
             <e p="MoveCounter.cs" t="Include" />
@@ -1069,6 +1072,7 @@
           <e p="MinIndexItemSelector.cs" t="Include" />
           <e p="MoveCanceller.cs" t="Include" />
           <e p="MovesKeeper.cs" t="Include" />
+          <e p="PlatformChecker.cs" t="Include" />
           <e p="positionChecker.cs" t="Include" />
           <e p="PositionMatcher.cs" t="Include" />
           <e p="PositionScaller.cs" t="Include" />
