@@ -46,7 +46,7 @@ public abstract class SettingsChangeButton : AbstractButton
         _save.SetData(_settingsModes.ToString(), _isToggleOn ? _firstValue : _secondValue);
     }
 
-    protected virtual void LoadValue()
+    private void LoadValue()
     {
         _currentValue = _load.Get(_settingsModes.ToString(), _startValue);
         _isToggleOn = _currentValue == _firstValue;

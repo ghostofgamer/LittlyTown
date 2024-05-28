@@ -1005,9 +1005,17 @@
         </e>
         <e p="Scripts" t="Include">
           <e p="AbstractAnimation.cs" t="Include" />
+          <e p="BirdContent" t="Include">
+            <e p="BirdMovement.cs" t="Include" />
+            <e p="BirdSpawner.cs" t="Include" />
+          </e>
           <e p="Blur.cs" t="Include" />
           <e p="Bootstrap.cs" t="Include" />
           <e p="ButtonResize.cs" t="Include" />
+          <e p="CameraContent" t="Include">
+            <e p="CameraMovement.cs" t="Include" />
+            <e p="CameraScrolling.cs" t="Include" />
+          </e>
           <e p="CollectionContent" t="Include">
             <e p="CollectionItem.cs" t="Include" />
             <e p="CollectionMovement.cs" t="Include" />

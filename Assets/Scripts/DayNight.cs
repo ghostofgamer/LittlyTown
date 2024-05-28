@@ -12,6 +12,7 @@ public class DayNight : MonoBehaviour
     [SerializeField] private Color _nightColor;
     [SerializeField] private Save _save;
     [SerializeField] private Load _load;
+    [SerializeField] private ParticleSystem _fireflies;
 
     private float _duration = 1;
     private float _elapsedTime;
@@ -40,6 +41,7 @@ public class DayNight : MonoBehaviour
     public void ChangeDayTime()
     {
         IsNight = !IsNight;
+        _fireflies.gameObject.SetActive(IsNight);
         TimeDayChanged?.Invoke();
         SaveValue();
         
@@ -81,6 +83,7 @@ public class DayNight : MonoBehaviour
     {
         _currentValue = _load.Get(_settingsModes.ToString(), _day);
         IsNight = _currentValue == _night;
+        _fireflies.gameObject.SetActive(IsNight);
         ChangeValue(_currentValue);
     }
 

@@ -15,6 +15,7 @@ public class CollectionScreen : AbstractScreen
     [SerializeField] private GameObject[] _descriptions;
     [SerializeField] private ItemDragger _itemDragger;
     [SerializeField] private Canvas _canvas;
+    [SerializeField]private CameraMovement _cameraMovement;
 
     private CollectionMovement _collectionMovement;
     private int _currentIndex;
@@ -55,6 +56,7 @@ public class CollectionScreen : AbstractScreen
         Show();
         _canvas.renderMode = RenderMode.ScreenSpaceCamera;
         ActivationDescription(_currentIndex);
+        _cameraMovement.ZoomIn();
     }
 
     public override void Close()
@@ -63,6 +65,7 @@ public class CollectionScreen : AbstractScreen
         _backGround.SetActive(false);
         _content.SetActive(false);
         _canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+        _cameraMovement.ResetZoom();
     }
 
     private void Show()

@@ -22,16 +22,48 @@
     <list default="true" id="099b8a6d-6b1c-4473-babb-d7d2ffb7e44f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Demo/Materials/card.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Demo/Materials/card.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Basics/circle_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Basics/circle_AB.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Basics/circle_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Basics/circle_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Basics/circlestretchy_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Basics/circlestretchy_AB.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Basics/cloud_2x2_default_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Basics/cloud_2x2_default_AB.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Basics/cloud_2x2_soft_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Basics/cloud_2x2_soft_AB.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Basics/glow1_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Basics/glow1_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Basics/glow6_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Basics/glow6_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Basics/gradient_vertical_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Basics/gradient_vertical_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Basics/lightray3_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Basics/lightray3_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Basics/ring_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Basics/ring_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Basics/ring_nofade_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Basics/ring_nofade_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Basics/sparkle2_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Basics/sparkle2_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Basics/sparkle_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Basics/sparkle_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Misc/Cards/cardglow06_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Misc/Cards/cardglow06_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Misc/Emojis/Part 1/em_angry.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Misc/Emojis/Part 1/em_angry.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Misc/Emojis/em_text_ah_zz.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Misc/Emojis/em_text_ah_zz.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Misc/Fire/fire_ground_3x3_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Misc/Fire/fire_ground_3x3_AB.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Misc/Lightning/lightning2_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Misc/Lightning/lightning2_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Misc/Lightning/lightning_spritesheet_3x3_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Misc/Lightning/lightning_spritesheet_3x3_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Misc/Magic/aura_slam_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Misc/Magic/aura_slam_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Misc/Magic/aura_soft01_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Misc/Magic/aura_soft01_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Misc/Magic/magic_orb2_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Misc/Magic/magic_orb2_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Misc/Stars/star_outline_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Misc/Stars/star_outline_AB.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Misc/Stars/star_outlined_colored_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Misc/Stars/star_outlined_colored_AB.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Misc/Sword/slash_circle01_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Misc/Sword/slash_circle01_AB.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Misc/Unsorted/feather_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Misc/Unsorted/feather_AB.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Misc/Unsorted/healing_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Misc/Unsorted/healing_AB.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Misc/Unsorted/ice_spikes_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Misc/Unsorted/ice_spikes_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Misc/Unsorted/notes_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Misc/Unsorted/notes_AB.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Misc/Unsorted/snowflake_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Misc/Unsorted/snowflake_AB.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Misc/Unsorted/talkbubble_4x4_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Misc/Unsorted/talkbubble_4x4_AB.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Misc/Unsorted/talkbubble_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Misc/Unsorted/talkbubble_AB.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Prefabs/Environment/Fireflies/FireFliesYellow.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Prefabs/Environment/Fireflies/FireFliesYellow.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/DayNight.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DayNight.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlatformChecker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlatformChecker.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SoundContent/MixerButton.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SoundContent/MixerButton.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/DayNightButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/DayNightButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Settings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Settings.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/SettingsButtonContent/OrthographicButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/SettingsButtonContent/OrthographicButton.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/SettingsButtonContent/SettingsChangeButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/SettingsButtonContent/SettingsChangeButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/SettingsButtonContent/SnapRotationChangerButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/SettingsButtonContent/SnapRotationChangerButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/ChooseMapScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/ChooseMapScreen.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/CollectionScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/CollectionScreen.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,6 +137,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/TreasureChest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Buttons/StorageButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ReplacementPosition.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/BirdContent/BirdMovement.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Screens/LanguageScreen.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Blur.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CountersContent/GoldCounter.cs" root0="FORCE_HIGHLIGHTING" />
@@ -143,20 +176,12 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BuyItemButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Settings.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Buttons/GoldButton.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/CameraContent/CameraScrolling.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/AbstractAnimation.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/RotationButton.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/RoadGenerator.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/ItemDropData.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/ItemContent/ItemPrice.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/ItemData.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/ShopItemData.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/ItemScreen.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BuyItemButton.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/ItemContent/Item.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ShopItems.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/PossibilitiesItemsData.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/Possibilitie.cs" />
@@ -185,20 +210,29 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/CollectionContent/CollectionItem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CollectionContent/CollectionMovement.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CollectionContent/CollectionSizer.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Settings.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SoundContent/Mixer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enums/SoundMixers.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enums/SoundMixer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SoundContent/MixerButton.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/CollectionScreen.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PlatformChecker.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/SettingsButtonContent/SnapRotationChangerButton.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/SettingsButtonContent/SettingsChangeButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/SettingsButtonContent/MixerButton.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/SettingsButtonContent/OrthographicButton.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enums/SettingsModes.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/DayNightButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enums/SettingsModes.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/DayNight.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BirdSpawner.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BirdContent/BirdMovement.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BirdContent/BirdSpawner.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/ChooseMapScreen.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/FirstScreen.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/CameraMovement.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/CollectionScreen.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/CameraScrolling.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/CameraContent/CameraScrolling.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/SettingsButtonContent/OrthographicButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Settings.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/SettingsButtonContent/SettingsChangeButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/CameraContent/CameraMovement.cs" />
       </list>
     </option>
   </component>
@@ -285,7 +319,7 @@
       <workItem from="1716544367611" duration="14019000" />
       <workItem from="1716710888848" duration="14012000" />
       <workItem from="1716799994905" duration="17275000" />
-      <workItem from="1716882856970" duration="7001000" />
+      <workItem from="1716882856970" duration="18031000" />
     </task>
     <servers />
   </component>

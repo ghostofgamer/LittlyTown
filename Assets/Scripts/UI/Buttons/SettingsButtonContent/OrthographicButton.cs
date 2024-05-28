@@ -4,20 +4,12 @@ using UnityEngine.UI;
 public class OrthographicButton : SettingsChangeButton
 {
     [SerializeField] private Image _toggleImage;
+    [SerializeField] private Camera _camera; 
 
     protected override void ChangeValue()
     {
         _toggleImage.enabled = IsToggleOn;
-        
-        if (IsToggleOn)
-        {
-            Settings.ActivationOrthographicMode();
-        }
-        else
-        {
-            Settings.DeactivationOrthographicMode();
-        }
-
+        _camera.orthographic = IsToggleOn;
         SaveValue();
     }
 }
