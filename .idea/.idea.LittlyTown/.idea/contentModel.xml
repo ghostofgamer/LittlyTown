@@ -1033,6 +1033,7 @@
           </e>
           <e p="Enums" t="Include">
             <e p="Items.cs" t="Include" />
+            <e p="SettingsModes.cs" t="Include" />
             <e p="SoundMixer.cs" t="Include" />
           </e>
           <e p="FadeCanvas.cs" t="Include" />
@@ -1107,9 +1108,7 @@
           </e>
           <e p="Settings.cs" t="Include" />
           <e p="ShopItems.cs" t="Include" />
-          <e p="SoundContent" t="Include">
-            <e p="MixerButton.cs" t="Include" />
-          </e>
+          <e p="SoundContent" t="Include" />
           <e p="SpawnContent" t="Include">
             <e p="DropGenerator.cs" t="Include" />
             <e p="Spawner.cs" t="Include" />
@@ -1156,6 +1155,7 @@
               </e>
               <e p="RotationButton.cs" t="Include" />
               <e p="SettingsButtonContent" t="Include">
+                <e p="MixerButton.cs" t="Include" />
                 <e p="OrthographicButton.cs" t="Include" />
                 <e p="SettingsChangeButton.cs" t="Include" />
                 <e p="SnapRotationChangerButton.cs" t="Include" />

@@ -2,24 +2,10 @@ using UI.Buttons;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SnapRotationChangerButton : AbstractButton
+public class SnapRotationChangerButton : SettingsChangeButton
 {
     [SerializeField] private Image _toggleImage;
     [SerializeField] private RotationButton[] _rotationButtons;
-
-    private bool _isToggleOn;
-
-    protected override void OnClick()
-    {
-        _isToggleOn = !_isToggleOn;
-
-        _toggleImage.enabled = _isToggleOn;
-
-        if (_isToggleOn)
-            ActivationButtons();
-        else
-            DeactivationButtons();
-    }
 
     private void ActivationButtons()
     {
@@ -31,5 +17,17 @@ public class SnapRotationChangerButton : AbstractButton
     {
         foreach (var rotationButton in _rotationButtons)
             rotationButton.gameObject.SetActive(false);
+    }
+
+    protected override void ChangeValue()
+    {
+        _toggleImage.enabled = IsToggleOn;
+
+        if (IsToggleOn)
+            ActivationButtons();
+        else
+            DeactivationButtons();
+
+        SaveValue();
     }
 }

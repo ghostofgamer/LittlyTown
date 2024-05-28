@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using Dragger;
 using Enums;
 using ItemContent;
@@ -25,7 +24,6 @@ public class CollectionScreen : AbstractScreen
 
     private void OnEnable()
     {
-        _collectionMovement.PositionScrolled += ActivationDescription;
         _itemDragger.BuildItem += AddItemCollection;
     }
 
@@ -115,6 +113,7 @@ public class CollectionScreen : AbstractScreen
         _collectionMovement = collectionMovement;
         _allCollectionItems = items;
         _content = content;
+        _collectionMovement.PositionScrolled += ActivationDescription;
     }
 
     public void AddItemCollection(Item item)

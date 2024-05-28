@@ -28,7 +28,6 @@ public class DayNightButton : AbstractButton
     protected override void OnClick()
     {
         _dayNight.ChangeDayTime();
-        
     }
 
     private void ChangeImage()

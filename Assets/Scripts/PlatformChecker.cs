@@ -22,13 +22,12 @@ public class PlatformChecker : MonoBehaviour
         _allCollectionItems[_mobileIndex] = _allCollectionItemsMobile;
 
         _currentIndex = Application.isMobilePlatform ? _mobileIndex : _pcIndex;
-        /*
-        _collectionScreen.SetContent(_contentsCollections[Application.isMobilePlatform ? _mobileIndex : _pcIndex]);
-        */
-
         _collectionScreen.Init(
             _collectionMovements[_currentIndex], _allCollectionItems[_currentIndex],
             _contentsCollections[_currentIndex]);
+        /*
+        _collectionScreen.SetContent(_contentsCollections[Application.isMobilePlatform ? _mobileIndex : _pcIndex]);
+        */
 
         /*
         _collectionScreen.SetListCollections(Application.isMobilePlatform

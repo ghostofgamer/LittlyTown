@@ -5,23 +5,19 @@ public class OrthographicButton : SettingsChangeButton
 {
     [SerializeField] private Image _toggleImage;
 
-    private bool _isToggleOn;
-    
-    protected override void OnClick()
+    protected override void ChangeValue()
     {
-        _isToggleOn = !_isToggleOn;
-
-        _toggleImage.enabled = _isToggleOn;
-
-        if (_isToggleOn)
+        _toggleImage.enabled = IsToggleOn;
+        
+        if (IsToggleOn)
         {
-            // Debug.Log("Act");
             Settings.ActivationOrthographicMode();
         }
         else
         {
-            // Debug.Log("Deact");
             Settings.DeactivationOrthographicMode();
         }
+
+        SaveValue();
     }
 }

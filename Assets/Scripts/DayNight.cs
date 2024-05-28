@@ -1,12 +1,17 @@
 using System;
 using System.Collections;
+using Enums;
+using SaveAndLoad;
 using UnityEngine;
 
 public class DayNight : MonoBehaviour
 {
+    [SerializeField] private SettingsModes _settingsModes;
     [SerializeField] private Light _light;
     [SerializeField] private Color _dayColor;
     [SerializeField] private Color _nightColor;
+    [SerializeField] private Save _save;
+    [SerializeField] private Load _load;
 
     private float _duration = 1;
     private float _elapsedTime;
@@ -19,33 +24,37 @@ public class DayNight : MonoBehaviour
     private float _currentIntensity;
     private Color _currentColor;
     private Coroutine _coroutine;
+    private int _day = 1;
+    private int _night = 0;
+    private int _currentValue;
 
     public event Action TimeDayChanged;
+
     public bool IsNight { get; private set; }
 
     private void Start()
     {
-        _currentY = _dayValue;
-        _currentIntensity = _light.intensity;
-        _currentColor = _light.color;
+        LoadValue();
     }
 
     public void ChangeDayTime()
     {
         IsNight = !IsNight;
         TimeDayChanged?.Invoke();
-
+        SaveValue();
+        
         if (_coroutine != null)
         {
             StopCoroutine(_coroutine);
         }
 
         _coroutine = StartCoroutine(IsNight
-            ? StartChange(_currentY, _nightValue, _currentIntensity, _nightIntensity,_currentColor,_nightColor)
-            : StartChange(_currentY, _dayValue, _currentIntensity, _dayIntensity,_currentColor,_dayColor));
+            ? StartChange(_currentY, _nightValue, _currentIntensity, _nightIntensity, _currentColor, _nightColor)
+            : StartChange(_currentY, _dayValue, _currentIntensity, _dayIntensity, _currentColor, _dayColor));
     }
 
-    private IEnumerator StartChange(float start, float target, float startIntensity, float targetIntensity,Color startColor,Color targetColor)
+    private IEnumerator StartChange(float start, float target, float startIntensity, float targetIntensity,
+        Color startColor, Color targetColor)
     {
         _elapsedTime = 0;
 
@@ -61,5 +70,28 @@ public class DayNight : MonoBehaviour
             _light.transform.rotation = Quaternion.Euler(_xValue, angle, 0);
             yield return null;
         }
+    }
+
+    private void SaveValue()
+    {
+        _save.SetData(_settingsModes.ToString(), IsNight ? _night : _day);
+    }
+
+    private void LoadValue()
+    {
+        _currentValue = _load.Get(_settingsModes.ToString(), _day);
+        IsNight = _currentValue == _night;
+        ChangeValue(_currentValue);
+    }
+
+    private void ChangeValue(int value)
+    {
+        _light.color = value == _day ? _dayColor : _nightColor;
+        _light.intensity = value == _day ? _dayIntensity : _nightIntensity;
+        _light.transform.rotation = Quaternion.Euler(_xValue, value == _day ? _dayValue : _nightValue, 0);
+        _currentY = value == _day ? _dayValue : _nightValue;
+        _currentIntensity = _light.intensity;
+        _currentColor = _light.color;
+        TimeDayChanged?.Invoke();
     }
 }
