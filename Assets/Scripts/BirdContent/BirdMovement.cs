@@ -45,9 +45,8 @@ public class BirdMovement : MonoBehaviour
     {
         _currentPoint++;
 
-        if (_currentPoint > _points.Length)
+        if (_currentPoint >= _points.Length)
         {
-            Debug.Log("Долетели");
             _isFly = false;
             BirdFinished?.Invoke();
             gameObject.SetActive(false);

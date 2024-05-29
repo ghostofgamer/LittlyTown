@@ -15,13 +15,19 @@ public class CollectionScreen : AbstractScreen
     [SerializeField] private GameObject[] _descriptions;
     [SerializeField] private ItemDragger _itemDragger;
     [SerializeField] private Canvas _canvas;
-    [SerializeField]private CameraMovement _cameraMovement;
+    [SerializeField] private CameraMovement _cameraMovement;
+    [SerializeField] private GameObject[] _environments;
+
+    [SerializeField] private EnvironmentMovement _environmentMovement;
+    // [SerializeField] private GameObject _itemContainer;
 
     private CollectionMovement _collectionMovement;
     private int _currentIndex;
     private List<Item> _allCollectionItems = new List<Item>();
     private List<Items> _collectedItems = new List<Items>();
     private GameObject _content;
+
+    private List<Transform> _itemsContent = new List<Transform>();
 
     private void OnEnable()
     {
@@ -56,7 +62,21 @@ public class CollectionScreen : AbstractScreen
         Show();
         _canvas.renderMode = RenderMode.ScreenSpaceCamera;
         ActivationDescription(_currentIndex);
+        _environmentMovement.GoAway();
+
+        foreach (var environment in _environments)
+        {
+            environment.SetActive(true);
+        }
+
+        // _itemContainer.SetActive(false);
         _cameraMovement.ZoomIn();
+
+
+        foreach (var item in _itemsContent)
+        {
+            item.GetComponent<Animator>().SetTrigger("Open");
+        }
     }
 
     public override void Close()
@@ -66,6 +86,14 @@ public class CollectionScreen : AbstractScreen
         _content.SetActive(false);
         _canvas.renderMode = RenderMode.ScreenSpaceOverlay;
         _cameraMovement.ResetZoom();
+        _environmentMovement.ReturnPosition();
+        
+        foreach (var environment in _environments)
+        {
+            environment.SetActive(false);
+        }
+
+        // _itemContainer.SetActive(true);
     }
 
     private void Show()
@@ -94,6 +122,7 @@ public class CollectionScreen : AbstractScreen
     private void ActivationDescription(int index)
     {
         _currentIndex = index;
+
         foreach (GameObject description in _descriptions)
         {
             description.SetActive(false);
@@ -117,6 +146,11 @@ public class CollectionScreen : AbstractScreen
         _allCollectionItems = items;
         _content = content;
         _collectionMovement.PositionScrolled += ActivationDescription;
+
+        for (int i = 0; i < _collectionMovement.transform.childCount; i++)
+        {
+            _itemsContent.Add(_collectionMovement.transform.GetChild(i));
+        }
     }
 
     public void AddItemCollection(Item item)
@@ -149,6 +183,7 @@ public class CollectionScreen : AbstractScreen
     public void LoadCollectedItemsFromPlayerPrefs()
     {
         string json = PlayerPrefs.GetString("CollectedItems");
+
         if (!string.IsNullOrEmpty(json))
         {
             DeserializeCollectedItemsFromJson(json);

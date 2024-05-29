@@ -15,6 +15,7 @@ public class CameraScrolling : MonoBehaviour
 
     private void Start()
     {
+        enabled = false;
         _currentFov = _camera.fieldOfView;
     }
 

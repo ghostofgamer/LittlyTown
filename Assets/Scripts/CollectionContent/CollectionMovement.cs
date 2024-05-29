@@ -37,7 +37,7 @@ public class CollectionMovement : MonoBehaviour
         }
     }
 
-    public void ButtonClick(int value)
+    public void ChangeValue(int value)
     {
         _currentIndex += value;
         
@@ -46,7 +46,7 @@ public class CollectionMovement : MonoBehaviour
 
         if (_currentIndex < 0)
             _currentIndex = _positions.Length - 1;
-
+Debug.Log("сгккуте " + _currentIndex);
         _buttonNumber = _currentIndex;
         // ActivationDescription(_currentIndex);
         PositionScrolled?.Invoke(_currentIndex);

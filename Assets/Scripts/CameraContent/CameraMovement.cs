@@ -65,8 +65,6 @@ public class CameraMovement : MonoBehaviour
         while (_elapsedTime < _duration)
         {
             _elapsedTime += Time.deltaTime;
-            
-            Debug.Log("Ortogr Reset" + _camera.orthographicSize);
 
             if (!_camera.orthographic)
                 _camera.fieldOfView = Mathf.Lerp(_currentFOVValue, targetValue, _elapsedTime / _duration);

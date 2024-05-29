@@ -1044,6 +1044,7 @@
             <e p="SettingsModes.cs" t="Include" />
             <e p="SoundMixer.cs" t="Include" />
           </e>
+          <e p="EnvironmentMovement.cs" t="Include" />
           <e p="FadeCanvas.cs" t="Include" />
           <e p="GoalContent" t="Include">
             <e p="Goal.cs" t="Include" />
@@ -1126,6 +1127,7 @@
           <e p="Test" t="Include">
             <e p="LookMerger.cs" t="Include" />
             <e p="Rotater.cs" t="Include" />
+            <e p="ScrollrectMayTest.cs" t="Include" />
             <e p="TestMerger.cs" t="Include" />
           </e>
           <e p="TextWidthController.cs" t="Include" />
@@ -1141,6 +1143,7 @@
               <e p="CancelMoveButton.cs" t="Include" />
               <e p="ChooseMapButton.cs" t="Include" />
               <e p="CloseButton.cs" t="Include" />
+              <e p="CollectionScrollButton.cs" t="Include" />
               <e p="ContinueButton.cs" t="Include" />
               <e p="DayNightButton.cs" t="Include" />
               <e p="GoalCompleteButton.cs" t="Include" />
