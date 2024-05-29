@@ -17,6 +17,7 @@ namespace UI.Buttons
 
         protected override void OnClick()
         {
+            AudioSource.PlayOneShot(AudioSource.clip);
             float currentYRotation = _environment.rotation.eulerAngles.y;
             _target = new Vector3(_environment.rotation.x, currentYRotation + _angle, _environment.rotation.z);
             // _target = new Vector3(_environment.rotation.x, _environment.rotation.y + _angle, _environment.rotation.z);

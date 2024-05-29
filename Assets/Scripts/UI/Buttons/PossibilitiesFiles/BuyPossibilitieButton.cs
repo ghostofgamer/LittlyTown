@@ -32,6 +32,8 @@ namespace UI.Buttons.PossibilitiesFiles
 
         protected override void OnClick()
         {
+            AudioSource.PlayOneShot(AudioSource.clip);
+            
             if (_goldWallet.CurrentValue < _possibilitiesShopScreen.CurrentPrice)
                 return;
 

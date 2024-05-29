@@ -22,7 +22,7 @@ public class SnapRotationChangerButton : SettingsChangeButton
     protected override void ChangeValue()
     {
         _toggleImage.enabled = IsToggleOn;
-
+        
         if (IsToggleOn)
             ActivationButtons();
         else

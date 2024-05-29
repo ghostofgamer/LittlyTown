@@ -32,7 +32,8 @@ namespace UI.Buttons.BonusesContent
         protected override void OnClick()
         {
             _isActivated = !_isActivated;
-
+            AudioSource.PlayOneShot(AudioSource.clip);
+            
             if (_additionalPossibilitiesButton.IsActivated)
                 _additionalPossibilitiesButton.Deactivation();
 

@@ -27,6 +27,7 @@ public class DayNightButton : AbstractButton
 
     protected override void OnClick()
     {
+        AudioSource.PlayOneShot(AudioSource.clip);
         _dayNight.ChangeDayTime();
     }
 

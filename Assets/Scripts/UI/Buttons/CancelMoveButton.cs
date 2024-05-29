@@ -31,6 +31,7 @@ public class CancelMoveButton : AbstractButton
     
     protected override void OnClick()
     {
+        AudioSource.PlayOneShot(AudioSource.clip);
         _movesKeeper.CancelLastStep();
     }
 }

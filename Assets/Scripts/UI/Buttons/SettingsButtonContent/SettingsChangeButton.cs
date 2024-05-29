@@ -38,6 +38,7 @@ public abstract class SettingsChangeButton : AbstractButton
     protected override void OnClick()
     {
         _isToggleOn = !_isToggleOn;
+        AudioSource.PlayOneShot(AudioSource.clip);
         ChangeValue();
     }
 

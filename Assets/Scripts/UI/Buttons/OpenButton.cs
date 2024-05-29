@@ -12,6 +12,7 @@ namespace UI.Buttons
 
         protected override void OnClick()
         {
+            AudioSource.PlayOneShot(AudioSource.clip);
             Open();
         }
 

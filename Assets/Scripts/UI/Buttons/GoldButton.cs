@@ -17,6 +17,8 @@ namespace UI.Buttons
 
         protected override void OnClick()
         {
+            AudioSource.PlayOneShot(AudioSource.clip);
+            
             if (_coroutine != null)
                 StopCoroutine(_coroutine);
 

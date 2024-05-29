@@ -9,6 +9,7 @@ namespace UI.Buttons.RewardButtons
     
         protected override void OnClick()
         {
+            AudioSource.PlayOneShot(AudioSource.clip);
             _completeScoreScreen.Close();
             ChangeRewardItem();
         }
