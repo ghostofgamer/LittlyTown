@@ -1005,6 +1005,12 @@
         </e>
         <e p="Scripts" t="Include">
           <e p="AbstractAnimation.cs" t="Include" />
+          <e p="ADS" t="Include">
+            <e p="AD.cs" t="Include" />
+            <e p="CrystalReward.cs" t="Include" />
+            <e p="FullAds.cs" t="Include" />
+            <e p="RewardVideo.cs" t="Include" />
+          </e>
           <e p="BirdContent" t="Include">
             <e p="BirdMovement.cs" t="Include" />
             <e p="BirdSpawner.cs" t="Include" />
@@ -1076,6 +1082,7 @@
           <e p="Keeper" t="Include">
             <e p="PriceKeeper.cs" t="Include" />
           </e>
+          <e p="LoadingSceneVisual.cs" t="Include" />
           <e p="MapGenerator.cs" t="Include" />
           <e p="MapsContent" t="Include">
             <e p="Map.cs" t="Include" />
@@ -1114,6 +1121,10 @@
             <e p="SelectItemData.cs" t="Include" />
             <e p="ShopItemData.cs" t="Include" />
             <e p="StorageItemData.cs" t="Include" />
+          </e>
+          <e p="SDK" t="Include">
+            <e p="GameReady.cs" t="Include" />
+            <e p="SDKInitialization.cs" t="Include" />
           </e>
           <e p="Settings.cs" t="Include" />
           <e p="ShopItems.cs" t="Include" />
