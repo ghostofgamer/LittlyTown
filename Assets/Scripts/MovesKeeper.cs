@@ -26,7 +26,9 @@ public class MovesKeeper : MonoBehaviour
     [SerializeField] private Storage _storage;
     [SerializeField] private DropGenerator _dropGenerator;
     [SerializeField] private ShopItems _shopItems;
-[SerializeField]private CompleteScoreScreen _completeScoreScreen;
+    [SerializeField] private CompleteScoreScreen _completeScoreScreen;
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField]private AudioClip _audioClip;
 
     public List<SaveData> _savesHistory = new List<SaveData>();
     private int _maxStepSaved = 3;
@@ -206,6 +208,8 @@ public class MovesKeeper : MonoBehaviour
         {
             if (itemPosition.Item != null)
             {
+                _audioSource.PlayOneShot(_audioClip);
+                Debug.Log("удаляем" );
                 itemPosition.Item.gameObject.SetActive(false);
                 itemPosition.ClearingPosition();
                 yield return new WaitForSeconds(0.1f);
@@ -228,9 +232,10 @@ public class MovesKeeper : MonoBehaviour
                 Quaternion.identity, _container);
             item.Init(itemData.ItemPosition);
             item.Activation();
+            _audioSource.PlayOneShot(_audioSource.clip);
             yield return new WaitForSeconds(0.1f);
         }
-        
+
         if (saveData.TemporaryItem != null)
         {
             Item item = Instantiate(GetItem(saveData.TemporaryItem.ItemName), _container);

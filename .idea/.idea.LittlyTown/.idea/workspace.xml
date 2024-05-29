@@ -21,22 +21,31 @@
   <component name="ChangeListManager">
     <list default="true" id="099b8a6d-6b1c-4473-babb-d7d2ffb7e44f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/AbstractButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/AbstractButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BuyItemButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BuyItemButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/CancelMoveButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/CancelMoveButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/CollectionScrollButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/CollectionScrollButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/DayNightButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/DayNightButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/GoldButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/GoldButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/OpenButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/OpenButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/PossibilitiesFiles/AdditionalPossibilitiesButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/PossibilitiesFiles/AdditionalPossibilitiesButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/PossibilitiesFiles/BuyPossibilitieButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/PossibilitiesFiles/BuyPossibilitieButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ResumeButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ResumeButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/RewardButtons/RewardButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/RewardButtons/RewardButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/RotationButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/RotationButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/SettingsButtonContent/SettingsChangeButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/SettingsButtonContent/SettingsChangeButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/SettingsButtonContent/SnapRotationChangerButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/SettingsButtonContent/SnapRotationChangerButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/StorageButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/StorageButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/AntennaTower.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/AntennaTower.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Apartment.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Apartment.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/BigApartment.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/BigApartment.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/BigStone.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/BigStone.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Bush.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Bush.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Chest.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Chest.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Condominium.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Condominium.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/CozyHome.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/CozyHome.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/CraneItem.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/CraneItem.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/GoldStone.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/GoldStone.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/HouseWood.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/HouseWood.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/LightHouseItem.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/LightHouseItem.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/OfficeBuilding.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/OfficeBuilding.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Sawmill.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Sawmill.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/SkyHouse.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/SkyHouse.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Skyscraper.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Skyscraper.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Stone.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Stone.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Tree.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Tree.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/VertexVeste.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/VertexVeste.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Wood.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Wood.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Dragger/ItemDragger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Dragger/ItemDragger.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemContent/Item.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemContent/Item.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MovesKeeper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MovesKeeper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ReplacementPosition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ReplacementPosition.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Wallets/AbstractWallet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Wallets/AbstractWallet.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,11 +176,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/CollectionMovement.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/CollectionContent/CollectionItem.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/CollectionContent/CollectionSizer.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SoundContent/Mixer.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enums/SoundMixers.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enums/SoundMixer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SoundContent/MixerButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enums/SettingsModes.cs" />
@@ -218,6 +222,11 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/RewardButtons/RewardButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BuyItemButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/PossibilitiesFiles/BuyPossibilitieButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Wallets/AbstractWallet.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ItemContent/Item.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Dragger/ItemDragger.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MovesKeeper.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ReplacementPosition.cs" />
       </list>
     </option>
   </component>
@@ -305,7 +314,7 @@
       <workItem from="1716710888848" duration="14012000" />
       <workItem from="1716799994905" duration="17275000" />
       <workItem from="1716882856970" duration="19609000" />
-      <workItem from="1716973974570" duration="18120000" />
+      <workItem from="1716973974570" duration="20047000" />
     </task>
     <servers />
   </component>

@@ -10,7 +10,8 @@ public class RemovalItems : MonoBehaviour
 {
     [SerializeField] private DeleteButton _deleteButton;
     [SerializeField] private PossibilitiesCounter _positionsCounter;
-
+    [SerializeField]private AudioSource _audioSource;
+    
     private bool _isWorking;
     private bool _isLooking;
     private int _layerMask;
@@ -102,6 +103,7 @@ public class RemovalItems : MonoBehaviour
                 itemPosition.Item.Deactivation();
                 itemPosition.Item.gameObject.SetActive(false);
                 itemPosition.ClearingPosition();
+                _audioSource.PlayOneShot(_audioSource.clip);
                 yield return null;
                 _positionsCounter.DecreaseCount();
                 Removed?.Invoke();

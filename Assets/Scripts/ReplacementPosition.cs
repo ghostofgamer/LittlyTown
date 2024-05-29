@@ -16,6 +16,7 @@ public class ReplacementPosition : MonoBehaviour
     [SerializeField] private ItemDragger _itemDragger;
     [SerializeField] private PossibilitiesCounter _positionsCounter;
     [SerializeField] private LookMerger _lookMerger;
+    [SerializeField]private AudioSource _audioSource;
 
     private bool _isWorking;
     private bool _isLooking;
@@ -138,6 +139,7 @@ public class ReplacementPosition : MonoBehaviour
                         _firstSelect = false;
                         _firstItem = null;
                         _firstItemPosition = null;
+                        _audioSource.PlayOneShot(_audioSource.clip);
                         yield return null;
                         PositionsChanged?.Invoke();
                         yield return new WaitForSeconds(0.1f);
@@ -152,6 +154,7 @@ public class ReplacementPosition : MonoBehaviour
                         _firstSelect = false;
                         _firstItem = null;
                         _firstItemPosition = null;
+                        _audioSource.PlayOneShot(_audioSource.clip);
                         yield return null;
                         PositionsChanged?.Invoke();
                         yield return new WaitForSeconds(0.1f);

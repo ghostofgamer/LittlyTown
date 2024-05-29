@@ -11,6 +11,7 @@ namespace Dragger
     {
         [SerializeField] private Spawner _spawner;
         [SerializeField] private ItemsStorage _itemStorage;
+        [SerializeField] private AudioSource _audioSource;
 
         private ItemPositionLooker _itemPositionLooker;
         private ItemPosition _startPosition;
@@ -27,11 +28,11 @@ namespace Dragger
         public event Action PlaceChanged;
 
         public event Action<ItemPosition> StepCompleted;
-        
+
         public event Action<Item> BuildItem;
 
         public event Action<Item, Item> SelectItemReceived;
-        
+
         public event Action SelectNewItem;
 
         public bool IsObjectSelected { get; private set; } = false;
@@ -76,7 +77,7 @@ namespace Dragger
         public void SetItem(Item item, ItemPosition itemPosition)
         {
             // Debug.Log("1");
-            
+
             _selectedObject = item;
             // Debug.Log("3");
             _startPosition = itemPosition;
@@ -230,6 +231,7 @@ namespace Dragger
                         _selectedObject.transform.position = hit.transform.position;
                         _selectedObject.Init(itemPosition);
                         _selectedObject.Activation();
+                        _audioSource.PlayOneShot(_audioSource.clip);
                         _selectedObject.GetComponent<ItemAnimation>().PositioningAnimation();
                         BuildItem?.Invoke(_selectedObject);
                         itemPosition.DeliverObject(_selectedObject);
@@ -247,6 +249,7 @@ namespace Dragger
                         _selectedObject.transform.position = hit.transform.position;
                         _selectedObject.Init(itemPosition);
                         _selectedObject.Activation();
+                        _audioSource.PlayOneShot(_audioSource.clip);
                         _selectedObject.GetComponent<ItemAnimation>().PositioningAnimation();
                         itemPosition.DeliverObject(_selectedObject);
                         BuildItem?.Invoke(_selectedObject);

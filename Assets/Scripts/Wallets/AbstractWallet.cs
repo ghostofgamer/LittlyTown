@@ -7,7 +7,8 @@ namespace Wallets
     public class AbstractWallet : MonoBehaviour
     {
         [SerializeField] private int _startValue;
-
+        [SerializeField] private AudioSource _audioSource;
+        
         private int _currentValue;
         private Coroutine _coroutine;
         private float _elapsedTime;
@@ -53,6 +54,7 @@ namespace Wallets
             if (_currentValue < price)
                 return;
 
+            _audioSource.PlayOneShot(_audioSource.clip);
             _currentValue -= price;
             ValueChanged?.Invoke();
         }

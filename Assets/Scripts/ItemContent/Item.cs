@@ -6,6 +6,7 @@ using UnityEngine;
 
 namespace ItemContent
 {
+    [RequireComponent(typeof(AudioSource))]
     public class Item : MonoBehaviour
     {
         [SerializeField] private Items _itemName;
@@ -33,9 +34,9 @@ namespace ItemContent
         public Items ItemName => _itemName;
 
         public bool IsHouse => _isHouse;
-        
+
         public int Price => _price;
-        
+
         public bool IsLightHouse => _isLightHouse;
 
         public int Gold => _gold;
@@ -81,10 +82,11 @@ namespace ItemContent
         {
             _price = price;
         }
-        
+
         public void IncreasePrice()
         {
-            _price = Mathf.RoundToInt(_price * _priceMultiplier);;
+            _price = Mathf.RoundToInt(_price * _priceMultiplier);
+            ;
         }
 
         public void SetInitialPrice()
