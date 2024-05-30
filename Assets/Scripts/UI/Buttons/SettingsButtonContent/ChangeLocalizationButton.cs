@@ -1,4 +1,5 @@
 using Enums;
+using SaveAndLoad;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,7 +7,6 @@ namespace UI.Buttons.SettingsButtonContent
 {
     public class ChangeLocalizationButton : AbstractButton
     {
-        [SerializeField] private Languages _languages;
         [SerializeField] private Localization _localization;
         [SerializeField] private string _language;
         [SerializeField] private Image[] _selectedImages;
@@ -15,13 +15,13 @@ namespace UI.Buttons.SettingsButtonContent
         protected override void OnEnable()
         {
             base.OnEnable();
-            _localization.LanguageChanged += Check;
+            _localization.LanguageChanged += SetLanguage;
         }
 
         protected override void OnDisable()
         {
             base.OnDisable();
-            _localization.LanguageChanged += Check;
+            _localization.LanguageChanged += SetLanguage;
         }
 
         protected override void OnClick()
@@ -39,13 +39,10 @@ namespace UI.Buttons.SettingsButtonContent
             _imageSelected.gameObject.SetActive(true);
         }
 
-        private void Check(string language)
+        private void SetLanguage(string language)
         {
             if (language == _language)
-            {
-                Debug.Log("попал ");
                 ChangeLanguage();
-            }
         }
     }
 }

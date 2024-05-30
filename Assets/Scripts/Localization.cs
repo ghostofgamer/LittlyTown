@@ -1,4 +1,5 @@
 using System;
+using Agava.YandexGames;
 using Enums;
 using Lean.Localization;
 using SaveAndLoad;
@@ -24,11 +25,12 @@ public class Localization : MonoBehaviour
     {
         _currentLanguage = _load.Get(Language, RussianCode);
         ChangeLanguage(_currentLanguage);
+
 #if UNITY_WEBGL&&!UNITY_EDITOR
-_autoFoundlanguage = YandexGamesSdk.Environment.i18n.lang;
- _currentLanguage = _load.Get(Language, _autoFoundlanguage);
+        _autoFoundLanguage = YandexGamesSdk.Environment.i18n.lang;
+        _currentLanguage = _load.Get(Language, _autoFoundLanguage);
         ChangeLanguage(_currentLanguage);
-         LanguageChanged?.Invoke(_currentLanguage);
+        LanguageChanged?.Invoke(_currentLanguage);
 #endif
     }
 
