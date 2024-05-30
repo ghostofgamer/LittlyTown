@@ -15,5 +15,11 @@ namespace SaveAndLoad
             PlayerPrefs.SetFloat(name, number);
             PlayerPrefs.Save();
         }
+        
+        public void SetData(string name, string currentName)
+        {
+            PlayerPrefs.SetString(name, currentName);
+            PlayerPrefs.Save();
+        }
     }
 }

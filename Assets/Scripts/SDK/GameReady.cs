@@ -1,3 +1,4 @@
+using Agava.YandexGames;
 using UnityEngine;
 
 namespace SDK

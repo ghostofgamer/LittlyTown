@@ -21,9 +21,6 @@ public class BirdSpawner : MonoBehaviour
     {
         _indexBird = Random.Range(0, _birdMovements.Length);
         _indexPosition = Random.Range(0, _spawnPositions.Length);
-        
-        Debug.Log(_indexPosition);
-        
         _birdMovements[_indexBird].transform.position = _spawnPositions[_indexPosition].position;
         _birdMovements[_indexBird].Init(_spawnPositions[_indexPosition]);
         _birdMovements[_indexBird].gameObject.SetActive(true);
