@@ -23,7 +23,8 @@ namespace UI.Buttons
         protected override void OnEnable()
         {
             base.OnEnable();
-            _removalItems.Removed += OnClick;
+            _removalItems.Removed += 
+                OnClick;
             // _replacementPositionButton.ReplaceActivated += Deactivation;
         }
 

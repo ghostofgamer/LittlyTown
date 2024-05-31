@@ -22,6 +22,8 @@ public class SaveData
     public ItemDropData ItemDropData;
     public SelectItemData SelectItemData;
     public StorageItemData StorageItemData;
+    public StorageItemData Storage1ItemData;
+    public StorageItemData Storage2ItemData;
     public ShopItemData ShopItemData;
     public List<ItemData> ItemDatasPrices;
     public PossibilitiesItemsData PossibilitiesItemsData;

@@ -63,6 +63,8 @@ public class Storage : MonoBehaviour
 
     public void SetItem(Item item)
     {
+        
+        Debug.Log("СТОРАДЖ " + this.name);
         if (item != null)
         {
             _image.gameObject.SetActive(true);

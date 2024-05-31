@@ -1,6 +1,7 @@
 using System;
 using Dragger;
 using TMPro;
+using UI.Buttons.UpgradeButtons;
 using UnityEngine;
 
 public class MoveCounter : MonoBehaviour
@@ -8,12 +9,15 @@ public class MoveCounter : MonoBehaviour
     [SerializeField] private float _moveCount;
     [SerializeField] private TMP_Text _moveCountText;
     [SerializeField] private ItemDragger _itemDragger;
-
+    [SerializeField] private EndlessMoveButton _endlessMoveButton;
+    [SerializeField] private GameObject _endless;
+    [SerializeField] private GameObject _notEndless;
+    
     private float _maxValue = 100;
     private float _minValue = 0;
-
     private int _targetStepProfit = 5;
     private int _currentStep;
+    private bool _isEndless = false;
 
     public event Action MoveOver;
 
@@ -30,11 +34,13 @@ public class MoveCounter : MonoBehaviour
     private void OnEnable()
     {
         _itemDragger.PlaceChanged += OnCountChange;
+        _endlessMoveButton.EndlessPurchased += SelectEndlessMoves;
     }
 
     private void OnDisable()
     {
         _itemDragger.PlaceChanged -= OnCountChange;
+        _endlessMoveButton.EndlessPurchased -= SelectEndlessMoves;
     }
 
     public void ReplenishSteps()
@@ -45,6 +51,9 @@ public class MoveCounter : MonoBehaviour
     
     private void OnCountChange()
     {
+        if (_isEndless)
+            return;
+        
         _moveCount--;
         TakeStepsProfit();
         _moveCount = Mathf.Clamp(_moveCount, _minValue, _maxValue);
@@ -77,5 +86,12 @@ public class MoveCounter : MonoBehaviour
     {
         _moveCount = value;
         Show();
+    }
+
+    private void SelectEndlessMoves()
+    {
+        _isEndless = true;
+        _notEndless.SetActive(false);
+        _endless.SetActive(true);        
     }
 }

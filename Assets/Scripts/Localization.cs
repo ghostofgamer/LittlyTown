@@ -23,8 +23,8 @@ public class Localization : MonoBehaviour
 
     private void Awake()
     {
-        _currentLanguage = _load.Get(Language, RussianCode);
-        ChangeLanguage(_currentLanguage);
+        /*_currentLanguage = _load.Get(Language, RussianCode);
+        ChangeLanguage(_currentLanguage);*/
 
 #if UNITY_WEBGL&&!UNITY_EDITOR
         _autoFoundLanguage = YandexGamesSdk.Environment.i18n.lang;

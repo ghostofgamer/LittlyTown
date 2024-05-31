@@ -1050,6 +1050,7 @@
             <e p="Languages.cs" t="Include" />
             <e p="SettingsModes.cs" t="Include" />
             <e p="SoundMixer.cs" t="Include" />
+            <e p="Upgrades.cs" t="Include" />
           </e>
           <e p="EnvironmentMovement.cs" t="Include" />
           <e p="FadeCanvas.cs" t="Include" />
@@ -1188,6 +1189,11 @@
               <e p="SettingsContent" t="Include" />
               <e p="StartButton.cs" t="Include" />
               <e p="StorageButton.cs" t="Include" />
+              <e p="UpgradeButtons" t="Include">
+                <e p="EndlessMoveButton.cs" t="Include" />
+                <e p="PackageSlotsButton.cs" t="Include" />
+                <e p="UpgradeButton.cs" t="Include" />
+              </e>
             </e>
             <e p="Screens" t="Include">
               <e p="AbstractScreen.cs" t="Include" />

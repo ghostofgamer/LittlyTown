@@ -30,6 +30,8 @@ public class ItemsStorage : MonoBehaviour
     [SerializeField] private RoadGenerator _roadGenerator;
     [SerializeField] private ScoreCounter _scoreCounter;
     [SerializeField] private Storage _storage;
+    [SerializeField] private Storage _storage1;
+    [SerializeField] private Storage _storage2;
     [SerializeField] private DropGenerator _dropGenerator;
     [SerializeField] private ShopItems _shopItems;
     [SerializeField] private PossibilitieBulldozer _possibilitieBulldozer;
@@ -179,7 +181,7 @@ public class ItemsStorage : MonoBehaviour
             if (itemPosition.Item != null)
             {
                 ItemData itemData = new ItemData(itemPosition.Item.ItemName, itemPosition);
-                Debug.Log("Сохр " + itemPosition.Item.ItemName);
+                // Debug.Log("Сохр " + itemPosition.Item.ItemName);
                 itemDatas.Add(itemData);
             }
         }
@@ -230,15 +232,40 @@ public class ItemsStorage : MonoBehaviour
         // saveData.StorageItem = _storage.CurrentItem;
         if (_storage.CurrentItem != null)
         {
-            // Debug.Log("CurrentStorageSave " + _storage.CurrentItem.ItemName);
+            Debug.Log("CurrentStorageSave " + _storage.CurrentItem.ItemName);
             saveData.StorageItemData =
                 new StorageItemData(_storage.CurrentItem.ItemName, _storage.CurrentItem.ItemPosition);
         }
         else
         {
-            // Debug.Log("CurrentStorageSave NUll!!! " );
+            Debug.Log("CurrentStorageSave NUll!!! ");
             saveData.StorageItemData = new StorageItemData(Items.Empty, null);
         }
+
+        if (_storage1.CurrentItem != null)
+        {
+            Debug.Log("  1  CurrentStorageSave " + _storage1.CurrentItem.ItemName);
+            saveData.Storage1ItemData =
+                new StorageItemData(_storage1.CurrentItem.ItemName, _storage1.CurrentItem.ItemPosition);
+        }
+        else
+        {
+            Debug.Log(" 1  CurrentStorageSave NUll!!! ");
+            saveData.Storage1ItemData = new StorageItemData(Items.Empty, null);
+        }
+
+        if (_storage2.CurrentItem != null)
+        {
+            Debug.Log(" 2  CurrentStorageSave " + _storage2.CurrentItem.ItemName);
+            saveData.Storage2ItemData =
+                new StorageItemData(_storage2.CurrentItem.ItemName, _storage2.CurrentItem.ItemPosition);
+        }
+        else
+        {
+            Debug.Log(" 2  CurrentStorageSave NUll!!! ");
+            saveData.Storage2ItemData = new StorageItemData(Items.Empty, null);
+        }
+
 
         // saveData.SelectItemDragger = _itemDragger.SelectedObject;
         // saveData.SelectPosition = _itemDragger.SelectedObject.ItemPosition;
@@ -329,13 +356,31 @@ public class ItemsStorage : MonoBehaviour
         // Item storageItem = Instantiate(saveData.StorageItem, _container);
 
 
-        if (saveData.StorageItemData.ItemPosition != null)
+        if (saveData.StorageItemData.ItemPosition != null || saveData.StorageItemData.ItemName != null)
         {
-            // Debug.Log("Storage: " + saveData.StorageItemData.ItemName);
+            Debug.Log("Storage Load : " + saveData.StorageItemData.ItemName);
             Item storageItem = Instantiate(GetItem(saveData.StorageItemData.ItemName), _container);
             storageItem.gameObject.SetActive(false);
             // Debug.Log("Storage Load: " + storageItem.ItemName);
             _storage.SetItem(storageItem);
+        }
+
+        if (saveData.Storage1ItemData.ItemPosition != null || saveData.Storage1ItemData.ItemName != null)
+        {
+            Debug.Log("1  Storage Load : " + saveData.Storage1ItemData.ItemName);
+            Item storageItem = Instantiate(GetItem(saveData.Storage1ItemData.ItemName), _container);
+            storageItem.gameObject.SetActive(false);
+            // Debug.Log("Storage Load: " + storageItem.ItemName);
+            _storage1.SetItem(storageItem);
+        }
+
+        if (saveData.Storage2ItemData.ItemPosition != null || saveData.Storage2ItemData.ItemName != null)
+        {
+            // Debug.Log("Storage: " + saveData.StorageItemData.ItemName);
+            Item storageItem = Instantiate(GetItem(saveData.Storage2ItemData.ItemName), _container);
+            storageItem.gameObject.SetActive(false);
+            // Debug.Log("Storage Load: " + storageItem.ItemName);
+            _storage2.SetItem(storageItem);
         }
 
         /*foreach (var item in saveData.ShopItemData.ItemsData)
