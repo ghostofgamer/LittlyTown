@@ -3,12 +3,12 @@ using Wallets;
 
 namespace ADS
 {
-    public class CrystalReward : MonoBehaviour
+    public class CrystalReward : RewardVideo
     {
         [SerializeField] private int _crystalAmount;
         [SerializeField] private CrystalWallet _crystalWallet;
 
-        public void AddCrystal()
+        protected override void OnReward()
         {
             _crystalWallet.IncreaseValue(_crystalAmount);
         }

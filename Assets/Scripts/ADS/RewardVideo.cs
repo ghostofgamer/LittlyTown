@@ -1,9 +1,13 @@
 using Agava.YandexGames;
+using UnityEngine;
+using UnityEngine.UI;
 
 namespace ADS
 {
     public abstract class RewardVideo : AD
     {
+        [SerializeField] private Button _button;   
+        
         public override void Show()
         {
             if (YandexGamesSdk.IsInitialized)
@@ -11,5 +15,13 @@ namespace ADS
         }
 
         protected abstract void OnReward();
+
+        protected override void OnClose()
+        {
+            base.OnClose();
+
+            if (_button != null)
+                _button.enabled = true;
+        }
     }
 }

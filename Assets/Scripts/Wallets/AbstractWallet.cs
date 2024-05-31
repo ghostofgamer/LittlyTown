@@ -29,7 +29,7 @@ namespace Wallets
             ValueChanged?.Invoke();
         }
 
-        public void IncreaseValue(int value)
+        public virtual void IncreaseValue(int value)
         {
             if (value <= 0)
                 return;
@@ -49,7 +49,7 @@ namespace Wallets
             _coroutine = StartCoroutine(SmoothlyChangeValue(value));
         }
 
-        public void DecreaseValue(int price)
+        public virtual void DecreaseValue(int price)
         {
             if (_currentValue < price)
                 return;
