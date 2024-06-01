@@ -1,3 +1,4 @@
+using CountersContent;
 using Dragger;
 using SaveAndLoad;
 using UI.Buttons;
@@ -7,12 +8,22 @@ public class ContinueButton : AbstractButton
 {
     [SerializeField] private ItemDragger _itemDragger;
     [SerializeField] private Save _save;
-    [SerializeField]private ItemsStorage _itemsStorage;
-    
+    [SerializeField] private ItemsStorage _itemsStorage;
+    [SerializeField] private PossibilitiesCounter[] _possibilitiesCounters;
+    [SerializeField] private PackageLittleTown _packageLittleTown;
+
     protected override void OnClick()
     {
-        _itemDragger.SetItem(_itemsStorage.SelectSaveItem,_itemsStorage.SelectSaveItem.ItemPosition);
+        _itemDragger.SetItem(_itemsStorage.SelectSaveItem, _itemsStorage.SelectSaveItem.ItemPosition);
         // _itemDragger.SelectedObject.gameObject.SetActive(true);
         _itemDragger.SwitchOn();
+
+        if (_packageLittleTown.IsActive)
+        {
+            foreach (var possibilitiesCounter in _possibilitiesCounters)
+                possibilitiesCounter.IncreaseCount(_packageLittleTown.Amount);
+
+            _packageLittleTown.Activated();
+        }
     }
 }

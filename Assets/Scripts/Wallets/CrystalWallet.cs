@@ -10,7 +10,7 @@ namespace Wallets
         [SerializeField] private Save _save;
         [SerializeField] private Load _load;
 
-        private int _defaultValue = 0;
+        private int _defaultValue = 100;
 
         private void Awake()
         {

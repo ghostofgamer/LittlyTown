@@ -1001,6 +1001,45 @@
           </e>
         </e>
         <e p="Scenes" t="Include">
+          <e p="Demo" t="Include" />
+          <e p="ParticleEffectForUGUI-main" t="Include">
+            <e p="Editor" t="Include">
+              <e p="AnimatablePropertyEditor.cs" t="Include" />
+              <e p="Coffee.UIParticle.Editor.asmdef" t="Include" />
+              <e p="UIParticleEditor.cs" t="Include" />
+              <e p="UIParticleMenu.cs" t="Include" />
+            </e>
+            <e p="Icons" t="Include" />
+            <e p="package.json" t="Include" />
+            <e p="Runtime" t="Include">
+              <e p="AnimatableProperty.cs" t="Include" />
+              <e p="Coffee.UIParticle.asmdef" t="Include" />
+              <e p="ModifiedMaterial.cs" t="Include" />
+              <e p="UIParticle.cs" t="Include" />
+              <e p="UIParticleAttractor.cs" t="Include" />
+              <e p="UIParticleRenderer.cs" t="Include" />
+              <e p="UIParticleUpdater.cs" t="Include" />
+              <e p="Utils.cs" t="Include" />
+            </e>
+            <e p="Samples~ 1" t="Include">
+              <e p="Demo" t="Include">
+                <e p="Animations" t="Include" />
+                <e p="Materials" t="Include" />
+                <e p="Prefabs" t="Include" />
+                <e p="Scripts" t="Include">
+                  <e p="Coffee.UIParticle.Demo.asmdef" t="Include" />
+                  <e p="CopyItemOnStart.cs" t="Include" />
+                  <e p="UIElementDragger.cs" t="Include" />
+                  <e p="UIParticle_Demo.cs" t="Include" />
+                  <e p="UIParticle_Demo_UIParticleController.cs" t="Include" />
+                </e>
+                <e p="Sprites" t="Include" />
+              </e>
+            </e>
+            <e p="Shaders" t="Include">
+              <e p="UIAdditive.shader" t="Include" />
+            </e>
+          </e>
           <e p="SampleScene_Profiles" t="Include" />
         </e>
         <e p="Scripts" t="Include">
@@ -1094,6 +1133,8 @@
           <e p="MinIndexItemSelector.cs" t="Include" />
           <e p="MoveCanceller.cs" t="Include" />
           <e p="MovesKeeper.cs" t="Include" />
+          <e p="PackageLittleTown.cs" t="Include" />
+          <e p="ParticlesRotater.cs" t="Include" />
           <e p="PlatformChecker.cs" t="Include" />
           <e p="positionChecker.cs" t="Include" />
           <e p="PositionMatcher.cs" t="Include" />
@@ -1192,6 +1233,7 @@
               <e p="StorageButton.cs" t="Include" />
               <e p="UpgradeButtons" t="Include">
                 <e p="EndlessMoveButton.cs" t="Include" />
+                <e p="PackageLittleTownButton.cs" t="Include" />
                 <e p="PackageSlotsButton.cs" t="Include" />
                 <e p="UpgradeButton.cs" t="Include" />
               </e>
@@ -1272,6 +1314,9 @@
           <e p="FullscreenWindow" t="Include" />
         </e>
       </e>
+      <e p="Coffee.UIParticle.csproj" t="IncludeRecursive" />
+      <e p="Coffee.UIParticle.Demo.csproj" t="IncludeRecursive" />
+      <e p="Coffee.UIParticle.Editor.csproj" t="IncludeRecursive" />
       <e p="CW.Common.csproj" t="IncludeRecursive" />
       <e p="LeanCommon.csproj" t="IncludeRecursive" />
       <e p="LeanLocalization.csproj" t="IncludeRecursive" />

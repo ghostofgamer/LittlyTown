@@ -13,7 +13,7 @@ public class StartButton : AbstractButton
 {
     private const string LastActiveMap = "LastActiveMap";
     private const string Map = "Map";
-    
+
     [SerializeField] private MapGenerator _mapGenerator;
     [SerializeField] private ItemDragger _itemDragger;
     [SerializeField] private Transform _container;
@@ -22,10 +22,11 @@ public class StartButton : AbstractButton
     [SerializeField] private Item[] _items;
     [SerializeField] private Possibilitie[] _possibilities;
     [SerializeField] private PossibilitiesCounter[] _possibilitiesCounters;
-    [SerializeField]private Storage _storage;
-    [SerializeField]private MovesKeeper _movesKeeper;
-    [SerializeField]private GoldWallet _goldWallet;
-    [SerializeField]private ScoreCounter _scoreCounter;
+    [SerializeField] private Storage _storage;
+    [SerializeField] private MovesKeeper _movesKeeper;
+    [SerializeField] private GoldWallet _goldWallet;
+    [SerializeField] private ScoreCounter _scoreCounter;
+    [SerializeField] private PackageLittleTown _packageLittleTown;
 
     private int _selectMap = 1;
 
@@ -33,12 +34,12 @@ public class StartButton : AbstractButton
     {
         DeactivateItems();
         _itemDragger.ClearAll();
-        
+
         _storage.ClearItem();
         _movesKeeper.ClearAllHistory();
         _goldWallet.SetInitialvalue();
         _scoreCounter.ResetScore();
-        
+
         foreach (var itemPosition in _itemPositions)
         {
             itemPosition.ClearingPosition();
@@ -48,17 +49,23 @@ public class StartButton : AbstractButton
         {
             item.SetInitialPrice();
         }
-        
+
         foreach (var possibility in _possibilities)
         {
             possibility.SetStartPrice();
         }
-        
+
         foreach (var possibilityCounter in _possibilitiesCounters)
         {
             possibilityCounter.SetCount();
+
+            if (_packageLittleTown.IsActive)
+                possibilityCounter.IncreaseCount(_packageLittleTown.Amount);
         }
-        
+
+        if (_packageLittleTown.IsActive)
+            _packageLittleTown.Activated();
+
         _mapGenerator.Generation();
         _itemDragger.SwitchOn();
         _save.SetData(LastActiveMap, _selectMap);
