@@ -1155,6 +1155,11 @@
           </e>
           <e p="RoadGenerator.cs" t="Include" />
           <e p="SaveAndLoad" t="Include">
+            <e p="GoalContent" t="Include">
+              <e p="GoalData.cs" t="Include" />
+              <e p="GoalSaver.cs" t="Include" />
+              <e p="SaveGoalData.cs" t="Include" />
+            </e>
             <e p="ItemData.cs" t="Include" />
             <e p="ItemDropData.cs" t="Include" />
             <e p="ItemsStorage.cs" t="Include" />

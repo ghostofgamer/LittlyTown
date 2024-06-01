@@ -3,6 +3,7 @@
   <component name="ContentModelUserStore">
     <attachedFolders />
     <explicitIncludes>
+      <Path>Assets</Path>
       <Path>Library/PackageCache/com.agava.webutility@32d39130ea</Path>
       <Path>Library/PackageCache/com.agava.yandexgames@faf20595c0</Path>
       <Path>Library/PackageCache/com.unity.ads@4.4.2</Path>

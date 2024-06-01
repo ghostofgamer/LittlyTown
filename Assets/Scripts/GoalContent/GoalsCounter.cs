@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using SaveAndLoad.GoalContent;
+using UI.Buttons;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -8,20 +10,61 @@ namespace GoalContent
     public class GoalsCounter : MonoBehaviour
     {
         [SerializeField] private List<Goal> _goals = new List<Goal>();
+        [SerializeField] private GoalSaver _goalSaver;
 
         private List<Goal> _currentGoals = new List<Goal>();
         private List<Goal> _tempGoals = new List<Goal>();
         private int _maxGoalsCompleted = 2;
         private int _currentGoalsCompleted = 0;
 
-        public List<Goal> CurrentGoals => _currentGoals;
+        public List<Goal> Goals => _goals;
         
+        public List<Goal> CurrentGoals => _currentGoals;
+
         private void Start()
         {
-            if (_currentGoals.Count == 0)
-                InitializeGoals();
-        }
+            if (_goalSaver.TryLoadGoals())
+            {
+                foreach (var t in _goalSaver.Indexes)
+                {
+                    Debug.Log(t);
+                    _currentGoals.Add(_goals[t]);
+                    ActivationGoals();
+                }
+                
+                _currentGoals[0].SetValue(_goalSaver.SaveGoalData.FirstGoal.CurrentValue);
+                _currentGoals[1].SetValue(_goalSaver.SaveGoalData.SecondGoal.CurrentValue);
 
+
+                if (_goalSaver.SaveGoalData.FirstGoal.CompleteValue > 0)
+                {
+                    _currentGoals[0].CompleteGoalButton.GetComponent<GoalCompleteButton>().CompleteGoal();
+                }
+                if (_goalSaver.SaveGoalData.SecondGoal.CompleteValue > 0)
+                {
+                    _currentGoals[1].CompleteGoalButton.GetComponent<GoalCompleteButton>().CompleteGoal();
+                }
+                /*Debug.Log("GoalSaver     true");
+                foreach (var t in _goalSaver.Indexes)
+                {
+                    Debug.Log(t);
+                    _currentGoals.Add(_goals[t]);
+                    ActivationGoals();
+                }
+
+                foreach (Goal goal in _currentGoals)
+                {
+                    goal.SetValue();
+                }*/
+            }
+            else
+            {
+                Debug.Log("GoalSaver     false");
+                if (_currentGoals.Count == 0)
+                    InitializeGoals();
+            }
+        }
+        
         public void CompleteGoal()
         {
             _currentGoalsCompleted++;
@@ -29,6 +72,7 @@ namespace GoalContent
             if (_currentGoalsCompleted >= _maxGoalsCompleted)
             {
                 _currentGoalsCompleted = 0;
+                _goalSaver.UnSubscribe();
                 InitializeGoals();
             }
         }
@@ -52,6 +96,7 @@ namespace GoalContent
                 _tempGoals.RemoveAt(randomIndex);
             }
 
+            _goalSaver.SaveGoals(_currentGoals);
             ActivationGoals();
         }
 
@@ -65,7 +110,6 @@ namespace GoalContent
         {
             foreach (var goal in _currentGoals)
             {
-                // Debug.Log("открыли");
                 goal.gameObject.SetActive(true);
                 goal.StartGoal();
                 goal.GetComponent<GoalAnimation>().ShowGoal();

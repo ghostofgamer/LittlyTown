@@ -75,7 +75,7 @@ namespace CountersContent
         private IEnumerator StartSearchIncome()
         {
             yield return new WaitForSeconds(0.15f);
-            Debug.Log("CheckGoldItems");
+            // Debug.Log("CheckGoldItems");
             _profit = 0;
 
             foreach (var itemPosition in _itemPositions)

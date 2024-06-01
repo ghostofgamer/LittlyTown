@@ -9,6 +9,7 @@ namespace UI.Buttons
         [SerializeField] private AbstractScreen _screenClose;
         [SerializeField] private bool _isBluring;
         [SerializeField] private Blur _blur;
+        [SerializeField] private OpenButton _openButton;
 
         protected override void OnClick()
         {
@@ -18,16 +19,15 @@ namespace UI.Buttons
 
         public void Open()
         {
+            if (_openButton != null)
+                _openButton.gameObject.SetActive(true);
+
             if (_blur != null)
             {
                 if (_isBluring)
-                {
                     _blur.TurnOn();
-                }
                 else
-                {
                     _blur.TurnOff();
-                }
             }
 
             _screenClose.Close();
