@@ -27,6 +27,7 @@ public class StartButton : AbstractButton
     [SerializeField] private GoldWallet _goldWallet;
     [SerializeField] private ScoreCounter _scoreCounter;
     [SerializeField] private PackageLittleTown _packageLittleTown;
+    [SerializeField] private BonusesStart _bonusesStart;
 
     private int _selectMap = 1;
 
@@ -65,9 +66,15 @@ public class StartButton : AbstractButton
 
         if (_packageLittleTown.IsActive)
             _packageLittleTown.Activated();
+        
+        /*foreach (var itemPosition in _itemPositions)
+        {
+            itemPosition.GetComponent<FinderPositions>().FindNeighbor();
+        }*/
 
         _mapGenerator.Generation();
         _itemDragger.SwitchOn();
+        _bonusesStart.ApplyBonuses();
         _save.SetData(LastActiveMap, _selectMap);
         _save.SetData(Map + 1, _selectMap);
     }

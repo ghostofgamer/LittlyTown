@@ -1047,6 +1047,7 @@
           <e p="ADS" t="Include">
             <e p="AD.cs" t="Include" />
             <e p="CrystalReward.cs" t="Include" />
+            <e p="DoublePossibilityReward.cs" t="Include" />
             <e p="FullAds.cs" t="Include" />
             <e p="RewardVideo.cs" t="Include" />
           </e>
@@ -1055,6 +1056,7 @@
             <e p="BirdSpawner.cs" t="Include" />
           </e>
           <e p="Blur.cs" t="Include" />
+          <e p="BonusesStart.cs" t="Include" />
           <e p="Bootstrap.cs" t="Include" />
           <e p="ButtonResize.cs" t="Include" />
           <e p="CameraContent" t="Include">
@@ -1082,7 +1084,7 @@
             <e p="ItemPositionLooker.cs" t="Include" />
           </e>
           <e p="EndGameContent" t="Include">
-            <e p="EndGame.cs" t="Include" />
+            <e p="EndPositionScreen.cs" t="Include" />
           </e>
           <e p="Enums" t="Include">
             <e p="Items.cs" t="Include" />
@@ -1197,6 +1199,7 @@
               <e p="AbstractButton.cs" t="Include" />
               <e p="ADButtons" t="Include">
                 <e p="RewardButton.cs" t="Include" />
+                <e p="RewardDoublePossibilityButton.cs" t="Include" />
                 <e p="RewardMoveButton.cs" t="Include" />
               </e>
               <e p="BulldozerButton.cs" t="Include" />
@@ -1207,6 +1210,9 @@
               <e p="CollectionScrollButton.cs" t="Include" />
               <e p="ContinueButton.cs" t="Include" />
               <e p="DayNightButton.cs" t="Include" />
+              <e p="EndScreen" t="Include">
+                <e p="CancelLastStepButton.cs" t="Include" />
+              </e>
               <e p="GoalCompleteButton.cs" t="Include" />
               <e p="GoldButton.cs" t="Include" />
               <e p="OpenButton.cs" t="Include" />
@@ -1234,6 +1240,12 @@
                 <e p="SnapRotationChangerButton.cs" t="Include" />
               </e>
               <e p="SettingsContent" t="Include" />
+              <e p="StartBonusesButtons" t="Include">
+                <e p="BonusBulldozersButton.cs" t="Include" />
+                <e p="BonusesButton.cs" t="Include" />
+                <e p="BonusGoldButton.cs" t="Include" />
+                <e p="BonusReplaceButton.cs" t="Include" />
+              </e>
               <e p="StartButton.cs" t="Include" />
               <e p="StorageButton.cs" t="Include" />
               <e p="UpgradeButtons" t="Include">
@@ -1250,6 +1262,7 @@
               <e p="CollectionScreen.cs" t="Include" />
               <e p="CompleteScoreScreen.cs" t="Include" />
               <e p="EndMoveScreen.cs" t="Include" />
+              <e p="EndScreen.cs" t="Include" />
               <e p="FirstScreen.cs" t="Include" />
               <e p="GameLevelScreen.cs" t="Include" />
               <e p="GoalsScreen.cs" t="Include" />

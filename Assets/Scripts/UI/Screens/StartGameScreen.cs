@@ -1,10 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
-using UI.Buttons;
+using UI.Buttons.StartBonusesButtons;
 using UI.Screens;
 using UnityEngine;
 
 public class StartGameScreen : AbstractScreen
 {
+    [SerializeField] private BonusesStart _bonusesStart;
+    [SerializeField] private BonusesButton[] _bonusesButton;
 
+    public override void Open()
+    {
+        base.Open();
+        _bonusesStart.ResetValue();
+
+        foreach (var bonusesButton in _bonusesButton)
+            bonusesButton.DeactivateChoose();
+    }
 }

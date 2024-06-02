@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -5,7 +6,7 @@ public class EnvironmentMovement : MonoBehaviour
 {
     [SerializeField] private GameObject _environment;
     [SerializeField] private GameObject _container;
-    
+
     private Vector3 _startPosition;
     private Vector3 _targetPosition;
     private float _elapsedTime;
@@ -13,19 +14,26 @@ public class EnvironmentMovement : MonoBehaviour
     private Coroutine _coroutine;
 
     private bool _isActive;
-    
+    private bool _isEndGameRotate;
+    private float _speed = 10;
+
     private void Start()
     {
         _startPosition = _environment.transform.position;
         _targetPosition = new Vector3(_startPosition.x, _startPosition.y, _startPosition.z + 500);
     }
 
+    private void Update()
+    {
+        if (_isEndGameRotate)
+            _environment.transform.Rotate(0, _speed*Time.deltaTime, 0);
+    }
 
     public void GoAway()
     {
         if (_coroutine != null)
             StopCoroutine(_coroutine);
-        
+
         _isActive = false;
         _coroutine = StartCoroutine(Move(_startPosition, _targetPosition));
     }
@@ -33,7 +41,7 @@ public class EnvironmentMovement : MonoBehaviour
     public void ReturnPosition()
     {
         _environment.SetActive(true);
-        
+
         if (_coroutine != null)
             StopCoroutine(_coroutine);
 
@@ -55,5 +63,15 @@ public class EnvironmentMovement : MonoBehaviour
 
         _environment.transform.position = targetPosition;
         _environment.SetActive(_isActive);
+    }
+
+    public void StartRotate()
+    {
+        _isEndGameRotate = true;
+    }
+
+    public void StopRotate()
+    {
+        _isEndGameRotate = false;
     }
 }

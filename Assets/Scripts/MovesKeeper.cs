@@ -28,7 +28,7 @@ public class MovesKeeper : MonoBehaviour
     [SerializeField] private ShopItems _shopItems;
     [SerializeField] private CompleteScoreScreen _completeScoreScreen;
     [SerializeField] private AudioSource _audioSource;
-    [SerializeField]private AudioClip _audioClip;
+    [SerializeField] private AudioClip _audioClip;
 
     public List<SaveData> _savesHistory = new List<SaveData>();
     private int _maxStepSaved = 3;
@@ -201,15 +201,17 @@ public class MovesKeeper : MonoBehaviour
         // SaveData newSaveData = _savesHistory[_currentStep];
         // Debug.Log("ITEMDROPPP " + newSaveData.ItemDropData);
         // _dropGenerator.SetItem(newSaveData.ItemDropData.PrefabItem, newSaveData.ItemDropData.Icon);
-
-        _itemDragger.SelectedObject.gameObject.SetActive(false);
+        
+        if (_itemDragger.SelectedObject != null)
+            _itemDragger.SelectedObject.gameObject.SetActive(false);
+        
         // Debug.Log(_itemsStorage.SelectObject.ItemName);
         foreach (var itemPosition in _itemPositions)
         {
             if (itemPosition.Item != null)
             {
                 _audioSource.PlayOneShot(_audioClip);
-                Debug.Log("удаляем" );
+                Debug.Log("удаляем");
                 itemPosition.Item.gameObject.SetActive(false);
                 itemPosition.ClearingPosition();
                 yield return new WaitForSeconds(0.1f);

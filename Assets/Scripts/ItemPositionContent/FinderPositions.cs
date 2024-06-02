@@ -28,7 +28,7 @@ public class FinderPositions : MonoBehaviour
     public void FindNeighbor()
     {
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, _searchRadius);
-
+       
         ItemPosition northPosition = null;
         ItemPosition westPosition = null;
         ItemPosition eastPosition = null;
@@ -43,28 +43,34 @@ public class FinderPositions : MonoBehaviour
 
                 // Vector3 localTargetPosition = transform.InverseTransformPoint(itemPosition.transform.position);
                 _targetPosition = itemPosition.transform.position;
+                
+                Debug.Log("hitColliders" + itemPosition.name + _targetPosition  + transform.position); 
 
                 if (_targetPosition.z > transform.position.z &&
                     Math.Abs(_targetPosition.x - transform.position.x) < 0.1f)
                 {
+                    Debug.Log("Position");
                     northPosition = itemPosition;
                 }
 
                 if (_targetPosition.x < transform.position.x &&
                     Math.Abs(_targetPosition.z - transform.position.z) < 0.1f)
                 {
+                    Debug.Log("Position");
                     westPosition = itemPosition;
                 }
 
                 if (_targetPosition.x > transform.position.x &&
                     Math.Abs(_targetPosition.z - transform.position.z) < 0.1f)
                 {
+                    Debug.Log("Position");
                     eastPosition = itemPosition;
                 }
 
                 if (_targetPosition.z < transform.position.z &&
                     Math.Abs(_targetPosition.x - transform.position.x) < 0.1f)
                 {
+                    Debug.Log("Position");
                     southPosition = itemPosition;
                 }
             }

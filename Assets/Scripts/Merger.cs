@@ -13,7 +13,8 @@ public class Merger : MonoBehaviour
     [SerializeField] private LookMerger _lookMerger;
     [SerializeField] private GoldWallet _goldWallet;
     [SerializeField] private Transform _container;
-
+    [SerializeField] private AudioSource _audioSource;
+    
     private Item _currentItem;
     private List<ItemPosition> _matchPositions = new List<ItemPosition>();
     private List<Item> _matchItems = new List<Item>();
@@ -129,6 +130,7 @@ public class Merger : MonoBehaviour
 
         // Debug.Log("Instantiate " + _newItem[currentPosition].name);
         item.transform.forward = currentPosition.transform.forward;
+        _audioSource.PlayOneShot(_audioSource.clip);
         item.Init(currentPosition);
         item.Activation();
         item.GetComponent<ItemAnimation>().PositioningAnimation();
