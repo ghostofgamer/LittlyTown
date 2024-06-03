@@ -22,21 +22,23 @@
     <list default="true" id="099b8a6d-6b1c-4473-babb-d7d2ffb7e44f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Basics/glow2_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Basics/glow2_ADD.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EndGameContent/EndPositionScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EndGameContent/EndPositionScreen.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EnvironmentMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EnvironmentMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemPositionContent/FinderPositions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemPositionContent/FinderPositions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/ItemsStorage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/ItemsStorage.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ADButtons/RewardMoveButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ADButtons/RewardMoveButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/RotationButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/RotationButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ADS/RewardMove.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ADS/RewardMove.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CameraContent/CameraScrolling.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CameraContent/CameraScrolling.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CountersContent/MoveCounter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CountersContent/MoveCounter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MapGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MapGenerator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TurnEnvironment.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TurnEnvironment.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ChooseMapButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ChooseMapButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/EndMoveScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/EndMoveScreen.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/EndScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/EndScreen.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bild/Build.zip" beforeDir="false" afterPath="$PROJECT_DIR$/Bild/Build.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bild/Build/0c6f53adec3151847a87cd53ef0536de.data.unityweb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bild/Build/1c7b615e931e4169cc3fbadc61e540b3.js.unityweb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bild/Build/cc1fcfba8afdfb1b735bdda5c56365d1.wasm.unityweb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bild/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Bild/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bild/Build.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bild/Build/27ffcbdd71a0bce1cdd926a55161c95c.wasm.unityweb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bild/Build/49b5c53a8e7732ff0cf0f9316662e9ec.js.unityweb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bild/Build/Bild.loader.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bild/Build/afe86ad34b928942560a5c847dbfb28c.data.unityweb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bild/StreamingAssets/UnityServicesProjectConfiguration.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bild/index.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,6 +62,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Test/TestMerger.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MinIndexItemSelector.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ContinueButton.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ChooseMap.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Test/LookMerger.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Keeper/PriceKeeper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Road/RoadTile.cs" root0="FORCE_HIGHLIGHTING" />
@@ -95,6 +98,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Wallets/AbstractWallet.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Screens/SettingsScreen.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Buttons/UpgradeButtons/UpgradeButton.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/MapsInfo.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ItemContent/House.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enums/SoundMixer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enums/Items.cs" root0="FORCE_HIGHLIGHTING" />
@@ -189,13 +193,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/UpgradeButtons/PackageSlotsButton.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/SaveData.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Storage.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/ADS/RewardCrystall.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/ADS/RewardCrystal.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Wallets/AbstractWallet.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/ADS/CrystalReward.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ADButtons/RewardButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ADS/RewardVideo.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/UpgradeButtons/PackageLittleTownButton.cs" />
@@ -229,17 +226,24 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Merger.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/EndScreen/CancelLastStepButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/StartButton.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/MapGenerator.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/ADS/RewardMove.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ADButtons/RewardMoveButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/EndGameContent/EndPositionScreen.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/ItemsStorage.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ItemPositionContent/FinderPositions.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/TurnEnviropment.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/RotationButton.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/EndScreen.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/EnvironmentMovement.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/TurnEnvironment.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/EndScreen.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/EndMoveScreen.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ADS/RewardMove.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/CountersContent/MoveCounter.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MapGenerator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ChooseMapButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/CameraContent/CameraScrolling.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MapInfo.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MapsInfo.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ChooseMap.cs" />
       </list>
     </option>
   </component>
@@ -336,7 +340,7 @@
       <workItem from="1717140290867" duration="16718000" />
       <workItem from="1717231185060" duration="21153000" />
       <workItem from="1717330152976" duration="8542000" />
-      <workItem from="1717407323911" duration="3407000" />
+      <workItem from="1717407323911" duration="14422000" />
     </task>
     <servers />
   </component>
@@ -437,9 +441,9 @@
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
     <state x="616" y="238" key="run.anything.popup/0.0.1920.1032@0.0.1920.1032" timestamp="1716889101887" />
-    <state x="623" y="223" width="672" height="678" key="search.everywhere.popup" timestamp="1717234097582">
+    <state x="623" y="223" width="672" height="678" key="search.everywhere.popup" timestamp="1717421479269">
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
-    <state x="623" y="223" width="672" height="678" key="search.everywhere.popup/0.0.1920.1032@0.0.1920.1032" timestamp="1717234097582" />
+    <state x="623" y="223" width="672" height="678" key="search.everywhere.popup/0.0.1920.1032@0.0.1920.1032" timestamp="1717421479269" />
   </component>
 </project>

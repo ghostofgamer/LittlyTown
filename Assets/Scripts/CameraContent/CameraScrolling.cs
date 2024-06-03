@@ -6,12 +6,15 @@ using UnityEngine;
 public class CameraScrolling : MonoBehaviour
 {
     [SerializeField] private Camera _camera;
-    
+
     private float _minFov = 30f;
-    private float _maxFov = 90f;
+    private float _maxFov = 75f;
+    private float _minOrthographicSize = 10f;
+    private float _maxOrthographicSize = 23f;
     private float _mouseScrollSensitivity = 10f;
-    private float _touchScrollSensitivity = 5f;
+    private float _touchScrollSensitivity = 0.3f;
     private float _currentFov;
+    private float _currentSize;
 
     private void Start()
     {
@@ -22,14 +25,23 @@ public class CameraScrolling : MonoBehaviour
     private void Update()
     {
         float scroll = Input.GetAxis("Mouse ScrollWheel");
-        
+
         if (scroll != 0)
         {
-            _currentFov -= scroll * _mouseScrollSensitivity;
-            _currentFov = Mathf.Clamp(_currentFov, _minFov, _maxFov);
-            _camera.fieldOfView = _currentFov;
+            if (!_camera.orthographic)
+            {
+                _currentFov -= scroll * _mouseScrollSensitivity;
+                _currentFov = Mathf.Clamp(_currentFov, _minFov, _maxFov);
+                _camera.fieldOfView = _currentFov;
+            }
+            else
+            {
+                _currentSize -= scroll * _mouseScrollSensitivity;
+                _currentSize = Mathf.Clamp(_currentSize, _minOrthographicSize, _maxOrthographicSize);
+                _camera.orthographicSize = _currentSize;
+            }
         }
-        
+
         if (Input.touchCount == 2)
         {
             Touch touch1 = Input.GetTouch(0);
@@ -46,6 +58,20 @@ public class CameraScrolling : MonoBehaviour
             _currentFov -= deltaMagnitude * _touchScrollSensitivity;
             _currentFov = Mathf.Clamp(_currentFov, _minFov, _maxFov);
             _camera.fieldOfView = _currentFov;
+            
+            if (!_camera.orthographic)
+            {
+                _currentFov -= deltaMagnitude * _touchScrollSensitivity;
+                _currentFov = Mathf.Clamp(_currentFov, _minFov, _maxFov);
+                _camera.fieldOfView = _currentFov;
+
+            }
+            else
+            {
+                _currentSize -= deltaMagnitude * _touchScrollSensitivity;
+                _currentSize = Mathf.Clamp(_currentSize, _minOrthographicSize, _maxOrthographicSize);
+                _camera.orthographicSize = _currentSize;
+            }
         }
     }
 }

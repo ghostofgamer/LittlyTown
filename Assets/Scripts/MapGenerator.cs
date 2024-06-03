@@ -53,7 +53,6 @@ public class MapGenerator : MonoBehaviour
         }
 
         yield return null;
-        yield return _waitForSeconds;
         /*yield return _waitForSeconds;*/
 
         /*foreach (var item in _items)

@@ -16,6 +16,7 @@ public class TurnEnvironment : MonoBehaviour
     private Coroutine _coroutineRotate;
     private float _elapsedTime;
     private float _duration = 1f;
+    private float _durationReturn = 0.15f;
     private bool _isEndGameRotate;
     private float _speed = 10;
     
@@ -71,5 +72,28 @@ public class TurnEnvironment : MonoBehaviour
     public void StopRotate()
     {
         _isEndGameRotate = false;
+        
+        if (_coroutineRotate != null)
+            StopCoroutine(_coroutineRotate);
+
+        _coroutineRotate = StartCoroutine(ReturnRotate());
+    }
+
+    private IEnumerator ReturnRotate()
+    {
+        _elapsedTime = 0;
+        _startRotation = _environment.transform.rotation;
+
+        while (_elapsedTime < _durationReturn)
+        {
+            _environment.transform.rotation =
+                Quaternion.Slerp(_startRotation, Quaternion.identity, _elapsedTime / _durationReturn);
+            _container.transform.rotation = _environment.transform.rotation;
+            _elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        _environment.transform.rotation = Quaternion.identity;
+        _container.transform.rotation = _environment.transform.rotation;
     }
 }

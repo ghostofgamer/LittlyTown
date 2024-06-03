@@ -15,6 +15,7 @@ namespace UI.Screens
             _fireworkEffect.Play();
             _cameraMovement.ZoomOut();
             // _environmentMovement.StartRotate();
+            _turnEnvironment.StartRotate();
             
         }
 
@@ -23,6 +24,7 @@ namespace UI.Screens
             base.Close();
             _fireworkEffect.Stop();
             // _environmentMovement.StopRotate();
+            _turnEnvironment.StopRotate();
         }
     }
 }

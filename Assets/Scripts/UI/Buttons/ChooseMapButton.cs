@@ -1,18 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
+using UI.Buttons;
 using UnityEngine;
 
-public class ChooseMapButton : MonoBehaviour
+public class ChooseMapButton : AbstractButton
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private ChooseMap _chooseMap;
+    [SerializeField] private int _index;
 
-    // Update is called once per frame
-    void Update()
+    protected override void OnClick()
     {
-        
+        _chooseMap.ChangeMap(_index);
     }
 }

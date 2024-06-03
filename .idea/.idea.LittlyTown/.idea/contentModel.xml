@@ -1064,6 +1064,7 @@
             <e p="CameraMovement.cs" t="Include" />
             <e p="CameraScrolling.cs" t="Include" />
           </e>
+          <e p="ChooseMap.cs" t="Include" />
           <e p="CollectionContent" t="Include">
             <e p="CollectionItem.cs" t="Include" />
             <e p="CollectionMovement.cs" t="Include" />
@@ -1132,6 +1133,7 @@
           <e p="MapsContent" t="Include">
             <e p="Map.cs" t="Include" />
           </e>
+          <e p="MapsInfo.cs" t="Include" />
           <e p="Merger.cs" t="Include" />
           <e p="MinIndexItemSelector.cs" t="Include" />
           <e p="MoveCanceller.cs" t="Include" />

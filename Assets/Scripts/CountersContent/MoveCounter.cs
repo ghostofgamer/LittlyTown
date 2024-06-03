@@ -12,7 +12,7 @@ public class MoveCounter : MonoBehaviour
     [SerializeField] private EndlessMoveButton _endlessMoveButton;
     [SerializeField] private GameObject _endless;
     [SerializeField] private GameObject _notEndless;
-    
+
     private float _maxValue = 100;
     private float _minValue = 0;
     private int _targetStepProfit = 5;
@@ -23,9 +23,9 @@ public class MoveCounter : MonoBehaviour
 
     public event Action StepProfitMaded;
 
-    public bool IsThereMoves => _moveCount > _minValue;
+    public bool IsThereMoves => _moveCount > _minValue || _isEndless;
     public float MoveCount => _moveCount;
-    
+
     private void Start()
     {
         Show();
@@ -48,12 +48,12 @@ public class MoveCounter : MonoBehaviour
         _moveCount = _maxValue;
         Show();
     }
-    
+
     private void OnCountChange()
     {
         if (_isEndless)
             return;
-        
+
         _moveCount--;
         TakeStepsProfit();
         _moveCount = Mathf.Clamp(_moveCount, _minValue, _maxValue);
@@ -92,6 +92,6 @@ public class MoveCounter : MonoBehaviour
     {
         _isEndless = true;
         _notEndless.SetActive(false);
-        _endless.SetActive(true);        
+        _endless.SetActive(true);
     }
 }
