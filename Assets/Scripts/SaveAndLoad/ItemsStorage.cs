@@ -16,6 +16,8 @@ using Wallets;
 
 public class ItemsStorage : MonoBehaviour
 {
+    private const string ItemStorageSave = "ItemStorageSave";
+
     [SerializeField] private ItemDragger _itemDragger;
     [SerializeField] private ItemPosition[] _itemPositions;
     [SerializeField] private Item[] _items;
@@ -285,12 +287,14 @@ public class ItemsStorage : MonoBehaviour
 
             Debug.Log("Temporaru Item Save " + saveData.TemporaryItemDragger);
         }*/
+        string jsonData = JsonUtility.ToJson(saveData);
+        PlayerPrefs.SetString(ItemStorageSave, jsonData);
+        PlayerPrefs.Save();
 
-
-        string json = JsonUtility.ToJson(saveData);
+        /*string json = JsonUtility.ToJson(saveData);
         System.IO.File.WriteAllText(Application.persistentDataPath + "/save.json", json);
         // Agava.YandexGames.Utility.PlayerPrefs.SetString("save.json 1", json);
-        // Agava.YandexGames.Utility.PlayerPrefs.Save();
+        // Agava.YandexGames.Utility.PlayerPrefs.Save();*/
         yield return null;
         SaveCompleted?.Invoke(saveData);
     }
@@ -313,10 +317,26 @@ public class ItemsStorage : MonoBehaviour
         // string json = Agava.YandexGames.Utility.PlayerPrefs.GetString("save.json 1");
         // Agava.YandexGames.Utility.PlayerPrefs.Load(onSuccessCallback:);
         // Agava.YandexGames.Utility.PlayerPrefs.Save();
-        string json = System.IO.File.ReadAllText(Application.persistentDataPath + "/save.json");
-        SaveData saveData = JsonUtility.FromJson<SaveData>(json);
+        SaveData saveData = new SaveData();
+        
+        if (PlayerPrefs.HasKey(ItemStorageSave))
+        {
+            string jsonData = PlayerPrefs.GetString(ItemStorageSave);
+            saveData = JsonUtility.FromJson<SaveData>(jsonData);
+        }
+        else
+        {
+            Debug.Log("нет сохранения");
+            return;
+        }
+
+
+        /*string json = System.IO.File.ReadAllText(Application.persistentDataPath + "/save.json");
+        SaveData saveData = JsonUtility.FromJson<SaveData>(json);*/
         _saveDatas.Add(saveData);
         _saveData = saveData;
+
+
         // Debug.Log("Loading    " + saveData.ItemDatas.Count);
 
         foreach (var itemData in saveData.ItemDatas)

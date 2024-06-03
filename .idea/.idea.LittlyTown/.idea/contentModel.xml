@@ -1049,6 +1049,7 @@
             <e p="CrystalReward.cs" t="Include" />
             <e p="DoublePossibilityReward.cs" t="Include" />
             <e p="FullAds.cs" t="Include" />
+            <e p="RewardMove.cs" t="Include" />
             <e p="RewardVideo.cs" t="Include" />
           </e>
           <e p="BirdContent" t="Include">
@@ -1194,6 +1195,7 @@
           </e>
           <e p="TextWidthController.cs" t="Include" />
           <e p="TreasureChest.cs" t="Include" />
+          <e p="TurnEnvironment.cs" t="Include" />
           <e p="UI" t="Include">
             <e p="Buttons" t="Include">
               <e p="AbstractButton.cs" t="Include" />

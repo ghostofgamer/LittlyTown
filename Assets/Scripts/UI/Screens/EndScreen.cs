@@ -7,6 +7,7 @@ namespace UI.Screens
         [SerializeField] private ParticleSystem _fireworkEffect;
         [SerializeField]private CameraMovement _cameraMovement;
         [SerializeField]private EnvironmentMovement _environmentMovement;
+        [SerializeField]private TurnEnvironment _turnEnvironment;
 
         public override void Open()
         {

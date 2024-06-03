@@ -1,4 +1,3 @@
-using System.Collections;
 using UI.Screens;
 using UnityEngine;
 
@@ -8,6 +7,7 @@ namespace EndGameContent
     {
         [SerializeField] private Spawner _spawner;
         [SerializeField]private GameLevelScreen _gameLevelScreen;
+        [SerializeField]private Blur _blur;
 
         private void OnEnable()
         {
@@ -23,6 +23,7 @@ namespace EndGameContent
         {
             base.Open();
             _gameLevelScreen.Close();
+            _blur.TurnOn();
         }
     }
 }
