@@ -26,6 +26,7 @@ public class ChooseMap : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log(":::::");
         _startPosition = transform.position;
         _currentZ = _startPosition.z;
     }
@@ -112,5 +113,19 @@ public class ChooseMap : MonoBehaviour
         }
 
         transform.position = _target;
+    }
+
+    public void SetPosition(int index)
+    {
+        _currentIndex = index; 
+        _startPosition = transform.position;
+        _currentZ = _startPosition.z;
+        _currentStep = _step * index;
+        Debug.Log("Сложение " + _currentStep);
+        _currentZ += _currentStep;
+        Debug.Log("ПОЛ " + _currentZ);
+        _target = new Vector3(_startPosition.x, _startPosition.y, _currentZ);
+        transform.position = _target;
+        // _startPosition = 
     }
 }

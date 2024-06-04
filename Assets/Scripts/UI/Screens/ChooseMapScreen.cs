@@ -2,6 +2,7 @@ using Dragger;
 using SaveAndLoad;
 using UI.Screens;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class ChooseMapScreen : AbstractScreen
 {
@@ -15,10 +16,10 @@ public class ChooseMapScreen : AbstractScreen
     [SerializeField]private CameraMovement _cameraMovement;
     [SerializeField] private ChooseMap _chooseMap;
     [SerializeField] private GameObject _mapInformation;
-
+    [SerializeField] private GameObject[] _mapInformations;
+    [SerializeField] private Initializator _initializator;
     private int _startValue = 0;
-    private int _currentvalue;
-    
+    private int _currentValue;
     
     private void Start()
     {
@@ -34,6 +35,7 @@ public class ChooseMapScreen : AbstractScreen
         _cameraMovement.ZoomOut();
         _chooseMap.enabled = true;
         _mapInformation.SetActive(true);
+        _mapInformations[_initializator.Index].SetActive(true);
     }
 
     public override void Close()
@@ -46,9 +48,9 @@ public class ChooseMapScreen : AbstractScreen
 
     private void CheckActivation()
     {
-        _currentvalue = _load.Get(LastActiveMap, _startValue);
+        _currentValue = _load.Get(LastActiveMap, _startValue);
 
-        if (_currentvalue > _startValue)
+        if (_currentValue > _startValue)
         {
             _startButton.SetActive(false);
             _continueButton.SetActive(true);

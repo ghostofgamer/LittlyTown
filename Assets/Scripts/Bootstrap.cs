@@ -5,18 +5,72 @@ using UnityEngine;
 public class Bootstrap : MonoBehaviour
 {
     [SerializeField] private Load _load;
-    [SerializeField]private MapGenerator _mapGenerator;
-    [SerializeField]private ItemsStorage _itemsStorage;
-
+    [SerializeField] private MapGenerator _mapGenerator;
+    [SerializeField] private ItemsStorage _itemsStorage;
+    [SerializeField] private Initializator _initializator;
+[SerializeField]private ChooseMap _chooseMap;
+    
     private const string LastActiveMap = "LastActiveMap";
     private int _startValue = 0;
 
     private void Awake()
     {
-      
     }
 
     private void Start()
+    {
+        int value = _load.Get(LastActiveMap, _startValue);
+
+        int currentMap = _load.Get("Map", _startValue);
+        Debug.Log("!!!!");
+        _chooseMap.SetPosition(currentMap);
+        
+        if (value == 0)
+        {
+            _initializator.SetIndex(value);
+            _initializator.FillLists();
+
+            // _mapGenerator.ShowFirstMap();
+            _mapGenerator.ShowTestFirstMap(_initializator.Territories, _initializator.FinderPositions,
+                _initializator.ItemPositions, _initializator.CurrentMap.RoadsContainer);
+            _mapGenerator.GenerationAllMap(1);
+            _mapGenerator.GenerationAllMap(2);
+            Debug.Log("First");
+        }
+        else
+        {
+            _initializator.SetIndex(currentMap);
+            _initializator.FillLists();
+
+            Debug.Log("Bootstrap " + currentMap);
+
+            for (int i = 0; i < _initializator.AmountMaps; i++)
+            {
+                if (i == currentMap)
+                {
+                    _mapGenerator.TestShowMap(_initializator.Territories, _initializator.FinderPositions,
+                        _initializator.CurrentMap.RoadsContainer, _initializator.ItemPositions);
+                    Debug.Log("Загружаем карту н7омер " + _initializator.CurrentMap.name + i);
+                }
+                else
+                {
+                    _mapGenerator.GenerationAllMap(i);
+                    Debug.Log("Загружаем остальные  " + +i);
+                }
+            }
+
+            /*Debug.Log(_initializator.CurrentMap.name);
+            _mapGenerator.TestShowMap(_initializator.Territories, _initializator.FinderPositions,
+                _initializator.CurrentMap.RoadsContainer, _initializator.ItemPositions);
+            _mapGenerator.GenerationAllMap(1);
+            _mapGenerator.GenerationAllMap(2);*/
+            // _mapGenerator.ShowMap();
+            // Agava.YandexGames.Utility.PlayerPrefs.Load(onSuccessCallback: _itemsStorage.Load);
+            _itemsStorage.Load();
+        }
+    }
+
+    /*private void Start()
     {
         int value = _load.Get(LastActiveMap, _startValue);
 
@@ -30,5 +84,5 @@ public class Bootstrap : MonoBehaviour
             // Agava.YandexGames.Utility.PlayerPrefs.Load(onSuccessCallback: _itemsStorage.Load);
             _itemsStorage.Load();
         }
-    }
+    }*/
 }

@@ -87,11 +87,11 @@ public class StartButton : AbstractButton
         _bonusesStart.ApplyBonuses();
         _save.SetData(LastActiveMap, _selectMap);
         _save.SetData(Map + 1, _selectMap);*/
-        _save.SetData(LastActiveMap, _selectMap);
-        _save.SetData(Map + 1, _selectMap);
+        /*_save.SetData(LastActiveMap, _selectMap);
+        _save.SetData(Map + 1, _selectMap);*/
     }
 
-    public void DeactivateItems()
+    /*public void DeactivateItems()
     {
         Transform[] children = _container.GetComponentsInChildren<Transform>(true);
 
@@ -105,5 +105,5 @@ public class StartButton : AbstractButton
                 }
             }
         }
-    }
+    }*/
 }

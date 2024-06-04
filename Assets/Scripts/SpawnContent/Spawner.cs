@@ -14,6 +14,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] private Transform[] _environment;
     [SerializeField] private ChooseMap _chooseMap;
     [SerializeField] private VisualItemsDeactivator _visualItemsDeactivator;
+    [SerializeField] private Initializator _initializator;
     
     [SerializeField] private Item _prefabItem;
     [SerializeField] private ItemPosition[] _positions;
@@ -72,7 +73,8 @@ private List<ItemPosition > _itemPos = new List<ItemPosition>();
 
     public ItemPosition GetPosition()
     {
-        List<ItemPosition> freePositions = _itemPos
+        _visualItemsDeactivator.SetPositions(_initializator.ItemPositions);
+        List<ItemPosition> freePositions = _initializator.ItemPositions
             .Where(p => !p.GetComponent<ItemPosition>().IsBusy && !p.GetComponent<ItemPosition>().IsWater).ToList();
         int randomIndex = Random.Range(0, freePositions.Count);
 
@@ -137,9 +139,27 @@ private List<ItemPosition > _itemPos = new List<ItemPosition>();
         // Item item = Instantiate(_prefabItem, _position.transform.position, Quaternion.identity);
         // Debug.Log("Spawner");
         Item item = Instantiate(_dropGenerator.GetItem(), _position.transform.position,
-            Quaternion.identity,_container);
+            Quaternion.identity,_initializator.CurrentMap.ItemsContainer);
         _itemDragger.SetItem(item, _position);
         ItemCreated?.Invoke();
         LooksNeighbors?.Invoke(_position, item);
     }
+    
+    /*private IEnumerator CreateNewItem()
+    {
+        yield return _waitForSeconds;
+
+        _position = GetPosition();
+
+        if (_position == null)
+            yield break;
+
+        // Item item = Instantiate(_prefabItem, _position.transform.position, Quaternion.identity);
+        // Debug.Log("Spawner");
+        Item item = Instantiate(_dropGenerator.GetItem(), _position.transform.position,
+            Quaternion.identity,_container);
+        _itemDragger.SetItem(item, _position);
+        ItemCreated?.Invoke();
+        LooksNeighbors?.Invoke(_position, item);
+    }*/
 }

@@ -1,16 +1,15 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using ItemContent;
 using ItemPositionContent;
 using MapsContent;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class MapGenerator : MonoBehaviour
 {
     [SerializeField] private Transform[] _environments;
+    [SerializeField] private Initializator _initializator;
 
     private List<Territory> _targetTerritories = new List<Territory>();
     private List<FinderPositions> _targetFinderPositions = new List<FinderPositions>();
@@ -31,7 +30,7 @@ public class MapGenerator : MonoBehaviour
 
     public event Action GenerationCompleted;
 
-    private void Start()
+    /*private void Start()
     {
         foreach (var environment in _environments)
         {
@@ -81,13 +80,66 @@ public class MapGenerator : MonoBehaviour
                 // _roadGenerator.DeactivateRoad();
             }
 
-            TestShowMap(_targetTerritories, _targetFinderPositions, environment.GetComponent<Map>().RoadsContainer, _targetItemPositions);
+            TestShowMap(_targetTerritories, _targetFinderPositions, environment.GetComponent<Map>().RoadsContainer,
+                _targetItemPositions);
         }
 
 
         // _roadGenerator.TestGeneration(_targetItemPositions);
 
         // StartCoroutine(StartTestGenerationFirstMap(_targetTerritories,_targetFinderPositions));
+    }*/
+
+    public void GenerationAllMap(int index)
+    {
+        _targetTerritories = new List<Territory>();
+            _targetFinderPositions = new List<FinderPositions>();
+            _targetItemPositions = new List<ItemPosition>();
+
+            Territory[] territories = _environments[index].GetComponentsInChildren<Territory>(true);
+
+            foreach (var territory in territories)
+            {
+                if (!_targetTerritories.Contains(territory))
+                {
+                    _targetTerritories.Add(territory);
+                }
+            }
+
+            FinderPositions[] finderPositionScripts = _environments[index].GetComponentsInChildren<FinderPositions>(true);
+
+            foreach (FinderPositions finderPositionScript in finderPositionScripts)
+            {
+                if (!_targetFinderPositions.Contains(finderPositionScript))
+                {
+                    _targetFinderPositions.Add(finderPositionScript);
+                }
+            }
+
+            ItemPosition[] itemPositions = _environments[index].GetComponentsInChildren<ItemPosition>(true);
+
+            foreach (var itemPosition in itemPositions)
+            {
+                if (!itemPosition.enabled)
+                    continue;
+
+                if (!_targetItemPositions.Contains(itemPosition))
+                {
+                    _targetItemPositions.Add(itemPosition);
+                }
+            }
+
+            foreach (var territory in _targetTerritories)
+            {
+                // territory.PositionDeactivation();
+
+                territory.gameObject.SetActive(false);
+
+                // _roadGenerator.DeactivateRoad();
+            }
+
+            TestShowMap(_targetTerritories, _targetFinderPositions, _environments[index].GetComponent<Map>().RoadsContainer,
+                _targetItemPositions);
     }
     /*
     private void Start()
@@ -190,7 +242,20 @@ public class MapGenerator : MonoBehaviour
         GenerationCompleted?.Invoke();*/
     }
 
-    public IEnumerator StartTestGenerationFirstMap(List<Territory> territories, List<FinderPositions> finderPositions)
+    public void ShowTestFirstMap(List<Territory> territories,List<FinderPositions> finderPositions,List<ItemPosition>itemPositions,Transform container)
+    {
+        foreach (var territory in territories)
+        {
+            // territory.PositionDeactivation();
+            territory.gameObject.SetActive(false);
+            // _roadGenerator.DeactivateRoad();
+        }
+
+        StartCoroutine(StartTestGenerationFirstMap(territories,finderPositions,itemPositions,container));
+    
+    }
+    
+    public IEnumerator StartTestGenerationFirstMap(List<Territory> territories, List<FinderPositions> finderPositions,List<ItemPosition>itemPositions,Transform container)
     {
         foreach (var territory in territories)
         {
@@ -218,6 +283,7 @@ public class MapGenerator : MonoBehaviour
             finderPosition.FindNeighbor();
 
         yield return _waitForSecondsMoment;
+        _roadGenerator.TestGeneration(itemPositions,container);
         // _roadGenerator.OnGeneration();
         yield return _waitForSecondsMoment;
         /*_spawner.OnCreateItem();
@@ -286,7 +352,7 @@ public class MapGenerator : MonoBehaviour
         {
             // territory.PositionDeactivation();
             territory.gameObject.SetActive(false);
-            _roadGenerator.DeactivateRoad();
+            // _roadGenerator.DeactivateRoad();
         }
 
         StartCoroutine(StartTestGenerationTerritory(territories, finderPositions));
@@ -319,6 +385,12 @@ public class MapGenerator : MonoBehaviour
         foreach (var finderPosition in finderPositions)
             finderPosition.FindNeighbor();
 
+        yield return _waitForSecondsMoment;
+        _roadGenerator.TestGeneration(_initializator.ItemPositions, _initializator.CurrentMap.RoadsContainer);
+        Debug.Log("ЕУСТ " + _initializator.CurrentMap.name);
+        yield return _waitForSecondsMoment;
+        _spawner.OnCreateItem();
+
         /*yield return _waitForSecondsMoment;
         _roadGenerator.OnGeneration();
         yield return _waitForSecondsMoment;
@@ -326,4 +398,20 @@ public class MapGenerator : MonoBehaviour
         yield return _waitForSecondsTri;
         GenerationCompleted?.Invoke();*/
     }
+
+
+    /*public void ShowTestFirstMap(List<Territory> territories,List<FinderPositions> finderPositions)
+    {
+        foreach (var territory in territories)
+        {
+            // territory.PositionDeactivation();
+            territory.gameObject.SetActive(false);
+            // _roadGenerator.DeactivateRoad();
+        }
+
+        StartCoroutine(StartTestGenerationFirstMap(territories,finderPosition));
+    
+}*/
+
+    
 }

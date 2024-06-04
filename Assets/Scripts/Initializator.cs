@@ -1,13 +1,16 @@
+using System;
 using System.Collections.Generic;
 using ItemPositionContent;
 using MapsContent;
+using SaveAndLoad;
 using UnityEngine;
 
 public class Initializator : MonoBehaviour
 {
     [SerializeField] private Transform[] _environments;
     [SerializeField] private ChooseMap _chooseMap;
-
+    [SerializeField] private Load _load;
+    
     private List<ItemPosition> _currentItemPositions = new List<ItemPosition>();
     private List<Territory> _currentTerritories = new List<Territory>();
     private List<FinderPositions> _currentFinderPositions = new List<FinderPositions>();
@@ -15,6 +18,10 @@ public class Initializator : MonoBehaviour
     private Map _currentMap;
     private int _index;
 
+    public int Index => _index;
+
+    public int AmountMaps;
+    
     public Transform Container => _container;
 
     public List<FinderPositions> FinderPositions => _currentFinderPositions;
@@ -24,7 +31,12 @@ public class Initializator : MonoBehaviour
     public List<ItemPosition> ItemPositions => _currentItemPositions;
         
     public Map CurrentMap => _currentMap;
-    
+
+    private void Awake()
+    {
+        AmountMaps = _environments.Length;
+    }
+
     private void OnEnable()
     {
         _chooseMap.MapChanged += SetIndex;
@@ -35,7 +47,7 @@ public class Initializator : MonoBehaviour
         _chooseMap.MapChanged -= SetIndex;
     }
 
-    private void SetIndex(int index)
+    public void SetIndex(int index)
     {
         _index = index;
     }

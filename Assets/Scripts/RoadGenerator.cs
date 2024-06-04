@@ -8,6 +8,9 @@ using UnityEngine;
 
 public class RoadGenerator : MonoBehaviour
 {
+    [SerializeField] private Initializator _initializator;
+
+
     [SerializeField] private Spawner _spawner;
     [SerializeField] private ItemPosition[] _itemPositions;
     [SerializeField] private Merger _merger;
@@ -106,6 +109,43 @@ public class RoadGenerator : MonoBehaviour
 
     private IEnumerator CreateRoad()
     {
+        Debug.Log("Createeeeee");
+        yield return _waitForSeconds;
+
+        foreach (ItemPosition itemPosition in _initializator.ItemPositions)
+        {
+            if (itemPosition.IsWater || itemPosition.IsElevation)
+            {
+                continue;
+            }
+
+            if (!itemPosition.IsBusy)
+            {
+                string surroundingTiles = CheckSurroundingTiles(itemPosition);
+                ItemPosition selectedTile = Instantiate(_tileConfigurations[surroundingTiles],
+                    itemPosition.transform.position, _initializator.CurrentMap.RoadsContainer.transform.rotation,
+                    _initializator.CurrentMap.RoadsContainer);
+
+                itemPosition.SetRoad(selectedTile);
+            }
+
+            else
+            {
+                ItemPosition selectedTile =
+                    Instantiate(_clearTile, itemPosition.transform.position,
+                        _initializator.CurrentMap.RoadsContainer.transform.rotation,
+                        _initializator.CurrentMap.RoadsContainer);
+
+                itemPosition.SetRoad(selectedTile);
+            }
+
+            yield return null;
+        }
+    }
+
+    /*private IEnumerator CreateRoad()
+    {
+        Debug.Log("Createeeeee");
         yield return _waitForSeconds;
 
         foreach (ItemPosition itemPosition in _itemPositions)
@@ -134,7 +174,7 @@ public class RoadGenerator : MonoBehaviour
 
             yield return null;
         }
-    }
+    }*/
 
     private string CheckSurroundingTiles(ItemPosition itemPosition)
     {
@@ -163,12 +203,12 @@ public class RoadGenerator : MonoBehaviour
         return surroundingTiles;
     }
 
-    public void TestGeneration(List<ItemPosition> itemPositions,Transform container)
+    public void TestGeneration(List<ItemPosition> itemPositions, Transform container)
     {
-        StartCoroutine(TestCreateRoad(itemPositions,container));
+        StartCoroutine(TestCreateRoad(itemPositions, container));
     }
 
-    private IEnumerator TestCreateRoad(List<ItemPosition> itemPositions,Transform container)
+    private IEnumerator TestCreateRoad(List<ItemPosition> itemPositions, Transform container)
     {
         yield return _waitForSeconds;
 
@@ -184,7 +224,9 @@ public class RoadGenerator : MonoBehaviour
                 string surroundingTiles = CheckSurroundingTiles(itemPosition);
                 ItemPosition selectedTile = Instantiate(_tileConfigurations[surroundingTiles],
                     itemPosition.transform.position, container.transform.rotation, container);
-
+                
+                // Debug.Log("CONTAINER " + container.name);
+                
                 itemPosition.SetRoad(selectedTile);
             }
 
@@ -203,7 +245,7 @@ public class RoadGenerator : MonoBehaviour
     public void TestCreateRoadOneMoment(List<ItemPosition> itemPositions, Transform container)
     {
         Debug.Log("Moment " + container.name);
-        
+
         foreach (ItemPosition itemPosition in itemPositions)
         {
             if (itemPosition.IsWater || itemPosition.IsElevation)
