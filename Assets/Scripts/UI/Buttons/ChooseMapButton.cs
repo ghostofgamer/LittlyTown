@@ -8,6 +8,7 @@ public class ChooseMapButton : AbstractButton
 
     protected override void OnClick()
     {
+        AudioSource.PlayOneShot(AudioSource.clip);
         _chooseMap.ChangeMap(_index);
     }
 }

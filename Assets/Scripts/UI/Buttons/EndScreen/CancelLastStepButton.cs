@@ -9,6 +9,7 @@ namespace UI.Buttons.EndScreen
         [SerializeField] private MovesKeeper _movesKeeper;
         [SerializeField] private EndPositionScreen _endPositionScreen;
         [SerializeField] private GameLevelScreen _gameLevelScreen;
+        [SerializeField] private Blur _blur;
         
         protected override void OnClick()
         {
@@ -16,6 +17,7 @@ namespace UI.Buttons.EndScreen
             _gameLevelScreen.Open();
             AudioSource.PlayOneShot(AudioSource.clip);
             _movesKeeper.CancelLastStep();
+            _blur.TurnOff();
         }
     }
 }

@@ -13,6 +13,8 @@ public class ChooseMapScreen : AbstractScreen
     [SerializeField] private GameObject _restartButton;
     [SerializeField] private Load _load;
     [SerializeField]private CameraMovement _cameraMovement;
+    [SerializeField] private ChooseMap _chooseMap;
+    [SerializeField] private GameObject _mapInformation;
 
     private int _startValue = 0;
     private int _currentvalue;
@@ -30,12 +32,16 @@ public class ChooseMapScreen : AbstractScreen
         base.Open();
         _itemDragger.SwitchOff();
         _cameraMovement.ZoomOut();
+        _chooseMap.enabled = true;
+        _mapInformation.SetActive(true);
     }
 
     public override void Close()
     {
         base.Close();
         _cameraMovement.ResetZoom();
+        _chooseMap.enabled = false;
+        _mapInformation.SetActive(false);
     }
 
     private void CheckActivation()

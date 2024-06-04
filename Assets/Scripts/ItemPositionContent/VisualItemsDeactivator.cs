@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace ItemPositionContent
@@ -25,6 +26,19 @@ namespace ItemPositionContent
         {
             foreach (var position in _itemPositions)
                 position.DeactivateVisual();
+        }
+
+        public void SetPositions(List<ItemPosition> itemPositions)
+        {
+            List<VisualItemPosition> deactivatedPositions = new List<VisualItemPosition>();
+
+            foreach (var position in itemPositions)
+            {
+                if(position.GetComponent<VisualItemPosition>())
+                    deactivatedPositions.Add(position.GetComponent<VisualItemPosition>());
+            }
+
+            _itemPositions = deactivatedPositions;
         }
     }
 }

@@ -29,13 +29,23 @@ public class StartButton : AbstractButton
     [SerializeField] private PackageLittleTown _packageLittleTown;
     [SerializeField] private BonusesStart _bonusesStart;
 
+    [SerializeField] private Spawner _spawner;
+    
+    [SerializeField]private StartMap _startMap;
+    
     private int _selectMap = 1;
 
     protected override void OnClick()
     {
+        _startMap.StartCreate();
+        
+        
+        
+        /*
+        /*_spawner.SetPositions();#1#
+
         DeactivateItems();
         _itemDragger.ClearAll();
-
         _storage.ClearItem();
         _movesKeeper.ClearAllHistory();
         _goldWallet.SetInitialvalue();
@@ -70,11 +80,13 @@ public class StartButton : AbstractButton
         /*foreach (var itemPosition in _itemPositions)
         {
             itemPosition.GetComponent<FinderPositions>().FindNeighbor();
-        }*/
+        }#1#
 
         _mapGenerator.Generation();
         _itemDragger.SwitchOn();
         _bonusesStart.ApplyBonuses();
+        _save.SetData(LastActiveMap, _selectMap);
+        _save.SetData(Map + 1, _selectMap);*/
         _save.SetData(LastActiveMap, _selectMap);
         _save.SetData(Map + 1, _selectMap);
     }

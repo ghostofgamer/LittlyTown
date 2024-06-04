@@ -1,8 +1,12 @@
+using ItemPositionContent;
 using UnityEngine;
 
 public class Territory : MonoBehaviour
 {
     [SerializeField] private PositionScaller[] _positionScallers;
+    [SerializeField] private ItemPosition[] _itemPositions;
+
+    public ItemPosition[] ItemPositions => _itemPositions;
 
     public void PositionActivation()
     {

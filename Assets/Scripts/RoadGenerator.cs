@@ -12,10 +12,10 @@ public class RoadGenerator : MonoBehaviour
     [SerializeField] private ItemPosition[] _itemPositions;
     [SerializeField] private Merger _merger;
     [SerializeField] private Transform _container;
-    [SerializeField]private RemovalItems _removalItems;
+    [SerializeField] private RemovalItems _removalItems;
     [SerializeField] private ReplacementPosition _replacementPosition;
     [SerializeField] private ItemDragger _itemDragger;
-    
+
     [Header("Tiles")] [SerializeField] private ItemPosition _angularTileUpRight;
     [SerializeField] private ItemPosition _angularTileUpLeft;
     [SerializeField] private ItemPosition _angularTileDownLeft;
@@ -81,7 +81,7 @@ public class RoadGenerator : MonoBehaviour
     public void OnGeneration()
     {
         // Debug.Log("OnGeneration");
-        
+
         if (_coroutine != null)
             StopCoroutine(_coroutine);
 
@@ -92,7 +92,6 @@ public class RoadGenerator : MonoBehaviour
     {
         Transform[] children = _container.GetComponentsInChildren<Transform>(true);
 
-        // Если детей больше 0, выключаем их
         if (children.Length > 0)
         {
             foreach (Transform child in children)
@@ -104,23 +103,23 @@ public class RoadGenerator : MonoBehaviour
             }
         }
     }
-    
+
     private IEnumerator CreateRoad()
     {
         yield return _waitForSeconds;
 
         foreach (ItemPosition itemPosition in _itemPositions)
         {
-            if (itemPosition.IsWater||itemPosition.IsElevation)
+            if (itemPosition.IsWater || itemPosition.IsElevation)
             {
                 continue;
             }
-            
+
             if (!itemPosition.IsBusy)
             {
                 string surroundingTiles = CheckSurroundingTiles(itemPosition);
                 ItemPosition selectedTile = Instantiate(_tileConfigurations[surroundingTiles],
-                    itemPosition.transform.position, _container.transform.rotation,_container);
+                    itemPosition.transform.position, _container.transform.rotation, _container);
 
                 itemPosition.SetRoad(selectedTile);
             }
@@ -128,7 +127,7 @@ public class RoadGenerator : MonoBehaviour
             else
             {
                 ItemPosition selectedTile =
-                    Instantiate(_clearTile, itemPosition.transform.position, _container.transform.rotation,_container);
+                    Instantiate(_clearTile, itemPosition.transform.position, _container.transform.rotation, _container);
 
                 itemPosition.SetRoad(selectedTile);
             }
@@ -162,5 +161,72 @@ public class RoadGenerator : MonoBehaviour
         }
 
         return surroundingTiles;
+    }
+
+    public void TestGeneration(List<ItemPosition> itemPositions,Transform container)
+    {
+        StartCoroutine(TestCreateRoad(itemPositions,container));
+    }
+
+    private IEnumerator TestCreateRoad(List<ItemPosition> itemPositions,Transform container)
+    {
+        yield return _waitForSeconds;
+
+        foreach (ItemPosition itemPosition in itemPositions)
+        {
+            if (itemPosition.IsWater || itemPosition.IsElevation)
+            {
+                continue;
+            }
+
+            if (!itemPosition.IsBusy)
+            {
+                string surroundingTiles = CheckSurroundingTiles(itemPosition);
+                ItemPosition selectedTile = Instantiate(_tileConfigurations[surroundingTiles],
+                    itemPosition.transform.position, container.transform.rotation, container);
+
+                itemPosition.SetRoad(selectedTile);
+            }
+
+            else
+            {
+                ItemPosition selectedTile =
+                    Instantiate(_clearTile, itemPosition.transform.position, container.transform.rotation, container);
+
+                itemPosition.SetRoad(selectedTile);
+            }
+
+            yield return null;
+        }
+    }
+
+    public void TestCreateRoadOneMoment(List<ItemPosition> itemPositions, Transform container)
+    {
+        Debug.Log("Moment " + container.name);
+        
+        foreach (ItemPosition itemPosition in itemPositions)
+        {
+            if (itemPosition.IsWater || itemPosition.IsElevation)
+            {
+                continue;
+            }
+
+            if (!itemPosition.IsBusy)
+            {
+                string surroundingTiles = CheckSurroundingTiles(itemPosition);
+                ItemPosition selectedTile = Instantiate(_tileConfigurations[surroundingTiles],
+                    itemPosition.transform.position, container.transform.rotation, container);
+
+                itemPosition.SetRoad(selectedTile);
+            }
+
+            else
+            {
+                ItemPosition selectedTile =
+                    Instantiate(_clearTile, itemPosition.transform.position, container.transform.rotation, container);
+
+                itemPosition.SetRoad(selectedTile);
+            }
+        }
     }
 }

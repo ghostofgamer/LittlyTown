@@ -1095,6 +1095,7 @@
             <e p="SoundMixer.cs" t="Include" />
             <e p="Upgrades.cs" t="Include" />
           </e>
+          <e p="Environment.cs" t="Include" />
           <e p="EnvironmentMovement.cs" t="Include" />
           <e p="FadeCanvas.cs" t="Include" />
           <e p="GoalContent" t="Include">
@@ -1106,6 +1107,7 @@
             <e p="GoalsCounter.cs" t="Include" />
           </e>
           <e p="GoldMovement.cs" t="Include" />
+          <e p="Initializator.cs" t="Include" />
           <e p="ItemContent" t="Include">
             <e p="House.cs" t="Include" />
             <e p="Item.cs" t="Include" />
@@ -1187,6 +1189,7 @@
             <e p="DropGenerator.cs" t="Include" />
             <e p="Spawner.cs" t="Include" />
           </e>
+          <e p="StartMap.cs" t="Include" />
           <e p="Storage.cs" t="Include" />
           <e p="Territory.cs" t="Include" />
           <e p="Test" t="Include">

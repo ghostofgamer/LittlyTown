@@ -5,11 +5,16 @@ using System.Linq;
 using Dragger;
 using ItemContent;
 using ItemPositionContent;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class Spawner : MonoBehaviour
 {
+    [SerializeField] private Transform[] _environment;
+    [SerializeField] private ChooseMap _chooseMap;
+    [SerializeField] private VisualItemsDeactivator _visualItemsDeactivator;
+    
     [SerializeField] private Item _prefabItem;
     [SerializeField] private ItemPosition[] _positions;
     [SerializeField] private ItemDragger _itemDragger;
@@ -23,12 +28,18 @@ public class Spawner : MonoBehaviour
     private Coroutine _coroutine;
     private ItemPosition _position;
 
+    
+    
     public event Action ItemCreated;
 
     public event Action PositionsFilled;
 
     public event Action<ItemPosition, Item> LooksNeighbors;
 
+
+private List<ItemPosition > _itemPos = new List<ItemPosition>();
+    private int _index;
+    
     private void Start()
     {
         // OnCreateItem();
@@ -38,12 +49,14 @@ public class Spawner : MonoBehaviour
     {
         _positionMatcher.NotMerged += OnCreateItem;
         _lookMerger.NotMerged += OnCreateItem;
+        _chooseMap.MapChanged += SetIndex;
     }
 
     private void OnDisable()
     {
         _positionMatcher.NotMerged -= OnCreateItem;
         _lookMerger.NotMerged -= OnCreateItem;
+        _chooseMap.MapChanged -= SetIndex;
     }
 
     public void OnCreateItem()
@@ -59,6 +72,22 @@ public class Spawner : MonoBehaviour
 
     public ItemPosition GetPosition()
     {
+        List<ItemPosition> freePositions = _itemPos
+            .Where(p => !p.GetComponent<ItemPosition>().IsBusy && !p.GetComponent<ItemPosition>().IsWater).ToList();
+        int randomIndex = Random.Range(0, freePositions.Count);
+
+        if (freePositions.Count <= 0)
+        {
+            PositionsFilled?.Invoke();
+            return null;
+        }
+
+        ItemPosition randomFreePosition = freePositions[randomIndex];
+        return randomFreePosition;
+    }
+
+    /*public ItemPosition GetPosition()
+    {
         List<ItemPosition> freePositions = _positions
             .Where(p => !p.GetComponent<ItemPosition>().IsBusy && !p.GetComponent<ItemPosition>().IsWater).ToList();
         int randomIndex = Random.Range(0, freePositions.Count);
@@ -71,6 +100,29 @@ public class Spawner : MonoBehaviour
 
         ItemPosition randomFreePosition = freePositions[randomIndex];
         return randomFreePosition;
+    }*/
+    
+    public void SetPositions()
+    {
+        ItemPosition[] itemPositions = _environment[_index].GetComponentsInChildren<ItemPosition>(true);
+
+        foreach (var itemPosition in itemPositions)
+        {
+            if (!itemPosition.enabled)
+                continue;
+            
+            if (!_itemPos.Contains(itemPosition))
+            {
+                _itemPos.Add(itemPosition);
+            }
+        }
+        
+        _visualItemsDeactivator.SetPositions(_itemPos);
+    }
+
+    private void SetIndex(int index)
+    {
+        _index=index;                
     }
 
     private IEnumerator CreateNewItem()
