@@ -27,7 +27,7 @@ namespace GoalContent
             {
                 foreach (var t in _goalSaver.Indexes)
                 {
-                    Debug.Log(t);
+                    // Debug.Log(t);
                     _currentGoals.Add(_goals[t]);
                     ActivationGoals();
                 }
@@ -59,7 +59,7 @@ namespace GoalContent
             }
             else
             {
-                Debug.Log("GoalSaver     false");
+                // Debug.Log("GoalSaver     false");
                 if (_currentGoals.Count == 0)
                     InitializeGoals();
             }

@@ -12,6 +12,9 @@ using Wallets;
 
 public class MovesKeeper : MonoBehaviour
 {
+    private const string ItemStorageSave = "ItemStorageSave";
+    [SerializeField] private Initializator _initializator;
+    
     [SerializeField] private ItemDragger _itemDragger;
     [SerializeField] private ItemsStorage _itemsStorage;
     [SerializeField] private ItemPosition[] _itemPositions;
@@ -43,6 +46,8 @@ public class MovesKeeper : MonoBehaviour
     [SerializeField] private ReplacementPosition _replacementPosition;
     [SerializeField] private RemovalItems _removalItems;
 
+    private SaveData _saveData;
+    
     private void OnEnable()
     {
         _itemDragger.StepCompleted += SaveHistory;
@@ -132,13 +137,22 @@ public class MovesKeeper : MonoBehaviour
             // _savesHistory.RemoveAt(0);
             _savesHistory.Clear();
         }
-
-        SaveData saveDate = _itemsStorage.GetSaveData();
+        
+        if (PlayerPrefs.HasKey(ItemStorageSave + _initializator.CurrentMap.Index))
+        {
+            string jsonData = PlayerPrefs.GetString(ItemStorageSave + _initializator.CurrentMap.Index);
+            _saveData  = JsonUtility.FromJson<SaveData>(jsonData);
+            
+        }
+        // SaveData saveDate = _itemsStorage.GetSaveData();
+        
+        
+        
         // Debug.Log("ПОЛОЖИЛИ " + saveDate.ItemDropData.PrefabItem.ItemName);
-        saveDate.SelectItemData.ItemPosition = itemPosition;
+        _saveData.SelectItemData.ItemPosition = itemPosition;
         // Debug.Log("SelecItemPosition Save History  " + saveDate.SelectItemData.ItemPosition);
 
-        _savesHistory.Add(saveDate);
+        _savesHistory.Add(_saveData);
         _currentStep = _savesHistory.Count;
         StepChanged?.Invoke(_currentStep);
         // Debug.Log("CurrentStep  " + _currentStep);

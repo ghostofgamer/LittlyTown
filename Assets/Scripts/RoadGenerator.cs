@@ -255,6 +255,7 @@ public class RoadGenerator : MonoBehaviour
 
             if (!itemPosition.IsBusy)
             {
+                Debug.Log("Не бизи  " + itemPosition.name);
                 string surroundingTiles = CheckSurroundingTiles(itemPosition);
                 ItemPosition selectedTile = Instantiate(_tileConfigurations[surroundingTiles],
                     itemPosition.transform.position, container.transform.rotation, container);
@@ -264,6 +265,7 @@ public class RoadGenerator : MonoBehaviour
 
             else
             {
+                Debug.Log("бизи  " + itemPosition.name);
                 ItemPosition selectedTile =
                     Instantiate(_clearTile, itemPosition.transform.position, container.transform.rotation, container);
 

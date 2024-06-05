@@ -8,8 +8,8 @@ public class Bootstrap : MonoBehaviour
     [SerializeField] private MapGenerator _mapGenerator;
     [SerializeField] private ItemsStorage _itemsStorage;
     [SerializeField] private Initializator _initializator;
-[SerializeField]private ChooseMap _chooseMap;
-    
+    [SerializeField] private ChooseMap _chooseMap;
+
     private const string LastActiveMap = "LastActiveMap";
     private int _startValue = 0;
 
@@ -22,9 +22,9 @@ public class Bootstrap : MonoBehaviour
         int value = _load.Get(LastActiveMap, _startValue);
 
         int currentMap = _load.Get("Map", _startValue);
-        Debug.Log("!!!!");
+        // Debug.Log("!!!!");
         _chooseMap.SetPosition(currentMap);
-        
+
         if (value == 0)
         {
             _initializator.SetIndex(value);
@@ -32,7 +32,7 @@ public class Bootstrap : MonoBehaviour
 
             // _mapGenerator.ShowFirstMap();
             _mapGenerator.ShowTestFirstMap(_initializator.Territories, _initializator.FinderPositions,
-                _initializator.ItemPositions, _initializator.CurrentMap.RoadsContainer);
+                _initializator.ItemPositions, _initializator.CurrentMap.RoadsContainer,_initializator.CurrentMap.StartItems);
             _mapGenerator.GenerationAllMap(1);
             _mapGenerator.GenerationAllMap(2);
             Debug.Log("First");
@@ -46,7 +46,10 @@ public class Bootstrap : MonoBehaviour
 
             for (int i = 0; i < _initializator.AmountMaps; i++)
             {
-                if (i == currentMap)
+                _mapGenerator.GenerationAllMap(i);
+                
+                
+                /*if (i == currentMap)
                 {
                     _mapGenerator.TestShowMap(_initializator.Territories, _initializator.FinderPositions,
                         _initializator.CurrentMap.RoadsContainer, _initializator.ItemPositions);
@@ -56,7 +59,7 @@ public class Bootstrap : MonoBehaviour
                 {
                     _mapGenerator.GenerationAllMap(i);
                     Debug.Log("Загружаем остальные  " + +i);
-                }
+                }*/
             }
 
             /*Debug.Log(_initializator.CurrentMap.name);

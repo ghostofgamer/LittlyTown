@@ -14,6 +14,7 @@ public class ContinueButton : AbstractButton
 
     protected override void OnClick()
     {
+        _itemsStorage.LoadDataInfo();
         _itemDragger.SetItem(_itemsStorage.SelectSaveItem, _itemsStorage.SelectSaveItem.ItemPosition);
         // _itemDragger.SelectedObject.gameObject.SetActive(true);
         _itemDragger.SwitchOn();

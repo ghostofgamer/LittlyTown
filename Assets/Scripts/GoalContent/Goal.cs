@@ -78,7 +78,7 @@ namespace GoalContent
 
         public void SetValue(int currentValue)
         {
-            Debug.Log(currentValue);
+            // Debug.Log(currentValue);
             _currentValue = currentValue;
             Show();
             

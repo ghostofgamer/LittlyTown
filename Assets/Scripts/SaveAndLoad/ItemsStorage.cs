@@ -39,6 +39,7 @@ public class ItemsStorage : MonoBehaviour
     [SerializeField] private PossibilitieBulldozer _possibilitieBulldozer;
     [SerializeField] private PossibilitieReplace _possibilitieReplace;
     [SerializeField] private List<SaveData> _saveDatas = new List<SaveData>();
+    [SerializeField] private Initializator _initializator;
 
     private Coroutine _coroutine;
     private Coroutine _coroutineSignal;
@@ -117,7 +118,7 @@ public class ItemsStorage : MonoBehaviour
         _coroutine = StartCoroutine(Save());
     }*/
 
-    public void SaveChanges()
+    /*public void SaveChanges()
     {
         Debug.Log("Сохраняет ");
 
@@ -125,8 +126,20 @@ public class ItemsStorage : MonoBehaviour
             StopCoroutine(_coroutine);
 
         _coroutine = StartCoroutine(Save());
-    }
+    }*/
 
+    public void SaveChanges()
+    {
+        Debug.Log("Сохраняет ");
+
+        if (_coroutine != null)
+            StopCoroutine(_coroutine);
+
+        _coroutine = StartCoroutine(SaveDataInfo());
+    }
+    
+    
+    
     /*
     private void SaveSteps()
     {
@@ -150,10 +163,77 @@ public class ItemsStorage : MonoBehaviour
         StepChanged?.Invoke();
     }*/
 
+    private IEnumerator SaveDataInfo()
+    {
+        SaveData saveData = new SaveData();
+        List<ItemData> itemDatas = new List<ItemData>();
+        _saveData = saveData;
+
+        if (_itemDragger.SelectedObject != null)
+        {
+            /*_selectObject = _itemDragger.SelectedObject;
+            saveData.SelectItemDragger = _selectObject;*/
+            saveData.SelectItemData = new SelectItemData(_itemDragger.SelectedObject.ItemName,
+                _itemDragger.SelectedObject.ItemPosition);
+            SelectSaveItem = _itemDragger.SelectedObject;
+            // Debug.Log("сохраняем " + saveData.SelectItemData.ItemName + "   " + saveData.SelectItemData.ItemPosition);
+        }
+        
+        yield return new WaitForSeconds(0.165f);
+
+        foreach (var itemPosition in _initializator.ItemPositions)
+        {
+            /*if (itemPosition.Item != null && itemPosition.Item.ItemName != Items.Crane)
+            {
+                ItemData itemData = new ItemData(itemPosition.Item.ItemName, itemPosition);
+                itemDatas.Add(itemData);
+            }*/
+            if (itemPosition.Item != null)
+            {
+                ItemData itemData = new ItemData(itemPosition.Item.ItemName, itemPosition);
+                // Debug.Log("Сохр " + itemPosition.Item.ItemName);
+                itemDatas.Add(itemData);
+            }
+        }
+
+        yield return null;
+        saveData.ItemDatas = itemDatas;
+        string jsonData = JsonUtility.ToJson(saveData);
+        PlayerPrefs.SetString(ItemStorageSave + _initializator.Index, jsonData);
+        PlayerPrefs.Save();
+        Debug.Log("Сохранение Сцены Мап " + ItemStorageSave + _initializator.Index);
+        // SaveCompleted?.Invoke(saveData);
+    }
+
+
+    public void LoadDataInfo()
+    {
+        SaveData saveData = new SaveData();
+
+        if (PlayerPrefs.HasKey(ItemStorageSave+ _initializator.Index))
+        {
+            string jsonData = PlayerPrefs.GetString(ItemStorageSave+ _initializator.Index);
+            saveData = JsonUtility.FromJson<SaveData>(jsonData);
+        }
+        else
+        {
+            Debug.Log("нет сохранения");
+            return;
+        }
+        
+        Item selectItem = Instantiate(GetItem(saveData.SelectItemData.ItemName),
+            saveData.SelectItemData.ItemPosition.transform.position,
+            Quaternion.identity, _initializator.CurrentMap.ItemsContainer);
+
+        selectItem.Init(saveData.SelectItemData.ItemPosition);
+        selectItem.gameObject.SetActive(false);
+        SelectSaveItem = selectItem;
+    }
+    
     private IEnumerator Save()
     {
         SaveData saveData = new SaveData();
-        _saveData = saveData;
+        // _saveData = saveData;
 
         if (_itemDragger.SelectedObject != null)
         {
@@ -288,8 +368,9 @@ public class ItemsStorage : MonoBehaviour
             Debug.Log("Temporaru Item Save " + saveData.TemporaryItemDragger);
         }*/
         string jsonData = JsonUtility.ToJson(saveData);
-        PlayerPrefs.SetString(ItemStorageSave, jsonData);
+        PlayerPrefs.SetString(ItemStorageSave + _initializator.Index, jsonData);
         PlayerPrefs.Save();
+        Debug.Log("Сохранение Сцены Мап " + ItemStorageSave + _initializator.Index);
 
         /*string json = JsonUtility.ToJson(saveData);
         System.IO.File.WriteAllText(Application.persistentDataPath + "/save.json", json);
@@ -318,7 +399,7 @@ public class ItemsStorage : MonoBehaviour
         // Agava.YandexGames.Utility.PlayerPrefs.Load(onSuccessCallback:);
         // Agava.YandexGames.Utility.PlayerPrefs.Save();
         SaveData saveData = new SaveData();
-        
+
         if (PlayerPrefs.HasKey(ItemStorageSave))
         {
             string jsonData = PlayerPrefs.GetString(ItemStorageSave);
@@ -333,8 +414,9 @@ public class ItemsStorage : MonoBehaviour
 
         /*string json = System.IO.File.ReadAllText(Application.persistentDataPath + "/save.json");
         SaveData saveData = JsonUtility.FromJson<SaveData>(json);*/
-        _saveDatas.Add(saveData);
-        _saveData = saveData;
+        
+        /*_saveDatas.Add(saveData);
+        _saveData = saveData;*/
 
 
         // Debug.Log("Loading    " + saveData.ItemDatas.Count);

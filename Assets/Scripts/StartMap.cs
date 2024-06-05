@@ -13,7 +13,7 @@ public class StartMap : MonoBehaviour
 {
     private const string LastActiveMap = "LastActiveMap";
     private const string Map = "Map";
-    
+
     [SerializeField] private Initializator _initializator;
     [SerializeField] private ItemDragger _itemDragger;
     [SerializeField] private Storage _storage;
@@ -70,8 +70,9 @@ public class StartMap : MonoBehaviour
         if (_packageLittleTown.IsActive)
             _packageLittleTown.Activated();
 
-Debug.Log("Starting  " + _initializator.Index);
-        _mapGenerator.TestGeneration(_initializator.Territories, _initializator.FinderPositions);
+        Debug.Log("Starting  " + _initializator.Index);
+        _mapGenerator.TestGeneration(_initializator.Territories, _initializator.FinderPositions,
+            _initializator.CurrentMap.StartItems,_initializator.ItemPositions,_initializator.CurrentMap.ItemsContainer);
         _itemDragger.SwitchOn();
         _bonusesStart.ApplyBonuses();
     }
@@ -79,7 +80,7 @@ Debug.Log("Starting  " + _initializator.Index);
     public void DeactivateItems()
     {
         Debug.Log(_initializator.CurrentMap.name);
-        
+
         foreach (Transform child in _initializator.CurrentMap.RoadsContainer.transform)
         {
             child.gameObject.SetActive(false);
