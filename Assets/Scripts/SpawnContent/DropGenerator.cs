@@ -39,7 +39,7 @@ public class DropGenerator : MonoBehaviour
         ItemDropData = DropItem();
         // Debug.Log("ITEMDROPGENERATION " + ItemDropData);
         _nextItem = ItemDropData.PrefabItem;
-        
+
         return _currentItem;
     }
 
@@ -52,10 +52,10 @@ public class DropGenerator : MonoBehaviour
         ItemDropData = itemDropData;
         // Debug.Log("SETSO " + ItemDropData);
     }*/
-    
-    public void SetItem(Item itemPrefab,Sprite sprite)
+
+    public void SetItem(Item itemPrefab, Sprite sprite)
     {
-        _nextItem= itemPrefab;
+        _nextItem = itemPrefab;
         _image.sprite = sprite;
 
         foreach (var itemDropData in _itemDropsSO)
@@ -64,10 +64,10 @@ public class DropGenerator : MonoBehaviour
                 ItemDropData = itemDropData;
         }
     }
-    
-    public void NextLevel()
+
+    public void NextLevel(int value)
     {
-        _currentLevel++;
+        _currentLevel = value;
     }
 
     public void ResetLevel()
@@ -86,7 +86,7 @@ public class DropGenerator : MonoBehaviour
         }
 
         float randomPoint = Random.value * totalChance;
-        
+
         for (int i = 0; i < _itemDropsSO.Count; i++)
         {
             randomPoint -= CalculateDropChance(_itemDropsSO[i], _currentLevel);
@@ -101,7 +101,7 @@ public class DropGenerator : MonoBehaviour
 
         return _itemDropsSO[0];
     }
-    
+
     /*private Item DropItem()
     {
         float totalChance = 0f;

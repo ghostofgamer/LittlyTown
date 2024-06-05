@@ -17,16 +17,19 @@ namespace CountersContent
 
         private int _currentScore;
         private int _targetScore = 50;
+        private int _stepScore = 50;
         private int _scoreIncome = 0;
         private Vector3 _targetPosition;
-        private string _scoreText= "гол {0} очков";
-        
+        private string _scoreText = "гол {0} очков";
+
         public event Action<int, int> ScoreChanged;
 
         public event Action LevelChanged;
-        
+
+        public int Factor { get; private set; } = 1;
+
         public int CurrentScore => _currentScore;
-        
+
         private void OnEnable()
         {
             _merger.Merged += AddIncome;
@@ -46,12 +49,16 @@ namespace CountersContent
             Show();
         }
 
-        public void SetValue(int value)
+        public void SetValue(int value, int factor)
         {
             _currentScore = value;
+            Factor = factor;
+            _targetScore = Factor * _stepScore;
+            Show();
+            _dropGenerator.NextLevel(Factor);
             ScoreChanged?.Invoke(_currentScore, _targetScore);
         }
-        
+
         private void AddIncome(int countMatch, int reward, ItemPosition itemPosition)
         {
             _scoreIncome += reward * countMatch;
@@ -67,7 +74,7 @@ namespace CountersContent
 
             _currentScore += _scoreIncome;
             _visualScore.gameObject.SetActive(true);
-            _visualScore.ScoreMove(_currentScore,_targetPosition);
+            _visualScore.ScoreMove(_currentScore, _targetPosition);
             ScoreChanged?.Invoke(_currentScore, _targetScore);
 
             if (_currentScore >= _targetScore)
@@ -81,10 +88,11 @@ namespace CountersContent
 
         private void NextGoal()
         {
+            Factor++;
             _currentScore -= _targetScore;
-            _targetScore *= 2;
+            _targetScore = Factor * _stepScore;
             Show();
-            _dropGenerator.NextLevel();
+            _dropGenerator.NextLevel(Factor);
             ScoreChanged?.Invoke(_currentScore, _targetScore);
         }
 
@@ -97,6 +105,7 @@ namespace CountersContent
         {
             _currentScore = 0;
             _targetScore = 50;
+            Factor = 1;
             _dropGenerator.ResetLevel();
             Show();
             ScoreChanged?.Invoke(_currentScore, _targetScore);

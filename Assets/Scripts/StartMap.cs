@@ -13,10 +13,11 @@ public class StartMap : MonoBehaviour
 {
     private const string LastActiveMap = "LastActiveMap";
     private const string Map = "Map";
+    private const string FirstActiveMap = "FirstActiveMap";
 
     [SerializeField] private Initializator _initializator;
     [SerializeField] private ItemDragger _itemDragger;
-    [SerializeField] private Storage _storage;
+    [SerializeField] private Storage[] _storages;
     [SerializeField] private MovesKeeper _movesKeeper;
     [SerializeField] private GoldWallet _goldWallet;
     [SerializeField] private ScoreCounter _scoreCounter;
@@ -35,11 +36,17 @@ public class StartMap : MonoBehaviour
     {
         _save.SetData(LastActiveMap, _selectMap);
         _save.SetData(Map, _initializator.Index);
-        Debug.Log("до Филл " + _initializator.Index);
+        _save.SetData(FirstActiveMap + _initializator.Index, _selectMap);
+        // Debug.Log("до Филл " + _initializator.Index);
         _initializator.FillLists();
         DeactivateItems();
         _itemDragger.ClearAll();
-        _storage.ClearItem();
+
+        foreach (var storage in _storages)
+        {
+            storage.ClearItem();
+        }
+
         _movesKeeper.ClearAllHistory();
         _goldWallet.SetInitialvalue();
         _scoreCounter.ResetScore();
@@ -70,9 +77,10 @@ public class StartMap : MonoBehaviour
         if (_packageLittleTown.IsActive)
             _packageLittleTown.Activated();
 
-        Debug.Log("Starting  " + _initializator.Index);
+        // Debug.Log("Starting  " + _initializator.Index);
         _mapGenerator.TestGeneration(_initializator.Territories, _initializator.FinderPositions,
-            _initializator.CurrentMap.StartItems,_initializator.ItemPositions,_initializator.CurrentMap.ItemsContainer);
+            _initializator.CurrentMap.StartItems, _initializator.ItemPositions,
+            _initializator.CurrentMap.ItemsContainer);
         _itemDragger.SwitchOn();
         _bonusesStart.ApplyBonuses();
     }

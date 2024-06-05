@@ -124,7 +124,7 @@ private List<ItemPosition > _itemPos = new List<ItemPosition>();
 
     private void SetIndex(int index)
     {
-        _index=index;                
+        _index = index;                
     }
 
     private IEnumerator CreateNewItem()

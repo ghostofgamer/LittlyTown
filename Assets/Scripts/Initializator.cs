@@ -21,6 +21,8 @@ public class Initializator : MonoBehaviour
     public int Index => _index;
 
     public int AmountMaps;
+
+    public event Action IndexChanged; 
     
     public Transform Container => _container;
 
@@ -50,6 +52,7 @@ public class Initializator : MonoBehaviour
     public void SetIndex(int index)
     {
         _index = index;
+        IndexChanged?.Invoke();
     }
 
     public void FillLists()

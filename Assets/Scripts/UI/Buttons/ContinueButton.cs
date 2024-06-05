@@ -6,14 +6,19 @@ using UnityEngine;
 
 public class ContinueButton : AbstractButton
 {
+    private const string Map = "Map";
+    
     [SerializeField] private ItemDragger _itemDragger;
     [SerializeField] private Save _save;
     [SerializeField] private ItemsStorage _itemsStorage;
     [SerializeField] private PossibilitiesCounter[] _possibilitiesCounters;
     [SerializeField] private PackageLittleTown _packageLittleTown;
+    [SerializeField] private Initializator _initializator;
 
     protected override void OnClick()
     {
+        _save.SetData(Map, _initializator.Index);
+        _initializator.FillLists();
         _itemsStorage.LoadDataInfo();
         _itemDragger.SetItem(_itemsStorage.SelectSaveItem, _itemsStorage.SelectSaveItem.ItemPosition);
         // _itemDragger.SelectedObject.gameObject.SetActive(true);

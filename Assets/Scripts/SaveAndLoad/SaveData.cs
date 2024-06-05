@@ -12,6 +12,7 @@ public class SaveData
     public int GoldValue;
     public float MoveCount;
     public int ScoreValue;
+    public int FactorScoreValue;
     public Item StorageItem;
     public Item SelectItemDragger;
     public Item TemporaryItemDragger;

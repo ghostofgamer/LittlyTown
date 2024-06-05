@@ -71,7 +71,9 @@ namespace Dragger
         public void SetTemporaryObject(Item item)
         {
             _temporaryItem = item;
-            _temporaryItem.gameObject.SetActive(false);
+
+            if (_temporaryItem != null)
+                _temporaryItem.gameObject.SetActive(false);
         }
 
         public void SetItem(Item item, ItemPosition itemPosition)

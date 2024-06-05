@@ -1,3 +1,4 @@
+using System;
 using Dragger;
 using SaveAndLoad;
 using UI.Screens;
@@ -7,20 +8,31 @@ using UnityEngine.PlayerLoop;
 public class ChooseMapScreen : AbstractScreen
 {
     private const string LastActiveMap = "LastActiveMap";
+    private const string FirstActiveMap = "FirstActiveMap";
 
     [SerializeField] private ItemDragger _itemDragger;
     [SerializeField] private GameObject _startButton;
     [SerializeField] private GameObject _continueButton;
     [SerializeField] private GameObject _restartButton;
     [SerializeField] private Load _load;
-    [SerializeField]private CameraMovement _cameraMovement;
+    [SerializeField] private CameraMovement _cameraMovement;
     [SerializeField] private ChooseMap _chooseMap;
     [SerializeField] private GameObject _mapInformation;
     [SerializeField] private GameObject[] _mapInformations;
     [SerializeField] private Initializator _initializator;
     private int _startValue = 0;
     private int _currentValue;
-    
+
+    private void OnEnable()
+    {
+        _initializator.IndexChanged += ChangeActivationButton;
+    }
+
+    private void OnDisable()
+    {
+        _initializator.IndexChanged -= ChangeActivationButton;
+    }
+
     private void Start()
     {
         CheckActivation();
@@ -51,6 +63,24 @@ public class ChooseMapScreen : AbstractScreen
         _currentValue = _load.Get(LastActiveMap, _startValue);
 
         if (_currentValue > _startValue)
+        {
+            _startButton.SetActive(false);
+            _continueButton.SetActive(true);
+            _restartButton.SetActive(true);
+        }
+        else
+        {
+            _startButton.SetActive(true);
+            _continueButton.SetActive(false);
+            _restartButton.SetActive(false);
+        }
+    }
+
+    private void ChangeActivationButton()
+    {
+        int value = _load.Get(FirstActiveMap + _initializator.Index, _startValue);
+
+        if (value > _startValue)
         {
             _startButton.SetActive(false);
             _continueButton.SetActive(true);

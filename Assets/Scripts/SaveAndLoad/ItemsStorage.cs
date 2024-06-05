@@ -137,9 +137,8 @@ public class ItemsStorage : MonoBehaviour
 
         _coroutine = StartCoroutine(SaveDataInfo());
     }
-    
-    
-    
+
+
     /*
     private void SaveSteps()
     {
@@ -178,7 +177,7 @@ public class ItemsStorage : MonoBehaviour
             SelectSaveItem = _itemDragger.SelectedObject;
             // Debug.Log("сохраняем " + saveData.SelectItemData.ItemName + "   " + saveData.SelectItemData.ItemPosition);
         }
-        
+
         yield return new WaitForSeconds(0.165f);
 
         foreach (var itemPosition in _initializator.ItemPositions)
@@ -196,12 +195,89 @@ public class ItemsStorage : MonoBehaviour
             }
         }
 
-        yield return null;
+        if (_itemDragger.TemporaryItem != null)
+        {
+            // Debug.Log("Временные айтэм есть " + _itemDragger.TemporaryItem);
+            saveData.TemporaryItem =
+                new ItemData(_itemDragger.TemporaryItem.ItemName, null, _itemDragger.TemporaryItem.Price);
+        }
+        else
+        {
+            // Debug.Log("Временные айтэм неть ");
+            saveData.TemporaryItem = new ItemData(Items.Empty, null, 0);
+        }
+
+        List<ItemData> itemDataPrice = new List<ItemData>();
+
+        foreach (var item in _shopItems.Items)
+        {
+            ItemData itemData = new ItemData(item.ItemName, null, item.Price);
+            itemDataPrice.Add(itemData);
+        }
+
+        saveData.PossibilitiesItemsData = new PossibilitiesItemsData(_possibilitieBulldozer, _possibilitieReplace,
+            _possibilitieBulldozer.Price, _possibilitieReplace.Price);
+
+        saveData.ItemDatasPrices = itemDataPrice;
+
+        if (_dropGenerator.ItemDropData != null)
+        {
+            saveData.ItemDropData =
+                new ItemDropData(_dropGenerator.ItemDropData.Icon, _dropGenerator.ItemDropData.PrefabItem);
+            // Debug.Log("ItemDropData " + saveData.ItemDropData.PrefabItem.ItemName);
+        }
+        else
+            saveData.ItemDropData = null;
+
+
         saveData.ItemDatas = itemDatas;
+        saveData.BulldozerCount = _bulldozerCounter.PossibilitiesCount;
+        saveData.ReplaceCount = _replaceCounter.PossibilitiesCount;
+        saveData.GoldValue = _goldWallet.CurrentValue;
+        saveData.ScoreValue = _scoreCounter.CurrentScore;
+        saveData.FactorScoreValue = _scoreCounter.Factor;
+        // Debug.Log("SCORE Factory Save " + saveData.FactorScoreValue);
+        if (_storage.CurrentItem != null)
+        {
+            Debug.Log("CurrentStorageSave " + _storage.CurrentItem.ItemName);
+            saveData.StorageItemData =
+                new StorageItemData(_storage.CurrentItem.ItemName, _storage.CurrentItem.ItemPosition);
+        }
+        else
+        {
+            Debug.Log("CurrentStorageSave NUll!!! ");
+            saveData.StorageItemData = new StorageItemData(Items.Empty, null);
+        }
+
+        if (_storage1.CurrentItem != null)
+        {
+            Debug.Log("  1  CurrentStorageSave " + _storage1.CurrentItem.ItemName);
+            saveData.Storage1ItemData =
+                new StorageItemData(_storage1.CurrentItem.ItemName, _storage1.CurrentItem.ItemPosition);
+        }
+        else
+        {
+            Debug.Log(" 1  CurrentStorageSave NUll!!! ");
+            saveData.Storage1ItemData = new StorageItemData(Items.Empty, null);
+        }
+
+        if (_storage2.CurrentItem != null)
+        {
+            Debug.Log(" 2  CurrentStorageSave " + _storage2.CurrentItem.ItemName);
+            saveData.Storage2ItemData =
+                new StorageItemData(_storage2.CurrentItem.ItemName, _storage2.CurrentItem.ItemPosition);
+        }
+        else
+        {
+            Debug.Log(" 2  CurrentStorageSave NUll!!! ");
+            saveData.Storage2ItemData = new StorageItemData(Items.Empty, null);
+        }
+
         string jsonData = JsonUtility.ToJson(saveData);
         PlayerPrefs.SetString(ItemStorageSave + _initializator.Index, jsonData);
         PlayerPrefs.Save();
-        Debug.Log("Сохранение Сцены Мап " + ItemStorageSave + _initializator.Index);
+        yield return null;
+        // Debug.Log("Сохранение Сцены Мап " + ItemStorageSave + _initializator.Index);
         // SaveCompleted?.Invoke(saveData);
     }
 
@@ -210,9 +286,9 @@ public class ItemsStorage : MonoBehaviour
     {
         SaveData saveData = new SaveData();
 
-        if (PlayerPrefs.HasKey(ItemStorageSave+ _initializator.Index))
+        if (PlayerPrefs.HasKey(ItemStorageSave + _initializator.Index))
         {
-            string jsonData = PlayerPrefs.GetString(ItemStorageSave+ _initializator.Index);
+            string jsonData = PlayerPrefs.GetString(ItemStorageSave + _initializator.Index);
             saveData = JsonUtility.FromJson<SaveData>(jsonData);
         }
         else
@@ -220,7 +296,7 @@ public class ItemsStorage : MonoBehaviour
             Debug.Log("нет сохранения");
             return;
         }
-        
+
         Item selectItem = Instantiate(GetItem(saveData.SelectItemData.ItemName),
             saveData.SelectItemData.ItemPosition.transform.position,
             Quaternion.identity, _initializator.CurrentMap.ItemsContainer);
@@ -228,8 +304,85 @@ public class ItemsStorage : MonoBehaviour
         selectItem.Init(saveData.SelectItemData.ItemPosition);
         selectItem.gameObject.SetActive(false);
         SelectSaveItem = selectItem;
+
+        /*if (saveData.TemporaryItem != null)
+        {
+            Debug.Log("TemporaryItemNotNull " + saveData.TemporaryItem.ItemName);
+            Item item = Instantiate(GetItem(saveData.TemporaryItem.ItemName), _initializator.CurrentMap.ItemsContainer);
+            _itemDragger.SetTemporaryObject(item);
+        }*/
+        if (saveData.TemporaryItem.ItemName != Items.Empty)
+        {
+            // Debug.Log("TemporaryItemNotNull " + saveData.TemporaryItem.ItemName);
+            Item item = Instantiate(GetItem(saveData.TemporaryItem.ItemName), _initializator.CurrentMap.ItemsContainer);
+            _itemDragger.SetTemporaryObject(item);
+        }
+        else
+        {
+            _itemDragger.SetTemporaryObject(null);
+        }
+
+        foreach (var item in saveData.ItemDatasPrices)
+        {
+            _shopItems.SetPrice(item.ItemName, item.Price);
+        }
+
+        _shopItems.SetPricePossibilitie(saveData.PossibilitiesItemsData.PriceBulldozer,
+            saveData.PossibilitiesItemsData.PriceReplace);
+
+        _dropGenerator.SetItem(saveData.ItemDropData.PrefabItem, saveData.ItemDropData.Icon);
+
+        _replaceCounter.SetValue(saveData.ReplaceCount);
+        _bulldozerCounter.SetValue(saveData.BulldozerCount);
+        _goldWallet.SetValue(saveData.GoldValue);
+        _scoreCounter.SetValue(saveData.ScoreValue, saveData.FactorScoreValue);
+        // Debug.Log("SCORE Load " + saveData.ScoreValue);
+        // Debug.Log("SCORE Factory Load " + saveData.FactorScoreValue);
+        
+        
+        if (saveData.StorageItemData.ItemPosition != null || saveData.StorageItemData.ItemName != Items.Empty)
+        {
+            Debug.Log("Storage Load : " + saveData.StorageItemData.ItemName);
+            Item storageItem = Instantiate(GetItem(saveData.StorageItemData.ItemName), _initializator.CurrentMap.ItemsContainer);
+            storageItem.gameObject.SetActive(false);
+            // Debug.Log("Storage Load: " + storageItem.ItemName);
+            _storage.SetItem(storageItem);
+        }
+        else
+        {
+            Debug.Log("NULL Storage  : " + saveData.Storage1ItemData.ItemName);
+            _storage.SetItem(null);
+        }
+        
+        if (saveData.Storage1ItemData.ItemPosition != null || saveData.Storage1ItemData.ItemName != Items.Empty)
+        {
+            Debug.Log("1  Storage Load : " + saveData.Storage1ItemData.ItemName);
+            Item storageItem = Instantiate(GetItem(saveData.Storage1ItemData.ItemName), _initializator.CurrentMap.ItemsContainer);
+            storageItem.gameObject.SetActive(false);
+            // Debug.Log("Storage Load: " + storageItem.ItemName);
+            _storage1.SetItem(storageItem);
+        }
+        else
+        {
+            Debug.Log("NULL Storage 1 : " + saveData.Storage1ItemData.ItemName);
+            _storage1.SetItem(null);
+        }
+        
+        if (saveData.Storage2ItemData.ItemPosition != null || saveData.Storage2ItemData.ItemName != Items.Empty)
+        {
+            Debug.Log("Storage 2  " + saveData.Storage2ItemData.ItemName);
+            Item storageItem = Instantiate(GetItem(saveData.Storage2ItemData.ItemName), _initializator.CurrentMap.ItemsContainer);
+            storageItem.gameObject.SetActive(false);
+            // Debug.Log("Storage Load: " + storageItem.ItemName);
+            _storage2.SetItem(storageItem);
+        }
+        else
+        {
+            Debug.Log(" NULL Storage 2 : " + saveData.Storage2ItemData.ItemName);
+            _storage2.SetItem(null);
+        }
     }
-    
+
     private IEnumerator Save()
     {
         SaveData saveData = new SaveData();
@@ -414,7 +567,7 @@ public class ItemsStorage : MonoBehaviour
 
         /*string json = System.IO.File.ReadAllText(Application.persistentDataPath + "/save.json");
         SaveData saveData = JsonUtility.FromJson<SaveData>(json);*/
-        
+
         /*_saveDatas.Add(saveData);
         _saveData = saveData;*/
 
@@ -444,7 +597,7 @@ public class ItemsStorage : MonoBehaviour
         _goldWallet.SetValue(saveData.GoldValue);
         // Debug.Log("Gold: " + saveData.GoldValue);
         _moveCounter.SetValue(saveData.MoveCount);
-        _scoreCounter.SetValue(saveData.ScoreValue);
+        // _scoreCounter.SetValue(saveData.ScoreValue);
 
 
         Item selectItem = Instantiate(GetItem(saveData.SelectItemData.ItemName),

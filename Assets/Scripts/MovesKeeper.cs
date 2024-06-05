@@ -303,7 +303,7 @@ public class MovesKeeper : MonoBehaviour
         _bulldozerCounter.SetValue(saveData.BulldozerCount);
         _goldWallet.SetValue(saveData.GoldValue);
         _moveCounter.SetValue(saveData.MoveCount);
-        _scoreCounter.SetValue(saveData.ScoreValue);
+        // _scoreCounter.SetValue(saveData.ScoreValue);
         Debug.Log("Score Value Canceling" + saveData.ScoreValue);
 
         yield return null;
