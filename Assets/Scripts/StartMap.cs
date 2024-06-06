@@ -27,7 +27,9 @@ public class StartMap : MonoBehaviour
     [SerializeField] private PackageLittleTown _packageLittleTown;
     [SerializeField] private BonusesStart _bonusesStart;
     [SerializeField] private MapGenerator _mapGenerator;
-
+    [SerializeField]private MovesKeeper _moveKeeper;
+    [SerializeField] private MapActivator _mapActivator;
+    
     private Transform[] _children;
     private int _selectMap = 1;
     [SerializeField] private Save _save;
@@ -39,16 +41,17 @@ public class StartMap : MonoBehaviour
         _save.SetData(FirstActiveMap + _initializator.Index, _selectMap);
         // Debug.Log("до Филл " + _initializator.Index);
         _initializator.FillLists();
+        _mapActivator.ChangeActivityMaps();
         DeactivateItems();
         _itemDragger.ClearAll();
-
+        _moveKeeper.LoadHistoryData();
         foreach (var storage in _storages)
         {
             storage.ClearItem();
         }
 
         _movesKeeper.ClearAllHistory();
-        _goldWallet.SetInitialvalue();
+        _goldWallet.SetInitialValue();
         _scoreCounter.ResetScore();
 
         foreach (var itemPosition in _initializator.ItemPositions)

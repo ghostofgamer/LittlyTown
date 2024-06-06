@@ -3,9 +3,11 @@ using UnityEngine;
 
 public class EnvironmentMovement : MonoBehaviour
 {
-    [SerializeField] private GameObject _environment;
+    [SerializeField] private GameObject[] _environments;
     [SerializeField] private GameObject _container;
-
+    [SerializeField] private Initializator _initializator;
+    [SerializeField]private MapActivator _mapActivator;
+    
     private Vector3 _startPosition;
     private Vector3 _targetPosition;
     private float _elapsedTime;
@@ -17,12 +19,16 @@ public class EnvironmentMovement : MonoBehaviour
 
     private void Start()
     {
-        _startPosition = _environment.transform.position;
+        _startPosition = _environments[_initializator.Index].transform.position;
         _targetPosition = new Vector3(_startPosition.x, _startPosition.y, _startPosition.z + 500);
     }
 
     public void GoAway()
     {
+        _startPosition = _environments[_initializator.Index].transform.position;
+        _targetPosition = new Vector3(_startPosition.x, _startPosition.y, _startPosition.z + 500);
+        _mapActivator.ChangeActivityMaps();
+        
         if (_coroutine != null)
             StopCoroutine(_coroutine);
 
@@ -32,7 +38,7 @@ public class EnvironmentMovement : MonoBehaviour
 
     public void ReturnPosition()
     {
-        _environment.SetActive(true);
+        _environments[_initializator.Index].SetActive(true);
 
         if (_coroutine != null)
             StopCoroutine(_coroutine);
@@ -48,12 +54,15 @@ public class EnvironmentMovement : MonoBehaviour
         while (_elapsedTime < _duration)
         {
             _elapsedTime += Time.deltaTime;
-            _environment.transform.position = Vector3.Lerp(startPosition, targetPosition, _elapsedTime / _duration);
-            _container.transform.position = _environment.transform.position;
+            _environments[_initializator.Index].transform.position = Vector3.Lerp(startPosition, targetPosition, _elapsedTime / _duration);
+            // _container.transform.position = _environments[_initializator.Index].transform.position;
             yield return null;
         }
 
-        _environment.transform.position = targetPosition;
-        _environment.SetActive(_isActive);
+        _environments[_initializator.Index].transform.position = targetPosition;
+        _environments[_initializator.Index].SetActive(_isActive);
+        
+        if(_isActive)
+            _mapActivator.ActivateAllMaps();
     }
 }

@@ -349,11 +349,11 @@ public class MapGenerator : MonoBehaviour
         }
 
         SaveData saveData = new SaveData();
-        Debug.Log("ЗАШЕЛ!" +  map.Index);
+        // Debug.Log("ЗАШЕЛ!" +  map.Index);
 
         if (PlayerPrefs.HasKey(ItemStorageSave + map.Index))
         {
-            Debug.Log("Загружаем данные сохранений " + ItemStorageSave + map.Index);
+            // Debug.Log("Загружаем данные сохранений " + ItemStorageSave + map.Index);
             string jsonData = PlayerPrefs.GetString(ItemStorageSave + map.Index);
             saveData = JsonUtility.FromJson<SaveData>(jsonData);
             
@@ -371,7 +371,7 @@ public class MapGenerator : MonoBehaviour
         }
         else
         {
-            Debug.Log("нет сохранения " +  map.Index);
+            // Debug.Log("нет сохранения " +  map.Index);
             foreach (var item in startItems)
             {
                 _clearPositions = new List<ItemPosition>();
@@ -464,6 +464,7 @@ public class MapGenerator : MonoBehaviour
             Item newItem = Instantiate(item, container);
             // item.gameObject.SetActive(true);
             newItem.transform.position = _clearPositions[_randomIndex].transform.position;
+            newItem.Init(_clearPositions[_randomIndex]);
             newItem.Activation();
             Debug.Log("спавним item");
             yield return _waitForSecondsMoment;

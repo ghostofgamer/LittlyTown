@@ -1059,6 +1059,7 @@
           <e p="Blur.cs" t="Include" />
           <e p="BonusesStart.cs" t="Include" />
           <e p="Bootstrap.cs" t="Include" />
+          <e p="ButtonActivator.cs" t="Include" />
           <e p="ButtonResize.cs" t="Include" />
           <e p="CameraContent" t="Include">
             <e p="CameraMovement.cs" t="Include" />
@@ -1131,6 +1132,7 @@
           </e>
           <e p="LoadingSceneVisual.cs" t="Include" />
           <e p="Localization.cs" t="Include" />
+          <e p="MapActivator.cs" t="Include" />
           <e p="MapGenerator.cs" t="Include" />
           <e p="MapsContent" t="Include">
             <e p="Map.cs" t="Include" />
@@ -1174,6 +1176,7 @@
             <e p="PossibilitiesItemsData.cs" t="Include" />
             <e p="Save.cs" t="Include" />
             <e p="SaveData.cs" t="Include" />
+            <e p="SaveHistoryData.cs" t="Include" />
             <e p="SelectItemData.cs" t="Include" />
             <e p="ShopItemData.cs" t="Include" />
             <e p="StorageItemData.cs" t="Include" />

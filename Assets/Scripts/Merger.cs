@@ -14,6 +14,7 @@ public class Merger : MonoBehaviour
     [SerializeField] private GoldWallet _goldWallet;
     [SerializeField] private Transform _container;
     [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private Initializator _initializator;
     
     private Item _currentItem;
     private List<ItemPosition> _matchPositions = new List<ItemPosition>();
@@ -123,7 +124,7 @@ public class Merger : MonoBehaviour
         // Item item = Instantiate(_newItem[currentPosition].NextItem, currentPosition.transform.position, Quaternion.identity);
         Debug.Log("Instantiate " + _targetItem[targetItem].name);
         Item item = Instantiate(_targetItem[targetItem].NextItem, currentPosition.transform.position,
-            Quaternion.identity, _container);
+            Quaternion.identity, _initializator.CurrentMap.ItemsContainer);
 
         if (item.TryGetComponent(out TreasureChest treasureChest))
             treasureChest.Init(_goldWallet);
@@ -134,6 +135,7 @@ public class Merger : MonoBehaviour
         item.Init(currentPosition);
         item.Activation();
         item.GetComponent<ItemAnimation>().PositioningAnimation();
+        yield return new WaitForSeconds(0.1f);
         // Debug.Log("_matchPositions.Count " + _matchItems.Count);
         // Merged?.Invoke(_matchItems.Count, _currentItem.Reward, currentPosition);
         Merged?.Invoke(_matchPositions.Count, _currentItem.Reward, currentPosition);

@@ -19,6 +19,7 @@ public class RemovalItems : MonoBehaviour
     private Coroutine _coroutine;
 
     public event Action Removed;
+    public event Action Removing;
 
     public event Action<Item> ItemRemoved;
 
@@ -106,6 +107,8 @@ public class RemovalItems : MonoBehaviour
                 _audioSource.PlayOneShot(_audioSource.clip);
                 yield return null;
                 _positionsCounter.DecreaseCount();
+                Removing?.Invoke();
+                yield return new WaitForSeconds(0.15f);
                 Removed?.Invoke();
             }
         }

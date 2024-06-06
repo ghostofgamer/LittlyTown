@@ -17,6 +17,7 @@ namespace UI.Buttons
         [SerializeField] private TMP_Text _priceText;
         [SerializeField]private CloseButton _closeButton;
         [SerializeField]private OpenButton _openButton;
+        [SerializeField]private Initializator _initializator;
 
         private void Start()
         {
@@ -31,7 +32,7 @@ namespace UI.Buttons
                 return;
             
             _goldWallet.DecreaseValue(_item.Price);
-            Item item = Instantiate(_item, _container);
+            Item item = Instantiate(_item, _initializator.CurrentMap.ItemsContainer);
             // _closeButton.Close();
             _openButton.Open();
             _itemDragger.SetTemporaryItem(item);

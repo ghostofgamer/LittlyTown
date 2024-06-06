@@ -26,7 +26,7 @@ public class ChooseMap : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log(":::::");
+        // Debug.Log(":::::");
         _startPosition = transform.position;
         _currentZ = _startPosition.z;
     }
@@ -42,17 +42,19 @@ public class ChooseMap : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             _mouseCurrentPosition = Input.mousePosition;
-            _mouseDelta = _mouseCurrentPosition.x - _mouseDownPosition.x;
+            _mouseDelta = -(_mouseCurrentPosition.x - _mouseDownPosition.x);
             Debug.Log("DELTA " + _mouseDelta);
+            Debug.Log("DELTA Mathf" + Mathf.Abs(_mouseDelta));
 
             if (Mathf.Abs(_mouseDelta) > 10f)
             {
                 // float value = Mathf.InverseLerp(-50f, 50f, mouseDelta) * _sensitivity; // Преобразуем разницу в значение от -1 до 1
                 float value = Mathf.Sign(_mouseDelta) * _sensitivity;
+                // Debug.Log("Value " + value);
                 _mouseDownPosition = _mouseCurrentPosition;
                 Vector3 newPos = new Vector3(0, 0, value);
                 transform.position += newPos * 30 * Time.deltaTime;
-                Debug.Log("Value " + value);
+                // Debug.Log("Value " + value);
 
                 /*int index = value > 0 ? 1 : -1; // Определяем индекс в зависимости от направления перемещения мыши
 
@@ -62,9 +64,7 @@ public class ChooseMap : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0))
         {
-            Debug.Log("Сколько тут дельты " + _mouseDelta);
-
-            if (Mathf.Abs(_mouseDelta) > 16)
+            if (Mathf.Abs(_mouseDelta) > 6)
             {
                 if (_currentIndex + (int) Mathf.Sign(_mouseDelta) > 2 ||
                     _currentIndex + (int) Mathf.Sign(_mouseDelta) < 0)
@@ -73,8 +73,7 @@ public class ChooseMap : MonoBehaviour
                     return;
                 }
 
-                // Свайп был сильным, запускаем метод
-                Debug.Log("свайп сильный " + _mouseDelta);
+                // Debug.Log("свайп сильный " + _mouseDelta);
                 ChangeMap((int) Mathf.Sign(_mouseDelta));
                 return;
             }

@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class TurnEnvironment : MonoBehaviour
 {
-    [SerializeField] private GameObject _environment;
+    [SerializeField] private GameObject[] _environments;
     [SerializeField] private GameObject _container;
+    [SerializeField] private Initializator _initializator;
+    [SerializeField]private LookMerger _lookMerger;
     
     private Vector3 _target;
     private Quaternion _startRotation;
@@ -23,11 +25,12 @@ public class TurnEnvironment : MonoBehaviour
     private void Update()
     {
         if (_isEndGameRotate)
-            _environment.transform.Rotate(0, _speed * Time.deltaTime, 0);
+            _environments[_initializator.Index].transform.Rotate(0, _speed * Time.deltaTime, 0);
     }
     
     public void ChangeRotation(int index)
     {
+        _lookMerger.StopMoveMatch();
         _currentIndex += index;
         Debug.Log(_currentIndex);
 
@@ -37,8 +40,8 @@ public class TurnEnvironment : MonoBehaviour
         if (_currentIndex < _minIndex)
             _currentIndex = _maxIndex;
 
-        _target = new Vector3(_environment.transform.rotation.x, _angles[_currentIndex],
-            _environment.transform.rotation.z);
+        _target = new Vector3(_environments[_initializator.Index].transform.rotation.x, _angles[_currentIndex],
+            _environments[_initializator.Index].transform.rotation.z);
 
         if (_coroutineRotate != null)
             StopCoroutine(_coroutineRotate);
@@ -49,19 +52,19 @@ public class TurnEnvironment : MonoBehaviour
     private IEnumerator Turn()
     {
         _elapsedTime = 0;
-        _startRotation = _environment.transform.rotation;
+        _startRotation = _environments[_initializator.Index].transform.rotation;
 
         while (_elapsedTime < _duration)
         {
-            _environment.transform.rotation =
+            _environments[_initializator.Index].transform.rotation =
                 Quaternion.Slerp(_startRotation, Quaternion.Euler(_target), _elapsedTime / _duration);
-            _container.transform.rotation = _environment.transform.rotation;
+            _container.transform.rotation = _environments[_initializator.Index].transform.rotation;
             _elapsedTime += Time.deltaTime;
             yield return null;
         }
 
-        _environment.transform.rotation = Quaternion.Euler(_target);
-        _container.transform.rotation = _environment.transform.rotation;
+        _environments[_initializator.Index].transform.rotation = Quaternion.Euler(_target);
+        _container.transform.rotation = _environments[_initializator.Index].transform.rotation;
     }
     
     public void StartRotate()
@@ -82,18 +85,18 @@ public class TurnEnvironment : MonoBehaviour
     private IEnumerator ReturnRotate()
     {
         _elapsedTime = 0;
-        _startRotation = _environment.transform.rotation;
+        _startRotation = _environments[_initializator.Index].transform.rotation;
 
         while (_elapsedTime < _durationReturn)
         {
-            _environment.transform.rotation =
+            _environments[_initializator.Index].transform.rotation =
                 Quaternion.Slerp(_startRotation, Quaternion.identity, _elapsedTime / _durationReturn);
-            _container.transform.rotation = _environment.transform.rotation;
+            _container.transform.rotation = _environments[_initializator.Index].transform.rotation;
             _elapsedTime += Time.deltaTime;
             yield return null;
         }
 
-        _environment.transform.rotation = Quaternion.identity;
-        _container.transform.rotation = _environment.transform.rotation;
+        _environments[_initializator.Index].transform.rotation = Quaternion.identity;
+        _container.transform.rotation = _environments[_initializator.Index].transform.rotation;
     }
 }

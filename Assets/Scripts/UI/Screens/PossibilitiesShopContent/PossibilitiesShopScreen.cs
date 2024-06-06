@@ -11,6 +11,7 @@ namespace UI.Screens.PossibilitiesShopContent
         [SerializeField] private TMP_Text _priceText;
         [SerializeField] private TMP_Text _currentAmountText;
         [SerializeField]private InputItemDragger _inputItemDragger;
+        [SerializeField] private GameLevelScreen _gameLevelScreen;
             
         private int _currentPrice;
         private int _basePrice;
@@ -45,6 +46,7 @@ namespace UI.Screens.PossibilitiesShopContent
             _currentPrice = _basePrice;
             Show();
             _inputItemDragger.enabled = false;
+            _gameLevelScreen.Close();
         }
 
         public override void Close()

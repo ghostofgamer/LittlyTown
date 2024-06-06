@@ -93,6 +93,7 @@ public class MoveCounter : MonoBehaviour
     {
         _moveCount = value;
         Show();
+        _save.SetData(StepCount, _moveCount);
     }
 
     private void SelectEndlessMoves()

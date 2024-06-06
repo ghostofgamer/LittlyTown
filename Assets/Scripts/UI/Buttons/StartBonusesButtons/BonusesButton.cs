@@ -16,28 +16,33 @@ namespace UI.Buttons.StartBonusesButtons
 
         protected BonusesStart BonusesStart => _bonusesStart;
         
-        protected int Price => _price;
+        public int Price => _price;
 
         protected override void OnClick()
         {
+            AudioSource.PlayOneShot(AudioSource.clip);
             if (_crystalWallet.CurrentValue < _price)
                 return;
-
-            _crystalWallet.DecreaseValue(_price);
-            ActivateChoose();
+            
+            Button.enabled = false;
+            //
+            // _crystalWallet.DecreaseValue(_price);
+            // ActivateChoose();
             SelectBonus();
         }
 
         protected abstract void SelectBonus();
 
-        private void ActivateChoose()
+        public void ActivateChoose()
         {
+            _crystalWallet.DecreaseValue(_price);
             _notSelectedObject.SetActive(false);
             _selectedObject.SetActive(true); 
         }
 
         public void DeactivateChoose()
         {
+            Button.enabled = true;
             _notSelectedObject.SetActive(true);
             _selectedObject.SetActive(false);
         }

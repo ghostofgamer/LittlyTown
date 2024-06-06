@@ -19,6 +19,12 @@ namespace Wallets
             // Debug.Log("Load " + number);
         }
 
+        protected override void Start()
+        {
+            SetValue(_load.Get(Crystal, _defaultValue));
+            int number = _load.Get(Crystal, _defaultValue); 
+        }
+
         public override void IncreaseValue(int value)
         {
             base.IncreaseValue(value);

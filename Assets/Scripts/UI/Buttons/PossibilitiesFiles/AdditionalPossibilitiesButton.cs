@@ -22,6 +22,7 @@ namespace UI.Buttons.BonusesContent
         [SerializeField] private PossibilitiesCounter _possibilitiesCounter;
         [SerializeField] private PossibilitiesShopScreen _possibilitiesShopScreen;
         [SerializeField] private PositionMatcher _positionMatcher;
+        [SerializeField] private LookMerger _lookMerger;
 
         private Item _temporaryItem;
         private ItemPosition _itemPosition;
@@ -41,6 +42,7 @@ namespace UI.Buttons.BonusesContent
             {
                 if (_isActivated)
                 {
+                    _lookMerger.StopMoveMatch();
                     _positionMatcher.StopMoveMatch();
                     Activation();
                 }

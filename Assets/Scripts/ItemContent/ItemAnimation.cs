@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace ItemContent
@@ -8,7 +9,7 @@ namespace ItemContent
         private static readonly int Active = Animator.StringToHash("Active");
         private static readonly int Busy = Animator.StringToHash("Busy");
         private static readonly int Positioning = Animator.StringToHash("Positioning");
-    
+
         private Item _item;
 
         protected override void Awake()
@@ -18,26 +19,28 @@ namespace ItemContent
 
             if (!_item.IsActive)
                 Animator.SetBool(Active, false);
-
         }
 
         private void OnEnable()
         {
-            _item.Activated += OnStopAnimation;
             _item.Deactivated += OnPlayAnimation;
+            _item.Activated += OnStopAnimation;
+
+            if (_item.IsActive && _item.ItemPosition != null)
+                OnStopAnimation();
         }
 
         private void OnDisable()
         {
-            _item.Activated -= OnStopAnimation;
             _item.Deactivated -= OnPlayAnimation;
+            _item.Activated -= OnStopAnimation;
         }
 
         private void OnStopAnimation()
         {
             Animator.SetBool(Active, true);
         }
-    
+
         private void OnPlayAnimation()
         {
             Animator.SetBool(Active, false);
@@ -50,7 +53,7 @@ namespace ItemContent
 
         public void PositioningAnimation()
         {
-            Animator.SetTrigger(Positioning); 
+            Animator.SetTrigger(Positioning);
         }
     }
 }

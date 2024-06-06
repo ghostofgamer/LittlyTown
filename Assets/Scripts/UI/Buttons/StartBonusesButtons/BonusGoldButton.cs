@@ -4,6 +4,7 @@ namespace UI.Buttons.StartBonusesButtons
     {
         protected override void SelectBonus()
         {
+            ActivateChoose();
             BonusesStart.IncreaseAmountGolds(Reward, Price);
         }
     }

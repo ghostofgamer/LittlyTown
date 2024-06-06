@@ -19,7 +19,7 @@ namespace Wallets
         
         public int CurrentValue => _currentValue;
 
-        private void Start()
+        protected virtual void Start() 
         {
             if (_isLoadValue)
                 return;
@@ -84,7 +84,7 @@ namespace Wallets
             ValueChanged?.Invoke();
         }
 
-        public void SetInitialvalue()
+        public void SetInitialValue()
         {
             _currentValue = _startValue;
             // Debug.Log("GoldSEt " + _currentValue);

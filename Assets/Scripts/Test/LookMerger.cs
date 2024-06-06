@@ -419,10 +419,15 @@ public class LookMerger : MonoBehaviour
         }
     }
 
-    private void StopMoveMatch()
+    public void StopMoveMatch()
     {
         foreach (var matchItem in _completeList)
+        {
             matchItem.GetComponent<ItemMoving>().StopCoroutine();
+
+            /*if (matchItem.ItemPosition != null)
+                matchItem.transform.position = matchItem.ItemPosition.transform.position;*/
+        }
     }
 
     private void ClearLists()

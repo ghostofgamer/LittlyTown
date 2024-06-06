@@ -47,12 +47,14 @@ namespace ItemContent
 
         public void Activation()
         {
+            Debug.Log("Act");
             _isActive = true;
             Activated?.Invoke();
         }
 
         public void Deactivation()
         {
+            Debug.Log("Deact");
             _isActive = false;
             Deactivated?.Invoke();
         }

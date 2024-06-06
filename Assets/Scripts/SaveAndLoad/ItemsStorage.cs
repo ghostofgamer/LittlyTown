@@ -229,7 +229,7 @@ public class ItemsStorage : MonoBehaviour
         else
             saveData.ItemDropData = null;
 
-
+        saveData.MoveCount = _moveCounter.MoveCount;
         saveData.ItemDatas = itemDatas;
         saveData.BulldozerCount = _bulldozerCounter.PossibilitiesCount;
         saveData.ReplaceCount = _replaceCounter.PossibilitiesCount;
@@ -239,37 +239,37 @@ public class ItemsStorage : MonoBehaviour
         // Debug.Log("SCORE Factory Save " + saveData.FactorScoreValue);
         if (_storage.CurrentItem != null)
         {
-            Debug.Log("CurrentStorageSave " + _storage.CurrentItem.ItemName);
+            // Debug.Log("CurrentStorageSave " + _storage.CurrentItem.ItemName);
             saveData.StorageItemData =
                 new StorageItemData(_storage.CurrentItem.ItemName, _storage.CurrentItem.ItemPosition);
         }
         else
         {
-            Debug.Log("CurrentStorageSave NUll!!! ");
+            // Debug.Log("CurrentStorageSave NUll!!! ");
             saveData.StorageItemData = new StorageItemData(Items.Empty, null);
         }
 
         if (_storage1.CurrentItem != null)
         {
-            Debug.Log("  1  CurrentStorageSave " + _storage1.CurrentItem.ItemName);
+            // Debug.Log("  1  CurrentStorageSave " + _storage1.CurrentItem.ItemName);
             saveData.Storage1ItemData =
                 new StorageItemData(_storage1.CurrentItem.ItemName, _storage1.CurrentItem.ItemPosition);
         }
         else
         {
-            Debug.Log(" 1  CurrentStorageSave NUll!!! ");
+            // Debug.Log(" 1  CurrentStorageSave NUll!!! ");
             saveData.Storage1ItemData = new StorageItemData(Items.Empty, null);
         }
 
         if (_storage2.CurrentItem != null)
         {
-            Debug.Log(" 2  CurrentStorageSave " + _storage2.CurrentItem.ItemName);
+            // Debug.Log(" 2  CurrentStorageSave " + _storage2.CurrentItem.ItemName);
             saveData.Storage2ItemData =
                 new StorageItemData(_storage2.CurrentItem.ItemName, _storage2.CurrentItem.ItemPosition);
         }
         else
         {
-            Debug.Log(" 2  CurrentStorageSave NUll!!! ");
+            // Debug.Log(" 2  CurrentStorageSave NUll!!! ");
             saveData.Storage2ItemData = new StorageItemData(Items.Empty, null);
         }
 
@@ -293,7 +293,7 @@ public class ItemsStorage : MonoBehaviour
         }
         else
         {
-            Debug.Log("нет сохранения");
+            // Debug.Log("нет сохранения");
             return;
         }
 
@@ -331,7 +331,7 @@ public class ItemsStorage : MonoBehaviour
             saveData.PossibilitiesItemsData.PriceReplace);
 
         _dropGenerator.SetItem(saveData.ItemDropData.PrefabItem, saveData.ItemDropData.Icon);
-
+        _moveCounter.SetValue(saveData.MoveCount);
         _replaceCounter.SetValue(saveData.ReplaceCount);
         _bulldozerCounter.SetValue(saveData.BulldozerCount);
         _goldWallet.SetValue(saveData.GoldValue);
@@ -342,7 +342,7 @@ public class ItemsStorage : MonoBehaviour
         
         if (saveData.StorageItemData.ItemPosition != null || saveData.StorageItemData.ItemName != Items.Empty)
         {
-            Debug.Log("Storage Load : " + saveData.StorageItemData.ItemName);
+            // Debug.Log("Storage Load : " + saveData.StorageItemData.ItemName);
             Item storageItem = Instantiate(GetItem(saveData.StorageItemData.ItemName), _initializator.CurrentMap.ItemsContainer);
             storageItem.gameObject.SetActive(false);
             // Debug.Log("Storage Load: " + storageItem.ItemName);
@@ -350,13 +350,13 @@ public class ItemsStorage : MonoBehaviour
         }
         else
         {
-            Debug.Log("NULL Storage  : " + saveData.Storage1ItemData.ItemName);
+            // Debug.Log("NULL Storage  : " + saveData.Storage1ItemData.ItemName);
             _storage.SetItem(null);
         }
         
         if (saveData.Storage1ItemData.ItemPosition != null || saveData.Storage1ItemData.ItemName != Items.Empty)
         {
-            Debug.Log("1  Storage Load : " + saveData.Storage1ItemData.ItemName);
+            // Debug.Log("1  Storage Load : " + saveData.Storage1ItemData.ItemName);
             Item storageItem = Instantiate(GetItem(saveData.Storage1ItemData.ItemName), _initializator.CurrentMap.ItemsContainer);
             storageItem.gameObject.SetActive(false);
             // Debug.Log("Storage Load: " + storageItem.ItemName);
@@ -364,13 +364,13 @@ public class ItemsStorage : MonoBehaviour
         }
         else
         {
-            Debug.Log("NULL Storage 1 : " + saveData.Storage1ItemData.ItemName);
+            // Debug.Log("NULL Storage 1 : " + saveData.Storage1ItemData.ItemName);
             _storage1.SetItem(null);
         }
         
         if (saveData.Storage2ItemData.ItemPosition != null || saveData.Storage2ItemData.ItemName != Items.Empty)
         {
-            Debug.Log("Storage 2  " + saveData.Storage2ItemData.ItemName);
+            // Debug.Log("Storage 2  " + saveData.Storage2ItemData.ItemName);
             Item storageItem = Instantiate(GetItem(saveData.Storage2ItemData.ItemName), _initializator.CurrentMap.ItemsContainer);
             storageItem.gameObject.SetActive(false);
             // Debug.Log("Storage Load: " + storageItem.ItemName);
@@ -378,7 +378,7 @@ public class ItemsStorage : MonoBehaviour
         }
         else
         {
-            Debug.Log(" NULL Storage 2 : " + saveData.Storage2ItemData.ItemName);
+            // Debug.Log(" NULL Storage 2 : " + saveData.Storage2ItemData.ItemName);
             _storage2.SetItem(null);
         }
     }

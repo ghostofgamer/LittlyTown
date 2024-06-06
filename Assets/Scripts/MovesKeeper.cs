@@ -6,6 +6,7 @@ using Dragger;
 using Enums;
 using ItemContent;
 using ItemPositionContent;
+using SaveAndLoad;
 using UI.Screens;
 using UnityEngine;
 using Wallets;
@@ -13,6 +14,8 @@ using Wallets;
 public class MovesKeeper : MonoBehaviour
 {
     private const string ItemStorageSave = "ItemStorageSave";
+    private const string SaveHistoryName = "SaveHistoryName";
+  
     [SerializeField] private Initializator _initializator;
     
     [SerializeField] private ItemDragger _itemDragger;
@@ -53,7 +56,7 @@ public class MovesKeeper : MonoBehaviour
         _itemDragger.StepCompleted += SaveHistory;
         _completeScoreScreen.ScoreCompleted += ResetSteps;
         // _replacementPosition.PositionsChanged += SaveHistory;
-
+        _removalItems.Removing += SaveHistory;
 
         /*_itemDragger.PlaceChanged += SaveHistory;
         // _itemDragger.BuildItem += SaveChanges;
@@ -69,7 +72,7 @@ public class MovesKeeper : MonoBehaviour
         _itemDragger.StepCompleted -= SaveHistory;
         _completeScoreScreen.ScoreCompleted -= ResetSteps;
         // _replacementPosition.PositionsChanged -= SaveHistory;
-
+        _removalItems.Removing -= SaveHistory;
 
         /*_itemDragger.PlaceChanged -= SaveHistory;
         // _itemDragger.BuildItem -= SaveChanges;
@@ -90,6 +93,42 @@ public class MovesKeeper : MonoBehaviour
         _itemsStorage.SaveCompleted -= SaveHistory;
     }*/
 
+    public void SaveHistoryData()
+    {
+        SaveHistoryData saveHistoryData = new SaveHistoryData();
+        saveHistoryData.savesHistory = _savesHistory;
+        
+        string jsonData = JsonUtility.ToJson(saveHistoryData);
+        PlayerPrefs.SetString(SaveHistoryName + _initializator.Index, jsonData);
+        PlayerPrefs.Save();
+        
+        Debug.Log("сохраняем " + saveHistoryData.savesHistory.Count);
+    }
+
+    public void LoadHistoryData()
+    {
+        SaveHistoryData saveHistoryData = new SaveHistoryData();
+        
+        if (PlayerPrefs.HasKey(SaveHistoryName+_initializator.Index))
+        {
+            string jsonData = PlayerPrefs.GetString(SaveHistoryName+_initializator.Index);
+            saveHistoryData = JsonUtility.FromJson<SaveHistoryData>(jsonData);
+            _savesHistory.Clear();
+            _savesHistory = saveHistoryData.savesHistory;
+            _currentStep = _savesHistory.Count;
+            StepChanged?.Invoke(_currentStep);
+            Debug.Log("Есть сохранение " + _savesHistory.Count);
+        }
+        else
+        {
+            _savesHistory.Clear();
+            _currentStep = _savesHistory.Count;
+            StepChanged?.Invoke(_currentStep);
+            Debug.Log("нет сохранения " + _savesHistory.Count);
+            return;
+        }
+    }
+    
     private void RemoveStep()
     {
         _savesHistory.RemoveAt(0);
@@ -108,6 +147,7 @@ public class MovesKeeper : MonoBehaviour
         SaveData saveDate = _itemsStorage.GetSaveData();
         _savesHistory.Add(saveDate);
         _currentStep = _savesHistory.Count;
+        SaveHistoryData();
         StepChanged?.Invoke(_currentStep);
     }
 
@@ -142,7 +182,6 @@ public class MovesKeeper : MonoBehaviour
         {
             string jsonData = PlayerPrefs.GetString(ItemStorageSave + _initializator.CurrentMap.Index);
             _saveData  = JsonUtility.FromJson<SaveData>(jsonData);
-            
         }
         // SaveData saveDate = _itemsStorage.GetSaveData();
         
@@ -156,6 +195,9 @@ public class MovesKeeper : MonoBehaviour
         _currentStep = _savesHistory.Count;
         StepChanged?.Invoke(_currentStep);
         // Debug.Log("CurrentStep  " + _currentStep);
+        SaveHistoryData();
+
+
 
         /*if (_savesHistory.Count >= _maxStepSaved)
         {
@@ -220,7 +262,19 @@ public class MovesKeeper : MonoBehaviour
             _itemDragger.SelectedObject.gameObject.SetActive(false);
         
         // Debug.Log(_itemsStorage.SelectObject.ItemName);
-        foreach (var itemPosition in _itemPositions)
+        /*foreach (var itemPosition in _itemPositions)
+        {
+            if (itemPosition.Item != null)
+            {
+                _audioSource.PlayOneShot(_audioClip);
+                Debug.Log("удаляем");
+                itemPosition.Item.gameObject.SetActive(false);
+                itemPosition.ClearingPosition();
+                yield return new WaitForSeconds(0.1f);
+            }
+        }*/
+        
+        foreach (var itemPosition in _initializator.ItemPositions)
         {
             if (itemPosition.Item != null)
             {
@@ -245,17 +299,28 @@ public class MovesKeeper : MonoBehaviour
         foreach (var itemData in saveData.ItemDatas)
         {
             Item item = Instantiate(GetItem(itemData.ItemName), itemData.ItemPosition.transform.position,
-                Quaternion.identity, _container);
+                Quaternion.identity, _initializator.CurrentMap.ItemsContainer);
             item.Init(itemData.ItemPosition);
             item.Activation();
             _audioSource.PlayOneShot(_audioSource.clip);
             yield return new WaitForSeconds(0.1f);
         }
 
-        if (saveData.TemporaryItem != null)
+        /*if (saveData.TemporaryItem != null)
         {
             Item item = Instantiate(GetItem(saveData.TemporaryItem.ItemName), _container);
             _itemDragger.SetTemporaryObject(item);
+        }*/
+        
+        if (saveData.TemporaryItem.ItemName != Items.Empty)
+        {
+            // Debug.Log("TemporaryItemNotNull " + saveData.TemporaryItem.ItemName);
+            Item item = Instantiate(GetItem(saveData.TemporaryItem.ItemName), _initializator.CurrentMap.ItemsContainer);
+            _itemDragger.SetTemporaryObject(item);
+        }
+        else
+        {
+            _itemDragger.SetTemporaryObject(null);
         }
 
         // Debug.Log("saveData.SelectItem " + saveData.SelectItemData.ItemName);
@@ -287,7 +352,7 @@ public class MovesKeeper : MonoBehaviour
         {
             // Debug.Log("Storage: ");
             // Debug.Log("Storage: CancelLoad " + saveData.StorageItemData.ItemName);
-            Item storageItem = Instantiate(GetItem(saveData.StorageItemData.ItemName), _container);
+            Item storageItem = Instantiate(GetItem(saveData.StorageItemData.ItemName), _initializator.CurrentMap.ItemsContainer);
             storageItem.gameObject.SetActive(false);
             // Debug.Log("Storage Load: " + storageItem.ItemName);
             _storage.SetItem(storageItem);
@@ -311,6 +376,12 @@ public class MovesKeeper : MonoBehaviour
         // ClearAllHistory();
         _currentStep = 0;
         StepChanged?.Invoke(_currentStep);
+        
+        
+        
+        
+        _savesHistory.Clear();
+        SaveHistoryData();
         /*_replaceCounter.SetValue(saveData.ReplaceCount);
         _bulldozerCounter.SetValue(saveData.BulldozerCount);
         _goldWallet.SetValue(saveData.GoldValue);
