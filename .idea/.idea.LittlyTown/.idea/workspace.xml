@@ -20,41 +20,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="099b8a6d-6b1c-4473-babb-d7d2ffb7e44f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ADS/DoublePossibilityReward.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ADS/DoublePossibilityReward.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChooseMap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ChooseMap.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CountersContent/MoveCounter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CountersContent/MoveCounter.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/EnvironmentMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EnvironmentMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemContent/Item.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemContent/Item.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemContent/ItemAnimation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemContent/ItemAnimation.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/MapGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MapGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Merger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Merger.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/MovesKeeper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MovesKeeper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RemovalItems.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RemovalItems.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/ItemsStorage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/ItemsStorage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RoadGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RoadGenerator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SpawnContent/Spawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SpawnContent/Spawner.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/StartMap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/StartMap.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Test/LookMerger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Test/LookMerger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TurnEnvironment.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TurnEnvironment.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BuyItemButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BuyItemButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ChooseMapButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ChooseMapButton.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ContinueButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ContinueButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/PossibilitiesFiles/AdditionalPossibilitiesButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/PossibilitiesFiles/AdditionalPossibilitiesButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/StartBonusesButtons/BonusBulldozersButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/StartBonusesButtons/BonusBulldozersButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/StartBonusesButtons/BonusGoldButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/StartBonusesButtons/BonusGoldButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/StartBonusesButtons/BonusReplaceButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/StartBonusesButtons/BonusReplaceButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/StartBonusesButtons/BonusesButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/StartBonusesButtons/BonusesButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/PossibilitiesShopContent/PossibilitiesShopScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/PossibilitiesShopContent/PossibilitiesShopScreen.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Wallets/AbstractWallet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Wallets/AbstractWallet.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Wallets/CrystalWallet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Wallets/CrystalWallet.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bild/Build.zip" beforeDir="false" afterPath="$PROJECT_DIR$/Bild/Build.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bild/Build/0ddca4470604b7452bc1605d93cf85fc.js.unityweb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bild/Build/4cd92f75c0d50985aceeb16fd0b1ae86.data.unityweb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bild/Build/7a302e2117c6e271963746458b61df98.wasm.unityweb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bild/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Bild/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/ChooseMapScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/ChooseMapScreen.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -225,24 +200,20 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/ItemPositionContent/VisualItemsDeactivator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/StartButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MapsContent/Map.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/RoadGenerator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GoalContent/GoalsCounter.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GoalContent/Goal.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Bootstrap.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SpawnContent/Spawner.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Dragger/ItemDragger.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Wallets/MoneyInfo.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/SaveData.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SpawnContent/DropGenerator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CountersContent/ScoreCounter.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Initializator.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/ChooseMapScreen.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/SaveHistoryData.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/RemovalItems.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/PossibilitiesShopContent/PossibilitiesShopScreen.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/ItemsStorage.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CountersContent/MoveCounter.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/MovesKeeper.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BuyItemButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Merger.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/PossibilitiesFiles/AdditionalPossibilitiesButton.cs" />
@@ -256,16 +227,20 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Wallets/AbstractWallet.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Wallets/CrystalWallet.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/GameLevelScreen.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/StartMap.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ContinueButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ChooseMap.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/TurnEnvironment.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/MapGenerator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Test/LookMerger.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ItemContent/Item.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MapActivator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ItemContent/ItemAnimation.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/ChooseMapScreen.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/EnvironmentMovement.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/StartMap.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SpawnContent/Spawner.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ContinueButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MovesKeeper.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/RoadGenerator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MapGenerator.cs" />
       </list>
     </option>
   </component>
@@ -368,6 +343,7 @@
       <workItem from="1717486822068" duration="23305000" />
       <workItem from="1717572497369" duration="20784000" />
       <workItem from="1717666630846" duration="19956000" />
+      <workItem from="1717746441782" duration="2514000" />
     </task>
     <servers />
   </component>

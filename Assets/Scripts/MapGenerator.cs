@@ -144,7 +144,8 @@ public class MapGenerator : MonoBehaviour
         }
 
         TestShowMap(_targetTerritories, _targetFinderPositions, _environments[index].GetComponent<Map>().RoadsContainer,
-            _targetItemPositions, _environments[index].GetComponent<Map>().StartItems,_environments[index].GetComponent<Map>());
+            _targetItemPositions, _environments[index].GetComponent<Map>().StartItems,
+            _environments[index].GetComponent<Map>());
     }
     /*
     private void Start()
@@ -279,9 +280,10 @@ public class MapGenerator : MonoBehaviour
             _clearPositions = itemPositions
                 .Where(p => !p.GetComponent<ItemPosition>().IsBusy && !p.GetComponent<ItemPosition>().IsWater).ToList();
             _randomIndex = Random.Range(0, _clearPositions.Count);
-            Item newItem = Instantiate(item, container);
+            Item newItem = Instantiate(item, _initializator.CurrentMap.ItemsContainer);
             // item.gameObject.SetActive(true);
             newItem.transform.position = _clearPositions[_randomIndex].transform.position;
+            newItem.Init(_clearPositions[_randomIndex]);
             newItem.Activation();
             // Debug.Log("спавним item");
             yield return _waitForSecondsMoment;
@@ -305,7 +307,7 @@ public class MapGenerator : MonoBehaviour
             finderPosition.FindNeighbor();
 
         yield return _waitForSecondsMoment;
-        _roadGenerator.TestGeneration(itemPositions, container);
+        _roadGenerator.TestGeneration(itemPositions, container,_initializator.CurrentMap);
         // _roadGenerator.OnGeneration();
         yield return _waitForSecondsMoment;
         /*_spawner.OnCreateItem();
@@ -340,7 +342,7 @@ public class MapGenerator : MonoBehaviour
     }
 
     public void TestShowMap(List<Territory> territories, List<FinderPositions> finderPositions, Transform container,
-        List<ItemPosition> itemPositions, List<Item> startItems,Map map)
+        List<ItemPosition> itemPositions, List<Item> startItems, Map map)
     {
         foreach (var territory in territories)
         {
@@ -356,7 +358,7 @@ public class MapGenerator : MonoBehaviour
             // Debug.Log("Загружаем данные сохранений " + ItemStorageSave + map.Index);
             string jsonData = PlayerPrefs.GetString(ItemStorageSave + map.Index);
             saveData = JsonUtility.FromJson<SaveData>(jsonData);
-            
+
             foreach (var itemData in saveData.ItemDatas)
             {
                 if (itemData != null)
@@ -382,6 +384,7 @@ public class MapGenerator : MonoBehaviour
                 Item newItem = Instantiate(item, map.ItemsContainer);
                 // item.gameObject.SetActive(true);
                 newItem.transform.position = _clearPositions[_randomIndex].transform.position;
+                newItem.Init(_clearPositions[_randomIndex]);
                 newItem.Activation();
                 // Debug.Log("спавним item");
 
@@ -422,7 +425,12 @@ public class MapGenerator : MonoBehaviour
 
         // _roadGenerator.TestGeneration(itemPositions, container);
         // _roadGenerator.TestCreateRoadOneMoment(itemPositions, container);
-        _roadGenerator.TestGeneration(itemPositions, container);
+        _roadGenerator.TestGeneration(itemPositions, container,map);
+        
+        /*if (map.Index != _initializator.Index)
+        {
+            map.gameObject.SetActive(false);
+        }*/
     }
 
 
@@ -487,7 +495,7 @@ public class MapGenerator : MonoBehaviour
             finderPosition.FindNeighbor();
 
         yield return _waitForSecondsMoment;
-        _roadGenerator.TestGeneration(_initializator.ItemPositions, _initializator.CurrentMap.RoadsContainer);
+        _roadGenerator.TestGeneration(_initializator.ItemPositions, _initializator.CurrentMap.RoadsContainer,_initializator.CurrentMap);
         Debug.Log("ЕУСТ " + _initializator.CurrentMap.name);
         yield return _waitForSecondsMoment;
         _spawner.OnCreateItem();

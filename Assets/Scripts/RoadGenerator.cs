@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Dragger;
 using ItemContent;
 using ItemPositionContent;
+using MapsContent;
 using Road;
 using UnityEngine;
 
@@ -203,12 +204,12 @@ public class RoadGenerator : MonoBehaviour
         return surroundingTiles;
     }
 
-    public void TestGeneration(List<ItemPosition> itemPositions, Transform container)
+    public void TestGeneration(List<ItemPosition> itemPositions, Transform container,Map map)
     {
-        StartCoroutine(TestCreateRoad(itemPositions, container));
+        StartCoroutine(TestCreateRoad(itemPositions, container, map));
     }
 
-    private IEnumerator TestCreateRoad(List<ItemPosition> itemPositions, Transform container)
+    private IEnumerator TestCreateRoad(List<ItemPosition> itemPositions, Transform container,Map map)
     {
         yield return _waitForSeconds;
 
@@ -239,6 +240,11 @@ public class RoadGenerator : MonoBehaviour
             }
 
             yield return null;
+        }
+
+        if (map.Index != _initializator.Index)
+        {
+            map.gameObject.SetActive(false);
         }
     }
 

@@ -113,7 +113,8 @@ public class MovesKeeper : MonoBehaviour
         {
             string jsonData = PlayerPrefs.GetString(SaveHistoryName+_initializator.Index);
             saveHistoryData = JsonUtility.FromJson<SaveHistoryData>(jsonData);
-            _savesHistory.Clear();
+            // _savesHistory.Clear();
+            _savesHistory = new List<SaveData>();
             _savesHistory = saveHistoryData.savesHistory;
             _currentStep = _savesHistory.Count;
             StepChanged?.Invoke(_currentStep);

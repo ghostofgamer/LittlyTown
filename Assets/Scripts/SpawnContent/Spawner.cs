@@ -73,7 +73,7 @@ private List<ItemPosition > _itemPos = new List<ItemPosition>();
 
     public ItemPosition GetPosition()
     {
-        _visualItemsDeactivator.SetPositions(_initializator.ItemPositions);
+        // _visualItemsDeactivator.SetPositions(_initializator.ItemPositions);
         List<ItemPosition> freePositions = _initializator.ItemPositions
             .Where(p => !p.GetComponent<ItemPosition>().IsBusy && !p.GetComponent<ItemPosition>().IsWater).ToList();
         int randomIndex = Random.Range(0, freePositions.Count);

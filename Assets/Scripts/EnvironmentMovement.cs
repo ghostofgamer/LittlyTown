@@ -27,7 +27,7 @@ public class EnvironmentMovement : MonoBehaviour
     {
         _startPosition = _environments[_initializator.Index].transform.position;
         _targetPosition = new Vector3(_startPosition.x, _startPosition.y, _startPosition.z + 500);
-        _mapActivator.ChangeActivityMaps();
+        // _mapActivator.ChangeActivityMaps();
         
         if (_coroutine != null)
             StopCoroutine(_coroutine);
@@ -62,7 +62,7 @@ public class EnvironmentMovement : MonoBehaviour
         _environments[_initializator.Index].transform.position = targetPosition;
         _environments[_initializator.Index].SetActive(_isActive);
         
-        if(_isActive)
-            _mapActivator.ActivateAllMaps();
+        /*if(_isActive)
+            _mapActivator.ActivateAllMaps();*/
     }
 }

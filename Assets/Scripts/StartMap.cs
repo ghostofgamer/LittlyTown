@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using CountersContent;
 using Dragger;
 using ItemContent;
+using ItemPositionContent;
 using PossibilitiesContent;
 using SaveAndLoad;
 using Unity.VisualScripting;
@@ -29,6 +30,7 @@ public class StartMap : MonoBehaviour
     [SerializeField] private MapGenerator _mapGenerator;
     [SerializeField]private MovesKeeper _moveKeeper;
     [SerializeField] private MapActivator _mapActivator;
+    [SerializeField] private VisualItemsDeactivator _visualItemsDeactivator;
     
     private Transform[] _children;
     private int _selectMap = 1;
@@ -41,8 +43,9 @@ public class StartMap : MonoBehaviour
         _save.SetData(FirstActiveMap + _initializator.Index, _selectMap);
         // Debug.Log("до Филл " + _initializator.Index);
         _initializator.FillLists();
-        _mapActivator.ChangeActivityMaps();
+        // _mapActivator.ChangeActivityMaps();
         DeactivateItems();
+        _visualItemsDeactivator.SetPositions(_initializator.ItemPositions);
         _itemDragger.ClearAll();
         _moveKeeper.LoadHistoryData();
         foreach (var storage in _storages)
