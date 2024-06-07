@@ -8,6 +8,7 @@ using UnityEngine;
 public class ContinueButton : AbstractButton
 {
     private const string Map = "Map";
+    private const string CurrentRecordScore = "CurrentRecordScore";
     
     [SerializeField] private ItemDragger _itemDragger;
     [SerializeField] private Save _save;
@@ -18,6 +19,10 @@ public class ContinueButton : AbstractButton
     [SerializeField]private MovesKeeper _moveKeeper;
     [SerializeField] private MapActivator _mapActivator;
     [SerializeField]private VisualItemsDeactivator _visualItemsDeactivator;
+    [SerializeField]private ScoreCounter _scoreCounter;
+    [SerializeField] private Load _load;
+
+    private int _startValue;
     
     protected override void OnClick()
     {
@@ -30,6 +35,8 @@ public class ContinueButton : AbstractButton
         _itemDragger.SwitchOn();
         _visualItemsDeactivator.SetPositions(_initializator.ItemPositions);
         _moveKeeper.LoadHistoryData();
+        _scoreCounter.SetCurrentScore(_load.Get(CurrentRecordScore + _initializator.Index, _startValue));
+        
         if (_packageLittleTown.IsActive)
         {
             foreach (var possibilitiesCounter in _possibilitiesCounters)

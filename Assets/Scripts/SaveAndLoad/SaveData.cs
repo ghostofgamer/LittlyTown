@@ -13,10 +13,10 @@ public class SaveData
     public float MoveCount;
     public int ScoreValue;
     public int FactorScoreValue;
-    public Item StorageItem;
+    /*public Item StorageItem;
     public Item SelectItemDragger;
     public Item TemporaryItemDragger;
-    public ItemPosition SelectPosition;
+    public ItemPosition SelectPosition;*/
 
     // public ItemDropDataSO ItemDropData;
 

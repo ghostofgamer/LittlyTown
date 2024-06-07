@@ -33,7 +33,7 @@ public class FinderPositions : MonoBehaviour
         ItemPosition westPosition = null;
         ItemPosition eastPosition = null;
         ItemPosition southPosition = null;
-        
+
         foreach (var hitCollider in hitColliders)
         {
             if (hitCollider.TryGetComponent(out ItemPosition itemPosition))

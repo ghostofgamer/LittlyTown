@@ -24,14 +24,14 @@ public class GoalSaver : MonoBehaviour
 
     public void UnSubscribe()
     {
-        Debug.Log("Отписка ");
+        // Debug.Log("Отписка ");
         _firstGoal.ValueChanged -= SaveChanges;
         _secondGoal.ValueChanged -= SaveChanges;
     }
 
     public void SaveGoals(List<Goal> currentGoals)
     {
-        Debug.Log("Сохранение нового списка целей");
+        // Debug.Log("Сохранение нового списка целей");
         _goalList = currentGoals;
         _saveGoalData = new SaveGoalData
         {
@@ -75,7 +75,7 @@ public class GoalSaver : MonoBehaviour
 
     private void SaveChanges()
     {
-        Debug.Log("Saving changes");
+        // Debug.Log("Saving changes");
         _saveGoalData.FirstGoal.Index = _goalList[0].Index;
         _saveGoalData.FirstGoal.CurrentValue = _goalList[0].CurrentValue;
         _saveGoalData.FirstGoal.CompleteValue = _goalList[0].CompleteValue;

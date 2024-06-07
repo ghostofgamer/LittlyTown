@@ -57,7 +57,7 @@ public class MovesKeeper : MonoBehaviour
         _completeScoreScreen.ScoreCompleted += ResetSteps;
         // _replacementPosition.PositionsChanged += SaveHistory;
         _removalItems.Removing += SaveHistory;
-
+        _replacementPosition.PositionChanging += SaveHistory;
         /*_itemDragger.PlaceChanged += SaveHistory;
         // _itemDragger.BuildItem += SaveChanges;
         // _itemDragger.SelectItemReceived += SaveHistory;
@@ -73,7 +73,7 @@ public class MovesKeeper : MonoBehaviour
         _completeScoreScreen.ScoreCompleted -= ResetSteps;
         // _replacementPosition.PositionsChanged -= SaveHistory;
         _removalItems.Removing -= SaveHistory;
-
+        _replacementPosition.PositionChanging -= SaveHistory;
         /*_itemDragger.PlaceChanged -= SaveHistory;
         // _itemDragger.BuildItem -= SaveChanges;
         // _itemDragger.SelectItemReceived -= SaveHistory;
@@ -105,16 +105,22 @@ public class MovesKeeper : MonoBehaviour
         Debug.Log("сохраняем " + saveHistoryData.savesHistory.Count);
     }
 
+    public void ClearList()
+    {
+        _savesHistory.Clear();
+    }
+    
+    
     public void LoadHistoryData()
     {
         SaveHistoryData saveHistoryData = new SaveHistoryData();
         
-        if (PlayerPrefs.HasKey(SaveHistoryName+_initializator.Index))
+        if (PlayerPrefs.HasKey(SaveHistoryName + _initializator.Index))
         {
             string jsonData = PlayerPrefs.GetString(SaveHistoryName+_initializator.Index);
             saveHistoryData = JsonUtility.FromJson<SaveHistoryData>(jsonData);
-            // _savesHistory.Clear();
-            _savesHistory = new List<SaveData>();
+            _savesHistory.Clear();
+            // _savesHistory = new List<SaveData>();
             _savesHistory = saveHistoryData.savesHistory;
             _currentStep = _savesHistory.Count;
             StepChanged?.Invoke(_currentStep);
@@ -122,6 +128,8 @@ public class MovesKeeper : MonoBehaviour
         }
         else
         {
+            /*Debug.Log("История " + _savesHistory.Count);
+            _savesHistory.Clear();*/
             _savesHistory.Clear();
             _currentStep = _savesHistory.Count;
             StepChanged?.Invoke(_currentStep);
@@ -140,6 +148,8 @@ public class MovesKeeper : MonoBehaviour
 
     private void SaveHistory()
     {
+        Debug.Log("Сохраняем первую историю");
+        
         if (_savesHistory.Count >= 1)
         {
             _savesHistory.Clear();
@@ -329,7 +339,7 @@ public class MovesKeeper : MonoBehaviour
 
         Item selectItem = Instantiate(GetItem(saveData.SelectItemData.ItemName),
             saveData.SelectItemData.ItemPosition.transform.position,
-            Quaternion.identity, _container);
+            Quaternion.identity, _initializator.CurrentMap.ItemsContainer);
 
         // Debug.Log("CANCELING DROP Item " + saveData.ItemDropData.PrefabItem.ItemName);
         _dropGenerator.SetItem(saveData.ItemDropData.PrefabItem, saveData.ItemDropData.Icon);
@@ -515,6 +525,7 @@ public class MovesKeeper : MonoBehaviour
 
     public void ClearAllHistory()
     {
+        Debug.Log("ТУТ");
         _savesHistory.Clear();
         _currentStep = _savesHistory.Count;
         StepChanged?.Invoke(_currentStep);

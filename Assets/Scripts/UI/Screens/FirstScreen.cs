@@ -5,16 +5,52 @@ using UnityEngine;
 public class FirstScreen : AbstractScreen
 {
     private const string LastActiveMap = "LastActiveMap";
-
+    private const string ItemStorageSave = "ItemStorageSave";
+    private const string ActiveMap = "ActiveMap";
+    
     [SerializeField] private Load _load;
     [SerializeField] private ContinueButton _continueButton;
+    [SerializeField] private Initializator _initializator;
 
     private int _startValue = 0;
     private int _currentValue;
+    private int _currentValue1;
 
     private void Start()
     {
         _currentValue = _load.Get(LastActiveMap, _startValue);
-        _continueButton.gameObject.SetActive(_currentValue > 0);
+        _currentValue1 = _load.Get(ActiveMap + _initializator.Index, _startValue);
+
+        /*if (PlayerPrefs.HasKey(ItemStorageSave + _initializator.Index))
+        {
+            Debug.Log("Существует " + ItemStorageSave + _initializator.Index);
+        }*/
+        
+        Debug.Log("Current 0  = " + _currentValue);
+        Debug.Log("Current 1 = " + _currentValue1);
+        bool value = _currentValue > 0 && _currentValue1 > 0;
+        Debug.Log("Value" + value);
+
+        // _continueButton.gameObject.SetActive(_currentValue > 0);
+        _continueButton.gameObject.SetActive(value);
+    }
+
+    public override void Open()
+    {
+        base.Open();
+        
+        /*if (PlayerPrefs.HasKey(ItemStorageSave + _initializator.Index))
+        {
+            Debug.Log("Существует " + ItemStorageSave + _initializator.Index);
+        }*/
+        _currentValue = _load.Get(LastActiveMap, _startValue);
+        _currentValue1 = _load.Get(ActiveMap + _initializator.Index, _startValue);
+        Debug.Log("Current 0  = " + _currentValue);
+        Debug.Log("Current 1 = " + _currentValue1);
+        bool value = _currentValue > 0 && _currentValue1 > 0;
+        Debug.Log("Value" + value);
+
+        // _continueButton.gameObject.SetActive(_currentValue > 0);
+        _continueButton.gameObject.SetActive(value);
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using ItemPositionContent;
+using SaveAndLoad;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Advertisements;
@@ -8,12 +9,16 @@ namespace CountersContent
 {
     public class ScoreCounter : MonoBehaviour
     {
+        private const string CurrentRecordScore = "CurrentRecordScore";
+
         [SerializeField] private Merger _merger;
         [SerializeField] private PositionMatcher _positionMatcher;
         [SerializeField] private TMP_Text _scoreTargetText;
         [SerializeField] private VisualScore _visualScore;
         [SerializeField] private DropGenerator _dropGenerator;
         [SerializeField] private LookMerger _lookMerger;
+        [SerializeField] private Save _save;
+        [SerializeField] private Initializator _initializator;
 
         private int _currentScore;
         private int _targetScore = 50;
@@ -22,10 +27,15 @@ namespace CountersContent
         private Vector3 _targetPosition;
         private string _scoreText = "гол {0} очков";
 
+        private int _maxRecordScore;
+        public int CurrentScoreRecord { get; private set; }
+
         public event Action<int, int> ScoreChanged;
 
         public event Action LevelChanged;
-
+        
+        public event Action<int> ScoreIncomeChanged;
+        
         public int Factor { get; private set; } = 1;
 
         public int CurrentScore => _currentScore;
@@ -63,7 +73,9 @@ namespace CountersContent
         {
             _scoreIncome += reward * countMatch;
             _targetPosition = itemPosition.transform.position;
-
+            CurrentScoreRecord += _scoreIncome;
+            _save.SetData(CurrentRecordScore + _initializator.Index, CurrentScoreRecord);
+            Debug.Log("currentScore " + CurrentScoreRecord);
             // _visualScore.transform.position = itemPosition.transform.position;
         }
 
@@ -76,7 +88,8 @@ namespace CountersContent
             _visualScore.gameObject.SetActive(true);
             _visualScore.ScoreMove(_currentScore, _targetPosition);
             ScoreChanged?.Invoke(_currentScore, _targetScore);
-
+            ScoreIncomeChanged?.Invoke(_scoreIncome);
+            
             if (_currentScore >= _targetScore)
             {
                 NextGoal();
@@ -103,12 +116,21 @@ namespace CountersContent
 
         public void ResetScore()
         {
+            CurrentScoreRecord = 0;
+            _save.SetData(CurrentRecordScore + _initializator.Index, CurrentScoreRecord);
             _currentScore = 0;
             _targetScore = 50;
             Factor = 1;
             _dropGenerator.ResetLevel();
             Show();
             ScoreChanged?.Invoke(_currentScore, _targetScore);
+        }
+
+        public void SetCurrentScore(int currentValue)
+        {
+            CurrentScoreRecord = currentValue;
+            _save.SetData(CurrentRecordScore + _initializator.Index, CurrentScoreRecord);
+            Debug.Log("Продолжить с рекордом " + CurrentScoreRecord);
         }
     }
 }

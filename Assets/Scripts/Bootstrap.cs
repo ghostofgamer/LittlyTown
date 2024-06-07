@@ -35,14 +35,14 @@ public class Bootstrap : MonoBehaviour
                 _initializator.ItemPositions, _initializator.CurrentMap.RoadsContainer,_initializator.CurrentMap.StartItems);
             _mapGenerator.GenerationAllMap(1);
             _mapGenerator.GenerationAllMap(2);
-            Debug.Log("First");
+            // Debug.Log("First");
         }
         else
         {
             _initializator.SetIndex(currentMap);
             _initializator.FillLists();
 
-            Debug.Log("Bootstrap " + currentMap);
+            // Debug.Log("Bootstrap " + currentMap);
 
             for (int i = 0; i < _initializator.AmountMaps; i++)
             {

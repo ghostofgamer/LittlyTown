@@ -2,6 +2,7 @@ using System;
 using Enums;
 using ItemPositionContent;
 using ItemSO;
+using TMPro;
 using UnityEngine;
 
 namespace ItemContent
@@ -18,12 +19,15 @@ namespace ItemContent
         [SerializeField] private int _gold;
         [SerializeField] private int _startPrice;
         [SerializeField] private float _priceMultiplier;
-
+        [SerializeField] private TMP_Text _rewardText;
+        
         private int _price;
         private bool _isActive;
 
         public event Action Activated;
         public event Action Deactivated;
+
+        public TMP_Text RewardText => _rewardText;
 
         public int Reward => _reward;
 
@@ -47,14 +51,14 @@ namespace ItemContent
 
         public void Activation()
         {
-            Debug.Log("Act");
+            // Debug.Log("Act");
             _isActive = true;
             Activated?.Invoke();
         }
 
         public void Deactivation()
         {
-            Debug.Log("Deact");
+            // Debug.Log("Deact");
             _isActive = false;
             Deactivated?.Invoke();
         }

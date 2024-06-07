@@ -8,7 +8,7 @@ using UnityEngine.PlayerLoop;
 public class ChooseMapScreen : AbstractScreen
 {
     private const string LastActiveMap = "LastActiveMap";
-    private const string FirstActiveMap = "FirstActiveMap";
+    private const string ActiveMap = "ActiveMap";
 
     [SerializeField] private ItemDragger _itemDragger;
     [SerializeField] private GameObject _startButton;
@@ -37,12 +37,13 @@ public class ChooseMapScreen : AbstractScreen
 
     private void Start()
     {
-        CheckActivation();
+        // CheckActivation();
     }
 
     public override void Open()
     {
-        CheckActivation();
+        ChangeActivationButton();
+        // CheckActivation();
         // _inputItemDragger.enabled = false;
         base.Open();
         _itemDragger.SwitchOff();
@@ -62,7 +63,7 @@ public class ChooseMapScreen : AbstractScreen
         _mapActivator.ChangeActivityMaps();
     }
 
-    private void CheckActivation()
+    /*private void CheckActivation()
     {
         _currentValue = _load.Get(LastActiveMap, _startValue);
 
@@ -78,20 +79,23 @@ public class ChooseMapScreen : AbstractScreen
             _continueButton.SetActive(false);
             _restartButton.SetActive(false);
         }
-    }
+    }*/
 
     private void ChangeActivationButton()
     {
-        int value = _load.Get(FirstActiveMap + _initializator.Index, _startValue);
+        Debug.Log( "Активация ");
+        int value = _load.Get(ActiveMap + _initializator.Index, _startValue);
 
         if (value > _startValue)
         {
+            Debug.Log("true " + value);
             _startButton.SetActive(false);
             _continueButton.SetActive(true);
             _restartButton.SetActive(true);
         }
         else
         {
+            Debug.Log("false " + value);
             _startButton.SetActive(true);
             _continueButton.SetActive(false);
             _restartButton.SetActive(false);

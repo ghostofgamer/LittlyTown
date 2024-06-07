@@ -14,7 +14,7 @@ public class StartMap : MonoBehaviour
 {
     private const string LastActiveMap = "LastActiveMap";
     private const string Map = "Map";
-    private const string FirstActiveMap = "FirstActiveMap";
+    private const string ActiveMap = "ActiveMap";
 
     [SerializeField] private Initializator _initializator;
     [SerializeField] private ItemDragger _itemDragger;
@@ -40,20 +40,20 @@ public class StartMap : MonoBehaviour
     {
         _save.SetData(LastActiveMap, _selectMap);
         _save.SetData(Map, _initializator.Index);
-        _save.SetData(FirstActiveMap + _initializator.Index, _selectMap);
+        _save.SetData(ActiveMap + _initializator.Index, _selectMap);
         // Debug.Log("до Филл " + _initializator.Index);
         _initializator.FillLists();
         // _mapActivator.ChangeActivityMaps();
         DeactivateItems();
         _visualItemsDeactivator.SetPositions(_initializator.ItemPositions);
         _itemDragger.ClearAll();
-        _moveKeeper.LoadHistoryData();
         foreach (var storage in _storages)
         {
             storage.ClearItem();
         }
 
-        _movesKeeper.ClearAllHistory();
+        // _movesKeeper.ClearAllHistory();
+        _moveKeeper.LoadHistoryData();
         _goldWallet.SetInitialValue();
         _scoreCounter.ResetScore();
 
@@ -91,9 +91,64 @@ public class StartMap : MonoBehaviour
         _bonusesStart.ApplyBonuses();
     }
 
+    public void StartVisualCreate()
+    {
+        // _save.SetData(LastActiveMap, _selectMap);
+        _save.SetData(Map, _initializator.Index);
+        // _save.SetData(ActiveMap + _initializator.Index, _selectMap);
+        // Debug.Log("до Филл " + _initializator.Index);
+        _initializator.FillLists();
+        // _mapActivator.ChangeActivityMaps();
+        DeactivateItems();
+        _visualItemsDeactivator.SetPositions(_initializator.ItemPositions);
+        _itemDragger.ClearAll();
+        foreach (var storage in _storages)
+        {
+            storage.ClearItem();
+        }
+
+        // _movesKeeper.ClearAllHistory();
+        _moveKeeper.LoadHistoryData();
+        _goldWallet.SetInitialValue();
+        _scoreCounter.ResetScore();
+
+        foreach (var itemPosition in _initializator.ItemPositions)
+        {
+            itemPosition.ClearingPosition();
+        }
+
+        foreach (var item in _items)
+        {
+            item.SetInitialPrice();
+        }
+
+        foreach (var possibility in _possibilities)
+        {
+            possibility.SetStartPrice();
+        }
+
+        foreach (var possibilityCounter in _possibilitiesCounters)
+        {
+            possibilityCounter.SetCount();
+
+            if (_packageLittleTown.IsActive)
+                possibilityCounter.IncreaseCount(_packageLittleTown.Amount);
+        }
+
+        if (_packageLittleTown.IsActive)
+            _packageLittleTown.Activated();
+
+        // Debug.Log("Starting  " + _initializator.Index);
+        _mapGenerator.TestVisualGeneration(_initializator.Territories, _initializator.FinderPositions,
+            _initializator.CurrentMap.StartItems, _initializator.ItemPositions,
+            _initializator.CurrentMap.ItemsContainer);
+        _itemDragger.SwitchOn();
+        _bonusesStart.ApplyBonuses();
+    }
+    
     public void DeactivateItems()
     {
-        Debug.Log(_initializator.CurrentMap.name);
+        // Debug.Log(_initializator.CurrentMap.name);
 
         foreach (Transform child in _initializator.CurrentMap.RoadsContainer.transform)
         {

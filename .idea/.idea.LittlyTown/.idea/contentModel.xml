@@ -1220,6 +1220,7 @@
               <e p="CollectionScrollButton.cs" t="Include" />
               <e p="ContinueButton.cs" t="Include" />
               <e p="DayNightButton.cs" t="Include" />
+              <e p="EndButton.cs" t="Include" />
               <e p="EndScreen" t="Include">
                 <e p="CancelLastStepButton.cs" t="Include" />
               </e>

@@ -13,6 +13,7 @@ public class ChooseMap : MonoBehaviour
     private Vector3 _target;
     private Vector3 _currentPosition;
     private Vector3 _startPosition;
+    private Vector3 _startResetPosition;
     private float _currentStep;
     private float _currentZ;
 
@@ -28,6 +29,7 @@ public class ChooseMap : MonoBehaviour
     {
         // Debug.Log(":::::");
         _startPosition = transform.position;
+        _startResetPosition = _startPosition;
         _currentZ = _startPosition.z;
     }
 
@@ -43,8 +45,8 @@ public class ChooseMap : MonoBehaviour
         {
             _mouseCurrentPosition = Input.mousePosition;
             _mouseDelta = -(_mouseCurrentPosition.x - _mouseDownPosition.x);
-            Debug.Log("DELTA " + _mouseDelta);
-            Debug.Log("DELTA Mathf" + Mathf.Abs(_mouseDelta));
+            /*Debug.Log("DELTA " + _mouseDelta);
+            Debug.Log("DELTA Mathf" + Mathf.Abs(_mouseDelta));*/
 
             if (Mathf.Abs(_mouseDelta) > 10f)
             {
@@ -126,5 +128,27 @@ public class ChooseMap : MonoBehaviour
         _target = new Vector3(_startPosition.x, _startPosition.y, _currentZ);
         transform.position = _target;
         // _startPosition = 
+    }
+    
+    public void ResetMapPosition()
+    {
+        _currentIndex = 0;
+        MapChanged?.Invoke(_currentIndex);
+        StartCoroutine(MapResetMove());
+    }
+
+    private IEnumerator MapResetMove()
+    {
+        _elapsedTime = 0;
+        _currentPosition = transform.position;
+
+        while (_elapsedTime < _duration)
+        {
+            _elapsedTime += Time.deltaTime;
+            transform.position = Vector3.Lerp(_currentPosition, _startResetPosition, _elapsedTime / _duration);
+            yield return null;
+        }
+
+        transform.position = _startResetPosition;
     }
 }

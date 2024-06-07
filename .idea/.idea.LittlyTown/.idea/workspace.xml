@@ -20,16 +20,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="099b8a6d-6b1c-4473-babb-d7d2ffb7e44f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/indexLayout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EnvironmentMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EnvironmentMovement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Bush.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Bush.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Tree.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Tree.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Bootstrap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Bootstrap.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChooseMap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ChooseMap.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CountersContent/ScoreCounter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CountersContent/ScoreCounter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CountersContent/VisualScore.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CountersContent/VisualScore.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemContent/Item.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemContent/Item.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemPositionContent/FinderPositions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemPositionContent/FinderPositions.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/MapGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MapGenerator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/MovesKeeper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MovesKeeper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RoadGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RoadGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SpawnContent/Spawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SpawnContent/Spawner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ReplacementPosition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ReplacementPosition.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/GoalContent/GoalSaver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/GoalContent/GoalSaver.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/SaveData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/SaveData.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/StartMap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/StartMap.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ContinueButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ContinueButton.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/ChooseMapScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/ChooseMapScreen.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/EndScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/EndScreen.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/FirstScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/FirstScreen.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,6 +83,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Screens/FirstScreen.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Buttons/UpgradeButtons/PackageSlotsButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CountersContent/ScoreSlider.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Buttons/EndButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlatformChecker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/SaveHistoryData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Road/AngularRoad.cs" root0="FORCE_HIGHLIGHTING" />
@@ -190,25 +203,14 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/MapInfo.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/MapsInfo.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Territory.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/EndScreen/CancelLastStepButton.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Initialization.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Environment.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Map.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ItemPositionContent/VisualItemsDeactivator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/StartButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MapsContent/Map.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GoalContent/GoalsCounter.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GoalContent/Goal.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Bootstrap.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Dragger/ItemDragger.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Wallets/MoneyInfo.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/SaveData.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SpawnContent/DropGenerator.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/CountersContent/ScoreCounter.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Initializator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/SaveHistoryData.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/RemovalItems.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/PossibilitiesShopContent/PossibilitiesShopScreen.cs" />
@@ -227,20 +229,31 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Wallets/AbstractWallet.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Wallets/CrystalWallet.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/GameLevelScreen.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/ChooseMap.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/TurnEnvironment.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Test/LookMerger.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/ItemContent/Item.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MapActivator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ItemContent/ItemAnimation.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/ChooseMapScreen.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/EnvironmentMovement.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/StartMap.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SpawnContent/Spawner.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ContinueButton.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/MovesKeeper.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/RoadGenerator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/GoalContent/GoalSaver.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Bootstrap.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ReplacementPosition.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MovesKeeper.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/SaveData.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Initializator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/ChooseMapScreen.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/FirstScreen.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MapGenerator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ItemPositionContent/FinderPositions.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ChooseMap.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/StartMap.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/EndButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ContinueButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/EndScreen.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/CountersContent/ScoreCounter.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ItemContent/Item.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/CountersContent/VisualScore.cs" />
       </list>
     </option>
   </component>
@@ -343,7 +356,7 @@
       <workItem from="1717486822068" duration="23305000" />
       <workItem from="1717572497369" duration="20784000" />
       <workItem from="1717666630846" duration="19956000" />
-      <workItem from="1717746441782" duration="2514000" />
+      <workItem from="1717746441782" duration="20792000" />
     </task>
     <servers />
   </component>
@@ -436,10 +449,10 @@
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
     <state x="461" y="161" key="SettingsEditor/0.0.1920.1032@0.0.1920.1032" timestamp="1714730777395" />
-    <state x="112" y="95" width="1736" height="848" key="VCS.FileHistoryDialog" timestamp="1717672335472">
+    <state x="112" y="95" width="1736" height="848" key="VCS.FileHistoryDialog" timestamp="1717768531610">
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
-    <state x="112" y="95" width="1736" height="848" key="VCS.FileHistoryDialog/0.0.1920.1032@0.0.1920.1032" timestamp="1717672335472" />
+    <state x="112" y="95" width="1736" height="848" key="VCS.FileHistoryDialog/0.0.1920.1032@0.0.1920.1032" timestamp="1717768531610" />
     <state x="616" y="238" key="run.anything.popup" timestamp="1716889101887">
       <screen x="0" y="0" width="1920" height="1032" />
     </state>

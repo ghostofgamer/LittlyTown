@@ -35,6 +35,8 @@ public class ReplacementPosition : MonoBehaviour
 
     public event Action PositionsChanged;
 
+    public event Action PositionChanging;
+
     private void OnEnable()
     {
         _replacementButton.ReplaceActivated += ActivateWork;
@@ -141,6 +143,8 @@ public class ReplacementPosition : MonoBehaviour
                         _firstItemPosition = null;
                         _audioSource.PlayOneShot(_audioSource.clip);
                         yield return null;
+                        PositionChanging?.Invoke();
+                        yield return new WaitForSeconds(0.1f);
                         PositionsChanged?.Invoke();
                         yield return new WaitForSeconds(0.1f);
                         _positionsCounter.DecreaseCount();
@@ -156,6 +160,8 @@ public class ReplacementPosition : MonoBehaviour
                         _firstItemPosition = null;
                         _audioSource.PlayOneShot(_audioSource.clip);
                         yield return null;
+                        PositionChanging?.Invoke();
+                        yield return new WaitForSeconds(0.1f);
                         PositionsChanged?.Invoke();
                         yield return new WaitForSeconds(0.1f);
                         _positionsCounter.DecreaseCount();
