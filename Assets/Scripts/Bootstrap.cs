@@ -44,6 +44,7 @@ public class Bootstrap : MonoBehaviour
             _mapGenerator.GenerationAllMap(7);
             _mapGenerator.GenerationAllMap(8);
             _mapGenerator.GenerationAllMap(9);
+            _mapGenerator.GenerationAllMap(10);
             // Debug.Log("First");
         }
         else

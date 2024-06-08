@@ -20,7 +20,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="099b8a6d-6b1c-4473-babb-d7d2ffb7e44f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Bootstrap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Bootstrap.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChooseMap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ChooseMap.cs" afterDir="false" />
     </list>
@@ -340,7 +339,7 @@
       <workItem from="1717572497369" duration="20784000" />
       <workItem from="1717666630846" duration="19956000" />
       <workItem from="1717746441782" duration="20794000" />
-      <workItem from="1717833179857" duration="12192000" />
+      <workItem from="1717833179857" duration="12799000" />
     </task>
     <servers />
   </component>
