@@ -1099,6 +1099,7 @@
           <e p="Environment.cs" t="Include" />
           <e p="EnvironmentMovement.cs" t="Include" />
           <e p="FadeCanvas.cs" t="Include" />
+          <e p="FlightScore.cs" t="Include" />
           <e p="GoalContent" t="Include">
             <e p="Goal.cs" t="Include" />
             <e p="GoalAnimation.cs" t="Include" />
@@ -1154,6 +1155,7 @@
             <e p="PossibilitieMovement.cs" t="Include" />
             <e p="PossibilitieReplace.cs" t="Include" />
           </e>
+          <e p="Records.cs" t="Include" />
           <e p="RemovalItems.cs" t="Include" />
           <e p="ReplacementPosition.cs" t="Include" />
           <e p="Road" t="Include">

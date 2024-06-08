@@ -19,15 +19,16 @@ namespace ItemContent
         [SerializeField] private int _gold;
         [SerializeField] private int _startPrice;
         [SerializeField] private float _priceMultiplier;
-        [SerializeField] private TMP_Text _rewardText;
+        [SerializeField] private FlightScore _flightScore;
         
         private int _price;
         private bool _isActive;
 
         public event Action Activated;
+        
         public event Action Deactivated;
 
-        public TMP_Text RewardText => _rewardText;
+        public FlightScore FlightScore => _flightScore;
 
         public int Reward => _reward;
 
@@ -92,7 +93,6 @@ namespace ItemContent
         public void IncreasePrice()
         {
             _price = Mathf.RoundToInt(_price * _priceMultiplier);
-            ;
         }
 
         public void SetInitialPrice()

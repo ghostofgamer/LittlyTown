@@ -86,7 +86,7 @@ namespace CountersContent
 
             _currentScore += _scoreIncome;
             _visualScore.gameObject.SetActive(true);
-            _visualScore.ScoreMove(_currentScore, _targetPosition);
+            _visualScore.ScoreMove(_currentScore);
             ScoreChanged?.Invoke(_currentScore, _targetScore);
             ScoreIncomeChanged?.Invoke(_scoreIncome);
             

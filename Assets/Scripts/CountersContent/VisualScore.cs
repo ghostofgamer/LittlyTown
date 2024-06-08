@@ -12,7 +12,8 @@ public class VisualScore : MonoBehaviour
     [SerializeField] private TMP_Text _scoreText;
     [SerializeField] private ScoreCounter _scoreCounter;
     [SerializeField] private Merger _merger;
-
+    [SerializeField] private Camera _camera;
+    
     private Coroutine _coroutine;
     private Item _item;
 
@@ -28,25 +29,17 @@ public class VisualScore : MonoBehaviour
         _merger.ItemMergered -= SetItem;
     }
 
-    public void ScoreMove(int scoreValue, Vector3 position)
+    public void ScoreMove(int scoreValue)
     {
         if (_coroutine != null)
             StopCoroutine(_coroutine);
 
         _scoreText.text = scoreValue.ToString();
-        // StartCoroutine(Move());
-    }
-
-    private IEnumerator Move()
-    {
-        yield return null;
     }
 
     private void Show(int score)
     {
-        Debug.Log("Score Получается " + score);
-        _item.RewardText.enabled = true;
-        _item.RewardText.text = score.ToString();
+        _item.FlightScore.StartShow(_camera,score);
     }
 
     private void SetItem(Item item)

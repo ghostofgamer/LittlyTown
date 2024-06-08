@@ -124,7 +124,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 1
+  m_fontSize: 1.6
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -283,6 +283,7 @@ MonoBehaviour:
   _startPrice: 16
   _priceMultiplier: 1.3
   _rewardText: {fileID: 5511251005127376710}
+  _flightScore: {fileID: 2238096049828994918}
 --- !u!54 &5964538443215958981
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -476,6 +477,7 @@ GameObject:
   - component: {fileID: 6441605500683521829}
   - component: {fileID: 6335081482620489251}
   - component: {fileID: 4817272531557663745}
+  - component: {fileID: 2238096049828994918}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -500,8 +502,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 2.78}
-  m_SizeDelta: {x: 3.44, y: 1}
+  m_AnchoredPosition: {x: 0, y: 3.1925}
+  m_SizeDelta: {x: 3.5, y: 1.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &6441605500683521829
 Canvas:
@@ -566,6 +568,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &2238096049828994918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7427536129534917663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: add31791c2264d9408aef1086f6282bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rewardText: {fileID: 5511251005127376710}
 --- !u!1 &8765705806459110515
 GameObject:
   m_ObjectHideFlags: 0
