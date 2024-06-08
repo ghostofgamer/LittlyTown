@@ -307,7 +307,7 @@ public class MapGenerator : MonoBehaviour
             finderPosition.FindNeighbor();
 
         yield return _waitForSecondsMoment;
-        _roadGenerator.TestGeneration(itemPositions, container,_initializator.CurrentMap);
+        _roadGenerator.TestGeneration(itemPositions, container, _initializator.CurrentMap);
         // _roadGenerator.OnGeneration();
         yield return _waitForSecondsMoment;
         /*_spawner.OnCreateItem();
@@ -352,7 +352,7 @@ public class MapGenerator : MonoBehaviour
                itemPosition.ClearingPosition();
             } 
         }*/
-        
+
         foreach (var territory in territories)
         {
             territory.gameObject.SetActive(true);
@@ -372,11 +372,14 @@ public class MapGenerator : MonoBehaviour
             {
                 if (itemData != null)
                 {
+                    if (itemData.ItemName != Items.Crane)
+                    {
+                        Item item = Instantiate(GetItem(itemData.ItemName), itemData.ItemPosition.transform.position,
+                            Quaternion.identity, map.ItemsContainer);
+                        item.Init(itemData.ItemPosition);
+                        item.Activation();
+                    }
                     // Debug.Log("Загрузка " + itemData.ItemName);
-                    Item item = Instantiate(GetItem(itemData.ItemName), itemData.ItemPosition.transform.position,
-                        Quaternion.identity, map.ItemsContainer);
-                    item.Init(itemData.ItemPosition);
-                    item.Activation();
                 }
             }
         }
@@ -434,9 +437,9 @@ public class MapGenerator : MonoBehaviour
 
         // _roadGenerator.TestGeneration(itemPositions, container);
         // _roadGenerator.TestCreateRoadOneMoment(itemPositions, container);
-        
-        _roadGenerator.TestGeneration(itemPositions, container,map);
-        
+
+        _roadGenerator.TestGeneration(itemPositions, container, map);
+
         /*if (map.Index != _initializator.Index)
         {
             map.gameObject.SetActive(false);
@@ -505,7 +508,8 @@ public class MapGenerator : MonoBehaviour
             finderPosition.FindNeighbor();
 
         yield return _waitForSecondsMoment;
-        _roadGenerator.TestGeneration(_initializator.ItemPositions, _initializator.CurrentMap.RoadsContainer,_initializator.CurrentMap);
+        _roadGenerator.TestGeneration(_initializator.ItemPositions, _initializator.CurrentMap.RoadsContainer,
+            _initializator.CurrentMap);
         // Debug.Log("ЕУСТ " + _initializator.CurrentMap.name);
         yield return _waitForSecondsMoment;
         _spawner.OnCreateItem();
@@ -541,8 +545,8 @@ public class MapGenerator : MonoBehaviour
         StartCoroutine(StartTestGenerationFirstMap(territories,finderPosition));
     
 }*/
-    
-     public void TestVisualGeneration(List<Territory> territories, List<FinderPositions> finderPositions,
+
+    public void TestVisualGeneration(List<Territory> territories, List<FinderPositions> finderPositions,
         List<Item> startItems,
         List<ItemPosition> itemPositions, Transform container)
     {
@@ -557,7 +561,8 @@ public class MapGenerator : MonoBehaviour
             container));
     }
 
-    private IEnumerator StartTestVisualGenerationTerritory(List<Territory> territories, List<FinderPositions> finderPositions,
+    private IEnumerator StartTestVisualGenerationTerritory(List<Territory> territories,
+        List<FinderPositions> finderPositions,
         List<Item> startItems,
         List<ItemPosition> itemPositions, Transform container)
     {
@@ -603,7 +608,8 @@ public class MapGenerator : MonoBehaviour
             finderPosition.FindNeighbor();
 
         yield return _waitForSecondsMoment;
-        _roadGenerator.TestGeneration(_initializator.ItemPositions, _initializator.CurrentMap.RoadsContainer,_initializator.CurrentMap);
+        _roadGenerator.TestGeneration(_initializator.ItemPositions, _initializator.CurrentMap.RoadsContainer,
+            _initializator.CurrentMap);
         // Debug.Log("ЕУСТ " + _initializator.CurrentMap.name);
         yield return _waitForSecondsMoment;
         // _spawner.OnCreateItem();

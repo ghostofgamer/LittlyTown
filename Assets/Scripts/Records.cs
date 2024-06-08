@@ -23,16 +23,17 @@ public class Records : MonoBehaviour
 
     private void Show()
     {
-       int score =  _load.Get(MaxRecord, 0);
+        int score = _load.Get(MaxRecord + _initializator.Index, 0);
 
-       if (score > 0)
-       {
-           _recordsContent[_initializator.Index].SetActive(true);
-           _recordsInfo[_initializator.Index].text = score.ToString();
-       }
-       else
-       {
-           _recordsContent[_initializator.Index].SetActive(false);
-       }
+        
+        if (score > 0)
+        {
+            _recordsContent[_initializator.Index].SetActive(true);
+            _recordsInfo[_initializator.Index].text = score.ToString();
+        }
+        else
+        {
+            _recordsContent[_initializator.Index].SetActive(false);
+        }
     }
 }

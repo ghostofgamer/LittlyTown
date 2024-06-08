@@ -68,7 +68,7 @@ public class ChooseMap : MonoBehaviour
         {
             if (Mathf.Abs(_mouseDelta) > 6)
             {
-                if (_currentIndex + (int) Mathf.Sign(_mouseDelta) > 2 ||
+                if (_currentIndex + (int) Mathf.Sign(_mouseDelta) > 6 ||
                     _currentIndex + (int) Mathf.Sign(_mouseDelta) < 0)
                 {
                     transform.position = _startScrollPosition;
@@ -88,9 +88,9 @@ public class ChooseMap : MonoBehaviour
     {
         _currentIndex += index;
 
-        if (_currentIndex > 2 || _currentIndex < 0)
+        if (_currentIndex > 6 || _currentIndex < 0)
         {
-            _currentIndex = Mathf.Clamp(_currentIndex, 0, 2);
+            _currentIndex = Mathf.Clamp(_currentIndex, 0, 6);
             return;
         }
 

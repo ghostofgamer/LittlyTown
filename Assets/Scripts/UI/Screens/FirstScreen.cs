@@ -7,6 +7,7 @@ public class FirstScreen : AbstractScreen
     private const string LastActiveMap = "LastActiveMap";
     private const string ItemStorageSave = "ItemStorageSave";
     private const string ActiveMap = "ActiveMap";
+    private const string Map = "Map";
     
     [SerializeField] private Load _load;
     [SerializeField] private ContinueButton _continueButton;
@@ -18,14 +19,18 @@ public class FirstScreen : AbstractScreen
 
     private void Start()
     {
+        int LastValue = _load.Get(LastActiveMap, _startValue);
+        int currentMap = _load.Get("Map", _startValue);
+        Debug.Log("ПОСЛЕДНИЙ!!! " + LastValue);
         _currentValue = _load.Get(LastActiveMap, _startValue);
-        _currentValue1 = _load.Get(ActiveMap + _initializator.Index, _startValue);
-
+        _currentValue1 = _load.Get(ActiveMap + currentMap, _startValue);
+        // _currentValue1 = _load.Get(Map, _startValue);
+        // _save.SetData(Map, _initializator.Index);
         /*if (PlayerPrefs.HasKey(ItemStorageSave + _initializator.Index))
         {
             Debug.Log("Существует " + ItemStorageSave + _initializator.Index);
         }*/
-        
+        Debug.Log("INDEX  = " + _initializator.Index);
         Debug.Log("Current 0  = " + _currentValue);
         Debug.Log("Current 1 = " + _currentValue1);
         bool value = _currentValue > 0 && _currentValue1 > 0;
@@ -45,6 +50,8 @@ public class FirstScreen : AbstractScreen
         }*/
         _currentValue = _load.Get(LastActiveMap, _startValue);
         _currentValue1 = _load.Get(ActiveMap + _initializator.Index, _startValue);
+        Debug.Log("INDEX  = " + _initializator.Index);
+        
         Debug.Log("Current 0  = " + _currentValue);
         Debug.Log("Current 1 = " + _currentValue1);
         bool value = _currentValue > 0 && _currentValue1 > 0;

@@ -41,6 +41,8 @@ public class StartMap : MonoBehaviour
         _save.SetData(LastActiveMap, _selectMap);
         _save.SetData(Map, _initializator.Index);
         _save.SetData(ActiveMap + _initializator.Index, _selectMap);
+        
+        Debug.Log("ActiveMap + _initializator.Index " + ActiveMap + _initializator.Index    + "///" + _selectMap );
         // Debug.Log("до Филл " + _initializator.Index);
         _initializator.FillLists();
         // _mapActivator.ChangeActivityMaps();

@@ -21,8 +21,10 @@ public class Bootstrap : MonoBehaviour
     {
         int value = _load.Get(LastActiveMap, _startValue);
 
+        // int currentMap = _load.Get("Map", _startValue);
         int currentMap = _load.Get("Map", _startValue);
-        // Debug.Log("!!!!");
+        
+        Debug.Log("!!!! " + currentMap);
         _chooseMap.SetPosition(currentMap);
 
         if (value == 0)
@@ -35,6 +37,10 @@ public class Bootstrap : MonoBehaviour
                 _initializator.ItemPositions, _initializator.CurrentMap.RoadsContainer,_initializator.CurrentMap.StartItems);
             _mapGenerator.GenerationAllMap(1);
             _mapGenerator.GenerationAllMap(2);
+            _mapGenerator.GenerationAllMap(3);
+            _mapGenerator.GenerationAllMap(4);
+            _mapGenerator.GenerationAllMap(5);
+            _mapGenerator.GenerationAllMap(6);
             // Debug.Log("First");
         }
         else
