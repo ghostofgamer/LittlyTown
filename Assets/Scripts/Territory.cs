@@ -5,8 +5,11 @@ public class Territory : MonoBehaviour
 {
     [SerializeField] private PositionScaller[] _positionScallers;
     [SerializeField] private ItemPosition[] _itemPositions;
-
+    [SerializeField] private bool _isExpanding;
+    
     public ItemPosition[] ItemPositions => _itemPositions;
+    
+    public bool IsExpanding => _isExpanding;
 
     public void PositionActivation()
     {

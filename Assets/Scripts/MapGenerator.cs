@@ -33,6 +33,8 @@ public class MapGenerator : MonoBehaviour
     private List<ItemPosition> _clearPositions;
     private int _randomIndex;
 
+    [SerializeField] private ExtensionMap _extensionMap;
+
     public event Action GenerationCompleted;
 
     /*private void Start()
@@ -100,12 +102,23 @@ public class MapGenerator : MonoBehaviour
         _targetTerritories = new List<Territory>();
         _targetFinderPositions = new List<FinderPositions>();
         _targetItemPositions = new List<ItemPosition>();
-
+        
+        if (_environments[index].GetComponent<Map>().IsMapExpanding)
+        {
+            _extensionMap.SearchMap(_environments[index].GetComponent<Map>().Index);
+            return;
+        }
+     
         Territory[] territories = _environments[index].GetComponentsInChildren<Territory>(true);
-
+        
         foreach (var territory in territories)
         {
-            if (!_targetTerritories.Contains(territory))
+            if (territory.IsExpanding)
+            {
+                Debug.Log("расширение");
+            }
+
+            if (!_targetTerritories.Contains(territory) && !territory.IsExpanding)
             {
                 _targetTerritories.Add(territory);
             }
@@ -379,6 +392,7 @@ public class MapGenerator : MonoBehaviour
                         item.Init(itemData.ItemPosition);
                         item.Activation();
                     }
+
                     // Debug.Log("Загрузка " + itemData.ItemName);
                 }
             }
@@ -390,7 +404,8 @@ public class MapGenerator : MonoBehaviour
             {
                 _clearPositions = new List<ItemPosition>();
                 _clearPositions = itemPositions
-                    .Where(p => !p.GetComponent<ItemPosition>().IsBusy && !p.GetComponent<ItemPosition>().IsWater)
+                    .Where(p => !p.GetComponent<ItemPosition>().IsBusy && !p.GetComponent<ItemPosition>().IsWater &&
+                                p.GetComponent<ItemPosition>().gameObject.activeSelf)
                     .ToList();
                 _randomIndex = Random.Range(0, _clearPositions.Count);
                 Item newItem = Instantiate(item, map.ItemsContainer);
@@ -403,6 +418,7 @@ public class MapGenerator : MonoBehaviour
                 // _clearPositions[_randomIndex].DeliverObject(newItem);
             }
         }
+
         /*foreach (var item in startItems)
         {
             _clearPositions = new List<ItemPosition>();
@@ -431,10 +447,16 @@ public class MapGenerator : MonoBehaviour
             item.Activation();
             // _clearPositions[_randomIndex].DeliverObject(item);
         }*/
+        Debug.Log("ЗАШЕЛ!" + 4);
 
         foreach (var finderPosition in finderPositions)
-            finderPosition.FindNeighbor();
+        {
+            if (finderPosition.gameObject.activeSelf == true)
+                finderPosition.FindNeighbor();
+        }
 
+
+        Debug.Log("ЗАШЕЛ!" + 5);
         // _roadGenerator.TestGeneration(itemPositions, container);
         // _roadGenerator.TestCreateRoadOneMoment(itemPositions, container);
 

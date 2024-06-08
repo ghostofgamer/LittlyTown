@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using CountersContent;
 using Dragger;
 using ItemContent;
 using ItemPositionContent;
+using MapsContent;
 using PossibilitiesContent;
 using SaveAndLoad;
 using Unity.VisualScripting;
@@ -31,11 +33,14 @@ public class StartMap : MonoBehaviour
     [SerializeField]private MovesKeeper _moveKeeper;
     [SerializeField] private MapActivator _mapActivator;
     [SerializeField] private VisualItemsDeactivator _visualItemsDeactivator;
+    [SerializeField] private GoldCounter _goldCounter;
     
     private Transform[] _children;
     private int _selectMap = 1;
     [SerializeField] private Save _save;
 
+    public event Action MapStarted;
+    
     public void StartCreate()
     {
         _save.SetData(LastActiveMap, _selectMap);
@@ -44,7 +49,17 @@ public class StartMap : MonoBehaviour
         
         Debug.Log("ActiveMap + _initializator.Index " + ActiveMap + _initializator.Index    + "///" + _selectMap );
         // Debug.Log("до Филл " + _initializator.Index);
-        _initializator.FillLists();
+        if (_initializator.Environments[_initializator.Index].GetComponent<Map>().IsMapExpanding)
+        {
+            _initializator.ExtensionFillLists();
+            Debug.Log("Extention " + _initializator.Index);
+        }
+        else
+        {
+            Debug.Log("NotExtention " + _initializator.Index);
+            _initializator.FillLists();
+        }
+        
         // _mapActivator.ChangeActivityMaps();
         DeactivateItems();
         _visualItemsDeactivator.SetPositions(_initializator.ItemPositions);
@@ -56,7 +71,20 @@ public class StartMap : MonoBehaviour
 
         // _movesKeeper.ClearAllHistory();
         _moveKeeper.LoadHistoryData();
-        _goldWallet.SetInitialValue();
+
+        if (_initializator.CurrentMap.IsMapWithoutProfit)
+        {
+            _goldWallet.SetInitialValue();
+            _goldWallet.DisableProfit();
+        }
+        else
+        {
+             _goldWallet.SetInitialValue();
+             _goldWallet.EnableProfit();
+        }
+        
+        _goldCounter.CheckIncome();
+       
         _scoreCounter.ResetScore();
 
         foreach (var itemPosition in _initializator.ItemPositions)
@@ -91,6 +119,7 @@ public class StartMap : MonoBehaviour
             _initializator.CurrentMap.ItemsContainer);
         _itemDragger.SwitchOn();
         _bonusesStart.ApplyBonuses();
+        MapStarted?.Invoke();
     }
 
     public void StartVisualCreate()
@@ -161,27 +190,5 @@ public class StartMap : MonoBehaviour
         {
             child.gameObject.SetActive(false);
         }
-
-        /*foreach (var itemPosition in _initializator.ItemPositions)
-        {
-            itemPosition.gameObject.SetActive(false);
-        }
-        foreach (var territory in _initializator.Territories)
-        {
-            territory.gameObject.SetActive(false);
-        }*/
-
-
-        /*Transform[] children = _initializator.Container.GetComponentsInChildren<Transform>(true);
-         _children = _initializator.Container.GetComponentsInChildren<Transform>(true);
-
-        if (children.Length > 0)
-        {
-            foreach (Transform child in children)
-            {
-                if (child != _initializator.Container.transform)
-                    child.gameObject.SetActive(false);
-            }
-        }*/
     }
 }

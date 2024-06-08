@@ -16,8 +16,9 @@ namespace CountersContent
         [SerializeField] private ItemPosition[] _itemPositions;
         [SerializeField] private ItemDragger _itemDragger;
         [SerializeField] private LightHouseKeeper _lightHouseKeeper;
-[SerializeField]private RemovalItems _removalItems;
-        
+        [SerializeField] private RemovalItems _removalItems;
+        [SerializeField] private Initializator _initializator;
+
         private int _profit;
         private int _stepCount;
         private int _currentStep;
@@ -32,7 +33,7 @@ namespace CountersContent
         {
             _moveCounter.StepProfitMaded += AddGold;
             _itemDragger.PlaceChanged += CheckIncome;
-            _removalItems.Removed+= CheckIncome;
+            _removalItems.Removed += CheckIncome;
             // _merger.ItemMergered += ChangeProfit;
             _merger.Mergered += CheckIncome;
             _lightHouseKeeper.CheckCompleted += CheckIncome;
@@ -42,7 +43,7 @@ namespace CountersContent
         {
             _moveCounter.StepProfitMaded -= AddGold;
             _itemDragger.PlaceChanged -= CheckIncome;
-            _removalItems.Removed-= CheckIncome;
+            _removalItems.Removed -= CheckIncome;
             // _merger.ItemMergered -= ChangeProfit;
             _merger.Mergered -= CheckIncome;
             _lightHouseKeeper.CheckCompleted -= CheckIncome;
@@ -67,12 +68,29 @@ namespace CountersContent
             _text.text = string.Format(_scoreText, _profit);
         }
 
-        private void CheckIncome()
+        public void CheckIncome()
         {
             StartCoroutine(StartSearchIncome());
         }
 
         private IEnumerator StartSearchIncome()
+        {
+            yield return new WaitForSeconds(0.15f);
+            // Debug.Log("CheckGoldItems");
+            _profit = 0;
+
+            foreach (var itemPosition in _initializator.ItemPositions)
+            {
+                if (itemPosition.IsBusy && itemPosition.Item.IsHouse)
+                {
+                    _profit += itemPosition.Item.Gold;
+                }
+            }
+
+            Show();
+        }
+        
+        /*private IEnumerator StartSearchIncome()
         {
             yield return new WaitForSeconds(0.15f);
             // Debug.Log("CheckGoldItems");
@@ -87,6 +105,6 @@ namespace CountersContent
             }
 
             Show();
-        }
+        }*/
     }
 }

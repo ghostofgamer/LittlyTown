@@ -33,6 +33,8 @@ public class Initializator : MonoBehaviour
     public List<ItemPosition> ItemPositions => _currentItemPositions;
         
     public Map CurrentMap => _currentMap;
+    
+    public Transform[] Environments => _environments;
 
     private void Awake()
     {
@@ -93,5 +95,68 @@ public class Initializator : MonoBehaviour
                 _currentItemPositions.Add(itemPosition);
             }
         }
+    }
+    
+    public void ExtensionFillLists()
+    {
+        _currentItemPositions = new List<ItemPosition>();
+        _currentTerritories = new List<Territory>();
+        _currentFinderPositions = new List<FinderPositions>();
+
+        _container = _environments[_index];
+        _currentMap = _environments[_index].GetComponent<Map>();
+        
+        
+        Territory[] territories = _environments[_index].GetComponentsInChildren<Territory>(true);
+
+        foreach (var territory in territories)
+        {
+            if (territory.IsExpanding)
+            {
+                continue;
+            }
+
+            if (!_currentTerritories.Contains(territory) && !territory.IsExpanding)
+            {
+                _currentTerritories.Add(territory);
+            }
+        }
+
+        foreach (Territory territory in _currentTerritories)
+        {
+            FinderPositions[] finderPositionsInTerritory =
+                territory.gameObject.GetComponentsInChildren<FinderPositions>(true);
+
+
+            foreach (FinderPositions finder in finderPositionsInTerritory)
+            {
+                if (!_currentFinderPositions.Contains(finder))
+                {
+                    _currentFinderPositions.Add(finder);
+                }
+            }
+        }
+
+        foreach (Territory territory in _currentTerritories)
+        {
+            ItemPosition[] itemPositions = territory.gameObject.GetComponentsInChildren<ItemPosition>(true);
+
+
+            foreach (ItemPosition itemPosition in itemPositions)
+            {
+                if (!itemPosition.enabled)
+                    continue;
+
+                if (!_currentItemPositions.Contains(itemPosition))
+                {
+                    _currentItemPositions.Add(itemPosition);
+                }
+            }
+        }
+    }
+
+    public void SetPositions(List<ItemPosition > positions)
+    {
+        _currentItemPositions = positions;
     }
 }

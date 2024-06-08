@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using ItemContent;
 using ItemSO;
@@ -9,7 +10,8 @@ public class DropGenerator : MonoBehaviour
 {
     [SerializeField] private Image _image;
     [SerializeField] private List<ItemDropDataSO> _itemDropsSO;
-
+    [SerializeField] private StartMap _startMap;
+    
     private int _currentLevel;
     private Item _currentItem;
     private Item _nextItem;
@@ -22,6 +24,16 @@ public class DropGenerator : MonoBehaviour
         _nextItem = _itemDropsSO[0].PrefabItem;
         ItemDropDataNew = _nextItem.ItemDropDataSo;
         _image.sprite = _itemDropsSO[0].Icon;
+    }
+
+    private void OnEnable()
+    {
+        _startMap.MapStarted += Reset;
+    }
+
+    private void OnDisable()
+    {
+        _startMap.MapStarted -= Reset;
     }
 
     /*public Item GetItem()
@@ -137,5 +149,12 @@ public class DropGenerator : MonoBehaviour
         dropChance -= level * itemDrop.LevelDecreaseFactor;
         dropChance = Mathf.Clamp01(dropChance);
         return dropChance;
+    }
+
+    private void Reset()
+    {
+        _nextItem = _itemDropsSO[0].PrefabItem;
+        ItemDropDataNew = _nextItem.ItemDropDataSo;
+        _image.sprite = _itemDropsSO[0].Icon;
     }
 }

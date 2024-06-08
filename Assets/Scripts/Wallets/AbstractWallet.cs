@@ -8,22 +8,23 @@ namespace Wallets
     {
         [SerializeField] private int _startValue;
         [SerializeField] private AudioSource _audioSource;
-        
+
         private int _currentValue;
         private Coroutine _coroutine;
         private float _elapsedTime;
         private float _duration = 1f;
         private bool _isLoadValue;
+        private bool _isProfit = true;
         
         public event Action ValueChanged;
-        
+
         public int CurrentValue => _currentValue;
 
-        protected virtual void Start() 
+        protected virtual void Start()
         {
             if (_isLoadValue)
                 return;
-            
+
             // Debug.Log("GoldStart");
             _currentValue = _startValue;
             ValueChanged?.Invoke();
@@ -31,7 +32,7 @@ namespace Wallets
 
         public virtual void IncreaseValue(int value)
         {
-            if (value <= 0)
+            if (value <= 0||!_isProfit)
                 return;
 
             _currentValue += value;
@@ -42,8 +43,8 @@ namespace Wallets
         {
             if (value <= 0)
                 return;
-            
-            if(_coroutine!=null)
+
+            if (_coroutine != null)
                 StopCoroutine(_coroutine);
 
             _coroutine = StartCoroutine(SmoothlyChangeValue(value));
@@ -65,11 +66,11 @@ namespace Wallets
 
             float targetValue = _currentValue + value;
             float startValue = _currentValue;
-            
-            while (_elapsedTime<_duration)
+
+            while (_elapsedTime < _duration)
             {
                 _elapsedTime += Time.deltaTime;
-                 _currentValue = (int)Mathf.Lerp(startValue, targetValue, _elapsedTime / _duration);
+                _currentValue = (int) Mathf.Lerp(startValue, targetValue, _elapsedTime / _duration);
                 ValueChanged?.Invoke();
                 yield return null;
             }
@@ -89,6 +90,16 @@ namespace Wallets
             _currentValue = _startValue;
             // Debug.Log("GoldSEt " + _currentValue);
             ValueChanged?.Invoke();
+        }
+
+        public void DisableProfit()
+        {
+            _isProfit = false;
+        }
+        
+        public void EnableProfit()
+        {
+            _isProfit = true;
         }
     }
 }

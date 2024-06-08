@@ -21,7 +21,8 @@ public class ContinueButton : AbstractButton
     [SerializeField]private VisualItemsDeactivator _visualItemsDeactivator;
     [SerializeField]private ScoreCounter _scoreCounter;
     [SerializeField] private Load _load;
-
+    [SerializeField] private GoldCounter _goldCounter;
+    
     private int _startValue;
     
     protected override void OnClick()
@@ -36,6 +37,7 @@ public class ContinueButton : AbstractButton
         _visualItemsDeactivator.SetPositions(_initializator.ItemPositions);
         _moveKeeper.LoadHistoryData();
         _scoreCounter.SetCurrentScore(_load.Get(CurrentRecordScore + _initializator.Index, _startValue));
+        _goldCounter.CheckIncome();
         
         if (_packageLittleTown.IsActive)
         {
