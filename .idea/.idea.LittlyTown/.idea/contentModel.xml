@@ -1100,6 +1100,7 @@
           <e p="EnvironmentMovement.cs" t="Include" />
           <e p="ExtensionContent" t="Include">
             <e p="ExtensionMap.cs" t="Include" />
+            <e p="ExtensionMapMovement.cs" t="Include" />
           </e>
           <e p="FadeCanvas.cs" t="Include" />
           <e p="FlightScore.cs" t="Include" />

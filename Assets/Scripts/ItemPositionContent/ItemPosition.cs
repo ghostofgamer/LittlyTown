@@ -17,6 +17,8 @@ namespace ItemPositionContent
         [SerializeField] private bool _isElevation;
         [SerializeField] private Transform _container;
         [SerializeField] private LookMerger _lookMerger;
+        [SerializeField] private ItemPosition _waterTile;
+        
         private Item _item;
         private ItemPosition[] _itemPositions;
 
@@ -44,7 +46,7 @@ namespace ItemPositionContent
 
         private void Start()
         {
-            // _itemPositions = new ItemPosition[4] {_northPosition, _westPosition, _eastPosition, _southPosition};
+            _itemPositions = new ItemPosition[4] {_northPosition, _westPosition, _eastPosition, _southPosition};
         }
 
         private void OnTriggerStay(Collider other)
@@ -113,6 +115,11 @@ namespace ItemPositionContent
             _itemPositions = new ItemPosition[4] {_northPosition, _westPosition, _eastPosition, _southPosition};
         }
 
+        public void SetPositions()
+        {
+            _itemPositions = new ItemPosition[4] {_northPosition, _westPosition, _eastPosition, _southPosition};
+        }
+
         public void ReplaceSelectedActivate()
         {
             IsReplaceSelected = true;
@@ -121,6 +128,24 @@ namespace ItemPositionContent
         public void ReplaceSelectedDeactivate()
         {
             IsReplaceSelected = false;
+        }
+
+        public void SetWater()
+        {
+            Debug.Log(this.name);
+            _road.gameObject.SetActive(false);
+            _waterTile.gameObject.SetActive(true);
+            _isWater = true;
+        }
+
+        public void ResetWater()
+        {
+            if (_waterTile == null)
+                return;
+            
+            _road.gameObject.SetActive(true);
+            _waterTile.gameObject.SetActive(false);
+            _isWater = false;
         }
     }
 }

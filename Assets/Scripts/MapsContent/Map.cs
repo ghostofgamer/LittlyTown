@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using ItemContent;
+using ItemPositionContent;
 using UnityEngine;
 
 namespace MapsContent
@@ -12,6 +13,18 @@ namespace MapsContent
         [SerializeField] private List<Item> _startItems = new List<Item>(); 
         [SerializeField]private bool _isMapWithoutProfit = false;
         [SerializeField]private bool _isMapExpanding = false;
+        [SerializeField] private ItemPosition[] _randomPositionWaters;
+        [SerializeField] private Territory[] _expandingTerritories;
+        [SerializeField] private bool _isWaterRandom;
+        [SerializeField] private Transform _mover;
+
+        public Transform Mover => _mover;
+        
+        public Territory[] ExpandingTerritories => _expandingTerritories;
+
+        public bool IsWaterRandom => _isWaterRandom;
+        
+        public ItemPosition[] RandomPositionWaters => _randomPositionWaters;
         
         public bool IsMapWithoutProfit => _isMapWithoutProfit;
         

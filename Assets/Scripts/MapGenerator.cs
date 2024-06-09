@@ -102,15 +102,15 @@ public class MapGenerator : MonoBehaviour
         _targetTerritories = new List<Territory>();
         _targetFinderPositions = new List<FinderPositions>();
         _targetItemPositions = new List<ItemPosition>();
-        
+
         if (_environments[index].GetComponent<Map>().IsMapExpanding)
         {
             _extensionMap.SearchMap(_environments[index].GetComponent<Map>().Index);
             return;
         }
-     
+
         Territory[] territories = _environments[index].GetComponentsInChildren<Territory>(true);
-        
+
         foreach (var territory in territories)
         {
             if (territory.IsExpanding)
@@ -449,10 +449,13 @@ public class MapGenerator : MonoBehaviour
         }*/
         // Debug.Log("ЗАШЕЛ!" + 4);
 
-        foreach (var finderPosition in finderPositions)
+        if (!map.IsMapExpanding)
         {
-            if (finderPosition.gameObject.activeSelf == true)
-                finderPosition.FindNeighbor();
+            foreach (var finderPosition in finderPositions)
+            {
+                if (finderPosition.gameObject.activeSelf == true)
+                    finderPosition.FindNeighbor();
+            }
         }
 
 
@@ -525,9 +528,12 @@ public class MapGenerator : MonoBehaviour
             // _clearPositions[_randomIndex].DeliverObject(item);
             yield return _waitForSecondsMoment;
         }*/
+        if (!_initializator.CurrentMap.IsMapExpanding)
+        {
+            foreach (var finderPosition in finderPositions)
+                finderPosition.FindNeighbor();
+        }
 
-        foreach (var finderPosition in finderPositions)
-            finderPosition.FindNeighbor();
 
         yield return _waitForSecondsMoment;
         _roadGenerator.TestGeneration(_initializator.ItemPositions, _initializator.CurrentMap.RoadsContainer,

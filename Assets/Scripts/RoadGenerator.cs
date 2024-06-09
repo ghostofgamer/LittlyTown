@@ -117,6 +117,7 @@ public class RoadGenerator : MonoBehaviour
         {
             if (itemPosition.IsWater || itemPosition.IsElevation)
             {
+                Debug.Log("Выключенный Item Position " + itemPosition.name);
                 continue;
             }
 
@@ -181,22 +182,32 @@ public class RoadGenerator : MonoBehaviour
     {
         string surroundingTiles = "0000";
 
-        if (itemPosition.NorthPosition != null && !itemPosition.NorthPosition.IsBusy)
+        if (itemPosition.NorthPosition != null && !itemPosition.NorthPosition.IsBusy &&
+            itemPosition.NorthPosition.gameObject.activeInHierarchy&&!itemPosition.NorthPosition.IsWater)
         {
+            Debug.Log("Item " + itemPosition.name );
+            Debug.Log("NORTH " + itemPosition.NorthPosition.name );
             surroundingTiles = "1" + surroundingTiles.Substring(1);
         }
 
-        if (itemPosition.WestPosition != null && !itemPosition.WestPosition.IsBusy)
+        if (itemPosition.WestPosition != null && !itemPosition.WestPosition.IsBusy &&
+            itemPosition.WestPosition.gameObject.activeInHierarchy&&!itemPosition.WestPosition.IsWater)
         {
+            Debug.Log("Item " + itemPosition.name );
+            Debug.Log("West " + itemPosition.WestPosition.name );
             surroundingTiles = surroundingTiles.Substring(0, 1) + "1" + surroundingTiles.Substring(2);
         }
 
-        if (itemPosition.EastPosition != null && !itemPosition.EastPosition.IsBusy)
+        if (itemPosition.EastPosition != null && !itemPosition.EastPosition.IsBusy &&
+            itemPosition.EastPosition.gameObject.activeInHierarchy&&!itemPosition.EastPosition.IsWater)
         {
+            Debug.Log("Item " + itemPosition.name );
+            Debug.Log("East " + itemPosition.EastPosition.name );
             surroundingTiles = surroundingTiles.Substring(0, 2) + "1" + surroundingTiles.Substring(3);
         }
 
-        if (itemPosition.SouthPosition != null && !itemPosition.SouthPosition.IsBusy)
+        if (itemPosition.SouthPosition != null && !itemPosition.SouthPosition.IsBusy &&
+            itemPosition.SouthPosition.gameObject.activeInHierarchy&&!itemPosition.SouthPosition.IsWater)
         {
             surroundingTiles = surroundingTiles.Substring(0, surroundingTiles.Length - 1) + "1";
         }
@@ -204,12 +215,12 @@ public class RoadGenerator : MonoBehaviour
         return surroundingTiles;
     }
 
-    public void TestGeneration(List<ItemPosition> itemPositions, Transform container,Map map)
+    public void TestGeneration(List<ItemPosition> itemPositions, Transform container, Map map)
     {
         StartCoroutine(TestCreateRoad(itemPositions, container, map));
     }
 
-    private IEnumerator TestCreateRoad(List<ItemPosition> itemPositions, Transform container,Map map)
+    private IEnumerator TestCreateRoad(List<ItemPosition> itemPositions, Transform container, Map map)
     {
         yield return _waitForSeconds;
 
@@ -225,9 +236,9 @@ public class RoadGenerator : MonoBehaviour
                 string surroundingTiles = CheckSurroundingTiles(itemPosition);
                 ItemPosition selectedTile = Instantiate(_tileConfigurations[surroundingTiles],
                     itemPosition.transform.position, container.transform.rotation, container);
-                
+
                 // Debug.Log("CONTAINER " + container.name);
-                
+
                 itemPosition.SetRoad(selectedTile);
             }
 

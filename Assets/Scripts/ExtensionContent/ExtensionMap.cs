@@ -1,4 +1,4 @@
-using System;
+using System.Collections;
 using System.Collections.Generic;
 using ItemContent;
 using ItemPositionContent;
@@ -9,7 +9,7 @@ using UnityEngine;
 public class ExtensionMap : MonoBehaviour
 {
     private const string ExtensionTerritory = "ExtensionTerritory";
-    private const string ExtensionIndex = "ExtensionIndex";
+    private const string WaterTile = "WaterTile";
 
     [SerializeField] private Map[] _extensionMaps;
     [SerializeField] private RoadGenerator _roadGenerator;
@@ -19,6 +19,8 @@ public class ExtensionMap : MonoBehaviour
     [SerializeField] private Initializator _initializator;
     [SerializeField] private Save _save;
     [SerializeField] private Load _load;
+    [SerializeField] private Transform _transform;
+    [SerializeField] private ExtensionMapMovement _extensionMapMovement;
 
     private List<Territory> _targetTerritories = new List<Territory>();
     private List<Territory> _extensionFilterTerritories = new List<Territory>();
@@ -26,6 +28,7 @@ public class ExtensionMap : MonoBehaviour
     private List<ItemPosition> _targetItemPositions = new List<ItemPosition>();
 
     private int _index = 0;
+    private Map _currentMap;
 
     private void OnEnable()
     {
@@ -44,21 +47,22 @@ public class ExtensionMap : MonoBehaviour
 
     private void Extension(Item item)
     {
-        if (_index >= _extensionTerritories.Length)
+        if (!_initializator.CurrentMap.IsMapExpanding)
+            return;
+
+        if (_index >= _currentMap.ExpandingTerritories.Length)
         {
-            /*Debug.Log("Extenjsion " + _index);
-            Debug.Log("_extensionTerritories " + _extensionTerritories.Length);*/
             return;
         }
 
-        _save.SetData(ExtensionTerritory, _index + 1);
+        _save.SetData(ExtensionTerritory + _currentMap.Index, _index + 1);
 
-        _extensionTerritories[_index].gameObject.SetActive(true);
-        _extensionTerritories[_index].PositionActivation();
+        _currentMap.ExpandingTerritories[_index].gameObject.SetActive(true);
+        _currentMap.ExpandingTerritories[_index].PositionActivation();
 
 
         FinderPositions[] finderPositionsInTerritory =
-            _extensionTerritories[_index].gameObject.GetComponentsInChildren<FinderPositions>(true);
+            _currentMap.ExpandingTerritories[_index].gameObject.GetComponentsInChildren<FinderPositions>(true);
 
         foreach (FinderPositions finder in finderPositionsInTerritory)
         {
@@ -69,7 +73,7 @@ public class ExtensionMap : MonoBehaviour
         }
 
         ItemPosition[] itemPositions =
-            _extensionTerritories[_index].gameObject.GetComponentsInChildren<ItemPosition>(true);
+            _currentMap.ExpandingTerritories[_index].gameObject.GetComponentsInChildren<ItemPosition>(true);
 
 
         foreach (ItemPosition itemPosition in itemPositions)
@@ -83,11 +87,11 @@ public class ExtensionMap : MonoBehaviour
             }
         }
 
-        foreach (var finderPosition in _targetFinderPositions)
+        /*foreach (var finderPosition in _targetFinderPositions)
         {
             if (finderPosition.gameObject.activeSelf == true)
                 finderPosition.FindNeighbor();
-        }
+        }*/
 
         _initializator.SetPositions(_targetItemPositions);
 
@@ -96,6 +100,7 @@ public class ExtensionMap : MonoBehaviour
             _initializator.CurrentMap);
 
         _index++;
+        _extensionMapMovement.ChangePosition(_index, _currentMap.Mover);
     }
 
 
@@ -127,8 +132,8 @@ public class ExtensionMap : MonoBehaviour
             }
         }
 
-        int amount = _load.Get(ExtensionTerritory, 0);
-
+        int amount = _load.Get(ExtensionTerritory + map.Index, 0);
+        _extensionMapMovement.SetPosition(amount, _transform);
 /*
 Debug.Log("AMOUNT " + amount);
 Debug.Log("_extensionFilterTerritories " + _extensionFilterTerritories.Count);*/
@@ -185,6 +190,23 @@ Debug.Log("_extensionFilterTerritories " + _extensionFilterTerritories.Count);*/
             }
         }
 
+        if (map.IsWaterRandom)
+        {
+            int index = _load.Get(WaterTile, 0);
+
+            if (index > 0)
+            {
+                map.RandomPositionWaters[index].SetWater();
+            }
+            else
+            {
+                int randomIndex = Random.Range(1, _targetItemPositions.Count);
+                map.RandomPositionWaters[randomIndex].SetWater();
+                _save.SetData(WaterTile, randomIndex);
+            }
+        }
+
+
         foreach (var territory in _targetTerritories)
         {
             // territory.PositionDeactivation();
@@ -203,86 +225,28 @@ Debug.Log("_extensionFilterTerritories " + _extensionFilterTerritories.Count);*/
     {
         _index = 0;
         // _save.SetData(ExtensionTerritory, 0);
-Debug.Log("ОШИЬБКА");
+        Debug.Log("ОШИЬБКА");
         _targetTerritories = territory;
         _targetFinderPositions = finderPositions;
         _targetItemPositions = itemPositions;
         _extensionFilterTerritories = extensionTerritory;
+        _extensionMapMovement.ResetPosition(_transform);
+    }
 
-        /*Territory[] territories = map.GetComponentsInChildren<Territory>(true);
-
-        foreach (var territory in territories)
+    public void RandomWater(Map map)
+    {
+        foreach (var itemPosition in map.RandomPositionWaters)
         {
-            if (territory.IsExpanding)
-            {
-                _extensionFilterTerritories.Add(territory);
-            }
+            itemPosition.ResetWater();
         }
 
-        int amount = _load.Get(ExtensionTerritory, 0);
-        
-/*
-Debug.Log("AMOUNT " + amount);
-Debug.Log("_extensionFilterTerritories " + _extensionFilterTerritories.Count);#1#
+        int randomIndex = Random.Range(1, map.RandomPositionWaters.Length);
+        map.RandomPositionWaters[randomIndex].SetWater();
+        _save.SetData(WaterTile, randomIndex);
+    }
 
-        for (int i = 0; i < amount; i++)
-        {
-            _extensionFilterTerritories[i].SetOpened();
-        }
-
-        foreach (var territory in territories)
-        {
-            if (territory.IsExpanding && !territory.IsOpened)
-            {
-                continue;
-            }
-
-            if (!_targetTerritories.Contains(territory) && !territory.IsExpanding||!_targetTerritories.Contains(territory) && territory.IsOpened)
-            {
-                 Debug.Log("territory " + territory.name);
-                _targetTerritories.Add(territory);
-            }
-        }
-
-        foreach (Territory territory in _targetTerritories)
-        {
-            FinderPositions[] finderPositionsInTerritory =
-                territory.gameObject.GetComponentsInChildren<FinderPositions>(true);
-
-
-            foreach (FinderPositions finder in finderPositionsInTerritory)
-            {
-                if (!_targetFinderPositions.Contains(finder))
-                {
-                    _targetFinderPositions.Add(finder);
-                }
-            }
-        }
-
-        foreach (Territory territory in _targetTerritories)
-        {
-            ItemPosition[] itemPositions = territory.gameObject.GetComponentsInChildren<ItemPosition>(true);
-
-
-            foreach (ItemPosition itemPosition in itemPositions)
-            {
-                if (!itemPosition.enabled)
-                    continue;
-
-                if (!_targetItemPositions.Contains(itemPosition))
-                {
-                    _targetItemPositions.Add(itemPosition);
-                }
-            }
-        }
-
-        foreach (var territory in _targetTerritories)
-        {
-            // territory.PositionDeactivation();
-
-            territory.gameObject.SetActive(false);
-
-            // _roadGenerator.DeactivateRoad();
-        }*/
+    public void SetMap(Map map)
+    {
+        _currentMap = map;
     }
 }
