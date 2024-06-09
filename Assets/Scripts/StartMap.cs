@@ -51,7 +51,8 @@ public class StartMap : MonoBehaviour
         // Debug.Log("до Филл " + _initializator.Index);
         if (_initializator.Environments[_initializator.Index].GetComponent<Map>().IsMapExpanding)
         {
-            _initializator.ExtensionFillLists();
+            // _initializator.ExtensionFillLists();
+            _initializator.ResetTerritory();
             Debug.Log("Extention " + _initializator.Index);
         }
         else

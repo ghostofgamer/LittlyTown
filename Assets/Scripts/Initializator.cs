@@ -7,17 +7,24 @@ using UnityEngine;
 
 public class Initializator : MonoBehaviour
 {
+    private const string ExtensionTerritory = "ExtensionTerritory";
+    
     [SerializeField] private Transform[] _environments;
     [SerializeField] private ChooseMap _chooseMap;
     [SerializeField] private Load _load;
+    [SerializeField] private Save  _save;
+    [SerializeField] private VisualItemsDeactivator _visualItemsDeactivator;
+    [SerializeField]private ExtensionMap _extensionMap;
     
     private List<ItemPosition> _currentItemPositions = new List<ItemPosition>();
     private List<Territory> _currentTerritories = new List<Territory>();
     private List<FinderPositions> _currentFinderPositions = new List<FinderPositions>();
+    private List<Territory> _extensionFilterTerritories = new List<Territory>();
     private Transform _container;
     private Map _currentMap;
     private int _index;
-
+    private bool _initExtension;
+    
     public int Index => _index;
 
     public int AmountMaps;
@@ -59,6 +66,12 @@ public class Initializator : MonoBehaviour
 
     public void FillLists()
     {
+        if(_environments[_index].GetComponent<Map>().IsMapExpanding)
+        {
+            ExtensionFillLists();
+            return;
+        }
+        
         _currentItemPositions = new List<ItemPosition>();
         _currentTerritories = new List<Territory>();
         _currentFinderPositions = new List<FinderPositions>();
@@ -102,21 +115,39 @@ public class Initializator : MonoBehaviour
         _currentItemPositions = new List<ItemPosition>();
         _currentTerritories = new List<Territory>();
         _currentFinderPositions = new List<FinderPositions>();
-
+        _extensionFilterTerritories = new List<Territory>();
+        
         _container = _environments[_index];
         _currentMap = _environments[_index].GetComponent<Map>();
-        
-        
+
         Territory[] territories = _environments[_index].GetComponentsInChildren<Territory>(true);
 
         foreach (var territory in territories)
         {
             if (territory.IsExpanding)
             {
+                _extensionFilterTerritories.Add(territory);
+            }
+        }
+
+        int amount = _load.Get(ExtensionTerritory, 0);
+        
+        Debug.Log("AMOUNT " + amount);
+        Debug.Log("_extensionFilterTerritories " + _extensionFilterTerritories.Count);
+
+        for (int i = 0; i < amount; i++)
+        {
+            _extensionFilterTerritories[i].SetOpened();
+        }
+        
+        foreach (var territory in territories)
+        {
+            if (territory.IsExpanding && !territory.IsOpened)
+            {
                 continue;
             }
 
-            if (!_currentTerritories.Contains(territory) && !territory.IsExpanding)
+            if (!_currentTerritories.Contains(territory) && !territory.IsExpanding ||!_currentTerritories.Contains(territory) && territory.IsOpened)
             {
                 _currentTerritories.Add(territory);
             }
@@ -153,10 +184,35 @@ public class Initializator : MonoBehaviour
                 }
             }
         }
+
+        if (_initExtension)
+        {
+            _extensionMap.ResetMap(_environments[_index].GetComponent<Map>(),_currentTerritories,_currentItemPositions,_currentFinderPositions,_extensionFilterTerritories);
+            _initExtension = false;
+        } 
     }
 
     public void SetPositions(List<ItemPosition > positions)
     {
         _currentItemPositions = positions;
+        _visualItemsDeactivator.SetPositions(_currentItemPositions);
+    }
+
+    public void ResetTerritory()
+    {
+        Territory[] territories = _environments[_index].GetComponentsInChildren<Territory>(true);
+
+        foreach (var territory in territories)
+        {
+            if (territory.IsExpanding)
+            {
+                territory.SetClose();
+                territory.gameObject.SetActive(false);
+            }
+        }
+        
+        _save.SetData(ExtensionTerritory, 0);
+        _initExtension = true;
+        ExtensionFillLists();
     }
 }

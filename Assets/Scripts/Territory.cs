@@ -11,6 +11,8 @@ public class Territory : MonoBehaviour
     
     public bool IsExpanding => _isExpanding;
 
+    public bool IsOpened { get; private set; } = false;
+
     public void PositionActivation()
     {
         foreach (var positionScaller in _positionScallers)
@@ -34,5 +36,15 @@ public class Territory : MonoBehaviour
         {
             positionScaller.gameObject.SetActive(false);
         }  
+    }
+
+    public void SetOpened()
+    {
+        IsOpened = true;
+    }
+
+    public void SetClose()
+    {
+        IsOpened = false;
     }
 }

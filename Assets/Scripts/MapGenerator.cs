@@ -447,7 +447,7 @@ public class MapGenerator : MonoBehaviour
             item.Activation();
             // _clearPositions[_randomIndex].DeliverObject(item);
         }*/
-        Debug.Log("ЗАШЕЛ!" + 4);
+        // Debug.Log("ЗАШЕЛ!" + 4);
 
         foreach (var finderPosition in finderPositions)
         {
@@ -456,7 +456,7 @@ public class MapGenerator : MonoBehaviour
         }
 
 
-        Debug.Log("ЗАШЕЛ!" + 5);
+        // Debug.Log("ЗАШЕЛ!" + 5);
         // _roadGenerator.TestGeneration(itemPositions, container);
         // _roadGenerator.TestCreateRoadOneMoment(itemPositions, container);
 
