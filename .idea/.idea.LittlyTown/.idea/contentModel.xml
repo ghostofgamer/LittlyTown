@@ -1099,6 +1099,7 @@
           <e p="Environment.cs" t="Include" />
           <e p="EnvironmentMovement.cs" t="Include" />
           <e p="ExtensionContent" t="Include">
+            <e p="ExtansionMapInfo.cs" t="Include" />
             <e p="ExtensionMap.cs" t="Include" />
             <e p="ExtensionMapMovement.cs" t="Include" />
           </e>

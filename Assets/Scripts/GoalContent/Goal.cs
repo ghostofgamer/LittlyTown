@@ -60,7 +60,7 @@ namespace GoalContent
 
             _currentValue++;
             Show();
-            Debug.Log("ChangeValueGoal ");
+            // Debug.Log("ChangeValueGoal ");
 
             if (_currentValue >= _maxValue)
             {

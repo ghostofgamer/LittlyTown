@@ -75,7 +75,7 @@ namespace CountersContent
             _targetPosition = itemPosition.transform.position;
             CurrentScoreRecord += _scoreIncome;
             _save.SetData(CurrentRecordScore + _initializator.Index, CurrentScoreRecord);
-            Debug.Log("currentScore " + CurrentScoreRecord);
+            // Debug.Log("currentScore " + CurrentScoreRecord);
             // _visualScore.transform.position = itemPosition.transform.position;
         }
 
@@ -130,7 +130,7 @@ namespace CountersContent
         {
             CurrentScoreRecord = currentValue;
             _save.SetData(CurrentRecordScore + _initializator.Index, CurrentScoreRecord);
-            Debug.Log("Продолжить с рекордом " + CurrentScoreRecord);
+            // Debug.Log("Продолжить с рекордом " + CurrentScoreRecord);
         }
     }
 }

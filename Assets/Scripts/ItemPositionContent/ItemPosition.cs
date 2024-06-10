@@ -132,7 +132,7 @@ namespace ItemPositionContent
 
         public void SetWater()
         {
-            Debug.Log(this.name);
+            // Debug.Log(this.name);
             _road.gameObject.SetActive(false);
             _waterTile.gameObject.SetActive(true);
             _isWater = true;

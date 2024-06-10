@@ -122,7 +122,7 @@ public class Merger : MonoBehaviour
 
         // Item item = Instantiate(_currentItem.NextItem, currentPosition.transform.position, Quaternion.identity);
         // Item item = Instantiate(_newItem[currentPosition].NextItem, currentPosition.transform.position, Quaternion.identity);
-        Debug.Log("Instantiate " + _targetItem[targetItem].name);
+        // Debug.Log("Instantiate " + _targetItem[targetItem].name);
         Item item = Instantiate(_targetItem[targetItem].NextItem, currentPosition.transform.position,
             Quaternion.identity, _initializator.CurrentMap.ItemsContainer);
 

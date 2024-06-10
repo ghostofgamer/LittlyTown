@@ -24,7 +24,7 @@ public class Bootstrap : MonoBehaviour
         // int currentMap = _load.Get("Map", _startValue);
         int currentMap = _load.Get("Map", _startValue);
         
-        Debug.Log("!!!! " + currentMap);
+        // Debug.Log("!!!! " + currentMap);
         _chooseMap.SetPosition(currentMap);
 
         if (value == 0)

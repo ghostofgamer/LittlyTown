@@ -102,7 +102,7 @@ public class MovesKeeper : MonoBehaviour
         PlayerPrefs.SetString(SaveHistoryName + _initializator.Index, jsonData);
         PlayerPrefs.Save();
         
-        Debug.Log("сохраняем " + saveHistoryData.savesHistory.Count);
+        // Debug.Log("сохраняем " + saveHistoryData.savesHistory.Count);
     }
 
     public void ClearList()
@@ -124,7 +124,7 @@ public class MovesKeeper : MonoBehaviour
             _savesHistory = saveHistoryData.savesHistory;
             _currentStep = _savesHistory.Count;
             StepChanged?.Invoke(_currentStep);
-            Debug.Log("Есть сохранение " + _savesHistory.Count);
+            // Debug.Log("Есть сохранение " + _savesHistory.Count);
         }
         else
         {
@@ -133,7 +133,7 @@ public class MovesKeeper : MonoBehaviour
             _savesHistory.Clear();
             _currentStep = _savesHistory.Count;
             StepChanged?.Invoke(_currentStep);
-            Debug.Log("нет сохранения " + _savesHistory.Count);
+            // Debug.Log("нет сохранения " + _savesHistory.Count);
             return;
         }
     }
@@ -148,7 +148,7 @@ public class MovesKeeper : MonoBehaviour
 
     private void SaveHistory()
     {
-        Debug.Log("Сохраняем первую историю");
+        // Debug.Log("Сохраняем первую историю");
         
         if (_savesHistory.Count >= 1)
         {
@@ -290,7 +290,7 @@ public class MovesKeeper : MonoBehaviour
             if (itemPosition.Item != null)
             {
                 _audioSource.PlayOneShot(_audioClip);
-                Debug.Log("удаляем");
+                // Debug.Log("удаляем");
                 itemPosition.Item.gameObject.SetActive(false);
                 itemPosition.ClearingPosition();
                 yield return new WaitForSeconds(0.1f);

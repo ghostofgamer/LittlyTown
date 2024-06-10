@@ -64,14 +64,14 @@ public class Storage : MonoBehaviour
     public void SetItem(Item item)
     {
         
-        Debug.Log("СТОРАДЖ " + this.name);
+        // Debug.Log("СТОРАДЖ " + this.name);
         if (item != null)
         {
             _image.gameObject.SetActive(true);
             _currentItem = item;
             _temporaryItem = null;
             _image.sprite = _currentItem.ItemDropDataSo.Icon;
-            Debug.Log("SetStorage " + item.name);
+            // Debug.Log("SetStorage " + item.name);
         }
         else
         {

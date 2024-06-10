@@ -21,7 +21,7 @@ public class FirstScreen : AbstractScreen
     {
         int LastValue = _load.Get(LastActiveMap, _startValue);
         int currentMap = _load.Get("Map", _startValue);
-        Debug.Log("ПОСЛЕДНИЙ!!! " + LastValue);
+        // Debug.Log("ПОСЛЕДНИЙ!!! " + LastValue);
         _currentValue = _load.Get(LastActiveMap, _startValue);
         _currentValue1 = _load.Get(ActiveMap + currentMap, _startValue);
         // _currentValue1 = _load.Get(Map, _startValue);
@@ -30,11 +30,11 @@ public class FirstScreen : AbstractScreen
         {
             Debug.Log("Существует " + ItemStorageSave + _initializator.Index);
         }*/
-        Debug.Log("INDEX  = " + _initializator.Index);
-        Debug.Log("Current 0  = " + _currentValue);
-        Debug.Log("Current 1 = " + _currentValue1);
+        // Debug.Log("INDEX  = " + _initializator.Index);
+        // Debug.Log("Current 0  = " + _currentValue);
+        // Debug.Log("Current 1 = " + _currentValue1);
         bool value = _currentValue > 0 && _currentValue1 > 0;
-        Debug.Log("Value" + value);
+        // Debug.Log("Value" + value);
 
         // _continueButton.gameObject.SetActive(_currentValue > 0);
         _continueButton.gameObject.SetActive(value);
@@ -50,12 +50,12 @@ public class FirstScreen : AbstractScreen
         }*/
         _currentValue = _load.Get(LastActiveMap, _startValue);
         _currentValue1 = _load.Get(ActiveMap + _initializator.Index, _startValue);
-        Debug.Log("INDEX  = " + _initializator.Index);
+        /*Debug.Log("INDEX  = " + _initializator.Index);
         
         Debug.Log("Current 0  = " + _currentValue);
-        Debug.Log("Current 1 = " + _currentValue1);
+        Debug.Log("Current 1 = " + _currentValue1);*/
         bool value = _currentValue > 0 && _currentValue1 > 0;
-        Debug.Log("Value" + value);
+        // Debug.Log("Value" + value);
 
         // _continueButton.gameObject.SetActive(_currentValue > 0);
         _continueButton.gameObject.SetActive(value);

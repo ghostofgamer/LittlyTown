@@ -83,19 +83,19 @@ public class ChooseMapScreen : AbstractScreen
 
     private void ChangeActivationButton()
     {
-        Debug.Log( "Активация ");
+        // Debug.Log( "Активация ");
         int value = _load.Get(ActiveMap + _initializator.Index, _startValue);
 
         if (value > _startValue)
         {
-            Debug.Log("true " + value);
+            // Debug.Log("true " + value);
             _startButton.SetActive(false);
             _continueButton.SetActive(true);
             _restartButton.SetActive(true);
         }
         else
         {
-            Debug.Log("false " + value);
+            // Debug.Log("false " + value);
             _startButton.SetActive(true);
             _continueButton.SetActive(false);
             _restartButton.SetActive(false);

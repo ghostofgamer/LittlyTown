@@ -134,8 +134,9 @@ public class Initializator : MonoBehaviour
 
         int amount = _load.Get(ExtensionTerritory + _currentMap.Index, 0);
 
-        Debug.Log("AMOUNT " + amount);
-        Debug.Log("_extensionFilterTerritories " + _extensionFilterTerritories.Count);
+        Debug.Log("ExtensionTerritory " + ExtensionTerritory + _currentMap.Index);
+        /*Debug.Log("AMOUNT " + amount);
+        Debug.Log("_extensionFilterTerritories " + _extensionFilterTerritories.Count);*/
 
         for (int i = 0; i < amount; i++)
         {
@@ -189,7 +190,11 @@ public class Initializator : MonoBehaviour
         }
 
         if (_environments[_index].GetComponent<Map>().IsMapExpanding)
+        {
             _extensionMap.SetMap(_environments[_index].GetComponent<Map>());
+            _extensionMap.ContinueMap(_currentTerritories,
+                _currentItemPositions, _currentFinderPositions, _extensionFilterTerritories);
+        }
 
         if (_initExtension)
         {
@@ -202,6 +207,7 @@ public class Initializator : MonoBehaviour
     public void SetPositions(List<ItemPosition> positions)
     {
         _currentItemPositions = positions;
+
         _visualItemsDeactivator.SetPositions(_currentItemPositions);
     }
 
@@ -220,12 +226,13 @@ public class Initializator : MonoBehaviour
             }
         }
 
-        _save.SetData(ExtensionTerritory + _currentMap.Index, 0);
+        _save.SetData(ExtensionTerritory + _environments[_index].GetComponent<Map>().Index, 0);
 
         if (_environments[_index].GetComponent<Map>().IsWaterRandom)
             _extensionMap.RandomWater(_environments[_index].GetComponent<Map>());
 
-        _save.SetData(ExtensionTerritory, 0);
+        // _save.SetData(ExtensionTerritory, 0);
+        
         _initExtension = true;
         ExtensionFillLists();
     }

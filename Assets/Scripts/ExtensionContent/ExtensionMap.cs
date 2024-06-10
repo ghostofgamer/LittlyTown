@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using ItemContent;
@@ -5,6 +6,7 @@ using ItemPositionContent;
 using MapsContent;
 using SaveAndLoad;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class ExtensionMap : MonoBehaviour
 {
@@ -30,6 +32,8 @@ public class ExtensionMap : MonoBehaviour
     private int _index = 0;
     private Map _currentMap;
 
+    public event Action IndexChanged;
+    
     private void OnEnable()
     {
         _merger.ItemMergered += Extension;
@@ -42,7 +46,7 @@ public class ExtensionMap : MonoBehaviour
 
     private void Start()
     {
-        _index = _load.Get(ExtensionTerritory, 0);
+        // _index = _load.Get(ExtensionTerritory + _currentMap.Index, 0);
     }
 
     private void Extension(Item item)
@@ -57,9 +61,13 @@ public class ExtensionMap : MonoBehaviour
 
         _save.SetData(ExtensionTerritory + _currentMap.Index, _index + 1);
 
+        Debug.Log("РАСШИРЯЮЩАЯСЯ КАРТА ИНДЕКС " + _currentMap.Index);
+
         _currentMap.ExpandingTerritories[_index].gameObject.SetActive(true);
         _currentMap.ExpandingTerritories[_index].PositionActivation();
 
+
+        Debug.Log(" ИНДЕКС " + _index);
 
         FinderPositions[] finderPositionsInTerritory =
             _currentMap.ExpandingTerritories[_index].gameObject.GetComponentsInChildren<FinderPositions>(true);
@@ -75,6 +83,16 @@ public class ExtensionMap : MonoBehaviour
         ItemPosition[] itemPositions =
             _currentMap.ExpandingTerritories[_index].gameObject.GetComponentsInChildren<ItemPosition>(true);
 
+        foreach (var itemPos in itemPositions)
+        {
+            if (!itemPos.enabled)
+                continue;
+            
+            Debug.Log("ПОЗИЦИИ " + itemPos);
+        }
+        
+        Debug.Log(" _currentMap " + _currentMap.name);
+        Debug.Log(" ___________________________________ ");
 
         foreach (ItemPosition itemPosition in itemPositions)
         {
@@ -85,6 +103,11 @@ public class ExtensionMap : MonoBehaviour
             {
                 _targetItemPositions.Add(itemPosition);
             }
+        }
+
+        foreach (var itemPos in _targetItemPositions)
+        {
+            Debug.Log("ПОЗИЦИИ " + itemPos);
         }
 
         /*foreach (var finderPosition in _targetFinderPositions)
@@ -100,6 +123,7 @@ public class ExtensionMap : MonoBehaviour
             _initializator.CurrentMap);
 
         _index++;
+        IndexChanged?.Invoke();
         _extensionMapMovement.ChangePosition(_index, _currentMap.Mover);
     }
 
@@ -133,7 +157,7 @@ public class ExtensionMap : MonoBehaviour
         }
 
         int amount = _load.Get(ExtensionTerritory + map.Index, 0);
-        _extensionMapMovement.SetPosition(amount, _transform);
+        _extensionMapMovement.SetPosition(amount, map.Mover);
 /*
 Debug.Log("AMOUNT " + amount);
 Debug.Log("_extensionFilterTerritories " + _extensionFilterTerritories.Count);*/
@@ -153,7 +177,7 @@ Debug.Log("_extensionFilterTerritories " + _extensionFilterTerritories.Count);*/
             if (!_targetTerritories.Contains(territory) && !territory.IsExpanding ||
                 !_targetTerritories.Contains(territory) && territory.IsOpened)
             {
-                Debug.Log("territory " + territory.name);
+                // Debug.Log("territory " + territory.name);
                 _targetTerritories.Add(territory);
             }
         }
@@ -225,12 +249,21 @@ Debug.Log("_extensionFilterTerritories " + _extensionFilterTerritories.Count);*/
     {
         _index = 0;
         // _save.SetData(ExtensionTerritory, 0);
-        Debug.Log("ОШИЬБКА");
+        // Debug.Log("ОШИЬБКА");
         _targetTerritories = territory;
         _targetFinderPositions = finderPositions;
         _targetItemPositions = itemPositions;
         _extensionFilterTerritories = extensionTerritory;
         _extensionMapMovement.ResetPosition(_transform);
+    }
+
+    public void ContinueMap(List<Territory> territory, List<ItemPosition> itemPositions,
+        List<FinderPositions> finderPositions, List<Territory> extensionTerritory)
+    {
+        _targetTerritories = territory;
+        _targetFinderPositions = finderPositions;
+        _targetItemPositions = itemPositions;
+        _extensionFilterTerritories = extensionTerritory;
     }
 
     public void RandomWater(Map map)
@@ -248,5 +281,7 @@ Debug.Log("_extensionFilterTerritories " + _extensionFilterTerritories.Count);*/
     public void SetMap(Map map)
     {
         _currentMap = map;
+        _index = _load.Get(ExtensionTerritory + _currentMap.Index, 0);
+        Debug.Log("SETMAP " + _currentMap.name);
     }
 }

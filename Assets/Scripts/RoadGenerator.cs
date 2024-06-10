@@ -110,14 +110,14 @@ public class RoadGenerator : MonoBehaviour
 
     private IEnumerator CreateRoad()
     {
-        Debug.Log("Createeeeee");
+        // Debug.Log("Createeeeee");
         yield return _waitForSeconds;
 
         foreach (ItemPosition itemPosition in _initializator.ItemPositions)
         {
             if (itemPosition.IsWater || itemPosition.IsElevation)
             {
-                Debug.Log("Выключенный Item Position " + itemPosition.name);
+                // Debug.Log("Выключенный Item Position " + itemPosition.name);
                 continue;
             }
 
@@ -185,24 +185,24 @@ public class RoadGenerator : MonoBehaviour
         if (itemPosition.NorthPosition != null && !itemPosition.NorthPosition.IsBusy &&
             itemPosition.NorthPosition.gameObject.activeInHierarchy&&!itemPosition.NorthPosition.IsWater)
         {
-            Debug.Log("Item " + itemPosition.name );
-            Debug.Log("NORTH " + itemPosition.NorthPosition.name );
+            /*Debug.Log("Item " + itemPosition.name );
+            Debug.Log("NORTH " + itemPosition.NorthPosition.name );*/
             surroundingTiles = "1" + surroundingTiles.Substring(1);
         }
 
         if (itemPosition.WestPosition != null && !itemPosition.WestPosition.IsBusy &&
             itemPosition.WestPosition.gameObject.activeInHierarchy&&!itemPosition.WestPosition.IsWater)
         {
-            Debug.Log("Item " + itemPosition.name );
-            Debug.Log("West " + itemPosition.WestPosition.name );
+            /*Debug.Log("Item " + itemPosition.name );
+            Debug.Log("West " + itemPosition.WestPosition.name );*/
             surroundingTiles = surroundingTiles.Substring(0, 1) + "1" + surroundingTiles.Substring(2);
         }
 
         if (itemPosition.EastPosition != null && !itemPosition.EastPosition.IsBusy &&
             itemPosition.EastPosition.gameObject.activeInHierarchy&&!itemPosition.EastPosition.IsWater)
         {
-            Debug.Log("Item " + itemPosition.name );
-            Debug.Log("East " + itemPosition.EastPosition.name );
+            /*Debug.Log("Item " + itemPosition.name );
+            Debug.Log("East " + itemPosition.EastPosition.name );*/
             surroundingTiles = surroundingTiles.Substring(0, 2) + "1" + surroundingTiles.Substring(3);
         }
 
