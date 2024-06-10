@@ -72,6 +72,11 @@ public class Merger : MonoBehaviour
 
         foreach (var item in _matchItems)
         {
+            /*foreach (var position in item.ItemPosition.RoadPositions)
+            {
+                position.DisableRoad();
+            }*/
+            
             item.Deactivation();
             item.GetComponent<ItemMoving>().MoveTarget(currentPosition.transform.position);
         }
@@ -112,6 +117,11 @@ public class Merger : MonoBehaviour
 
         foreach (var itemPosition in _matchPositions)
         {
+            foreach (var pos in itemPosition.RoadPositions)
+            {
+                pos.DisableRoad();
+            }
+            
             itemPosition.ClearingPosition();
         }
 

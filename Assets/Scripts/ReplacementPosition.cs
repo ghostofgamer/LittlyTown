@@ -36,6 +36,8 @@ public class ReplacementPosition : MonoBehaviour
     public event Action PositionsChanged;
 
     public event Action PositionChanging;
+    
+    public event Action<ItemPosition,ItemPosition> PositionItemsChanging;
 
     private void OnEnable()
     {
@@ -138,6 +140,7 @@ public class ReplacementPosition : MonoBehaviour
                         _firstItemPosition.ReplaceSelectedActivate();
                         _secondItemPosition.DeliverObject(_firstItem);
                         _firstItemPosition.DeliverObject(_secondItem);
+                        PositionItemsChanging?.Invoke(_firstItemPosition,_secondItemPosition);
                         _firstSelect = false;
                         _firstItem = null;
                         _firstItemPosition = null;
@@ -155,6 +158,7 @@ public class ReplacementPosition : MonoBehaviour
                         _firstItemPosition.ClearingPosition();
                         yield return null;
                         _secondItemPosition.DeliverObject(_firstItem);
+                        PositionItemsChanging?.Invoke(_firstItemPosition,_secondItemPosition);
                         _firstSelect = false;
                         _firstItem = null;
                         _firstItemPosition = null;

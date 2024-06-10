@@ -91,6 +91,7 @@ public class StartMap : MonoBehaviour
         foreach (var itemPosition in _initializator.ItemPositions)
         {
             itemPosition.ClearingPosition();
+            itemPosition.DisableRoad();
         }
 
         foreach (var item in _items)

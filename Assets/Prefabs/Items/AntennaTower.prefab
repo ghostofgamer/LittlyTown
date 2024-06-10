@@ -2260,6 +2260,7 @@ MonoBehaviour:
   _startPrice: 500
   _priceMultiplier: 1.3
   _flightScore: {fileID: 6669037549361688929}
+  _isBigHouse: 1
 --- !u!54 &8201156442099666724
 Rigidbody:
   m_ObjectHideFlags: 0

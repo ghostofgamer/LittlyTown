@@ -295,6 +295,8 @@ public class MovesKeeper : MonoBehaviour
                 itemPosition.ClearingPosition();
                 yield return new WaitForSeconds(0.1f);
             }
+            
+            itemPosition.DisableRoad();
         }
 
         yield return new WaitForSeconds(0.1f);

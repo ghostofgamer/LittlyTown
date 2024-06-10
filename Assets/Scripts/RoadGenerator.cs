@@ -54,7 +54,8 @@ public class RoadGenerator : MonoBehaviour
     [SerializeField] private ItemPosition _crossroadsRoadTileLeft;
     [SerializeField] private ItemPosition _crossroadsRoadTileRight;
     [SerializeField] private ItemPosition _crossroadsRoadTileDown;
-    
+
+
     private Dictionary<string, ItemPosition> _tileConfigurations;
     private Coroutine _coroutine;
     private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.1f);
@@ -66,6 +67,8 @@ public class RoadGenerator : MonoBehaviour
         _removalItems.Removed += OnGeneration;
         _replacementPosition.PositionsChanged += OnGeneration;
         _merger.Mergered += OnGeneration;
+        _removalItems.ItemRemoved += ClearRoad;
+        _replacementPosition.PositionItemsChanging += ClearRoad;
     }
 
     private void OnDisable()
@@ -75,6 +78,8 @@ public class RoadGenerator : MonoBehaviour
         _removalItems.Removed -= OnGeneration;
         _replacementPosition.PositionsChanged -= OnGeneration;
         _merger.Mergered -= OnGeneration;
+        _removalItems.ItemRemoved -= ClearRoad;
+        _replacementPosition.PositionItemsChanging -= ClearRoad;
     }
 
     private void Start()
@@ -202,7 +207,7 @@ public class RoadGenerator : MonoBehaviour
             {
                 if (itemPosition.Item != null && itemPosition.Item.IsBigHouse)
                     continue;
-                
+
                 if (itemPosition.IsRoad)
                     continue;
 
@@ -416,6 +421,27 @@ public class RoadGenerator : MonoBehaviour
 
                 itemPosition.SetRoad(selectedTile);
             }
+        }
+    }
+
+    private void ClearRoad(Item item)
+    {
+        foreach (var road in item.ItemPosition.RoadPositions)
+        {
+            road.DisableRoad();
+        }
+    }
+
+    private void ClearRoad(ItemPosition firstItemPositionItem, ItemPosition secondItemPositionItem)
+    {
+        foreach (var itemPosition in firstItemPositionItem.RoadPositions)
+        {
+            itemPosition.DisableRoad();
+        }
+
+        foreach (var itemPosition in secondItemPositionItem.RoadPositions)
+        {
+            itemPosition.DisableRoad();
         }
     }
 }
