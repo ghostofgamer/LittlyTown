@@ -49,7 +49,12 @@ public class RoadGenerator : MonoBehaviour
     [SerializeField] private ItemPosition _endRoadTileLeft;
     [SerializeField] private ItemPosition _endRoadTileRight;
     [SerializeField] private ItemPosition _endRoadTileDown;
-
+    [SerializeField] private ItemPosition _fullRoadTile;
+    [SerializeField] private ItemPosition _crossroadsRoadTileUp;
+    [SerializeField] private ItemPosition _crossroadsRoadTileLeft;
+    [SerializeField] private ItemPosition _crossroadsRoadTileRight;
+    [SerializeField] private ItemPosition _crossroadsRoadTileDown;
+    
     private Dictionary<string, ItemPosition> _tileConfigurations;
     private Coroutine _coroutine;
     private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.1f);
@@ -92,17 +97,22 @@ public class RoadGenerator : MonoBehaviour
             {"1101", _crossroadsTileLeft},
             {"1011", _crossroadsTileRight},
             {"0111", _crossroadsTileDown},
-            {"2002", _roadTileHorizontal},
-            {"0220", _roadTileVertical},
-            {"2200", _roadTileUpLeft},
-            {"2020", _roadTileUpRight},
-            {"0022", _roadTileDownRight},
-            {"0202", _roadTileDownLeft},
-            {"2222", _roadTileGrey},
-            {"2000", _endRoadTileDown},
-            {"0200", _endRoadTileRight},
-            {"0020", _endRoadTileLeft},
-            {"0002", _endRoadTileUp},
+            {"2332", _roadTileHorizontal},
+            {"3223", _roadTileVertical},
+            {"2233", _roadTileUpLeft},
+            {"2323", _roadTileUpRight},
+            {"3322", _roadTileDownRight},
+            {"3232", _roadTileDownLeft},
+            {"3333", _roadTileGrey},
+            {"2333", _endRoadTileDown},
+            {"3233", _endRoadTileRight},
+            {"3323", _endRoadTileLeft},
+            {"3332", _endRoadTileUp},
+            {"2222", _fullRoadTile},
+            {"2223", _crossroadsRoadTileUp},
+            {"2232", _crossroadsRoadTileLeft},
+            {"2322", _crossroadsRoadTileRight},
+            {"3222", _crossroadsRoadTileDown},
         };
     }
 
@@ -284,7 +294,7 @@ public class RoadGenerator : MonoBehaviour
 
     private string CheckSurroundingRoadTiles(ItemPosition itemPosition)
     {
-        string surroundingTiles = "0000";
+        string surroundingTiles = "3333";
         int amount = 0;
 
         if (itemPosition.NorthPosition != null && !itemPosition.NorthPosition.IsBusy &&
@@ -325,10 +335,10 @@ public class RoadGenerator : MonoBehaviour
             surroundingTiles = surroundingTiles.Substring(0, surroundingTiles.Length - 1) + "2";
         }
 
-        if (amount < 1)
+        /*if (amount < 1||amount>2)
         {
             return "2222";
-        }
+        }*/
 
         return surroundingTiles;
     }

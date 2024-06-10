@@ -757,6 +757,9 @@
               <e p="Materials" t="Include" />
             </e>
           </e>
+          <e p="Road" t="Include">
+            <e p="source" t="Include" />
+          </e>
           <e p="SimpleNaturePack" t="Include">
             <e p="Materials" t="Include" />
             <e p="Models" t="Include" />
@@ -972,7 +975,9 @@
         <e p="Prefabs" t="Include">
           <e p="Collections" t="Include" />
           <e p="Items" t="Include" />
-          <e p="Tiles" t="Include" />
+          <e p="Tiles" t="Include">
+            <e p="Roads" t="Include" />
+          </e>
         </e>
         <e p="Resources" t="Include">
           <e p="BillingMode.json" t="Include" />
@@ -1303,7 +1308,9 @@
         </e>
         <e p="Sounds" t="Include" />
         <e p="Sprites" t="Include">
-          <e p="GameScreenIcon" t="Include" />
+          <e p="GameScreenIcon" t="Include">
+            <e p="Materials" t="Include" />
+          </e>
           <e p="ItemIcons" t="Include">
             <e p="Icons" t="Include" />
           </e>
