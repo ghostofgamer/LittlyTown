@@ -18,9 +18,17 @@ namespace ItemPositionContent
         [SerializeField] private Transform _container;
         [SerializeField] private LookMerger _lookMerger;
         [SerializeField] private ItemPosition _waterTile;
+        [SerializeField]private ItemPosition[] _roadPositions; 
         
-        private Item _item;
+
+
+            private Item _item;
         private ItemPosition[] _itemPositions;
+
+
+        public bool IsRoad { get; private set; } = false;
+
+        public ItemPosition[] RoadPositions => _roadPositions;
 
         public ItemPosition[] ItemPositions => _itemPositions;
 
@@ -58,6 +66,16 @@ namespace ItemPositionContent
             }
         }
 
+        public void EnableRoad()
+        {
+            IsRoad = true;
+        }
+
+        public void DisableRoad()
+        {
+            IsRoad = false;
+        }
+        
         public void SetRoad(ItemPosition itemPosition)
         {
             if (_road != null)
@@ -80,6 +98,8 @@ namespace ItemPositionContent
         public void DeliverObject(Item item)
         {
             _item = item;
+            if (IsRoad)
+                IsRoad = false;
             // _positionMatcher.LookAround(this);
             _lookMerger.LookAround(this, _item);
         }

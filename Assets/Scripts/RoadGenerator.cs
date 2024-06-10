@@ -37,6 +37,19 @@ public class RoadGenerator : MonoBehaviour
     [SerializeField] private ItemPosition _crossroadsTileRight;
     [SerializeField] private ItemPosition _crossroadsTileDown;
 
+
+    [SerializeField] private ItemPosition _roadTileGrey;
+    [SerializeField] private ItemPosition _roadTileUpRight;
+    [SerializeField] private ItemPosition _roadTileUpLeft;
+    [SerializeField] private ItemPosition _roadTileDownLeft;
+    [SerializeField] private ItemPosition _roadTileDownRight;
+    [SerializeField] private ItemPosition _roadTileHorizontal;
+    [SerializeField] private ItemPosition _roadTileVertical;
+    [SerializeField] private ItemPosition _endRoadTileUp;
+    [SerializeField] private ItemPosition _endRoadTileLeft;
+    [SerializeField] private ItemPosition _endRoadTileRight;
+    [SerializeField] private ItemPosition _endRoadTileDown;
+
     private Dictionary<string, ItemPosition> _tileConfigurations;
     private Coroutine _coroutine;
     private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.1f);
@@ -79,6 +92,17 @@ public class RoadGenerator : MonoBehaviour
             {"1101", _crossroadsTileLeft},
             {"1011", _crossroadsTileRight},
             {"0111", _crossroadsTileDown},
+            {"2002", _roadTileHorizontal},
+            {"0220", _roadTileVertical},
+            {"2200", _roadTileUpLeft},
+            {"2020", _roadTileUpRight},
+            {"0022", _roadTileDownRight},
+            {"0202", _roadTileDownLeft},
+            {"2222", _roadTileGrey},
+            {"2000", _endRoadTileDown},
+            {"0200", _endRoadTileRight},
+            {"0020", _endRoadTileLeft},
+            {"0002", _endRoadTileUp},
         };
     }
 
@@ -121,7 +145,40 @@ public class RoadGenerator : MonoBehaviour
                 continue;
             }
 
-            if (!itemPosition.IsBusy)
+            if (itemPosition.IsBusy && itemPosition.Item.IsBigHouse)
+            {
+                ItemPosition tile =
+                    Instantiate(_roadTileGrey, itemPosition.transform.position,
+                        _initializator.CurrentMap.RoadsContainer.transform.rotation,
+                        _initializator.CurrentMap.RoadsContainer);
+
+                itemPosition.SetRoad(tile);
+                /*itemPosition.EnableRoad();*/
+
+                foreach (var roadPosition in itemPosition.RoadPositions)
+                {
+                    if (roadPosition != null && !roadPosition.IsBusy)
+                    {
+                        roadPosition.EnableRoad();
+                    }
+                }
+
+                foreach (var roadPosition in itemPosition.RoadPositions)
+                {
+                    if (roadPosition != null && !roadPosition.IsBusy)
+                    {
+                        string surroundingTiles = CheckSurroundingRoadTiles(roadPosition);
+                        ItemPosition selectedTile =
+                            Instantiate(_tileConfigurations[surroundingTiles], roadPosition.transform.position,
+                                _initializator.CurrentMap.RoadsContainer.transform.rotation,
+                                _initializator.CurrentMap.RoadsContainer);
+
+                        roadPosition.SetRoad(selectedTile);
+                    }
+                }
+            }
+
+            if (!itemPosition.IsBusy && !itemPosition.IsRoad)
             {
                 string surroundingTiles = CheckSurroundingTiles(itemPosition);
                 ItemPosition selectedTile = Instantiate(_tileConfigurations[surroundingTiles],
@@ -133,6 +190,12 @@ public class RoadGenerator : MonoBehaviour
 
             else
             {
+                if (itemPosition.Item != null && itemPosition.Item.IsBigHouse)
+                    continue;
+                
+                if (itemPosition.IsRoad)
+                    continue;
+
                 ItemPosition selectedTile =
                     Instantiate(_clearTile, itemPosition.transform.position,
                         _initializator.CurrentMap.RoadsContainer.transform.rotation,
@@ -183,7 +246,8 @@ public class RoadGenerator : MonoBehaviour
         string surroundingTiles = "0000";
 
         if (itemPosition.NorthPosition != null && !itemPosition.NorthPosition.IsBusy &&
-            itemPosition.NorthPosition.gameObject.activeInHierarchy&&!itemPosition.NorthPosition.IsWater)
+            itemPosition.NorthPosition.gameObject.activeInHierarchy && !itemPosition.NorthPosition.IsWater &&
+            !itemPosition.NorthPosition.IsRoad)
         {
             /*Debug.Log("Item " + itemPosition.name );
             Debug.Log("NORTH " + itemPosition.NorthPosition.name );*/
@@ -191,7 +255,8 @@ public class RoadGenerator : MonoBehaviour
         }
 
         if (itemPosition.WestPosition != null && !itemPosition.WestPosition.IsBusy &&
-            itemPosition.WestPosition.gameObject.activeInHierarchy&&!itemPosition.WestPosition.IsWater)
+            itemPosition.WestPosition.gameObject.activeInHierarchy && !itemPosition.WestPosition.IsWater &&
+            !itemPosition.WestPosition.IsRoad)
         {
             /*Debug.Log("Item " + itemPosition.name );
             Debug.Log("West " + itemPosition.WestPosition.name );*/
@@ -199,7 +264,8 @@ public class RoadGenerator : MonoBehaviour
         }
 
         if (itemPosition.EastPosition != null && !itemPosition.EastPosition.IsBusy &&
-            itemPosition.EastPosition.gameObject.activeInHierarchy&&!itemPosition.EastPosition.IsWater)
+            itemPosition.EastPosition.gameObject.activeInHierarchy && !itemPosition.EastPosition.IsWater &&
+            !itemPosition.EastPosition.IsRoad)
         {
             /*Debug.Log("Item " + itemPosition.name );
             Debug.Log("East " + itemPosition.EastPosition.name );*/
@@ -207,9 +273,61 @@ public class RoadGenerator : MonoBehaviour
         }
 
         if (itemPosition.SouthPosition != null && !itemPosition.SouthPosition.IsBusy &&
-            itemPosition.SouthPosition.gameObject.activeInHierarchy&&!itemPosition.SouthPosition.IsWater)
+            itemPosition.SouthPosition.gameObject.activeInHierarchy && !itemPosition.SouthPosition.IsWater &&
+            !itemPosition.SouthPosition.IsRoad)
         {
             surroundingTiles = surroundingTiles.Substring(0, surroundingTiles.Length - 1) + "1";
+        }
+
+        return surroundingTiles;
+    }
+
+    private string CheckSurroundingRoadTiles(ItemPosition itemPosition)
+    {
+        string surroundingTiles = "0000";
+        int amount = 0;
+
+        if (itemPosition.NorthPosition != null && !itemPosition.NorthPosition.IsBusy &&
+            itemPosition.NorthPosition.gameObject.activeInHierarchy && !itemPosition.NorthPosition.IsWater &&
+            itemPosition.NorthPosition.IsRoad)
+        {
+            amount++;
+            /*Debug.Log("Item " + itemPosition.name );
+            Debug.Log("NORTH " + itemPosition.NorthPosition.name );*/
+            surroundingTiles = "2" + surroundingTiles.Substring(1);
+        }
+
+        if (itemPosition.WestPosition != null && !itemPosition.WestPosition.IsBusy &&
+            itemPosition.WestPosition.gameObject.activeInHierarchy && !itemPosition.WestPosition.IsWater &&
+            itemPosition.WestPosition.IsRoad)
+        {
+            amount++;
+            /*Debug.Log("Item " + itemPosition.name );
+            Debug.Log("West " + itemPosition.WestPosition.name );*/
+            surroundingTiles = surroundingTiles.Substring(0, 1) + "2" + surroundingTiles.Substring(2);
+        }
+
+        if (itemPosition.EastPosition != null && !itemPosition.EastPosition.IsBusy &&
+            itemPosition.EastPosition.gameObject.activeInHierarchy && !itemPosition.EastPosition.IsWater &&
+            itemPosition.EastPosition.IsRoad)
+        {
+            amount++;
+            /*Debug.Log("Item " + itemPosition.name );
+            Debug.Log("East " + itemPosition.EastPosition.name );*/
+            surroundingTiles = surroundingTiles.Substring(0, 2) + "2" + surroundingTiles.Substring(3);
+        }
+
+        if (itemPosition.SouthPosition != null && !itemPosition.SouthPosition.IsBusy &&
+            itemPosition.SouthPosition.gameObject.activeInHierarchy && !itemPosition.SouthPosition.IsWater &&
+            itemPosition.SouthPosition.IsRoad)
+        {
+            amount++;
+            surroundingTiles = surroundingTiles.Substring(0, surroundingTiles.Length - 1) + "2";
+        }
+
+        if (amount < 1)
+        {
+            return "2222";
         }
 
         return surroundingTiles;

@@ -12,7 +12,7 @@ public class ExtensionMap : MonoBehaviour
 {
     private const string ExtensionTerritory = "ExtensionTerritory";
     private const string WaterTile = "WaterTile";
-
+    
     [SerializeField] private Map[] _extensionMaps;
     [SerializeField] private RoadGenerator _roadGenerator;
     [SerializeField] private MapGenerator _mapGenerator;
@@ -23,7 +23,8 @@ public class ExtensionMap : MonoBehaviour
     [SerializeField] private Load _load;
     [SerializeField] private Transform _transform;
     [SerializeField] private ExtensionMapMovement _extensionMapMovement;
-
+    [SerializeField] private Item[] _items;
+    
     private List<Territory> _targetTerritories = new List<Territory>();
     private List<Territory> _extensionFilterTerritories = new List<Territory>();
     private List<FinderPositions> _targetFinderPositions = new List<FinderPositions>();
@@ -59,6 +60,11 @@ public class ExtensionMap : MonoBehaviour
             return;
         }
 
+        if (item.ItemName != _items[_index].ItemName)
+        {
+            return;
+        }
+        
         _save.SetData(ExtensionTerritory + _currentMap.Index, _index + 1);
 
         Debug.Log("РАСШИРЯЮЩАЯСЯ КАРТА ИНДЕКС " + _currentMap.Index);
@@ -254,7 +260,7 @@ Debug.Log("_extensionFilterTerritories " + _extensionFilterTerritories.Count);*/
         _targetFinderPositions = finderPositions;
         _targetItemPositions = itemPositions;
         _extensionFilterTerritories = extensionTerritory;
-        _extensionMapMovement.ResetPosition(_transform);
+        _extensionMapMovement.ResetPosition(_currentMap.Mover);
     }
 
     public void ContinueMap(List<Territory> territory, List<ItemPosition> itemPositions,

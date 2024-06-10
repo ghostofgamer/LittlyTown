@@ -20,6 +20,7 @@ namespace ItemContent
         [SerializeField] private int _startPrice;
         [SerializeField] private float _priceMultiplier;
         [SerializeField] private FlightScore _flightScore;
+        [SerializeField] private bool _isBigHouse;
         
         private int _price;
         private bool _isActive;
@@ -27,6 +28,8 @@ namespace ItemContent
         public event Action Activated;
         
         public event Action Deactivated;
+
+        public bool IsBigHouse => _isBigHouse;
 
         public FlightScore FlightScore => _flightScore;
 
