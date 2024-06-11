@@ -159,7 +159,7 @@ public class RoadGenerator : MonoBehaviour
                 // Debug.Log("Выключенный Item Position " + itemPosition.name);
                 continue;
             }
-
+            
             if (itemPosition.IsBusy && itemPosition.Item.IsBigHouse)
             {
                 ItemPosition tile =
@@ -172,7 +172,7 @@ public class RoadGenerator : MonoBehaviour
 
                 foreach (var roadPosition in itemPosition.RoadPositions)
                 {
-                    if (roadPosition != null && !roadPosition.IsBusy)
+                    if (roadPosition != null && !roadPosition.IsBusy&&!roadPosition.IsWater&&roadPosition.gameObject.activeInHierarchy)
                     {
                         roadPosition.EnableRoad();
                     }
@@ -180,7 +180,7 @@ public class RoadGenerator : MonoBehaviour
 
                 foreach (var roadPosition in itemPosition.RoadPositions)
                 {
-                    if (roadPosition != null && !roadPosition.IsBusy)
+                    if (roadPosition != null && !roadPosition.IsBusy&&!roadPosition.IsWater&&roadPosition.gameObject.activeInHierarchy)
                     {
                         string surroundingTiles = CheckSurroundingRoadTiles(roadPosition);
                         ItemPosition selectedTile =
@@ -192,6 +192,49 @@ public class RoadGenerator : MonoBehaviour
                     }
                 }
             }
+        }
+
+
+        foreach (ItemPosition itemPosition in _initializator.ItemPositions)
+        {
+            if (itemPosition.IsWater || itemPosition.IsElevation)
+            {
+                // Debug.Log("Выключенный Item Position " + itemPosition.name);
+                continue;
+            }
+
+            /*if (itemPosition.IsBusy && itemPosition.Item.IsBigHouse)
+            {
+                ItemPosition tile =
+                    Instantiate(_roadTileGrey, itemPosition.transform.position,
+                        _initializator.CurrentMap.RoadsContainer.transform.rotation,
+                        _initializator.CurrentMap.RoadsContainer);
+
+                itemPosition.SetRoad(tile);
+                /*itemPosition.EnableRoad();#1#
+
+                foreach (var roadPosition in itemPosition.RoadPositions)
+                {
+                    if (roadPosition != null && !roadPosition.IsBusy&&!roadPosition.IsWater&&roadPosition.gameObject.activeInHierarchy)
+                    {
+                        roadPosition.EnableRoad();
+                    }
+                }
+
+                foreach (var roadPosition in itemPosition.RoadPositions)
+                {
+                    if (roadPosition != null && !roadPosition.IsBusy&&!roadPosition.IsWater&&roadPosition.gameObject.activeInHierarchy)
+                    {
+                        string surroundingTiles = CheckSurroundingRoadTiles(roadPosition);
+                        ItemPosition selectedTile =
+                            Instantiate(_tileConfigurations[surroundingTiles], roadPosition.transform.position,
+                                _initializator.CurrentMap.RoadsContainer.transform.rotation,
+                                _initializator.CurrentMap.RoadsContainer);
+
+                        roadPosition.SetRoad(selectedTile);
+                    }
+                }
+            }*/
 
             if (!itemPosition.IsBusy && !itemPosition.IsRoad)
             {
@@ -363,8 +406,87 @@ public class RoadGenerator : MonoBehaviour
             {
                 continue;
             }
+            
+            if (itemPosition.IsBusy && itemPosition.Item.IsBigHouse)
+            {
+                ItemPosition tile =
+                    Instantiate(_roadTileGrey, itemPosition.transform.position,
+                        container.transform.rotation,
+                        container);
 
-            if (!itemPosition.IsBusy)
+                itemPosition.SetRoad(tile);
+                /*itemPosition.EnableRoad();*/
+
+                foreach (var roadPosition in itemPosition.RoadPositions)
+                {
+                    if (roadPosition != null && !roadPosition.IsBusy&&!roadPosition.IsWater&&roadPosition.gameObject.activeInHierarchy)
+                    {
+                        roadPosition.EnableRoad();
+                    }
+                }
+
+                foreach (var roadPosition in itemPosition.RoadPositions)
+                {
+                    if (roadPosition != null && !roadPosition.IsBusy&&!roadPosition.IsWater&&roadPosition.gameObject.activeInHierarchy)
+                    {
+                        string surroundingTiles = CheckSurroundingRoadTiles(roadPosition);
+                        ItemPosition selectedTile =
+                            Instantiate(_tileConfigurations[surroundingTiles], roadPosition.transform.position,
+                                container.transform.rotation,
+                                container);
+
+                        roadPosition.SetRoad(selectedTile);
+                    }
+                }
+            }
+        }
+        
+        
+        foreach (ItemPosition itemPosition in itemPositions)
+        {
+            if (itemPosition.IsWater || itemPosition.IsElevation)
+            {
+                continue;
+            }
+
+            /*
+            if (itemPosition.IsBusy && itemPosition.Item.IsBigHouse)
+            {
+                ItemPosition tile =
+                    Instantiate(_roadTileGrey, itemPosition.transform.position,
+                        container.transform.rotation,
+                        container);
+
+                itemPosition.SetRoad(tile);
+                /*itemPosition.EnableRoad();#1#
+
+                foreach (var roadPosition in itemPosition.RoadPositions)
+                {
+                    if (roadPosition != null && !roadPosition.IsBusy&&!roadPosition.IsWater&&roadPosition.gameObject.activeInHierarchy)
+                    {
+                        roadPosition.EnableRoad();
+                    }
+                }
+
+                foreach (var roadPosition in itemPosition.RoadPositions)
+                {
+                    if (roadPosition != null && !roadPosition.IsBusy&&!roadPosition.IsWater&&roadPosition.gameObject.activeInHierarchy)
+                    {
+                        string surroundingTiles = CheckSurroundingRoadTiles(roadPosition);
+                        ItemPosition selectedTile =
+                            Instantiate(_tileConfigurations[surroundingTiles], roadPosition.transform.position,
+                                container.transform.rotation,
+                                container);
+
+                        roadPosition.SetRoad(selectedTile);
+                    }
+                }
+            }
+            
+            yield return  new WaitForSeconds(1f);
+            */
+            
+            if (!itemPosition.IsBusy&& !itemPosition.IsRoad)
             {
                 string surroundingTiles = CheckSurroundingTiles(itemPosition);
                 ItemPosition selectedTile = Instantiate(_tileConfigurations[surroundingTiles],
@@ -377,6 +499,12 @@ public class RoadGenerator : MonoBehaviour
 
             else
             {
+                if (itemPosition.Item != null && itemPosition.Item.IsBigHouse)
+                    continue;
+
+                if (itemPosition.IsRoad)
+                    continue;
+                
                 ItemPosition selectedTile =
                     Instantiate(_clearTile, itemPosition.transform.position, container.transform.rotation, container);
 
