@@ -1294,6 +1294,7 @@
               <e p="PossibilitiesShopContent" t="Include">
                 <e p="PossibilitiesShopScreen.cs" t="Include" />
               </e>
+              <e p="SandBoxScreen.cs" t="Include" />
               <e p="SettingsScreen.cs" t="Include" />
               <e p="StartGameScreen.cs" t="Include" />
               <e p="UpgradeScreen.cs" t="Include" />

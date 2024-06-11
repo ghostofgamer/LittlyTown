@@ -31,12 +31,14 @@ public class Localization : MonoBehaviour
         _currentLanguage = _load.Get(Language, _autoFoundLanguage);
         ChangeLanguage(_currentLanguage);
         LanguageChanged?.Invoke(_currentLanguage);
+        Debug.Log("Автоязык определил " + _autoFoundLanguage);
 #endif
     }
 
     private void Start()
     {
         LanguageChanged?.Invoke(_currentLanguage);
+        Debug.Log("Язык устанавливаем " + _currentLanguage);
     }
 
     private void ChangeLanguage(string languageCode)

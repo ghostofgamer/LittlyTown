@@ -1,3 +1,4 @@
+using System.Collections;
 using SaveAndLoad;
 using UI.Screens;
 using UnityEngine;
@@ -38,6 +39,9 @@ public class FirstScreen : AbstractScreen
 
         // _continueButton.gameObject.SetActive(_currentValue > 0);
         _continueButton.gameObject.SetActive(value);
+        
+        StartCoroutine(SmoothOpen());
+
     }
 
     public override void Open()
@@ -59,5 +63,11 @@ public class FirstScreen : AbstractScreen
 
         // _continueButton.gameObject.SetActive(_currentValue > 0);
         _continueButton.gameObject.SetActive(value);
+    }
+
+    private IEnumerator SmoothOpen()
+    {
+        yield return  new WaitForSeconds(1.65f);
+        Open();
     }
 }
