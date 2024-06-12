@@ -66,7 +66,7 @@ namespace PossibilitiesContent
                     Vector3.Lerp(_startPosition, _targetPosition, _elapsedTime / _duration);
                 yield return null;
             }
-
+            Debug.Log("валуе " + value);
             _canvasGroup.alpha = 0;
             MovementCompleted?.Invoke(value);
         }

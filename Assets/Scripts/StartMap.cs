@@ -109,7 +109,11 @@ public class StartMap : MonoBehaviour
             possibilityCounter.SetCount();
 
             if (_packageLittleTown.IsActive)
+            {
+                Debug.Log("startMap create");
                 possibilityCounter.IncreaseCount(_packageLittleTown.Amount);
+            }
+                
         }
 
         if (_packageLittleTown.IsActive)
@@ -165,7 +169,12 @@ public class StartMap : MonoBehaviour
             possibilityCounter.SetCount();
 
             if (_packageLittleTown.IsActive)
-                possibilityCounter.IncreaseCount(_packageLittleTown.Amount);
+            {
+                Debug.Log("startMap");
+                  possibilityCounter.IncreaseCount(_packageLittleTown.Amount);
+            }
+                
+              
         }
 
         if (_packageLittleTown.IsActive)

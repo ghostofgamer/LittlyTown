@@ -9,6 +9,7 @@ public class Bootstrap : MonoBehaviour
     [SerializeField] private ItemsStorage _itemsStorage;
     [SerializeField] private Initializator _initializator;
     [SerializeField] private ChooseMap _chooseMap;
+    [SerializeField] private StartMap _startMap;
 
     private const string LastActiveMap = "LastActiveMap";
     private int _startValue = 0;
@@ -33,8 +34,20 @@ public class Bootstrap : MonoBehaviour
             _initializator.FillLists();
 
             // _mapGenerator.ShowFirstMap();
+            
             _mapGenerator.ShowTestFirstMap(_initializator.Territories, _initializator.FinderPositions,
                 _initializator.ItemPositions, _initializator.CurrentMap.RoadsContainer,_initializator.CurrentMap.StartItems);
+            
+            // _startMap.StartCreate();
+
+            /*for (int i = 0; i < _initializator.AmountMaps; i++)
+            {
+                if (i == value)
+                    continue;
+                
+                _mapGenerator.GenerationAllMap(i);
+            }*/
+
             _mapGenerator.GenerationAllMap(1);
             _mapGenerator.GenerationAllMap(2);
             _mapGenerator.GenerationAllMap(3);

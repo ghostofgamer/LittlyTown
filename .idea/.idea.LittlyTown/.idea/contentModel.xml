@@ -1216,6 +1216,17 @@
           <e p="TextWidthController.cs" t="Include" />
           <e p="TreasureChest.cs" t="Include" />
           <e p="TurnEnvironment.cs" t="Include" />
+          <e p="TutorContent" t="Include">
+            <e p="BulldozerStage.cs" t="Include" />
+            <e p="FinalStage.cs" t="Include" />
+            <e p="MergeStage.cs" t="Include" />
+            <e p="PlaceItemStage.cs" t="Include" />
+            <e p="ReplaceStage.cs" t="Include" />
+            <e p="Stage.cs" t="Include" />
+            <e p="StartStageButton.cs" t="Include" />
+            <e p="StorageStage.cs" t="Include" />
+            <e p="WelcomeStage.cs" t="Include" />
+          </e>
           <e p="UI" t="Include">
             <e p="Buttons" t="Include">
               <e p="AbstractButton.cs" t="Include" />
@@ -1227,6 +1238,7 @@
               <e p="BulldozerButton.cs" t="Include" />
               <e p="BuyItemButton.cs" t="Include" />
               <e p="CancelMoveButton.cs" t="Include" />
+              <e p="ChangeTutorialContentButton.cs" t="Include" />
               <e p="ChooseMapButton.cs" t="Include" />
               <e p="CloseButton.cs" t="Include" />
               <e p="CollectionScrollButton.cs" t="Include" />
@@ -1236,6 +1248,7 @@
               <e p="EndScreen" t="Include">
                 <e p="CancelLastStepButton.cs" t="Include" />
               </e>
+              <e p="FinalTutorButton.cs" t="Include" />
               <e p="GoalCompleteButton.cs" t="Include" />
               <e p="GoldButton.cs" t="Include" />
               <e p="OpenButton.cs" t="Include" />
@@ -1297,6 +1310,7 @@
               <e p="SandBoxScreen.cs" t="Include" />
               <e p="SettingsScreen.cs" t="Include" />
               <e p="StartGameScreen.cs" t="Include" />
+              <e p="TutorialScreen.cs" t="Include" />
               <e p="UpgradeScreen.cs" t="Include" />
             </e>
           </e>
@@ -1311,6 +1325,7 @@
         <e p="Sprites" t="Include">
           <e p="GameScreenIcon" t="Include">
             <e p="Materials" t="Include" />
+            <e p="Tutorial" t="Include" />
           </e>
           <e p="ItemIcons" t="Include">
             <e p="Icons" t="Include" />

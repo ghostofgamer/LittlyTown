@@ -42,7 +42,11 @@ public class ContinueButton : AbstractButton
         if (_packageLittleTown.IsActive)
         {
             foreach (var possibilitiesCounter in _possibilitiesCounters)
+            {
+                Debug.Log("Contiue");
                 possibilitiesCounter.IncreaseCount(_packageLittleTown.Amount);
+            }
+                
 
             _packageLittleTown.Activated();
         }

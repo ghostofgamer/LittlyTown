@@ -25,19 +25,19 @@ namespace CountersContent
 
         private void OnDisable()
         {
-            _possibilitieMovement.MovementCompleted += IncreaseCount;
+            _possibilitieMovement.MovementCompleted -= IncreaseCount;
         }
 
         private void Start()
         {
-            // Debug.Log("SetStart Replace");
+            Debug.Log("SetStart Replace");
             _possibilitiesCount = _startCount;
             Show();
         }
 
         public void IncreaseCount(int value)
         {
-            // Debug.Log("!!!");
+            Debug.Log("!!! " + value);
             if (value < 0)
                 return;
 
@@ -48,7 +48,7 @@ namespace CountersContent
 
         public void DecreaseCount()
         {
-            // Debug.Log("!!!&&&");
+            Debug.Log("!!!&&&");
             _possibilitiesCount--;
             Show();
             _animator.SetTrigger(Change);
@@ -56,20 +56,19 @@ namespace CountersContent
 
         private void Show()
         {
-            // Debug.Log("SHOW " + _possibilitiesCount );
+            Debug.Log("SHOW " + _possibilitiesCount );
             _possibilitiesCountText.text = _possibilitiesCount.ToString();
         }
 
         public void SetValue(int count)
         {
-            // Debug.Log("SetValue Replace " + count);
             _possibilitiesCount = count;
             Show();
         }
 
         public void SetCount()
         {
-            // Debug.Log("SetCount Replace");
+            Debug.Log("SetCount Replace");
             _possibilitiesCount = _startCount;
             Show();
         }

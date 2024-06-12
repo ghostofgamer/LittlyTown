@@ -34,6 +34,7 @@ public class BonusesStart : MonoBehaviour
 
     public void ApplyBonuses()
     {
+        Debug.Log("Bonuses");
         _possibilitiesCounterBulldozer.IncreaseCount(_currentAmountBulldozers);
         _possibilitiesCounterReplacer.IncreaseCount(_currentAmountReplacers);
         _goldWallet.IncreaseValue(_currentAmountGolds);

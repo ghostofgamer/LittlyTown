@@ -9,7 +9,7 @@ public class FirstScreen : AbstractScreen
     private const string ItemStorageSave = "ItemStorageSave";
     private const string ActiveMap = "ActiveMap";
     private const string Map = "Map";
-    
+
     [SerializeField] private Load _load;
     [SerializeField] private ContinueButton _continueButton;
     [SerializeField] private Initializator _initializator;
@@ -20,7 +20,7 @@ public class FirstScreen : AbstractScreen
 
     private void Start()
     {
-        int LastValue = _load.Get(LastActiveMap, _startValue);
+        int lastValue = _load.Get(LastActiveMap, _startValue);
         int currentMap = _load.Get("Map", _startValue);
         // Debug.Log("ПОСЛЕДНИЙ!!! " + LastValue);
         _currentValue = _load.Get(LastActiveMap, _startValue);
@@ -39,15 +39,17 @@ public class FirstScreen : AbstractScreen
 
         // _continueButton.gameObject.SetActive(_currentValue > 0);
         _continueButton.gameObject.SetActive(value);
-        
-        StartCoroutine(SmoothOpen());
 
+        if (lastValue > 0)
+            StartCoroutine(SmoothOpen());
+        
+            // StartCoroutine(SmoothOpen());
     }
 
     public override void Open()
     {
         base.Open();
-        
+
         /*if (PlayerPrefs.HasKey(ItemStorageSave + _initializator.Index))
         {
             Debug.Log("Существует " + ItemStorageSave + _initializator.Index);
@@ -67,7 +69,7 @@ public class FirstScreen : AbstractScreen
 
     private IEnumerator SmoothOpen()
     {
-        yield return  new WaitForSeconds(1.65f);
+        yield return new WaitForSeconds(1.65f);
         Open();
     }
 }
