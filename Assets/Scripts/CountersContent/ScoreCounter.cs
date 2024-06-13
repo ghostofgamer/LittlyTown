@@ -35,6 +35,8 @@ namespace CountersContent
         public event Action LevelChanged;
         
         public event Action<int> ScoreIncomeChanged;
+
+        public event Action<int> FactorChanged;
         
         public int Factor { get; private set; } = 1;
 
@@ -63,6 +65,7 @@ namespace CountersContent
         {
             _currentScore = value;
             Factor = factor;
+            FactorChanged?.Invoke(Factor);
             _targetScore = Factor * _stepScore;
             Show();
             _dropGenerator.NextLevel(Factor);
