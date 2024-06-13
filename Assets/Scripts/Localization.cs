@@ -11,7 +11,10 @@ public class Localization : MonoBehaviour
     private const string EnglishCode = "English";
     private const string RussianCode = "Russian";
     private const string TurkishCode = "Turkish";
-
+    private const string English = "en";
+    private const string Russian = "ru";
+    private const string Turkish = "tr";
+    
     [SerializeField] private LeanLocalization _leanLocalization;
     [SerializeField] private Save _save;
     [SerializeField] private Load _load;
@@ -29,7 +32,7 @@ public class Localization : MonoBehaviour
 #if UNITY_WEBGL&&!UNITY_EDITOR
         _autoFoundLanguage = YandexGamesSdk.Environment.i18n.lang;
         _currentLanguage = _load.Get(Language, _autoFoundLanguage);
-        ChangeLanguage(_currentLanguage);
+        SetLanguage(_currentLanguage);
         LanguageChanged?.Invoke(_currentLanguage);
         Debug.Log("Автоязык определил " + _autoFoundLanguage);
 #endif
@@ -41,27 +44,27 @@ public class Localization : MonoBehaviour
         Debug.Log("Язык устанавливаем " + _currentLanguage);
     }
 
-    private void ChangeLanguage(string languageCode)
+    public void SetLanguage(string languageCode)
     {
         switch (languageCode)
         {
-            case EnglishCode:
+            case English:
                 _leanLocalization.SetCurrentLanguage(EnglishCode);
                 break;
 
-            case TurkishCode:
+            case Turkish:
                 _leanLocalization.SetCurrentLanguage(TurkishCode);
                 break;
 
-            case RussianCode:
+            case Russian:
                 _leanLocalization.SetCurrentLanguage(RussianCode);
                 break;
         }
     }
 
-    public void SetLanguage(string languageCode)
+    /*public void SetLanguage(string languageCode)
     {
         _leanLocalization.SetCurrentLanguage(languageCode);
         _save.SetData(Language, languageCode);
-    }
+    }*/
 }

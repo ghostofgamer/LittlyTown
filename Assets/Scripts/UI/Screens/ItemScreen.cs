@@ -13,16 +13,6 @@ namespace UI.Screens
         [SerializeField] private GameObject[] _items;
         [SerializeField] private ScoreCounter _scoreCounter;
 
-        /*private void OnEnable()
-        {
-            _scoreCounter.FactorChanged
-        }
-
-        private void OnDisable()
-        {
-            
-        }*/
-
         private void Start()
         {
             if (Application.isMobilePlatform)
@@ -53,9 +43,14 @@ namespace UI.Screens
         {
             foreach (var item in _items)
                 item.SetActive(false);
-            
+
             for (int i = 0; i < _scoreCounter.Factor; i++)
+            {
+                if (i >= _items.Length)
+                    return;
+                
                 _items[i].SetActive(true);
+            }
         }
     }
 }

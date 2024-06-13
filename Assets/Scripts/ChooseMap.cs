@@ -38,8 +38,8 @@ public class ChooseMap : MonoBehaviour
 
     private void Update()
     {
-        if (!_isWork)
-            return;
+        /*if (!_isWork)
+            return;*/
         
         Debug.Log("Update " );
         if (Input.GetMouseButtonDown(0))

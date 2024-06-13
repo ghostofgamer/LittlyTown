@@ -130,13 +130,13 @@ public class Bootstrap : MonoBehaviour
                 _initializator.ItemPositions, _initializator.CurrentMap.RoadsContainer,_initializator.CurrentMap.StartItems);
 
 
-            for (int i = 0; i < _initializator.AmountMaps; i++)
+            /*for (int i = 0; i < _initializator.AmountMaps; i++)
             {
                 if (i == value)
                     continue;
                 
                 _mapGenerator.GenerationAllMap(i);
-            }
+            }*/
 
         }
     }
