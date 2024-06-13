@@ -25,7 +25,7 @@ public class CollectionScrollButton : AbstractButton
     protected override void OnClick()
     {
         AudioSource.PlayOneShot(AudioSource.clip);
-        _currentMovement.ChangeValue(_value);
+        // _currentMovement.ChangeValue(_value);
     }
 
     private void SetCollectionMovement(int index)

@@ -49,7 +49,7 @@ public class CollectionScreen : AbstractScreen
             _collectedItems.Add(Items.Tree);
 
         LoadCollectedItemsFromPlayerPrefs();
-        ShowItems();
+        // ShowItems();
         Show();
         ActivationDescription(0);
     }

@@ -15,7 +15,7 @@ public class MapsInfo : MonoBehaviour
         _chooseMap.MapChanged -= ActivatedInfo;
     }
 
-    private void ActivatedInfo(int index)
+    public void ActivatedInfo(int index)
     {
         foreach (var mapInfo in _mapInfoObjects)
             mapInfo.SetActive(false);

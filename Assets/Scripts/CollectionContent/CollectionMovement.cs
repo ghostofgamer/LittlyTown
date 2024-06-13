@@ -25,7 +25,30 @@ public class CollectionMovement : MonoBehaviour
 
     public event Action<int> PositionScrolled; 
     
-    void Start()
+    
+    
+    private float _step = 46;
+    private int _index;
+    private float _elapsedTime = 0f;
+    private float _duration = 1f;
+    private Vector3 _target;
+    private Vector3 _currentPosition;
+    private Vector3 _startPosition;
+    [SerializeField]private Vector3 _startResetPosition;
+    private float _currentStep;
+    private float _currentZ;
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /*void Start()
     {
         _positions = new float[transform.childCount];
         // ActivationDescription(0);
@@ -82,5 +105,5 @@ Debug.Log("сгккуте " + _currentIndex);
         }
 
         _scrollbar.value = pos[_buttonNumber];
-    }
+    }*/
 }

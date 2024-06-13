@@ -10,6 +10,7 @@ namespace CountersContent
     public class GoldCounter : MonoBehaviour
     {
         [SerializeField] private TMP_Text _text;
+        [SerializeField] private TMP_Text _description;
         [SerializeField] private MoveCounter _moveCounter;
         [SerializeField] private GoldWallet _goldWallet;
         [SerializeField] private Merger _merger;
@@ -65,7 +66,8 @@ namespace CountersContent
 
         private void Show()
         {
-            _text.text = string.Format(_scoreText, _profit);
+            // _text.text = string.Format(_scoreText, _profit);
+            _text.text = _profit.ToString() + " " + _description.text;
         }
 
         public void CheckIncome()

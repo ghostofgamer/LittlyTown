@@ -14,6 +14,8 @@ namespace CountersContent
         [SerializeField] private Merger _merger;
         [SerializeField] private PositionMatcher _positionMatcher;
         [SerializeField] private TMP_Text _scoreTargetText;
+        [SerializeField] private TMP_Text _goalText;
+        [SerializeField] private TMP_Text _score;
         [SerializeField] private VisualScore _visualScore;
         [SerializeField] private DropGenerator _dropGenerator;
         [SerializeField] private LookMerger _lookMerger;
@@ -114,7 +116,8 @@ namespace CountersContent
 
         private void Show()
         {
-            _scoreTargetText.text = string.Format(_scoreText, _targetScore);
+            // _scoreTargetText.text = string.Format(_scoreText, _targetScore);
+            _scoreTargetText.text = _goalText.text +" "+ _targetScore.ToString() +" "+ _score.text;
         }
 
         public void ResetScore()
