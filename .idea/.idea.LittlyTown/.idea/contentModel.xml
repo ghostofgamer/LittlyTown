@@ -1222,6 +1222,7 @@
             <e p="MergeStage.cs" t="Include" />
             <e p="PlaceItemStage.cs" t="Include" />
             <e p="ReplaceStage.cs" t="Include" />
+            <e p="RestartTutorial.cs" t="Include" />
             <e p="Stage.cs" t="Include" />
             <e p="StartStageButton.cs" t="Include" />
             <e p="StorageStage.cs" t="Include" />
@@ -1284,6 +1285,7 @@
               </e>
               <e p="StartButton.cs" t="Include" />
               <e p="StorageButton.cs" t="Include" />
+              <e p="TutorialButton.cs" t="Include" />
               <e p="UpgradeButtons" t="Include">
                 <e p="EndlessMoveButton.cs" t="Include" />
                 <e p="PackageLittleTownButton.cs" t="Include" />

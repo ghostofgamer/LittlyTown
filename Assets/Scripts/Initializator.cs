@@ -66,6 +66,11 @@ public class Initializator : MonoBehaviour
         IndexChanged?.Invoke();
     }
 
+    public void ResetIndex()
+    {
+        _index = 0;
+    }
+
     public void FillLists()
     {
         if (_environments[_index].GetComponent<Map>().IsMapExpanding)

@@ -16,6 +16,7 @@ public class FinalTutorButton : AbstractButton
     [SerializeField] private MoveCounter _moveCounter;
     [SerializeField] private Save _save;
     [SerializeField] private Initializator _initializator;
+    [SerializeField]private TutorialScreen _tutorialScreen;
     
     private int _selectMap = 1;
     
@@ -27,6 +28,7 @@ public class FinalTutorButton : AbstractButton
         _save.SetData(LastActiveMap, _selectMap);
         _save.SetData(Map, _initializator.Index);
         _save.SetData(ActiveMap + _initializator.Index, _selectMap);
+        _tutorialScreen.Close();
         _gameLevelScreen.gameObject.SetActive(true);
         _gameLevelScreen.Open();
         _scoreCounter.enabled = true;

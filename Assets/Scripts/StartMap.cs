@@ -173,17 +173,87 @@ public class StartMap : MonoBehaviour
                 Debug.Log("startMap");
                   possibilityCounter.IncreaseCount(_packageLittleTown.Amount);
             }
-                
+            
               
         }
 
         if (_packageLittleTown.IsActive)
             _packageLittleTown.Activated();
 
-        // Debug.Log("Starting  " + _initializator.Index);
+        Debug.Log("Starting  " + _initializator.Index+"        "+ _initializator.CurrentMap.name);
         _mapGenerator.TestVisualGeneration(_initializator.Territories, _initializator.FinderPositions,
             _initializator.CurrentMap.StartItems, _initializator.ItemPositions,
             _initializator.CurrentMap.ItemsContainer);
+        _itemDragger.SwitchOn();
+        _bonusesStart.ApplyBonuses();
+    }
+    
+    
+    public void NEWStartVisualCreate()
+    {
+        // _save.SetData(LastActiveMap, _selectMap);
+        _save.SetData(Map, _initializator.Index);
+        // _save.SetData(ActiveMap + _initializator.Index, _selectMap);
+        // Debug.Log("до Филл " + _initializator.Index);
+        _initializator.FillLists();
+        // _mapActivator.ChangeActivityMaps();
+        DeactivateItems();
+        _visualItemsDeactivator.SetPositions(_initializator.ItemPositions);
+        _itemDragger.ClearAll();
+        foreach (var storage in _storages)
+        {
+            storage.ClearItem();
+        }
+
+        // _movesKeeper.ClearAllHistory();
+        _moveKeeper.LoadHistoryData();
+        _goldWallet.SetInitialValue();
+        _scoreCounter.ResetScore();
+
+        foreach (var itemPosition in _initializator.ItemPositions)
+        {
+            itemPosition.ClearingPosition();
+        }
+
+        foreach (var item in _items)
+        {
+            item.SetInitialPrice();
+        }
+
+        foreach (var possibility in _possibilities)
+        {
+            possibility.SetStartPrice();
+        }
+
+        foreach (var possibilityCounter in _possibilitiesCounters)
+        {
+            possibilityCounter.SetCount();
+
+            if (_packageLittleTown.IsActive)
+            {
+                Debug.Log("startMap");
+                possibilityCounter.IncreaseCount(_packageLittleTown.Amount);
+            }
+            
+              
+        }
+
+        if (_packageLittleTown.IsActive)
+            _packageLittleTown.Activated();
+
+        
+        
+        
+        
+        Debug.Log("Starting  " + _initializator.CurrentMap.StartItems.Count+"        "+ _initializator.CurrentMap.name );
+        
+        /*_mapGenerator.ShowTestFirstMap(_initializator.Territories, _initializator.FinderPositions,
+            _initializator.ItemPositions, _initializator.CurrentMap.RoadsContainer,_initializator.CurrentMap.StartItems);*/
+        
+        
+        /*_mapGenerator.TestVisualGeneration(_initializator.Territories, _initializator.FinderPositions,
+            _initializator.CurrentMap.StartItems, _initializator.ItemPositions,
+            _initializator.CurrentMap.ItemsContainer);*/
         _itemDragger.SwitchOn();
         _bonusesStart.ApplyBonuses();
     }

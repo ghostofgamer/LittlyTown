@@ -13,7 +13,7 @@ public class ChooseMap : MonoBehaviour
     private Vector3 _target;
     private Vector3 _currentPosition;
     private Vector3 _startPosition;
-    private Vector3 _startResetPosition;
+    [SerializeField]private Vector3 _startResetPosition;
     private float _currentStep;
     private float _currentZ;
 
@@ -24,17 +24,24 @@ public class ChooseMap : MonoBehaviour
     private float _sensitivity = 1f;
     private float _mouseDelta;
     private Vector3 _startScrollPosition;
-
+    
+    [SerializeField]private bool _isWork = false;
+    
     private void Start()
     {
-        // Debug.Log(":::::");
+        /*// Debug.Log(":::::");
         _startPosition = transform.position;
         _startResetPosition = _startPosition;
         _currentZ = _startPosition.z;
+        Debug.Log("Start " + _startResetPosition);*/
     }
 
     private void Update()
     {
+        if (!_isWork)
+            return;
+        
+        Debug.Log("Update " );
         if (Input.GetMouseButtonDown(0))
         {
             _mouseDownPosition = Input.mousePosition;
@@ -86,8 +93,10 @@ public class ChooseMap : MonoBehaviour
 
     public void ChangeMap(int index)
     {
+        Debug.Log("ChangeMap " + index);
         _currentIndex += index;
-
+        Debug.Log("Current  " + _currentIndex);
+        
         if (_currentIndex > 10 || _currentIndex < 0)
         {
             _currentIndex = Mathf.Clamp(_currentIndex, 0, 10);
@@ -118,6 +127,8 @@ public class ChooseMap : MonoBehaviour
 
     public void SetPosition(int index)
     {
+        Debug.Log("SetPosition " + index);
+        
         _currentIndex = index; 
         _startPosition = transform.position;
         _currentZ = _startPosition.z;
@@ -134,7 +145,10 @@ public class ChooseMap : MonoBehaviour
     {
         _currentIndex = 0;
         MapChanged?.Invoke(_currentIndex);
-        StartCoroutine(MapResetMove());
+        transform.position = _startResetPosition;
+        _currentPosition = _startResetPosition;
+        _currentZ = _currentPosition.z;
+        // StartCoroutine(MapResetMove());
     }
 
     private IEnumerator MapResetMove()
@@ -150,5 +164,15 @@ public class ChooseMap : MonoBehaviour
         }
 
         transform.position = _startResetPosition;
+    }
+
+    public void StartWork()
+    {
+        _isWork = true;
+    }
+
+    public void StopWork()
+    {
+        _isWork = false;
     }
 }

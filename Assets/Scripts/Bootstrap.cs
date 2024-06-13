@@ -111,4 +111,33 @@ public class Bootstrap : MonoBehaviour
             _itemsStorage.Load();
         }
     }*/
+
+    public void FirstGenerate()
+    {
+        
+        int value = _load.Get(LastActiveMap, _startValue);
+        /*int currentMap = _load.Get("Map", _startValue);
+        _chooseMap.SetPosition(currentMap);*/
+
+        if (value == 0)
+        {
+            _initializator.SetIndex(value);
+            _initializator.FillLists();
+
+            // _mapGenerator.ShowFirstMap();
+            
+            _mapGenerator.ShowTestFirstMap(_initializator.Territories, _initializator.FinderPositions,
+                _initializator.ItemPositions, _initializator.CurrentMap.RoadsContainer,_initializator.CurrentMap.StartItems);
+
+
+            for (int i = 0; i < _initializator.AmountMaps; i++)
+            {
+                if (i == value)
+                    continue;
+                
+                _mapGenerator.GenerationAllMap(i);
+            }
+
+        }
+    }
 }
