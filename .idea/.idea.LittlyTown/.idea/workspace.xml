@@ -20,22 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="099b8a6d-6b1c-4473-babb-d7d2ffb7e44f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Misc/Fire/fire_soft_blank_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddedAssets/Epic Toon FX/Materials/Misc/Fire/fire_soft_blank_ADD.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/GameLevelScreen.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/GameLevelScreen.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/GameLevelScreenAnim.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/GameLevelScreenAnim.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/SceneNotGold.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/SceneNotGold.anim" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BonusesStart.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BonusesStart.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Bootstrap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Bootstrap.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CountersContent/PossibilitiesCounter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CountersContent/PossibilitiesCounter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/PossibilitieMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/PossibilitieMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/StartMap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/StartMap.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ContinueButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ContinueButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/PossibilitiesFiles/BuyPossibilitieButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/PossibilitiesFiles/BuyPossibilitieButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/FirstScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/FirstScreen.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TutorContent/Stage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TutorContent/Stage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/FinalTutorButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/FinalTutorButton.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -259,13 +247,13 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Bootstrap.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CountersContent/PossibilitiesCounter.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/TutorContent/PlaceItemStage.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/TutorContent/Stage.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/TutorContent/StorageStage.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/TutorContent/ReplaceStage.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/TutorContent/BulldozerStage.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/TutorContent/StartStageButton.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/FinalTutorButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/TutorialScreen.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/TutorContent/Stage.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/FinalTutorButton.cs" />
       </list>
     </option>
   </component>
@@ -374,6 +362,7 @@
       <workItem from="1718007686773" duration="19192000" />
       <workItem from="1718093810523" duration="9462000" />
       <workItem from="1718180953305" duration="26236000" />
+      <workItem from="1718263780862" duration="804000" />
     </task>
     <servers />
   </component>

@@ -27,6 +27,7 @@ public class FinalTutorButton : AbstractButton
         _save.SetData(LastActiveMap, _selectMap);
         _save.SetData(Map, _initializator.Index);
         _save.SetData(ActiveMap + _initializator.Index, _selectMap);
+        _gameLevelScreen.gameObject.SetActive(true);
         _gameLevelScreen.Open();
         _scoreCounter.enabled = true;
         _moveCounter.enabled = true;
