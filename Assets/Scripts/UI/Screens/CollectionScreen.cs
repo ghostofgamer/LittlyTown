@@ -21,16 +21,19 @@ public class CollectionScreen : AbstractScreen
     [SerializeField] private EnvironmentMovement _environmentMovement;
     // [SerializeField] private GameObject _itemContainer;
 
-    private CollectionMovement _collectionMovement;
+    [SerializeField] private CollectionMovement _collectionMovement;
     private int _currentIndex;
-    private List<Item> _allCollectionItems = new List<Item>();
+    [SerializeField]private List<Item> _allCollectionItems = new List<Item>();
+    
     private List<Items> _collectedItems = new List<Items>();
-    private GameObject _content;
+    // private GameObject _content;
+    [SerializeField]private GameObject _content;
 
-    private List<Transform> _itemsContent = new List<Transform>();
+    [SerializeField]private List<Transform> _itemsContent = new List<Transform>();
 
     private void OnEnable()
     {
+        _collectionMovement.PositionScrolled += ActivationDescription;
         _itemDragger.BuildItem += AddItemCollection;
     }
 
@@ -49,7 +52,7 @@ public class CollectionScreen : AbstractScreen
             _collectedItems.Add(Items.Tree);
 
         LoadCollectedItemsFromPlayerPrefs();
-        // ShowItems();
+        ShowItems();
         Show();
         ActivationDescription(0);
     }
@@ -57,17 +60,17 @@ public class CollectionScreen : AbstractScreen
     public override void Open()
     {
         base.Open();
-        _backGround.SetActive(true);
+        // _backGround.SetActive(true);
         _content.SetActive(true);
         Show();
-        _canvas.renderMode = RenderMode.ScreenSpaceCamera;
+        // _canvas.renderMode = RenderMode.ScreenSpaceCamera;
         ActivationDescription(_currentIndex);
         _environmentMovement.GoAway();
 
-        foreach (var environment in _environments)
+        /*foreach (var environment in _environments)
         {
             environment.SetActive(true);
-        }
+        }*/
 
         // _itemContainer.SetActive(false);
         _cameraMovement.ZoomIn();
@@ -103,7 +106,7 @@ public class CollectionScreen : AbstractScreen
 
     private void ShowItems()
     {
-        for (int i = 0; i < _allCollectionItems.Count; i++)
+        /*for (int i = 0; i < _allCollectionItems.Count; i++)
         {
             var item = _allCollectionItems[i];
 
@@ -116,7 +119,7 @@ public class CollectionScreen : AbstractScreen
                 item.gameObject.SetActive(false);
                 _lockDescription.gameObject.SetActive(true);
             }
-        }
+        }*/
     }
 
     private void ActivationDescription(int index)
@@ -142,7 +145,7 @@ public class CollectionScreen : AbstractScreen
 
     public void Init(CollectionMovement collectionMovement, List<Item> items, GameObject content)
     {
-        _collectionMovement = collectionMovement;
+        /*_collectionMovement = collectionMovement;
         _allCollectionItems = items;
         _content = content;
         _collectionMovement.PositionScrolled += ActivationDescription;
@@ -150,7 +153,7 @@ public class CollectionScreen : AbstractScreen
         for (int i = 0; i < _collectionMovement.transform.childCount; i++)
         {
             _itemsContent.Add(_collectionMovement.transform.GetChild(i));
-        }
+        }*/
     }
 
     public void AddItemCollection(Item item)
