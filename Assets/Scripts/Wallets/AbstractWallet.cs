@@ -8,6 +8,7 @@ namespace Wallets
     {
         [SerializeField] private int _startValue;
         [SerializeField] private AudioSource _audioSource;
+        [SerializeField]private AudioClip _audioClip;
 
         private int _currentValue;
         private Coroutine _coroutine;
@@ -66,7 +67,8 @@ namespace Wallets
 
             float targetValue = _currentValue + value;
             float startValue = _currentValue;
-
+            _audioSource.PlayOneShot(_audioClip);
+            
             while (_elapsedTime < _duration)
             {
                 _elapsedTime += Time.deltaTime;

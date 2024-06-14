@@ -17,6 +17,7 @@ public class CollectionScreen : AbstractScreen
     [SerializeField] private Canvas _canvas;
     [SerializeField] private CameraMovement _cameraMovement;
     [SerializeField] private GameObject[] _environments;
+    [SerializeField]private Merger _merger;
 
     [SerializeField] private EnvironmentMovement _environmentMovement;
     // [SerializeField] private GameObject _itemContainer;
@@ -35,12 +36,14 @@ public class CollectionScreen : AbstractScreen
     {
         _collectionMovement.PositionScrolled += ActivationDescription;
         _itemDragger.BuildItem += AddItemCollection;
+        _merger.ItemMergered += AddItemCollection;
     }
 
     private void OnDisable()
     {
         _collectionMovement.PositionScrolled -= ActivationDescription;
         _itemDragger.BuildItem -= AddItemCollection;
+        _merger.ItemMergered -= AddItemCollection;
     }
 
     private void Start()
@@ -50,6 +53,7 @@ public class CollectionScreen : AbstractScreen
 
         if (!_collectedItems.Contains(Items.Tree))
             _collectedItems.Add(Items.Tree);
+        
 
         LoadCollectedItemsFromPlayerPrefs();
         ShowItems();
@@ -106,7 +110,7 @@ public class CollectionScreen : AbstractScreen
 
     private void ShowItems()
     {
-        /*for (int i = 0; i < _allCollectionItems.Count; i++)
+        for (int i = 0; i < _allCollectionItems.Count; i++)
         {
             var item = _allCollectionItems[i];
 
@@ -119,7 +123,7 @@ public class CollectionScreen : AbstractScreen
                 item.gameObject.SetActive(false);
                 _lockDescription.gameObject.SetActive(true);
             }
-        }*/
+        }
     }
 
     private void ActivationDescription(int index)

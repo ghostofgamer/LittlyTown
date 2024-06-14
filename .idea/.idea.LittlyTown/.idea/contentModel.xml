@@ -1269,6 +1269,9 @@
                 <e p="RewardReplaceButton.cs" t="Include" />
               </e>
               <e p="RotationButton.cs" t="Include" />
+              <e p="SandBoxButtons" t="Include">
+                <e p="ChangeFunctionalityButton.cs" t="Include" />
+              </e>
               <e p="SettingsButtonContent" t="Include">
                 <e p="ChangeLocalizationButton.cs" t="Include" />
                 <e p="MixerButton.cs" t="Include" />

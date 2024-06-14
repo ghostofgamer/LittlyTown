@@ -4,6 +4,7 @@ public class MapsInfo : MonoBehaviour
 {
     [SerializeField] private GameObject[] _mapInfoObjects;
     [SerializeField] private ChooseMap _chooseMap;
+    [SerializeField]private Records _records;
 
     private void OnEnable()
     {
@@ -21,5 +22,6 @@ public class MapsInfo : MonoBehaviour
             mapInfo.SetActive(false);
 
         _mapInfoObjects[index].SetActive(true);
+        _records.Show();
     }
 }

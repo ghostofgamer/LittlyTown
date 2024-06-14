@@ -21,7 +21,7 @@ public class Records : MonoBehaviour
         _initializator.IndexChanged -= Show;
     }
 
-    private void Show()
+    public void Show()
     {
         int score = _load.Get(MaxRecord + _initializator.Index, 0);
 
