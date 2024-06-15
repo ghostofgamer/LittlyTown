@@ -16,8 +16,8 @@ public class ChangeFunctionalityButton : AbstractButton
     [SerializeField] private Animator _animator;
     [SerializeField] private RectTransform _content;
 
-    private float _positionCloseY = -300f;
-    private float _positionOpenY = 50f;
+    private float _positionCloseY = -143f;
+    private float _positionOpenY = 143f;
     private float _elapsedTime;
     private float _duration = 0.16f;
     private bool _isActive;

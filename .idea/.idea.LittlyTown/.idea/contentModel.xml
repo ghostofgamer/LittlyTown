@@ -1175,6 +1175,9 @@
             <e p="RoadTile.cs" t="Include" />
           </e>
           <e p="RoadGenerator.cs" t="Include" />
+          <e p="SandBoxContent" t="Include">
+            <e p="BuildButtonChanger.cs" t="Include" />
+          </e>
           <e p="SaveAndLoad" t="Include">
             <e p="GoalContent" t="Include">
               <e p="GoalData.cs" t="Include" />
@@ -1270,6 +1273,7 @@
               </e>
               <e p="RotationButton.cs" t="Include" />
               <e p="SandBoxButtons" t="Include">
+                <e p="BuildButton.cs" t="Include" />
                 <e p="ChangeFunctionalityButton.cs" t="Include" />
               </e>
               <e p="SettingsButtonContent" t="Include">
@@ -1330,6 +1334,9 @@
         <e p="Sprites" t="Include">
           <e p="GameScreenIcon" t="Include">
             <e p="Materials" t="Include" />
+            <e p="SandBox" t="Include">
+              <e p="Items" t="Include" />
+            </e>
             <e p="Tutorial" t="Include" />
           </e>
           <e p="ItemIcons" t="Include">
