@@ -780,6 +780,7 @@
           <e p="Scenes" t="Include" />
           <e p="Textures" t="Include" />
         </e>
+        <e p="FontsMy" t="Include" />
         <e p="FreeButtonSet" t="Include">
           <e p="Textures" t="Include">
             <e p="Buttons" t="Include" />
