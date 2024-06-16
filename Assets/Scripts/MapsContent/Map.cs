@@ -17,7 +17,10 @@ namespace MapsContent
         [SerializeField] private Territory[] _expandingTerritories;
         [SerializeField] private bool _isWaterRandom;
         [SerializeField] private Transform _mover;
-
+        [SerializeField] private bool _isOpened;
+        
+        public bool IsOpened => _isOpened;
+        
         public Transform Mover => _mover;
         
         public Territory[] ExpandingTerritories => _expandingTerritories;

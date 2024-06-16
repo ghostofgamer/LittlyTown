@@ -9,20 +9,24 @@ public class ChooseMapScreen : AbstractScreen
 {
     private const string LastActiveMap = "LastActiveMap";
     private const string ActiveMap = "ActiveMap";
+    private const string OpenMap = "OpenMap";
 
     [SerializeField] private ItemDragger _itemDragger;
     [SerializeField] private GameObject _startButton;
     [SerializeField] private GameObject _continueButton;
     [SerializeField] private GameObject _restartButton;
     [SerializeField] private Load _load;
+    [SerializeField] private Save _save;
     [SerializeField] private CameraMovement _cameraMovement;
     [SerializeField] private ChooseMap _chooseMap;
     [SerializeField] private GameObject _mapInformation;
     [SerializeField] private GameObject[] _mapInformations;
     [SerializeField] private Initializator _initializator;
-    [SerializeField]private MapActivator _mapActivator;
+    [SerializeField] private MapActivator _mapActivator;
     [SerializeField] private MapsInfo _mapsInfo;
-    
+    [SerializeField] private GameObject _openMapContent;
+    [SerializeField] private GameObject _closeMapContent;
+
     private int _startValue = 0;
     private int _currentValue;
 
@@ -38,7 +42,7 @@ public class ChooseMapScreen : AbstractScreen
 
     private void Start()
     {
-        // CheckActivation();
+        _save.SetData(OpenMap + _startValue, 1);
     }
 
     public override void Open()
@@ -85,8 +89,20 @@ public class ChooseMapScreen : AbstractScreen
         }
     }*/
 
-    private void ChangeActivationButton()
+    public void ChangeActivationButton()
     {
+        int openValue = _load.Get(OpenMap + _initializator.Index, _startValue);
+
+        if (openValue == _startValue)
+        {
+            _openMapContent.SetActive(false);
+            _closeMapContent.SetActive(true);
+            return;
+        }
+
+        _openMapContent.SetActive(true);
+        _closeMapContent.SetActive(false);
+
         // Debug.Log( "Активация ");
         int value = _load.Get(ActiveMap + _initializator.Index, _startValue);
 

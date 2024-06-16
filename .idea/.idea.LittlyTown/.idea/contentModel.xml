@@ -972,7 +972,18 @@
             </e>
             <e p="Third-Party Notices.txt" t="Include" />
           </e>
+          <e p="Flag Rainbow Shaders" t="Include">
+            <e p="Artwork" t="Include">
+              <e p="Materials" t="Include" />
+              <e p="Shaders" t="Include" />
+              <e p="Textures" t="Include" />
+            </e>
+            <e p="Others" t="Include" />
+            <e p="Prefabs" t="Include" />
+            <e p="READ ME.txt" t="Include" />
+          </e>
         </e>
+        <e p="PostProcessor" t="Include" />
         <e p="Prefabs" t="Include">
           <e p="Collections" t="Include" />
           <e p="Items" t="Include" />
@@ -1008,6 +1019,7 @@
         </e>
         <e p="Scenes" t="Include">
           <e p="Demo" t="Include" />
+          <e p="MainScene_Profiles" t="Include" />
           <e p="ParticleEffectForUGUI-main" t="Include">
             <e p="Editor" t="Include">
               <e p="AnimatablePropertyEditor.cs" t="Include" />
@@ -1087,6 +1099,7 @@
           </e>
           <e p="CraneDestroyer.cs" t="Include" />
           <e p="DayNight.cs" t="Include" />
+          <e p="DisappearingAlert.cs" t="Include" />
           <e p="Dragger" t="Include">
             <e p="InputItemDragger.cs" t="Include" />
             <e p="ItemDragger.cs" t="Include" />
@@ -1242,6 +1255,7 @@
               </e>
               <e p="BulldozerButton.cs" t="Include" />
               <e p="BuyItemButton.cs" t="Include" />
+              <e p="BuyMapButton.cs" t="Include" />
               <e p="CancelMoveButton.cs" t="Include" />
               <e p="ChangeTutorialContentButton.cs" t="Include" />
               <e p="ChooseMapButton.cs" t="Include" />
@@ -1254,6 +1268,7 @@
                 <e p="CancelLastStepButton.cs" t="Include" />
               </e>
               <e p="FinalTutorButton.cs" t="Include" />
+              <e p="FreeCrystallButton.cs" t="Include" />
               <e p="GoalCompleteButton.cs" t="Include" />
               <e p="GoldButton.cs" t="Include" />
               <e p="OpenButton.cs" t="Include" />

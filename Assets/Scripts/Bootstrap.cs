@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class Bootstrap : MonoBehaviour
 {
+    private const string LastActiveMap = "LastActiveMap";
+
     [SerializeField] private Load _load;
     [SerializeField] private MapGenerator _mapGenerator;
     [SerializeField] private ItemsStorage _itemsStorage;
     [SerializeField] private Initializator _initializator;
     [SerializeField] private ChooseMap _chooseMap;
     [SerializeField] private StartMap _startMap;
-
-    private const string LastActiveMap = "LastActiveMap";
+    [SerializeField] private Save _save;
+    
     private int _startValue = 0;
 
     private void Awake()
@@ -21,7 +23,6 @@ public class Bootstrap : MonoBehaviour
     private void Start()
     {
         int value = _load.Get(LastActiveMap, _startValue);
-
         // int currentMap = _load.Get("Map", _startValue);
         int currentMap = _load.Get("Map", _startValue);
         
