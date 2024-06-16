@@ -1070,6 +1070,7 @@
             <e p="RewardMove.cs" t="Include" />
             <e p="RewardVideo.cs" t="Include" />
           </e>
+          <e p="BackGroundMusic.cs" t="Include" />
           <e p="BirdContent" t="Include">
             <e p="BirdMovement.cs" t="Include" />
             <e p="BirdSpawner.cs" t="Include" />
