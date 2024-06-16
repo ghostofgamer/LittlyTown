@@ -21,6 +21,15 @@ public class CameraMovement : MonoBehaviour
     private float _currentSizeValue;
     private Coroutine _coroutine;
 
+    public void Init(int fovPerspective, int sizeOrtographic)
+    {
+        Debug.Log("Данные " + fovPerspective + " " + sizeOrtographic);
+        _standartPerspectiveFOV = fovPerspective;
+        _camera.fieldOfView = _standartPerspectiveFOV;
+        _standartOrtographicSize = sizeOrtographic;
+        _camera.orthographicSize = _standartOrtographicSize;
+    }
+
     public void ZoomIn()
     {
         if (_coroutine != null)
@@ -73,7 +82,7 @@ public class CameraMovement : MonoBehaviour
 
             yield return null;
         }
-        
+
         _openButton.enabled = true;
     }
 }

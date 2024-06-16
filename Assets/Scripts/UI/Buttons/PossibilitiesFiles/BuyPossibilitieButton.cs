@@ -17,7 +17,7 @@ namespace UI.Buttons.PossibilitiesFiles
         [SerializeField] private TMP_Text _possibilitiePriceText;
 
         private int _currentPrice;
-        
+
         protected override void OnEnable()
         {
             base.OnEnable();
@@ -32,9 +32,8 @@ namespace UI.Buttons.PossibilitiesFiles
 
         protected override void OnClick()
         {
-            Debug.Log("нажал ");
             AudioSource.PlayOneShot(AudioSource.clip);
-            
+
             if (_goldWallet.CurrentValue < _possibilitiesShopScreen.CurrentPrice)
                 return;
 
@@ -66,6 +65,11 @@ namespace UI.Buttons.PossibilitiesFiles
 
             _currentPrice = price;
             Show();
+        }
+
+        public void CheckPossibilityPurchasing()
+        {
+            _possibilitiePriceText.color = _possibilitie.Price > _goldWallet.CurrentValue ? Color.red : Color.white;
         }
     }
 }

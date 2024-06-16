@@ -12,7 +12,8 @@ namespace Dragger
         [SerializeField] private Spawner _spawner;
         [SerializeField] private ItemsStorage _itemStorage;
         [SerializeField] private AudioSource _audioSource;
-
+        [SerializeField] private LookMerger _lookMerger;
+        
         private ItemPositionLooker _itemPositionLooker;
         private ItemPosition _startPosition;
         private Item _selectedObject;
@@ -47,6 +48,19 @@ namespace Dragger
         public int LayerMask => _layerMask;
 
         public Item TemporaryItem => _temporaryItem;
+
+        private ItemPosition _lastTrowPosition;
+        
+        
+        private void OnEnable()
+        {
+            _lookMerger.NotMerged += GetItemForLastPosition;
+        }
+
+        private void OnDisable()
+        {
+            _lookMerger.NotMerged -= GetItemForLastPosition;
+        }
 
         private void Start()
         {
@@ -282,7 +296,8 @@ namespace Dragger
                         // Debug.Log("Place1");
                         PlaceChanged?.Invoke();
                         _selectedObject = null;
-                        StartCoroutine(Continue(itemPosition));
+                        _lastTrowPosition = itemPosition;
+                        // StartCoroutine(Continue(itemPosition));
                         IsObjectSelected = false;
                         IsPositionSelected = false;
                     }
@@ -300,7 +315,8 @@ namespace Dragger
                         // Debug.Log("Place3");
                         PlaceChanged?.Invoke();
                         _selectedObject = null;
-                        StartCoroutine(Continue(itemPosition));
+                        _lastTrowPosition = itemPosition;
+                        // StartCoroutine(Continue(itemPosition));
                         IsObjectSelected = false;
                         IsPositionSelected = false;
                     }
@@ -331,6 +347,11 @@ namespace Dragger
             _startPosition.GetComponent<VisualItemPosition>().ActivateVisual();
         }
 
+        private void GetItemForLastPosition()
+        {
+            StartCoroutine(Continue(_lastTrowPosition));
+        }
+        
         private IEnumerator Continue(ItemPosition itemPosition)
         {
             yield return new WaitForSeconds(0.1f);

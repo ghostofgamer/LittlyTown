@@ -11,7 +11,8 @@ public class PlatformChecker : MonoBehaviour
     [SerializeField] private List<Item> _allCollectionItemsPC = new List<Item>();
     [SerializeField] private List<Item> _allCollectionItemsMobile = new List<Item>();
     [SerializeField] private Transform _DescriptionCollection;
-
+    [SerializeField] private CameraMovement _cameraMovement;
+    
     private List<Item>[] _allCollectionItems = new List<Item>[2];
 
     private int _pcIndex = 0;
@@ -36,6 +37,15 @@ public class PlatformChecker : MonoBehaviour
         {
             ChangePositionDescriptions();
         }*/
+
+        if (_currentIndex == _mobileIndex)
+        {
+            _cameraMovement.Init(45,9);
+        }
+        else
+        {
+            _cameraMovement.Init(30,6);
+        }
     }
 
     private void ChangePositionDescriptions()

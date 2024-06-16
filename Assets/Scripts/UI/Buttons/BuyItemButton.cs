@@ -44,5 +44,10 @@ namespace UI.Buttons
         {
             _priceText.text = _item.Price.ToString();
         }
+
+        public void CheckPossibilityPurchasing()
+        {
+            _priceText.color = _item.Price > _goldWallet.CurrentValue ? Color.red : Color.white;
+        }
     }
 }

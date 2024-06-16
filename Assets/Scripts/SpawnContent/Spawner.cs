@@ -28,8 +28,6 @@ public class Spawner : MonoBehaviour
     private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.165f);
     private Coroutine _coroutine;
     private ItemPosition _position;
-
-    
     
     public event Action ItemCreated;
 

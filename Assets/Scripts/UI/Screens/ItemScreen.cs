@@ -1,6 +1,7 @@
 using System;
 using CountersContent;
 using UI.Buttons;
+using UI.Buttons.PossibilitiesFiles;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +11,7 @@ namespace UI.Screens
     {
         [SerializeField] private GridLayoutGroup _gridLayoutGroup;
         [SerializeField] private BuyItemButton[] _buyItemButtons;
+        [SerializeField] private BuyPossibilitieButton[] _buyPossibilitieButtonsButtons;
         [SerializeField] private GameObject[] _items;
         [SerializeField] private ScoreCounter _scoreCounter;
 
@@ -37,6 +39,7 @@ namespace UI.Screens
             }
 
             ShowItems();
+            CheckAvailability();
         }
 
         private void ShowItems()
@@ -48,9 +51,18 @@ namespace UI.Screens
             {
                 if (i >= _items.Length)
                     return;
-                
+
                 _items[i].SetActive(true);
             }
+        }
+
+        private void CheckAvailability()
+        {
+            foreach (var buyItemButton in _buyItemButtons)
+                buyItemButton.CheckPossibilityPurchasing();
+            
+            foreach (var buyItemButton in _buyPossibilitieButtonsButtons)
+                buyItemButton.CheckPossibilityPurchasing();
         }
     }
 }

@@ -21,11 +21,29 @@ public class TurnEnvironment : MonoBehaviour
     private float _durationReturn = 0.15f;
     private bool _isEndGameRotate;
     private float _speed = 10;
+    private float _angle=0f ;
+    private float _step = 90f;
+    private bool _isRotating = false; 
     
     private void Update()
     {
         if (_isEndGameRotate)
             _environments[_initializator.Index].transform.Rotate(0, _speed * Time.deltaTime, 0);
+        
+        if (_isRotating)
+        {
+            UpdateRotation();
+        }
+    }
+    
+    private void UpdateRotation()
+    {
+        _environments[_initializator.Index].transform.rotation = Quaternion.Lerp(_environments[_initializator.Index].transform.rotation, Quaternion.Euler(_target), _speed * Time.deltaTime);
+
+        if (_environments[_initializator.Index].transform.rotation == Quaternion.Euler(_target))
+        {
+            _isRotating = false;
+        }
     }
     
     public void ChangeRotation(int index)
@@ -39,17 +57,40 @@ public class TurnEnvironment : MonoBehaviour
 
         if (_currentIndex < _minIndex)
             _currentIndex = _maxIndex;
-
-        _target = new Vector3(_environments[_initializator.Index].transform.rotation.x, _angles[_currentIndex],
+        
+        _angle += _step * index;
+        
+        _target = new Vector3(_environments[_initializator.Index].transform.rotation.x, _angle,
             _environments[_initializator.Index].transform.rotation.z);
-
-        if (_coroutineRotate != null)
+        
+        /*_target = new Vector3(_environments[_initializator.Index].transform.rotation.x, _angles[_currentIndex],
+            _environments[_initializator.Index].transform.rotation.z);*/
+        _isRotating = true;
+        /*if (_coroutineRotate != null)
             StopCoroutine(_coroutineRotate);
 
-        _coroutineRotate = StartCoroutine(Turn());
+        _coroutineRotate = StartCoroutine(Turn());*/
     }
 
     private IEnumerator Turn()
+    {
+        _elapsedTime = 0;
+        _startRotation = _environments[_initializator.Index].transform.rotation;
+
+        while (_elapsedTime < _duration)
+        {
+            _environments[_initializator.Index].transform.rotation =
+                Quaternion.Slerp(_startRotation, Quaternion.Euler(_target), 3*Time.deltaTime);
+            _container.transform.rotation = _environments[_initializator.Index].transform.rotation;
+            _elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        _environments[_initializator.Index].transform.rotation = Quaternion.Euler(_target);
+        _container.transform.rotation = _environments[_initializator.Index].transform.rotation;
+    }
+    
+    /*private IEnumerator Turn()
     {
         _elapsedTime = 0;
         _startRotation = _environments[_initializator.Index].transform.rotation;
@@ -66,6 +107,7 @@ public class TurnEnvironment : MonoBehaviour
         _environments[_initializator.Index].transform.rotation = Quaternion.Euler(_target);
         _container.transform.rotation = _environments[_initializator.Index].transform.rotation;
     }
+    */
     
     public void StartRotate()
     {
@@ -84,6 +126,7 @@ public class TurnEnvironment : MonoBehaviour
 
     private IEnumerator ReturnRotate()
     {
+        _angle = 0f;
         _elapsedTime = 0;
         _startRotation = _environments[_initializator.Index].transform.rotation;
 
