@@ -7,13 +7,13 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] private Camera _camera;
     [SerializeField] private OpenButton _openButton;
 
-    private float _standartPerspectiveFOV = 65f;
-    private float _perspectiveZoomUpValue = 50;
-    private float _perspectiveZoomDownValue = 75;
+    private float _standartPerspectiveFOV = 30f;
+    private float _perspectiveZoomUpValue = 70f;
+    private float _perspectiveZoomDownValue = 50;
 
-    private float _standartOrtographicSize = 19.5f;
-    private float _ortographicSizeZoomIn = 16f;
-    private float _ortographicSizeZoomOut = 23f;
+    private float _standartOrtographicSize = 6f;
+    private float _ortographicSizeZoomIn = 13f;
+    private float _ortographicSizeZoomOut = 10f;
 
     private float _elapsedTime;
     private float _duration = 1.5f;

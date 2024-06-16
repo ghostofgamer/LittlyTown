@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FinderPositions : MonoBehaviour
 {
-    [SerializeField] private float _searchRadius;
+    private float _searchRadius =1.6f;
 
     private ItemPosition _itemPosition;
     private Vector3 _targetPosition;

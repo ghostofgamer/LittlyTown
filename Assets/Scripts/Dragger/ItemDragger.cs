@@ -17,13 +17,16 @@ namespace Dragger
         private ItemPosition _startPosition;
         private Item _selectedObject;
         private Plane _objectPlane;
-        private float _offset = 3f;
+        private float _offset = 1f;
         private int _layerMaskIgnore;
         private int _layerMask;
         private int _layer = 3;
         private float _distance;
         private Item _temporaryItem;
         private bool _istemporary;
+
+
+        private Vector3 _offsetObject;
 
         public event Action PlaceChanged;
 
@@ -152,7 +155,33 @@ namespace Dragger
                 {
                     Vector3 mouseWorldPosition = mouseRay.GetPoint(_distance);
                     mouseWorldPosition.y = _selectedObject.transform.position.y;
-                    _selectedObject.transform.position = mouseWorldPosition;
+
+
+// Сохраняем оффсет между объектом и курсором по оси XZ
+                    /*Vector3 offset = _selectedObject.transform.position - mouseWorldPosition;
+                    Debug.Log("OFFSET " + offset );
+                    offset.y = 0; // Ограничиваем оффсет по оси Y
+                    Debug.Log("OFFSET Y" + offset );
+                    
+                    Debug.Log("MousePos " + mouseWorldPosition );
+                    Debug.Log("MousePos  Offset " + mouseWorldPosition + offset);*/
+// Передвигаем объект по оси XZ с сохраненным оффсетом
+
+                    // _selectedObject.transform.position = mouseWorldPosition + _offsetObject;
+                    
+                    /*Debug.Log("_selectedObject.transform.position ТУТ " +  _selectedObject.transform.position);
+                    Debug.Log("mouseWorldPosition " +  mouseWorldPosition + _offsetObject);*/
+                    
+                    // Debug.Log("Selected " + _selectedObject.transform.position);
+
+
+                    /*Vector3 mouseWorldPosition = mouseRay.GetPoint(_distance);
+                    mouseWorldPosition.y = _selectedObject.transform.position.y;
+                    _selectedObject.transform.position = mouseWorldPosition;*/
+
+
+                    _selectedObject.transform.position = Vector3.Lerp(_selectedObject.transform.position,
+                        mouseWorldPosition+ _offsetObject, 16 * Time.deltaTime);
                 }
             }
 
@@ -195,11 +224,24 @@ namespace Dragger
                 if (hit.transform.gameObject.TryGetComponent(out Item item) && !item.IsActive)
                 {
                     Vector3 position = _selectedObject.transform.position;
+
                     position = new Vector3(position.x, position.y + _offset, position.z);
                     _selectedObject.transform.position = position;
+
                     _objectPlane = new Plane(Vector3.up, position);
-                    IsObjectSelected = true;
-                    // IsPositionSelected = true;
+                    float distanceToPlane;
+                    _objectPlane.Raycast(ray, out distanceToPlane);
+                    _distance = distanceToPlane;
+                    
+                    Vector3 mouseWorldPosition = ray.GetPoint(_distance);
+                    _offsetObject = _selectedObject.transform.position - mouseWorldPosition;
+                    _offsetObject.y = 0;
+                    
+                    Debug.Log("_offsetObject " + _offsetObject);
+                    Debug.Log("Distance " + _distance);
+
+                    if (_selectedObject.transform.position == position)
+                        IsObjectSelected = true;
                 }
 
                 else if (Physics.Raycast(ray, out hit, Mathf.Infinity, _layerMask))
