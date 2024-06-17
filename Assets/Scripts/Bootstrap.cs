@@ -41,15 +41,15 @@ public class Bootstrap : MonoBehaviour
             
             // _startMap.StartCreate();
 
-            /*for (int i = 0; i < _initializator.AmountMaps; i++)
+            for (int i = 0; i < _initializator.AmountMaps; i++)
             {
                 if (i == value)
                     continue;
                 
                 _mapGenerator.GenerationAllMap(i);
-            }*/
+            }
 
-            _mapGenerator.GenerationAllMap(1);
+            /*_mapGenerator.GenerationAllMap(1);
             _mapGenerator.GenerationAllMap(2);
             _mapGenerator.GenerationAllMap(3);
             _mapGenerator.GenerationAllMap(4);
@@ -58,8 +58,7 @@ public class Bootstrap : MonoBehaviour
             _mapGenerator.GenerationAllMap(7);
             _mapGenerator.GenerationAllMap(8);
             _mapGenerator.GenerationAllMap(9);
-            _mapGenerator.GenerationAllMap(10);
-            // Debug.Log("First");
+            // _mapGenerator.GenerationAllMap(10);*/
         }
         else
         {

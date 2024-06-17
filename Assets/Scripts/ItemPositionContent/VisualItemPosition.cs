@@ -5,8 +5,7 @@ namespace ItemPositionContent
 {
     public class VisualItemPosition : MonoBehaviour
     {
-        [SerializeField] private GameObject _visualPosition;
-        [SerializeField] private SpriteRenderer _visual;
+        [SerializeField] private SpriteRenderer _visualPosition;
         [SerializeField] private VisualItemsDeactivator _visualItemsDeactivator;
         
         private float _fadeDuration = 0.06f;
@@ -16,24 +15,24 @@ namespace ItemPositionContent
         {
             _visualItemsDeactivator.OnDeactivationVisual();
             // _visualPosition.SetActive(true);
-            if (_visual.color.a < 1f)
+            if (_visualPosition.color.a < 1f)
             {
                 if(_coroutine!=null)
                     StopCoroutine(_coroutine);
                 
-                StartCoroutine(FadeRoutine(_visual.color.a, 1f));
+                StartCoroutine(FadeRoutine(_visualPosition.color.a, 1f));
             }
         }
         
         public void DeactivateVisual()
         {
             // _visualPosition.SetActive(false);
-            if (_visual.color.a > 0f)
+            if (_visualPosition.color.a > 0f)
             {
                 if(_coroutine!=null)
                     StopCoroutine(_coroutine);
                 
-                StartCoroutine(FadeRoutine(_visual.color.a, 0f));
+                StartCoroutine(FadeRoutine(_visualPosition.color.a, 0f));
             }
         }
         
@@ -50,19 +49,19 @@ namespace ItemPositionContent
         private IEnumerator FadeRoutine(float start, float end)
         {
             float time = 0f;
-            Color color = _visual.color;
+            Color color = _visualPosition.color;
 
             while (time < _fadeDuration)
             {
                 time += Time.deltaTime;
                 color.a = Mathf.Lerp(start, end, time / _fadeDuration);
-                _visual.color = color;
+                _visualPosition.color = color;
                 yield return null;
             }
 
             // Убедитесь, что значение цвета точно равно целевому значению в конце
             color.a = end;
-            _visual.color = color;
+            _visualPosition.color = color;
         }
     }
 }
