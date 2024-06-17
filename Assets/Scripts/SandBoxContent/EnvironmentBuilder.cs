@@ -84,8 +84,6 @@ public class EnvironmentBuilder : MonoBehaviour
 
         if (_isTileClear)
         {
-            Debug.Log("вфходм");
-            
             if (Input.GetMouseButton(0))
             {
                 if (Physics.Raycast(ray, out hit, Mathf.Infinity, _layerMask))
@@ -96,11 +94,17 @@ public class EnvironmentBuilder : MonoBehaviour
                         {
                             itemPosition.Item.gameObject.SetActive(false);
                             itemPosition.ClearingPosition();
-                            return;
+                        }
+
+                        if (itemPosition.IsElevation)
+                        {
+                            Vector3 newLocalPosition = new Vector3(itemPosition.transform.localPosition.x, 0.59f, itemPosition.transform.localPosition.z);
+                            itemPosition.transform.localPosition = newLocalPosition;
                         }
 
                         ItemPosition itemPositionTile = Instantiate(_tileClear, itemPosition.transform.position,
                             Quaternion.identity, _container);
+
                         itemPosition.SetRoad(itemPositionTile);
                         itemPosition.DeactivationAll();
                         _roadGenerator.GenerateSandBoxTrail(_itemPositions, _container);
@@ -121,7 +125,12 @@ public class EnvironmentBuilder : MonoBehaviour
                         {
                             itemPosition.Item.gameObject.SetActive(false);
                             itemPosition.ClearingPosition();
-                            return;
+                        }
+                        
+                        if (itemPosition.IsElevation)
+                        {
+                            Vector3 newLocalPosition = new Vector3(itemPosition.transform.localPosition.x, 0.59f, itemPosition.transform.localPosition.z);
+                            itemPosition.transform.localPosition = newLocalPosition;
                         }
                         
                         ItemPosition itemPositionTile = Instantiate(_tileWater, itemPosition.transform.position,
@@ -135,6 +144,39 @@ public class EnvironmentBuilder : MonoBehaviour
             }
         }
 
+        if (_isTileElevation)
+        {
+            if (Input.GetMouseButton(0))
+            {
+                if (Physics.Raycast(ray, out hit, Mathf.Infinity, _layerMask))
+                {
+                    if (hit.transform.TryGetComponent(out ItemPosition itemPosition))
+                    {
+                        if (itemPosition.IsBusy)
+                        {
+                            itemPosition.Item.gameObject.SetActive(false);
+                            itemPosition.ClearingPosition();
+                        }
+                        
+                        Vector3 newLocalPosition = new Vector3(itemPosition.transform.localPosition.x, 2.1f, itemPosition.transform.localPosition.z);
+                        itemPosition.transform.localPosition = newLocalPosition;
+                        Vector3 targetPosition = new Vector3(itemPosition.transform.localPosition.x, itemPosition.transform.localPosition.y-2.1f, itemPosition.transform.localPosition.z);
+                        /*Vector3 newPosition = new Vector3(itemPosition.transform.position.x, 2.1f, itemPosition.transform.position.z);
+                        itemPosition.transform.position = newPosition*/;
+                        
+                        Debug.Log("Новая позиция сейчас " + itemPosition.transform.position + " " + itemPosition.name);
+                        ItemPosition itemPositionTile = Instantiate(_tileElevation, itemPosition.transform.position,
+                            Quaternion.identity, _container);
+                        itemPositionTile.transform.localPosition = new Vector3(itemPositionTile.transform.localPosition.x, 4.4f, itemPositionTile.transform.localPosition.z);
+                        itemPosition.SetRoad(itemPositionTile);
+                        itemPosition.DeactivationAll();
+                        itemPosition.OnElevation();
+                        _roadGenerator.GenerateSandBoxTrail(_itemPositions, _container);
+                    }
+                }
+            }
+        }
+        
         if (_isTileTrail)
         {
             if (Input.GetMouseButton(0))
@@ -156,7 +198,12 @@ public class EnvironmentBuilder : MonoBehaviour
                         {
                             itemPosition.Item.gameObject.SetActive(false);
                             itemPosition.ClearingPosition();
-                            return;
+                        }
+                        
+                        if (itemPosition.IsElevation)
+                        {
+                            Vector3 newLocalPosition = new Vector3(itemPosition.transform.localPosition.x, 0.59f, itemPosition.transform.localPosition.z);
+                            itemPosition.transform.localPosition = newLocalPosition;
                         }
                         
                         itemPosition.DeactivationAll();
@@ -182,9 +229,13 @@ public class EnvironmentBuilder : MonoBehaviour
                         {
                             itemPosition.Item.gameObject.SetActive(false);
                             itemPosition.ClearingPosition();
-                            return;
                         }
                         
+                        if (itemPosition.IsElevation)
+                        {
+                            Vector3 newLocalPosition = new Vector3(itemPosition.transform.localPosition.x, 0.59f, itemPosition.transform.localPosition.z);
+                            itemPosition.transform.localPosition = newLocalPosition;
+                        }
                         
                         itemPosition.DeactivationAll();
                         itemPosition.EnableRoad();

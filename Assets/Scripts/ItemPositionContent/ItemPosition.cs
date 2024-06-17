@@ -18,16 +18,15 @@ namespace ItemPositionContent
         [SerializeField] private Transform _container;
         [SerializeField] private LookMerger _lookMerger;
         [SerializeField] private ItemPosition _waterTile;
-        [SerializeField]private ItemPosition[] _roadPositions; 
-        
+        [SerializeField] private ItemPosition[] _roadPositions;
 
 
-            private Item _item;
+        private Item _item;
         private ItemPosition[] _itemPositions;
 
 
         public bool IsRoad { get; private set; } = false;
-        
+
         public bool IsTrail { get; private set; } = false;
 
         public ItemPosition[] RoadPositions => _roadPositions;
@@ -77,7 +76,7 @@ namespace ItemPositionContent
         {
             IsRoad = false;
         }
-        
+
         public void SetRoad(ItemPosition itemPosition)
         {
             if (_road != null)
@@ -92,7 +91,7 @@ namespace ItemPositionContent
             // Debug.Log("там");
             if (IsWater)
                 return;
-            
+
             itemPosition.gameObject.SetActive(true);
             _road = itemPosition;
         }
@@ -164,7 +163,7 @@ namespace ItemPositionContent
         {
             if (_waterTile == null)
                 return;
-            
+
             _road.gameObject.SetActive(true);
             _waterTile.gameObject.SetActive(false);
             _isWater = false;
@@ -174,7 +173,7 @@ namespace ItemPositionContent
         {
             IsTrail = true;
         }
-        
+
         public void DeactivateTrail()
         {
             IsTrail = false;
@@ -189,13 +188,23 @@ namespace ItemPositionContent
         {
             _isWater = false;
         }
-        
+
         public void DeactivationAll()
         {
             _isElevation = false;
             _isWater = false;
             IsRoad = false;
             IsTrail = false;
+        }
+
+        public void OnElevation()
+        {
+            _isElevation = true;
+        }
+
+        public void OnBusy()
+        {
+            _isBusy = true;
         }
     }
 }

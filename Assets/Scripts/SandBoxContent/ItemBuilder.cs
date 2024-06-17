@@ -68,17 +68,39 @@ public class ItemBuilder : MonoBehaviour
                         return;
                     }
 
-                    if (itemPosition.IsRoad || itemPosition.IsTrail || itemPosition.IsWater || itemPosition.IsElevation)
+                    if (_item.ItemName == Items.LightHouse)
                     {
-                        if (_item.ItemName == Items.LightHouse)
+                        if (itemPosition.IsElevation)
                         {
-                            itemPosition.DeactivationAll();
-                            ItemPosition itemPositionTile = Instantiate(_tileWater, itemPosition.transform.position,
-                                Quaternion.identity, _container);
-                            itemPosition.SetRoad(itemPositionTile);
+                            Vector3 newLocalPosition = new Vector3(itemPosition.transform.localPosition.x, 0.59f,
+                                itemPosition.transform.localPosition.z);
+                            itemPosition.transform.localPosition = newLocalPosition;
                         }
-                        else
+                       
+                        itemPosition.DeactivationAll();
+                        itemPosition.ActivationWater();
+                        ItemPosition itemPositionTile = Instantiate(_tileWater, itemPosition.transform.position,
+                            Quaternion.identity, _container);
+                        itemPosition.SetRoad(itemPositionTile);
+                    }
+                    else
+                    {
+                        if (itemPosition.IsRoad || itemPosition.IsTrail || itemPosition.IsWater)
                         {
+                            /*if (_item.ItemName == Items.LightHouse)
+                            {
+                                if (itemPosition.IsElevation)
+                                {
+                                    Vector3 newLocalPosition = new Vector3(itemPosition.transform.localPosition.x, 0.59f, itemPosition.transform.localPosition.z);
+                                    itemPosition.transform.localPosition = newLocalPosition;
+                                }
+                                
+                                itemPosition.DeactivationAll();
+                                ItemPosition itemPositionTile = Instantiate(_tileWater, itemPosition.transform.position,
+                                    Quaternion.identity, _container);
+                                itemPosition.SetRoad(itemPositionTile);
+                            }*/
+
                             itemPosition.DeactivationAll();
                             ItemPosition itemPositionTile = Instantiate(_clearTile, itemPosition.transform.position,
                                 Quaternion.identity, _container);
@@ -86,7 +108,7 @@ public class ItemBuilder : MonoBehaviour
                         }
                     }
 
-                    Debug.Log("Свободен");
+itemPosition.OnBusy();
                     Item item = Instantiate(_item, itemPosition.transform.position, Quaternion.identity, _container);
                     item.GetComponent<ItemAnimation>().PositioningAnimation();
                     item.Activation();
