@@ -1044,7 +1044,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.0623832, y: 3.1649313, z: 1.3638068}
+  m_Size: {x: 0.8, y: 3.1649313, z: 0.9}
   m_Center: {x: 0.11974692, y: 0.6694827, z: -0.22633308}
 --- !u!114 &5411065820483948517
 MonoBehaviour:
@@ -1068,6 +1068,7 @@ MonoBehaviour:
   _startPrice: 100
   _priceMultiplier: 1.3
   _flightScore: {fileID: 5948484919374171009}
+  _isBigHouse: 0
 --- !u!54 &1783571401662579604
 Rigidbody:
   m_ObjectHideFlags: 0

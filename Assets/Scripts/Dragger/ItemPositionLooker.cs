@@ -33,7 +33,10 @@ namespace Dragger
 
                     if (_itemDragger.IsObjectSelected)
                         _currentLookPosition.GetComponent<VisualItemPosition>().ActivateVisual();
-                    
+
+                    /*if (_currentLookPosition.IsBusy)
+                        return;*/
+                    Debug.Log("имя " + _currentLookPosition.name);
                     PlaceLooking?.Invoke(_currentLookPosition, _itemDragger.SelectedObject);
                 }
             }

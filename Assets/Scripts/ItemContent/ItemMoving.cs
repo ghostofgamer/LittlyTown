@@ -48,10 +48,12 @@ namespace ItemContent
 
         private IEnumerator MoveCyclicallyStart(Vector3 targetItemPosition)
         {
+            float distanceFactor = 0.35f; 
+            
             while (true)
             {
                 Vector3 direction = (targetItemPosition - transform.position).normalized;
-                Vector3 target = transform.position + direction;
+                Vector3 target = transform.position + direction*distanceFactor;
                 _elapsedTime = 0;
 
                 while (_elapsedTime < _durationMoveTarget)

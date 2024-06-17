@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Enums;
 using ItemContent;
 using ItemPositionContent;
 using Unity.VisualScripting;
@@ -13,7 +14,7 @@ namespace Dragger
         [SerializeField] private ItemsStorage _itemStorage;
         [SerializeField] private AudioSource _audioSource;
         [SerializeField] private LookMerger _lookMerger;
-        
+
         private ItemPositionLooker _itemPositionLooker;
         private ItemPosition _startPosition;
         private Item _selectedObject;
@@ -50,8 +51,8 @@ namespace Dragger
         public Item TemporaryItem => _temporaryItem;
 
         private ItemPosition _lastTrowPosition;
-        
-        
+
+
         private void OnEnable()
         {
             _lookMerger.NotMerged += GetItemForLastPosition;
@@ -182,10 +183,10 @@ namespace Dragger
 // Передвигаем объект по оси XZ с сохраненным оффсетом
 
                     // _selectedObject.transform.position = mouseWorldPosition + _offsetObject;
-                    
+
                     /*Debug.Log("_selectedObject.transform.position ТУТ " +  _selectedObject.transform.position);
                     Debug.Log("mouseWorldPosition " +  mouseWorldPosition + _offsetObject);*/
-                    
+
                     // Debug.Log("Selected " + _selectedObject.transform.position);
 
 
@@ -195,7 +196,7 @@ namespace Dragger
 
 
                     _selectedObject.transform.position = Vector3.Lerp(_selectedObject.transform.position,
-                        mouseWorldPosition+ _offsetObject, 16 * Time.deltaTime);
+                        mouseWorldPosition + _offsetObject, 16 * Time.deltaTime);
                 }
             }
 
@@ -246,13 +247,13 @@ namespace Dragger
                     float distanceToPlane;
                     _objectPlane.Raycast(ray, out distanceToPlane);
                     _distance = distanceToPlane;
-                    
+
                     Vector3 mouseWorldPosition = ray.GetPoint(_distance);
                     _offsetObject = _selectedObject.transform.position - mouseWorldPosition;
                     _offsetObject.y = 0;
-                    
-                    Debug.Log("_offsetObject " + _offsetObject);
-                    Debug.Log("Distance " + _distance);
+
+                    /*Debug.Log("_offsetObject " + _offsetObject);
+                    Debug.Log("Distance " + _distance);*/
 
                     if (_selectedObject.transform.position == position)
                         IsObjectSelected = true;
@@ -295,9 +296,12 @@ namespace Dragger
                         itemPosition.DeliverObject(_selectedObject);
                         // Debug.Log("Place1");
                         PlaceChanged?.Invoke();
+                        if (_selectedObject.ItemName == Items.LightHouse||_selectedObject.ItemName == Items.Crane)
+                            StartCoroutine(Continue(itemPosition));
                         _selectedObject = null;
                         _lastTrowPosition = itemPosition;
-                        // StartCoroutine(Continue(itemPosition));
+
+
                         IsObjectSelected = false;
                         IsPositionSelected = false;
                     }
@@ -314,9 +318,12 @@ namespace Dragger
                         BuildItem?.Invoke(_selectedObject);
                         // Debug.Log("Place3");
                         PlaceChanged?.Invoke();
+                        if (_selectedObject.ItemName == Items.LightHouse||_selectedObject.ItemName == Items.Crane)
+                            StartCoroutine(Continue(itemPosition));
                         _selectedObject = null;
                         _lastTrowPosition = itemPosition;
-                        // StartCoroutine(Continue(itemPosition));
+
+
                         IsObjectSelected = false;
                         IsPositionSelected = false;
                     }
@@ -351,7 +358,7 @@ namespace Dragger
         {
             StartCoroutine(Continue(_lastTrowPosition));
         }
-        
+
         private IEnumerator Continue(ItemPosition itemPosition)
         {
             yield return new WaitForSeconds(0.1f);
