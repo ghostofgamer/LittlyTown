@@ -20,24 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="099b8a6d-6b1c-4473-babb-d7d2ffb7e44f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/AntennaTower.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/AntennaTower.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Apartment.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Apartment.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/BigApartment.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/BigApartment.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/BigStone.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/BigStone.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Condominium.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Condominium.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/CozyHome.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/CozyHome.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/GoldStone.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/GoldStone.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/HouseWood.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/HouseWood.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/OfficeBuilding.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/OfficeBuilding.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/SkyHouse.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/SkyHouse.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Skyscraper.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Skyscraper.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/VertexVeste.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/VertexVeste.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemPositionContent/ItemPosition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemPositionContent/ItemPosition.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/RoadGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RoadGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/EnvironmentBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/EnvironmentBuilder.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/ItemBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/ItemBuilder.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -277,15 +263,15 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/Builder.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PlatformChecker.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ChooseMap.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/ItemBuilder.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/Cleaner.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/CleanerButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/ItemButton.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/RoadGenerator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enums/Environments.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/SandBoxEnvironmentChangeButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ItemPositionContent/ItemPosition.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/RoadGenerator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/EnvironmentBuilder.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/ItemBuilder.cs" />
       </list>
     </option>
   </component>
@@ -398,7 +384,7 @@
       <workItem from="1718349074594" duration="12604000" />
       <workItem from="1718436498277" duration="9000000" />
       <workItem from="1718522890027" duration="24822000" />
-      <workItem from="1718613778966" duration="17843000" />
+      <workItem from="1718613778966" duration="20522000" />
     </task>
     <servers />
   </component>
@@ -499,9 +485,9 @@
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
     <state x="616" y="238" key="run.anything.popup/0.0.1920.1032@0.0.1920.1032" timestamp="1718111437695" />
-    <state x="623" y="223" width="672" height="678" key="search.everywhere.popup" timestamp="1718624207580">
+    <state x="623" y="223" width="672" height="678" key="search.everywhere.popup" timestamp="1718643681408">
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
-    <state x="623" y="223" width="672" height="678" key="search.everywhere.popup/0.0.1920.1032@0.0.1920.1032" timestamp="1718624207580" />
+    <state x="623" y="223" width="672" height="678" key="search.everywhere.popup/0.0.1920.1032@0.0.1920.1032" timestamp="1718643681408" />
   </component>
 </project>

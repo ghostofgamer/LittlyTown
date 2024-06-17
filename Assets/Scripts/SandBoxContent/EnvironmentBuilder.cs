@@ -7,7 +7,9 @@ using UnityEngine.EventSystems;
 public class EnvironmentBuilder : MonoBehaviour
 {
     [SerializeField] private RoadGenerator _roadGenerator;
-    [SerializeField] private ItemPosition _water;
+    [SerializeField] private ItemPosition _tileWater;
+    [SerializeField] private ItemPosition _tileClear;
+    [SerializeField] private ItemPosition _tileElevation;
     [SerializeField] private Transform _container;
     [SerializeField] private ItemPosition[] _itemPositions;
 
@@ -48,7 +50,7 @@ public class EnvironmentBuilder : MonoBehaviour
 
         switch (name)
         {
-            case "TileClear":
+            case "ClearTile":
                 _isTileClear = true;
                 break;
             case "Water":
@@ -80,7 +82,33 @@ public class EnvironmentBuilder : MonoBehaviour
             }
         }
 
+        if (_isTileClear)
+        {
+            Debug.Log("вфходм");
+            
+            if (Input.GetMouseButton(0))
+            {
+                if (Physics.Raycast(ray, out hit, Mathf.Infinity, _layerMask))
+                {
+                    if (hit.transform.TryGetComponent(out ItemPosition itemPosition))
+                    {
+                        if (itemPosition.IsBusy)
+                        {
+                            itemPosition.Item.gameObject.SetActive(false);
+                            itemPosition.ClearingPosition();
+                            return;
+                        }
 
+                        ItemPosition itemPositionTile = Instantiate(_tileClear, itemPosition.transform.position,
+                            Quaternion.identity, _container);
+                        itemPosition.SetRoad(itemPositionTile);
+                        itemPosition.DeactivationAll();
+                        _roadGenerator.GenerateSandBoxTrail(_itemPositions, _container);
+                    }
+                }
+            }
+        }
+        
         if (_isTileWater)
         {
             if (Input.GetMouseButton(0))
@@ -89,18 +117,19 @@ public class EnvironmentBuilder : MonoBehaviour
                 {
                     if (hit.transform.TryGetComponent(out ItemPosition itemPosition))
                     {
-                        /*if (itemPosition.IsBusy)
+                        if (itemPosition.IsBusy)
                         {
-                            Debug.Log("Занят");
+                            itemPosition.Item.gameObject.SetActive(false);
+                            itemPosition.ClearingPosition();
                             return;
-                        }*/
-
-                        ItemPosition itemPositionTile = Instantiate(_water, itemPosition.transform.position,
+                        }
+                        
+                        ItemPosition itemPositionTile = Instantiate(_tileWater, itemPosition.transform.position,
                             Quaternion.identity, _container);
                         itemPosition.SetRoad(itemPositionTile);
                         itemPosition.DeactivationAll();
                         itemPosition.ActivationWater();
-                        _roadGenerator.GenerateSandBoxRoad(_itemPositions, _container);
+                        _roadGenerator.GenerateSandBoxTrail(_itemPositions, _container);
                     }
                 }
             }
@@ -123,14 +152,43 @@ public class EnvironmentBuilder : MonoBehaviour
                             return;
 
 
-                        /*if (itemPosition.IsBusy)
+                        if (itemPosition.IsBusy)
                         {
-                            Debug.Log("Занят");
+                            itemPosition.Item.gameObject.SetActive(false);
+                            itemPosition.ClearingPosition();
                             return;
-                        }*/
+                        }
+                        
                         itemPosition.DeactivationAll();
                         itemPosition.ActivateTrail();
-                        _roadGenerator.GenerateSandBoxRoad(_itemPositions, _container);
+                        _roadGenerator.GenerateSandBoxTrail(_itemPositions, _container);
+                    }
+                }
+            }
+        }
+        
+        if (_isTileRoad)
+        {
+            if (Input.GetMouseButton(0))
+            {
+                if (Physics.Raycast(ray, out hit, Mathf.Infinity, _layerMask))
+                {
+                    if (hit.transform.TryGetComponent(out ItemPosition itemPosition))
+                    {
+                        if (itemPosition.IsRoad)
+                            return;
+
+                        if (itemPosition.IsBusy)
+                        {
+                            itemPosition.Item.gameObject.SetActive(false);
+                            itemPosition.ClearingPosition();
+                            return;
+                        }
+                        
+                        
+                        itemPosition.DeactivationAll();
+                        itemPosition.EnableRoad();
+                        _roadGenerator.GenerateSandBoxTrail(_itemPositions, _container);
                     }
                 }
             }

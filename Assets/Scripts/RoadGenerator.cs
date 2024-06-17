@@ -694,22 +694,42 @@ public class RoadGenerator : MonoBehaviour
         }
     }
 
-    public void GenerateSandBoxRoad(ItemPosition[] itemPositions, Transform container)
+    public void GenerateSandBoxTrail(ItemPosition[] itemPositions, Transform container)
     {
-        List<ItemPosition> positions = new List<ItemPosition>();
+        List<ItemPosition> positionsTrail = new List<ItemPosition>();
 
         foreach (var itemPosition in itemPositions)
         {
             if (itemPosition.IsTrail)
             {
-                Debug.Log("сколько позиций " + positions.Count);
-                positions.Add(itemPosition);
+                Debug.Log("сколько позиций " + positionsTrail.Count);
+                positionsTrail.Add(itemPosition);
             }
         }
 
-        foreach (var position in positions)
+        List<ItemPosition> positionsRoad = new List<ItemPosition>();
+
+        foreach (var itemPosition in itemPositions)
+        {
+            if (itemPosition.IsRoad)
+            {
+                Debug.Log("сколько позиций " + positionsRoad.Count);
+                positionsRoad.Add(itemPosition);
+            }
+        }
+        
+        foreach (var position in positionsTrail)
         {
             string trail = CheckSurroundingTilesSandBox(position);
+            ItemPosition selectedTile =
+                Instantiate(_tileConfigurations[trail], position.transform.position, container.rotation, container);
+
+            position.SetRoad(selectedTile);
+        }
+        
+        foreach (var position in positionsRoad)
+        {
+            string trail = CheckSurroundingTilesRoadsSandBox(position);
             ItemPosition selectedTile =
                 Instantiate(_tileConfigurations[trail], position.transform.position, container.rotation, container);
 
@@ -770,6 +790,80 @@ public class RoadGenerator : MonoBehaviour
         }
         
         Debug.Log("Traiel " + itemPosition.name);
+        return surroundingTiles;
+    }
+    
+     public void GenerateSandBoxRoad(ItemPosition[] itemPositions, Transform container)
+    {
+        List<ItemPosition> positionsRoad = new List<ItemPosition>();
+
+        foreach (var itemPosition in itemPositions)
+        {
+            if (itemPosition.IsRoad)
+            {
+                Debug.Log("сколько позиций " + positionsRoad.Count);
+                positionsRoad.Add(itemPosition);
+            }
+        }
+
+        foreach (var position in positionsRoad)
+        {
+            string trail = CheckSurroundingTilesRoadsSandBox(position);
+            ItemPosition selectedTile =
+                Instantiate(_tileConfigurations[trail], position.transform.position, container.rotation, container);
+
+            position.SetRoad(selectedTile);
+        }
+    }
+
+    private string CheckSurroundingTilesRoadsSandBox(ItemPosition itemPosition)
+    {
+       string surroundingTiles = "3333";
+        int amount = 0;
+
+        if (itemPosition.NorthPosition != null && !itemPosition.NorthPosition.IsBusy &&
+            itemPosition.NorthPosition.gameObject.activeInHierarchy && !itemPosition.NorthPosition.IsWater &&
+            itemPosition.NorthPosition.IsRoad)
+        {
+            amount++;
+            /*Debug.Log("Item " + itemPosition.name );
+            Debug.Log("NORTH " + itemPosition.NorthPosition.name );*/
+            surroundingTiles = "2" + surroundingTiles.Substring(1);
+        }
+
+        if (itemPosition.WestPosition != null && !itemPosition.WestPosition.IsBusy &&
+            itemPosition.WestPosition.gameObject.activeInHierarchy && !itemPosition.WestPosition.IsWater &&
+            itemPosition.WestPosition.IsRoad)
+        {
+            amount++;
+            /*Debug.Log("Item " + itemPosition.name );
+            Debug.Log("West " + itemPosition.WestPosition.name );*/
+            surroundingTiles = surroundingTiles.Substring(0, 1) + "2" + surroundingTiles.Substring(2);
+        }
+
+        if (itemPosition.EastPosition != null && !itemPosition.EastPosition.IsBusy &&
+            itemPosition.EastPosition.gameObject.activeInHierarchy && !itemPosition.EastPosition.IsWater &&
+            itemPosition.EastPosition.IsRoad)
+        {
+            amount++;
+            /*Debug.Log("Item " + itemPosition.name );
+            Debug.Log("East " + itemPosition.EastPosition.name );*/
+            surroundingTiles = surroundingTiles.Substring(0, 2) + "2" + surroundingTiles.Substring(3);
+        }
+
+        if (itemPosition.SouthPosition != null && !itemPosition.SouthPosition.IsBusy &&
+            itemPosition.SouthPosition.gameObject.activeInHierarchy && !itemPosition.SouthPosition.IsWater &&
+            itemPosition.SouthPosition.IsRoad)
+        {
+            amount++;
+            surroundingTiles = surroundingTiles.Substring(0, surroundingTiles.Length - 1) + "2";
+        }
+
+        if (amount < 1)
+        {
+            return "0000";
+        }
+
         return surroundingTiles;
     }
 }
