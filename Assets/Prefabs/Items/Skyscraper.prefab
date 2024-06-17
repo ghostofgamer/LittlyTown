@@ -4109,7 +4109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemName: 17
   _nextItem: {fileID: 7273090933534814345, guid: 595115b38b58713428ed7aeab5a18593, type: 3}
-  _reward: 10
+  _reward: 130
   _itemDropDataSo: {fileID: 0}
   _isHouse: 1
   _isLightHouse: 0

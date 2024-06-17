@@ -243,7 +243,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemName: 18
   _nextItem: {fileID: 9077698903806076748, guid: 7ab85560ea192ca48b83d4d73079990f, type: 3}
-  _reward: 10
+  _reward: 150
   _itemDropDataSo: {fileID: 0}
   _isHouse: 1
   _isLightHouse: 0
@@ -251,6 +251,7 @@ MonoBehaviour:
   _startPrice: 1000
   _priceMultiplier: 1.3
   _flightScore: {fileID: 8881448590223516729}
+  _isBigHouse: 0
 --- !u!54 &4996599850559235827
 Rigidbody:
   m_ObjectHideFlags: 0

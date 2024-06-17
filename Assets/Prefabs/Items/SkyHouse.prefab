@@ -359,7 +359,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemName: 19
   _nextItem: {fileID: 0}
-  _reward: 10
+  _reward: 160
   _itemDropDataSo: {fileID: 0}
   _isHouse: 1
   _isLightHouse: 0

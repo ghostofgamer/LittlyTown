@@ -27,6 +27,8 @@ namespace ItemPositionContent
 
 
         public bool IsRoad { get; private set; } = false;
+        
+        public bool IsTrail { get; private set; } = false;
 
         public ItemPosition[] RoadPositions => _roadPositions;
 
@@ -166,6 +168,34 @@ namespace ItemPositionContent
             _road.gameObject.SetActive(true);
             _waterTile.gameObject.SetActive(false);
             _isWater = false;
+        }
+
+        public void ActivateTrail()
+        {
+            IsTrail = true;
+        }
+        
+        public void DeactivateTrail()
+        {
+            IsTrail = false;
+        }
+
+        public void ActivationWater()
+        {
+            _isWater = true;
+        }
+
+        public void DeactivationWater()
+        {
+            _isWater = false;
+        }
+        
+        public void DeactivationAll()
+        {
+            _isElevation = false;
+            _isWater = false;
+            IsRoad = false;
+            IsTrail = false;
         }
     }
 }

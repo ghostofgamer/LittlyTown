@@ -331,7 +331,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemName: 15
   _nextItem: {fileID: 5219045022721737421, guid: efde70c19d918d04086d516a05d85c2d, type: 3}
-  _reward: 10
+  _reward: 100
   _itemDropDataSo: {fileID: 0}
   _isHouse: 1
   _isLightHouse: 0

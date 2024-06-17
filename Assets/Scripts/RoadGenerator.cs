@@ -460,9 +460,9 @@ public class RoadGenerator : MonoBehaviour
     {
         yield return _waitForSeconds;
 
-         List<ItemPosition> positions = new List<ItemPosition>();
+        List<ItemPosition> positions = new List<ItemPosition>();
 
-         foreach (ItemPosition itemPosition in itemPositions)
+        foreach (ItemPosition itemPosition in itemPositions)
         {
             /*if (itemPosition.IsElevation && itemPosition.IsBusy && itemPosition.Item.IsBigHouse)
             {
@@ -516,13 +516,8 @@ public class RoadGenerator : MonoBehaviour
                 }
             }
         }
-        
-        
-        
-        
-        
-        
-        
+
+
         /*foreach (ItemPosition itemPosition in itemPositions)
         {
             if (itemPosition.IsWater || itemPosition.IsElevation)
@@ -697,5 +692,84 @@ public class RoadGenerator : MonoBehaviour
         {
             itemPosition.DisableRoad();
         }
+    }
+
+    public void GenerateSandBoxRoad(ItemPosition[] itemPositions, Transform container)
+    {
+        List<ItemPosition> positions = new List<ItemPosition>();
+
+        foreach (var itemPosition in itemPositions)
+        {
+            if (itemPosition.IsTrail)
+            {
+                Debug.Log("сколько позиций " + positions.Count);
+                positions.Add(itemPosition);
+            }
+        }
+
+        foreach (var position in positions)
+        {
+            string trail = CheckSurroundingTilesSandBox(position);
+            ItemPosition selectedTile =
+                Instantiate(_tileConfigurations[trail], position.transform.position, container.rotation, container);
+
+            position.SetRoad(selectedTile);
+        }
+    }
+
+    private string CheckSurroundingTilesSandBox(ItemPosition itemPosition)
+    {
+        float value=0;
+        
+        string surroundingTiles = "0000";
+
+        if (itemPosition.NorthPosition != null && !itemPosition.NorthPosition.IsBusy &&
+            itemPosition.NorthPosition.gameObject.activeInHierarchy && !itemPosition.NorthPosition.IsWater &&
+            !itemPosition.NorthPosition.IsRoad&& itemPosition.NorthPosition.IsTrail)
+        {
+            value++;
+            Debug.Log("Нашлась тропа тут " + itemPosition.name );
+            surroundingTiles = "1" + surroundingTiles.Substring(1);
+        }
+
+        if (itemPosition.WestPosition != null && !itemPosition.WestPosition.IsBusy &&
+            itemPosition.WestPosition.gameObject.activeInHierarchy && !itemPosition.WestPosition.IsWater &&
+            !itemPosition.WestPosition.IsRoad&& itemPosition.WestPosition.IsTrail)
+        {
+            value++;
+            Debug.Log("Нашлась тропа тут " + itemPosition.name );
+            /*Debug.Log("Item " + itemPosition.name );
+            Debug.Log("West " + itemPosition.WestPosition.name );*/
+            surroundingTiles = surroundingTiles.Substring(0, 1) + "1" + surroundingTiles.Substring(2);
+        }
+
+        if (itemPosition.EastPosition != null && !itemPosition.EastPosition.IsBusy &&
+            itemPosition.EastPosition.gameObject.activeInHierarchy && !itemPosition.EastPosition.IsWater &&
+            !itemPosition.EastPosition.IsRoad&& itemPosition.EastPosition.IsTrail)
+        {
+            value++;
+            Debug.Log("Нашлась тропа тут " + itemPosition.name );
+            /*Debug.Log("Item " + itemPosition.name );
+            Debug.Log("East " + itemPosition.EastPosition.name );*/
+            surroundingTiles = surroundingTiles.Substring(0, 2) + "1" + surroundingTiles.Substring(3);
+        }
+
+        if (itemPosition.SouthPosition != null && !itemPosition.SouthPosition.IsBusy &&
+            itemPosition.SouthPosition.gameObject.activeInHierarchy && !itemPosition.SouthPosition.IsWater &&
+            !itemPosition.SouthPosition.IsRoad&& itemPosition.SouthPosition.IsTrail)
+        {
+            value++;
+            Debug.Log("Нашлась тропа тут " + itemPosition.name );
+            surroundingTiles = surroundingTiles.Substring(0, surroundingTiles.Length - 1) + "1";
+        }
+
+        if (value < 1)
+        {
+            Debug.Log("NOTraiel " + itemPosition.name);
+            return "0000";
+        }
+        
+        Debug.Log("Traiel " + itemPosition.name);
+        return surroundingTiles;
     }
 }

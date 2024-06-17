@@ -1830,7 +1830,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemName: 8
   _nextItem: {fileID: 2593622311996551028, guid: e6648f3de1a3205418ada671a4462fb9, type: 3}
-  _reward: 10
+  _reward: 75
   _itemDropDataSo: {fileID: 0}
   _isHouse: 1
   _isLightHouse: 0

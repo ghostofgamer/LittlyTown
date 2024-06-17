@@ -1110,6 +1110,7 @@
             <e p="EndPositionScreen.cs" t="Include" />
           </e>
           <e p="Enums" t="Include">
+            <e p="Environments.cs" t="Include" />
             <e p="Items.cs" t="Include" />
             <e p="Languages.cs" t="Include" />
             <e p="SettingsModes.cs" t="Include" />
@@ -1192,6 +1193,13 @@
           <e p="RoadGenerator.cs" t="Include" />
           <e p="SandBoxContent" t="Include">
             <e p="BuildButtonChanger.cs" t="Include" />
+            <e p="Builder.cs" t="Include" />
+            <e p="Cleaner.cs" t="Include" />
+            <e p="CleanerButton.cs" t="Include" />
+            <e p="EnvironmentBuilder.cs" t="Include" />
+            <e p="ItemBuilder.cs" t="Include" />
+            <e p="ItemButton.cs" t="Include" />
+            <e p="SandBoxEnvironmentChangeButton.cs" t="Include" />
           </e>
           <e p="SaveAndLoad" t="Include">
             <e p="GoalContent" t="Include">
