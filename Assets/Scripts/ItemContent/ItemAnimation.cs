@@ -28,6 +28,9 @@ namespace ItemContent
 
             if (_item.IsActive && _item.ItemPosition != null)
                 OnStopAnimation();
+            
+            if (_item.IsActive)
+                OnStopAnimation();
         }
 
         private void OnDisable()
@@ -36,7 +39,7 @@ namespace ItemContent
             _item.Activated -= OnStopAnimation;
         }
 
-        private void OnStopAnimation()
+        public void OnStopAnimation()
         {
             Animator.SetBool(Active, true);
         }

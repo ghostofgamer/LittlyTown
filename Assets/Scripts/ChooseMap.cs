@@ -36,10 +36,10 @@ public class ChooseMap : MonoBehaviour
         Debug.Log("Start " + _startResetPosition);*/
     }
 
-    private void Update()
+    /*private void Update()
     {
         /*if (!_isWork)
-            return;*/
+            return;#1#
         
         Debug.Log("Update " );
         if (Input.GetMouseButtonDown(0))
@@ -53,7 +53,7 @@ public class ChooseMap : MonoBehaviour
             _mouseCurrentPosition = Input.mousePosition;
             _mouseDelta = -(_mouseCurrentPosition.x - _mouseDownPosition.x);
             /*Debug.Log("DELTA " + _mouseDelta);
-            Debug.Log("DELTA Mathf" + Mathf.Abs(_mouseDelta));*/
+            Debug.Log("DELTA Mathf" + Mathf.Abs(_mouseDelta));#1#
 
             if (Mathf.Abs(_mouseDelta) > 10f)
             {
@@ -67,7 +67,7 @@ public class ChooseMap : MonoBehaviour
 
                 /*int index = value > 0 ? 1 : -1; // Определяем индекс в зависимости от направления перемещения мыши
 
-                mouseDownPosition = currentMousePosition; // Обновляем позицию мыши при нажатии*/
+                mouseDownPosition = currentMousePosition; // Обновляем позицию мыши при нажатии#1#
             }
         }
 
@@ -89,7 +89,7 @@ public class ChooseMap : MonoBehaviour
 
             transform.position = _startScrollPosition;
         }
-    }
+    }*/
 
     public void ChangeMap(int index)
     {

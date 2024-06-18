@@ -25,7 +25,7 @@ public class EnvironmentMovement : MonoBehaviour
 
     public void GoAway()
     {
-        _startPosition = _environments[_initializator.Index].transform.position;
+        // _startPosition = _environments[_initializator.Index].transform.position;
         _targetPosition = new Vector3(_startPosition.x, _startPosition.y, _startPosition.z + 500);
         // _mapActivator.ChangeActivityMaps();
         
@@ -33,18 +33,19 @@ public class EnvironmentMovement : MonoBehaviour
             StopCoroutine(_coroutine);
 
         _isActive = false;
-        _coroutine = StartCoroutine(Move(_startPosition, _targetPosition));
+        _coroutine = StartCoroutine(Move(_environments[_initializator.Index].transform.position, _targetPosition));
     }
 
     public void ReturnPosition()
     {
+        _environments[_initializator.Index].transform.position = new Vector3(_startPosition.x, _startPosition.y, _startPosition.z - 500);
         _environments[_initializator.Index].SetActive(true);
 
         if (_coroutine != null)
             StopCoroutine(_coroutine);
 
         _isActive = true;
-        _coroutine = StartCoroutine(Move(_targetPosition, _startPosition));
+        _coroutine = StartCoroutine(Move(_environments[_initializator.Index].transform.position, _startPosition));
     }
 
     private IEnumerator Move(Vector3 startPosition, Vector3 targetPosition)

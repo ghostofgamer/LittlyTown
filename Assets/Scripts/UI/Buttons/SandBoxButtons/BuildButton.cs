@@ -26,8 +26,9 @@ public class BuildButton : AbstractButton
         _buildButtonChanger.Deactivation(_index);
     }
 
-    private void Activate()
+    public void Activate()
     {
+        IsActive = true;
         _imageButton.sprite = _activeSprite;
         // _imageButton.color = new Color(255, 255, 255, _halfAlpha);
     }

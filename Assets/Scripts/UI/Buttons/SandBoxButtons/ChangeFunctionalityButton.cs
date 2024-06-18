@@ -15,6 +15,7 @@ public class ChangeFunctionalityButton : AbstractButton
     [SerializeField] private ChangeFunctionalityButton[] _changeFunctionalityButtons;
     [SerializeField] private Animator _animator;
     [SerializeField] private RectTransform _content;
+    [SerializeField] private Builder _builder;
 
     private float _positionCloseY = -143f;
     private float _positionOpenY = 143f;
@@ -25,6 +26,18 @@ public class ChangeFunctionalityButton : AbstractButton
 
     protected override void OnClick()
     {
+        _isActive = !_isActive;
+        Debug.Log("Active " + _isActive + "   " + this.name);
+
+        if (_isActive)
+        {
+            DeactivationButtons();
+            Activation();
+        }
+        else
+        {
+            Deactivation();
+        }
         /*Debug.Log(_content.anchoredPosition);
         
         Vector3 newPosition = _content.anchoredPosition;
@@ -32,25 +45,34 @@ public class ChangeFunctionalityButton : AbstractButton
         _content.anchoredPosition = newPosition;
 
         // _content.anchoredPosition = new Vector3(_content.anchoredPosition.x, _positionOpenY);*/
-        DeactivationButtons();
-        Activation();
+
         AudioSource.PlayOneShot(AudioSource.clip);
     }
 
     private void DeactivationButtons()
     {
         foreach (var changeFunctionalityButton in _changeFunctionalityButtons)
+        {
             changeFunctionalityButton.Deactivation();
+            changeFunctionalityButton.OffActivity();
+        }
     }
 
-    private void Deactivation()
+    public void OffActivity()
     {
-        if (!_isActive)
-            return;
+        _isActive = false;
+    }
+
+    public void Deactivation()
+    {
+        /*if (!_isActive)
+            return;*/
+        if (_builder != null)
+            _builder.enabled = false;
 
         _buttonImage.sprite = _notActiveButton;
         _iconImage.color = Color.white;
-        _isActive = false;
+        // _isActive = false;
 
         if (_content != null)
             CloseContent();
@@ -63,9 +85,15 @@ public class ChangeFunctionalityButton : AbstractButton
 
     private void Activation()
     {
+        if (_builder != null)
+        {
+            _builder.enabled = true;
+            _builder.Open();
+        }
+        
         _buttonImage.sprite = _activeButton;
         _iconImage.color = Color.black;
-        _isActive = true;
+        // _isActive = true;
 
         if (_content != null)
             OpenContent();
@@ -84,7 +112,7 @@ public class ChangeFunctionalityButton : AbstractButton
 
         StartCoroutine(MoveContent(new Vector2(_content.anchoredPosition.x, _positionOpenY)));
         // _content.anchoredPosition = new Vector3(_content.anchoredPosition.x, _positionOpenY);
-        Debug.Log("OPENPOS " + _content.position);
+        // Debug.Log("OPENPOS " + _content.position);
     }
 
     private void CloseContent()
@@ -94,7 +122,7 @@ public class ChangeFunctionalityButton : AbstractButton
 
         StartCoroutine(MoveContent(new Vector2(_content.anchoredPosition.x, _positionCloseY)));
         // _content.anchoredPosition = new Vector3(_content.anchoredPosition.x, _positionCloseY);
-        Debug.Log("ClosePOS " + _content.position);
+        // Debug.Log("ClosePOS " + _content.position);
     }
 
     private IEnumerator MoveContent(Vector2 target)

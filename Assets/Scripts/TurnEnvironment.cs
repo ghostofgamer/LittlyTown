@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using ItemPositionContent;
 using UnityEngine;
 
 public class TurnEnvironment : MonoBehaviour
@@ -8,6 +9,8 @@ public class TurnEnvironment : MonoBehaviour
     [SerializeField] private GameObject _container;
     [SerializeField] private Initializator _initializator;
     [SerializeField]private LookMerger _lookMerger;
+    
+    private GameObject _currentEnvironment;
     
     private Vector3 _target;
     private Quaternion _startRotation;
@@ -25,7 +28,7 @@ public class TurnEnvironment : MonoBehaviour
     private float _step = 90f;
     private bool _isRotating = false; 
     
-    private void Update()
+    /*private void Update()
     {
         if (_isEndGameRotate)
             _environments[_initializator.Index].transform.Rotate(0, _speed * Time.deltaTime, 0);
@@ -34,6 +37,17 @@ public class TurnEnvironment : MonoBehaviour
         {
             UpdateRotation();
         }
+    }*/
+    
+    private void Update()
+    {
+        /*if (_isEndGameRotate)
+            _environments[_initializator.Index].transform.Rotate(0, _speed * Time.deltaTime, 0);*/
+        
+        if (_isRotating)
+        {
+            UpdateSandBoxRotation();
+        }
     }
     
     private void UpdateRotation()
@@ -41,6 +55,16 @@ public class TurnEnvironment : MonoBehaviour
         _environments[_initializator.Index].transform.rotation = Quaternion.Lerp(_environments[_initializator.Index].transform.rotation, Quaternion.Euler(_target), _speed * Time.deltaTime);
 
         if (_environments[_initializator.Index].transform.rotation == Quaternion.Euler(_target))
+        {
+            _isRotating = false;
+        }
+    }
+    
+    private void UpdateSandBoxRotation()
+    {
+        _currentEnvironment.transform.rotation = Quaternion.Lerp(_currentEnvironment.transform.rotation, Quaternion.Euler(_target), _speed * Time.deltaTime);
+
+        if (_currentEnvironment.transform.rotation == Quaternion.Euler(_target))
         {
             _isRotating = false;
         }
@@ -62,6 +86,36 @@ public class TurnEnvironment : MonoBehaviour
         
         _target = new Vector3(_environments[_initializator.Index].transform.rotation.x, _angle,
             _environments[_initializator.Index].transform.rotation.z);
+        
+        /*_target = new Vector3(_environments[_initializator.Index].transform.rotation.x, _angles[_currentIndex],
+            _environments[_initializator.Index].transform.rotation.z);*/
+        _isRotating = true;
+        /*if (_coroutineRotate != null)
+            StopCoroutine(_coroutineRotate);
+
+        _coroutineRotate = StartCoroutine(Turn());*/
+    }
+
+    public void SetPositions(GameObject environment)
+    {
+        _currentEnvironment = environment;
+    }
+    
+    public void ChangeSandBoxRotation(int index)
+    {
+        _lookMerger.StopMoveMatch();
+        _currentIndex += index;
+        Debug.Log(_currentIndex);
+
+        /*if (_currentIndex > _maxIndex)
+            _currentIndex = _minIndex;
+
+        if (_currentIndex < _minIndex)
+            _currentIndex = _maxIndex;*/
+        
+        _angle += _step * index;
+        
+        _target = new Vector3(_currentEnvironment.transform.rotation.x, _angle, _currentEnvironment.transform.rotation.z);
         
         /*_target = new Vector3(_environments[_initializator.Index].transform.rotation.x, _angles[_currentIndex],
             _environments[_initializator.Index].transform.rotation.z);*/

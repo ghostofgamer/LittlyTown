@@ -1,31 +1,19 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using Enums;
 using ItemContent;
 using ItemPositionContent;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class ItemBuilder : MonoBehaviour
+public class ItemBuilder : Builder
 {
     [SerializeField] private Item[] _items;
-    [SerializeField] private Transform _container;
-    [SerializeField] private RoadGenerator _roadGenerator;
-    [SerializeField] private Transform _roadContainer;
-    [SerializeField] private ItemPosition[] _itemPositions;
-    [SerializeField] private ItemPosition _clearTile;
-    [SerializeField] private ItemPosition _tileWater;
 
     private Item _item;
-    private int _layerMask;
-    private int _layer = 3;
 
-    private void Start()
+    private void OnEnable()
     {
-        _layerMask = 1 << _layer;
-        _layerMask = ~_layerMask;
+        StartCoroutine(ActivatedItems());
     }
 
     public void SetItems(Items itemName)
@@ -33,88 +21,66 @@ public class ItemBuilder : MonoBehaviour
         foreach (var item in _items)
         {
             if (item.ItemName.ToString() == itemName.ToString())
-            {
                 _item = item;
-                Debug.Log("Item " + item.name + " " + _item.name);
-            }
         }
-
-        Debug.Log("Item ИМЯ " + itemName);
     }
 
-    private void Update()
+    protected override void FirstChoose()
     {
-        RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        SetItems(Items.Bush);
+    }
 
-        if (Physics.Raycast(ray))
+    protected override void TakeAction(ItemPosition itemPosition)
+    {
+        if (itemPosition.IsBusy)
         {
-            if (EventSystem.current.IsPointerOverGameObject())
+            Debug.Log("Занят");
+            return;
+        }
+
+        if (_item.ItemName == Items.LightHouse)
+        {
+            if (itemPosition.IsElevation)
             {
-                Debug.Log("ГГГ");
-                return;
+                Vector3 newLocalPosition = new Vector3(itemPosition.transform.localPosition.x, 0.59f,
+                    itemPosition.transform.localPosition.z);
+                itemPosition.transform.localPosition = newLocalPosition;
+            }
+
+            itemPosition.DeactivationAll();
+            itemPosition.ActivationWater();
+            ItemPosition itemPositionTile = Instantiate(TileWater, itemPosition.transform.position,
+                Quaternion.identity, RoadContainer);
+            itemPosition.SetRoad(itemPositionTile);
+        }
+        else
+        {
+            if (itemPosition.IsRoad || itemPosition.IsTrail || itemPosition.IsWater)
+            {
+                itemPosition.DeactivationAll();
+                ItemPosition itemPositionTile = Instantiate(ClearTile, itemPosition.transform.position,
+                    Quaternion.identity, RoadContainer);
+                itemPosition.SetRoad(itemPositionTile);
             }
         }
 
-        if (Input.GetMouseButton(0))
-        {
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, _layerMask))
-            {
-                if (hit.transform.TryGetComponent(out ItemPosition itemPosition))
-                {
-                    if (itemPosition.IsBusy)
-                    {
-                        Debug.Log("Занят");
-                        return;
-                    }
+        itemPosition.OnBusy();
+        Item item = Instantiate(_item, itemPosition.transform.position, Container.transform.rotation, Container);
+        item.GetComponent<ItemAnimation>().PositioningAnimation();
+        item.Activation();
+        StartRoadGeneration();
+    }
 
-                    if (_item.ItemName == Items.LightHouse)
-                    {
-                        if (itemPosition.IsElevation)
-                        {
-                            Vector3 newLocalPosition = new Vector3(itemPosition.transform.localPosition.x, 0.59f,
-                                itemPosition.transform.localPosition.z);
-                            itemPosition.transform.localPosition = newLocalPosition;
-                        }
-                       
-                        itemPosition.DeactivationAll();
-                        itemPosition.ActivationWater();
-                        ItemPosition itemPositionTile = Instantiate(_tileWater, itemPosition.transform.position,
-                            Quaternion.identity, _container);
-                        itemPosition.SetRoad(itemPositionTile);
-                    }
-                    else
-                    {
-                        if (itemPosition.IsRoad || itemPosition.IsTrail || itemPosition.IsWater)
-                        {
-                            /*if (_item.ItemName == Items.LightHouse)
-                            {
-                                if (itemPosition.IsElevation)
-                                {
-                                    Vector3 newLocalPosition = new Vector3(itemPosition.transform.localPosition.x, 0.59f, itemPosition.transform.localPosition.z);
-                                    itemPosition.transform.localPosition = newLocalPosition;
-                                }
-                                
-                                itemPosition.DeactivationAll();
-                                ItemPosition itemPositionTile = Instantiate(_tileWater, itemPosition.transform.position,
-                                    Quaternion.identity, _container);
-                                itemPosition.SetRoad(itemPositionTile);
-                            }*/
+    private IEnumerator ActivatedItems()
+    {
+        yield return new WaitForSeconds(0.5f);
 
-                            itemPosition.DeactivationAll();
-                            ItemPosition itemPositionTile = Instantiate(_clearTile, itemPosition.transform.position,
-                                Quaternion.identity, _container);
-                            itemPosition.SetRoad(itemPositionTile);
-                        }
-                    }
+        List<Item> items = new List<Item>();
 
-itemPosition.OnBusy();
-                    Item item = Instantiate(_item, itemPosition.transform.position, Quaternion.identity, _container);
-                    item.GetComponent<ItemAnimation>().PositioningAnimation();
-                    item.Activation();
-                    _roadGenerator.GenerateSandBoxTrail(_itemPositions, _roadContainer);
-                }
-            }
-        }
+        for (int i = 0; i < Container.childCount; i++)
+            items.Add(Container.GetChild(i).GetComponent<Item>());
+
+        foreach (var item in items)
+            item.Activation();
     }
 }
