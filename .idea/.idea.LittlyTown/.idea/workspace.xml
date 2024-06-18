@@ -24,21 +24,18 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChooseMap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ChooseMap.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EnvironmentMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EnvironmentMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemContent/ItemAnimation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemContent/ItemAnimation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/Builder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/Builder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/Cleaner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/Cleaner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/EnvironmentBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/EnvironmentBuilder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/ItemBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/ItemBuilder.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/StartMap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/StartMap.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/TurnEnvironment.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TurnEnvironment.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/SandBoxButtons/BuildButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/SandBoxButtons/BuildButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/SandBoxButtons/ChangeFunctionalityButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/SandBoxButtons/ChangeFunctionalityButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ContinueButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ContinueButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/ChooseMapScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/ChooseMapScreen.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/SandBoxScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/SandBoxScreen.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bild/Build.zip" beforeDir="false" afterPath="$PROJECT_DIR$/Bild/Build.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bild/Build/14d96960b3eef9c14fa7076da797d0f5.data.unityweb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bild/Build/625c257cab19b13239169f397fd514a9.js.unityweb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bild/Build/b31724b8ca78daa9824b1c5d87c79e5f.wasm.unityweb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bild/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Bild/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bild/Build.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bild/Build/7177a14d396c344cb8ea5be21bfc022b.js.unityweb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bild/Build/9626273edac7231adc5e877627222917.data.unityweb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bild/Build/Bild.loader.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bild/Build/b11e82a8271ae798cc7818f14cfec1d5.wasm.unityweb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bild/StreamingAssets/UnityServicesProjectConfiguration.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bild/index.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,6 +81,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Screens/FirstScreen.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Buttons/UpgradeButtons/PackageSlotsButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CountersContent/ScoreSlider.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SandBoxContent/SandBoxEnvironment.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Buttons/EndButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlatformChecker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/SaveHistoryData.cs" root0="FORCE_HIGHLIGHTING" />
@@ -178,7 +176,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Buttons/RewardButtons/RewardButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BonusesStart.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CollectionContent/CollectionSizer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SandBoxContent/SandBoxEnvironment.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Screens/ItemScreen.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CollectionContent/CollectionItem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Buttons/OpenButton.cs" root0="FORCE_HIGHLIGHTING" />
@@ -200,6 +197,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PackageLittleTown.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enums/Languages.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ADS/CrystalReward.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SandBoxContent/SandBoxStorage.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Merger.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Wallets/GoldWallet.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ADS/DoublePossibilityReward.cs" root0="FORCE_HIGHLIGHTING" />
@@ -207,6 +205,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BuyMapButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Buttons/SettingsButtonContent/ChangeLocalizationButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Buttons/UpgradeButtons/PackageLittleTownButton.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SandBoxContent/SandBoxSaveData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/SelectItemData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SandBoxContent/CleanerButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ADButtons/RewardMoveButton.cs" root0="FORCE_HIGHLIGHTING" />
@@ -237,11 +236,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/Records.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/MapsInfo.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/CollectionScreen.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Wallets/AbstractWallet.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/BuildItemChanger.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/BuildButtonChanger.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/FirstScreen.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ItemPositionContent/FinderPositions.cs" />
@@ -278,16 +272,21 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/SandBoxButtons/BuildButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/Builder.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CameraContent/CameraScrolling.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/TurnEnvironment.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/EnvironmentMovement.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/SandBoxScreen.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/ItemBuilder.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/SandBoxButtons/ChangeFunctionalityButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/sandBoxEnvironment.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/EnvironmentBuilder.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/SandBoxEnvironment.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ChooseMap.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/ChooseMapScreen.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/sandBoxEnvironment.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/SandBoxEnvironment.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/EnvironmentBuilder.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/TurnEnvironment.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/StartMap.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ContinueButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/SandBoxData.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/SandBoxScreen.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/SandBoxSaveData.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/SandBoxStorage.cs" />
       </list>
     </option>
   </component>
@@ -401,7 +400,7 @@
       <workItem from="1718436498277" duration="9000000" />
       <workItem from="1718522890027" duration="24822000" />
       <workItem from="1718613778966" duration="24735000" />
-      <workItem from="1718694645446" duration="18534000" />
+      <workItem from="1718694645446" duration="21522000" />
     </task>
     <servers />
   </component>

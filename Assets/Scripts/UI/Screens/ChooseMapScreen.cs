@@ -54,7 +54,7 @@ public class ChooseMapScreen : AbstractScreen
         _itemDragger.SwitchOff();
         _cameraMovement.ZoomOut();
         _chooseMap.enabled = true;
-        // _chooseMap.StartWork();
+        _chooseMap.StartWork();
         _mapsInfo.ActivatedInfo(_initializator.Index);
         _mapInformation.SetActive(true);
         _mapInformations[_initializator.Index].SetActive(true);

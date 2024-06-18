@@ -1201,6 +1201,8 @@
             <e p="ItemButton.cs" t="Include" />
             <e p="sandBoxEnvironment.cs" t="Include" />
             <e p="SandBoxEnvironmentChangeButton.cs" t="Include" />
+            <e p="SandBoxSaveData.cs" t="Include" />
+            <e p="SandBoxStorage.cs" t="Include" />
           </e>
           <e p="SaveAndLoad" t="Include">
             <e p="GoalContent" t="Include">

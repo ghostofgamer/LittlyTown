@@ -14,10 +14,11 @@ public class SandBoxScreen : AbstractScreen
     [SerializeField] private EnvironmentMovement _environmentMovement;
     [SerializeField] private CameraMovement _cameraMovement;
     [SerializeField] private Vector3 _startPosition;
+    
     private bool _isActive;
     private Coroutine _coroutine;
-    private float _elapsedTime;
-    private float _duration = 1f;
+    private float _timeElapsed;
+    private float _durationTime = 1f;
     private Vector3 _targetPosition;
 
     private void Start()
@@ -72,12 +73,12 @@ public class SandBoxScreen : AbstractScreen
 
     private IEnumerator Move(Vector3 startPosition, Vector3 targetPosition)
     {
-        _elapsedTime = 0f;
+        _timeElapsed = 0f;
 
-        while (_elapsedTime < _duration)
+        while (_timeElapsed < _durationTime)
         {
-            _elapsedTime += Time.deltaTime;
-            _environment.transform.position = Vector3.Lerp(startPosition, targetPosition, _elapsedTime / _duration);
+            _timeElapsed += Time.deltaTime;
+            _environment.transform.position = Vector3.Lerp(startPosition, targetPosition, _timeElapsed / _durationTime);
             // _container.transform.position = _environments[_initializator.Index].transform.position;
             yield return null;
         }

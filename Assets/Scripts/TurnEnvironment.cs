@@ -101,6 +101,11 @@ public class TurnEnvironment : MonoBehaviour
         _currentEnvironment = environment;
     }
     
+    public void SetEnvironment()
+    {
+        _currentEnvironment = _environments[_initializator.Index];
+    }
+    
     public void ChangeSandBoxRotation(int index)
     {
         _lookMerger.StopMoveMatch();

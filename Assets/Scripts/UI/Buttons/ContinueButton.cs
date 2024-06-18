@@ -22,6 +22,7 @@ public class ContinueButton : AbstractButton
     [SerializeField]private ScoreCounter _scoreCounter;
     [SerializeField] private Load _load;
     [SerializeField] private GoldCounter _goldCounter;
+    [SerializeField] private TurnEnvironment _turnEnvironment;
     
     private int _startValue;
     
@@ -38,6 +39,7 @@ public class ContinueButton : AbstractButton
         _moveKeeper.LoadHistoryData();
         _scoreCounter.SetCurrentScore(_load.Get(CurrentRecordScore + _initializator.Index, _startValue));
         _goldCounter.CheckIncome();
+        _turnEnvironment.SetEnvironment();
         
         if (_packageLittleTown.IsActive)
         {

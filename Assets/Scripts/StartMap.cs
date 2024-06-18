@@ -34,6 +34,7 @@ public class StartMap : MonoBehaviour
     [SerializeField] private MapActivator _mapActivator;
     [SerializeField] private VisualItemsDeactivator _visualItemsDeactivator;
     [SerializeField] private GoldCounter _goldCounter;
+    [SerializeField] private TurnEnvironment _turnEnvironment;
     
     private Transform[] _children;
     private int _selectMap = 1;
@@ -119,6 +120,7 @@ public class StartMap : MonoBehaviour
         if (_packageLittleTown.IsActive)
             _packageLittleTown.Activated();
 
+        _turnEnvironment.SetEnvironment();
         // Debug.Log("Starting  " + _initializator.Index);
         _mapGenerator.TestGeneration(_initializator.Territories, _initializator.FinderPositions,
             _initializator.CurrentMap.StartItems, _initializator.ItemPositions,
