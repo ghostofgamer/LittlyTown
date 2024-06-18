@@ -139,7 +139,7 @@ public class Initializator : MonoBehaviour
 
         int amount = _load.Get(ExtensionTerritory + _currentMap.Index, 0);
 
-        Debug.Log("ExtensionTerritory " + ExtensionTerritory + _currentMap.Index);
+        // Debug.Log("ExtensionTerritory " + ExtensionTerritory + _currentMap.Index);
         /*Debug.Log("AMOUNT " + amount);
         Debug.Log("_extensionFilterTerritories " + _extensionFilterTerritories.Count);*/
 

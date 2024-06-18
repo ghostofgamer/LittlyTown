@@ -286,14 +286,14 @@ public class MapGenerator : MonoBehaviour
 
         yield return null;
 
-Debug.Log(startItems.Count);
+// Debug.Log(startItems.Count);
 
 
 
 
         foreach (var item in startItems)
         {
-            Debug.Log("спавним item" + item.name);
+            // Debug.Log("спавним item" + item.name);
             _clearPositions = new List<ItemPosition>();
             _clearPositions = itemPositions
                 .Where(p => !p.GetComponent<ItemPosition>().IsBusy && !p.GetComponent<ItemPosition>().IsWater).ToList();

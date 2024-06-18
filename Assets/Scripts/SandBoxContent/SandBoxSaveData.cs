@@ -5,9 +5,11 @@ using System.Collections.Generic;
 public class SandBoxSaveData
 {
     public List<ItemData> ItemDatas;
+    public List<ItemPositionData> ItemPositionDatas;
     
     public SandBoxSaveData()
     {
         ItemDatas = new List<ItemData>();
+        ItemPositionDatas = new List<ItemPositionData>();
     }
 }

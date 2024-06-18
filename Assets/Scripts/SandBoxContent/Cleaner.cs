@@ -1,3 +1,4 @@
+using System;
 using ItemContent;
 using ItemPositionContent;
 using UnityEngine;
@@ -9,6 +10,8 @@ public class Cleaner : MonoBehaviour
     private int _layer = 3;
     private ItemPosition _lastItemPosition;
 
+    public event Action ItemRemoved;
+    
     private void Start()
     {
         _layerMask = 1 << _layer;
@@ -33,6 +36,7 @@ public class Cleaner : MonoBehaviour
                     {
                         itemPosition.Item.gameObject.SetActive(false);
                         itemPosition.ClearingPosition();
+                        ItemRemoved?.Invoke();
                         return;
                     }
                 }

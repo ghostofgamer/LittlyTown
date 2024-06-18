@@ -127,7 +127,7 @@ public class ChooseMap : MonoBehaviour
 
     public void SetPosition(int index)
     {
-        Debug.Log("SetPosition " + index);
+        // Debug.Log("SetPosition " + index);
         
         _currentIndex = index; 
         _startPosition = transform.position;

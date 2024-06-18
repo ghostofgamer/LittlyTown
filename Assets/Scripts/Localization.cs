@@ -41,7 +41,7 @@ public class Localization : MonoBehaviour
     private void Start()
     {
         LanguageChanged?.Invoke(_currentLanguage);
-        Debug.Log("Язык устанавливаем " + _currentLanguage);
+        // Debug.Log("Язык устанавливаем " + _currentLanguage);
     }
 
     public void SetLanguage(string languageCode)

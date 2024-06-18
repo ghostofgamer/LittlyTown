@@ -701,10 +701,9 @@ public class RoadGenerator : MonoBehaviour
         foreach (var itemPosition in itemPositions)
         {
             if (itemPosition.IsTrail)
-            {
-                Debug.Log("сколько позиций " + positionsTrail.Count);
                 positionsTrail.Add(itemPosition);
-            }
+            
+           
         }
 
         List<ItemPosition> positionsRoad = new List<ItemPosition>();
@@ -712,20 +711,31 @@ public class RoadGenerator : MonoBehaviour
         foreach (var itemPosition in itemPositions)
         {
             if (itemPosition.IsRoad)
-            {
-                Debug.Log("сколько позиций " + positionsRoad.Count);
                 positionsRoad.Add(itemPosition);
-            }
         }
         
+ Debug.Log("Trail  " +positionsTrail.Count );
+ Debug.Log("Road  " +positionsRoad.Count );
+ 
         foreach (var position in positionsTrail)
         {
+            Debug.Log("строим  1");
+      
+            
             string trail = CheckSurroundingTilesSandBox(position);
+            Debug.Log("строим  3" + trail);
+            Debug.Log("pos" + position.transform.position);
+            Debug.Log("contziner  3" + container);
+            Debug.Log("tile  3" + _tileConfigurations[trail]);
+           
             ItemPosition selectedTile =
                 Instantiate(_tileConfigurations[trail], position.transform.position, container.rotation, container);
-
+Debug.Log("строим  5");
             position.SetRoad(selectedTile);
+            Debug.Log("строим  6");
         }
+        
+        Debug.Log("строим  ");
         
         foreach (var position in positionsRoad)
         {
@@ -735,29 +745,31 @@ public class RoadGenerator : MonoBehaviour
 
             position.SetRoad(selectedTile);
         }
+        
+        Debug.Log("делаем   ");
     }
 
     private string CheckSurroundingTilesSandBox(ItemPosition itemPosition)
     {
-        float value=0;
-        
+        float value = 0;
+
         string surroundingTiles = "0000";
 
         if (itemPosition.NorthPosition != null && !itemPosition.NorthPosition.IsBusy &&
             itemPosition.NorthPosition.gameObject.activeInHierarchy && !itemPosition.NorthPosition.IsWater &&
-            !itemPosition.NorthPosition.IsRoad&& itemPosition.NorthPosition.IsTrail)
+            !itemPosition.NorthPosition.IsRoad && itemPosition.NorthPosition.IsTrail)
         {
             value++;
-            Debug.Log("Нашлась тропа тут " + itemPosition.name );
+            Debug.Log("Нашлась тропа тут " + itemPosition.name);
             surroundingTiles = "1" + surroundingTiles.Substring(1);
         }
 
         if (itemPosition.WestPosition != null && !itemPosition.WestPosition.IsBusy &&
             itemPosition.WestPosition.gameObject.activeInHierarchy && !itemPosition.WestPosition.IsWater &&
-            !itemPosition.WestPosition.IsRoad&& itemPosition.WestPosition.IsTrail)
+            !itemPosition.WestPosition.IsRoad && itemPosition.WestPosition.IsTrail)
         {
             value++;
-            Debug.Log("Нашлась тропа тут " + itemPosition.name );
+            Debug.Log("Нашлась тропа тут " + itemPosition.name);
             /*Debug.Log("Item " + itemPosition.name );
             Debug.Log("West " + itemPosition.WestPosition.name );*/
             surroundingTiles = surroundingTiles.Substring(0, 1) + "1" + surroundingTiles.Substring(2);
@@ -765,10 +777,10 @@ public class RoadGenerator : MonoBehaviour
 
         if (itemPosition.EastPosition != null && !itemPosition.EastPosition.IsBusy &&
             itemPosition.EastPosition.gameObject.activeInHierarchy && !itemPosition.EastPosition.IsWater &&
-            !itemPosition.EastPosition.IsRoad&& itemPosition.EastPosition.IsTrail)
+            !itemPosition.EastPosition.IsRoad && itemPosition.EastPosition.IsTrail)
         {
             value++;
-            Debug.Log("Нашлась тропа тут " + itemPosition.name );
+            Debug.Log("Нашлась тропа тут " + itemPosition.name);
             /*Debug.Log("Item " + itemPosition.name );
             Debug.Log("East " + itemPosition.EastPosition.name );*/
             surroundingTiles = surroundingTiles.Substring(0, 2) + "1" + surroundingTiles.Substring(3);
@@ -776,10 +788,10 @@ public class RoadGenerator : MonoBehaviour
 
         if (itemPosition.SouthPosition != null && !itemPosition.SouthPosition.IsBusy &&
             itemPosition.SouthPosition.gameObject.activeInHierarchy && !itemPosition.SouthPosition.IsWater &&
-            !itemPosition.SouthPosition.IsRoad&& itemPosition.SouthPosition.IsTrail)
+            !itemPosition.SouthPosition.IsRoad && itemPosition.SouthPosition.IsTrail)
         {
             value++;
-            Debug.Log("Нашлась тропа тут " + itemPosition.name );
+            Debug.Log("Нашлась тропа тут " + itemPosition.name);
             surroundingTiles = surroundingTiles.Substring(0, surroundingTiles.Length - 1) + "1";
         }
 
@@ -788,12 +800,12 @@ public class RoadGenerator : MonoBehaviour
             Debug.Log("NOTraiel " + itemPosition.name);
             return "0000";
         }
-        
+
         Debug.Log("Traiel " + itemPosition.name);
         return surroundingTiles;
     }
-    
-     public void GenerateSandBoxRoad(ItemPosition[] itemPositions, Transform container)
+
+    public void GenerateSandBoxRoad(ItemPosition[] itemPositions, Transform container)
     {
         List<ItemPosition> positionsRoad = new List<ItemPosition>();
 
@@ -818,7 +830,7 @@ public class RoadGenerator : MonoBehaviour
 
     private string CheckSurroundingTilesRoadsSandBox(ItemPosition itemPosition)
     {
-       string surroundingTiles = "3333";
+        string surroundingTiles = "3333";
         int amount = 0;
 
         if (itemPosition.NorthPosition != null && !itemPosition.NorthPosition.IsBusy &&

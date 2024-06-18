@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Enums;
@@ -11,6 +12,8 @@ public class ItemBuilder : Builder
 
     private Item _item;
 
+    public event Action ItemBuilded;
+    
     private void OnEnable()
     {
         StartCoroutine(ActivatedItems());
@@ -69,6 +72,7 @@ public class ItemBuilder : Builder
         item.GetComponent<ItemAnimation>().PositioningAnimation();
         item.Activation();
         StartRoadGeneration();
+        ItemBuilded?.Invoke();
     }
 
     private IEnumerator ActivatedItems()

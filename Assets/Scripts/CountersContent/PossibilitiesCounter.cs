@@ -30,7 +30,7 @@ namespace CountersContent
 
         private void Start()
         {
-            Debug.Log("SetStart Replace");
+            // Debug.Log("SetStart Replace");
             _possibilitiesCount = _startCount;
             Show();
         }
@@ -48,7 +48,7 @@ namespace CountersContent
 
         public void DecreaseCount()
         {
-            Debug.Log("!!!&&&");
+            // Debug.Log("!!!&&&");
             _possibilitiesCount--;
             Show();
             _animator.SetTrigger(Change);
@@ -56,7 +56,7 @@ namespace CountersContent
 
         private void Show()
         {
-            Debug.Log("SHOW " + _possibilitiesCount );
+            // Debug.Log("SHOW " + _possibilitiesCount );
             _possibilitiesCountText.text = _possibilitiesCount.ToString();
         }
 
@@ -68,7 +68,7 @@ namespace CountersContent
 
         public void SetCount()
         {
-            Debug.Log("SetCount Replace");
+            // Debug.Log("SetCount Replace");
             _possibilitiesCount = _startCount;
             Show();
         }

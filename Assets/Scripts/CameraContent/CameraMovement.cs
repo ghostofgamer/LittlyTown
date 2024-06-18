@@ -23,7 +23,7 @@ public class CameraMovement : MonoBehaviour
 
     public void Init(int fovPerspective, int sizeOrtographic)
     {
-        Debug.Log("Данные " + fovPerspective + " " + sizeOrtographic);
+        // Debug.Log("Данные " + fovPerspective + " " + sizeOrtographic);
         _standartPerspectiveFOV = fovPerspective;
         _camera.fieldOfView = _standartPerspectiveFOV;
         _standartOrtographicSize = sizeOrtographic;

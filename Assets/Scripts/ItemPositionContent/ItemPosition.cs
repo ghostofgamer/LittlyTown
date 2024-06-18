@@ -206,5 +206,14 @@ namespace ItemPositionContent
         {
             _isBusy = true;
         }
+
+        public void Init(bool isBusy, bool isElevation, bool isWater, bool isRoad, bool isTrail)
+        {
+            _isBusy = isBusy;
+            _isElevation = isElevation;
+            _isWater = isWater;
+            IsRoad = isRoad;
+            IsTrail = isTrail;
+        }
     }
 }

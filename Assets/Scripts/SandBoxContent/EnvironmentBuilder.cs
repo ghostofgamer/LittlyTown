@@ -1,3 +1,4 @@
+using System;
 using Enums;
 using ItemPositionContent;
 using UnityEngine;
@@ -12,7 +13,11 @@ public class EnvironmentBuilder : Builder
     private bool _isTileElevation;
     private bool _isTileTrail;
     private bool _isTileRoad;
-
+    
+    public event Action EnvironmentBuilded;
+    
+    public ItemPosition IsTileElevation => _tileElevation;
+    
     /*protected override void Start()
     {
         base.Start();
@@ -76,8 +81,7 @@ public class EnvironmentBuilder : Builder
 
         if (_isTileWater)
         {
-            CreateEnvironment(TileWater, itemPosition);
-            itemPosition.ActivationWater();
+            CreateWater(itemPosition);
         }
 
         if (_isTileElevation)
@@ -103,6 +107,7 @@ public class EnvironmentBuilder : Builder
         }
 
         StartRoadGeneration();
+        EnvironmentBuilded?.Invoke();
     }
 
     private void ClearPosition(ItemPosition itemPosition)
@@ -112,6 +117,12 @@ public class EnvironmentBuilder : Builder
             itemPosition.Item.gameObject.SetActive(false);
             itemPosition.ClearingPosition();
         }
+    }
+
+    public void CreateWater(ItemPosition itemPosition)
+    {
+        CreateEnvironment(TileWater, itemPosition);
+        itemPosition.ActivationWater();
     }
 
     private void ChangeElevationPosition(ItemPosition itemPosition)
@@ -127,7 +138,7 @@ public class EnvironmentBuilder : Builder
         }
     }
 
-    private void CreateEnvironment(ItemPosition tilePrefab, ItemPosition itemPosition)
+    public void CreateEnvironment(ItemPosition tilePrefab, ItemPosition itemPosition)
     {
         ItemPosition itemPositionTile;
 

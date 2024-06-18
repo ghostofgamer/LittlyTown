@@ -1199,6 +1199,7 @@
             <e p="EnvironmentBuilder.cs" t="Include" />
             <e p="ItemBuilder.cs" t="Include" />
             <e p="ItemButton.cs" t="Include" />
+            <e p="ItemPositiondata.cs" t="Include" />
             <e p="sandBoxEnvironment.cs" t="Include" />
             <e p="SandBoxEnvironmentChangeButton.cs" t="Include" />
             <e p="SandBoxSaveData.cs" t="Include" />
