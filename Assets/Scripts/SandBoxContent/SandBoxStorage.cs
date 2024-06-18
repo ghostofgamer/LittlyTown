@@ -166,7 +166,7 @@ public class SandBoxStorage : MonoBehaviour
         }
         else
         {
-            gameObject.SetActive(false);
+            // gameObject.SetActive(false);
             Debug.Log("нет сохранения");
         }
     }

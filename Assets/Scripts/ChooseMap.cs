@@ -168,7 +168,6 @@ public class ChooseMap : MonoBehaviour
 
     public void StartWork()
     {
-        _isWork = true;
         StartCoroutine(StartUpdate());
     }
 
@@ -179,6 +178,7 @@ public class ChooseMap : MonoBehaviour
 
     private IEnumerator StartUpdate()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(5f);
+        _isWork = true;
     }
 }
