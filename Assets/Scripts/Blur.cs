@@ -11,7 +11,7 @@ public class Blur : MonoBehaviour
     [SerializeField] private DepthOfField _depthOfField;
     private BoolParameter _depthOfFieldEnabled;
     
-    private float _zero = 0f;
+    private float _minValue = 0.3f;
     private float _activeBlurValue = 0.76f;
     private float _elapsedTime;
     private float _duration = 0.5f;
@@ -27,7 +27,7 @@ public class Blur : MonoBehaviour
         if (_coroutine != null)
             StopCoroutine(_coroutine);
 
-        _coroutine = StartCoroutine(ChangeValue(_zero, _activeBlurValue));
+        _coroutine = StartCoroutine(ChangeValue(_minValue, _activeBlurValue));
         // _postProcessVolume.enabled = true;
         _depthOfField.active = true;
     }
@@ -37,7 +37,7 @@ public class Blur : MonoBehaviour
         if (_coroutine != null)
             StopCoroutine(_coroutine);
 
-        _coroutine = StartCoroutine(ChangeValue(_activeBlurValue, _zero));
+        _coroutine = StartCoroutine(ChangeValue(_activeBlurValue, _minValue));
         // _postProcessVolume.enabled = false;
         _depthOfField.active = false;
     }

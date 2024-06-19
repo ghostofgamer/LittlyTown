@@ -1374,6 +1374,28 @@
           <e p="Materials" t="Include" />
           <e p="UI" t="Include" />
         </e>
+        <e p="Stylized Ocean Materials" t="Include">
+          <e p="Materials" t="Include" />
+          <e p="Mesh" t="Include">
+            <e p="Materials" t="Include" />
+          </e>
+          <e p="Scenes" t="Include" />
+          <e p="Shader" t="Include">
+            <e p="Water_Ocean_01.shader" t="Include" />
+            <e p="Water_Ocean_01_Smooth.shader" t="Include" />
+            <e p="Water_Ocean_02.shader" t="Include" />
+            <e p="Water_Ocean_03.shader" t="Include" />
+            <e p="Water_Ocean_04.shader" t="Include" />
+            <e p="Water_Ocean_05.shader" t="Include" />
+            <e p="Water_Ocean_06.shader" t="Include" />
+          </e>
+          <e p="Textures" t="Include">
+            <e p="Noises" t="Include">
+              <e p="Noise_Gradients" t="Include" />
+              <e p="Noise_Masks_Merged" t="Include" />
+            </e>
+          </e>
+        </e>
         <e p="TextMesh Pro" t="Include">
           <e p="Documentation" t="Include" />
           <e p="Fonts" t="Include">
