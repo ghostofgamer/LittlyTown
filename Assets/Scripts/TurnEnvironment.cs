@@ -25,7 +25,7 @@ public class TurnEnvironment : MonoBehaviour
     private bool _isEndGameRotate;
     private float _speed = 10;
     private float _angle=0f ;
-    private float _step = 90f;
+    private int _step = 90;
     private bool _isRotating = false; 
     
     /*private void Update()
@@ -66,6 +66,9 @@ public class TurnEnvironment : MonoBehaviour
 
         if (_currentEnvironment.transform.rotation == Quaternion.Euler(_target))
         {
+            _currentEnvironment.transform.rotation = Quaternion.Euler(_target);
+            Debug.Log("QQQ " + Quaternion.Euler(_target));
+            Debug.Log("Ефкпуе " + _target);
             _isRotating = false;
         }
     }
