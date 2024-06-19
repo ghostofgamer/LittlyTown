@@ -12,11 +12,17 @@ public class DayNight : MonoBehaviour
     [SerializeField] private Color _nightColor;
     [SerializeField] private Color _dayGrass;
     [SerializeField] private Color _nightGrass;
+    [SerializeField] private Color _dayTrail;
+    [SerializeField] private Color _nightTrail;
+    [SerializeField] private Color _nightBackGround;
+    [SerializeField] private Color _dayBackGround;
     [SerializeField] private Save _save;
     [SerializeField] private Load _load;
     [SerializeField] private ParticleSystem _fireflies;
     [SerializeField] private Material _grassMaterial;
-    
+    [SerializeField] private Material _trailMaterial;
+    [SerializeField] private Material _backgroundMaterial;
+
     private float _duration = 1;
     private float _elapsedTime;
     private float _dayValue = -30f;
@@ -47,19 +53,22 @@ public class DayNight : MonoBehaviour
         _fireflies.gameObject.SetActive(IsNight);
         TimeDayChanged?.Invoke();
         SaveValue();
-        
+
         if (_coroutine != null)
         {
             StopCoroutine(_coroutine);
         }
 
         _coroutine = StartCoroutine(IsNight
-            ? StartChange(_currentY, _nightValue, _currentIntensity, _nightIntensity, _currentColor, _nightColor,_grassMaterial.color,_nightGrass)
-            : StartChange(_currentY, _dayValue, _currentIntensity, _dayIntensity, _currentColor, _dayColor,_grassMaterial.color,_dayGrass));
+            ? StartChange(_currentY, _nightValue, _currentIntensity, _nightIntensity, _currentColor, _nightColor,
+                _grassMaterial.color, _nightGrass,_trailMaterial.color, _nightTrail,_backgroundMaterial.color,_nightBackGround)
+            : StartChange(_currentY, _dayValue, _currentIntensity, _dayIntensity, _currentColor, _dayColor,
+                _grassMaterial.color, _dayGrass,_trailMaterial.color, _dayTrail,_backgroundMaterial.color,_dayBackGround));
     }
 
     private IEnumerator StartChange(float start, float target, float startIntensity, float targetIntensity,
-        Color startColor, Color targetColor,Color startGrassColor,Color targetGrass)
+        Color startColor, Color targetColor, Color startGrassColor, Color targetGrassColor, Color startTrailColor,
+        Color targetTrailColor,Color startBackgroundColor, Color targetBackgroundColor)
     {
         _elapsedTime = 0;
 
@@ -69,7 +78,9 @@ public class DayNight : MonoBehaviour
             float angle = Mathf.Lerp(start, target, _elapsedTime / _duration);
             _currentIntensity = Mathf.Lerp(startIntensity, targetIntensity, _elapsedTime / _duration);
             _currentColor = Color.Lerp(startColor, targetColor, _elapsedTime / _duration);
-            _grassMaterial.color = Color.Lerp(startGrassColor, targetGrass, _elapsedTime / _duration);
+            _grassMaterial.color = Color.Lerp(startGrassColor, targetGrassColor, _elapsedTime / _duration);
+            _trailMaterial.color = Color.Lerp(startTrailColor, targetTrailColor, _elapsedTime / _duration);
+            _backgroundMaterial.color = Color.Lerp(startBackgroundColor, targetBackgroundColor, _elapsedTime / _duration);
             _light.color = _currentColor;
             _light.intensity = _currentIntensity;
             _currentY = angle;
@@ -99,6 +110,9 @@ public class DayNight : MonoBehaviour
         _currentY = value == _day ? _dayValue : _nightValue;
         _currentIntensity = _light.intensity;
         _currentColor = _light.color;
+        _grassMaterial.color = value == _day ? _dayGrass : _nightGrass;
+        _trailMaterial.color= value == _day ? _dayTrail : _nightTrail;
+        _backgroundMaterial.color= value == _day ? _dayBackGround : _nightBackGround;
         TimeDayChanged?.Invoke();
     }
 }
