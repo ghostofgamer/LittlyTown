@@ -20,18 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="099b8a6d-6b1c-4473-babb-d7d2ffb7e44f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Grass.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Grass.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Mint.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Mint.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/NightTrail.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/NightTrail.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Trail.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Trail.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/CozyHome.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/CozyHome.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/HouseWood.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/HouseWood.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/Sawmill.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/Sawmill.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiles/TileWater.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Tiles/TileWater.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Blur.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Blur.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/DayNight.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DayNight.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/ItemScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/ItemScreen.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -237,7 +228,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/FreeCrystallButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/UpgradeScreen.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/UpgradeButtons/UpgradeButton.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/ItemScreen.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/PossibilitiesFiles/BuyPossibilitieButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BuyItemButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SpawnContent/Spawner.cs" />
@@ -284,6 +274,7 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/BackGroundMusic.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Blur.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/DayNight.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/ItemScreen.cs" />
       </list>
     </option>
   </component>
@@ -398,7 +389,7 @@
       <workItem from="1718522890027" duration="24822000" />
       <workItem from="1718613778966" duration="24735000" />
       <workItem from="1718694645446" duration="30125000" />
-      <workItem from="1718782629047" duration="8282000" />
+      <workItem from="1718782629047" duration="11350000" />
     </task>
     <servers />
   </component>

@@ -130,7 +130,6 @@ public class DayNight : MonoBehaviour
         _backgroundMaterial.color = value == _day ? _dayBackGround : _nightBackGround;
         // _waterMaterial.color = value == _day ? _dayWater : _nightWater;
         _waterMaterial.SetColor("_WaterColor", (value == _day) ? _dayWater : _nightWater);
-        Debug.Log( "ЦВЕТ ВОЛДЫ " + _waterMaterial.color);
         _bloom.active = value != _day;
         TimeDayChanged?.Invoke();
     }
