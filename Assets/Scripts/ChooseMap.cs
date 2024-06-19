@@ -178,7 +178,7 @@ public class ChooseMap : MonoBehaviour
 
     private IEnumerator StartUpdate()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(1f);
         _isWork = true;
     }
 }

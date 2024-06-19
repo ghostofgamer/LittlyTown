@@ -634,6 +634,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -4683669308469848369, guid: 692c3f33c19c3c4489ac6914a276c686, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3db4a1f92f2f073498c9f1cfae251515, type: 2}
+    - target: {fileID: -4683669308469848369, guid: 692c3f33c19c3c4489ac6914a276c686, type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 5604539269314155553, guid: 692c3f33c19c3c4489ac6914a276c686, type: 3}
     - target: {fileID: 919132149155446097, guid: 692c3f33c19c3c4489ac6914a276c686, type: 3}
       propertyPath: m_Name
       value: skydelen

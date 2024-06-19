@@ -10,18 +10,21 @@ public class DayNight : MonoBehaviour
     [SerializeField] private Light _light;
     [SerializeField] private Color _dayColor;
     [SerializeField] private Color _nightColor;
+    [SerializeField] private Color _dayGrass;
+    [SerializeField] private Color _nightGrass;
     [SerializeField] private Save _save;
     [SerializeField] private Load _load;
     [SerializeField] private ParticleSystem _fireflies;
-
+    [SerializeField] private Material _grassMaterial;
+    
     private float _duration = 1;
     private float _elapsedTime;
     private float _dayValue = -30f;
     private float _nightValue = -180f;
     private float _xValue = 50;
     private float _currentY;
-    private float _dayIntensity = 1;
-    private float _nightIntensity = 0.6f;
+    private float _dayIntensity = 1.3f;
+    private float _nightIntensity = 0.3f;
     private float _currentIntensity;
     private Color _currentColor;
     private Coroutine _coroutine;
@@ -51,12 +54,12 @@ public class DayNight : MonoBehaviour
         }
 
         _coroutine = StartCoroutine(IsNight
-            ? StartChange(_currentY, _nightValue, _currentIntensity, _nightIntensity, _currentColor, _nightColor)
-            : StartChange(_currentY, _dayValue, _currentIntensity, _dayIntensity, _currentColor, _dayColor));
+            ? StartChange(_currentY, _nightValue, _currentIntensity, _nightIntensity, _currentColor, _nightColor,_grassMaterial.color,_nightGrass)
+            : StartChange(_currentY, _dayValue, _currentIntensity, _dayIntensity, _currentColor, _dayColor,_grassMaterial.color,_dayGrass));
     }
 
     private IEnumerator StartChange(float start, float target, float startIntensity, float targetIntensity,
-        Color startColor, Color targetColor)
+        Color startColor, Color targetColor,Color startGrassColor,Color targetGrass)
     {
         _elapsedTime = 0;
 
@@ -66,6 +69,7 @@ public class DayNight : MonoBehaviour
             float angle = Mathf.Lerp(start, target, _elapsedTime / _duration);
             _currentIntensity = Mathf.Lerp(startIntensity, targetIntensity, _elapsedTime / _duration);
             _currentColor = Color.Lerp(startColor, targetColor, _elapsedTime / _duration);
+            _grassMaterial.color = Color.Lerp(startGrassColor, targetGrass, _elapsedTime / _duration);
             _light.color = _currentColor;
             _light.intensity = _currentIntensity;
             _currentY = angle;

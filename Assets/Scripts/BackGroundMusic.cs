@@ -4,8 +4,10 @@ public class BackGroundMusic : MonoBehaviour
 {
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private DayNight _dayNight;
-    [SerializeField]private AudioClip _audioClip;
+    [SerializeField]private AudioClip _dayAudioClip;
+    [SerializeField]private AudioClip _nightAudioClip;
 
+    
     private void OnEnable()
     {
         _dayNight.TimeDayChanged += ChangeMusic;
@@ -19,6 +21,7 @@ public class BackGroundMusic : MonoBehaviour
     private void ChangeMusic()
     {
         _audioSource.Stop();
-        _audioSource.PlayOneShot(_dayNight.IsNight ? _audioClip : _audioSource.clip);
+        _audioSource.clip = _dayNight.IsNight ? _nightAudioClip : _dayAudioClip;
+        _audioSource.Play();
     }
 }
