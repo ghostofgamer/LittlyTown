@@ -18,7 +18,10 @@ namespace MapsContent
         [SerializeField] private bool _isWaterRandom;
         [SerializeField] private Transform _mover;
         [SerializeField] private bool _isOpened;
-        
+        [SerializeField] private bool _isWaterTilePresent;
+
+        public bool IsWaterTilePresent => _isWaterTilePresent;
+
         public bool IsOpened => _isOpened;
         
         public Transform Mover => _mover;

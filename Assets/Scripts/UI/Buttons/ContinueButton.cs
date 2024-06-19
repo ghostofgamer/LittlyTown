@@ -23,6 +23,7 @@ public class ContinueButton : AbstractButton
     [SerializeField] private Load _load;
     [SerializeField] private GoldCounter _goldCounter;
     [SerializeField] private TurnEnvironment _turnEnvironment;
+    [SerializeField] private GameObject _lightHouse;
     
     private int _startValue;
     
@@ -40,6 +41,8 @@ public class ContinueButton : AbstractButton
         _scoreCounter.SetCurrentScore(_load.Get(CurrentRecordScore + _initializator.Index, _startValue));
         _goldCounter.CheckIncome();
         _turnEnvironment.SetEnvironment();
+        
+        _lightHouse.SetActive(_initializator.CurrentMap.IsWaterTilePresent);
         
         if (_packageLittleTown.IsActive)
         {

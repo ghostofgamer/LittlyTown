@@ -35,6 +35,7 @@ public class StartMap : MonoBehaviour
     [SerializeField] private VisualItemsDeactivator _visualItemsDeactivator;
     [SerializeField] private GoldCounter _goldCounter;
     [SerializeField] private TurnEnvironment _turnEnvironment;
+    [SerializeField] private GameObject _lightHouse;
     
     private Transform[] _children;
     private int _selectMap = 1;
@@ -83,6 +84,15 @@ public class StartMap : MonoBehaviour
         {
              _goldWallet.SetInitialValue();
              _goldWallet.EnableProfit();
+        }
+
+        if (_initializator.CurrentMap.IsWaterTilePresent)
+        {
+            _lightHouse.SetActive(true); 
+        }
+        else
+        {
+            _lightHouse.SetActive(false); 
         }
         
         _goldCounter.CheckIncome();
