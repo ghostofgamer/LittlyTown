@@ -20,13 +20,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="099b8a6d-6b1c-4473-babb-d7d2ffb7e44f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddedAssets/Downtown Game Studio/Nature Pack - Low Polly Trees &amp; Bushes/Models/Vegetation.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddedAssets/Downtown Game Studio/Nature Pack - Low Polly Trees &amp; Bushes/Models/Vegetation.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/NewWater.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/NewWater.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Grass.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Grass.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Mint.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Mint.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Trail.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Trail.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/LightHouseItem.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/LightHouseItem.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiles/TileWater.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Tiles/TileWater.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TurnEnvironment.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TurnEnvironment.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene_Profiles/Main Camera Profile.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene_Profiles/Main Camera Profile.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DayNight.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DayNight.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/ItemButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/ItemButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/CollectionScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/CollectionScreen.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/FirstScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/FirstScreen.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/SandBoxScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/SandBoxScreen.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/TutorialScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/TutorialScreen.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/ItemIcons/Icons/image-Photoroom.png-Photoroom (22).png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/ItemIcons/Icons/image-Photoroom.png-Photoroom (22).png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Stylized Ocean Materials/Ocean_material_01_Smooth.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Ocean Materials/Ocean_material_01_Smooth.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Stylized Ocean Materials/Ocean_material_03.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Ocean Materials/Ocean_material_03.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Stylized Ocean Materials/Ocean_material_04.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Ocean Materials/Ocean_material_04.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bild/Build.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bild/Build/216ca0d2a62b365fe397307bea70d6f4.data.unityweb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bild/Build/8db3ec314076707359045825c0a99ca7.wasm.unityweb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bild/Build/Bild.loader.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bild/Build/db02a4d846080fbf46efc2e19505187e.js.unityweb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bild/StreamingAssets/UnityServicesProjectConfiguration.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bild/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -228,9 +252,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/FreeCrystallButton.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/UpgradeScreen.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/UpgradeButtons/UpgradeButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/PossibilitiesFiles/BuyPossibilitieButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BuyItemButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SpawnContent/Spawner.cs" />
@@ -242,7 +263,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/ItemContent/ItemMoving.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PlatformChecker.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/CleanerButton.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/ItemButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enums/Environments.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/SandBoxEnvironmentChangeButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Dragger/ItemPositionLooker.cs" />
@@ -254,7 +274,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/sandBoxEnvironment.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/ChooseMapScreen.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/SandBoxData.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/SandBoxScreen.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/Cleaner.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/ItemBuilder.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/ItemPositionData.cs" />
@@ -273,12 +292,17 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/ChooseMap.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BackGroundMusic.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Blur.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/DayNight.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/ItemScreen.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MapsContent/Map.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/StartMap.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ContinueButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/TurnEnvironment.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/ItemButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/CollectionScreen.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/DayNight.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/FirstScreen.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/SandBoxScreen.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/TutorialScreen.cs" />
       </list>
     </option>
   </component>
@@ -393,7 +417,8 @@
       <workItem from="1718522890027" duration="24822000" />
       <workItem from="1718613778966" duration="24735000" />
       <workItem from="1718694645446" duration="30125000" />
-      <workItem from="1718782629047" duration="13538000" />
+      <workItem from="1718782629047" duration="14906000" />
+      <workItem from="1718873821495" duration="7832000" />
     </task>
     <servers />
   </component>
@@ -494,9 +519,9 @@
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
     <state x="616" y="238" key="run.anything.popup/0.0.1920.1032@0.0.1920.1032" timestamp="1718709967505" />
-    <state x="623" y="223" width="672" height="678" key="search.everywhere.popup" timestamp="1718815145884">
+    <state x="623" y="223" width="670" height="58" key="search.everywhere.popup" timestamp="1718894464464">
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
-    <state x="623" y="223" width="672" height="678" key="search.everywhere.popup/0.0.1920.1032@0.0.1920.1032" timestamp="1718815145884" />
+    <state x="623" y="223" width="670" height="58" key="search.everywhere.popup/0.0.1920.1032@0.0.1920.1032" timestamp="1718894464464" />
   </component>
 </project>

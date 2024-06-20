@@ -1,8 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using Enums;
 using ItemPositionContent;
+using Newtonsoft.Json;
 using UI.Screens;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SandBoxScreen : AbstractScreen
 {
@@ -14,18 +17,25 @@ public class SandBoxScreen : AbstractScreen
     [SerializeField] private EnvironmentMovement _environmentMovement;
     [SerializeField] private CameraMovement _cameraMovement;
     [SerializeField] private Vector3 _startPosition;
+    [SerializeField] private Scrollbar _scrollbar;
+    [SerializeField] private ScrollRect _scrollRect;
+    [SerializeField] private List<ItemButton> _itemButtons = new List<ItemButton>();
+    [SerializeField] private CollectionScreen _collectionScreen;
     
+    private List<Items> _collectedItems = new List<Items>();
     private bool _isActive;
     private Coroutine _coroutine;
     private float _timeElapsed;
     private float _durationTime = 1f;
     private Vector3 _targetPosition;
 
+    /*
     private void Start()
     {
         _visualItemsDeactivator.SetPositions(_itemPositions);
         _cameraScrolling.enabled = true;
     }
+    */
 
     public override void Open()
     {
@@ -36,6 +46,10 @@ public class SandBoxScreen : AbstractScreen
         _turnEnvironment.SetPositions(_environment);
         ReturnPosition();
         _cameraMovement.ZoomOut();
+        Debug.Log("размер " + (_scrollbar.size >= 1));
+        _scrollRect.enabled = (!(_scrollbar.size >= 1));
+        _scrollbar.gameObject.SetActive(!(_scrollbar.size >= 1));
+        StartCoroutine(ShowButtons());
     }
 
     public override void Close()
@@ -88,5 +102,54 @@ public class SandBoxScreen : AbstractScreen
 
         /*if(_isActive)
             _mapActivator.ActivateAllMaps();*/
+    }
+
+    public void DeserializeCollectedItemsFromJson(string json)
+    {
+        _collectedItems = JsonConvert.DeserializeObject<List<Items>>(json);
+    }
+
+    public void LoadCollectedItemsFromPlayerPrefs()
+    {
+        string json = PlayerPrefs.GetString("CollectedItems");
+
+        if (!string.IsNullOrEmpty(json))
+            DeserializeCollectedItemsFromJson(json);
+    }
+    
+    private IEnumerator ShowButtons()
+    {
+        LoadCollectedItemsFromPlayerPrefs();
+        yield return null;
+        
+        for (int i = 0; i < _itemButtons.Count; i++)
+        {
+            /*
+            var item = _itemButtons[i];
+            */
+            
+            if (_collectionScreen.CollectedItems.Contains(_itemButtons[i].ItemName))
+            {
+                Debug.Log("UNBLOCK " +_itemButtons[i].name );
+                _itemButtons[i].UnblockButton();
+            }
+            else
+            {
+                Debug.Log("BLOCK " +_itemButtons[i].name );
+                _itemButtons[i].BlockButton();
+            }
+                
+                
+            /*if (_collectedItems.Contains(_itemButtons[i].ItemName))
+            {
+                Debug.Log("UNBLOCK " +_itemButtons[i].name );
+                _itemButtons[i].UnblockButton();
+            }
+            else
+            {
+                Debug.Log("BLOCK " +_itemButtons[i].name );
+                _itemButtons[i].BlockButton();
+            }*/
+        }
     }
 }

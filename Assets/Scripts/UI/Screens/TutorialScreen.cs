@@ -1,5 +1,7 @@
 using System.Collections;
+using System.Collections.Generic;
 using CountersContent;
+using ItemPositionContent;
 using SaveAndLoad;
 using UI.Screens;
 using UnityEngine;
@@ -13,6 +15,9 @@ public class TutorialScreen : AbstractScreen
     [SerializeField] private GameObject[] _gameLevelButtons;
     [SerializeField] private ScoreCounter _scoreCounter;
     [SerializeField] private MoveCounter _moveCounter;
+    [SerializeField] private VisualItemsDeactivator _visualItemsDeactivator;
+    [SerializeField] private Initializator _initializator;
+    [SerializeField] private List<ItemPosition> _itemPositions = new List<ItemPosition>();
 
     private int _defaultIndex = 0;
     private int _currentIndex;
@@ -24,15 +29,15 @@ public class TutorialScreen : AbstractScreen
     private bool _mergeFirstTime;
     private bool _replaceFirstTime;
     private bool _bulldozerFirstTime;
-    
+
     private int _firstPlay;
-    
+
     private void Start()
     {
         _currentIndex = _load.Get(LastActiveMap, _defaultIndex);
 
-        Debug.Log("что тут "+  _currentIndex);
-        
+        Debug.Log("что тут " + _currentIndex);
+
         if (_currentIndex == _defaultIndex)
         {
             StartTutorial();
@@ -43,8 +48,9 @@ public class TutorialScreen : AbstractScreen
 
     public void StartTutorial()
     {
-         _scoreCounter.enabled = false;
-                    _moveCounter.enabled = false;
+        _visualItemsDeactivator.SetPositions(_itemPositions);
+        _scoreCounter.enabled = false;
+        _moveCounter.enabled = false;
         SlowOpen();
     }
 

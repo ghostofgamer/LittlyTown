@@ -19,6 +19,13 @@ public class DayNight : MonoBehaviour
     [SerializeField] private Color _dayBackGround;
     [SerializeField] private Color _dayWater;
     [SerializeField] private Color _nightWater;
+    
+    
+    
+    [SerializeField] private Gradient _grassGradient;
+    [SerializeField] private Gradient _waterGradient;
+    
+    
     [SerializeField] private Save _save;
     [SerializeField] private Load _load;
     [SerializeField] private ParticleSystem _fireflies;
@@ -27,6 +34,9 @@ public class DayNight : MonoBehaviour
     [SerializeField] private Material _backgroundMaterial;
     [SerializeField] private Material _waterMaterial;
     [SerializeField] private PostProcessVolume _postProcessVolume;
+    
+    private float _currentGrassGradientValue;
+    private float _targetGrassGradientValue;
 
     private float _duration = 1;
     private float _elapsedTime;
@@ -43,7 +53,8 @@ public class DayNight : MonoBehaviour
     private int _night = 0;
     private int _currentValue;
     private Bloom _bloom;
-
+    private Coroutine _gradientCoroutine;
+    
     public event Action TimeDayChanged;
 
     public bool IsNight { get; private set; }
@@ -67,7 +78,11 @@ public class DayNight : MonoBehaviour
         {
             StopCoroutine(_coroutine);
         }
-
+        if(_gradientCoroutine!=null)
+            StopCoroutine(_gradientCoroutine);
+        
+        _gradientCoroutine =  StartCoroutine(ChangeGrassColorCoroutine());
+        
         _coroutine = StartCoroutine(IsNight
             ? StartChange(_currentY, _nightValue, _currentIntensity, _nightIntensity, _currentColor, _nightColor,
                 _grassMaterial.color, _nightGrass, _trailMaterial.color, _nightTrail, _backgroundMaterial.color,
@@ -90,18 +105,48 @@ public class DayNight : MonoBehaviour
             float angle = Mathf.Lerp(start, target, _elapsedTime / _duration);
             _currentIntensity = Mathf.Lerp(startIntensity, targetIntensity, _elapsedTime / _duration);
             _currentColor = Color.Lerp(startColor, targetColor, _elapsedTime / _duration);
+            
+            
+            /*
             _grassMaterial.color = Color.Lerp(startGrassColor, targetGrassColor, _elapsedTime / _duration);
+            _grassMaterial.color = _grassGradient.Evaluate(_elapsedTime / _duration);
+            */
+            
+            
+            
             _trailMaterial.color = Color.Lerp(startTrailColor, targetTrailColor, _elapsedTime / _duration);
             _backgroundMaterial.color =
                 Color.Lerp(startBackgroundColor, targetBackgroundColor, _elapsedTime / _duration);
             // _waterMaterial.color = Color.Lerp(startWatercolor, targetWatercolor, _elapsedTime / _duration);
-            _waterMaterial.SetColor("_WaterColor", Color.Lerp(startWatercolor, targetWatercolor, _elapsedTime / _duration));
+            // _waterMaterial.SetColor("_WaterColor", Color.Lerp(startWatercolor, targetWatercolor, _elapsedTime / _duration));
             _light.color = _currentColor;
             _light.intensity = _currentIntensity;
             _currentY = angle;
             _light.transform.rotation = Quaternion.Euler(_xValue, angle, 0);
             yield return null;
         }
+    }
+    
+    IEnumerator ChangeGrassColorCoroutine()
+    {
+        _targetGrassGradientValue = IsNight ? 1f : 0f;
+        _elapsedTime = 0f;
+        float startGrassGradientValue = _currentGrassGradientValue;
+        
+        while (_elapsedTime < 5)
+        {
+            _elapsedTime += Time.deltaTime;
+            _currentGrassGradientValue = Mathf.Lerp(startGrassGradientValue, _targetGrassGradientValue, _elapsedTime/_duration);
+            _grassMaterial.color = _grassGradient.Evaluate(_currentGrassGradientValue);
+            // _waterMaterial.SetColor("Water Color", _waterGradient.Evaluate(_currentGrassGradientValue));
+            _waterMaterial.SetColor("_WaterColor", _waterGradient.Evaluate(_currentGrassGradientValue));
+            yield return null;
+        }
+
+        _currentGrassGradientValue = _targetGrassGradientValue;
+        _grassMaterial.color = _grassGradient.Evaluate(_currentGrassGradientValue);
+        // _waterMaterial.SetColor("Water Color", _waterGradient.Evaluate(_currentGrassGradientValue));
+        _waterMaterial.SetColor("_WaterColor", _waterGradient.Evaluate(_currentGrassGradientValue));
     }
 
     private void SaveValue()
@@ -129,7 +174,9 @@ public class DayNight : MonoBehaviour
         _trailMaterial.color = value == _day ? _dayTrail : _nightTrail;
         _backgroundMaterial.color = value == _day ? _dayBackGround : _nightBackGround;
         // _waterMaterial.color = value == _day ? _dayWater : _nightWater;
+        _currentGrassGradientValue = IsNight ? 1 : 0;
         _waterMaterial.SetColor("_WaterColor", (value == _day) ? _dayWater : _nightWater);
+        // _waterMaterial.SetColor("Water Color", (value == _day) ? _dayWater : _nightWater);
         _bloom.active = value != _day;
         TimeDayChanged?.Invoke();
     }

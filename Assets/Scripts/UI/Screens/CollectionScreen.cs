@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using Dragger;
 using Enums;
@@ -18,19 +19,18 @@ public class CollectionScreen : AbstractScreen
     [SerializeField] private CameraMovement _cameraMovement;
     [SerializeField] private GameObject[] _environments;
     [SerializeField]private Merger _merger;
-
     [SerializeField] private EnvironmentMovement _environmentMovement;
     // [SerializeField] private GameObject _itemContainer;
-
     [SerializeField] private CollectionMovement _collectionMovement;
-    private int _currentIndex;
     [SerializeField]private List<Item> _allCollectionItems = new List<Item>();
-    
-    private List<Items> _collectedItems = new List<Items>();
     // private GameObject _content;
     [SerializeField]private GameObject _content;
-
     [SerializeField]private List<Transform> _itemsContent = new List<Transform>();
+    
+    private int _currentIndex;
+    private List<Items> _collectedItems = new List<Items>();
+
+    public List<Items> CollectedItems => _collectedItems;
 
     private void OnEnable()
     {
@@ -54,6 +54,8 @@ public class CollectionScreen : AbstractScreen
         if (!_collectedItems.Contains(Items.Tree))
             _collectedItems.Add(Items.Tree);
         
+        if (!_collectedItems.Contains(Items.Sawmill))
+            _collectedItems.Add(Items.Sawmill);
 
         LoadCollectedItemsFromPlayerPrefs();
         ShowItems();
@@ -105,7 +107,7 @@ public class CollectionScreen : AbstractScreen
 
     private void Show()
     {
-        _amountCollectionsItems.text = _collectedItems.Count.ToString() + " / " + _allCollectionItems.Count.ToString();
+        _amountCollectionsItems.text = _collectedItems.Count.ToString() + "/" + _allCollectionItems.Count.ToString();
     }
 
     private void ShowItems()
@@ -183,6 +185,7 @@ public class CollectionScreen : AbstractScreen
 
     public void SaveCollectedItemsToPlayerPrefs()
     {
+        Debug.Log("сохраняем коллекцию");
         string json = SerializeCollectedItemsToJson();
         PlayerPrefs.SetString("CollectedItems", json);
     }

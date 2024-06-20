@@ -1369,7 +1369,9 @@
             <e p="Tutorial" t="Include" />
           </e>
           <e p="ItemIcons" t="Include">
-            <e p="Icons" t="Include" />
+            <e p="Icons" t="Include">
+              <e p="BlockItems" t="Include" />
+            </e>
           </e>
           <e p="Materials" t="Include" />
           <e p="UI" t="Include" />

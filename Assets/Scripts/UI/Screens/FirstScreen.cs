@@ -43,7 +43,7 @@ public class FirstScreen : AbstractScreen
         if (lastValue > 0)
             StartCoroutine(SmoothOpen());
         
-            StartCoroutine(SmoothOpen());
+            // StartCoroutine(SmoothOpen());
     }
 
     public override void Open()
