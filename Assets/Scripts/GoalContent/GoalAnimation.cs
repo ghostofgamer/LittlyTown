@@ -1,3 +1,4 @@
+using AnimationContent;
 using UnityEngine;
 
 namespace GoalContent

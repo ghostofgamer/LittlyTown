@@ -1,4 +1,5 @@
 using System;
+using AnimationContent;
 using UnityEngine;
 
 namespace ItemContent

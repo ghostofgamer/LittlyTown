@@ -1,14 +1,15 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Animator))]
-public class AbstractAnimation : MonoBehaviour
+namespace AnimationContent
 {
-    private Animator _animator;
-
-    protected Animator Animator => _animator;
-
-    protected virtual void Awake()
+    [RequireComponent(typeof(Animator))]
+    public class AbstractAnimation : MonoBehaviour
     {
-        _animator = GetComponent<Animator>();
+        protected Animator Animator { get; private set; }
+
+        protected virtual void Awake()
+        {
+            Animator = GetComponent<Animator>();
+        }
     }
 }
