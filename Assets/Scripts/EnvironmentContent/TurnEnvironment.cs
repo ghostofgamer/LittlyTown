@@ -26,19 +26,8 @@ public class TurnEnvironment : MonoBehaviour
     private float _speed = 10;
     private float _angle=0f ;
     private int _step = 90;
-    private bool _isRotating = false; 
-    
-    /*private void Update()
-    {
-        if (_isEndGameRotate)
-            _environments[_initializator.Index].transform.Rotate(0, _speed * Time.deltaTime, 0);
-        
-        if (_isRotating)
-        {
-            UpdateRotation();
-        }
-    }*/
-    
+    private bool _isRotating = false;
+
     private void Update()
     {
         /*if (_isEndGameRotate)

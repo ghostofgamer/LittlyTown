@@ -20,28 +20,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="099b8a6d-6b1c-4473-babb-d7d2ffb7e44f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ADS/RewardMove.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ADS/RewardMove.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CountersContent/GoldCounter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CountersContent/GoldCounter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CountersContent/MoveCounter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CountersContent/MoveCounter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CountersContent/PossibilitiesCounter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CountersContent/PossibilitiesCounter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CountersContent/ScoreCounter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CountersContent/ScoreCounter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CountersContent/ScoreSlider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CountersContent/ScoreSlider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CountersContent/VisualScore.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CountersContent/VisualScore.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemPositionContent/VisualItemsDeactivator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemPositionContent/VisualItemsDeactivator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MapsContent/StartMap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MapsContent/StartMap.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/PossibilitieMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/MovementIcon.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/PossibilitieMovement.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/MovementIcon.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SpawnContent/Spawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SpawnContent/Spawner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ContinueButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ContinueButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/PossibilitiesFiles/BuyPossibilitieButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/PossibilitiesFiles/BuyPossibilitieButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/RewardButtons/RewardPossibilityButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/RewardButtons/RewardPossibilityButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/RewardButtons/RewardReplaceButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/RewardButtons/RewardReplaceButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/EndMoveScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/EndMoveScreen.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UpgradesContent/BonusesStart.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UpgradesContent/BonusesStart.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene_Profiles/Main Camera Profile.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene_Profiles/Main Camera Profile.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DayNightContent/BackGroundMusic.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DayNightContent/BackGroundMusic.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DayNightContent/DayNight.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DayNightContent/DayNight.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EnvironmentContent/TurnEnvironment.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EnvironmentContent/TurnEnvironment.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/DayNightButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/DayNightButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/TutorialScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/TutorialScreen.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -203,9 +188,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/CameraContent/CameraScrolling.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/EnvironmentMovement.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/SandBoxButtons/ChangeFunctionalityButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/sandBoxEnvironment.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/ChooseMapScreen.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/SandBoxData.cs" />
@@ -234,7 +216,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/DayNight.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/FirstScreen.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/SandBoxScreen.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/TutorialScreen.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ADS/AD.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ADS/DoublePossibilityReward.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ADS/FullAds.cs" />
@@ -254,6 +235,10 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/MovementIcon.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CountersContent/MoveCounter.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CountersContent/GoldCounter.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/DayNightContent/BackGroundMusic.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/EnvironmentContent/TurnEnvironment.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/TutorialScreen.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/DayNightContent/DayNight.cs" />
       </list>
     </option>
   </component>
@@ -372,7 +357,7 @@
       <workItem from="1718873821495" duration="8489000" />
       <workItem from="1718960708405" duration="5590000" />
       <workItem from="1718966408269" duration="54000" />
-      <workItem from="1718966485737" duration="3131000" />
+      <workItem from="1718966485737" duration="5632000" />
     </task>
     <servers />
   </component>
@@ -465,10 +450,10 @@
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
     <state x="461" y="161" key="SettingsEditor/0.0.1920.1032@0.0.1920.1032" timestamp="1714730777395" />
-    <state x="112" y="95" width="1736" height="848" key="VCS.FileHistoryDialog" timestamp="1718961922564">
+    <state x="112" y="95" width="1736" height="848" key="VCS.FileHistoryDialog" timestamp="1718970163791">
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
-    <state x="112" y="95" width="1736" height="848" key="VCS.FileHistoryDialog/0.0.1920.1032@0.0.1920.1032" timestamp="1718961922564" />
+    <state x="112" y="95" width="1736" height="848" key="VCS.FileHistoryDialog/0.0.1920.1032@0.0.1920.1032" timestamp="1718970163791" />
     <state x="616" y="238" key="run.anything.popup" timestamp="1718963695405">
       <screen x="0" y="0" width="1920" height="1032" />
     </state>

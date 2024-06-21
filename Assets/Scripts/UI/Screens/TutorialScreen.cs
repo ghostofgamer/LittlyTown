@@ -18,6 +18,8 @@ public class TutorialScreen : AbstractScreen
     [SerializeField] private VisualItemsDeactivator _visualItemsDeactivator;
     [SerializeField] private Initializator _initializator;
     [SerializeField] private List<ItemPosition> _itemPositions = new List<ItemPosition>();
+    [SerializeField] private TurnEnvironment _turnEnvironment;
+    [SerializeField]private GameObject _environment;
 
     private int _defaultIndex = 0;
     private int _currentIndex;
@@ -36,8 +38,6 @@ public class TutorialScreen : AbstractScreen
     {
         _currentIndex = _load.Get(LastActiveMap, _defaultIndex);
 
-        Debug.Log("что тут " + _currentIndex);
-
         if (_currentIndex == _defaultIndex)
         {
             StartTutorial();
@@ -49,6 +49,7 @@ public class TutorialScreen : AbstractScreen
     public void StartTutorial()
     {
         _visualItemsDeactivator.SetPositions(_itemPositions);
+        _turnEnvironment.SetPositions(_environment);
         _scoreCounter.enabled = false;
         _moveCounter.enabled = false;
         SlowOpen();
