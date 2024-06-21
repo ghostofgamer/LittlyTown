@@ -21,36 +21,66 @@
   <component name="ChangeListManager">
     <list default="true" id="099b8a6d-6b1c-4473-babb-d7d2ffb7e44f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Grass.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Grass.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Mint.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Mint.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Trail.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Trail.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Items/LightHouseItem.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Items/LightHouseItem.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Tiles/TileWater.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Tiles/TileWater.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene_Profiles/Main Camera Profile.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene_Profiles/Main Camera Profile.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DayNight.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DayNight.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/ItemButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/ItemButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/CollectionScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/CollectionScreen.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/FirstScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/FirstScreen.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/SandBoxScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/SandBoxScreen.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/TutorialScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/TutorialScreen.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/ItemIcons/Icons/image-Photoroom.png-Photoroom (22).png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/ItemIcons/Icons/image-Photoroom.png-Photoroom (22).png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Stylized Ocean Materials/Ocean_material_01_Smooth.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Ocean Materials/Ocean_material_01_Smooth.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Stylized Ocean Materials/Ocean_material_03.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Ocean Materials/Ocean_material_03.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Stylized Ocean Materials/Ocean_material_04.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Ocean Materials/Ocean_material_04.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BackGroundMusic.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BackGroundMusic.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BonusesStart.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BonusesStart.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Bootstrap.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Bootstrap.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ButtonActivator.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ButtonActivator.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChooseMap.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChooseMap.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CraneDestroyer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CraneDestroyer.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DayNight.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DayNight.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Environment.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Environment.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EnvironmentMovement.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EnvironmentMovement.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/FadeCanvas.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/FadeCanvas.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GoldMovement.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GoldMovement.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Initializator.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Initializator.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Localization.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Localization.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MapActivator.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MapActivator.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MapGenerator.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MapGenerator.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MapsInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MapsInfo.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Merger.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Merger.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PackageLittleTown.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PackageLittleTown.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlatformChecker.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlatformChecker.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PositionScaller.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PositionScaller.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RemovalItems.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RemovalItems.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ReplacementPosition.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ReplacementPosition.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RoadGenerator.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RoadGenerator.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/StartMap.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/StartMap.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Storage.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Storage.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Territory.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Territory.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Test/LookMerger.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Test/LookMerger.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TextWidthController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TextWidthController.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TurnEnvironment.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TurnEnvironment.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bild/Build.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bild/Build/216ca0d2a62b365fe397307bea70d6f4.data.unityweb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bild/Build/8db3ec314076707359045825c0a99ca7.wasm.unityweb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bild/Build/Bild.loader.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bild/Build/db02a4d846080fbf46efc2e19505187e.js.unityweb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bild/StreamingAssets/UnityServicesProjectConfiguration.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bild/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +97,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enums/SettingsModes.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Screens/CompleteScoreScreen.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/Possibilitie.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Bootstrap.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/PossibilitieReplace.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Test/Rotater.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Buttons/SettingsButtonContent/SnapRotationChangerButton.cs" root0="FORCE_HIGHLIGHTING" />
@@ -75,12 +104,9 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MinIndexItemSelector.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ContinueButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/TutorContent/FinalStage.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ChooseMap.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ExtensionContent/ExtensionMap.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Test/LookMerger.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Keeper/PriceKeeper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Road/RoadTile.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/DayNight.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SDK/GameReady.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Records.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.agava.yandexgames@faf20595c0/Runtime/PlayerAccount/PlayerAccount.cs" root0="SKIP_HIGHLIGHTING" />
@@ -88,9 +114,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Screens/StartGameScreen.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SandBoxContent/Builder.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Buttons/PossibilitiesFiles/BuyPossibilitieButton.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ButtonActivator.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/EnvironmentMovement.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/CraneDestroyer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/ScrollRect.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/StorageItemData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Screens/FirstScreen.cs" root0="FORCE_HIGHLIGHTING" />
@@ -98,7 +121,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CountersContent/ScoreSlider.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SandBoxContent/SandBoxEnvironment.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Buttons/EndButton.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlatformChecker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/SaveHistoryData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Road/AngularRoad.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/TutorContent/BulldozerStage.cs" root0="FORCE_HIGHLIGHTING" />
@@ -109,7 +131,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ItemSO/ItemDropDataSO.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ADS/RewardMove.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/TutorContent/ReplaceStage.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/RoadGenerator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ShopItems.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CountersContent/VisualScore.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/GoalContent/GoalSaver.cs" root0="FORCE_HIGHLIGHTING" />
@@ -124,7 +145,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Wallets/AbstractWallet.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Screens/SettingsScreen.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Buttons/UpgradeButtons/UpgradeButton.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/MapsInfo.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ItemContent/House.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enums/SoundMixer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/TutorContent/MergeStage.cs" root0="FORCE_HIGHLIGHTING" />
@@ -134,7 +154,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ChangeTutorialContentButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/ItemDropData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Wallets/MoneyInfo.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Storage.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/TutorContent/StartStageButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ResumeButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ItemContent/LightHouseKeeper.cs" root0="FORCE_HIGHLIGHTING" />
@@ -144,11 +163,9 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Buttons/UpgradeButtons/EndlessMoveButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Buttons/SandBoxButtons/BuildButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SandBoxContent/ItemButton.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Environment.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ItemPositionContent/FinderPositions.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ReplacementPositionButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ButtonResize.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/MapActivator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/TutorContent/PlaceItemStage.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Dragger/InputItemDragger.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/ShopItemData.cs" root0="FORCE_HIGHLIGHTING" />
@@ -156,15 +173,12 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ReturnGoalScreenGameLevelButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Screens/UpgradeScreen.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Buttons/EndScreen/CancelLastStepButton.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/StartMap.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SandBoxContent/BuildButtonChanger.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ItemContent/ItemStay.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MovesKeeper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enums/Environments.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/TreasureChest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Buttons/StorageButton.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ReplacementPosition.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Initializator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BirdContent/BirdMovement.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SandBoxContent/ItemBuilder.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Screens/EndScreen.cs" root0="FORCE_HIGHLIGHTING" />
@@ -177,10 +191,8 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CountersContent/PossibilitiesCounter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Buttons/RewardButtons/RewardReplaceButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/TutorContent/RestartTutorial.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GoldMovement.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MoveCanceller.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/FadeCanvas.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Test/ScrollrectMayTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SandBoxContent/Cleaner.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Buttons/GoalCompleteButton.cs" root0="FORCE_HIGHLIGHTING" />
@@ -190,7 +202,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SandBoxContent/ItemPositionData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Screens/AbstractScreen.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Buttons/RewardButtons/RewardButton.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/BonusesStart.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CollectionContent/CollectionSizer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Screens/ItemScreen.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CollectionContent/CollectionItem.cs" root0="FORCE_HIGHLIGHTING" />
@@ -210,11 +221,9 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Screens/EndMoveScreen.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Screens/TutorialScreen.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ADS/FullAds.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PackageLittleTown.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enums/Languages.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ADS/CrystalReward.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SandBoxContent/SandBoxStorage.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Merger.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Wallets/GoldWallet.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ADS/DoublePossibilityReward.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ADS/RewardVideo.cs" root0="FORCE_HIGHLIGHTING" />
@@ -226,7 +235,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SandBoxContent/CleanerButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ADButtons/RewardMoveButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/FlightScore.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/TurnEnvironment.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MapsContent/Map.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Buttons/SettingsButtonContent/OrthographicButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ADButtons/RewardButton.cs" root0="FORCE_HIGHLIGHTING" />
@@ -234,9 +242,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SpawnContent/DropGenerator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ide.visualstudio@2.0.18/Editor/VisualStudioEditor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SandBoxContent/EnvironmentBuilder.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/BackGroundMusic.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SDK/SDKInitialization.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/RemovalItems.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Screens/SandBoxScreen.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BulldozerButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ParticlesRotater.cs" root0="FORCE_HIGHLIGHTING" />
@@ -298,11 +304,11 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ContinueButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/TurnEnvironment.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/ItemButton.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/CollectionScreen.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/DayNight.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/FirstScreen.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/SandBoxScreen.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/TutorialScreen.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/CollectionScreen.cs" />
       </list>
     </option>
   </component>
@@ -418,7 +424,8 @@
       <workItem from="1718613778966" duration="24735000" />
       <workItem from="1718694645446" duration="30125000" />
       <workItem from="1718782629047" duration="14906000" />
-      <workItem from="1718873821495" duration="7832000" />
+      <workItem from="1718873821495" duration="8489000" />
+      <workItem from="1718960708405" duration="1507000" />
     </task>
     <servers />
   </component>
@@ -511,10 +518,10 @@
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
     <state x="461" y="161" key="SettingsEditor/0.0.1920.1032@0.0.1920.1032" timestamp="1714730777395" />
-    <state x="112" y="95" width="1736" height="848" key="VCS.FileHistoryDialog" timestamp="1718728931534">
+    <state x="112" y="95" width="1736" height="848" key="VCS.FileHistoryDialog" timestamp="1718961922564">
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
-    <state x="112" y="95" width="1736" height="848" key="VCS.FileHistoryDialog/0.0.1920.1032@0.0.1920.1032" timestamp="1718728931534" />
+    <state x="112" y="95" width="1736" height="848" key="VCS.FileHistoryDialog/0.0.1920.1032@0.0.1920.1032" timestamp="1718961922564" />
     <state x="616" y="238" key="run.anything.popup" timestamp="1718709967505">
       <screen x="0" y="0" width="1920" height="1032" />
     </state>

@@ -1070,21 +1070,16 @@
             <e p="RewardMove.cs" t="Include" />
             <e p="RewardVideo.cs" t="Include" />
           </e>
-          <e p="BackGroundMusic.cs" t="Include" />
           <e p="BirdContent" t="Include">
             <e p="BirdMovement.cs" t="Include" />
             <e p="BirdSpawner.cs" t="Include" />
           </e>
           <e p="Blur.cs" t="Include" />
-          <e p="BonusesStart.cs" t="Include" />
-          <e p="Bootstrap.cs" t="Include" />
-          <e p="ButtonActivator.cs" t="Include" />
           <e p="ButtonResize.cs" t="Include" />
           <e p="CameraContent" t="Include">
             <e p="CameraMovement.cs" t="Include" />
             <e p="CameraScrolling.cs" t="Include" />
           </e>
-          <e p="ChooseMap.cs" t="Include" />
           <e p="CollectionContent" t="Include">
             <e p="CollectionItem.cs" t="Include" />
             <e p="CollectionMovement.cs" t="Include" />
@@ -1098,8 +1093,10 @@
             <e p="ScoreSlider.cs" t="Include" />
             <e p="VisualScore.cs" t="Include" />
           </e>
-          <e p="CraneDestroyer.cs" t="Include" />
-          <e p="DayNight.cs" t="Include" />
+          <e p="DayNightContent" t="Include">
+            <e p="BackGroundMusic.cs" t="Include" />
+            <e p="DayNight.cs" t="Include" />
+          </e>
           <e p="DisappearingAlert.cs" t="Include" />
           <e p="Dragger" t="Include">
             <e p="InputItemDragger.cs" t="Include" />
@@ -1117,14 +1114,16 @@
             <e p="SoundMixer.cs" t="Include" />
             <e p="Upgrades.cs" t="Include" />
           </e>
-          <e p="Environment.cs" t="Include" />
-          <e p="EnvironmentMovement.cs" t="Include" />
+          <e p="EnvironmentContent" t="Include">
+            <e p="Environment.cs" t="Include" />
+            <e p="EnvironmentMovement.cs" t="Include" />
+            <e p="TurnEnvironment.cs" t="Include" />
+          </e>
           <e p="ExtensionContent" t="Include">
             <e p="ExtansionMapInfo.cs" t="Include" />
             <e p="ExtensionMap.cs" t="Include" />
             <e p="ExtensionMapMovement.cs" t="Include" />
           </e>
-          <e p="FadeCanvas.cs" t="Include" />
           <e p="FlightScore.cs" t="Include" />
           <e p="GoalContent" t="Include">
             <e p="Goal.cs" t="Include" />
@@ -1134,8 +1133,11 @@
             <e p="GoalRemovalItem.cs" t="Include" />
             <e p="GoalsCounter.cs" t="Include" />
           </e>
-          <e p="GoldMovement.cs" t="Include" />
-          <e p="Initializator.cs" t="Include" />
+          <e p="InitializationContent" t="Include">
+            <e p="Bootstrap.cs" t="Include" />
+            <e p="Initializator.cs" t="Include" />
+            <e p="PlatformChecker.cs" t="Include" />
+          </e>
           <e p="ItemContent" t="Include">
             <e p="House.cs" t="Include" />
             <e p="Item.cs" t="Include" />
@@ -1158,39 +1160,49 @@
             <e p="PriceKeeper.cs" t="Include" />
           </e>
           <e p="LoadingSceneVisual.cs" t="Include" />
-          <e p="Localization.cs" t="Include" />
-          <e p="MapActivator.cs" t="Include" />
-          <e p="MapGenerator.cs" t="Include" />
-          <e p="MapsContent" t="Include">
-            <e p="Map.cs" t="Include" />
+          <e p="LocalizationContent" t="Include">
+            <e p="Localization.cs" t="Include" />
           </e>
-          <e p="MapsInfo.cs" t="Include" />
-          <e p="Merger.cs" t="Include" />
+          <e p="MapsContent" t="Include">
+            <e p="ButtonActivator.cs" t="Include" />
+            <e p="ChooseMap.cs" t="Include" />
+            <e p="Map.cs" t="Include" />
+            <e p="MapActivator.cs" t="Include" />
+            <e p="MapGenerator.cs" t="Include" />
+            <e p="MapsInfo.cs" t="Include" />
+            <e p="PositionScaller.cs" t="Include" />
+            <e p="StartMap.cs" t="Include" />
+            <e p="Territory.cs" t="Include" />
+          </e>
+          <e p="MergeContent" t="Include">
+            <e p="LookMerger.cs" t="Include" />
+            <e p="Merger.cs" t="Include" />
+          </e>
           <e p="MinIndexItemSelector.cs" t="Include" />
           <e p="MoveCanceller.cs" t="Include" />
           <e p="MovesKeeper.cs" t="Include" />
-          <e p="PackageLittleTown.cs" t="Include" />
           <e p="ParticlesRotater.cs" t="Include" />
-          <e p="PlatformChecker.cs" t="Include" />
           <e p="positionChecker.cs" t="Include" />
           <e p="PositionMatcher.cs" t="Include" />
-          <e p="PositionScaller.cs" t="Include" />
           <e p="PossibilitiesContent" t="Include">
+            <e p="CraneDestroyer.cs" t="Include" />
+            <e p="GoldMovement.cs" t="Include" />
             <e p="Possibilitie.cs" t="Include" />
             <e p="PossibilitieBulldozer.cs" t="Include" />
             <e p="PossibilitieMovement.cs" t="Include" />
             <e p="PossibilitieReplace.cs" t="Include" />
+            <e p="RemovalItems.cs" t="Include" />
+            <e p="ReplacementPosition.cs" t="Include" />
+            <e p="Storage.cs" t="Include" />
           </e>
           <e p="Records.cs" t="Include" />
-          <e p="RemovalItems.cs" t="Include" />
-          <e p="ReplacementPosition.cs" t="Include" />
           <e p="Road" t="Include">
             <e p="AngularRoad.cs" t="Include" />
             <e p="CrossroadsRoad.cs" t="Include" />
             <e p="EndRoad.cs" t="Include" />
+            <e p="RoadGenerator.cs" t="Include" />
             <e p="RoadTile.cs" t="Include" />
           </e>
-          <e p="RoadGenerator.cs" t="Include" />
           <e p="SandBoxContent" t="Include">
             <e p="BuildButtonChanger.cs" t="Include" />
             <e p="Builder.cs" t="Include" />
@@ -1234,18 +1246,12 @@
             <e p="DropGenerator.cs" t="Include" />
             <e p="Spawner.cs" t="Include" />
           </e>
-          <e p="StartMap.cs" t="Include" />
-          <e p="Storage.cs" t="Include" />
-          <e p="Territory.cs" t="Include" />
           <e p="Test" t="Include">
-            <e p="LookMerger.cs" t="Include" />
             <e p="Rotater.cs" t="Include" />
             <e p="ScrollrectMayTest.cs" t="Include" />
             <e p="TestMerger.cs" t="Include" />
           </e>
-          <e p="TextWidthController.cs" t="Include" />
           <e p="TreasureChest.cs" t="Include" />
-          <e p="TurnEnvironment.cs" t="Include" />
           <e p="TutorContent" t="Include">
             <e p="BulldozerStage.cs" t="Include" />
             <e p="FinalStage.cs" t="Include" />
@@ -1329,6 +1335,7 @@
                 <e p="UpgradeButton.cs" t="Include" />
               </e>
             </e>
+            <e p="FadeCanvas.cs" t="Include" />
             <e p="Screens" t="Include">
               <e p="AbstractScreen.cs" t="Include" />
               <e p="BlurScreen.cs" t="Include" />
@@ -1351,6 +1358,10 @@
               <e p="TutorialScreen.cs" t="Include" />
               <e p="UpgradeScreen.cs" t="Include" />
             </e>
+          </e>
+          <e p="UpgradesContent" t="Include">
+            <e p="BonusesStart.cs" t="Include" />
+            <e p="PackageLittleTown.cs" t="Include" />
           </e>
           <e p="Wallets" t="Include">
             <e p="AbstractWallet.cs" t="Include" />
