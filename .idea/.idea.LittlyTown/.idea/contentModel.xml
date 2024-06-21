@@ -1061,7 +1061,6 @@
           <e p="SampleScene_Profiles" t="Include" />
         </e>
         <e p="Scripts" t="Include">
-          <e p="AbstractAnimation.cs" t="Include" />
           <e p="ADS" t="Include">
             <e p="AD.cs" t="Include" />
             <e p="CrystalReward.cs" t="Include" />
@@ -1070,12 +1069,13 @@
             <e p="RewardMove.cs" t="Include" />
             <e p="RewardVideo.cs" t="Include" />
           </e>
+          <e p="AnimationContent" t="Include">
+            <e p="AbstractAnimation.cs" t="Include" />
+          </e>
           <e p="BirdContent" t="Include">
             <e p="BirdMovement.cs" t="Include" />
             <e p="BirdSpawner.cs" t="Include" />
           </e>
-          <e p="Blur.cs" t="Include" />
-          <e p="ButtonResize.cs" t="Include" />
           <e p="CameraContent" t="Include">
             <e p="CameraMovement.cs" t="Include" />
             <e p="CameraScrolling.cs" t="Include" />
@@ -1097,7 +1097,6 @@
             <e p="BackGroundMusic.cs" t="Include" />
             <e p="DayNight.cs" t="Include" />
           </e>
-          <e p="DisappearingAlert.cs" t="Include" />
           <e p="Dragger" t="Include">
             <e p="InputItemDragger.cs" t="Include" />
             <e p="ItemDragger.cs" t="Include" />
@@ -1124,7 +1123,6 @@
             <e p="ExtensionMap.cs" t="Include" />
             <e p="ExtensionMapMovement.cs" t="Include" />
           </e>
-          <e p="FlightScore.cs" t="Include" />
           <e p="GoalContent" t="Include">
             <e p="Goal.cs" t="Include" />
             <e p="GoalAnimation.cs" t="Include" />
@@ -1146,6 +1144,7 @@
             <e p="ItemStay.cs" t="Include" />
             <e p="LightHouseKeeper.cs" t="Include" />
             <e p="LightHouseTrigger.cs" t="Include" />
+            <e p="TreasureChest.cs" t="Include" />
           </e>
           <e p="ItemPositionContent" t="Include">
             <e p="FinderPositions.cs" t="Include" />
@@ -1157,9 +1156,9 @@
             <e p="ItemDropDataSO.cs" t="Include" />
           </e>
           <e p="Keeper" t="Include">
+            <e p="MovesKeeper.cs" t="Include" />
             <e p="PriceKeeper.cs" t="Include" />
           </e>
-          <e p="LoadingSceneVisual.cs" t="Include" />
           <e p="LocalizationContent" t="Include">
             <e p="Localization.cs" t="Include" />
           </e>
@@ -1177,12 +1176,9 @@
           <e p="MergeContent" t="Include">
             <e p="LookMerger.cs" t="Include" />
             <e p="Merger.cs" t="Include" />
+            <e p="MinIndexItemSelector.cs" t="Include" />
           </e>
-          <e p="MinIndexItemSelector.cs" t="Include" />
           <e p="MoveCanceller.cs" t="Include" />
-          <e p="MovesKeeper.cs" t="Include" />
-          <e p="ParticlesRotater.cs" t="Include" />
-          <e p="positionChecker.cs" t="Include" />
           <e p="PositionMatcher.cs" t="Include" />
           <e p="PossibilitiesContent" t="Include">
             <e p="CraneDestroyer.cs" t="Include" />
@@ -1195,7 +1191,9 @@
             <e p="ReplacementPosition.cs" t="Include" />
             <e p="Storage.cs" t="Include" />
           </e>
-          <e p="Records.cs" t="Include" />
+          <e p="PostProcessContent" t="Include">
+            <e p="Blur.cs" t="Include" />
+          </e>
           <e p="Road" t="Include">
             <e p="AngularRoad.cs" t="Include" />
             <e p="CrossroadsRoad.cs" t="Include" />
@@ -1239,8 +1237,6 @@
             <e p="GameReady.cs" t="Include" />
             <e p="SDKInitialization.cs" t="Include" />
           </e>
-          <e p="Settings.cs" t="Include" />
-          <e p="ShopItems.cs" t="Include" />
           <e p="SoundContent" t="Include" />
           <e p="SpawnContent" t="Include">
             <e p="DropGenerator.cs" t="Include" />
@@ -1251,7 +1247,6 @@
             <e p="ScrollrectMayTest.cs" t="Include" />
             <e p="TestMerger.cs" t="Include" />
           </e>
-          <e p="TreasureChest.cs" t="Include" />
           <e p="TutorContent" t="Include">
             <e p="BulldozerStage.cs" t="Include" />
             <e p="FinalStage.cs" t="Include" />
@@ -1265,6 +1260,7 @@
             <e p="WelcomeStage.cs" t="Include" />
           </e>
           <e p="UI" t="Include">
+            <e p="ButtonResize.cs" t="Include" />
             <e p="Buttons" t="Include">
               <e p="AbstractButton.cs" t="Include" />
               <e p="ADButtons" t="Include">
@@ -1335,7 +1331,12 @@
                 <e p="UpgradeButton.cs" t="Include" />
               </e>
             </e>
+            <e p="DisappearingAlert.cs" t="Include" />
             <e p="FadeCanvas.cs" t="Include" />
+            <e p="FlightScore.cs" t="Include" />
+            <e p="LoadingSceneVisual.cs" t="Include" />
+            <e p="ParticlesRotater.cs" t="Include" />
+            <e p="Records.cs" t="Include" />
             <e p="Screens" t="Include">
               <e p="AbstractScreen.cs" t="Include" />
               <e p="BlurScreen.cs" t="Include" />
@@ -1358,6 +1359,8 @@
               <e p="TutorialScreen.cs" t="Include" />
               <e p="UpgradeScreen.cs" t="Include" />
             </e>
+            <e p="Settings.cs" t="Include" />
+            <e p="ShopItems.cs" t="Include" />
           </e>
           <e p="UpgradesContent" t="Include">
             <e p="BonusesStart.cs" t="Include" />
