@@ -25,37 +25,36 @@ namespace CountersContent
         private int _currentScore;
         private int _targetScore = 50;
         private int _stepScore = 50;
+        private int _defaultTargetScore = 50;
         private int _scoreIncome = 0;
         private Vector3 _targetPosition;
-        private string _scoreText = "гол {0} очков";
-
         private int _maxRecordScore;
-        public int CurrentScoreRecord { get; private set; }
-
+        private int _minFactor = 1;
+        
         public event Action<int, int> ScoreChanged;
 
         public event Action LevelChanged;
-        
+
         public event Action<int> ScoreIncomeChanged;
 
-        public event Action<int> FactorChanged;
-        
+        public int CurrentScoreRecord { get; private set; }
+
         public int Factor { get; private set; } = 1;
 
         public int CurrentScore => _currentScore;
 
         private void OnEnable()
         {
-            _merger.Merged += AddIncome;
-            _positionMatcher.NotMerged += AddGoal;
-            _lookMerger.NotMerged += AddGoal;
+            _merger.Merged += OnAddIncome;
+            _positionMatcher.NotMerged += OnAddGoal;
+            _lookMerger.NotMerged += OnAddGoal;
         }
 
         private void OnDisable()
         {
-            _merger.Merged -= AddIncome;
-            _positionMatcher.NotMerged -= AddGoal;
-            _lookMerger.NotMerged -= AddGoal;
+            _merger.Merged -= OnAddIncome;
+            _positionMatcher.NotMerged -= OnAddGoal;
+            _lookMerger.NotMerged -= OnAddGoal;
         }
 
         private void Start()
@@ -67,24 +66,38 @@ namespace CountersContent
         {
             _currentScore = value;
             Factor = factor;
-            FactorChanged?.Invoke(Factor);
             _targetScore = Factor * _stepScore;
             Show();
             _dropGenerator.NextLevel(Factor);
             ScoreChanged?.Invoke(_currentScore, _targetScore);
         }
 
-        private void AddIncome(int countMatch, int reward, ItemPosition itemPosition)
+        public void ResetScore()
         {
-            _scoreIncome += reward * countMatch;
-            _targetPosition = itemPosition.transform.position;
-            CurrentScoreRecord += _scoreIncome;
+            CurrentScoreRecord = 0;
             _save.SetData(CurrentRecordScore + _initializator.Index, CurrentScoreRecord);
-            // Debug.Log("currentScore " + CurrentScoreRecord);
-            // _visualScore.transform.position = itemPosition.transform.position;
+            _currentScore = 0;
+            _targetScore = _defaultTargetScore;
+            Factor = _minFactor;
+            _dropGenerator.ResetLevel();
+            Show();
+            ScoreChanged?.Invoke(_currentScore, _targetScore);
         }
 
-        private void AddGoal()
+        public void SetCurrentScore(int currentValue)
+        {
+            CurrentScoreRecord = currentValue;
+            _save.SetData(CurrentRecordScore + _initializator.Index, CurrentScoreRecord);
+        }
+
+        private void OnAddIncome(int countMatch, int reward, ItemPosition itemPosition)
+        {
+            _scoreIncome += reward * countMatch;
+            CurrentScoreRecord += _scoreIncome;
+            _save.SetData(CurrentRecordScore + _initializator.Index, CurrentScoreRecord);
+        }
+
+        private void OnAddGoal()
         {
             if (_scoreIncome <= 0)
                 return;
@@ -94,7 +107,7 @@ namespace CountersContent
             _visualScore.ScoreMove(_currentScore);
             ScoreChanged?.Invoke(_currentScore, _targetScore);
             ScoreIncomeChanged?.Invoke(_scoreIncome);
-            
+
             if (_currentScore >= _targetScore)
             {
                 NextGoal();
@@ -116,27 +129,7 @@ namespace CountersContent
 
         private void Show()
         {
-            // _scoreTargetText.text = string.Format(_scoreText, _targetScore);
-            _scoreTargetText.text = _goalText.text +" "+ _targetScore.ToString() +" "+ _score.text;
-        }
-
-        public void ResetScore()
-        {
-            CurrentScoreRecord = 0;
-            _save.SetData(CurrentRecordScore + _initializator.Index, CurrentScoreRecord);
-            _currentScore = 0;
-            _targetScore = 50;
-            Factor = 1;
-            _dropGenerator.ResetLevel();
-            Show();
-            ScoreChanged?.Invoke(_currentScore, _targetScore);
-        }
-
-        public void SetCurrentScore(int currentValue)
-        {
-            CurrentScoreRecord = currentValue;
-            _save.SetData(CurrentRecordScore + _initializator.Index, CurrentScoreRecord);
-            // Debug.Log("Продолжить с рекордом " + CurrentScoreRecord);
+            _scoreTargetText.text = _goalText.text + " " + _targetScore.ToString() + " " + _score.text;
         }
     }
 }

@@ -5,13 +5,13 @@ namespace UI.Buttons.RewardButtons
 {
     public class RewardReplaceButton : RewardButton
     {
-        [SerializeField] private PossibilitieMovement _possibilitieMovement;
+        [SerializeField] private MovementIcon _movementIcon;
         
         private int _amount = 1;
         
         protected override void ChangeRewardItem()
         {
-            _possibilitieMovement.StartMove(_amount);
+            _movementIcon.StartMove(_amount);
         }
     }
 }

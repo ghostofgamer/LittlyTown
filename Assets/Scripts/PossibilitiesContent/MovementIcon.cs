@@ -5,9 +5,9 @@ using UnityEngine;
 namespace PossibilitiesContent
 {
     [RequireComponent(typeof(CanvasGroup))]
-    public class PossibilitieMovement : MonoBehaviour
+    public class MovementIcon : MonoBehaviour
     {
-        [SerializeField] private RectTransform _targetPossibilitie;
+        [SerializeField] private RectTransform _targetPossibility;
 
         private float _elapsedTime;
         private float _duration = 0.5f;
@@ -23,9 +23,7 @@ namespace PossibilitiesContent
 
         private void Start()
         {
-            _targetPosition = _targetPossibilitie.localPosition;
-            // Debug.Log("PossibilitytargetPosition " + _targetPosition);
-            // _jumpPosition = _startPosition + Vector3.up * _jumpHeight;
+            _targetPosition = _targetPossibility.localPosition;
             _jumpPosition = _startPosition + new Vector3(1,1,0) * _jumpHeight;
             _canvasGroup = GetComponent<CanvasGroup>();
             _canvasGroup.alpha = 0;
@@ -66,7 +64,7 @@ namespace PossibilitiesContent
                     Vector3.Lerp(_startPosition, _targetPosition, _elapsedTime / _duration);
                 yield return null;
             }
-            Debug.Log("валуе " + value);
+       
             _canvasGroup.alpha = 0;
             MovementCompleted?.Invoke(value);
         }

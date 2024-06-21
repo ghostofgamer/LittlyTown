@@ -122,7 +122,7 @@ public class StartMap : MonoBehaviour
             if (_packageLittleTown.IsActive)
             {
                 Debug.Log("startMap create");
-                possibilityCounter.IncreaseCount(_packageLittleTown.Amount);
+                possibilityCounter.OnIncreaseCount(_packageLittleTown.Amount);
             }
                 
         }
@@ -183,7 +183,7 @@ public class StartMap : MonoBehaviour
             if (_packageLittleTown.IsActive)
             {
                 Debug.Log("startMap");
-                  possibilityCounter.IncreaseCount(_packageLittleTown.Amount);
+                  possibilityCounter.OnIncreaseCount(_packageLittleTown.Amount);
             }
             
               
@@ -244,7 +244,7 @@ public class StartMap : MonoBehaviour
             if (_packageLittleTown.IsActive)
             {
                 Debug.Log("startMap");
-                possibilityCounter.IncreaseCount(_packageLittleTown.Amount);
+                possibilityCounter.OnIncreaseCount(_packageLittleTown.Amount);
             }
             
               

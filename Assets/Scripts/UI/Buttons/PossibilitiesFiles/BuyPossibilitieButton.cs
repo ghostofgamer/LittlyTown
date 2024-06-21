@@ -13,7 +13,7 @@ namespace UI.Buttons.PossibilitiesFiles
         [SerializeField] private GoldWallet _goldWallet;
         [SerializeField] private CloseButton _closeButton;
         [SerializeField] private OpenButton _openButton;
-        [SerializeField] private PossibilitieMovement _possibilitieMovement;
+        [SerializeField] private MovementIcon _movementIcon;
         [SerializeField] private TMP_Text _possibilitiePriceText;
 
         private int _currentPrice;
@@ -40,7 +40,7 @@ namespace UI.Buttons.PossibilitiesFiles
             _goldWallet.DecreaseValue(_possibilitiesShopScreen.CurrentPrice);
             // _closeButton.Close();
             _openButton.Open();
-            _possibilitieMovement.StartMove(_possibilitiesShopScreen.CurrentAmount);
+            _movementIcon.StartMove(_possibilitiesShopScreen.CurrentAmount);
 
             if (_possibilitie.Price != _possibilitiesShopScreen.CurrentPrice)
             {

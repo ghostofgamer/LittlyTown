@@ -49,7 +49,7 @@ public class ContinueButton : AbstractButton
             foreach (var possibilitiesCounter in _possibilitiesCounters)
             {
                 Debug.Log("Contiue");
-                possibilitiesCounter.IncreaseCount(_packageLittleTown.Amount);
+                possibilitiesCounter.OnIncreaseCount(_packageLittleTown.Amount);
             }
                 
 

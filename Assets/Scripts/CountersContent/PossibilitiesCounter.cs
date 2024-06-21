@@ -1,4 +1,3 @@
-using System;
 using PossibilitiesContent;
 using TMPro;
 using UnityEngine;
@@ -12,65 +11,58 @@ namespace CountersContent
         [SerializeField] private TMP_Text _possibilitiesCountText;
         [SerializeField] private int _startCount;
         [SerializeField] private Animator _animator;
-        [SerializeField] private PossibilitieMovement _possibilitieMovement;
-        
-        private int _possibilitiesCount;
+        [SerializeField] private MovementIcon _movementIcon;
 
-        public int PossibilitiesCount => _possibilitiesCount;
+        public int PossibilitiesCount { get; private set; }
 
         private void OnEnable()
         {
-            _possibilitieMovement.MovementCompleted += IncreaseCount;
+            _movementIcon.MovementCompleted += OnIncreaseCount;
         }
 
         private void OnDisable()
         {
-            _possibilitieMovement.MovementCompleted -= IncreaseCount;
+            _movementIcon.MovementCompleted -= OnIncreaseCount;
         }
 
         private void Start()
         {
-            // Debug.Log("SetStart Replace");
-            _possibilitiesCount = _startCount;
+            PossibilitiesCount = _startCount;
             Show();
         }
 
-        public void IncreaseCount(int value)
+        public void OnIncreaseCount(int value)
         {
-            Debug.Log("!!! " + value);
             if (value < 0)
                 return;
 
-            _possibilitiesCount += value;
+            PossibilitiesCount += value;
             Show();
             _animator.SetTrigger(Change);
         }
 
         public void DecreaseCount()
         {
-            // Debug.Log("!!!&&&");
-            _possibilitiesCount--;
+            PossibilitiesCount--;
             Show();
             _animator.SetTrigger(Change);
         }
 
-        private void Show()
-        {
-            // Debug.Log("SHOW " + _possibilitiesCount );
-            _possibilitiesCountText.text = _possibilitiesCount.ToString();
-        }
-
         public void SetValue(int count)
         {
-            _possibilitiesCount = count;
+            PossibilitiesCount = count;
             Show();
         }
 
         public void SetCount()
         {
-            // Debug.Log("SetCount Replace");
-            _possibilitiesCount = _startCount;
+            PossibilitiesCount = _startCount;
             Show();
+        }
+
+        private void Show()
+        {
+            _possibilitiesCountText.text = PossibilitiesCount.ToString();
         }
     }
 }
