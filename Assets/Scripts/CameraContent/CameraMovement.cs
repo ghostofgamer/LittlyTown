@@ -2,87 +2,76 @@ using System.Collections;
 using UI.Buttons;
 using UnityEngine;
 
-public class CameraMovement : MonoBehaviour
+namespace CameraContent
 {
-    [SerializeField] private Camera _camera;
-    [SerializeField] private OpenButton _openButton;
-
-    private float _standartPerspectiveFOV = 30f;
-    private float _perspectiveZoomUpValue = 70f;
-    private float _perspectiveZoomDownValue = 50;
-
-    private float _standartOrtographicSize = 6f;
-    private float _ortographicSizeZoomIn = 13f;
-    private float _ortographicSizeZoomOut = 10f;
-
-    private float _elapsedTime;
-    private float _duration = 1.5f;
-    private float _currentFOVValue;
-    private float _currentSizeValue;
-    private Coroutine _coroutine;
-
-    public void Init(int fovPerspective, int sizeOrtographic)
+    public class CameraMovement : MonoBehaviour
     {
-        // Debug.Log("Данные " + fovPerspective + " " + sizeOrtographic);
-        _standartPerspectiveFOV = fovPerspective;
-        _camera.fieldOfView = _standartPerspectiveFOV;
-        _standartOrtographicSize = sizeOrtographic;
-        _camera.orthographicSize = _standartOrtographicSize;
-    }
+        [SerializeField] private Camera _camera;
+        [SerializeField] private OpenButton _openButton;
 
-    public void ZoomIn()
-    {
-        if (_coroutine != null)
-            StopCoroutine(_coroutine);
+        private float _standardPerspectiveFOV = 30f;
+        private float _perspectiveZoomUpValue = 70f;
+        private float _perspectiveZoomDownValue = 50;
+        private float _standardOrthographicSize = 6f;
+        private float _orthographicSizeZoomIn = 13f;
+        private float _orthographicSizeZoomOut = 10f;
+        private float _elapsedTime;
+        private float _duration = 1.5f;
+        private float _currentFOVValue;
+        private float _currentSizeValue;
+        private Coroutine _coroutine;
 
-        if (!_camera.orthographic)
-            _coroutine = StartCoroutine(StartChangeZoom(_perspectiveZoomUpValue));
-        else
-            _coroutine = StartCoroutine(StartChangeZoom(_ortographicSizeZoomIn));
-    }
-
-    public void ZoomOut()
-    {
-        if (_coroutine != null)
-            StopCoroutine(_coroutine);
-
-        if (!_camera.orthographic)
-            _coroutine = StartCoroutine(StartChangeZoom(_perspectiveZoomDownValue));
-        else
-            _coroutine = StartCoroutine(StartChangeZoom(_ortographicSizeZoomOut));
-    }
-
-    public void ResetZoom()
-    {
-        if (_coroutine != null)
-            StopCoroutine(_coroutine);
-
-        if (!_camera.orthographic)
-            _coroutine = StartCoroutine(StartChangeZoom(_standartPerspectiveFOV));
-        else
-            _coroutine = StartCoroutine(StartChangeZoom(_standartOrtographicSize));
-    }
-
-
-    private IEnumerator StartChangeZoom(float targetValue)
-    {
-        _openButton.enabled = false;
-        _elapsedTime = 0;
-        _currentFOVValue = _camera.fieldOfView;
-        _currentSizeValue = _camera.orthographicSize;
-
-        while (_elapsedTime < _duration)
-        {
-            _elapsedTime += Time.deltaTime;
-
-            if (!_camera.orthographic)
-                _camera.fieldOfView = Mathf.Lerp(_currentFOVValue, targetValue, _elapsedTime / _duration);
-            else
-                _camera.orthographicSize = Mathf.Lerp(_currentSizeValue, targetValue, _elapsedTime / _duration);
-
-            yield return null;
+        public void Init(int fovPerspective, int sizeOrthographic)
+        { 
+            _standardPerspectiveFOV = fovPerspective;
+            _camera.fieldOfView = _standardPerspectiveFOV;
+            _standardOrthographicSize = sizeOrthographic;
+            _camera.orthographicSize = _standardOrthographicSize;
         }
 
-        _openButton.enabled = true;
+        public void ZoomIn()
+        {
+            StartCoroutine(_perspectiveZoomUpValue,_orthographicSizeZoomIn);
+        }
+
+        public void ZoomOut()
+        {
+            StartCoroutine(_perspectiveZoomDownValue,_orthographicSizeZoomOut);
+        }
+
+        public void ResetZoom()
+        {
+            StartCoroutine(_standardPerspectiveFOV,_standardOrthographicSize);
+        }
+
+        private void StartCoroutine(float perspectiveFovValue,float orthographicSizeValue)
+        {
+            if (_coroutine != null)
+                StopCoroutine(_coroutine);
+
+            _coroutine = StartCoroutine(!_camera.orthographic ? StartChangeZoom(perspectiveFovValue) : StartChangeZoom(orthographicSizeValue));
+        }
+        
+        private IEnumerator StartChangeZoom(float targetValue)
+        {
+            _openButton.enabled = false;
+            _elapsedTime = 0;
+            _currentFOVValue = _camera.fieldOfView;
+            _currentSizeValue = _camera.orthographicSize;
+
+            while (_elapsedTime < _duration)
+            {
+                _elapsedTime += Time.deltaTime;
+
+                if (!_camera.orthographic)
+                    _camera.fieldOfView = Mathf.Lerp(_currentFOVValue, targetValue, _elapsedTime / _duration);
+                else
+                    _camera.orthographicSize = Mathf.Lerp(_currentSizeValue, targetValue, _elapsedTime / _duration);
+
+                yield return null;
+            }
+
+            _openButton.enabled = true;
+        }
     }
 }

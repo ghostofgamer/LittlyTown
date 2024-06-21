@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using CameraContent;
 using Enums;
 using ItemPositionContent;
 using Newtonsoft.Json;

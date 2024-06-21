@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using CameraContent;
+using CollectionContent;
 using ItemContent;
 using UnityEngine;
 

@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using CameraContent;
+using CollectionContent;
 using Dragger;
 using Enums;
 using ItemContent;
@@ -10,20 +12,16 @@ using Newtonsoft.Json;
 
 public class CollectionScreen : AbstractScreen
 {
-    [SerializeField] private GameObject _backGround;
     [SerializeField] private TMP_Text _amountCollectionsItems;
     [SerializeField] private TMP_Text _lockDescription;
     [SerializeField] private GameObject[] _descriptions;
     [SerializeField] private ItemDragger _itemDragger;
     [SerializeField] private Canvas _canvas;
     [SerializeField] private CameraMovement _cameraMovement;
-    [SerializeField] private GameObject[] _environments;
     [SerializeField]private Merger _merger;
     [SerializeField] private EnvironmentMovement _environmentMovement;
-    // [SerializeField] private GameObject _itemContainer;
     [SerializeField] private CollectionMovement _collectionMovement;
     [SerializeField]private List<Item> _allCollectionItems = new List<Item>();
-    // private GameObject _content;
     [SerializeField]private GameObject _content;
     [SerializeField]private List<Transform> _itemsContent = new List<Transform>();
     
@@ -91,16 +89,16 @@ public class CollectionScreen : AbstractScreen
     public override void Close()
     {
         base.Close();
-        _backGround.SetActive(false);
+        // _backGround.SetActive(false);
         _content.SetActive(false);
         _canvas.renderMode = RenderMode.ScreenSpaceOverlay;
         _cameraMovement.ResetZoom();
         _environmentMovement.ReturnPosition();
         
-        foreach (var environment in _environments)
+        /*foreach (var environment in _environments)
         {
             environment.SetActive(false);
-        }
+        }*/
 
         // _itemContainer.SetActive(true);
     }

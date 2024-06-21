@@ -1081,9 +1081,7 @@
             <e p="CameraScrolling.cs" t="Include" />
           </e>
           <e p="CollectionContent" t="Include">
-            <e p="CollectionItem.cs" t="Include" />
             <e p="CollectionMovement.cs" t="Include" />
-            <e p="CollectionSizer.cs" t="Include" />
           </e>
           <e p="CountersContent" t="Include">
             <e p="GoldCounter.cs" t="Include" />
@@ -1275,7 +1273,7 @@
               <e p="ChangeTutorialContentButton.cs" t="Include" />
               <e p="ChooseMapButton.cs" t="Include" />
               <e p="CloseButton.cs" t="Include" />
-              <e p="CollectionScrollButton.cs" t="Include" />
+              <e p="CollectionMoveButton.cs" t="Include" />
               <e p="ContinueButton.cs" t="Include" />
               <e p="DayNightButton.cs" t="Include" />
               <e p="EndButton.cs" t="Include" />
