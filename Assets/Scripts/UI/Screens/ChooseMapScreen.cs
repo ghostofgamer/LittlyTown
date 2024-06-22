@@ -13,6 +13,7 @@ public class ChooseMapScreen : AbstractScreen
     private const string OpenMap = "OpenMap";
 
     [SerializeField] private ItemDragger _itemDragger;
+    [SerializeField] private ItemKeeper _itemKeeper;
     [SerializeField] private GameObject _startButton;
     [SerializeField] private GameObject _continueButton;
     [SerializeField] private GameObject _restartButton;
@@ -52,7 +53,7 @@ public class ChooseMapScreen : AbstractScreen
         // CheckActivation();
         // _inputItemDragger.enabled = false;
         base.Open();
-        _itemDragger.SwitchOff();
+        _itemKeeper.SwitchOff();
         _cameraMovement.ZoomOut();
         _chooseMap.enabled = true;
         _chooseMap.StartWork();

@@ -8,6 +8,7 @@ public class Storage : MonoBehaviour
 {
     [SerializeField] private Image _image;
     [SerializeField] private ItemDragger _itemDragger;
+    [SerializeField] private ItemKeeper _itemKeeper;
     [SerializeField] private Spawner _spawner;
 
     private Item _currentItem;
@@ -21,12 +22,12 @@ public class Storage : MonoBehaviour
     {
         if (_currentItem == null)
         {
-            if (_itemDragger.TemporaryItem == null)
+            if (_itemKeeper.TemporaryItem == null)
             {
                 // Debug.Log("Если null ");
-                _currentItem = _itemDragger.SelectedObject;
+                _currentItem = _itemKeeper.SelectedObject;
                 _currentItem.gameObject.SetActive(false);
-                _itemDragger.ClearItem();
+                _itemKeeper.ClearItem();
                 _spawner.OnCreateItem();
                 _image.gameObject.SetActive(true);
                 _image.sprite = _currentItem.ItemDropDataSo.Icon;
@@ -34,12 +35,12 @@ public class Storage : MonoBehaviour
             else
             {
                 // Debug.Log("Если неее null ");
-                _currentItem = _itemDragger.SelectedObject;
+                _currentItem = _itemKeeper.SelectedObject;
                 _currentItem.gameObject.SetActive(false);
-                _itemDragger.ClearItem();
-                _itemDragger.SetItem(_itemDragger.TemporaryItem, _currentItem.ItemPosition);
-                _itemDragger.TemporaryItem.gameObject.SetActive(true);
-                _itemDragger.ClearTemporaryItem();
+                _itemKeeper.ClearItem();
+                _itemKeeper.SetItem(_itemKeeper.TemporaryItem, _currentItem.ItemPosition);
+                _itemKeeper.TemporaryItem.gameObject.SetActive(true);
+                _itemKeeper.ClearTemporaryItem();
                 _image.gameObject.SetActive(true);
                 _image.sprite = _currentItem.ItemDropDataSo.Icon;
             }
@@ -49,10 +50,10 @@ public class Storage : MonoBehaviour
         }
         else
         {
-            _temporaryItem = _itemDragger.SelectedObject;
+            _temporaryItem = _itemKeeper.SelectedObject;
             // Debug.Log("Есть " + _temporaryItem.name);
             _temporaryItem.gameObject.SetActive(false);
-            _itemDragger.SetItem(_currentItem, _temporaryItem.ItemPosition);
+            _itemKeeper.SetItem(_currentItem, _temporaryItem.ItemPosition);
             _currentItem.gameObject.SetActive(true);
             _image.sprite = _temporaryItem.ItemDropDataSo.Icon;
             _currentItem = _temporaryItem;

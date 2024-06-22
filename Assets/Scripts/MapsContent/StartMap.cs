@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using CountersContent;
 using Dragger;
+using EnvironmentContent;
 using ItemContent;
 using ItemPositionContent;
 using MapsContent;
@@ -20,6 +21,7 @@ public class StartMap : MonoBehaviour
 
     [SerializeField] private Initializator _initializator;
     [SerializeField] private ItemDragger _itemDragger;
+    [SerializeField] private ItemKeeper _itemKeeper;
     [SerializeField] private Storage[] _storages;
     [SerializeField] private MovesKeeper _movesKeeper;
     [SerializeField] private GoldWallet _goldWallet;
@@ -66,7 +68,7 @@ public class StartMap : MonoBehaviour
         // _mapActivator.ChangeActivityMaps();
         DeactivateItems();
         _visualItemsDeactivator.SetPositions(_initializator.ItemPositions);
-        _itemDragger.ClearAll();
+        _itemKeeper.ClearAll();
         foreach (var storage in _storages)
         {
             storage.ClearItem();
@@ -135,7 +137,7 @@ public class StartMap : MonoBehaviour
         _mapGenerator.TestGeneration(_initializator.Territories, _initializator.FinderPositions,
             _initializator.CurrentMap.StartItems, _initializator.ItemPositions,
             _initializator.CurrentMap.ItemsContainer);
-        _itemDragger.SwitchOn();
+        _itemKeeper.SwitchOn();
         _bonusesStart.ApplyBonuses();
         MapStarted?.Invoke();
     }
@@ -150,7 +152,7 @@ public class StartMap : MonoBehaviour
         // _mapActivator.ChangeActivityMaps();
         DeactivateItems();
         _visualItemsDeactivator.SetPositions(_initializator.ItemPositions);
-        _itemDragger.ClearAll();
+        _itemKeeper.ClearAll();
         foreach (var storage in _storages)
         {
             storage.ClearItem();
@@ -196,7 +198,7 @@ public class StartMap : MonoBehaviour
         _mapGenerator.TestVisualGeneration(_initializator.Territories, _initializator.FinderPositions,
             _initializator.CurrentMap.StartItems, _initializator.ItemPositions,
             _initializator.CurrentMap.ItemsContainer);
-        _itemDragger.SwitchOn();
+        _itemKeeper.SwitchOn();
         _bonusesStart.ApplyBonuses();
     }
     
@@ -211,7 +213,7 @@ public class StartMap : MonoBehaviour
         // _mapActivator.ChangeActivityMaps();
         DeactivateItems();
         _visualItemsDeactivator.SetPositions(_initializator.ItemPositions);
-        _itemDragger.ClearAll();
+        _itemKeeper.ClearAll();
         foreach (var storage in _storages)
         {
             storage.ClearItem();
@@ -266,7 +268,7 @@ public class StartMap : MonoBehaviour
         /*_mapGenerator.TestVisualGeneration(_initializator.Territories, _initializator.FinderPositions,
             _initializator.CurrentMap.StartItems, _initializator.ItemPositions,
             _initializator.CurrentMap.ItemsContainer);*/
-        _itemDragger.SwitchOn();
+        _itemKeeper.SwitchOn();
         _bonusesStart.ApplyBonuses();
     }
     

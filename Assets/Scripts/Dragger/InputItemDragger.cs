@@ -6,9 +6,9 @@ namespace Dragger
     public class InputItemDragger : MonoBehaviour
     {
         [SerializeField] private ItemThrower _itemThrower;
-        
+
         private ItemDragger _itemDragger;
-        
+
         private void Awake()
         {
             enabled = false;
@@ -18,20 +18,13 @@ namespace Dragger
         private void Update()
         {
             if (Input.GetMouseButtonDown(0))
-            {
                 _itemDragger.SelectItem();
-            }
-
+            
             if (Input.GetMouseButtonUp(0))
-            {
                 _itemThrower.ThrowItem();
-                // _itemDragger.ThrowItem();
-            }
-
+            
             if (_itemDragger.IsObjectSelected || _itemDragger.IsPositionSelected)
-            {
                 _itemDragger.DragItem();
-            }
         }
     }
 }

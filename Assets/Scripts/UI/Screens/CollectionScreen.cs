@@ -4,6 +4,7 @@ using CameraContent;
 using CollectionContent;
 using Dragger;
 using Enums;
+using EnvironmentContent;
 using ItemContent;
 using TMPro;
 using UI.Screens;

@@ -12,6 +12,7 @@ namespace UI.Buttons.BonusesContent
     {
         [SerializeField] private OpenButton _openItemStoreButton;
         [SerializeField] private ItemDragger _itemDragger;
+        [SerializeField] private ItemKeeper _itemKeeper;
         [SerializeField] private Image _icon;
         [SerializeField] private Image _imageBackGroundButton;
         [SerializeField] private Sprite _whiteIcon;
@@ -84,8 +85,8 @@ namespace UI.Buttons.BonusesContent
 
         private void SaveTemporaryItem()
         {
-            _temporaryItem = _itemDragger.SelectedObject;
-            _itemDragger.ClearItem();
+            _temporaryItem = _itemKeeper.SelectedObject;
+            _itemKeeper.ClearItem();
             _itemPosition = _temporaryItem.ItemPosition;
             _itemPosition.GetComponent<VisualItemPosition>().DeactivateVisual();
             _temporaryItem.gameObject.SetActive(false);
@@ -93,8 +94,8 @@ namespace UI.Buttons.BonusesContent
 
         private void ReturnItem()
         {
-            _itemDragger.SetItem(_temporaryItem, _itemPosition);
-            _itemDragger.SelectedObject.gameObject.SetActive(true);
+            _itemKeeper.SetItem(_temporaryItem, _itemPosition);
+            _itemKeeper.SelectedObject.gameObject.SetActive(true);
             _temporaryItem = null;
         }
     }

@@ -5,8 +5,11 @@ using UnityEngine;
 
 namespace Dragger
 {
+    [RequireComponent(typeof(ItemDragger))]
     public class ItemPositionLooker : MonoBehaviour
     {
+        [SerializeField] private ItemKeeper _itemKeeper;
+
         private ItemPosition _currentLookPosition = null;
         private ItemDragger _itemDragger;
 
@@ -34,7 +37,7 @@ namespace Dragger
                     if (_itemDragger.IsObjectSelected)
                         _currentLookPosition.GetComponent<VisualItemPosition>().ActivateVisual();
 
-                    PlaceLooking?.Invoke(_currentLookPosition, _itemDragger.SelectedObject);
+                    PlaceLooking?.Invoke(_currentLookPosition, _itemKeeper.SelectedObject);
                 }
             }
         }

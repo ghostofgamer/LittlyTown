@@ -20,6 +20,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] private Item _prefabItem;
     [SerializeField] private ItemPosition[] _positions;
     [SerializeField] private ItemDragger _itemDragger;
+    [SerializeField] private ItemKeeper _itemKeeper;
     [SerializeField] private PositionMatcher _positionMatcher;
     [SerializeField] private MoveCounter _moveCounter;
     [SerializeField] private DropGenerator _dropGenerator;
@@ -61,7 +62,7 @@ private List<ItemPosition > _itemPos = new List<ItemPosition>();
 
     public void OnCreateItem()
     {
-        if (!_moveCounter.IsThereMoves || _itemDragger.SelectedObject != null || _itemDragger.TemporaryItem != null)
+        if (!_moveCounter.IsThereMoves || _itemKeeper.SelectedObject != null || _itemKeeper.TemporaryItem != null)
             return;
 
         if (_coroutine != null)
@@ -139,7 +140,7 @@ private List<ItemPosition > _itemPos = new List<ItemPosition>();
         // Debug.Log("Spawner");
         Item item = Instantiate(_dropGenerator.GetItem(), _position.transform.position,
             Quaternion.identity,_initializator.CurrentMap.ItemsContainer);
-        _itemDragger.SetItem(item, _position);
+        _itemKeeper.SetItem(item, _position);
         ItemCreated?.Invoke();
         LooksNeighbors?.Invoke(_position, item);
     }

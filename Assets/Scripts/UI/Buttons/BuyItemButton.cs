@@ -10,6 +10,7 @@ namespace UI.Buttons
     {
         [SerializeField] private Item _item;
         [SerializeField] private ItemDragger _itemDragger;
+        [SerializeField] private ItemKeeper _itemKeeper;
         [SerializeField] private Transform _container;
         [SerializeField] private GoldWallet _goldWallet;
         /*[SerializeField] private int _price;
@@ -35,7 +36,8 @@ namespace UI.Buttons
             Item item = Instantiate(_item, _initializator.CurrentMap.ItemsContainer);
             // _closeButton.Close();
             _openButton.Open();
-            _itemDragger.SetTemporaryItem(item);
+            _itemKeeper.SetTemporaryItem(item);
+            // _itemDragger.SetTemporaryItem(item);
             _item.IncreasePrice();
             Show();
         }

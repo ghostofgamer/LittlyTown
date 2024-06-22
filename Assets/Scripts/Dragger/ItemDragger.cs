@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using ItemContent;
 using ItemPositionContent;
 using UnityEngine;
@@ -8,9 +6,7 @@ namespace Dragger
 {
     public class ItemDragger : MonoBehaviour
     {
-        [SerializeField] private Spawner _spawner;
-        [SerializeField] private LookMerger _lookMerger;
-        [SerializeField] private ItemThrower _itemThrower;
+        [SerializeField] private ItemKeeper _itemKeeper;
 
         private ItemPositionLooker _itemPositionLooker;
         private Plane _objectPlane;
@@ -20,30 +16,14 @@ namespace Dragger
         private float _distance;
         private bool _isTemporary;
         private Vector3 _offsetObject;
-
-        public event Action SelectNewItem;
-
-        public ItemPosition StartPosition { get; private set; }
+        private Vector3 _position;
+        private Vector3 _mouseWorldPosition;
 
         public bool IsObjectSelected { get; private set; } = false;
 
         public bool IsPositionSelected { get; private set; } = false;
 
-        public Item SelectedObject { get; private set; }
-
         public int LayerMask { get; private set; }
-
-        public Item TemporaryItem { get; private set; }
-        
-        private void OnEnable()
-        {
-            _lookMerger.NotMerged += GetItemForLastPosition;
-        }
-
-        private void OnDisable()
-        {
-            _lookMerger.NotMerged -= GetItemForLastPosition;
-        }
 
         private void Start()
         {
@@ -52,84 +32,10 @@ namespace Dragger
             _itemPositionLooker = GetComponent<ItemPositionLooker>();
         }
 
-        public void SetTemporaryItem(Item item)
-        {
-            TemporaryItem = SelectedObject;
-            TemporaryItem.gameObject.SetActive(false);
-            SetItem(item, StartPosition);
-            SelectedObject.gameObject.SetActive(true);
-        }
-
-        public void ClearTemporaryItem()
-        {
-            TemporaryItem = null;
-        }
-
-        public void SetTemporaryObject(Item item)
-        {
-            TemporaryItem = item;
-
-            if (TemporaryItem != null)
-                TemporaryItem.gameObject.SetActive(false);
-        }
-
-        public void SetItem(Item item, ItemPosition itemPosition)
-        {
-            SelectedObject = item;
-            StartPosition = itemPosition;
-            SelectedObject.Init(StartPosition);
-            StartPosition.GetComponent<VisualItemPosition>().ActivateVisual();
-            SelectNewItem?.Invoke();
-        }
-
-        public void ClearAll()
-        {
-            if (SelectedObject != null)
-            {
-                SelectedObject.gameObject.SetActive(false);
-                SelectedObject = null;
-            }
-
-            if (TemporaryItem != null)
-            {
-                TemporaryItem.gameObject.SetActive(false);
-                TemporaryItem = null;
-            }
-
-            if (StartPosition != null)
-            {
-                StartPosition.GetComponent<VisualItemPosition>().DeactivateVisual();
-                StartPosition = null;
-            }
-        }
-
-        public void SwitchOff()
-        {
-            if (SelectedObject != null)
-                SelectedObject.gameObject.SetActive(false);
-
-            if (StartPosition != null)
-                StartPosition.GetComponent<VisualItemPosition>().DeactivateVisual();
-        }
-
-        public void SwitchOn()
-        {
-            if (SelectedObject != null)
-                SelectedObject.gameObject.SetActive(true);
-
-            if (StartPosition != null)
-                StartPosition.GetComponent<VisualItemPosition>().ActivateVisual();
-        }
-
-        public void ClearItem()
-        {
-            SelectedObject = null;
-        }
-
         public void DragItem()
         {
             _itemPositionLooker.LookPosition();
-            SelectedObject.ClearPosition();
+            _itemKeeper.SelectedObject.ClearPosition();
 
             if (IsObjectSelected)
             {
@@ -137,10 +43,10 @@ namespace Dragger
 
                 if (_objectPlane.Raycast(mouseRay, out _distance))
                 {
-                    Vector3 mouseWorldPosition = mouseRay.GetPoint(_distance);
-                    mouseWorldPosition.y = SelectedObject.transform.position.y;
-                    SelectedObject.transform.position = Vector3.Lerp(SelectedObject.transform.position,
-                        mouseWorldPosition + _offsetObject, 16 * Time.deltaTime);
+                    _mouseWorldPosition = mouseRay.GetPoint(_distance);
+                    _mouseWorldPosition.y = _itemKeeper.SelectedObject.transform.position.y;
+                    _itemKeeper.SelectedObject.transform.position = Vector3.Lerp(_itemKeeper.SelectedObject.transform.position,
+                        _mouseWorldPosition + _offsetObject, 16 * Time.deltaTime);
                 }
             }
 
@@ -154,25 +60,18 @@ namespace Dragger
                     if (hit.transform.gameObject.TryGetComponent(out ItemPosition itemPosition))
                     {
                         if (!itemPosition.IsBusy && !itemPosition.IsWater)
-                            ChangeStartPosition(itemPosition);
+                            _itemKeeper.ChangeStartPosition(itemPosition);
 
-                        if (SelectedObject.IsLightHouse && !itemPosition.IsBusy)
-                            ChangeStartPosition(itemPosition);
+                        if (_itemKeeper.SelectedObject.IsLightHouse && !itemPosition.IsBusy)
+                            _itemKeeper.ChangeStartPosition(itemPosition);
                     }
                 }
             }
         }
 
-        private void ChangeStartPosition(ItemPosition itemPosition)
-        {
-            itemPosition.GetComponent<VisualItemPosition>().ActivateVisual();
-            StartPosition = itemPosition;
-            SelectedObject.transform.position = itemPosition.transform.position;
-        }
-
         public void SelectItem()
         {
-            if (SelectedObject == null)
+            if (_itemKeeper.SelectedObject == null)
                 return;
 
             RaycastHit hit;
@@ -182,18 +81,18 @@ namespace Dragger
             {
                 if (hit.transform.gameObject.TryGetComponent(out Item item) && !item.IsActive)
                 {
-                    Vector3 position = SelectedObject.transform.position;
-                    position = new Vector3(position.x, position.y + _offset, position.z);
-                    SelectedObject.transform.position = position;
-                    _objectPlane = new Plane(Vector3.up, position);
+                    _position = _itemKeeper.SelectedObject.transform.position;
+                    _position = new Vector3(_position.x, _position.y + _offset, _position.z);
+                    _itemKeeper.SelectedObject.transform.position = _position;
+                    _objectPlane = new Plane(Vector3.up, _position);
                     float distanceToPlane;
                     _objectPlane.Raycast(ray, out distanceToPlane);
                     _distance = distanceToPlane;
-                    Vector3 mouseWorldPosition = ray.GetPoint(_distance);
-                    _offsetObject = SelectedObject.transform.position - mouseWorldPosition;
+                    _mouseWorldPosition = ray.GetPoint(_distance);
+                    _offsetObject = _itemKeeper.SelectedObject.transform.position - _mouseWorldPosition;
                     _offsetObject.y = 0;
 
-                    if (SelectedObject.transform.position == position)
+                    if (_itemKeeper.SelectedObject.transform.position == _position)
                         IsObjectSelected = true;
                 }
 
@@ -202,7 +101,7 @@ namespace Dragger
                     if (hit.transform.gameObject.TryGetComponent(out ItemPosition itemPosition) &&
                         !itemPosition.IsBusy)
                     {
-                        _objectPlane = new Plane(Vector3.up, SelectedObject.transform.position);
+                        _objectPlane = new Plane(Vector3.up, _itemKeeper.SelectedObject.transform.position);
                         IsPositionSelected = true;
                     }
                 }
@@ -213,37 +112,6 @@ namespace Dragger
         {
             IsObjectSelected = false;
             IsPositionSelected = false;
-        }
-
-        public void GetItemForLastPosition()
-        {
-            StartCoroutine(Continue(_itemThrower.LastTrowPosition));
-        }
-
-        private IEnumerator Continue(ItemPosition itemPosition)
-        {
-            yield return new WaitForSeconds(0.1f);
-
-            if (TemporaryItem != null)
-            {
-                if (itemPosition == StartPosition)
-                {
-                    ItemPosition newPosition = _spawner.GetPosition();
-
-                    if (newPosition != null)
-                    {
-                        SetItem(TemporaryItem, newPosition);
-                        TemporaryItem = null;
-                        SelectedObject.gameObject.SetActive(true);
-                    }
-                }
-                else
-                {
-                    SetItem(TemporaryItem, StartPosition);
-                    TemporaryItem = null;
-                    SelectedObject.gameObject.SetActive(true);
-                }
-            }
         }
     }
 }

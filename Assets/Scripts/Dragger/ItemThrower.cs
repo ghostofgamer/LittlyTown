@@ -9,6 +9,7 @@ namespace Dragger
     public class ItemThrower : MonoBehaviour
     {
         [SerializeField] private ItemDragger _itemDragger;
+        [SerializeField] private ItemKeeper _itemKeeper;
         [SerializeField] private AudioSource _audioSource;
 
         public ItemPosition LastTrowPosition { get; private set; }
@@ -21,7 +22,7 @@ namespace Dragger
 
         public void ThrowItem()
         {
-            if (_itemDragger.SelectedObject == null)
+            if (_itemKeeper.SelectedObject == null)
                 return;
 
             RaycastHit hit;
@@ -31,11 +32,11 @@ namespace Dragger
             {
                 if (hit.transform.gameObject.TryGetComponent(out ItemPosition itemPosition))
                 {
-                    if (!itemPosition.IsBusy && !itemPosition.IsWater && !_itemDragger.SelectedObject.IsLightHouse)
+                    if (!itemPosition.IsBusy && !itemPosition.IsWater && !_itemKeeper.SelectedObject.IsLightHouse)
                     {
                         Throw(itemPosition, hit);
                     }
-                    else if (!itemPosition.IsBusy && itemPosition.IsWater && _itemDragger.SelectedObject.IsLightHouse)
+                    else if (!itemPosition.IsBusy && itemPosition.IsWater && _itemKeeper.SelectedObject.IsLightHouse)
                     {
                         Throw(itemPosition, hit);
                     }
@@ -59,31 +60,30 @@ namespace Dragger
         private void Throw(ItemPosition itemPosition, RaycastHit hit)
         {
             StepCompleted?.Invoke(itemPosition);
-            _itemDragger.SelectedObject.transform.position = hit.transform.position;
-            _itemDragger.SelectedObject.Init(itemPosition);
-            _itemDragger.SelectedObject.Activation();
+            _itemKeeper.SelectedObject.transform.position = hit.transform.position;
+            _itemKeeper.SelectedObject.Init(itemPosition);
+            _itemKeeper.SelectedObject.Activation();
             _audioSource.PlayOneShot(_audioSource.clip);
-            _itemDragger.SelectedObject.GetComponent<ItemAnimation>().PositioningAnimation();
-            BuildItem?.Invoke(_itemDragger.SelectedObject);
-            itemPosition.DeliverObject(_itemDragger.SelectedObject);
+            _itemKeeper.SelectedObject.GetComponent<ItemAnimation>().PositioningAnimation();
+            BuildItem?.Invoke(_itemKeeper.SelectedObject);
+            itemPosition.DeliverObject(_itemKeeper.SelectedObject);
             PlaceChanged?.Invoke();
 
-            if (_itemDragger.SelectedObject.ItemName == Items.LightHouse ||
-                _itemDragger.SelectedObject.ItemName == Items.Crane)
-                _itemDragger.GetItemForLastPosition();
-            // StartCoroutine(Continue(itemPosition));
+            if (_itemKeeper.SelectedObject.ItemName == Items.LightHouse ||
+                _itemKeeper.SelectedObject.ItemName == Items.Crane)
+                _itemKeeper.InstallItemForLastPosition();
 
-            _itemDragger.ClearItem();
+            _itemKeeper.ClearItem();
             LastTrowPosition = itemPosition;
             _itemDragger.DisableSelected();
         }
 
         private void ReturnPosition()
         {
-            _itemDragger.SelectedObject.transform.position = _itemDragger.StartPosition.transform.position;
-            _itemDragger.SelectedObject.Init(_itemDragger.StartPosition);
+            _itemKeeper.SelectedObject.transform.position = _itemKeeper.StartPosition.transform.position;
+            _itemKeeper.SelectedObject.Init(_itemKeeper.StartPosition);
             _itemDragger.DisableSelected();
-            _itemDragger.StartPosition.GetComponent<VisualItemPosition>().ActivateVisual();
+            _itemKeeper.StartPosition.GetComponent<VisualItemPosition>().ActivateVisual();
         }
     }
 }

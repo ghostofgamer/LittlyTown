@@ -19,6 +19,7 @@ public class ItemsStorage : MonoBehaviour
     private const string ItemStorageSave = "ItemStorageSave";
 
     [SerializeField] private ItemDragger _itemDragger;
+    [SerializeField] private ItemKeeper _itemKeeper;
     [SerializeField] private ItemPosition[] _itemPositions;
     [SerializeField] private Item[] _items;
     [SerializeField] private Transform _container;
@@ -84,7 +85,7 @@ public class ItemsStorage : MonoBehaviour
 
     private void OnEnable()
     {
-        _itemDragger.SelectNewItem += SaveChanges;
+        _itemKeeper.SelectNewItem += SaveChanges;
         // _itemDragger.StepCompleted += SaveSteps;
         /*_itemDragger.PlaceChanged += SaveChanges;
         // _itemDragger.BuildItem += SaveChanges;
@@ -97,7 +98,7 @@ public class ItemsStorage : MonoBehaviour
 
     private void OnDisable()
     {
-        _itemDragger.SelectNewItem -= SaveChanges;
+        _itemKeeper.SelectNewItem -= SaveChanges;
         // _itemDragger.StepCompleted -= SaveSteps;
         /*_itemDragger.PlaceChanged -= SaveChanges;
         // _itemDragger.BuildItem -= SaveChanges;
@@ -168,13 +169,13 @@ public class ItemsStorage : MonoBehaviour
         List<ItemData> itemDatas = new List<ItemData>();
         _saveData = saveData;
 
-        if (_itemDragger.SelectedObject != null)
+        if (_itemKeeper.SelectedObject != null)
         {
             /*_selectObject = _itemDragger.SelectedObject;
             saveData.SelectItemDragger = _selectObject;*/
-            saveData.SelectItemData = new SelectItemData(_itemDragger.SelectedObject.ItemName,
-                _itemDragger.SelectedObject.ItemPosition);
-            SelectSaveItem = _itemDragger.SelectedObject;
+            saveData.SelectItemData = new SelectItemData(_itemKeeper.SelectedObject.ItemName,
+                _itemKeeper.SelectedObject.ItemPosition);
+            SelectSaveItem = _itemKeeper.SelectedObject;
             // Debug.Log("сохраняем " + saveData.SelectItemData.ItemName + "   " + saveData.SelectItemData.ItemPosition);
         }
 
@@ -195,11 +196,11 @@ public class ItemsStorage : MonoBehaviour
             }
         }
 
-        if (_itemDragger.TemporaryItem != null)
+        if (_itemKeeper.TemporaryItem != null)
         {
             // Debug.Log("Временные айтэм есть " + _itemDragger.TemporaryItem);
             saveData.TemporaryItem =
-                new ItemData(_itemDragger.TemporaryItem.ItemName, null, _itemDragger.TemporaryItem.Price);
+                new ItemData(_itemKeeper.TemporaryItem.ItemName, null, _itemKeeper.TemporaryItem.Price);
         }
         else
         {
@@ -315,11 +316,11 @@ public class ItemsStorage : MonoBehaviour
         {
             // Debug.Log("TemporaryItemNotNull " + saveData.TemporaryItem.ItemName);
             Item item = Instantiate(GetItem(saveData.TemporaryItem.ItemName), _initializator.CurrentMap.ItemsContainer);
-            _itemDragger.SetTemporaryObject(item);
+            _itemKeeper.SetTemporaryObject(item);
         }
         else
         {
-            _itemDragger.SetTemporaryObject(null);
+            _itemKeeper.SetTemporaryObject(null);
         }
 
         foreach (var item in saveData.ItemDatasPrices)
@@ -388,13 +389,13 @@ public class ItemsStorage : MonoBehaviour
         SaveData saveData = new SaveData();
         // _saveData = saveData;
 
-        if (_itemDragger.SelectedObject != null)
+        if (_itemKeeper.SelectedObject != null)
         {
             /*_selectObject = _itemDragger.SelectedObject;
             saveData.SelectItemDragger = _selectObject;*/
-            saveData.SelectItemData = new SelectItemData(_itemDragger.SelectedObject.ItemName,
-                _itemDragger.SelectedObject.ItemPosition);
-            SelectSaveItem = _itemDragger.SelectedObject;
+            saveData.SelectItemData = new SelectItemData(_itemKeeper.SelectedObject.ItemName,
+                _itemKeeper.SelectedObject.ItemPosition);
+            SelectSaveItem = _itemKeeper.SelectedObject;
             // Debug.Log("сохраняем " + saveData.SelectItemData.ItemName + "   " + saveData.SelectItemData.ItemPosition);
         }
 
@@ -421,10 +422,10 @@ public class ItemsStorage : MonoBehaviour
             }
         }
 
-        if (_itemDragger.TemporaryItem != null)
+        if (_itemKeeper.TemporaryItem != null)
         {
             saveData.TemporaryItem =
-                new ItemData(_itemDragger.TemporaryItem.ItemName, null, _itemDragger.TemporaryItem.Price);
+                new ItemData(_itemKeeper.TemporaryItem.ItemName, null, _itemKeeper.TemporaryItem.Price);
             ;
         }
 
@@ -589,7 +590,7 @@ public class ItemsStorage : MonoBehaviour
         if (saveData.TemporaryItem != null)
         {
             Item item = Instantiate(GetItem(saveData.TemporaryItem.ItemName), _container);
-            _itemDragger.SetTemporaryObject(item);
+            _itemKeeper.SetTemporaryObject(item);
         }
 
         _replaceCounter.SetValue(saveData.ReplaceCount);

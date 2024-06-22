@@ -1,5 +1,6 @@
 using CountersContent;
 using Dragger;
+using EnvironmentContent;
 using ItemPositionContent;
 using SaveAndLoad;
 using UI.Buttons;
@@ -11,6 +12,7 @@ public class ContinueButton : AbstractButton
     private const string CurrentRecordScore = "CurrentRecordScore";
     
     [SerializeField] private ItemDragger _itemDragger;
+    [SerializeField] private ItemKeeper _itemKeeper;
     [SerializeField] private Save _save;
     [SerializeField] private ItemsStorage _itemsStorage;
     [SerializeField] private PossibilitiesCounter[] _possibilitiesCounters;
@@ -33,9 +35,9 @@ public class ContinueButton : AbstractButton
         _initializator.FillLists();
         _itemsStorage.LoadDataInfo();
         // _mapActivator.ChangeActivityMaps();
-        _itemDragger.SetItem(_itemsStorage.SelectSaveItem, _itemsStorage.SelectSaveItem.ItemPosition);
+        _itemKeeper.SetItem(_itemsStorage.SelectSaveItem, _itemsStorage.SelectSaveItem.ItemPosition);
         // _itemDragger.SelectedObject.gameObject.SetActive(true);
-        _itemDragger.SwitchOn();
+        _itemKeeper.SwitchOn();
         _visualItemsDeactivator.SetPositions(_initializator.ItemPositions);
         _moveKeeper.LoadHistoryData();
         _scoreCounter.SetCurrentScore(_load.Get(CurrentRecordScore + _initializator.Index, _startValue));

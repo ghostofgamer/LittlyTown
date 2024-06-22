@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using CameraContent;
 using Enums;
+using EnvironmentContent;
 using ItemPositionContent;
 using Newtonsoft.Json;
 using UI.Screens;

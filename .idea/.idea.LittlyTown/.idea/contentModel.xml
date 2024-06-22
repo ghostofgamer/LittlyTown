@@ -1099,9 +1099,7 @@
           <e p="Dragger" t="Include">
             <e p="InputItemDragger.cs" t="Include" />
             <e p="ItemDragger.cs" t="Include" />
-            <e p="ItemKeeper.cs" t="Include" />
             <e p="ItemPositionLooker.cs" t="Include" />
-            <e p="ItemSelector.cs" t="Include" />
             <e p="ItemThrower.cs" t="Include" />
           </e>
           <e p="EndGameContent" t="Include">
@@ -1158,6 +1156,7 @@
             <e p="ItemDropDataSO.cs" t="Include" />
           </e>
           <e p="Keeper" t="Include">
+            <e p="ItemKeeper.cs" t="Include" />
             <e p="MovesKeeper.cs" t="Include" />
             <e p="PriceKeeper.cs" t="Include" />
           </e>
