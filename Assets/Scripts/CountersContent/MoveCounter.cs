@@ -19,7 +19,8 @@ namespace CountersContent
         [SerializeField] private GameObject _notEndless;
         [SerializeField] private Load _load;
         [SerializeField] private Save _save;
-
+        [SerializeField] private ItemThrower _itemThrower;
+        
         private float _maxValue = 300;
         private float _minValue = 0;
         private int _targetStepProfit = 5;
@@ -43,13 +44,13 @@ namespace CountersContent
 
         private void OnEnable()
         {
-            _itemDragger.PlaceChanged += OnCountChange;
+            _itemThrower.PlaceChanged += OnCountChange;
             _endlessMoveButton.EndlessPurchased += OnSelectEndlessMoves;
         }
 
         private void OnDisable()
         {
-            _itemDragger.PlaceChanged -= OnCountChange;
+            _itemThrower.PlaceChanged -= OnCountChange;
             _endlessMoveButton.EndlessPurchased -= OnSelectEndlessMoves;
         }
 

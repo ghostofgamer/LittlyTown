@@ -35,7 +35,8 @@ public class MovesKeeper : MonoBehaviour
     [SerializeField] private CompleteScoreScreen _completeScoreScreen;
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AudioClip _audioClip;
-
+    [SerializeField] private ItemThrower _itemThrower;
+    
     public List<SaveData> _savesHistory = new List<SaveData>();
     private int _maxStepSaved = 3;
     private int _currentStep = -1;
@@ -53,7 +54,8 @@ public class MovesKeeper : MonoBehaviour
     
     private void OnEnable()
     {
-        _itemDragger.StepCompleted += SaveHistory;
+        // _itemDragger.StepCompleted += SaveHistory;
+        _itemThrower.StepCompleted += SaveHistory;
         _completeScoreScreen.ScoreCompleted += ResetSteps;
         // _replacementPosition.PositionsChanged += SaveHistory;
         _removalItems.Removing += SaveHistory;
@@ -69,7 +71,8 @@ public class MovesKeeper : MonoBehaviour
 
     private void OnDisable()
     {
-        _itemDragger.StepCompleted -= SaveHistory;
+        // _itemDragger.StepCompleted -= SaveHistory;
+        _itemThrower.StepCompleted -= SaveHistory;
         _completeScoreScreen.ScoreCompleted -= ResetSteps;
         // _replacementPosition.PositionsChanged -= SaveHistory;
         _removalItems.Removing -= SaveHistory;

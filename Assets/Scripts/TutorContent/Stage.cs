@@ -13,7 +13,10 @@ namespace TutorContent
         [SerializeField] private CanvasGroup _canvasGroup;
         [SerializeField] private ItemDragger _itemDragger;
         [SerializeField] private InputItemDragger _inputItemDragger;
-
+        [SerializeField] private ItemThrower _itemThrower;
+        
+        protected ItemThrower ItemThrower => _itemThrower;
+        
         protected InputItemDragger InputItemDragger => _inputItemDragger;
 
         protected ItemDragger ItemDragger => _itemDragger;

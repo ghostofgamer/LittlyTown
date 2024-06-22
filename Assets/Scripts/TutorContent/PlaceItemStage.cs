@@ -10,13 +10,15 @@ namespace TutorContent
         
         private void OnEnable()
         {
-            ItemDragger.PlaceChanged += ActivateMergeStage;
+            // ItemDragger.PlaceChanged += ActivateMergeStage;
+            ItemThrower.PlaceChanged += ActivateMergeStage;
             // _merger.Mergered += ActivateMergeStage;
         }
 
         private void OnDisable()
         {
-            ItemDragger.PlaceChanged -= ActivateMergeStage;
+            // ItemDragger.PlaceChanged -= ActivateMergeStage;
+            ItemThrower.PlaceChanged -= ActivateMergeStage;
             // _merger.Mergered -= ActivateMergeStage;
         }
 

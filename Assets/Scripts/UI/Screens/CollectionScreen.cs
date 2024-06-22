@@ -9,6 +9,7 @@ using TMPro;
 using UI.Screens;
 using UnityEngine;
 using Newtonsoft.Json;
+using SaveAndLoad;
 
 public class CollectionScreen : AbstractScreen
 {
@@ -24,6 +25,10 @@ public class CollectionScreen : AbstractScreen
     [SerializeField]private List<Item> _allCollectionItems = new List<Item>();
     [SerializeField]private GameObject _content;
     [SerializeField]private List<Transform> _itemsContent = new List<Transform>();
+    [SerializeField] private Camera _camera;
+    [SerializeField] private Load _load;
+    [SerializeField] private SettingsModes _settingsModes;
+    [SerializeField] private ItemThrower _itemThrower;
     
     private int _currentIndex;
     private List<Items> _collectedItems = new List<Items>();
@@ -33,14 +38,16 @@ public class CollectionScreen : AbstractScreen
     private void OnEnable()
     {
         _collectionMovement.PositionScrolled += ActivationDescription;
-        _itemDragger.BuildItem += AddItemCollection;
+        // _itemDragger.BuildItem += AddItemCollection;
+        _itemThrower.BuildItem += AddItemCollection;
         _merger.ItemMergered += AddItemCollection;
     }
 
     private void OnDisable()
     {
         _collectionMovement.PositionScrolled -= ActivationDescription;
-        _itemDragger.BuildItem -= AddItemCollection;
+        // _itemDragger.BuildItem -= AddItemCollection;
+        _itemThrower.BuildItem -= AddItemCollection;
         _merger.ItemMergered -= AddItemCollection;
     }
 
@@ -68,6 +75,7 @@ public class CollectionScreen : AbstractScreen
         _content.SetActive(true);
         Show();
         // _canvas.renderMode = RenderMode.ScreenSpaceCamera;
+        _camera.orthographic = true;
         ActivationDescription(_currentIndex);
         _environmentMovement.GoAway();
 
@@ -89,6 +97,17 @@ public class CollectionScreen : AbstractScreen
     public override void Close()
     {
         base.Close();
+       int _currentValue = _load.Get(_settingsModes.ToString(), 0);
+       
+       if (_currentValue == 0)
+       {
+           _camera.orthographicSize = 6;
+           _camera.orthographic = false;
+       }
+       else
+       {
+           _camera.orthographic = true;
+       }
         // _backGround.SetActive(false);
         _content.SetActive(false);
         _canvas.renderMode = RenderMode.ScreenSpaceOverlay;

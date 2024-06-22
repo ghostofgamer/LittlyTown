@@ -18,7 +18,8 @@ namespace CountersContent
         [SerializeField] private LightHouseKeeper _lightHouseKeeper;
         [SerializeField] private RemovalItems _removalItems;
         [SerializeField] private Initializator _initializator;
-
+        [SerializeField] private ItemThrower _itemThrower;
+        
         private int _profit;
         private int _stepCount;
         private int _currentStep;
@@ -31,7 +32,8 @@ namespace CountersContent
         private void OnEnable()
         {
             _moveCounter.StepProfitCompleted += AddGold;
-            _itemDragger.PlaceChanged += CheckIncome;
+            // _itemDragger.PlaceChanged += CheckIncome;
+            _itemThrower.PlaceChanged += CheckIncome;
             _removalItems.Removed += CheckIncome;
             _merger.Mergered += CheckIncome;
             _lightHouseKeeper.CheckCompleted += CheckIncome;
@@ -40,7 +42,8 @@ namespace CountersContent
         private void OnDisable()
         {
             _moveCounter.StepProfitCompleted -= AddGold;
-            _itemDragger.PlaceChanged -= CheckIncome;
+            // _itemDragger.PlaceChanged -= CheckIncome;
+            _itemThrower.PlaceChanged -= CheckIncome;
             _removalItems.Removed -= CheckIncome;
             _merger.Mergered -= CheckIncome;
             _lightHouseKeeper.CheckCompleted -= CheckIncome;

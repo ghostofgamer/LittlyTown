@@ -10,7 +10,8 @@ public class Blur : MonoBehaviour
     [SerializeField] private PostProcessVolume _postProcessVolume;
     [SerializeField] private DepthOfField _depthOfField;
     private BoolParameter _depthOfFieldEnabled;
-    
+
+    [SerializeField] private Vignette _vignette;
     private float _minValue = 0.3f;
     private float _activeBlurValue = 0.76f;
     private float _elapsedTime;
@@ -30,6 +31,7 @@ public class Blur : MonoBehaviour
         _coroutine = StartCoroutine(ChangeValue(_minValue, _activeBlurValue));
         // _postProcessVolume.enabled = true;
         _depthOfField.active = true;
+        _vignette.TurnOn();
     }
 
     public void TurnOff()
@@ -40,6 +42,7 @@ public class Blur : MonoBehaviour
         _coroutine = StartCoroutine(ChangeValue(_activeBlurValue, _minValue));
         // _postProcessVolume.enabled = false;
         _depthOfField.active = false;
+        _vignette.TurnOff();
     }
 
     private IEnumerator ChangeValue(float start, float end)

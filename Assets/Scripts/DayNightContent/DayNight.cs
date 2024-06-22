@@ -13,22 +13,11 @@ namespace DayNightContent
 
         [SerializeField] private SettingsModes _settingsModes;
         [SerializeField] private Light _light;
-        [SerializeField] private Color _dayColor;
-        [SerializeField] private Color _nightColor;
-        [SerializeField] private Color _dayGrass;
-        [SerializeField] private Color _nightGrass;
-        [SerializeField] private Color _dayTrail;
-        [SerializeField] private Color _nightTrail;
-        [SerializeField] private Color _nightBackGround;
-        [SerializeField] private Color _dayBackGround;
-        [SerializeField] private Color _dayWater;
-        [SerializeField] private Color _nightWater;
-
-
         [SerializeField] private Gradient _grassGradient;
         [SerializeField] private Gradient _waterGradient;
-
-
+        [SerializeField] private Gradient _backGroundGradient;
+        [SerializeField] private Gradient _trailGradient;
+        [SerializeField] private Gradient _lightGradient;
         [SerializeField] private Save _save;
         [SerializeField] private Load _load;
         [SerializeField] private ParticleSystem _fireflies;
@@ -40,7 +29,6 @@ namespace DayNightContent
 
         private float _currentGradientValue;
         private float _targetGradientValue;
-
         private float _duration = 1;
         private float _elapsedTime;
         private float _dayValue = -30f;
@@ -50,7 +38,6 @@ namespace DayNightContent
         private float _dayIntensity = 1.16f;
         private float _nightIntensity = 0.35f;
         private float _currentIntensity;
-        private Color _currentColor;
         private Coroutine _coroutine;
         private int _day = 1;
         private int _night = 0;
@@ -79,48 +66,32 @@ namespace DayNightContent
                 StopCoroutine(_coroutine);
 
             _coroutine = StartCoroutine(IsNight
-                ? StartChange(_currentY, _nightValue, _currentIntensity, _nightIntensity, _currentColor, _nightColor,
-                    _trailMaterial.color, _nightTrail, _backgroundMaterial.color,
-                    _nightBackGround)
-                : StartChange(_currentY, _dayValue, _currentIntensity, _dayIntensity, _currentColor, _dayColor,
-                    _trailMaterial.color, _dayTrail, _backgroundMaterial.color,
-                    _dayBackGround));
+                ? StartChange(_currentY, _nightValue, _currentIntensity, _nightIntensity)
+                : StartChange(_currentY, _dayValue, _currentIntensity, _dayIntensity));
         }
 
-        private IEnumerator StartChange(float start, float target, float startIntensity, float targetIntensity,
-            Color startColor, Color targetColor, Color startTrailColor,
-            Color targetTrailColor, Color startBackgroundColor, Color targetBackgroundColor
-        )
+        private IEnumerator StartChange(float start, float target, float startIntensity, float targetIntensity)
         {
             _elapsedTime = 0;
             _targetGradientValue = IsNight ? 1f : 0f;
             float startGrassGradientValue = _currentGradientValue;
-            
+
             while (_elapsedTime < _duration)
             {
                 _elapsedTime += Time.deltaTime;
                 float angle = Mathf.Lerp(start, target, _elapsedTime / _duration);
                 _currentIntensity = Mathf.Lerp(startIntensity, targetIntensity, _elapsedTime / _duration);
-                _currentColor = Color.Lerp(startColor, targetColor, _elapsedTime / _duration);
-                _trailMaterial.color = Color.Lerp(startTrailColor, targetTrailColor, _elapsedTime / _duration);
-                _backgroundMaterial.color =
-                    Color.Lerp(startBackgroundColor, targetBackgroundColor, _elapsedTime / _duration);
-                _light.color = _currentColor;
                 _light.intensity = _currentIntensity;
                 _currentY = angle;
                 _light.transform.rotation = Quaternion.Euler(_xValue, angle, 0);
-                
                 _currentGradientValue =
                     Mathf.Lerp(startGrassGradientValue, _targetGradientValue, _elapsedTime / _duration);
-                _grassMaterial.color = _grassGradient.Evaluate(_currentGradientValue);
-                _waterMaterial.SetColor(WaterColor, _waterGradient.Evaluate(_currentGradientValue));
-                
+                SetColor();
                 yield return null;
             }
-            
+
             _currentGradientValue = _targetGradientValue;
-            _grassMaterial.color = _grassGradient.Evaluate(_currentGradientValue);
-            _waterMaterial.SetColor(WaterColor, _waterGradient.Evaluate(_currentGradientValue));
+            SetColor();
         }
 
         private void SaveValue()
@@ -138,19 +109,23 @@ namespace DayNightContent
 
         private void ChangeValue(int value)
         {
-            _light.color = value == _day ? _dayColor : _nightColor;
             _light.intensity = value == _day ? _dayIntensity : _nightIntensity;
             _light.transform.rotation = Quaternion.Euler(_xValue, value == _day ? _dayValue : _nightValue, 0);
             _currentY = value == _day ? _dayValue : _nightValue;
             _currentIntensity = _light.intensity;
-            _currentColor = _light.color;
-            _grassMaterial.color = value == _day ? _dayGrass : _nightGrass;
-            _trailMaterial.color = value == _day ? _dayTrail : _nightTrail;
-            _backgroundMaterial.color = value == _day ? _dayBackGround : _nightBackGround;
             _currentGradientValue = IsNight ? 1 : 0;
-            _waterMaterial.SetColor(WaterColor, (value == _day) ? _dayWater : _nightWater);
+            SetColor();
             _bloom.active = value != _day;
             TimeDayChanged?.Invoke();
+        }
+
+        private void SetColor()
+        {
+            _light.color = _lightGradient.Evaluate(_currentGradientValue);
+            _grassMaterial.color = _grassGradient.Evaluate(_currentGradientValue);
+            _waterMaterial.SetColor(WaterColor, _waterGradient.Evaluate(_currentGradientValue));
+            _trailMaterial.color = _trailGradient.Evaluate(_currentGradientValue);
+            _backgroundMaterial.color = _backGroundGradient.Evaluate(_currentGradientValue);
         }
     }
 }

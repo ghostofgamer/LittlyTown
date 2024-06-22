@@ -5,8 +5,10 @@ namespace Dragger
     [RequireComponent(typeof(ItemDragger))]
     public class InputItemDragger : MonoBehaviour
     {
+        [SerializeField] private ItemThrower _itemThrower;
+        
         private ItemDragger _itemDragger;
-
+        
         private void Awake()
         {
             enabled = false;
@@ -22,7 +24,8 @@ namespace Dragger
 
             if (Input.GetMouseButtonUp(0))
             {
-                _itemDragger.ThrowItem();
+                _itemThrower.ThrowItem();
+                // _itemDragger.ThrowItem();
             }
 
             if (_itemDragger.IsObjectSelected || _itemDragger.IsPositionSelected)

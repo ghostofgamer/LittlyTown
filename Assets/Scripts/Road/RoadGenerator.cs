@@ -54,7 +54,7 @@ public class RoadGenerator : MonoBehaviour
     [SerializeField] private ItemPosition _crossroadsRoadTileLeft;
     [SerializeField] private ItemPosition _crossroadsRoadTileRight;
     [SerializeField] private ItemPosition _crossroadsRoadTileDown;
-
+    [SerializeField] private ItemThrower _itemThrower;
 
     private Dictionary<string, ItemPosition> _tileConfigurations;
     private Coroutine _coroutine;
@@ -62,7 +62,8 @@ public class RoadGenerator : MonoBehaviour
 
     private void OnEnable()
     {
-        _itemDragger.PlaceChanged += OnGeneration;
+        // _itemDragger.PlaceChanged += OnGeneration;
+        _itemThrower.PlaceChanged += OnGeneration;
         _spawner.ItemCreated += OnGeneration;
         _removalItems.Removed += OnGeneration;
         _replacementPosition.PositionsChanged += OnGeneration;
@@ -73,7 +74,8 @@ public class RoadGenerator : MonoBehaviour
 
     private void OnDisable()
     {
-        _itemDragger.PlaceChanged -= OnGeneration;
+        // _itemDragger.PlaceChanged -= OnGeneration;
+        _itemThrower.PlaceChanged -= OnGeneration;
         _spawner.ItemCreated -= OnGeneration;
         _removalItems.Removed -= OnGeneration;
         _replacementPosition.PositionsChanged -= OnGeneration;
