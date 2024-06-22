@@ -1,13 +1,15 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-[System.Serializable]
-public class ShopItemData
+
+namespace SaveAndLoad
 {
-    public List<ItemData> ItemsData;
-    
-    public ShopItemData()
+    [System.Serializable]
+    public class ShopItemData
     {
-        ItemsData = new List<ItemData>();
+        public List<ItemData> ItemsData;
+    
+        public ShopItemData()
+        {
+            ItemsData = new List<ItemData>();
+        }
     }
 }

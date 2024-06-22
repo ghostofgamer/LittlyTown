@@ -1,20 +1,18 @@
 using UnityEngine;
 
-public class BuildButtonChanger : MonoBehaviour
+namespace SandBoxContent
 {
-    [SerializeField] private BuildButton[] _buildButtons;
-    [SerializeField] private Sprite _activeSprite;
-    [SerializeField] private Sprite _notActiveSprite;
-
-    private float _fullAlpha = 255f;
-    private float _halfAlpha = 150f;
-
-    public void Deactivation(int index)
+    public class BuildButtonChanger : MonoBehaviour
     {
-        for (int i = 0; i < _buildButtons.Length; i++)
+        [SerializeField] private BuildButton[] _buildButtons;
+
+        public void Deactivation(int index)
         {
-            if (i != index && _buildButtons[i].IsActive)
-                _buildButtons[i].Deactivate();
+            for (int i = 0; i < _buildButtons.Length; i++)
+            {
+                if (i != index && _buildButtons[i].IsActive)
+                    _buildButtons[i].Deactivate();
+            }
         }
     }
 }

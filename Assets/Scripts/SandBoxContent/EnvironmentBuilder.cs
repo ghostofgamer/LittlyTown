@@ -3,164 +3,158 @@ using Enums;
 using ItemPositionContent;
 using UnityEngine;
 
-public class EnvironmentBuilder : Builder
+namespace SandBoxContent
 {
-    [SerializeField] private ItemPosition _tileElevation;
-    [SerializeField] private GameObject _environment;
-
-    private bool _isTileClear;
-    private bool _isTileWater;
-    private bool _isTileElevation;
-    private bool _isTileTrail;
-    private bool _isTileRoad;
-    
-    public event Action EnvironmentBuilded;
-    
-    public ItemPosition IsTileElevation => _tileElevation;
-    
-    /*protected override void Start()
+    public class EnvironmentBuilder : Builder
     {
-        base.Start();
+        [SerializeField] private ItemPosition _tileElevation;
 
-        /*
-        foreach (var itemPosition in ItemPositions)
-            itemPosition.GetComponent<FinderPositions>().FindNeighbor();
+        private bool _isTileClear;
+        private bool _isTileWater;
+        private bool _isTileElevation;
+        private bool _isTileTrail;
+        private bool _isTileRoad;
+        private Vector3 _newLocalPosition;
+        private string _name;
+        private float _positionElevationTileY = 4.3f;
+        private float _minPositionElevationY = 0.59f;
+        private float _maxPositionElevationY = 2.1f;
 
-        _environment.SetActive(false);#1#
-    }*/
+        public event Action EnvironmentBuilded;
 
-    private void DeactivateEnvironment()
-    {
-        _isTileClear = false;
-        _isTileWater = false;
-        _isTileElevation = false;
-        _isTileTrail = false;
-        _isTileRoad = false;
-    }
+        public ItemPosition IsTileElevation => _tileElevation;
 
-    public void ChangeEnvironment(Environments environmentName)
-    {
-        string name = environmentName.ToString();
-        DeactivateEnvironment();
-
-        switch (name)
+        private void DeactivateEnvironment()
         {
-            case "ClearTile":
-                _isTileClear = true;
-                break;
-            case "Water":
-                _isTileWater = true;
-                break;
-            case "Elevation":
-                _isTileElevation = true;
-                break;
-            case "Trail":
-                _isTileTrail = true;
-                break;
-            case "Road":
-                _isTileRoad = true;
-                break;
-        }
-    }
-
-    protected override void FirstChoose()
-    {
-        ChangeEnvironment(Environments.ClearTile);
-    }
-
-    protected override void TakeAction(ItemPosition itemPosition)
-    {
-        ClearPosition(itemPosition);
-        ChangeElevationPosition(itemPosition);
-        itemPosition.DeactivationAll();
-
-        if (_isTileClear)
-        {
-            CreateEnvironment(ClearTile, itemPosition);
+            _isTileClear = false;
+            _isTileWater = false;
+            _isTileElevation = false;
+            _isTileTrail = false;
+            _isTileRoad = false;
         }
 
-        if (_isTileWater)
+        public void ChangeEnvironment(Environments environmentName)
         {
-            CreateWater(itemPosition);
+            _name = environmentName.ToString();
+            DeactivateEnvironment();
+
+            switch (_name)
+            {
+                case "ClearTile":
+                    _isTileClear = true;
+                    break;
+                case "Water":
+                    _isTileWater = true;
+                    break;
+                case "Elevation":
+                    _isTileElevation = true;
+                    break;
+                case "Trail":
+                    _isTileTrail = true;
+                    break;
+                case "Road":
+                    _isTileRoad = true;
+                    break;
+            }
         }
 
-        if (_isTileElevation)
+        protected override void FirstChoose()
         {
-            CreateEnvironment(_tileElevation, itemPosition);
-            itemPosition.OnElevation();
+            ChangeEnvironment(Environments.ClearTile);
         }
 
-        if (_isTileTrail)
+        protected override void TakeAction(ItemPosition itemPosition)
         {
-            if (itemPosition.IsTrail)
+            ClearPosition(itemPosition);
+            ChangeElevationPosition(itemPosition);
+            itemPosition.DeactivationAll();
+
+            if (_isTileClear)
+            {
+                CreateEnvironment(ClearTile, itemPosition);
+            }
+
+            if (_isTileWater)
+            {
+                CreateWater(itemPosition);
+            }
+
+            if (_isTileElevation)
+            {
+                CreateEnvironment(_tileElevation, itemPosition);
+                itemPosition.OnElevation();
+            }
+
+            if (_isTileTrail)
+            {
+                if (itemPosition.IsTrail)
+                    return;
+
+                itemPosition.ActivateTrail();
+            }
+
+            if (_isTileRoad)
+            {
+                if (itemPosition.IsRoad)
+                    return;
+
+                itemPosition.EnableRoad();
+            }
+
+            StartRoadGeneration();
+            EnvironmentBuilded?.Invoke();
+        }
+
+        private void ClearPosition(ItemPosition itemPosition)
+        {
+            if (itemPosition.IsBusy)
+            {
+                itemPosition.Item.gameObject.SetActive(false);
+                itemPosition.ClearingPosition();
+            }
+        }
+
+        public void CreateWater(ItemPosition itemPosition)
+        {
+            CreateEnvironment(TileWater, itemPosition);
+            itemPosition.ActivationWater();
+        }
+
+        private void ChangeElevationPosition(ItemPosition itemPosition)
+        {
+            if (_isTileElevation)
                 return;
 
-            itemPosition.ActivateTrail();
+            if (itemPosition.IsElevation)
+            {
+                _newLocalPosition = new Vector3(itemPosition.transform.localPosition.x, _minPositionElevationY,
+                    itemPosition.transform.localPosition.z);
+                itemPosition.transform.localPosition = _newLocalPosition;
+            }
         }
 
-        if (_isTileRoad)
+        private void CreateEnvironment(ItemPosition tilePrefab, ItemPosition itemPosition)
         {
-            if (itemPosition.IsRoad)
-                return;
+            ItemPosition itemPositionTile;
 
-            itemPosition.EnableRoad();
+            if (_isTileElevation)
+            {
+                _newLocalPosition = new Vector3(itemPosition.transform.localPosition.x, _maxPositionElevationY,
+                    itemPosition.transform.localPosition.z);
+                itemPosition.transform.localPosition = _newLocalPosition;
+                itemPositionTile = Instantiate(tilePrefab, itemPosition.transform.position,
+                    Quaternion.identity, RoadContainer);
+                itemPositionTile.transform.localPosition = new Vector3(
+                    itemPositionTile.transform.localPosition.x, _positionElevationTileY,
+                    itemPositionTile.transform.localPosition.z);
+            }
+            else
+            {
+                itemPositionTile = Instantiate(tilePrefab, itemPosition.transform.position,
+                    Quaternion.identity, RoadContainer);
+            }
+
+            itemPosition.SetRoad(itemPositionTile);
         }
-
-        StartRoadGeneration();
-        EnvironmentBuilded?.Invoke();
-    }
-
-    private void ClearPosition(ItemPosition itemPosition)
-    {
-        if (itemPosition.IsBusy)
-        {
-            itemPosition.Item.gameObject.SetActive(false);
-            itemPosition.ClearingPosition();
-        }
-    }
-
-    public void CreateWater(ItemPosition itemPosition)
-    {
-        CreateEnvironment(TileWater, itemPosition);
-        itemPosition.ActivationWater();
-    }
-
-    private void ChangeElevationPosition(ItemPosition itemPosition)
-    {
-        if (_isTileElevation)
-            return;
-
-        if (itemPosition.IsElevation)
-        {
-            Vector3 newLocalPosition = new Vector3(itemPosition.transform.localPosition.x, 0.59f,
-                itemPosition.transform.localPosition.z);
-            itemPosition.transform.localPosition = newLocalPosition;
-        }
-    }
-
-    public void CreateEnvironment(ItemPosition tilePrefab, ItemPosition itemPosition)
-    {
-        ItemPosition itemPositionTile;
-
-        if (_isTileElevation)
-        {
-            Vector3 newLocalPosition = new Vector3(itemPosition.transform.localPosition.x, 2.1f,
-                itemPosition.transform.localPosition.z);
-            itemPosition.transform.localPosition = newLocalPosition;
-
-            itemPositionTile = Instantiate(tilePrefab, itemPosition.transform.position,
-                Quaternion.identity, RoadContainer);
-
-            itemPositionTile.transform.localPosition = new Vector3(
-                itemPositionTile.transform.localPosition.x, 4.3f,
-                itemPositionTile.transform.localPosition.z);
-        }
-        else
-        {
-            itemPositionTile = Instantiate(tilePrefab, itemPosition.transform.position,
-                Quaternion.identity, RoadContainer);
-        }
-
-        itemPosition.SetRoad(itemPositionTile);
     }
 }

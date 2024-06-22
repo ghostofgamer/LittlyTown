@@ -1,22 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-[System.Serializable]
-public class ItemPositionData
+namespace SandBoxContent
 {
-    public bool IsWater;
-    public bool IsBusy;
-    public bool IsElevation;
-    public bool IsTrail;
-    public bool IsRoad;
-
-    public ItemPositionData(bool isWater, bool isBusy, bool isElevation, bool isTrail, bool isRoad)
+    [System.Serializable]
+    public class ItemPositionData
     {
-        IsWater = isWater;
-        IsBusy = isBusy;
-        IsElevation = isElevation;
-        IsTrail = isTrail;
-        IsRoad = isRoad;
+        public bool IsWater;
+        public bool IsBusy;
+        public bool IsElevation;
+        public bool IsTrail;
+        public bool IsRoad;
+
+        public ItemPositionData(bool isWater, bool isBusy, bool isElevation, bool isTrail, bool isRoad)
+        {
+            IsWater = isWater;
+            IsBusy = isBusy;
+            IsElevation = isElevation;
+            IsTrail = isTrail;
+            IsRoad = isRoad;
+        }
     }
 }

@@ -1,15 +1,18 @@
-
 using System.Collections.Generic;
+using SaveAndLoad;
 
-[System.Serializable]
-public class SandBoxSaveData
+namespace SandBoxContent
 {
-    public List<ItemData> ItemDatas;
-    public List<ItemPositionData> ItemPositionDatas;
-    
-    public SandBoxSaveData()
+    [System.Serializable]
+    public class SandBoxSaveData
     {
-        ItemDatas = new List<ItemData>();
-        ItemPositionDatas = new List<ItemPositionData>();
+        public List<ItemData> ItemDatas;
+        public List<ItemPositionData> ItemPositionDatas;
+    
+        public SandBoxSaveData()
+        {
+            ItemDatas = new List<ItemData>();
+            ItemPositionDatas = new List<ItemPositionData>();
+        }
     }
 }

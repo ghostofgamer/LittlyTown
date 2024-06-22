@@ -3,54 +3,57 @@ using ItemContent;
 using ItemPositionContent;
 using UnityEngine;
 
-public class Cleaner : MonoBehaviour
+namespace SandBoxContent
 {
-    private Item _item;
-    private int _layerMask;
-    private int _layer = 3;
-    private ItemPosition _lastItemPosition;
-    private ItemPosition _currentItemPosition;
-    
-    public event Action ItemRemoved;
-    
-    private void Start()
+    public class Cleaner : MonoBehaviour
     {
-        _layerMask = 1 << _layer;
-        _layerMask = ~_layerMask;
-    }
-
-    private void Update()
-    {
-        if (Input.GetMouseButton(0))
+        private Item _item;
+        private int _layerMask;
+        private int _layer = 3;
+        private ItemPosition _lastItemPosition;
+        private ItemPosition _currentItemPosition;
+    
+        public event Action ItemRemoved;
+    
+        private void Start()
         {
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            _layerMask = 1 << _layer;
+            _layerMask = ~_layerMask;
+        }
 
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, _layerMask))
+        private void Update()
+        {
+            if (Input.GetMouseButton(0))
             {
-                if (hit.transform.TryGetComponent(out ItemPosition itemPosition))
+                RaycastHit hit;
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+                if (Physics.Raycast(ray, out hit, Mathf.Infinity, _layerMask))
                 {
-                    if (_currentItemPosition != itemPosition)
-                        itemPosition.GetComponent<VisualItemPosition>().ActivateVisual();
-
-                    _currentItemPosition = itemPosition;
-                    _lastItemPosition = itemPosition;
-
-                    if (itemPosition.IsBusy)
+                    if (hit.transform.TryGetComponent(out ItemPosition itemPosition))
                     {
-                        itemPosition.Item.gameObject.SetActive(false);
-                        itemPosition.ClearingPosition();
-                        ItemRemoved?.Invoke();
-                        return;
+                        if (_currentItemPosition != itemPosition)
+                            itemPosition.GetComponent<VisualItemPosition>().ActivateVisual();
+
+                        _currentItemPosition = itemPosition;
+                        _lastItemPosition = itemPosition;
+
+                        if (itemPosition.IsBusy)
+                        {
+                            itemPosition.Item.gameObject.SetActive(false);
+                            itemPosition.ClearingPosition();
+                            ItemRemoved?.Invoke();
+                            return;
+                        }
                     }
                 }
             }
-        }
 
-        if (Input.GetMouseButtonUp(0))
-        {
-            if (_lastItemPosition != null)
-                _lastItemPosition.GetComponent<VisualItemPosition>().DeactivateVisual();
+            if (Input.GetMouseButtonUp(0))
+            {
+                if (_lastItemPosition != null)
+                    _lastItemPosition.GetComponent<VisualItemPosition>().DeactivateVisual();
+            }
         }
     }
 }

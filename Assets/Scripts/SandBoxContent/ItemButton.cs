@@ -2,28 +2,31 @@ using Enums;
 using UI.Buttons;
 using UnityEngine;
 
-public class ItemButton : AbstractButton
+namespace SandBoxContent
 {
-    [SerializeField] private Items _itemName;
-    [SerializeField]private ItemBuilder _itemBuilder;
-    [SerializeField] private GameObject _closeContent;
+    public class ItemButton : AbstractButton
+    {
+        [SerializeField] private Items _itemName;
+        [SerializeField]private ItemBuilder _itemBuilder;
+        [SerializeField] private GameObject _closeContent;
 
-    public Items ItemName=>_itemName;
+        public Items ItemName=>_itemName;
     
-    protected override void OnClick()
-    {
-        _itemBuilder.SetItems(_itemName);
-    }
+        protected override void OnClick()
+        {
+            _itemBuilder.SetItems(_itemName);
+        }
 
-    public void BlockButton ()
-    {
-        Button.enabled = false;
-        _closeContent.SetActive(true);
-    }
+        public void BlockButton ()
+        {
+            Button.enabled = false;
+            _closeContent.SetActive(true);
+        }
     
-    public void UnblockButton()
-    {
-        Button.enabled = true;
-        _closeContent.SetActive(false);
+        public void UnblockButton()
+        {
+            Button.enabled = true;
+            _closeContent.SetActive(false);
+        }
     }
 }

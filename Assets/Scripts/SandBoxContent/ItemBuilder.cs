@@ -6,85 +6,87 @@ using ItemContent;
 using ItemPositionContent;
 using UnityEngine;
 
-public class ItemBuilder : Builder
+namespace SandBoxContent
 {
-    [SerializeField] private Item[] _items;
+    public class ItemBuilder : Builder
+    {
+        [SerializeField] private Item[] _items;
 
-    private Item _item;
-
-    public event Action ItemBuilded;
+        private Item _item;
+        private Vector3 _newLocalPosition;
+        private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.5f);
+        private float _minPositionElevationY = 0.59f;
+        
+        public event Action ItemBuilded;
     
-    private void OnEnable()
-    {
-        StartCoroutine(ActivatedItems());
-    }
-
-    public void SetItems(Items itemName)
-    {
-        foreach (var item in _items)
+        private void OnEnable()
         {
-            if (item.ItemName.ToString() == itemName.ToString())
-                _item = item;
-        }
-    }
-
-    protected override void FirstChoose()
-    {
-        SetItems(Items.Bush);
-    }
-
-    protected override void TakeAction(ItemPosition itemPosition)
-    {
-        if (itemPosition.IsBusy)
-        {
-            Debug.Log("Занят");
-            return;
+            StartCoroutine(ActivatedItems());
         }
 
-        if (_item.ItemName == Items.LightHouse)
+        public void SetItems(Items itemName)
         {
-            if (itemPosition.IsElevation)
+            foreach (var item in _items)
             {
-                Vector3 newLocalPosition = new Vector3(itemPosition.transform.localPosition.x, 0.59f,
-                    itemPosition.transform.localPosition.z);
-                itemPosition.transform.localPosition = newLocalPosition;
+                if (item.ItemName.ToString() == itemName.ToString())
+                    _item = item;
             }
-
-            itemPosition.DeactivationAll();
-            itemPosition.ActivationWater();
-            ItemPosition itemPositionTile = Instantiate(TileWater, itemPosition.transform.position,
-                Quaternion.identity, RoadContainer);
-            itemPosition.SetRoad(itemPositionTile);
         }
-        else
+
+        protected override void FirstChoose()
         {
-            if (itemPosition.IsRoad || itemPosition.IsTrail || itemPosition.IsWater)
+            SetItems(Items.Bush);
+        }
+
+        protected override void TakeAction(ItemPosition itemPosition)
+        {
+            if (itemPosition.IsBusy)
+                return;
+            
+            if (_item.ItemName == Items.LightHouse)
             {
+                if (itemPosition.IsElevation)
+                {
+                    _newLocalPosition = new Vector3(itemPosition.transform.localPosition.x, _minPositionElevationY,
+                        itemPosition.transform.localPosition.z);
+                    itemPosition.transform.localPosition = _newLocalPosition;
+                }
+
                 itemPosition.DeactivationAll();
-                ItemPosition itemPositionTile = Instantiate(ClearTile, itemPosition.transform.position,
+                itemPosition.ActivationWater();
+                ItemPosition itemPositionTile = Instantiate(TileWater, itemPosition.transform.position,
                     Quaternion.identity, RoadContainer);
                 itemPosition.SetRoad(itemPositionTile);
             }
+            else
+            {
+                if (itemPosition.IsRoad || itemPosition.IsTrail || itemPosition.IsWater)
+                {
+                    itemPosition.DeactivationAll();
+                    ItemPosition itemPositionTile = Instantiate(ClearTile, itemPosition.transform.position,
+                        Quaternion.identity, RoadContainer);
+                    itemPosition.SetRoad(itemPositionTile);
+                }
+            }
+
+            itemPosition.OnBusy();
+            Item item = Instantiate(_item, itemPosition.transform.position, Container.transform.rotation, Container);
+            item.GetComponent<ItemAnimation>().PositioningAnimation();
+            item.Activation();
+            StartRoadGeneration();
+            ItemBuilded?.Invoke();
         }
 
-        itemPosition.OnBusy();
-        Item item = Instantiate(_item, itemPosition.transform.position, Container.transform.rotation, Container);
-        item.GetComponent<ItemAnimation>().PositioningAnimation();
-        item.Activation();
-        StartRoadGeneration();
-        ItemBuilded?.Invoke();
-    }
+        private IEnumerator ActivatedItems()
+        {
+            yield return _waitForSeconds;
+            List<Item> items = new List<Item>();
 
-    private IEnumerator ActivatedItems()
-    {
-        yield return new WaitForSeconds(0.5f);
+            for (int i = 0; i < Container.childCount; i++)
+                items.Add(Container.GetChild(i).GetComponent<Item>());
 
-        List<Item> items = new List<Item>();
-
-        for (int i = 0; i < Container.childCount; i++)
-            items.Add(Container.GetChild(i).GetComponent<Item>());
-
-        foreach (var item in items)
-            item.Activation();
+            foreach (var item in items)
+                item.Activation();
+        }
     }
 }

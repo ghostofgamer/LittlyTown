@@ -2,13 +2,16 @@ using Enums;
 using UI.Buttons;
 using UnityEngine;
 
-public class SandBoxEnvironmentChangeButton : AbstractButton
+namespace SandBoxContent
 {
-   [SerializeField] private Environments _environmentName;
-   [SerializeField]private EnvironmentBuilder _environmentBuilder;
-   
-   protected override void OnClick()
+   public class SandBoxEnvironmentChangeButton : AbstractButton
    {
-      _environmentBuilder.ChangeEnvironment(_environmentName);
+      [SerializeField] private Environments _environmentName;
+      [SerializeField]private EnvironmentBuilder _environmentBuilder;
+   
+      protected override void OnClick()
+      {
+         _environmentBuilder.ChangeEnvironment(_environmentName);
+      }
    }
 }

@@ -1,17 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using ItemContent;
 using UnityEngine;
 
-[System.Serializable]
-public class ItemDropData 
+namespace SaveAndLoad
 {
-    public Sprite Icon;
-    public Item PrefabItem;
-    
-    public ItemDropData(Sprite icon, Item prefabItem)
+    [System.Serializable]
+    public class ItemDropData 
     {
-        Icon = icon;
-        PrefabItem = prefabItem;
+        public Sprite Icon;
+        public Item PrefabItem;
+    
+        public ItemDropData(Sprite icon, Item prefabItem)
+        {
+            Icon = icon;
+            PrefabItem = prefabItem;
+        }
     }
 }

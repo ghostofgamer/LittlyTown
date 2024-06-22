@@ -1,18 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using Enums;
 using ItemPositionContent;
-using UnityEngine;
 
-[System.Serializable]
-public class SelectItemData 
+namespace SaveAndLoad
 {
-    public Items ItemName;
-    public ItemPosition ItemPosition;
-
-    public SelectItemData(Items itemName, ItemPosition itemPosition)
+    [System.Serializable]
+    public class SelectItemData 
     {
-        ItemName = itemName;
-        ItemPosition = itemPosition;
+        public Items ItemName;
+        public ItemPosition ItemPosition;
+
+        public SelectItemData(Items itemName, ItemPosition itemPosition)
+        {
+            ItemName = itemName;
+            ItemPosition = itemPosition;
+        }
     }
 }
