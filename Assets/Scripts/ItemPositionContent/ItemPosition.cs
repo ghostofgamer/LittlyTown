@@ -1,4 +1,5 @@
 using ItemContent;
+using MergeContent;
 using UnityEngine;
 
 namespace ItemPositionContent

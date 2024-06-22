@@ -6,52 +6,46 @@ using ItemPositionContent;
 using UI.Buttons.BonusesContent;
 using UnityEngine;
 
-public class RemovalItems : MonoBehaviour
+namespace PossibilitiesContent
 {
-    [SerializeField] private DeleteButton _deleteButton;
-    [SerializeField] private PossibilitiesCounter _positionsCounter;
-    [SerializeField]private AudioSource _audioSource;
-    
-    private bool _isWorking;
-    private bool _isLooking;
-    private int _layerMask;
-    private int _layer = 3;
-    private Coroutine _coroutine;
-
-    public event Action Removed;
-    public event Action Removing;
-
-    public event Action<Item> ItemRemoved;
-
-    private void OnEnable()
+    public class RemovalItems : MonoBehaviour
     {
-        _deleteButton.RemovalActivated += ActivateWork;
-        _deleteButton.RemovalDeactivated += DeactivateWork;
-    }
+        [SerializeField] private DeleteButton _deleteButton;
+        [SerializeField] private PossibilitiesCounter _positionsCounter;
+        [SerializeField] private AudioSource _audioSource;
 
-    private void OnDisable()
-    {
-        _deleteButton.RemovalActivated -= ActivateWork;
-        _deleteButton.RemovalDeactivated -= DeactivateWork;
-    }
+        private int _layerMask;
+        private int _layer = 3;
+        private Coroutine _coroutine;
+        private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.15f);
 
-    private void Start()
-    {
-        _layerMask = 1 << _layer;
-        _layerMask = ~_layerMask;
-    }
+        public event Action Removed;
 
-    private void Update()
-    {
-        if (!_isWorking)
-            return;
+        public event Action Removing;
 
-        if (Input.GetMouseButtonDown(0))
+        public event Action<Item> ItemRemoved;
+
+        public bool IsWorking { get; private set; }
+
+        private void OnEnable()
         {
-            _isLooking = true;
+            _deleteButton.RemovalActivated += ActivateWork;
+            _deleteButton.RemovalDeactivated += DeactivateWork;
         }
 
-        if (_isLooking)
+        private void OnDisable()
+        {
+            _deleteButton.RemovalActivated -= ActivateWork;
+            _deleteButton.RemovalDeactivated -= DeactivateWork;
+        }
+
+        private void Start()
+        {
+            _layerMask = 1 << _layer;
+            _layerMask = ~_layerMask;
+        }
+
+        public void ActivateAnimation()
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -73,54 +67,45 @@ public class RemovalItems : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButtonUp(0))
+        public void StartRemove()
         {
-            _isLooking = false;
-
             if (_coroutine != null)
                 StopCoroutine(_coroutine);
 
             _coroutine = StartCoroutine(Remove());
         }
-    }
 
-    private IEnumerator Remove()
-    {
-        RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-        if ((Physics.Raycast(ray, out hit, Mathf.Infinity, _layerMask)))
+        private IEnumerator Remove()
         {
-            if (hit.transform.gameObject.TryGetComponent(out ItemPosition itemPosition) && itemPosition.IsBusy)
-            {
-                /*if (itemPosition.Item.IsLightHouse)
-                {
-                    LightHouseTrigger lightHouse = itemPosition.Item.GetComponent<LightHouseTrigger>();
-                    lightHouse.RemoveHouses();
-                    Debug.Log("Удаляем маяк");
-                }*/
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-                ItemRemoved?.Invoke(itemPosition.Item);
-                itemPosition.Item.Deactivation();
-                itemPosition.Item.gameObject.SetActive(false);
-                itemPosition.ClearingPosition();
-                _audioSource.PlayOneShot(_audioSource.clip);
-                yield return null;
-                _positionsCounter.DecreaseCount();
-                Removing?.Invoke();
-                yield return new WaitForSeconds(0.15f);
-                Removed?.Invoke();
+            if ((Physics.Raycast(ray, out hit, Mathf.Infinity, _layerMask)))
+            {
+                if (hit.transform.gameObject.TryGetComponent(out ItemPosition itemPosition) && itemPosition.IsBusy)
+                {
+                    ItemRemoved?.Invoke(itemPosition.Item);
+                    itemPosition.Item.Deactivation();
+                    itemPosition.Item.gameObject.SetActive(false);
+                    itemPosition.ClearingPosition();
+                    _audioSource.PlayOneShot(_audioSource.clip);
+                    yield return null;
+                    _positionsCounter.DecreaseCount();
+                    Removing?.Invoke();
+                    yield return _waitForSeconds;
+                    Removed?.Invoke();
+                }
             }
         }
-    }
 
-    private void ActivateWork()
-    {
-        _isWorking = true;
-    }
+        private void ActivateWork()
+        {
+            IsWorking = true;
+        }
 
-    private void DeactivateWork()
-    {
-        _isWorking = false;
+        private void DeactivateWork()
+        {
+            IsWorking = false;
+        }
     }
 }

@@ -1,61 +1,38 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 
-public class Blur : MonoBehaviour
+namespace PostProcessContent
 {
-    [SerializeField] private PostProcessVolume _postProcessVolume;
-    [SerializeField] private DepthOfField _depthOfField;
-    private BoolParameter _depthOfFieldEnabled;
-
-    [SerializeField] private Vignette _vignette;
-    private float _minValue = 0.3f;
-    private float _activeBlurValue = 0.76f;
-    private float _elapsedTime;
-    private float _duration = 0.5f;
-    private Coroutine _coroutine;
-
-    private void Start()
+    public class Blur : PostProcessChanger
     {
-        _depthOfField = _postProcessVolume.profile.GetSetting<DepthOfField>();
-    }
+        [SerializeField] private Vignette _vignette;
 
-    public void TurnOn()
-    {
-        if (_coroutine != null)
-            StopCoroutine(_coroutine);
-
-        _coroutine = StartCoroutine(ChangeValue(_minValue, _activeBlurValue));
-        // _postProcessVolume.enabled = true;
-        _depthOfField.active = true;
-        _vignette.TurnOn();
-    }
-
-    public void TurnOff()
-    {
-        if (_coroutine != null)
-            StopCoroutine(_coroutine);
-
-        _coroutine = StartCoroutine(ChangeValue(_activeBlurValue, _minValue));
-        // _postProcessVolume.enabled = false;
-        _depthOfField.active = false;
-        _vignette.TurnOff();
-    }
-
-    private IEnumerator ChangeValue(float start, float end)
-    {
-        _elapsedTime = 0;
-
-        while (_elapsedTime < _duration)
+        private DepthOfField _depthOfField;
+        
+        private void Start()
         {
-            _elapsedTime += Time.deltaTime;
-            _postProcessVolume.weight = Mathf.Lerp(start, end, _elapsedTime / _duration);
-            yield return null;
+            _depthOfField = PostProcessVolume.profile.GetSetting<DepthOfField>();
+            PostProcessVolume.weight = DefaultValue;
+            SetValue(DefaultValue);
         }
 
-        _postProcessVolume.weight = end;
+        protected override void ChangeValue()
+        {
+            PostProcessVolume.weight = CurrentValue;
+        }
+
+        public override void TurnOn()
+        {
+            base.TurnOn();
+            _depthOfField.active = true;
+            _vignette.TurnOn();
+        }
+
+        public override void TurnOff()
+        {
+            base.TurnOff();
+            _depthOfField.active = false;
+            _vignette.TurnOff();
+        }
     }
 }

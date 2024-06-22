@@ -3,6 +3,7 @@ using System.Collections;
 using Dragger;
 using ItemContent;
 using ItemPositionContent;
+using MergeContent;
 using UnityEngine;
 
 namespace Keeper

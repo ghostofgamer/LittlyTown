@@ -1,5 +1,6 @@
 using Dragger;
 using PossibilitiesContent;
+using PostProcessContent;
 using TMPro;
 using UnityEngine;
 
@@ -12,6 +13,7 @@ namespace UI.Screens.PossibilitiesShopContent
         [SerializeField] private TMP_Text _currentAmountText;
         [SerializeField]private InputItemDragger _inputItemDragger;
         [SerializeField] private GameLevelScreen _gameLevelScreen;
+        [SerializeField] private Blur _blur;
             
         private int _currentPrice;
         private int _basePrice;
@@ -41,6 +43,7 @@ namespace UI.Screens.PossibilitiesShopContent
         public override void Open()
         {
             base.Open();
+            _blur.TurnOn();
             _currentAmount = 1;
             _basePrice = _possibilitie.Price;
             _currentPrice = _basePrice;
@@ -52,6 +55,7 @@ namespace UI.Screens.PossibilitiesShopContent
         public override void Close()
         {
             base.Close();
+            _blur.TurnOff();
             _inputItemDragger.enabled = true;
         }
 

@@ -1184,6 +1184,8 @@
           <e p="PossibilitiesContent" t="Include">
             <e p="CraneDestroyer.cs" t="Include" />
             <e p="GoldMovement.cs" t="Include" />
+            <e p="InputRemovalItems.cs" t="Include" />
+            <e p="InputReplacementIPosition.cs" t="Include" />
             <e p="MovementIcon.cs" t="Include" />
             <e p="Possibilitie.cs" t="Include" />
             <e p="PossibilitieBulldozer.cs" t="Include" />
@@ -1194,6 +1196,8 @@
           </e>
           <e p="PostProcessContent" t="Include">
             <e p="Blur.cs" t="Include" />
+            <e p="PostProcessChanger.cs" t="Include" />
+            <e p="Vignette.cs" t="Include" />
           </e>
           <e p="Road" t="Include">
             <e p="AngularRoad.cs" t="Include" />
@@ -1367,7 +1371,6 @@
             <e p="BonusesStart.cs" t="Include" />
             <e p="PackageLittleTown.cs" t="Include" />
           </e>
-          <e p="Vignette.cs" t="Include" />
           <e p="Wallets" t="Include">
             <e p="AbstractWallet.cs" t="Include" />
             <e p="CrystalWallet.cs" t="Include" />

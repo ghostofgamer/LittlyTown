@@ -37,36 +37,31 @@ namespace PossibilitiesContent
             if (_coroutine != null)
                 StopCoroutine(_coroutine);
 
-            _coroutine = StartCoroutine(ChangeAnimation(value));
+            _coroutine = StartCoroutine(Move(value));
         }
-
-        private IEnumerator ChangeAnimation(int value)
+        
+        private IEnumerator Move(int value)
         {
             _elapsedTime = 0f;
             _canvasGroup.alpha = 1;
             _startPosition = Vector3.zero;
-            
-            while (_elapsedTime < _durationJump)
-            {
-                _elapsedTime += Time.deltaTime;
-                gameObject.transform.localPosition =
-                    Vector3.Lerp(_startPosition, _jumpPosition, _elapsedTime / _durationJump);
-                yield return null;
-            }
-
+            yield return MoveToPosition(_jumpPosition, _durationJump);
             _startPosition = gameObject.transform.localPosition;
-            _elapsedTime = 0f;
-
-            while (_elapsedTime < _duration)
-            {
-                _elapsedTime += Time.deltaTime;
-                gameObject.transform.localPosition =
-                    Vector3.Lerp(_startPosition, _targetPosition, _elapsedTime / _duration);
-                yield return null;
-            }
-       
+            yield return MoveToPosition(_targetPosition, _duration);
             _canvasGroup.alpha = 0;
             MovementCompleted?.Invoke(value);
+
+            IEnumerator MoveToPosition(Vector3 targetPosition, float duration)
+            {
+                _elapsedTime = 0f;
+
+                while (_elapsedTime < duration)
+                {
+                    _elapsedTime += Time.deltaTime;
+                    gameObject.transform.localPosition = Vector3.Lerp(_startPosition, targetPosition, _elapsedTime / duration);
+                    yield return null;
+                }
+            }
         }
     }
 }

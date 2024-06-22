@@ -8,25 +8,22 @@ namespace PossibilitiesContent
         [SerializeField] private int _startPrice;
         [SerializeField] private float _priceMultiplier;
 
-        private int _price;
-
         public event Action<int> PriceChanged;
 
-        public int Price => _price;
+        public int Price { get; private set; }
 
         public float PriceMultiplier => _priceMultiplier;
 
         private void Start()
         {
-            _price = _startPrice;
-            PriceChanged?.Invoke(_price);
+            Price = _startPrice;
+            PriceChanged?.Invoke(Price);
         }
 
         public virtual void IncreasePrice()
         {
-            _price = Mathf.RoundToInt(_price * _priceMultiplier);
-            PriceChanged?.Invoke(_price);
-            // Debug.Log("Increase" + _price);
+            Price = Mathf.RoundToInt(Price * _priceMultiplier);
+            PriceChanged?.Invoke(Price);
         }
 
         public void SetPrice(int price)
@@ -34,21 +31,20 @@ namespace PossibilitiesContent
             if (price <= 0)
                 return;
 
-            _price = price;
-            // Debug.Log("Set" + _price);
+            Price = price;
             IncreasePrice();
         }
 
         public void SetCurrentPrice(int price)
         {
-            _price = price;
+            Price = price;
             PriceChanged?.Invoke(_startPrice);
         }
 
         public void SetStartPrice()
         {
-            _price = _startPrice;
-            PriceChanged?.Invoke(_price);
+            Price = _startPrice;
+            PriceChanged?.Invoke(Price);
         }
     }
 }
