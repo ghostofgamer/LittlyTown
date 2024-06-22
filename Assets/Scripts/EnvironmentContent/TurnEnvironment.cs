@@ -11,13 +11,8 @@ namespace EnvironmentContent
         [SerializeField] private LookMerger _lookMerger;
 
         private GameObject _currentEnvironment;
-
         private Vector3 _target;
         private Quaternion _startRotation;
-        private int _currentIndex;
-        private int _maxIndex = 3;
-        private int _minIndex = 0;
-        private float[] _angles = new float[4] {0, -90, 180, 90};
         private Coroutine _coroutineRotate;
         private float _elapsedTime;
         private float _durationReturn = 0.15f;
@@ -33,12 +28,10 @@ namespace EnvironmentContent
                 _environments[_initializator.Index].transform.Rotate(0, _speed * Time.deltaTime, 0);
 
             if (_isRotating)
-            {
-                UpdateSandBoxRotation();
-            }
+                UpdateRotation();
         }
 
-        private void UpdateSandBoxRotation()
+        private void UpdateRotation()
         {
             _currentEnvironment.transform.rotation = Quaternion.Lerp(_currentEnvironment.transform.rotation,
                 Quaternion.Euler(_target), _speed * Time.deltaTime);
@@ -53,31 +46,15 @@ namespace EnvironmentContent
         public void ChangeRotation(int index)
         {
             _lookMerger.StopMoveMatch();
-            _currentIndex += index;
-            Debug.Log(_currentIndex);
-
-            if (_currentIndex > _maxIndex)
-                _currentIndex = _minIndex;
-
-            if (_currentIndex < _minIndex)
-                _currentIndex = _maxIndex;
-
             _angle += _step * index;
-
             _target = new Vector3(_environments[_initializator.Index].transform.rotation.x, _angle,
                 _environments[_initializator.Index].transform.rotation.z);
-            
             _isRotating = true;
         }
 
-        public void SetPositions(GameObject environment)
+        public void SetEnvironment(GameObject environment)
         {
             _currentEnvironment = environment;
-        }
-
-        public void SetEnvironment()
-        {
-            _currentEnvironment = _environments[_initializator.Index];
         }
 
         public void StartRotate()

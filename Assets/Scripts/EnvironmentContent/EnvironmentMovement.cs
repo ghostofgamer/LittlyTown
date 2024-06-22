@@ -14,7 +14,6 @@ namespace EnvironmentContent
         private float _duration = 1f;
         private float _targetDistanceValue = 500f;
         private Coroutine _coroutine;
-        private Coroutine _coroutineRotate;
 
         private bool _isActive;
 

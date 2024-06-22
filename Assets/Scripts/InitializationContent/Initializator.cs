@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using ExtensionContent;
 using ItemPositionContent;
 using MapsContent;
 using SaveAndLoad;

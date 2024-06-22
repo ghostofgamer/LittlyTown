@@ -42,7 +42,8 @@ public class ContinueButton : AbstractButton
         _moveKeeper.LoadHistoryData();
         _scoreCounter.SetCurrentScore(_load.Get(CurrentRecordScore + _initializator.Index, _startValue));
         _goldCounter.CheckIncome();
-        _turnEnvironment.SetEnvironment();
+        // _turnEnvironment.SetEnvironment();
+        _turnEnvironment.SetEnvironment(_initializator.CurrentMap.gameObject);
         
         _lightHouse.SetActive(_initializator.CurrentMap.IsWaterTilePresent);
         

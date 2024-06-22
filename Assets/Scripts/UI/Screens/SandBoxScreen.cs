@@ -45,7 +45,7 @@ public class SandBoxScreen : AbstractScreen
         _visualItemsDeactivator.SetPositions(_itemPositions);
         _cameraScrolling.enabled = true;
         _environmentMovement.GoAway();
-        _turnEnvironment.SetPositions(_environment);
+        _turnEnvironment.SetEnvironment(_environment);
         ReturnPosition();
         _cameraMovement.ZoomOut();
         Debug.Log("размер " + (_scrollbar.size >= 1));

@@ -20,32 +20,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="099b8a6d-6b1c-4473-babb-d7d2ffb7e44f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Dragger/InputItemDragger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Dragger/InputItemDragger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Dragger/ItemDragger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Dragger/ItemDragger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Dragger/ItemKeeper.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Dragger/ItemKeeper.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Dragger/ItemPositionLooker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Dragger/ItemPositionLooker.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Dragger/ItemSelector.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Dragger/ItemSelector.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Dragger/ItemThrower.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Dragger/ItemThrower.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EnvironmentContent/Environment.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EnvironmentContent/Environment.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/EnvironmentContent/EnvironmentMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EnvironmentContent/EnvironmentMovement.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/EnvironmentContent/TurnEnvironment.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EnvironmentContent/TurnEnvironment.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Keeper/MovesKeeper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Keeper/MovesKeeper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ExtensionContent/ExtansionMapInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ExtensionContent/ExtansionMapInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ExtensionContent/ExtensionMap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ExtensionContent/ExtensionMap.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ExtensionContent/ExtensionMapMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ExtensionContent/ExtensionMapMovement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/InitializationContent/Initializator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/InitializationContent/Initializator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MapsContent/MapGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MapsContent/MapGenerator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/MapsContent/StartMap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MapsContent/StartMap.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/Storage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/Storage.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/ItemsStorage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/ItemsStorage.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SpawnContent/Spawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SpawnContent/Spawner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TutorContent/Stage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TutorContent/Stage.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BuyItemButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BuyItemButton.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ContinueButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ContinueButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/PossibilitiesFiles/AdditionalPossibilitiesButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/PossibilitiesFiles/AdditionalPossibilitiesButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/RotationButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/RotationButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/ChooseMapScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/ChooseMapScreen.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/CollectionScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/CollectionScreen.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/EndScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/EndScreen.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/SandBoxScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/SandBoxScreen.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/TutorialScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/TutorialScreen.cs" afterDir="false" />
     </list>
@@ -211,9 +195,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/FirstScreen.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/SandBoxScreen.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/ADS/AD.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ADS/DoublePossibilityReward.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ADS/FullAds.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/AnimationContent/AbstractAnimation.cs" />
@@ -246,9 +227,7 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/TutorContent/PlaceItemStage.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BuyItemButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SpawnContent/Spawner.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/MapsContent/StartMap.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/ChooseMapScreen.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ContinueButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/Storage.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/TutorContent/Stage.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/PossibilitiesFiles/AdditionalPossibilitiesButton.cs" />
@@ -260,8 +239,13 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Dragger/InputItemDragger.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Dragger/ItemPositionLooker.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/EnvironmentContent/Environment.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/EnvironmentContent/EnvironmentMovement.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ContinueButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MapsContent/StartMap.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/EnvironmentContent/TurnEnvironment.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/EnvironmentContent/EnvironmentMovement.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ExtensionContent/ExtansionMapInfo.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ExtensionContent/ExtensionMapMovement.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ExtensionContent/ExtensionMap.cs" />
       </list>
     </option>
   </component>
@@ -381,7 +365,7 @@
       <workItem from="1718960708405" duration="5590000" />
       <workItem from="1718966408269" duration="54000" />
       <workItem from="1718966485737" duration="8805000" />
-      <workItem from="1719036535212" duration="12740000" />
+      <workItem from="1719036535212" duration="14221000" />
     </task>
     <servers />
   </component>

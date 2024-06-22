@@ -50,7 +50,7 @@ public class TutorialScreen : AbstractScreen
     public void StartTutorial()
     {
         _visualItemsDeactivator.SetPositions(_itemPositions);
-        _turnEnvironment.SetPositions(_environment);
+        _turnEnvironment.SetEnvironment(_environment);
         _scoreCounter.enabled = false;
         _moveCounter.enabled = false;
         SlowOpen();

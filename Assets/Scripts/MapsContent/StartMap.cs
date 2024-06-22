@@ -132,7 +132,8 @@ public class StartMap : MonoBehaviour
         if (_packageLittleTown.IsActive)
             _packageLittleTown.Activated();
 
-        _turnEnvironment.SetEnvironment();
+        // _turnEnvironment.SetEnvironment();
+        _turnEnvironment.SetEnvironment(_initializator.CurrentMap.gameObject);
         // Debug.Log("Starting  " + _initializator.Index);
         _mapGenerator.TestGeneration(_initializator.Territories, _initializator.FinderPositions,
             _initializator.CurrentMap.StartItems, _initializator.ItemPositions,
