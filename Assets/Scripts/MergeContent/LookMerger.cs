@@ -51,13 +51,13 @@ public class LookMerger : MonoBehaviour
         // StopMoveMatch();
         if (itemPosition.IsWater || itemPosition.IsBusy)
         {
-            Debug.Log("Позиция занята");
+         
             StopMoveMatch();
             _completeList.Clear();
             return;
         }
             
-        Debug.Log("Проверка на позиции");
+   
         _isTryMerge = false;
         _targetPosition.Clear();
         CheckCoroutine(itemPosition, item);
@@ -188,7 +188,6 @@ public class LookMerger : MonoBehaviour
         _currentItemPosition = itemPosition;
         _currentItemPosition.SetSelected();
         _currentItem = item;
-        Debug.Log("очистка");
         _completeList.Clear();
         ClearLists();
 
@@ -439,7 +438,7 @@ public class LookMerger : MonoBehaviour
     {
         foreach (var matchItem in _completeList)
         {
-            matchItem.GetComponent<ItemMoving>().StopCoroutine();
+            matchItem.GetComponent<ItemMoving>().StopMove();
 // Debug.Log("СТОП");
             /*if (matchItem.ItemPosition != null)
                 matchItem.transform.position = matchItem.ItemPosition.transform.position;*/

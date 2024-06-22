@@ -1,66 +1,28 @@
-using System;
-using System.Collections.Generic;
 using CameraContent;
-using CollectionContent;
-using ItemContent;
 using UnityEngine;
 
-public class PlatformChecker : MonoBehaviour
+namespace InitializationContent
 {
-    [SerializeField] private CollectionScreen _collectionScreen;
-    [SerializeField] private GameObject[] _contentsCollections;
-    [SerializeField] private CollectionMovement[] _collectionMovements;
-    [SerializeField] private List<Item> _allCollectionItemsPC = new List<Item>();
-    [SerializeField] private List<Item> _allCollectionItemsMobile = new List<Item>();
-    [SerializeField] private Transform _DescriptionCollection;
-    [SerializeField] private CameraMovement _cameraMovement;
-    
-    private List<Item>[] _allCollectionItems = new List<Item>[2];
-
-    private int _pcIndex = 0;
-    private int _mobileIndex = 1;
-    private int _currentIndex;
-    private List<Transform> _descriptions = new List<Transform>();
-
-    public event Action<int> PlatformSelected;
-
-    private void Awake()
+    public class PlatformChecker : MonoBehaviour
     {
-        // _currentIndex = Application.isMobilePlatform ? _pcIndex : _mobileIndex;
-        _currentIndex = Application.isMobilePlatform ? _mobileIndex : _pcIndex;
-        PlatformSelected?.Invoke(_currentIndex);
-        _allCollectionItems[_pcIndex] = _allCollectionItemsPC;
-        _allCollectionItems[_mobileIndex] = _allCollectionItemsMobile;
-        _collectionScreen.Init(
-            _collectionMovements[_currentIndex], _allCollectionItems[_currentIndex],
-            _contentsCollections[_currentIndex]);
+        [SerializeField] private CameraMovement _cameraMovement;
 
-        /*if (_currentIndex == _mobileIndex)
+        private int _pcIndex = 0;
+        private int _mobileIndex = 1;
+        private int _currentIndex;
+        private int _perspectiveValueMobile = 45;
+        private int _perspectiveValuePc = 30;
+        private int _orthographicValueMobile = 9;
+        private int _orthographicValuePc = 6;
+
+        private void Awake()
         {
-            ChangePositionDescriptions();
-        }*/
+            _currentIndex = Application.isMobilePlatform ? _mobileIndex : _pcIndex;
 
-        if (_currentIndex == _mobileIndex)
-        {
-            _cameraMovement.Init(45,9);
-        }
-        else
-        {
-            _cameraMovement.Init(30,6);
-        }
-    }
-
-    private void ChangePositionDescriptions()
-    {
-        for (int i = 0; i < _DescriptionCollection.childCount; i++)
-            _descriptions.Add(_DescriptionCollection.GetChild(i));
-
-
-        foreach (var description in _descriptions)
-        {
-            Vector2 position = description.GetComponent<RectTransform>().anchoredPosition;
-            position.y = 600f;
-            description.GetComponent<RectTransform>().anchoredPosition = position;
+            if (_currentIndex == _mobileIndex)
+                _cameraMovement.Init(_perspectiveValueMobile, _orthographicValueMobile);
+            else
+                _cameraMovement.Init(_perspectiveValuePc, _orthographicValuePc);
         }
     }
 }

@@ -10,13 +10,12 @@ namespace Wallets
         [SerializeField] private Save _save;
         [SerializeField] private Load _load;
 
-        private int _defaultValue = 100;
+        private int _defaultValue = 0;
 
         private void Awake()
         {
             SetValue(_load.Get(Crystal, _defaultValue));
-            int number = _load.Get(Crystal, _defaultValue); 
-            // Debug.Log("Load " + number);
+            int number = _load.Get(Crystal, _defaultValue);
         }
 
         protected override void Start()

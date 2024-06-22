@@ -1,24 +1,27 @@
-using ItemContent;
 using UnityEngine;
 
-public class ItemStay : MonoBehaviour
+namespace ItemContent
 {
-    private Item _item;
-
-    private void Start()
+    [RequireComponent(typeof(Item))]
+    public class ItemStay : MonoBehaviour
     {
-        _item = GetComponent<Item>();
-    }
+        private Item _item;
 
-    private void Update()
-    {
-        if (_item.ItemPosition == null)
-            return;
-
-        if (transform.position != _item.ItemPosition.transform.position)
+        private void Start()
         {
-            transform.position = _item.ItemPosition.transform.position;
-            transform.forward = _item.ItemPosition.transform.forward;
+            _item = GetComponent<Item>();
+        }
+
+        private void Update()
+        {
+            if (_item.ItemPosition == null)
+                return;
+
+            if (transform.position != _item.ItemPosition.transform.position)
+            {
+                transform.position = _item.ItemPosition.transform.position;
+                transform.forward = _item.ItemPosition.transform.forward;
+            }
         }
     }
 }

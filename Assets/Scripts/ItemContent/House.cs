@@ -27,7 +27,6 @@ namespace ItemContent
         public void ResetIncome()
         {
             _income = _baseIncome;
-            Debug.Log("Reset " + _income );
             _item.SetGold(_income);
         }
     }

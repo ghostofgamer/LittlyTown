@@ -12,10 +12,5 @@ public class StartStageButton : AbstractButton
     {
         _currentStage.ShowItem();
         _currentStage.OpenCanvas();
-        /*if (_targetStage != null)
-            _targetStage.gameObject.SetActive(true);
-
-        if (_oldStage != null)
-            _oldStage.gameObject.SetActive(false);*/
     }
 }

@@ -7,61 +7,51 @@ namespace ItemPositionContent
     {
         [SerializeField] private SpriteRenderer _visualPosition;
         [SerializeField] private VisualItemsDeactivator _visualItemsDeactivator;
-        
+
         private float _fadeDuration = 0.06f;
         private Coroutine _coroutine;
-        
+        private float _elapsedTime;
+        private Color _color;
+
         public void ActivateVisual()
         {
             _visualItemsDeactivator.OnDeactivationVisual();
-            // _visualPosition.SetActive(true);
+
             if (_visualPosition.color.a < 1f)
             {
-                if(_coroutine!=null)
+                if (_coroutine != null)
                     StopCoroutine(_coroutine);
-                
-                StartCoroutine(FadeRoutine(_visualPosition.color.a, 1f));
+
+                _coroutine = StartCoroutine(Fade(_visualPosition.color.a, 1f));
             }
         }
-        
+
         public void DeactivateVisual()
         {
-            // _visualPosition.SetActive(false);
             if (_visualPosition.color.a > 0f)
             {
-                if(_coroutine!=null)
+                if (_coroutine != null)
                     StopCoroutine(_coroutine);
-                
-                StartCoroutine(FadeRoutine(_visualPosition.color.a, 0f));
+
+                _coroutine = StartCoroutine(Fade(_visualPosition.color.a, 0f));
             }
         }
-        
-        public void FadeIn()
-        {
-            StartCoroutine(FadeRoutine(0f, 1f));
-        }
 
-        public void FadeOut()
+        private IEnumerator Fade(float start, float end)
         {
-            StartCoroutine(FadeRoutine(1f, 0f));
-        }
+            _elapsedTime = 0f;
+            _color = _visualPosition.color;
 
-        private IEnumerator FadeRoutine(float start, float end)
-        {
-            float time = 0f;
-            Color color = _visualPosition.color;
-
-            while (time < _fadeDuration)
+            while (_elapsedTime < _fadeDuration)
             {
-                time += Time.deltaTime;
-                color.a = Mathf.Lerp(start, end, time / _fadeDuration);
-                _visualPosition.color = color;
+                _elapsedTime += Time.deltaTime;
+                _color.a = Mathf.Lerp(start, end, _elapsedTime / _fadeDuration);
+                _visualPosition.color = _color;
                 yield return null;
             }
 
-            // Убедитесь, что значение цвета точно равно целевому значению в конце
-            color.a = end;
-            _visualPosition.color = color;
+            _color.a = end;
+            _visualPosition.color = _color;
         }
     }
 }

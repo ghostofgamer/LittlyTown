@@ -1,4 +1,5 @@
 using System.Collections;
+using InitializationContent;
 using UnityEngine;
 
 namespace EnvironmentContent

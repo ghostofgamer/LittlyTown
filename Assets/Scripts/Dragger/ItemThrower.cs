@@ -2,6 +2,7 @@ using System;
 using Enums;
 using ItemContent;
 using ItemPositionContent;
+using Keeper;
 using UnityEngine;
 
 namespace Dragger
@@ -73,7 +74,7 @@ namespace Dragger
                 _itemKeeper.SelectedObject.ItemName == Items.Crane)
                 _itemKeeper.InstallItemForLastPosition();
 
-            _itemKeeper.ClearItem();
+            _itemKeeper.ClearSelectedItem();
             LastTrowPosition = itemPosition;
             _itemDragger.DisableSelected();
         }
@@ -83,6 +84,7 @@ namespace Dragger
             _itemKeeper.SelectedObject.transform.position = _itemKeeper.StartPosition.transform.position;
             _itemKeeper.SelectedObject.Init(_itemKeeper.StartPosition);
             _itemDragger.DisableSelected();
+            Debug.Log("LOK");
             _itemKeeper.StartPosition.GetComponent<VisualItemPosition>().ActivateVisual();
         }
     }

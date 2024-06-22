@@ -21,9 +21,6 @@ namespace ItemContent
         [SerializeField] private float _priceMultiplier;
         [SerializeField] private FlightScore _flightScore;
         [SerializeField] private bool _isBigHouse;
-        
-        private int _price;
-        private bool _isActive;
 
         public event Action Activated;
         
@@ -37,13 +34,13 @@ namespace ItemContent
 
         public Item NextItem => _nextItem;
 
-        public bool IsActive => _isActive;
+        public bool IsActive { get; private set; }
 
         public Items ItemName => _itemName;
 
         public bool IsHouse => _isHouse;
 
-        public int Price => _price;
+        public int Price { get; private set; }
 
         public bool IsLightHouse => _isLightHouse;
 
@@ -55,15 +52,13 @@ namespace ItemContent
 
         public void Activation()
         {
-            // Debug.Log("Act");
-            _isActive = true;
+            IsActive = true;
             Activated?.Invoke();
         }
 
         public void Deactivation()
         {
-            // Debug.Log("Deact");
-            _isActive = false;
+            IsActive = false;
             Deactivated?.Invoke();
         }
 
@@ -83,25 +78,19 @@ namespace ItemContent
             _gold = gold;
         }
 
-        public void SetName(Items name)
-        {
-            _itemName = name;
-        }
-
         public void SetPrice(int price)
         {
-            _price = price;
+            Price = price;
         }
 
         public void IncreasePrice()
         {
-            _price = Mathf.RoundToInt(_price * _priceMultiplier);
+            Price = Mathf.RoundToInt(Price * _priceMultiplier);
         }
 
         public void SetInitialPrice()
         {
-            // Debug.Log("начальная цена");
-            _price = _startPrice;
+            Price = _startPrice;
         }
     }
 }

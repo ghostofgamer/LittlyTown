@@ -1,54 +1,55 @@
-using System;
 using System.Collections;
-using ItemContent;
 using TMPro;
 using UnityEngine;
 using Wallets;
 using Random = UnityEngine.Random;
 
-public class TreasureChest : MonoBehaviour
+namespace ItemContent
 {
-    [SerializeField] private Item _item;
-    [SerializeField] private TMP_Text _rewardText;
-
-    private GoldWallet _goldWallet;
-    private int _reward;
-    private int _minReward = 1000;
-    private int _maxReward = 5000;
-
-    private void OnMouseUp()
+    public class TreasureChest : MonoBehaviour
     {
-        StartCoroutine(OpenChest());
-    }
+        [SerializeField] private Item _item;
+        [SerializeField] private TMP_Text _rewardText;
 
-    private IEnumerator OpenChest()
-    {
-        _reward = Random.Range(_minReward, _maxReward);
-        Debug.Log("даю денег");
-        _item.Deactivation();
-        Debug.Log(_item.name);
-        _goldWallet.SmoothlyIncreaseValue(_reward);
-        _rewardText.enabled = true;
-        _rewardText.text = "+ " + _reward;
-        yield return new WaitForSeconds(0.365f);
-        _item.ItemPosition.ClearingPosition();
-        _rewardText.enabled = false;
-        yield return new WaitForSeconds(0.1f);
-        gameObject.SetActive(false);
-    }
+        private GoldWallet _goldWallet;
+        private int _reward;
+        private int _minReward = 1000;
+        private int _maxReward = 5000;
+        private string _plus = "+ ";
+        private WaitForSeconds _firstWaitForSeconds = new WaitForSeconds(0.365f);
+        private WaitForSeconds _secondWaitForSeconds = new WaitForSeconds(0.1f);
 
-    private void Update()
-    {
-        if (_rewardText.enabled)
+        private void Update()
         {
-            _rewardText.transform.LookAt(Camera.main.transform.position);
-            _rewardText.transform.rotation = Quaternion.LookRotation(-_rewardText.transform.forward);
-            // _rewardText.transform.Rotate(0, _rewardText.transform.eulerAngles.y,  _rewardText.transform.eulerAngles.z);
+            if (_rewardText.enabled)
+            {
+                _rewardText.transform.LookAt(Camera.main.transform.position);
+                _rewardText.transform.rotation = Quaternion.LookRotation(-_rewardText.transform.forward);
+            }
         }
-    }
 
-    public void Init(GoldWallet goldWallet)
-    {
-        _goldWallet = goldWallet;
+        private void OnMouseUp()
+        {
+            StartCoroutine(OpenChest());
+        }
+
+        public void Init(GoldWallet goldWallet)
+        {
+            _goldWallet = goldWallet;
+        }
+
+        private IEnumerator OpenChest()
+        {
+            _reward = Random.Range(_minReward, _maxReward);
+            _item.Deactivation();
+            _goldWallet.SmoothlyIncreaseValue(_reward);
+            _rewardText.enabled = true;
+            _rewardText.text = _plus + _reward;
+            yield return _firstWaitForSeconds;
+            _item.ItemPosition.ClearingPosition();
+            _rewardText.enabled = false;
+            yield return _secondWaitForSeconds;
+            gameObject.SetActive(false);
+        }
     }
 }

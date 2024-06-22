@@ -18,20 +18,20 @@ namespace GoalContent
         [SerializeField] private GameObject _progressInfo;
         [SerializeField] private GameObject _completeInfo;
         [SerializeField] private int _index;
-        
+
         private int _reward;
         private int _scorePercentage;
-        public int CompleteValue { get; private set; }
+
         public event Action ValueChanged;
-        
+
+        public int CompleteValue { get; private set; }
+
         public int Index => _index;
-        
+
         public int CurrentValue => _currentValue;
 
         public GameObject CompleteGoalButton => _completeGoalButton;
 
-        public int MaxValue => _maxValue;
-        
         private void Start()
         {
             Show();
@@ -60,12 +60,9 @@ namespace GoalContent
 
             _currentValue++;
             Show();
-            // Debug.Log("ChangeValueGoal ");
 
             if (_currentValue >= _maxValue)
-            {
                 FinishGoal();
-            }
 
             ValueChanged?.Invoke();
         }
@@ -78,16 +75,13 @@ namespace GoalContent
 
         public void SetValue(int currentValue)
         {
-            // Debug.Log(currentValue);
             _currentValue = currentValue;
             Show();
-            
+
             if (_currentValue >= _maxValue)
-            {
                 FinishGoal();
-            }
         }
-        
+
         private void Show()
         {
             _scorePercentage = Mathf.RoundToInt((float) _currentValue / (float) _maxValue * 100f);

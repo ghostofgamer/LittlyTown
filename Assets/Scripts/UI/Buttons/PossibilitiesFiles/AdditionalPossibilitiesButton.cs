@@ -2,6 +2,7 @@ using CountersContent;
 using Dragger;
 using ItemContent;
 using ItemPositionContent;
+using Keeper;
 using UI.Screens.PossibilitiesShopContent;
 using UnityEngine;
 using UnityEngine.UI;
@@ -86,7 +87,7 @@ namespace UI.Buttons.BonusesContent
         private void SaveTemporaryItem()
         {
             _temporaryItem = _itemKeeper.SelectedObject;
-            _itemKeeper.ClearItem();
+            _itemKeeper.ClearSelectedItem();
             _itemPosition = _temporaryItem.ItemPosition;
             _itemPosition.GetComponent<VisualItemPosition>().DeactivateVisual();
             _temporaryItem.gameObject.SetActive(false);

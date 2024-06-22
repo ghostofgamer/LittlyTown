@@ -18,8 +18,9 @@ public abstract class Builder : MonoBehaviour
     private int _layerMask;
     private int _layer = 3;
     private ItemPosition _lastItemPosition;
+    private ItemPosition _currentItemPosition;
     private bool _isFirstOpen = true;
-    
+
     protected ItemPosition[] ItemPositions => _itemPositions;
 
     protected Transform Container => _container;
@@ -56,7 +57,10 @@ public abstract class Builder : MonoBehaviour
             {
                 if (hit.transform.TryGetComponent(out ItemPosition itemPosition))
                 {
-                    itemPosition.GetComponent<VisualItemPosition>().ActivateVisual();
+                    if (_currentItemPosition != itemPosition)
+                        itemPosition.GetComponent<VisualItemPosition>().ActivateVisual();
+
+                    _currentItemPosition = itemPosition;
                     _lastItemPosition = itemPosition;
                     TakeAction(itemPosition);
                 }
@@ -78,12 +82,12 @@ public abstract class Builder : MonoBehaviour
     protected abstract void TakeAction(ItemPosition itemPosition);
 
     protected abstract void FirstChoose();
-    
+
     public void Open()
     {
         if (!_isFirstOpen)
             return;
-        
+
         _isFirstOpen = false;
         _buildButton.Activate();
         FirstChoose();

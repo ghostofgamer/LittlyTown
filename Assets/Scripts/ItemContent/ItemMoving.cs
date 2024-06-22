@@ -6,16 +6,22 @@ namespace ItemContent
     public class ItemMoving : MonoBehaviour
     {
         [SerializeField] private Item _item;
-    
+
         private Vector3 _startPosition;
         private Coroutine _coroutineCyclically;
         private float _durationMoveTarget = 1f;
         private float _durationMoveCyclically = 0.3f;
         private float _elapsedTime = 0f;
         private float _progress;
-        
-        public void StopCoroutine()
+        private Vector3 _direction;
+        private Vector3 _target;
+        private float _distanceFactor = 0.35f;
+        private bool _isMoving = false;
+
+        public void StopMove()
         {
+            _isMoving = false;
+
             if (_coroutineCyclically != null)
             {
                 transform.position = _startPosition;
@@ -28,39 +34,29 @@ namespace ItemContent
             if (!_item.IsActive)
                 return;
 
-            _startPosition = transform.position;
-
-            if (_coroutineCyclically != null)
-                StopCoroutine(_coroutineCyclically);
-
-            _coroutineCyclically = StartCoroutine(MoveCyclicallyStart(target));
+            ChangeStartPositionMovement();
+            _coroutineCyclically = StartCoroutine(StartMoveCyclically(target));
         }
 
         public void MoveTarget(Vector3 target)
         {
-            _startPosition = transform.position;
-
-            if (_coroutineCyclically != null)
-                StopCoroutine(_coroutineCyclically);
-
-            StartCoroutine(MoveTargetStart(target));
+            ChangeStartPositionMovement();
+            StartCoroutine(StartMoveTarget(target));
         }
 
-        private IEnumerator MoveCyclicallyStart(Vector3 targetItemPosition)
+        private IEnumerator StartMoveCyclically(Vector3 targetItemPosition)
         {
-            float distanceFactor = 0.35f; 
+            _isMoving = true;
             
-            while (true)
+            while (_isMoving)
             {
-                Vector3 direction = (targetItemPosition - transform.position).normalized;
-                Vector3 target = transform.position + direction*distanceFactor;
+                _direction = (targetItemPosition - transform.position).normalized;
+                _target = transform.position + _direction * _distanceFactor;
                 _elapsedTime = 0;
 
                 while (_elapsedTime < _durationMoveTarget)
                 {
-                    _progress = _elapsedTime / _durationMoveTarget;
-                    transform.position = Vector3.Lerp(_startPosition, target, _progress);
-                    _elapsedTime += Time.deltaTime;
+                    Move(_target,_durationMoveTarget);
                     yield return null;
                 }
 
@@ -69,21 +65,33 @@ namespace ItemContent
             }
         }
 
-        private IEnumerator MoveTargetStart(Vector3 targetItemPosition)
+        private IEnumerator StartMoveTarget(Vector3 targetItemPosition)
         {
             _elapsedTime = 0;
 
             while (_elapsedTime < _durationMoveCyclically)
             {
-                _progress = _elapsedTime / _durationMoveCyclically;
-                transform.position = Vector3.Lerp(_startPosition, targetItemPosition, _progress);
-                _elapsedTime += Time.deltaTime;
+                Move(targetItemPosition,_durationMoveCyclically);
                 yield return null;
             }
 
             transform.position = targetItemPosition;
             gameObject.SetActive(false);
-            // Debug.Log("ВЫКЛ");
+        }
+
+        private void Move(Vector3 targetPosition,float duration)
+        {
+            _progress = _elapsedTime / duration;
+            transform.position = Vector3.Lerp(_startPosition, targetPosition, _progress);
+            _elapsedTime += Time.deltaTime;
+        }
+
+        private void ChangeStartPositionMovement()
+        {
+            _startPosition = transform.position;
+
+            if (_coroutineCyclically != null)
+                StopCoroutine(_coroutineCyclically);
         }
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using InitializationContent;
 using UnityEngine;
 
 public class MapActivator : MonoBehaviour

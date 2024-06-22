@@ -1,6 +1,7 @@
 using System;
 using Dragger;
 using ItemContent;
+using Keeper;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -27,7 +28,7 @@ public class Storage : MonoBehaviour
                 // Debug.Log("Если null ");
                 _currentItem = _itemKeeper.SelectedObject;
                 _currentItem.gameObject.SetActive(false);
-                _itemKeeper.ClearItem();
+                _itemKeeper.ClearSelectedItem();
                 _spawner.OnCreateItem();
                 _image.gameObject.SetActive(true);
                 _image.sprite = _currentItem.ItemDropDataSo.Icon;
@@ -37,7 +38,7 @@ public class Storage : MonoBehaviour
                 // Debug.Log("Если неее null ");
                 _currentItem = _itemKeeper.SelectedObject;
                 _currentItem.gameObject.SetActive(false);
-                _itemKeeper.ClearItem();
+                _itemKeeper.ClearSelectedItem();
                 _itemKeeper.SetItem(_itemKeeper.TemporaryItem, _currentItem.ItemPosition);
                 _itemKeeper.TemporaryItem.gameObject.SetActive(true);
                 _itemKeeper.ClearTemporaryItem();

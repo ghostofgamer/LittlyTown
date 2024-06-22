@@ -40,16 +40,6 @@ namespace ItemContent
             _item.Activated -= OnStopAnimation;
         }
 
-        public void OnStopAnimation()
-        {
-            Animator.SetBool(Active, true);
-        }
-
-        private void OnPlayAnimation()
-        {
-            Animator.SetBool(Active, false);
-        }
-
         public void BusyPositionAnimation()
         {
             Animator.SetTrigger(Busy);
@@ -58,6 +48,16 @@ namespace ItemContent
         public void PositioningAnimation()
         {
             Animator.SetTrigger(Positioning);
+        }
+
+        private void OnStopAnimation()
+        {
+            Animator.SetBool(Active, true);
+        }
+
+        private void OnPlayAnimation()
+        {
+            Animator.SetBool(Active, false);
         }
     }
 }

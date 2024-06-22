@@ -1,143 +1,57 @@
-using System;
 using SaveAndLoad;
 using UnityEngine;
 
-public class Bootstrap : MonoBehaviour
+namespace InitializationContent
 {
-    private const string LastActiveMap = "LastActiveMap";
-
-    [SerializeField] private Load _load;
-    [SerializeField] private MapGenerator _mapGenerator;
-    [SerializeField] private ItemsStorage _itemsStorage;
-    [SerializeField] private Initializator _initializator;
-    [SerializeField] private ChooseMap _chooseMap;
-    [SerializeField] private StartMap _startMap;
-    [SerializeField] private Save _save;
-    
-    private int _startValue = 0;
-
-    private void Awake()
+    public class Bootstrap : MonoBehaviour
     {
-    }
+        private const string LastActiveMap = "LastActiveMap";
+        private const string Map = "Map";
 
-    private void Start()
-    {
-        int value = _load.Get(LastActiveMap, _startValue);
-        // int currentMap = _load.Get("Map", _startValue);
-        int currentMap = _load.Get("Map", _startValue);
+        [SerializeField] private Load _load;
+        [SerializeField] private MapGenerator _mapGenerator;
+        [SerializeField] private ItemsStorage _itemsStorage;
+        [SerializeField] private Initializator _initializator;
+        [SerializeField] private ChooseMap _chooseMap;
+
+        private int _startValue = 0;
+        private int _valueLastMap;
+        private int _valueCurrentMap;
         
-        // Debug.Log("!!!! " + currentMap);
-        _chooseMap.SetPosition(currentMap);
-
-        if (value == 0)
+        private void Start()
         {
-            _initializator.SetIndex(value);
-            _initializator.FillLists();
+            _valueLastMap = _load.Get(LastActiveMap, _startValue);
+            _valueCurrentMap = _load.Get(Map, _startValue);
 
-            // _mapGenerator.ShowFirstMap();
-            
-            _mapGenerator.ShowTestFirstMap(_initializator.Territories, _initializator.FinderPositions,
-                _initializator.ItemPositions, _initializator.CurrentMap.RoadsContainer,_initializator.CurrentMap.StartItems);
-            
-            // _startMap.StartCreate();
+            _chooseMap.SetPosition(_valueCurrentMap);
 
-            for (int i = 0; i < _initializator.AmountMaps; i++)
+            if (_valueLastMap == 0)
             {
-                if (i == value)
-                    continue;
-                
-                _mapGenerator.GenerationAllMap(i);
-            }
+                _initializator.SetIndex(_valueLastMap);
+                _initializator.FillLists();
+                _mapGenerator.ShowTestFirstMap(_initializator.Territories, _initializator.FinderPositions,
+                    _initializator.ItemPositions, _initializator.CurrentMap.RoadsContainer,
+                    _initializator.CurrentMap.StartItems);
 
-            /*_mapGenerator.GenerationAllMap(1);
-            _mapGenerator.GenerationAllMap(2);
-            _mapGenerator.GenerationAllMap(3);
-            _mapGenerator.GenerationAllMap(4);
-            _mapGenerator.GenerationAllMap(5);
-            _mapGenerator.GenerationAllMap(6);
-            _mapGenerator.GenerationAllMap(7);
-            _mapGenerator.GenerationAllMap(8);
-            _mapGenerator.GenerationAllMap(9);
-            // _mapGenerator.GenerationAllMap(10);*/
-        }
-        else
-        {
-            _initializator.SetIndex(currentMap);
-            _initializator.FillLists();
-
-            // Debug.Log("Bootstrap " + currentMap);
-
-            for (int i = 0; i < _initializator.AmountMaps; i++)
-            {
-                _mapGenerator.GenerationAllMap(i);
-                
-                
-                /*if (i == currentMap)
+                for (int i = 0; i < _initializator.AmountMaps; i++)
                 {
-                    _mapGenerator.TestShowMap(_initializator.Territories, _initializator.FinderPositions,
-                        _initializator.CurrentMap.RoadsContainer, _initializator.ItemPositions);
-                    Debug.Log("Загружаем карту н7омер " + _initializator.CurrentMap.name + i);
-                }
-                else
-                {
+                    if (i == _valueLastMap)
+                        continue;
+
                     _mapGenerator.GenerationAllMap(i);
-                    Debug.Log("Загружаем остальные  " + +i);
-                }*/
+                }
             }
-
-            /*Debug.Log(_initializator.CurrentMap.name);
-            _mapGenerator.TestShowMap(_initializator.Territories, _initializator.FinderPositions,
-                _initializator.CurrentMap.RoadsContainer, _initializator.ItemPositions);
-            _mapGenerator.GenerationAllMap(1);
-            _mapGenerator.GenerationAllMap(2);*/
-            // _mapGenerator.ShowMap();
-            // Agava.YandexGames.Utility.PlayerPrefs.Load(onSuccessCallback: _itemsStorage.Load);
-            _itemsStorage.Load();
-        }
-    }
-
-    /*private void Start()
-    {
-        int value = _load.Get(LastActiveMap, _startValue);
-
-        if (value == 0)
-        {
-            _mapGenerator.ShowFirstMap();
-        }
-        else
-        {
-            _mapGenerator.ShowMap();
-            // Agava.YandexGames.Utility.PlayerPrefs.Load(onSuccessCallback: _itemsStorage.Load);
-            _itemsStorage.Load();
-        }
-    }*/
-
-    public void FirstGenerate()
-    {
-        
-        int value = _load.Get(LastActiveMap, _startValue);
-        /*int currentMap = _load.Get("Map", _startValue);
-        _chooseMap.SetPosition(currentMap);*/
-
-        if (value == 0)
-        {
-            _initializator.SetIndex(value);
-            _initializator.FillLists();
-
-            // _mapGenerator.ShowFirstMap();
-            
-            _mapGenerator.ShowTestFirstMap(_initializator.Territories, _initializator.FinderPositions,
-                _initializator.ItemPositions, _initializator.CurrentMap.RoadsContainer,_initializator.CurrentMap.StartItems);
-
-
-            /*for (int i = 0; i < _initializator.AmountMaps; i++)
+            else
             {
-                if (i == value)
-                    continue;
-                
-                _mapGenerator.GenerationAllMap(i);
-            }*/
+                _initializator.SetIndex(_valueCurrentMap);
+                _initializator.FillLists();
 
+                for (int i = 0; i < _initializator.AmountMaps; i++)
+                    _mapGenerator.GenerationAllMap(i);
+
+                // _itemsStorage.Load();
+                // _itemsStorage.LoadDataInfo();
+            }
         }
     }
 }

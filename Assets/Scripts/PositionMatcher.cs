@@ -157,7 +157,7 @@ public class PositionMatcher : MonoBehaviour
     public void StopMoveMatch()
     {
         foreach (var matchItem in _completeList)
-            matchItem.GetComponent<ItemMoving>().StopCoroutine();
+            matchItem.GetComponent<ItemMoving>().StopMove();
     }
 
     public void LookAround(ItemPosition itemPosition)

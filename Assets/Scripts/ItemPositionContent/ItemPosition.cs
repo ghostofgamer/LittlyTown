@@ -9,7 +9,6 @@ namespace ItemPositionContent
         [SerializeField] private ItemPosition _westPosition;
         [SerializeField] private ItemPosition _eastPosition;
         [SerializeField] private ItemPosition _southPosition;
-        [SerializeField] private PositionMatcher _positionMatcher;
         [SerializeField] private bool _isSelected = false;
         [SerializeField] private bool _isBusy = false;
         [SerializeField] private ItemPosition _road;
@@ -20,11 +19,9 @@ namespace ItemPositionContent
         [SerializeField] private ItemPosition _waterTile;
         [SerializeField] private ItemPosition[] _roadPositions;
 
-
         private Item _item;
         private ItemPosition[] _itemPositions;
-
-
+        
         public bool IsRoad { get; private set; } = false;
 
         public bool IsTrail { get; private set; } = false;
@@ -83,12 +80,10 @@ namespace ItemPositionContent
                 _road.gameObject.SetActive(false);
 
             _road = itemPosition;
-            // Debug.Log("тут");
         }
 
         public void SetFirstRoad(ItemPosition itemPosition)
         {
-            // Debug.Log("там");
             if (IsWater)
                 return;
 
@@ -99,9 +94,10 @@ namespace ItemPositionContent
         public void DeliverObject(Item item)
         {
             _item = item;
+            
             if (IsRoad)
                 IsRoad = false;
-            // _positionMatcher.LookAround(this);
+            
             _lookMerger.LookAround(this, _item);
         }
 
@@ -136,11 +132,6 @@ namespace ItemPositionContent
             _itemPositions = new ItemPosition[4] {_northPosition, _westPosition, _eastPosition, _southPosition};
         }
 
-        public void SetPositions()
-        {
-            _itemPositions = new ItemPosition[4] {_northPosition, _westPosition, _eastPosition, _southPosition};
-        }
-
         public void ReplaceSelectedActivate()
         {
             IsReplaceSelected = true;
@@ -153,7 +144,6 @@ namespace ItemPositionContent
 
         public void SetWater()
         {
-            // Debug.Log(this.name);
             _road.gameObject.SetActive(false);
             _waterTile.gameObject.SetActive(true);
             _isWater = true;
@@ -174,19 +164,9 @@ namespace ItemPositionContent
             IsTrail = true;
         }
 
-        public void DeactivateTrail()
-        {
-            IsTrail = false;
-        }
-
         public void ActivationWater()
         {
             _isWater = true;
-        }
-
-        public void DeactivationWater()
-        {
-            _isWater = false;
         }
 
         public void DeactivationAll()

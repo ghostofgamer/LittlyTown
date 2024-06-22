@@ -5,9 +5,11 @@ using System.Runtime.InteropServices;
 using CountersContent;
 using Dragger;
 using Enums;
+using InitializationContent;
 using ItemContent;
 using ItemPositionContent;
 using ItemSO;
+using Keeper;
 using PossibilitiesContent;
 using TMPro;
 using Unity.VisualScripting;
@@ -131,8 +133,7 @@ public class ItemsStorage : MonoBehaviour
 
     public void SaveChanges()
     {
-        Debug.Log("Сохраняет ");
-
+        Debug.Log("схр");
         if (_coroutine != null)
             StopCoroutine(_coroutine);
 
@@ -384,162 +385,7 @@ public class ItemsStorage : MonoBehaviour
         }
     }
 
-    private IEnumerator Save()
-    {
-        SaveData saveData = new SaveData();
-        // _saveData = saveData;
-
-        if (_itemKeeper.SelectedObject != null)
-        {
-            /*_selectObject = _itemDragger.SelectedObject;
-            saveData.SelectItemDragger = _selectObject;*/
-            saveData.SelectItemData = new SelectItemData(_itemKeeper.SelectedObject.ItemName,
-                _itemKeeper.SelectedObject.ItemPosition);
-            SelectSaveItem = _itemKeeper.SelectedObject;
-            // Debug.Log("сохраняем " + saveData.SelectItemData.ItemName + "   " + saveData.SelectItemData.ItemPosition);
-        }
-
-        /*_itemDropDataSO = _dropGenerator.ItemDropData;
-        saveData.ItemDropData = _itemDropDataSO;*/
-
-
-        yield return new WaitForSeconds(0.165f);
-
-        List<ItemData> itemDatas = new List<ItemData>();
-
-        foreach (var itemPosition in _itemPositions)
-        {
-            /*if (itemPosition.Item != null && itemPosition.Item.ItemName != Items.Crane)
-            {
-                ItemData itemData = new ItemData(itemPosition.Item.ItemName, itemPosition);
-                itemDatas.Add(itemData);
-            }*/
-            if (itemPosition.Item != null)
-            {
-                ItemData itemData = new ItemData(itemPosition.Item.ItemName, itemPosition);
-                // Debug.Log("Сохр " + itemPosition.Item.ItemName);
-                itemDatas.Add(itemData);
-            }
-        }
-
-        if (_itemKeeper.TemporaryItem != null)
-        {
-            saveData.TemporaryItem =
-                new ItemData(_itemKeeper.TemporaryItem.ItemName, null, _itemKeeper.TemporaryItem.Price);
-            ;
-        }
-
-        List<ItemData> itemDataPrice = new List<ItemData>();
-
-        foreach (var item in _shopItems.Items)
-        {
-            ItemData itemData = new ItemData(item.ItemName, null, item.Price);
-            itemDataPrice.Add(itemData);
-        }
-
-        // Debug.Log("ShopItemData " + itemDataPrice.Count);
-
-        saveData.PossibilitiesItemsData = new PossibilitiesItemsData(_possibilitieBulldozer, _possibilitieReplace,
-            _possibilitieBulldozer.Price, _possibilitieReplace.Price);
-        // Debug.Log("SavePossibilitie " + saveData.PossibilitiesItemsData.PossibilitieBulldozer.Price);
-
-
-        // saveData.ShopItemData.ItemsData = itemDataPrice;
-        saveData.ItemDatasPrices = itemDataPrice;
-        // Debug.Log("Цены " + saveData.ItemDatasPrices.Count);
-        if (_dropGenerator.ItemDropData != null)
-        {
-            saveData.ItemDropData =
-                new ItemDropData(_dropGenerator.ItemDropData.Icon, _dropGenerator.ItemDropData.PrefabItem);
-            // Debug.Log("ItemDropData " + saveData.ItemDropData.PrefabItem.ItemName);
-        }
-        else
-            saveData.ItemDropData = null;
-
-
-        saveData.ItemDatas = itemDatas;
-        saveData.BulldozerCount = _bulldozerCounter.PossibilitiesCount;
-        saveData.ReplaceCount = _replaceCounter.PossibilitiesCount;
-        saveData.GoldValue = _goldWallet.CurrentValue;
-        // Debug.Log("Gold: " + saveData.GoldValue);
-        saveData.MoveCount = _moveCounter.MoveCount;
-        saveData.ScoreValue = _scoreCounter.CurrentScore;
-        // Debug.Log("Score Value " + saveData.ScoreValue);
-        // saveData.StorageItem = _storage.CurrentItem;
-        if (_storage.CurrentItem != null)
-        {
-            // Debug.Log("CurrentStorageSave " + _storage.CurrentItem.ItemName);
-            saveData.StorageItemData =
-                new StorageItemData(_storage.CurrentItem.ItemName, _storage.CurrentItem.ItemPosition);
-        }
-        else
-        {
-            // Debug.Log("CurrentStorageSave NUll!!! ");
-            saveData.StorageItemData = new StorageItemData(Items.Empty, null);
-        }
-
-        if (_storage1.CurrentItem != null)
-        {
-            // Debug.Log("  1  CurrentStorageSave " + _storage1.CurrentItem.ItemName);
-            saveData.Storage1ItemData =
-                new StorageItemData(_storage1.CurrentItem.ItemName, _storage1.CurrentItem.ItemPosition);
-        }
-        else
-        {
-            // Debug.Log(" 1  CurrentStorageSave NUll!!! ");
-            saveData.Storage1ItemData = new StorageItemData(Items.Empty, null);
-        }
-
-        if (_storage2.CurrentItem != null)
-        {
-            // Debug.Log(" 2  CurrentStorageSave " + _storage2.CurrentItem.ItemName);
-            saveData.Storage2ItemData =
-                new StorageItemData(_storage2.CurrentItem.ItemName, _storage2.CurrentItem.ItemPosition);
-        }
-        else
-        {
-            // Debug.Log(" 2  CurrentStorageSave NUll!!! ");
-            saveData.Storage2ItemData = new StorageItemData(Items.Empty, null);
-        }
-
-
-        // saveData.SelectItemDragger = _itemDragger.SelectedObject;
-        // saveData.SelectPosition = _itemDragger.SelectedObject.ItemPosition;
-        // saveData.TemporaryItemDragger = _itemDragger.TemporaryItem;
-        // Debug.Log("Select Item Save " + saveData.SelectItemDragger);
-        /*if (_selectObject != null)
-        {
-            saveData.SelectItemDragger = _itemDragger.SelectedObject;
-            saveData.SelectPosition = _itemDragger.SelectedObject.ItemPosition;
-
-            Debug.Log("Select Item Save " + saveData.SelectItemDragger);
-        }
-
-        if (_temporaryObject != null)
-        {
-            saveData.TemporaryItemDragger = _itemDragger.TemporaryItem;
-
-            Debug.Log("Temporaru Item Save " + saveData.TemporaryItemDragger);
-        }*/
-        string jsonData = JsonUtility.ToJson(saveData);
-        PlayerPrefs.SetString(ItemStorageSave + _initializator.Index, jsonData);
-        PlayerPrefs.Save();
-        Debug.Log("Сохранение Сцены Мап " + ItemStorageSave + _initializator.Index);
-
-        /*string json = JsonUtility.ToJson(saveData);
-        System.IO.File.WriteAllText(Application.persistentDataPath + "/save.json", json);
-        // Agava.YandexGames.Utility.PlayerPrefs.SetString("save.json 1", json);
-        // Agava.YandexGames.Utility.PlayerPrefs.Save();*/
-        yield return null;
-        SaveCompleted?.Invoke(saveData);
-    }
-
-    private void SaveItemDraggerItems(Item selectItem, Item temporaryItem)
-    {
-        /*_selectObject = selectItem;
-        _temporaryObject = temporaryItem;
-        SaveChanges();*/
-    }
+    
 
     public SaveData GetSaveData()
     {

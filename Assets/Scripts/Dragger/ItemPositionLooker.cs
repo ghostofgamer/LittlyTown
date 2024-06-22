@@ -1,6 +1,7 @@
 using System;
 using ItemContent;
 using ItemPositionContent;
+using Keeper;
 using UnityEngine;
 
 namespace Dragger
@@ -33,7 +34,7 @@ namespace Dragger
                         return;
 
                     _currentLookPosition = itemPosition;
-
+                 
                     if (_itemDragger.IsObjectSelected)
                         _currentLookPosition.GetComponent<VisualItemPosition>().ActivateVisual();
 

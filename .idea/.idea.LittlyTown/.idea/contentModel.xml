@@ -1142,7 +1142,6 @@
             <e p="ItemAnimation.cs" t="Include" />
             <e p="ItemMoving.cs" t="Include" />
             <e p="ItemStay.cs" t="Include" />
-            <e p="LightHouseKeeper.cs" t="Include" />
             <e p="LightHouseTrigger.cs" t="Include" />
             <e p="TreasureChest.cs" t="Include" />
           </e>
@@ -1157,8 +1156,8 @@
           </e>
           <e p="Keeper" t="Include">
             <e p="ItemKeeper.cs" t="Include" />
+            <e p="LightHouseKeeper.cs" t="Include" />
             <e p="MovesKeeper.cs" t="Include" />
-            <e p="PriceKeeper.cs" t="Include" />
           </e>
           <e p="LocalizationContent" t="Include">
             <e p="Localization.cs" t="Include" />

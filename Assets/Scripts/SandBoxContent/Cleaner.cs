@@ -9,7 +9,8 @@ public class Cleaner : MonoBehaviour
     private int _layerMask;
     private int _layer = 3;
     private ItemPosition _lastItemPosition;
-
+    private ItemPosition _currentItemPosition;
+    
     public event Action ItemRemoved;
     
     private void Start()
@@ -29,7 +30,10 @@ public class Cleaner : MonoBehaviour
             {
                 if (hit.transform.TryGetComponent(out ItemPosition itemPosition))
                 {
-                    itemPosition.GetComponent<VisualItemPosition>().ActivateVisual();
+                    if (_currentItemPosition != itemPosition)
+                        itemPosition.GetComponent<VisualItemPosition>().ActivateVisual();
+
+                    _currentItemPosition = itemPosition;
                     _lastItemPosition = itemPosition;
 
                     if (itemPosition.IsBusy)
