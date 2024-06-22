@@ -147,7 +147,7 @@ namespace InitializationContent
 
             for (int i = 0; i < amount; i++)
             {
-                _extensionFilterTerritories[i].SetOpened();
+                _extensionFilterTerritories[i].EnableOpened();
             }
 
             foreach (var territory in territories)
@@ -228,7 +228,7 @@ namespace InitializationContent
             {
                 if (territory.IsExpanding)
                 {
-                    territory.SetClose();
+                    territory.DisableOpened();
                     territory.gameObject.SetActive(false);
                 }
             }

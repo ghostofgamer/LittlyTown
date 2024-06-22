@@ -3,6 +3,7 @@ using CameraContent;
 using Dragger;
 using InitializationContent;
 using Keeper;
+using MapsContent;
 using SaveAndLoad;
 using UI.Screens;
 using UnityEngine;
@@ -70,6 +71,7 @@ public class ChooseMapScreen : AbstractScreen
         base.Close();
         _cameraMovement.ResetZoom();
         // _chooseMap.StopWork();
+        _chooseMap.StopWork();
         _chooseMap.enabled = false;
         _mapInformation.SetActive(false);
         _mapActivator.ChangeActivityMaps();

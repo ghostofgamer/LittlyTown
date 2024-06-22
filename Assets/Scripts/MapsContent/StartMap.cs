@@ -1,292 +1,168 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using CountersContent;
-using Dragger;
 using EnvironmentContent;
 using InitializationContent;
 using ItemContent;
 using ItemPositionContent;
 using Keeper;
-using MapsContent;
 using PossibilitiesContent;
 using SaveAndLoad;
-using Unity.VisualScripting;
 using UnityEngine;
 using Wallets;
 
-public class StartMap : MonoBehaviour
+namespace MapsContent
 {
-    private const string LastActiveMap = "LastActiveMap";
-    private const string Map = "Map";
-    private const string ActiveMap = "ActiveMap";
-
-    [SerializeField] private Initializator _initializator;
-    [SerializeField] private ItemDragger _itemDragger;
-    [SerializeField] private ItemKeeper _itemKeeper;
-    [SerializeField] private Storage[] _storages;
-    [SerializeField] private MovesKeeper _movesKeeper;
-    [SerializeField] private GoldWallet _goldWallet;
-    [SerializeField] private ScoreCounter _scoreCounter;
-    [SerializeField] private Item[] _items;
-    [SerializeField] private Possibilitie[] _possibilities;
-    [SerializeField] private PossibilitiesCounter[] _possibilitiesCounters;
-    [SerializeField] private PackageLittleTown _packageLittleTown;
-    [SerializeField] private BonusesStart _bonusesStart;
-    [SerializeField] private MapGenerator _mapGenerator;
-    [SerializeField]private MovesKeeper _moveKeeper;
-    [SerializeField] private MapActivator _mapActivator;
-    [SerializeField] private VisualItemsDeactivator _visualItemsDeactivator;
-    [SerializeField] private GoldCounter _goldCounter;
-    [SerializeField] private TurnEnvironment _turnEnvironment;
-    [SerializeField] private GameObject _lightHouse;
-    
-    private Transform[] _children;
-    private int _selectMap = 1;
-    [SerializeField] private Save _save;
-
-    public event Action MapStarted;
-    
-    public void StartCreate()
+    public class StartMap : MonoBehaviour
     {
-        _save.SetData(LastActiveMap, _selectMap);
-        _save.SetData(Map, _initializator.Index);
-        _save.SetData(ActiveMap + _initializator.Index, _selectMap);
+        private const string LastActiveMap = "LastActiveMap";
+        private const string Map = "Map";
+        private const string ActiveMap = "ActiveMap";
+
+        [SerializeField] private Initializator _initializator;
+        [SerializeField] private ItemKeeper _itemKeeper;
+        [SerializeField] private Storage[] _storages;
+        [SerializeField] private GoldWallet _goldWallet;
+        [SerializeField] private ScoreCounter _scoreCounter;
+        [SerializeField] private Item[] _items;
+        [SerializeField] private Possibilitie[] _possibilities;
+        [SerializeField] private PossibilitiesCounter[] _possibilitiesCounters;
+        [SerializeField] private PackageLittleTown _packageLittleTown;
+        [SerializeField] private BonusesStart _bonusesStart;
+        [SerializeField] private MapGenerator _mapGenerator;
+        [SerializeField] private MovesKeeper _moveKeeper;
+        [SerializeField] private VisualItemsDeactivator _visualItemsDeactivator;
+        [SerializeField] private GoldCounter _goldCounter;
+        [SerializeField] private TurnEnvironment _turnEnvironment;
+        [SerializeField] private GameObject _lightHouse;
+        [SerializeField] private Save _save;
+
+        private Transform[] _children;
+        private int _selectMap = 1;
+
+        public event Action MapStarted;
+
+        public void StartCreate()
+        {
+            _save.SetData(LastActiveMap, _selectMap);
+            _save.SetData(Map, _initializator.Index);
+            _save.SetData(ActiveMap + _initializator.Index, _selectMap);
         
-        Debug.Log("ActiveMap + _initializator.Index " + ActiveMap + _initializator.Index    + "///" + _selectMap );
-        // Debug.Log("до Филл " + _initializator.Index);
-        if (_initializator.Environments[_initializator.Index].GetComponent<Map>().IsMapExpanding)
-        {
-            // _initializator.ExtensionFillLists();
-            _initializator.ResetTerritory();
-            Debug.Log("Extention " + _initializator.Index);
+            if (_initializator.Environments[_initializator.Index].GetComponent<Map>().IsMapExpanding)
+                _initializator.ResetTerritory();
+            else
+                _initializator.FillLists();
+        
+            DeactivateItems();
+            _visualItemsDeactivator.SetPositions(_initializator.ItemPositions);
+            _itemKeeper.ClearAll();
+            
+            foreach (var storage in _storages)
+                storage.ClearItem();
+            
+            _moveKeeper.LoadHistoryData();
+
+            if (_initializator.CurrentMap.IsMapWithoutProfit)
+            {
+                _goldWallet.SetInitialValue();
+                _goldWallet.DisableProfit();
+            }
+            else
+            {
+                _goldWallet.SetInitialValue();
+                _goldWallet.EnableProfit();
+            }
+
+            _lightHouse.SetActive(_initializator.CurrentMap.IsWaterTilePresent);
+            _goldCounter.CheckIncome();
+            _scoreCounter.ResetScore();
+
+            foreach (var itemPosition in _initializator.ItemPositions)
+            {
+                itemPosition.ClearingPosition();
+                itemPosition.DisableRoad();
+            }
+
+            foreach (var item in _items)
+                item.SetInitialPrice();
+        
+            foreach (var possibility in _possibilities)
+                possibility.SetStartPrice();
+        
+            foreach (var possibilityCounter in _possibilitiesCounters)
+            {
+                possibilityCounter.SetCount();
+
+                if (_packageLittleTown.IsActive)
+                    possibilityCounter.OnIncreaseCount(_packageLittleTown.Amount);
+            }
+
+            if (_packageLittleTown.IsActive)
+                _packageLittleTown.Activated();
+        
+            _turnEnvironment.SetEnvironment(_initializator.CurrentMap.gameObject);
+            _mapGenerator.TestGeneration(_initializator.Territories, _initializator.FinderPositions,
+                _initializator.CurrentMap.StartItems, _initializator.ItemPositions,
+                _initializator.CurrentMap.ItemsContainer);
+            _itemKeeper.SwitchOn();
+            _bonusesStart.ApplyBonuses();
+            MapStarted?.Invoke();
         }
-        else
+
+        public void StartVisualCreate()
         {
-            Debug.Log("NotExtention " + _initializator.Index);
+            SetStartSettings();
+            _mapGenerator.TestVisualGeneration(_initializator.Territories, _initializator.FinderPositions,
+                _initializator.CurrentMap.StartItems, _initializator.ItemPositions,
+                _initializator.CurrentMap.ItemsContainer);
+        }
+
+
+        public void SetStartSettings()
+        {
+            _save.SetData(Map, _initializator.Index);
             _initializator.FillLists();
-        }
+            DeactivateItems();
+            _visualItemsDeactivator.SetPositions(_initializator.ItemPositions);
+            _itemKeeper.ClearAll();
         
-        // _mapActivator.ChangeActivityMaps();
-        DeactivateItems();
-        _visualItemsDeactivator.SetPositions(_initializator.ItemPositions);
-        _itemKeeper.ClearAll();
-        foreach (var storage in _storages)
-        {
-            storage.ClearItem();
-        }
-
-        // _movesKeeper.ClearAllHistory();
-        _moveKeeper.LoadHistoryData();
-
-        if (_initializator.CurrentMap.IsMapWithoutProfit)
-        {
+            foreach (var storage in _storages)
+                storage.ClearItem();
+        
+            _moveKeeper.LoadHistoryData();
             _goldWallet.SetInitialValue();
-            _goldWallet.DisableProfit();
-        }
-        else
-        {
-             _goldWallet.SetInitialValue();
-             _goldWallet.EnableProfit();
-        }
+            _scoreCounter.ResetScore();
 
-        if (_initializator.CurrentMap.IsWaterTilePresent)
-        {
-            _lightHouse.SetActive(true); 
-        }
-        else
-        {
-            _lightHouse.SetActive(false); 
-        }
-        
-        _goldCounter.CheckIncome();
-       
-        _scoreCounter.ResetScore();
+            foreach (var itemPosition in _initializator.ItemPositions)
+                itemPosition.ClearingPosition();
 
-        foreach (var itemPosition in _initializator.ItemPositions)
-        {
-            itemPosition.ClearingPosition();
-            itemPosition.DisableRoad();
-        }
+            foreach (var item in _items)
+                item.SetInitialPrice();
 
-        foreach (var item in _items)
-        {
-            item.SetInitialPrice();
-        }
+            foreach (var possibility in _possibilities)
+                possibility.SetStartPrice();
 
-        foreach (var possibility in _possibilities)
-        {
-            possibility.SetStartPrice();
-        }
+            foreach (var possibilityCounter in _possibilitiesCounters)
+            {
+                possibilityCounter.SetCount();
 
-        foreach (var possibilityCounter in _possibilitiesCounters)
-        {
-            possibilityCounter.SetCount();
+                if (_packageLittleTown.IsActive)
+                    possibilityCounter.OnIncreaseCount(_packageLittleTown.Amount);
+            }
 
             if (_packageLittleTown.IsActive)
-            {
-                Debug.Log("startMap create");
-                possibilityCounter.OnIncreaseCount(_packageLittleTown.Amount);
-            }
-                
+                _packageLittleTown.Activated();
+
+            _itemKeeper.SwitchOn();
+            _bonusesStart.ApplyBonuses();
         }
 
-        if (_packageLittleTown.IsActive)
-            _packageLittleTown.Activated();
-
-        // _turnEnvironment.SetEnvironment();
-        _turnEnvironment.SetEnvironment(_initializator.CurrentMap.gameObject);
-        // Debug.Log("Starting  " + _initializator.Index);
-        _mapGenerator.TestGeneration(_initializator.Territories, _initializator.FinderPositions,
-            _initializator.CurrentMap.StartItems, _initializator.ItemPositions,
-            _initializator.CurrentMap.ItemsContainer);
-        _itemKeeper.SwitchOn();
-        _bonusesStart.ApplyBonuses();
-        MapStarted?.Invoke();
-    }
-
-    public void StartVisualCreate()
-    {
-        // _save.SetData(LastActiveMap, _selectMap);
-        _save.SetData(Map, _initializator.Index);
-        // _save.SetData(ActiveMap + _initializator.Index, _selectMap);
-        // Debug.Log("до Филл " + _initializator.Index);
-        _initializator.FillLists();
-        // _mapActivator.ChangeActivityMaps();
-        DeactivateItems();
-        _visualItemsDeactivator.SetPositions(_initializator.ItemPositions);
-        _itemKeeper.ClearAll();
-        foreach (var storage in _storages)
+        private void DeactivateItems()
         {
-            storage.ClearItem();
-        }
+            foreach (Transform child in _initializator.CurrentMap.RoadsContainer.transform)
+                child.gameObject.SetActive(false);
 
-        // _movesKeeper.ClearAllHistory();
-        _moveKeeper.LoadHistoryData();
-        _goldWallet.SetInitialValue();
-        _scoreCounter.ResetScore();
-
-        foreach (var itemPosition in _initializator.ItemPositions)
-        {
-            itemPosition.ClearingPosition();
-        }
-
-        foreach (var item in _items)
-        {
-            item.SetInitialPrice();
-        }
-
-        foreach (var possibility in _possibilities)
-        {
-            possibility.SetStartPrice();
-        }
-
-        foreach (var possibilityCounter in _possibilitiesCounters)
-        {
-            possibilityCounter.SetCount();
-
-            if (_packageLittleTown.IsActive)
-            {
-                Debug.Log("startMap");
-                  possibilityCounter.OnIncreaseCount(_packageLittleTown.Amount);
-            }
-            
-              
-        }
-
-        if (_packageLittleTown.IsActive)
-            _packageLittleTown.Activated();
-
-        Debug.Log("Starting  " + _initializator.Index+"        "+ _initializator.CurrentMap.name);
-        _mapGenerator.TestVisualGeneration(_initializator.Territories, _initializator.FinderPositions,
-            _initializator.CurrentMap.StartItems, _initializator.ItemPositions,
-            _initializator.CurrentMap.ItemsContainer);
-        _itemKeeper.SwitchOn();
-        _bonusesStart.ApplyBonuses();
-    }
-    
-    
-    public void NEWStartVisualCreate()
-    {
-        // _save.SetData(LastActiveMap, _selectMap);
-        _save.SetData(Map, _initializator.Index);
-        // _save.SetData(ActiveMap + _initializator.Index, _selectMap);
-        // Debug.Log("до Филл " + _initializator.Index);
-        _initializator.FillLists();
-        // _mapActivator.ChangeActivityMaps();
-        DeactivateItems();
-        _visualItemsDeactivator.SetPositions(_initializator.ItemPositions);
-        _itemKeeper.ClearAll();
-        foreach (var storage in _storages)
-        {
-            storage.ClearItem();
-        }
-
-        // _movesKeeper.ClearAllHistory();
-        _moveKeeper.LoadHistoryData();
-        _goldWallet.SetInitialValue();
-        _scoreCounter.ResetScore();
-
-        foreach (var itemPosition in _initializator.ItemPositions)
-        {
-            itemPosition.ClearingPosition();
-        }
-
-        foreach (var item in _items)
-        {
-            item.SetInitialPrice();
-        }
-
-        foreach (var possibility in _possibilities)
-        {
-            possibility.SetStartPrice();
-        }
-
-        foreach (var possibilityCounter in _possibilitiesCounters)
-        {
-            possibilityCounter.SetCount();
-
-            if (_packageLittleTown.IsActive)
-            {
-                Debug.Log("startMap");
-                possibilityCounter.OnIncreaseCount(_packageLittleTown.Amount);
-            }
-            
-              
-        }
-
-        if (_packageLittleTown.IsActive)
-            _packageLittleTown.Activated();
-
-        
-        
-        
-        
-        Debug.Log("Starting  " + _initializator.CurrentMap.StartItems.Count+"        "+ _initializator.CurrentMap.name );
-        
-        /*_mapGenerator.ShowTestFirstMap(_initializator.Territories, _initializator.FinderPositions,
-            _initializator.ItemPositions, _initializator.CurrentMap.RoadsContainer,_initializator.CurrentMap.StartItems);*/
-        
-        
-        /*_mapGenerator.TestVisualGeneration(_initializator.Territories, _initializator.FinderPositions,
-            _initializator.CurrentMap.StartItems, _initializator.ItemPositions,
-            _initializator.CurrentMap.ItemsContainer);*/
-        _itemKeeper.SwitchOn();
-        _bonusesStart.ApplyBonuses();
-    }
-    
-    public void DeactivateItems()
-    {
-        // Debug.Log(_initializator.CurrentMap.name);
-
-        foreach (Transform child in _initializator.CurrentMap.RoadsContainer.transform)
-        {
-            child.gameObject.SetActive(false);
-        }
-
-        foreach (Transform child in _initializator.CurrentMap.ItemsContainer.transform)
-        {
-            child.gameObject.SetActive(false);
+            foreach (Transform child in _initializator.CurrentMap.ItemsContainer.transform)
+                child.gameObject.SetActive(false);
         }
     }
 }

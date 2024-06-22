@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using ItemContent;
 using ItemSO;
+using MapsContent;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;

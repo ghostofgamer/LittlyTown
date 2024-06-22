@@ -1,50 +1,39 @@
-using ItemPositionContent;
 using UnityEngine;
 
-public class Territory : MonoBehaviour
+namespace MapsContent
 {
-    [SerializeField] private PositionScaller[] _positionScallers;
-    [SerializeField] private ItemPosition[] _itemPositions;
-    [SerializeField] private bool _isExpanding;
-    
-    public ItemPosition[] ItemPositions => _itemPositions;
-    
-    public bool IsExpanding => _isExpanding;
-
-    public bool IsOpened { get; private set; } = false;
-
-    public void PositionActivation()
+    public class Territory : MonoBehaviour
     {
-        foreach (var positionScaller in _positionScallers)
+        [SerializeField] private PositionScaller[] _positionScallers;
+        [SerializeField] private bool _isExpanding;
+
+        public bool IsExpanding => _isExpanding;
+
+        public bool IsOpened { get; private set; } = false;
+
+        public void PositionActivation()
         {
-            positionScaller.gameObject.SetActive(true);
-            positionScaller.ScaleChanged();
-        }  
-    }
+            foreach (var positionScaller in _positionScallers)
+            {
+                positionScaller.gameObject.SetActive(true);
+                positionScaller.ScaleChanged();
+            }  
+        }
     
-    public void ShowPositions()
-    {
-        foreach (var positionScaller in _positionScallers)
+        public void ShowPositions()
         {
-            positionScaller.gameObject.SetActive(true);
-        }  
-    }
-    
-    public void PositionDeactivation()
-    {
-        foreach (var positionScaller in _positionScallers)
+            foreach (var positionScaller in _positionScallers)
+                positionScaller.gameObject.SetActive(true);
+        }
+
+        public void EnableOpened()
         {
-            positionScaller.gameObject.SetActive(false);
-        }  
-    }
+            IsOpened = true;
+        }
 
-    public void SetOpened()
-    {
-        IsOpened = true;
-    }
-
-    public void SetClose()
-    {
-        IsOpened = false;
+        public void DisableOpened()
+        {
+            IsOpened = false;
+        }
     }
 }

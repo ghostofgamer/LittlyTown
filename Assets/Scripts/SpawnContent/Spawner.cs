@@ -8,6 +8,7 @@ using InitializationContent;
 using ItemContent;
 using ItemPositionContent;
 using Keeper;
+using MapsContent;
 using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;

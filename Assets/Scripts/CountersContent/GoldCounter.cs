@@ -3,6 +3,7 @@ using Dragger;
 using InitializationContent;
 using ItemPositionContent;
 using Keeper;
+using MergeContent;
 using TMPro;
 using UnityEngine;
 using Wallets;

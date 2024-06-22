@@ -1,38 +1,37 @@
 using InitializationContent;
 using UnityEngine;
 
-public class ButtonActivator : MonoBehaviour
+namespace MapsContent
 {
-    [SerializeField] private Initializator _initializator;
-    [SerializeField] private ChooseMapButton[] _chooseMapButton;
-    [SerializeField] private GameObject[] _goldContentButtons;
-    [SerializeField]private StartMap _startMap;
-
-    private void OnEnable()
+    public class ButtonActivator : MonoBehaviour
     {
-        _initializator.IndexChanged += ChangeActivityButton;
-        _startMap.MapStarted += ChangeActivityGoldContentButtons;
-    }
+        [SerializeField] private Initializator _initializator;
+        [SerializeField] private ChooseMapButton[] _chooseMapButton;
+        [SerializeField] private GameObject[] _goldContentButtons;
+        [SerializeField]private StartMap _startMap;
 
-    private void OnDisable()
-    {
-        _initializator.IndexChanged -= ChangeActivityButton;
-        _startMap.MapStarted += ChangeActivityGoldContentButtons;
-    }
-
-    private void ChangeActivityButton()
-    {
-        foreach (var button in _chooseMapButton)
+        private void OnEnable()
         {
-            button.gameObject.SetActive(button.Index != _initializator.Index);
+            _initializator.IndexChanged += ChangeActivityButton;
+            _startMap.MapStarted += ChangeActivityGoldContentButtons;
         }
-    }
 
-    public void ChangeActivityGoldContentButtons()
-    {
-        foreach (var button in _goldContentButtons)
+        private void OnDisable()
         {
-            button.gameObject.SetActive(!_initializator.CurrentMap.IsMapWithoutProfit);
+            _initializator.IndexChanged -= ChangeActivityButton;
+            _startMap.MapStarted += ChangeActivityGoldContentButtons;
+        }
+
+        private void ChangeActivityButton()
+        {
+            foreach (var button in _chooseMapButton)
+                button.gameObject.SetActive(button.Index != _initializator.Index);
+        }
+
+        private void ChangeActivityGoldContentButtons()
+        {
+            foreach (var button in _goldContentButtons)
+                button.gameObject.SetActive(!_initializator.CurrentMap.IsMapWithoutProfit);
         }
     }
 }

@@ -8,87 +8,86 @@ using ItemPositionContent;
 using UnityEngine;
 using Wallets;
 
-public class Merger : MonoBehaviour
+namespace MergeContent
 {
-    [SerializeField] private PositionMatcher _positionMatcher;
-    [SerializeField] private LookMerger _lookMerger;
-    [SerializeField] private GoldWallet _goldWallet;
-    [SerializeField] private Transform _container;
-    [SerializeField] private AudioSource _audioSource;
-    [SerializeField] private Initializator _initializator;
-    
-    private Item _currentItem;
-    private List<ItemPosition> _matchPositions = new List<ItemPosition>();
-    private List<Item> _matchItems = new List<Item>();
-
-    private Dictionary<ItemPosition, List<ItemPosition>> _newMatchedPositions =
-        new Dictionary<ItemPosition, List<ItemPosition>>();
-
-    private Dictionary<ItemPosition, List<Item>> _newMatchedItems =
-        new Dictionary<ItemPosition, List<Item>>();
-
-    private Dictionary<ItemPosition, Item> _newItem =
-        new Dictionary<ItemPosition, Item>();
-
-    private Dictionary<Item, Item> _targetItem =
-        new Dictionary<Item, Item>();
-
-    private Dictionary<ItemPosition, Coroutine> _coroutines = new Dictionary<ItemPosition, Coroutine>();
-
-
-    public event Action<int, int, ItemPosition> Merged;
-
-    public event Action Mergered;
-
-    public event Action<Item> ItemMergered;
-
-    public void Merge(ItemPosition currentPosition, List<ItemPosition> matchPositions, List<Item> matchItems,
-        Item targetItem)
+    public class Merger : MonoBehaviour
     {
-        if (!_newMatchedItems.ContainsKey(currentPosition))
-        {
-            _newMatchedItems.Add(currentPosition, new List<Item>());
-            // Debug.Log("NEW");
-        }
+        [SerializeField] private LookMerger _lookMerger;
+        [SerializeField] private GoldWallet _goldWallet;
+        [SerializeField] private AudioSource _audioSource;
+        [SerializeField] private Initializator _initializator;
+    
+        private Item _currentItem;
+        private List<ItemPosition> _matchPositions = new List<ItemPosition>();
+        private List<Item> _matchItems = new List<Item>();
 
-        Item newItem = currentPosition.Item;
-        if (!_newItem.ContainsKey(currentPosition))
-        {
-            // _newItem.Add(currentPosition, newItem);
-            _newItem.Add(currentPosition, targetItem);
-            // Debug.Log("NEW");
-        }
+        private Dictionary<ItemPosition, List<ItemPosition>> _newMatchedPositions =
+            new Dictionary<ItemPosition, List<ItemPosition>>();
 
-        if (!_targetItem.ContainsKey(targetItem))
-        {
-            // _newItem.Add(currentPosition, newItem);
-            _targetItem.Add(targetItem, targetItem);
-            // Debug.Log("NEW");
-        }
+        private Dictionary<ItemPosition, List<Item>> _newMatchedItems =
+            new Dictionary<ItemPosition, List<Item>>();
 
-        _matchPositions = matchPositions;
-        _matchItems = matchItems;
-        _currentItem = currentPosition.Item;
-        // Debug.Log("Создаем  " + _currentItem);
+        private Dictionary<ItemPosition, Item> _newItem =
+            new Dictionary<ItemPosition, Item>();
 
-        foreach (var item in _matchItems)
+        private Dictionary<Item, Item> _targetItem =
+            new Dictionary<Item, Item>();
+
+        private Dictionary<ItemPosition, Coroutine> _coroutines = new Dictionary<ItemPosition, Coroutine>();
+    
+        public event Action<int, int, ItemPosition> Merged;
+
+        public event Action Mergered;
+
+        public event Action<Item> ItemMergered;
+
+        public void Merge(ItemPosition currentPosition, List<ItemPosition> matchPositions, List<Item> matchItems,
+            Item targetItem)
         {
-            /*foreach (var position in item.ItemPosition.RoadPositions)
+            if (!_newMatchedItems.ContainsKey(currentPosition))
+            {
+                _newMatchedItems.Add(currentPosition, new List<Item>());
+                // Debug.Log("NEW");
+            }
+
+            Item newItem = currentPosition.Item;
+            if (!_newItem.ContainsKey(currentPosition))
+            {
+                // _newItem.Add(currentPosition, newItem);
+                _newItem.Add(currentPosition, targetItem);
+                // Debug.Log("NEW");
+            }
+
+            if (!_targetItem.ContainsKey(targetItem))
+            {
+                // _newItem.Add(currentPosition, newItem);
+                _targetItem.Add(targetItem, targetItem);
+                // Debug.Log("NEW");
+            }
+
+            _matchPositions = matchPositions;
+            _matchItems = matchItems;
+            _currentItem = currentPosition.Item;
+            // Debug.Log("Создаем  " + _currentItem);
+
+            foreach (var item in _matchItems)
+            {
+                /*foreach (var position in item.ItemPosition.RoadPositions)
             {
                 position.DisableRoad();
             }*/
             
-            item.Deactivation();
-            item.GetComponent<ItemMoving>().MoveTarget(currentPosition.transform.position);
-        }
+                item.Deactivation();
+                item.GetComponent<ItemMoving>().MoveTarget(currentPosition.transform.position);
+            }
 
-        _currentItem.GetComponent<ItemMoving>().MoveTarget(currentPosition.transform.position);
+            _currentItem.GetComponent<ItemMoving>().MoveTarget(currentPosition.transform.position);
 
-        // Debug.Log("Создаем 1 " + _currentItem);
-        StartCoroutine(MergeActivation(currentPosition, targetItem));
+            // Debug.Log("Создаем 1 " + _currentItem);
+            StartCoroutine(MergeActivation(currentPosition, targetItem));
 
 
-        /*
+            /*
         foreach (var item in _matchItems)
         {
             item.Deactivation();
@@ -110,58 +109,58 @@ public class Merger : MonoBehaviour
             Coroutine coroutine = StartCoroutine(MergeActivation(currentPosition));
             _coroutines.Add(currentPosition, coroutine);
         }*/
-    }
+        }
 
-    private IEnumerator MergeActivation(ItemPosition currentPosition, Item targetItem)
-    {
-        yield return new WaitForSeconds(0.35f);
-
-        foreach (var itemPosition in _matchPositions)
+        private IEnumerator MergeActivation(ItemPosition currentPosition, Item targetItem)
         {
-            foreach (var pos in itemPosition.RoadPositions)
+            yield return new WaitForSeconds(0.35f);
+
+            foreach (var itemPosition in _matchPositions)
             {
-                pos.DisableRoad();
-            }
+                foreach (var pos in itemPosition.RoadPositions)
+                {
+                    pos.DisableRoad();
+                }
             
-            itemPosition.ClearingPosition();
+                itemPosition.ClearingPosition();
+            }
+
+            if (_currentItem.ItemName == Items.Crane)
+            {
+                _currentItem = _targetItem[targetItem];
+            }
+
+            // Item item = Instantiate(_currentItem.NextItem, currentPosition.transform.position, Quaternion.identity);
+            // Item item = Instantiate(_newItem[currentPosition].NextItem, currentPosition.transform.position, Quaternion.identity);
+            // Debug.Log("Instantiate " + _targetItem[targetItem].name);
+            Item item = Instantiate(_targetItem[targetItem].NextItem, currentPosition.transform.position,
+                Quaternion.identity, _initializator.CurrentMap.ItemsContainer);
+
+            if (item.TryGetComponent(out TreasureChest treasureChest))
+                treasureChest.Init(_goldWallet);
+
+            // Debug.Log("Instantiate " + _newItem[currentPosition].name);
+            item.transform.forward = currentPosition.transform.forward;
+            _audioSource.PlayOneShot(_audioSource.clip);
+            item.Init(currentPosition);
+            item.Activation();
+            item.GetComponent<ItemAnimation>().PositioningAnimation();
+            yield return new WaitForSeconds(0.1f);
+            // Debug.Log("_matchPositions.Count " + _matchItems.Count);
+            // Merged?.Invoke(_matchItems.Count, _currentItem.Reward, currentPosition);
+            Merged?.Invoke(_matchPositions.Count, _currentItem.Reward, currentPosition);
+            // Debug.Log("повторный Мердж" + item.name);
+            _lookMerger.LookAround(currentPosition, item);
+            // Debug.Log("_matchPositions.Count " + _matchItems.Count);
+            yield return new WaitForSeconds(0.1f);
+            // Merged?.Invoke(_matchPositions.Count, _currentItem.Reward, currentPosition);
+            Mergered?.Invoke();
+            ItemMergered?.Invoke(item);
+            // StopCoroutine(_coroutines[currentPosition]);
         }
 
-        if (_currentItem.ItemName == Items.Crane)
-        {
-            _currentItem = _targetItem[targetItem];
-        }
 
-        // Item item = Instantiate(_currentItem.NextItem, currentPosition.transform.position, Quaternion.identity);
-        // Item item = Instantiate(_newItem[currentPosition].NextItem, currentPosition.transform.position, Quaternion.identity);
-        // Debug.Log("Instantiate " + _targetItem[targetItem].name);
-        Item item = Instantiate(_targetItem[targetItem].NextItem, currentPosition.transform.position,
-            Quaternion.identity, _initializator.CurrentMap.ItemsContainer);
-
-        if (item.TryGetComponent(out TreasureChest treasureChest))
-            treasureChest.Init(_goldWallet);
-
-        // Debug.Log("Instantiate " + _newItem[currentPosition].name);
-        item.transform.forward = currentPosition.transform.forward;
-        _audioSource.PlayOneShot(_audioSource.clip);
-        item.Init(currentPosition);
-        item.Activation();
-        item.GetComponent<ItemAnimation>().PositioningAnimation();
-        yield return new WaitForSeconds(0.1f);
-        // Debug.Log("_matchPositions.Count " + _matchItems.Count);
-        // Merged?.Invoke(_matchItems.Count, _currentItem.Reward, currentPosition);
-        Merged?.Invoke(_matchPositions.Count, _currentItem.Reward, currentPosition);
-        // Debug.Log("повторный Мердж" + item.name);
-        _lookMerger.LookAround(currentPosition, item);
-        // Debug.Log("_matchPositions.Count " + _matchItems.Count);
-        yield return new WaitForSeconds(0.1f);
-        // Merged?.Invoke(_matchPositions.Count, _currentItem.Reward, currentPosition);
-        Mergered?.Invoke();
-        ItemMergered?.Invoke(item);
-        // StopCoroutine(_coroutines[currentPosition]);
-    }
-
-
-    /*public void Merge(ItemPosition currentPosition, List<ItemPosition> matchPositions, List<Item> matchItems)
+        /*public void Merge(ItemPosition currentPosition, List<ItemPosition> matchPositions, List<Item> matchItems)
     {
         _matchPositions = matchPositions;
         _matchItems = matchItems;
@@ -206,4 +205,5 @@ public class Merger : MonoBehaviour
         Mergered?.Invoke();
         ItemMergered?.Invoke(item);
     }*/
+    }
 }

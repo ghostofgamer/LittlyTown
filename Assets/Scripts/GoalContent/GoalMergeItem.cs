@@ -1,3 +1,4 @@
+using MergeContent;
 using UnityEngine;
 
 namespace GoalContent

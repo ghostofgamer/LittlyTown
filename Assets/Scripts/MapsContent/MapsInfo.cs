@@ -1,27 +1,30 @@
 using UnityEngine;
 
-public class MapsInfo : MonoBehaviour
+namespace MapsContent
 {
-    [SerializeField] private GameObject[] _mapInfoObjects;
-    [SerializeField] private ChooseMap _chooseMap;
-    [SerializeField]private Records _records;
-
-    private void OnEnable()
+    public class MapsInfo : MonoBehaviour
     {
-        _chooseMap.MapChanged += ActivatedInfo;
-    }
+        [SerializeField] private GameObject[] _mapInfoObjects;
+        [SerializeField] private ChooseMap _chooseMap;
+        [SerializeField]private Records _records;
 
-    private void OnDisable()
-    {
-        _chooseMap.MapChanged -= ActivatedInfo;
-    }
+        private void OnEnable()
+        {
+            _chooseMap.MapChanged += ActivatedInfo;
+        }
 
-    public void ActivatedInfo(int index)
-    {
-        foreach (var mapInfo in _mapInfoObjects)
-            mapInfo.SetActive(false);
+        private void OnDisable()
+        {
+            _chooseMap.MapChanged -= ActivatedInfo;
+        }
 
-        _mapInfoObjects[index].SetActive(true);
-        _records.Show();
+        public void ActivatedInfo(int index)
+        {
+            foreach (var mapInfo in _mapInfoObjects)
+                mapInfo.SetActive(false);
+
+            _mapInfoObjects[index].SetActive(true);
+            _records.Show();
+        }
     }
 }

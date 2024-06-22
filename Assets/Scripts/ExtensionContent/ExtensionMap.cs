@@ -3,6 +3,7 @@ using InitializationContent;
 using ItemContent;
 using ItemPositionContent;
 using MapsContent;
+using MergeContent;
 using SaveAndLoad;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -115,7 +116,7 @@ namespace ExtensionContent
             _extensionMapMovement.SetPosition(amount, map.Mover);
 
             for (int i = 0; i < amount; i++)
-                _extensionFilterTerritories[i].SetOpened();
+                _extensionFilterTerritories[i].EnableOpened();
 
             foreach (var territory in territories)
             {
