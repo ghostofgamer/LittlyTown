@@ -1337,7 +1337,6 @@
               </e>
             </e>
             <e p="DisappearingAlert.cs" t="Include" />
-            <e p="FadeCanvas.cs" t="Include" />
             <e p="FlightScore.cs" t="Include" />
             <e p="LoadingSceneVisual.cs" t="Include" />
             <e p="ParticlesRotater.cs" t="Include" />

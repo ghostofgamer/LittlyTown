@@ -8,6 +8,7 @@ using MapsContent;
 using SaveAndLoad;
 using UI.Buttons;
 using UnityEngine;
+using UpgradesContent;
 
 public class ContinueButton : AbstractButton
 {

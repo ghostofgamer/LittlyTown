@@ -8,6 +8,7 @@ using Keeper;
 using PossibilitiesContent;
 using SaveAndLoad;
 using UnityEngine;
+using UpgradesContent;
 using Wallets;
 
 namespace MapsContent

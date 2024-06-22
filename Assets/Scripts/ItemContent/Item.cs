@@ -3,6 +3,7 @@ using Enums;
 using ItemPositionContent;
 using ItemSO;
 using TMPro;
+using UI;
 using UnityEngine;
 
 namespace ItemContent

@@ -1,12 +1,17 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LoadingSceneVisual : MonoBehaviour
+namespace UI
 {
-    [SerializeField] private Image _image;
-
-    private void Update()
+    public class LoadingSceneVisual : MonoBehaviour
     {
-        _image.transform.Rotate(0,0,-1);
+        [SerializeField] private Image _image;
+
+        private float _speed = 1;
+
+        private void Update()
+        {
+            _image.transform.Rotate(0, 0, -_speed);
+        }
     }
 }

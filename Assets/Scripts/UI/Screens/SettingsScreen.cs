@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UI.Screens;
-using UnityEngine;
-
-public class SettingsScreen : AbstractScreen
+namespace UI.Screens
 {
+    public class SettingsScreen : AbstractScreen
+    {
+    }
 }

@@ -93,7 +93,6 @@ namespace UI.Screens.PossibilitiesShopContent
         {
             _currentPrice = CalculateTotalPrice(_currentAmount);
             Show();
-            // _priceText.text = "Цена: " + _currentPrice + " монет";
         }
 
         private int CalculateTotalPrice(int amount)

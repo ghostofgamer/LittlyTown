@@ -1,4 +1,3 @@
-using System;
 using CountersContent;
 using UI.Buttons;
 using UI.Buttons.PossibilitiesFiles;
@@ -34,9 +33,7 @@ namespace UI.Screens
             base.Open();
 
             foreach (var buyItemButton in _buyItemButtons)
-            {
                 buyItemButton.Show();
-            }
 
             ShowItems();
             CheckAvailability();

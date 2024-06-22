@@ -1,13 +1,16 @@
 using UnityEngine;
 
-public class ParticlesRotater : MonoBehaviour
+namespace UI
 {
-    [SerializeField] private float _direction;
-
-    private float _speed = 30f;
-
-    private void Update()
+    public class ParticlesRotater : MonoBehaviour
     {
-        transform.Rotate(0, 0, _direction * _speed * Time.deltaTime);
+        [SerializeField] private float _direction;
+
+        private float _speed = 30f;
+
+        private void Update()
+        {
+            transform.Rotate(0, 0, _direction * _speed * Time.deltaTime);
+        }
     }
 }

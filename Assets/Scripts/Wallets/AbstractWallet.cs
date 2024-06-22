@@ -25,8 +25,7 @@ namespace Wallets
         {
             if (_isLoadValue)
                 return;
-
-            // Debug.Log("GoldStart");
+            
             _currentValue = _startValue;
             ValueChanged?.Invoke();
         }
@@ -81,16 +80,13 @@ namespace Wallets
         public void SetValue(int value)
         {
             _isLoadValue = true;
-            // Debug.Log("GoldSEt");
             _currentValue = value;
-            // Debug.Log("GetGold " + _currentValue);
             ValueChanged?.Invoke();
         }
 
         public void SetInitialValue()
         {
             _currentValue = _startValue;
-            // Debug.Log("GoldSEt " + _currentValue);
             ValueChanged?.Invoke();
         }
 

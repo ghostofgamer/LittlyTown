@@ -19,7 +19,6 @@ namespace UI.Screens
 
         public virtual void Open()
         {
-            // Debug.Log("Open");
             if (_coroutine != null)
                 StopCoroutine(_coroutine);
 
@@ -30,7 +29,6 @@ namespace UI.Screens
 
         public virtual void Close()
         {
-            // Debug.Log("Close");
             if (_coroutine != null)
                 StopCoroutine(_coroutine);
             

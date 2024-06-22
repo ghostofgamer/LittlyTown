@@ -3,38 +3,40 @@ using SaveAndLoad;
 using TMPro;
 using UnityEngine;
 
-public class Records : MonoBehaviour
+namespace UI
 {
-    private const string MaxRecord = "MaxRecord";
-
-    [SerializeField] private GameObject[] _recordsContent;
-    [SerializeField] private TMP_Text[] _recordsInfo;
-    [SerializeField] private Load _load;
-    [SerializeField] private Initializator _initializator;
-
-    private void OnEnable()
+    public class Records : MonoBehaviour
     {
-        _initializator.IndexChanged += Show;
-    }
+        private const string MaxRecord = "MaxRecord";
 
-    private void OnDisable()
-    {
-        _initializator.IndexChanged -= Show;
-    }
+        [SerializeField] private GameObject[] _recordsContent;
+        [SerializeField] private TMP_Text[] _recordsInfo;
+        [SerializeField] private Load _load;
+        [SerializeField] private Initializator _initializator;
 
-    public void Show()
-    {
-        int score = _load.Get(MaxRecord + _initializator.Index, 0);
-
-        
-        if (score > 0)
+        private void OnEnable()
         {
-            _recordsContent[_initializator.Index].SetActive(true);
-            _recordsInfo[_initializator.Index].text = score.ToString();
+            _initializator.IndexChanged += Show;
         }
-        else
+
+        private void OnDisable()
         {
-            _recordsContent[_initializator.Index].SetActive(false);
+            _initializator.IndexChanged -= Show;
+        }
+
+        public void Show()
+        {
+            int score = _load.Get(MaxRecord + _initializator.Index, 0);
+
+            if (score > 0)
+            {
+                _recordsContent[_initializator.Index].SetActive(true);
+                _recordsInfo[_initializator.Index].text = score.ToString();
+            }
+            else
+            {
+                _recordsContent[_initializator.Index].SetActive(false);
+            }
         }
     }
 }

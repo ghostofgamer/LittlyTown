@@ -1,72 +1,54 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
-public class ButtonResize : MonoBehaviour
+namespace UI
 {
-    [SerializeField] private Button _button;
-    [SerializeField] private TMP_Text _text;
-    [SerializeField] private float _minWidth;
-    [SerializeField] private bool _isLeft;
-
-    private float _previousWidth;
-
-    private void Start()
+    public class ButtonResize : MonoBehaviour
     {
-        _previousWidth = _text.preferredWidth;
+        [SerializeField] private Button _button;
+        [SerializeField] private TMP_Text _text;
+        [SerializeField] private float _minWidth;
+        [SerializeField] private bool _isLeft;
 
-        if (_text.preferredWidth > _minWidth)
-        {
-            ChangeScale(_text.preferredWidth);
-        }
-    }
+        private float _previousWidth;
+        private RectTransform _buttonRectTransform;
 
-    private void Update()
-    {
-        if (_previousWidth != _text.preferredWidth)
+        private void Start()
         {
+            _previousWidth = _text.preferredWidth;
+
             if (_text.preferredWidth > _minWidth)
-            {
                 ChangeScale(_text.preferredWidth);
+        }
+
+        private void Update()
+        {
+            if (_previousWidth != _text.preferredWidth)
+            {
+                ChangeScale(_text.preferredWidth > _minWidth ? _text.preferredWidth : _minWidth);
+                _previousWidth = _text.preferredWidth;
+            }
+        }
+
+        private void ChangeScale(float target)
+        {
+            if (!_isLeft)
+            {
+                _buttonRectTransform = _button.GetComponent<RectTransform>();
+                _buttonRectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, target);
+                LayoutRebuilder.ForceRebuildLayoutImmediate(_buttonRectTransform);
             }
             else
             {
-                ChangeScale(_minWidth);
+                _buttonRectTransform = _button.GetComponent<RectTransform>();
+                float currentLeftPosition = _buttonRectTransform.anchoredPosition.x;
+                float currentWidth = _buttonRectTransform.rect.width;
+                _buttonRectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, target);
+                float newLeftPosition = currentLeftPosition - (target - currentWidth);
+                _buttonRectTransform.anchoredPosition = new Vector2(newLeftPosition, _buttonRectTransform.anchoredPosition.y);
+                LayoutRebuilder.ForceRebuildLayoutImmediate(_buttonRectTransform);
             }
-
-            _previousWidth = _text.preferredWidth;
-        }
-    }
-
-    private void ChangeScale(float target)
-    {
-        if (!_isLeft)
-        {
-            RectTransform buttonRectTransform = _button.GetComponent<RectTransform>();
-            buttonRectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, target);
-            LayoutRebuilder.ForceRebuildLayoutImmediate(buttonRectTransform);
-          
-        }
-        else
-        {
-            RectTransform buttonRectTransform = _button.GetComponent<RectTransform>();
-            
-            // Сохраняем текущую позицию кнопки относительно левого края экрана
-            float currentLeftPosition = buttonRectTransform.anchoredPosition.x;
-            
-            // Сохраняем текущую ширину кнопки
-            float currentWidth = buttonRectTransform.rect.width;
-            
-            // Изменяем ширину кнопки
-            buttonRectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, target);
-            
-            // Вычисляем новую позицию кнопки относительно левого края экрана
-            float newLeftPosition = currentLeftPosition - (target - currentWidth);
-            
-            // Устанавливаем новую позицию кнопки
-            buttonRectTransform.anchoredPosition = new Vector2(newLeftPosition, buttonRectTransform.anchoredPosition.y);
-            
-            LayoutRebuilder.ForceRebuildLayoutImmediate(buttonRectTransform);
         }
     }
 }

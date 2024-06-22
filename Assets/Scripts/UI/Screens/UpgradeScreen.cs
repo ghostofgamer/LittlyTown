@@ -1,22 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UI.Buttons.UpgradeButtons;
-using UI.Screens;
 using UnityEngine;
 
-public class UpgradeScreen : AbstractScreen
+namespace UI.Screens
 {
-    [SerializeField] private UpgradeButton[] _upgradeButtons;
-
-    public override void Open()
+    public class UpgradeScreen : AbstractScreen
     {
-        base.Open();
-        CheckPossibilityPurchasing();
-    }
+        [SerializeField] private UpgradeButton[] _upgradeButtons;
 
-    public void CheckPossibilityPurchasing()
-    {
-        foreach (var button in _upgradeButtons)
-            button.CheckAvailability();
+        public override void Open()
+        {
+            base.Open();
+            CheckPossibilityPurchasing();
+        }
+
+        public void CheckPossibilityPurchasing()
+        {
+            foreach (var button in _upgradeButtons)
+                button.CheckAvailability();
+        }
     }
 }

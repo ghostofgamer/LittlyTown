@@ -11,16 +11,16 @@ namespace UI.Screens
     public class CompleteScoreScreen : AbstractScreen
     {
         [SerializeField] private ScoreCounter _scoreCounter;
-        [SerializeField]private RewardGoldButton _goldButton;
+        [SerializeField] private RewardGoldButton _goldButton;
         [SerializeField] private Blur _blur;
         [SerializeField] private CrystalWallet _crystalWallet;
-        [SerializeField]private InputItemDragger _inputItemDragger;
-[SerializeField]private CanvasGroup _gameScreenCanvasGroup;
+        [SerializeField] private InputItemDragger _inputItemDragger;
+        [SerializeField] private CanvasGroup _gameScreenCanvasGroup;
 
         private int _reward = 15;
 
         public event Action ScoreCompleted;
-        
+
         private void OnEnable()
         {
             _scoreCounter.LevelChanged += Open;
