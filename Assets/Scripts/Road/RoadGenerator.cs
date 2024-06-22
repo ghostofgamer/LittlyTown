@@ -7,6 +7,7 @@ using ItemPositionContent;
 using MapsContent;
 using MergeContent;
 using PossibilitiesContent;
+using SpawnContent;
 using UnityEngine;
 
 namespace Road

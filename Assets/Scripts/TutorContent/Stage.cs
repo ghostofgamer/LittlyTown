@@ -1,7 +1,6 @@
 using Dragger;
 using ItemPositionContent;
 using Keeper;
-using UI.Screens;
 using UnityEngine;
 
 namespace TutorContent
@@ -21,32 +20,13 @@ namespace TutorContent
         
         protected InputItemDragger InputItemDragger => _inputItemDragger;
 
-        protected ItemDragger ItemDragger => _itemDragger;
-
-        protected CanvasGroup CanvasGroup => _canvasGroup;
-
         protected GameObject DescriptionGoalStage => _descriptionGoalStage;
 
         protected GameObject DescriptionStage => _descriptionStage;
 
         protected Stage NextStage => _nextStage;
 
-        public void SwitchOffStage()
-        {
-        }
-
-        public abstract void OpenStage();
-
-
-        public void Open()
-        {
-        }
-
-        public void Close()
-        {
-        }
-
-        public void CloseCanvas()
+        protected void CloseCanvas()
         {
             if (_canvasGroup != null)
                 _canvasGroup.gameObject.SetActive(false);
@@ -57,8 +37,7 @@ namespace TutorContent
             if (_canvasGroup != null)
                 _canvasGroup.gameObject.SetActive(true);
         }
-
-
+        
         public void ShowItem()
         {
             _itemKeeper.SelectedObject.gameObject.SetActive(true);
@@ -66,7 +45,7 @@ namespace TutorContent
             _inputItemDragger.enabled = true;
         }
 
-        public void HideItem()
+        protected void HideItem()
         {
             _itemKeeper.SelectedObject.ItemPosition.GetComponent<VisualItemPosition>().DeactivateVisual();
             _itemKeeper.SelectedObject.gameObject.SetActive(false);

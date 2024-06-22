@@ -14,8 +14,7 @@ public class ChooseMapScreen : AbstractScreen
     private const string LastActiveMap = "LastActiveMap";
     private const string ActiveMap = "ActiveMap";
     private const string OpenMap = "OpenMap";
-
-    [SerializeField] private ItemDragger _itemDragger;
+    
     [SerializeField] private ItemKeeper _itemKeeper;
     [SerializeField] private GameObject _startButton;
     [SerializeField] private GameObject _continueButton;
@@ -68,10 +67,10 @@ public class ChooseMapScreen : AbstractScreen
 
     public override void Close()
     {
+        _chooseMap.StopWork();
         base.Close();
         _cameraMovement.ResetZoom();
         // _chooseMap.StopWork();
-        _chooseMap.StopWork();
         _chooseMap.enabled = false;
         _mapInformation.SetActive(false);
         _mapActivator.ChangeActivityMaps();

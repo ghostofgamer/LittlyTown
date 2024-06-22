@@ -1,42 +1,44 @@
 using System.Collections;
 using PossibilitiesContent;
-using TutorContent;
 using UnityEngine;
 
-public class BulldozerStage : Stage
+namespace TutorContent
 {
-    [SerializeField]private RemovalItems _removalItems;
-    
-    private void OnEnable()
+    public class BulldozerStage : Stage
     {
-        _removalItems.Removed += ActivatedFinalStage;
-    }
+        [SerializeField]private RemovalItems _removalItems;
+    
+        private Coroutine _coroutine;
+        private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.5f);
+        
+        private void OnEnable()
+        {
+            _removalItems.Removed += ActivatedFinalStage;
+        }
 
-    private void OnDisable()
-    {
-        _removalItems.Removed -= ActivatedFinalStage;
-    }
+        private void OnDisable()
+        {
+            _removalItems.Removed -= ActivatedFinalStage;
+        }
     
-    private void ActivatedFinalStage()
-    {
-        StartCoroutine(Active());
-    }
-    
-    private IEnumerator Active()
-    {
-        yield return new WaitForSeconds(0.5f);
-        HideItem();
-        CloseCanvas();
-        DescriptionGoalStage.SetActive(false);
-        NextStage.gameObject.SetActive(true);
-        NextStage.ShowDescription();
-                    
-        gameObject.SetActive(false);
+        private void ActivatedFinalStage()
+        {
+            if (_coroutine != null)
+                StopCoroutine(_coroutine);
             
-    }
+            _coroutine = StartCoroutine(Active());
+        }
     
-    public override void OpenStage()
-    {
-        throw new System.NotImplementedException();
+        private IEnumerator Active()
+        {
+            yield return _waitForSeconds;
+            HideItem();
+            CloseCanvas();
+            DescriptionGoalStage.SetActive(false);
+            NextStage.gameObject.SetActive(true);
+            NextStage.ShowDescription();
+            gameObject.SetActive(false);
+            
+        }
     }
 }

@@ -1,12 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using TutorContent;
-using UnityEngine;
-
-public class FinalStage : Stage
+namespace TutorContent
 {
-    public override void OpenStage()
+    public class FinalStage : Stage
     {
-        
     }
 }

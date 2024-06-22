@@ -1,16 +1,16 @@
-using TutorContent;
 using UI.Buttons;
 using UnityEngine;
 
-public class StartStageButton : AbstractButton
+namespace TutorContent
 {
-    [SerializeField] private Stage _oldStage;
-    [SerializeField] private Stage _targetStage;
-    [SerializeField] private Stage _currentStage;
-    
-    protected override void OnClick()
+    public class StartStageButton : AbstractButton
     {
-        _currentStage.ShowItem();
-        _currentStage.OpenCanvas();
+        [SerializeField] private Stage _currentStage;
+    
+        protected override void OnClick()
+        {
+            _currentStage.ShowItem();
+            _currentStage.OpenCanvas();
+        }
     }
 }

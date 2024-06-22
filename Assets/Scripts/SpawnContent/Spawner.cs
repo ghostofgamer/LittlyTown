@@ -3,167 +3,89 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using CountersContent;
-using Dragger;
 using InitializationContent;
 using ItemContent;
 using ItemPositionContent;
 using Keeper;
-using MapsContent;
 using MergeContent;
-using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class Spawner : MonoBehaviour
+namespace SpawnContent
 {
-    [SerializeField] private Transform[] _environment;
-    [SerializeField] private ChooseMap _chooseMap;
-    [SerializeField] private VisualItemsDeactivator _visualItemsDeactivator;
-    [SerializeField] private Initializator _initializator;
+    public class Spawner : MonoBehaviour
+    {
+        [SerializeField] private Initializator _initializator;
+        [SerializeField] private ItemKeeper _itemKeeper;
+        [SerializeField] private PositionMatcher _positionMatcher;
+        [SerializeField] private MoveCounter _moveCounter;
+        [SerializeField] private DropGenerator _dropGenerator;
+        [SerializeField] private LookMerger _lookMerger;
+
+        private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.165f);
+        private Coroutine _coroutine;
+        private ItemPosition _position;
     
-    [SerializeField] private Item _prefabItem;
-    [SerializeField] private ItemPosition[] _positions;
-    [SerializeField] private ItemDragger _itemDragger;
-    [SerializeField] private ItemKeeper _itemKeeper;
-    [SerializeField] private PositionMatcher _positionMatcher;
-    [SerializeField] private MoveCounter _moveCounter;
-    [SerializeField] private DropGenerator _dropGenerator;
-    [SerializeField] private LookMerger _lookMerger;
-    [SerializeField] private Transform _container;
+        public event Action ItemCreated;
 
-    private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.165f);
-    private Coroutine _coroutine;
-    private ItemPosition _position;
-    
-    public event Action ItemCreated;
+        public event Action PositionsFilled;
 
-    public event Action PositionsFilled;
+        public event Action<ItemPosition, Item> LooksNeighbors;
 
-    public event Action<ItemPosition, Item> LooksNeighbors;
+        private int _index;
 
-
-private List<ItemPosition > _itemPos = new List<ItemPosition>();
-    private int _index;
-    
-    private void Start()
-    {
-        // OnCreateItem();
-    }
-
-    private void OnEnable()
-    {
-        _positionMatcher.NotMerged += OnCreateItem;
-        _lookMerger.NotMerged += OnCreateItem;
-        _chooseMap.MapChanged += SetIndex;
-    }
-
-    private void OnDisable()
-    {
-        _positionMatcher.NotMerged -= OnCreateItem;
-        _lookMerger.NotMerged -= OnCreateItem;
-        _chooseMap.MapChanged -= SetIndex;
-    }
-
-    public void OnCreateItem()
-    {
-        if (!_moveCounter.IsThereMoves || _itemKeeper.SelectedObject != null || _itemKeeper.TemporaryItem != null)
-            return;
-
-        if (_coroutine != null)
-            StopCoroutine(_coroutine);
-
-        StartCoroutine(CreateNewItem());
-    }
-
-    public ItemPosition GetPosition()
-    {
-        // _visualItemsDeactivator.SetPositions(_initializator.ItemPositions);
-        List<ItemPosition> freePositions = _initializator.ItemPositions
-            .Where(p => !p.GetComponent<ItemPosition>().IsBusy && !p.GetComponent<ItemPosition>().IsWater).ToList();
-        int randomIndex = Random.Range(0, freePositions.Count);
-
-        if (freePositions.Count <= 0)
+        private void OnEnable()
         {
-            PositionsFilled?.Invoke();
-            return null;
+            _positionMatcher.NotMerged += OnCreateItem;
+            _lookMerger.NotMerged += OnCreateItem;
         }
 
-        ItemPosition randomFreePosition = freePositions[randomIndex];
-        return randomFreePosition;
-    }
-
-    /*public ItemPosition GetPosition()
-    {
-        List<ItemPosition> freePositions = _positions
-            .Where(p => !p.GetComponent<ItemPosition>().IsBusy && !p.GetComponent<ItemPosition>().IsWater).ToList();
-        int randomIndex = Random.Range(0, freePositions.Count);
-
-        if (freePositions.Count <= 0)
+        private void OnDisable()
         {
-            PositionsFilled?.Invoke();
-            return null;
+            _positionMatcher.NotMerged -= OnCreateItem;
+            _lookMerger.NotMerged -= OnCreateItem;
         }
 
-        ItemPosition randomFreePosition = freePositions[randomIndex];
-        return randomFreePosition;
-    }*/
-    
-    public void SetPositions()
-    {
-        ItemPosition[] itemPositions = _environment[_index].GetComponentsInChildren<ItemPosition>(true);
-
-        foreach (var itemPosition in itemPositions)
+        public void OnCreateItem()
         {
-            if (!itemPosition.enabled)
-                continue;
-            
-            if (!_itemPos.Contains(itemPosition))
+            if (!_moveCounter.IsThereMoves || _itemKeeper.SelectedObject != null || _itemKeeper.TemporaryItem != null)
+                return;
+
+            if (_coroutine != null)
+                StopCoroutine(_coroutine);
+
+            StartCoroutine(CreateNewItem());
+        }
+
+        public ItemPosition GetPosition()
+        {
+            List<ItemPosition> freePositions = _initializator.ItemPositions
+                .Where(p => !p.GetComponent<ItemPosition>().IsBusy && !p.GetComponent<ItemPosition>().IsWater).ToList();
+            int randomIndex = Random.Range(0, freePositions.Count);
+
+            if (freePositions.Count <= 0)
             {
-                _itemPos.Add(itemPosition);
+                PositionsFilled?.Invoke();
+                return null;
             }
+
+            ItemPosition randomFreePosition = freePositions[randomIndex];
+            return randomFreePosition;
         }
-        
-        _visualItemsDeactivator.SetPositions(_itemPos);
+
+        private IEnumerator CreateNewItem()
+        {
+            yield return _waitForSeconds;
+            _position = GetPosition();
+
+            if (_position == null)
+                yield break;
+            
+            Item item = Instantiate(_dropGenerator.GetItem(), _position.transform.position,
+                Quaternion.identity,_initializator.CurrentMap.ItemsContainer);
+            _itemKeeper.SetItem(item, _position);
+            ItemCreated?.Invoke();
+            LooksNeighbors?.Invoke(_position, item);
+        }
     }
-
-    private void SetIndex(int index)
-    {
-        _index = index;                
-    }
-
-    private IEnumerator CreateNewItem()
-    {
-        yield return _waitForSeconds;
-
-        _position = GetPosition();
-
-        if (_position == null)
-            yield break;
-
-        // Item item = Instantiate(_prefabItem, _position.transform.position, Quaternion.identity);
-        // Debug.Log("Spawner");
-        Item item = Instantiate(_dropGenerator.GetItem(), _position.transform.position,
-            Quaternion.identity,_initializator.CurrentMap.ItemsContainer);
-        _itemKeeper.SetItem(item, _position);
-        ItemCreated?.Invoke();
-        LooksNeighbors?.Invoke(_position, item);
-    }
-    
-    /*private IEnumerator CreateNewItem()
-    {
-        yield return _waitForSeconds;
-
-        _position = GetPosition();
-
-        if (_position == null)
-            yield break;
-
-        // Item item = Instantiate(_prefabItem, _position.transform.position, Quaternion.identity);
-        // Debug.Log("Spawner");
-        Item item = Instantiate(_dropGenerator.GetItem(), _position.transform.position,
-            Quaternion.identity,_container);
-        _itemDragger.SetItem(item, _position);
-        ItemCreated?.Invoke();
-        LooksNeighbors?.Invoke(_position, item);
-    }*/
 }

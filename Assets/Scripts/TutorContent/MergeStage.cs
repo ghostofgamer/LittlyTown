@@ -1,4 +1,3 @@
-using Dragger;
 using MergeContent;
 using UnityEngine;
 
@@ -18,24 +17,17 @@ namespace TutorContent
         {
             _merger.Mergered -= ActivateStoragesStage;
         }
-        
-        public void ActivateStoragesStage()
+
+        private void ActivateStoragesStage()
         {
             foreach (var button in _storageButtons)
-            {
                 button.SetActive(true);
-            }
-        
+            
             DescriptionGoalStage.SetActive(false);
             NextStage.gameObject.SetActive(true);
             NextStage.ShowDescription();
             InputItemDragger.enabled = false;
             gameObject.SetActive(false);
-        }
-
-        public override void OpenStage()
-        {
-            
         }
     }
 }
