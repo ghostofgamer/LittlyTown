@@ -21,6 +21,7 @@ namespace UI.Screens
         [SerializeField] private List<ItemPosition> _itemPositions = new List<ItemPosition>();
         [SerializeField] private TurnEnvironment _turnEnvironment;
         [SerializeField]private GameObject _environment;
+        [SerializeField] private ShopItems _shopItems;
 
         private int _defaultIndex = 0;
         private int _currentIndex;
@@ -61,6 +62,7 @@ namespace UI.Screens
             foreach (var button in _gameLevelButtons)
                 button.SetActive(false);
             
+            _shopItems.SetStartPrice();
             Open();
         }
 

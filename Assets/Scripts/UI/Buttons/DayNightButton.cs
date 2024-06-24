@@ -1,42 +1,44 @@
 using DayNightContent;
-using UI.Buttons;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DayNightButton : AbstractButton
+namespace UI.Buttons
 {
-    [SerializeField] private Image _dayImage;
-    [SerializeField] private Image _nightImage;
-    [SerializeField] private DayNight _dayNight;
-
-    protected override void OnEnable()
+    public class DayNightButton : AbstractButton
     {
-        base.OnEnable();
-        _dayNight.TimeDayChanged += ChangeImage;
-    }
+        [SerializeField] private Image _dayImage;
+        [SerializeField] private Image _nightImage;
+        [SerializeField] private DayNight _dayNight;
 
-    protected override void OnDisable()
-    {
-        base.OnDisable();
-        _dayNight.TimeDayChanged -= ChangeImage;
-    }
+        protected override void OnEnable()
+        {
+            base.OnEnable();
+            _dayNight.TimeDayChanged += ChangeImage;
+        }
 
-    private void Start()
-    {
-        ChangeImage();
-    }
+        protected override void OnDisable()
+        {
+            base.OnDisable();
+            _dayNight.TimeDayChanged -= ChangeImage;
+        }
 
-    protected override void OnClick()
-    {
-        AudioSource.PlayOneShot(AudioSource.clip);
-        _dayNight.ChangeDayTime();
-    }
+        private void Start()
+        {
+            ChangeImage();
+        }
 
-    private void ChangeImage()
-    {
-        if (_dayImage != null)
-            _dayImage.enabled = !_dayNight.IsNight;
+        protected override void OnClick()
+        {
+            AudioSource.PlayOneShot(AudioSource.clip);
+            _dayNight.ChangeDayTime();
+        }
 
-        _nightImage.enabled = _dayNight.IsNight;
+        private void ChangeImage()
+        {
+            if (_dayImage != null)
+                _dayImage.enabled = !_dayNight.IsNight;
+
+            _nightImage.enabled = _dayNight.IsNight;
+        }
     }
 }

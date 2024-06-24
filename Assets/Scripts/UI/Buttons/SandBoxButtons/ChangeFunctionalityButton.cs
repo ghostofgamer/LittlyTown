@@ -1,144 +1,114 @@
 using System.Collections;
 using SandBoxContent;
-using UI.Buttons;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ChangeFunctionalityButton : AbstractButton
+namespace UI.Buttons.SandBoxButtons
 {
-    private const string Open = "Open";
-    private const string Close = "Close";
-
-    [SerializeField] private Sprite _activeButton;
-    [SerializeField] private Sprite _notActiveButton;
-    [SerializeField] private Image _iconImage;
-    [SerializeField] private Image _buttonImage;
-    [SerializeField] private ChangeFunctionalityButton[] _changeFunctionalityButtons;
-    [SerializeField] private Animator _animator;
-    [SerializeField] private RectTransform _content;
-    [SerializeField] private Builder _builder;
-
-    private float _positionCloseY = -143f;
-    private float _positionOpenY = 143f;
-    private float _elapsedTime;
-    private float _duration = 0.16f;
-    private bool _isActive;
-    private Coroutine _coroutine;
-
-    protected override void OnClick()
+    public class ChangeFunctionalityButton : AbstractButton
     {
-        _isActive = !_isActive;
-        Debug.Log("Active " + _isActive + "   " + this.name);
+        [SerializeField] private Sprite _activeButton;
+        [SerializeField] private Sprite _notActiveButton;
+        [SerializeField] private Image _iconImage;
+        [SerializeField] private Image _buttonImage;
+        [SerializeField] private ChangeFunctionalityButton[] _changeFunctionalityButtons;
+        [SerializeField] private RectTransform _content;
+        [SerializeField] private Builder _builder;
 
-        if (_isActive)
+        private float _positionCloseY = -143f;
+        private float _positionOpenY = 143f;
+        private float _elapsedTime;
+        private float _duration = 0.16f;
+        private bool _isActive;
+        private Coroutine _coroutine;
+
+        protected override void OnClick()
         {
-            DeactivationButtons();
-            Activation();
+            _isActive = !_isActive;
+
+            if (_isActive)
+            {
+                DeactivationButtons();
+                Activation();
+            }
+            else
+            {
+                Deactivation();
+            }
+
+            AudioSource.PlayOneShot(AudioSource.clip);
         }
-        else
+
+        private void DeactivationButtons()
         {
-            Deactivation();
+            foreach (var changeFunctionalityButton in _changeFunctionalityButtons)
+            {
+                changeFunctionalityButton.Deactivation();
+                changeFunctionalityButton.OffActivity();
+            }
         }
-        /*Debug.Log(_content.anchoredPosition);
+
+        public void OffActivity()
+        {
+            _isActive = false;
+        }
+
+        public void Deactivation()
+        {
+            if (_builder != null)
+                _builder.enabled = false;
+
+            _buttonImage.sprite = _notActiveButton;
+            _iconImage.color = Color.white;
+
+            if (_content != null)
+                CloseContent();
+        }
+
+        private void Activation()
+        {
+            if (_builder != null)
+            {
+                _builder.enabled = true;
+                _builder.Open();
+            }
         
-        Vector3 newPosition = _content.anchoredPosition;
-        newPosition.y = _positionOpenY;
-        _content.anchoredPosition = newPosition;
+            _buttonImage.sprite = _activeButton;
+            _iconImage.color = Color.black;
 
-        // _content.anchoredPosition = new Vector3(_content.anchoredPosition.x, _positionOpenY);*/
-
-        AudioSource.PlayOneShot(AudioSource.clip);
-    }
-
-    private void DeactivationButtons()
-    {
-        foreach (var changeFunctionalityButton in _changeFunctionalityButtons)
-        {
-            changeFunctionalityButton.Deactivation();
-            changeFunctionalityButton.OffActivity();
+            if (_content != null)
+                OpenContent();
         }
-    }
 
-    public void OffActivity()
-    {
-        _isActive = false;
-    }
-
-    public void Deactivation()
-    {
-        /*if (!_isActive)
-            return;*/
-        if (_builder != null)
-            _builder.enabled = false;
-
-        _buttonImage.sprite = _notActiveButton;
-        _iconImage.color = Color.white;
-        // _isActive = false;
-
-        if (_content != null)
-            CloseContent();
-        /*if (_animator != null)
+        private void OpenContent()
         {
-            Debug.Log("имя " + this.name + _animator.gameObject.name);
-            _animator.SetTrigger(Close);
-        }*/
-    }
+            if (_coroutine != null)
+                StopCoroutine(_coroutine);
 
-    private void Activation()
-    {
-        if (_builder != null)
-        {
-            _builder.enabled = true;
-            _builder.Open();
+            StartCoroutine(MoveContent(new Vector2(_content.anchoredPosition.x, _positionOpenY)));
         }
+
+        private void CloseContent()
+        {
+            if (_coroutine != null)
+                StopCoroutine(_coroutine);
+
+            StartCoroutine(MoveContent(new Vector2(_content.anchoredPosition.x, _positionCloseY)));
+        }
+
+        private IEnumerator MoveContent(Vector2 target)
+        {
+            _elapsedTime = 0;
+            Vector2 startPosition = _content.anchoredPosition;
+
+            while (_elapsedTime < _duration)
+            {
+                _elapsedTime += Time.deltaTime;
+                _content.anchoredPosition = Vector2.Lerp(startPosition, target, _elapsedTime / _duration);
+                yield return null;
+            }
         
-        _buttonImage.sprite = _activeButton;
-        _iconImage.color = Color.black;
-        // _isActive = true;
-
-        if (_content != null)
-            OpenContent();
-
-        /*if (_animator != null)
-        {
-            Debug.Log("OPEN " + this.name + _animator.gameObject.name);
-             _animator.SetTrigger(Open);
-        }*/
-    }
-
-    private void OpenContent()
-    {
-        if (_coroutine != null)
-            StopCoroutine(_coroutine);
-
-        StartCoroutine(MoveContent(new Vector2(_content.anchoredPosition.x, _positionOpenY)));
-        // _content.anchoredPosition = new Vector3(_content.anchoredPosition.x, _positionOpenY);
-        // Debug.Log("OPENPOS " + _content.position);
-    }
-
-    private void CloseContent()
-    {
-        if (_coroutine != null)
-            StopCoroutine(_coroutine);
-
-        StartCoroutine(MoveContent(new Vector2(_content.anchoredPosition.x, _positionCloseY)));
-        // _content.anchoredPosition = new Vector3(_content.anchoredPosition.x, _positionCloseY);
-        // Debug.Log("ClosePOS " + _content.position);
-    }
-
-    private IEnumerator MoveContent(Vector2 target)
-    {
-        _elapsedTime = 0;
-        Vector2 startPosition = _content.anchoredPosition;
-
-        while (_elapsedTime < _duration)
-        {
-            _elapsedTime += Time.deltaTime;
-            _content.anchoredPosition = Vector2.Lerp(startPosition, target, _elapsedTime / _duration);
-            yield return null;
+            _content.anchoredPosition = target;
         }
-
-        // Установить точную конечную позицию после завершения интерполяции
-        _content.anchoredPosition = target;
     }
 }

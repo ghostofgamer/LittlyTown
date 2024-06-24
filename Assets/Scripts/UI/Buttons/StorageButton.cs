@@ -18,7 +18,6 @@ namespace UI.Buttons
         {
             Button.enabled = true;
             _closeIcon.SetActive(false);
-            Debug.Log("Открыли");
         }
     }
 }

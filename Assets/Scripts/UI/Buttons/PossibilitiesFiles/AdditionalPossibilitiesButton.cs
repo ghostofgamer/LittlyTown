@@ -8,12 +8,11 @@ using UI.Screens.PossibilitiesShopContent;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI.Buttons.BonusesContent
+namespace UI.Buttons.PossibilitiesFiles
 {
     public class AdditionalPossibilitiesButton : AbstractButton
     {
         [SerializeField] private OpenButton _openItemStoreButton;
-        [SerializeField] private ItemDragger _itemDragger;
         [SerializeField] private ItemKeeper _itemKeeper;
         [SerializeField] private Image _icon;
         [SerializeField] private Image _imageBackGroundButton;

@@ -14,6 +14,7 @@ using SpawnContent;
 using UI;
 using UI.Screens;
 using UnityEngine;
+using UnityEngine.UIElements;
 using Wallets;
 
 namespace Keeper
@@ -46,6 +47,7 @@ namespace Keeper
         private int _currentStep = -1;
         private Coroutine _coroutine;
         private SaveData _saveData;
+        private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.1f); 
 
         public event Action<int> StepChanged;
 
@@ -153,29 +155,51 @@ namespace Keeper
             {
                 if (itemPosition.Item != null)
                 {
-                    _audioSource.PlayOneShot(_audioClip);
-                    itemPosition.Item.gameObject.SetActive(false);
-                    itemPosition.ClearingPosition();
-                    yield return new WaitForSeconds(0.1f);
+                    ClearPositions(itemPosition);
+                    yield return _waitForSeconds;
                 }
 
                 itemPosition.DisableRoad();
             }
 
-            yield return new WaitForSeconds(0.1f);
+            yield return _waitForSeconds;
             _currentStep--;
             SaveData saveData = _savesHistory[_currentStep];
 
             foreach (var itemData in saveData.ItemDatas)
             {
-                Item item = Instantiate(GetItem(itemData.ItemName), itemData.ItemPosition.transform.position,
-                    Quaternion.identity, _initializator.CurrentMap.ItemsContainer);
-                item.Init(itemData.ItemPosition);
-                item.Activation();
-                _audioSource.PlayOneShot(_audioSource.clip);
-                yield return new WaitForSeconds(0.1f);
+                CreateItem(itemData);
+                yield return _waitForSeconds;
             }
 
+            InitValues(saveData);
+
+            yield return null;
+            _roadGenerator.OnGeneration();
+            _currentStep = 0;
+            StepChanged?.Invoke(_currentStep);
+            _savesHistory.Clear();
+            SaveHistoryData();
+        }
+
+        private void ClearPositions(ItemPosition itemPosition)
+        {
+            _audioSource.PlayOneShot(_audioClip);
+            itemPosition.Item.gameObject.SetActive(false);
+            itemPosition.ClearingPosition();
+        }
+
+        private void CreateItem(ItemData itemData)
+        {
+            Item item = Instantiate(GetItem(itemData.ItemName), itemData.ItemPosition.transform.position,
+                Quaternion.identity, _initializator.CurrentMap.ItemsContainer);
+            item.Init(itemData.ItemPosition);
+            item.Activation();
+            _audioSource.PlayOneShot(_audioSource.clip);
+        }
+
+        private void InitValues(SaveData  saveData)
+        {
             if (saveData.TemporaryItem.ItemName != Items.Empty)
             {
                 Item item = Instantiate(GetItem(saveData.TemporaryItem.ItemName),
@@ -196,15 +220,13 @@ namespace Keeper
             _itemKeeper.SetItem(selectItem, selectItem.ItemPosition);
             selectItem.gameObject.SetActive(true);
             _goldWallet.SetValue(saveData.GoldValue);
-
+            
             foreach (var item in saveData.ItemDatasPrices)
                 _shopItems.SetPrice(item.ItemName, item.Price);
-
-
+            
             _shopItems.SetPricePossibilitie(saveData.PossibilitiesItemsData.PriceBulldozer,
                 saveData.PossibilitiesItemsData.PriceReplace);
-
-
+            
             if (saveData.StorageItemData.ItemName != Items.Empty)
             {
                 Item storageItem = Instantiate(GetItem(saveData.StorageItemData.ItemName),
@@ -221,14 +243,8 @@ namespace Keeper
             _bulldozerCounter.SetValue(saveData.BulldozerCount);
             _goldWallet.SetValue(saveData.GoldValue);
             _moveCounter.SetValue(saveData.MoveCount);
-            yield return null;
-            _roadGenerator.OnGeneration();
-            _currentStep = 0;
-            StepChanged?.Invoke(_currentStep);
-            _savesHistory.Clear();
-            SaveHistoryData();
         }
-
+        
         private Item GetItem(Items itemName)
         {
             foreach (var item in _items)

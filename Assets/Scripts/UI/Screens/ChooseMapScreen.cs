@@ -21,6 +21,7 @@ namespace UI.Screens
         [SerializeField] private Save _save;
         [SerializeField] private CameraMovement _cameraMovement;
         [SerializeField] private ChooseMap _chooseMap;
+        [SerializeField] private InputChooseMap _inputChooseMap;
         [SerializeField] private GameObject _mapInformation;
         [SerializeField] private GameObject[] _mapInformations;
         [SerializeField] private Initializator _initializator;
@@ -54,10 +55,12 @@ namespace UI.Screens
             ChangeActivationButton();
             base.Open();
             _itemKeeper.SwitchOff();
-            // _cameraMovement.ZoomOut();
-            _cameraMovement.ZoomIn();
+            _cameraMovement.ZoomOut();
+            // _cameraMovement.ZoomIn();
+            _inputChooseMap.enabled = true;
             _chooseMap.enabled = true;
-            _chooseMap.StartWork();
+            // _chooseMap.StartWork();
+            _inputChooseMap.StartWork();
             _mapsInfo.ActivatedInfo(_initializator.Index);
             _mapInformation.SetActive(true);
             _mapInformations[_initializator.Index].SetActive(true);
@@ -66,10 +69,12 @@ namespace UI.Screens
 
         public override void Close()
         {
-            _chooseMap.StopWork();
-            base.Close();
-            _cameraMovement.ResetZoom();
+            // _chooseMap.StopWork();
+            // _inputChooseMap.enabled = false;
+            _inputChooseMap.StopWork();
             _chooseMap.enabled = false;
+            base.Close();
+            // _cameraMovement.ResetZoom();
             _mapInformation.SetActive(false);
             _mapActivator.ChangeActivityMaps();
         }

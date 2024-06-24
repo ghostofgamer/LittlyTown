@@ -1,16 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using TutorContent;
-using UI.Buttons;
 using UnityEngine;
 
-public class TutorialButton : AbstractButton
+namespace UI.Buttons
 {
-    [SerializeField] private RestartTutorial _restartTutorial;
-    
-    protected override void OnClick()
+    public class TutorialButton : AbstractButton
     {
-        AudioSource.PlayOneShot(AudioSource.clip);
-        _restartTutorial.StartTutorial();
+        [SerializeField] private RestartTutorial _restartTutorial;
+    
+        protected override void OnClick()
+        {
+            AudioSource.PlayOneShot(AudioSource.clip);
+            _restartTutorial.StartTutorial();
+        }
     }
 }

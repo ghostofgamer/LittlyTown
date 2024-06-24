@@ -9,7 +9,7 @@ namespace UI.Buttons
 
         private float _start = 0;
         private float _end = 1;
-        private float _elapsedtime;
+        private float _elapsedTime;
         private float _duration = 0.5f;
         private Coroutine _coroutine;
 
@@ -27,9 +27,9 @@ namespace UI.Buttons
 
         private IEnumerator ActivationFade()
         {
-            _elapsedtime = 0f;
+            _elapsedTime = 0f;
 
-            while (_elapsedtime < _duration)
+            while (_elapsedTime < _duration)
             {
                 Fade(_start, _end);
                 yield return null;
@@ -37,9 +37,9 @@ namespace UI.Buttons
 
             _goldInfo.alpha = _end;
             yield return _waitForSeconds;
-            _elapsedtime = 0f;
+            _elapsedTime = 0f;
 
-            while (_elapsedtime < _duration)
+            while (_elapsedTime < _duration)
             {
                 Fade(_end, _start);
                 yield return null;
@@ -50,8 +50,8 @@ namespace UI.Buttons
 
         private void Fade(float start, float end)
         {
-            _goldInfo.alpha = Mathf.Lerp(start, end, _elapsedtime / _duration);
-            _elapsedtime += Time.deltaTime;
+            _goldInfo.alpha = Mathf.Lerp(start, end, _elapsedTime / _duration);
+            _elapsedTime += Time.deltaTime;
         }
     }
 }

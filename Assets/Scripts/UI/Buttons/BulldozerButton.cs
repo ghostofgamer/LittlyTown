@@ -1,4 +1,3 @@
-using System;
 using PossibilitiesContent;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,7 +6,6 @@ namespace UI.Buttons
 {
     public class BulldozerButton : AbstractButton
     {
-        [SerializeField] private ReplacementPositionButton _replacementPositionButton;
         [SerializeField] private RemovalItems _removalItems;
         [SerializeField] private Image _icon;
         [SerializeField] private Image _imageBackGroundButton;
@@ -18,22 +16,16 @@ namespace UI.Buttons
 
         private bool _isActivated = false;
 
-        public event Action RemovalActivated;
-        public event Action RemovalDeactivated;
-
         protected override void OnEnable()
         {
             base.OnEnable();
-            _removalItems.Removed += 
-                OnClick;
-            // _replacementPositionButton.ReplaceActivated += Deactivation;
+            _removalItems.Removed += OnClick;
         }
 
         protected override void OnDisable()
         {
             base.OnDisable();
             _removalItems.Removed -= OnClick;
-            // _replacementPositionButton.ReplaceActivated -= Deactivation;
         }
 
         protected override void OnClick()
@@ -41,14 +33,9 @@ namespace UI.Buttons
             _isActivated = !_isActivated;
 
             if (_isActivated)
-            {
-                RemovalActivated?.Invoke();
                 SetSprite(_blackIcon, _activatedImage);
-            }
             else
-            {
                 Deactivation();
-            }
         }
 
         private void SetSprite(Sprite icon, Sprite imageBackGroundButton)
@@ -59,7 +46,6 @@ namespace UI.Buttons
         
         private void Deactivation()
         {
-            RemovalDeactivated?.Invoke();
             _isActivated = false;
             SetSprite(_whiteIcon, _notActivatedImage);
         }

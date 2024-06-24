@@ -14,6 +14,7 @@ namespace UI.Screens
         [SerializeField] private InputItemDragger _inputItemDragger;
         [SerializeField] private Initializator _initializator;
         [SerializeField] private Transform _infoContent;
+        [SerializeField] private CameraMovement _cameraMovement;
 
         private int _indexSceneNotGold = 9;
         private Vector3 _startPosition;
@@ -29,7 +30,9 @@ namespace UI.Screens
         public override void Open()
         {
             base.Open();
-
+            
+            _cameraMovement.ZoomGameScene();
+            
             if (_initializator.Index == _indexSceneNotGold)
                 _infoContent.position = _targetPosition;
             else

@@ -30,7 +30,7 @@ namespace InitializationContent
             {
                 _initializator.SetIndex(_valueLastMap);
                 _initializator.FillLists();
-                _mapGenerator.ShowTestFirstMap(_initializator.Territories, _initializator.FinderPositions,
+                _mapGenerator.GenerationWithoutSpawn(_initializator.Territories, _initializator.FinderPositions,
                     _initializator.ItemPositions, _initializator.CurrentMap.RoadsContainer,
                     _initializator.CurrentMap.StartItems);
 
@@ -39,7 +39,7 @@ namespace InitializationContent
                     if (i == _valueLastMap)
                         continue;
 
-                    _mapGenerator.GenerationAllMap(i);
+                    _mapGenerator.GenerateMap(i);
                 }
             }
             else
@@ -48,7 +48,7 @@ namespace InitializationContent
                 _initializator.FillLists();
 
                 for (int i = 0; i < _initializator.AmountMaps; i++)
-                    _mapGenerator.GenerationAllMap(i);
+                    _mapGenerator.GenerateMap(i);
 
                 // _itemsStorage.Load();
                 // _itemsStorage.LoadDataInfo();

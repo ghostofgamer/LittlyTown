@@ -2,7 +2,7 @@ using System;
 using PossibilitiesContent;
 using UnityEngine;
 
-namespace UI.Buttons.BonusesContent
+namespace UI.Buttons.PossibilitiesFiles
 {
     public class DeleteButton : AdditionalPossibilitiesButton
     {

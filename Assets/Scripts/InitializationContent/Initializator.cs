@@ -94,17 +94,13 @@ namespace InitializationContent
             foreach (var territory in territories)
             {
                 if (!_currentTerritories.Contains(territory))
-                {
                     _currentTerritories.Add(territory);
-                }
             }
 
             foreach (FinderPositions finderPositionScript in finderPositionScripts)
             {
                 if (!_currentFinderPositions.Contains(finderPositionScript))
-                {
                     _currentFinderPositions.Add(finderPositionScript);
-                }
             }
 
             foreach (var itemPosition in itemPositions)
@@ -113,13 +109,11 @@ namespace InitializationContent
                     continue;
 
                 if (!_currentItemPositions.Contains(itemPosition))
-                {
                     _currentItemPositions.Add(itemPosition);
-                }
             }
         }
 
-        public void ExtensionFillLists()
+        private void ExtensionFillLists()
         {
             _currentItemPositions = new List<ItemPosition>();
             _currentTerritories = new List<Territory>();
@@ -140,10 +134,6 @@ namespace InitializationContent
             }
 
             int amount = _load.Get(ExtensionTerritory + _currentMap.Index, 0);
-
-            // Debug.Log("ExtensionTerritory " + ExtensionTerritory + _currentMap.Index);
-            /*Debug.Log("AMOUNT " + amount);
-        Debug.Log("_extensionFilterTerritories " + _extensionFilterTerritories.Count);*/
 
             for (int i = 0; i < amount; i++)
             {
@@ -168,7 +158,6 @@ namespace InitializationContent
             {
                 FinderPositions[] finderPositionsInTerritory =
                     territory.gameObject.GetComponentsInChildren<FinderPositions>(true);
-
 
                 foreach (FinderPositions finder in finderPositionsInTerritory)
                 {

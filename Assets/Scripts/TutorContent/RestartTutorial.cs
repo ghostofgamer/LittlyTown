@@ -49,7 +49,7 @@ namespace TutorContent
             foreach (var stage in _firstStageContent)
                 stage.SetActive(true);
         
-            _mapGenerator.ShowTestFirstMap(_initializator.Territories, _initializator.FinderPositions,
+            _mapGenerator.GenerationWithoutSpawn(_initializator.Territories, _initializator.FinderPositions,
                 _initializator.ItemPositions, _initializator.CurrentMap.RoadsContainer,_initializator.CurrentMap.StartItems);
 
             _tutorialScreen.StartTutorial();

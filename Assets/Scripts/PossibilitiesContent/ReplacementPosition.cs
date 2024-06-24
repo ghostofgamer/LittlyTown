@@ -4,7 +4,7 @@ using CountersContent;
 using Enums;
 using ItemContent;
 using ItemPositionContent;
-using UI.Buttons.BonusesContent;
+using UI.Buttons.PossibilitiesFiles;
 using UnityEngine;
 
 namespace PossibilitiesContent

@@ -1060,7 +1060,12 @@
           </e>
           <e p="SampleScene_Profiles" t="Include" />
         </e>
-        <e p="Scrins" t="Include" />
+        <e p="Scrins" t="Include">
+          <e p="1" t="Include">
+            <e p="TutorMy" t="Include" />
+          </e>
+          <e p="NEW" t="Include" />
+        </e>
         <e p="Scripts" t="Include">
           <e p="ADS" t="Include">
             <e p="AD.cs" t="Include" />

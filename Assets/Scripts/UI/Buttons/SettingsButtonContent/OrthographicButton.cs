@@ -1,15 +1,18 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class OrthographicButton : SettingsChangeButton
+namespace UI.Buttons.SettingsButtonContent
 {
-    [SerializeField] private Image _toggleImage;
-    [SerializeField] private Camera _camera; 
-
-    protected override void ChangeValue()
+    public class OrthographicButton : SettingsChangeButton
     {
-        _toggleImage.enabled = IsToggleOn;
-        _camera.orthographic = IsToggleOn;
-        SaveValue();
+        [SerializeField] private Image _toggleImage;
+        [SerializeField] private Camera _camera; 
+
+        protected override void ChangeValue()
+        {
+            _toggleImage.enabled = IsToggleOn;
+            _camera.orthographic = IsToggleOn;
+            SaveValue();
+        }
     }
 }

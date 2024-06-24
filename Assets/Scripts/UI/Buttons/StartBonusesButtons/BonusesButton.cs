@@ -26,9 +26,6 @@ namespace UI.Buttons.StartBonusesButtons
                 return;
             
             Button.enabled = false;
-            //
-            // _crystalWallet.DecreaseValue(_price);
-            // ActivateChoose();
             SelectBonus();
         }
 

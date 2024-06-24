@@ -191,6 +191,8 @@ namespace SaveAndLoad
                 _itemKeeper.SetTemporaryObject(null);
             }
 
+            Debug.Log("load");
+            
             foreach (var item in saveData.ItemDatasPrices)
                 _shopItems.SetPrice(item.ItemName, item.Price);
         

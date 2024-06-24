@@ -91,7 +91,8 @@ namespace UI.Screens
 
             if (_currentValue == 0)
             {
-                _camera.orthographicSize = 6;
+                // _camera.orthographicSize = 6;
+                _camera.orthographicSize = _cameraMovement.StandardOrthographicSize;
                 _camera.orthographic = false;
             }
             else

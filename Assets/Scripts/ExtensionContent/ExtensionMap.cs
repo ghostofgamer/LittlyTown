@@ -179,7 +179,7 @@ namespace ExtensionContent
                 territory.gameObject.SetActive(false);
             }
 
-            _mapGenerator.TestShowMap(_targetTerritories, _targetFinderPositions, map.RoadsContainer,
+            _mapGenerator.FastMapGeneration(_targetTerritories, _targetFinderPositions, map.RoadsContainer,
                 _targetItemPositions, map.StartItems, map);
         }
 

@@ -1,15 +1,17 @@
-using UI.Buttons;
 using UnityEngine;
 using Wallets;
 
-public class FreeCrystallButton : AbstractButton
+namespace UI.Buttons
 {
-    [SerializeField] private CrystalWallet _crystallWallet;
-
-    private int _value = 100;
-    
-    protected override void OnClick()
+    public class FreeCrystallButton : AbstractButton
     {
-        _crystallWallet.IncreaseValue(_value);
+        [SerializeField] private CrystalWallet _crystallWallet;
+
+        private int _value = 100;
+    
+        protected override void OnClick()
+        {
+            _crystallWallet.IncreaseValue(_value);
+        }
     }
 }

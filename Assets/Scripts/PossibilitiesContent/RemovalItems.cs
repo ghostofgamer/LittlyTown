@@ -3,7 +3,7 @@ using System.Collections;
 using CountersContent;
 using ItemContent;
 using ItemPositionContent;
-using UI.Buttons.BonusesContent;
+using UI.Buttons.PossibilitiesFiles;
 using UnityEngine;
 
 namespace PossibilitiesContent

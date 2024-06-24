@@ -130,7 +130,7 @@ namespace Road
             _coroutine = StartCoroutine(CreateRoad());
         }
 
-        public void DeactivateRoad()
+        /*public void DeactivateRoad()
         {
             Transform[] children = _container.GetComponentsInChildren<Transform>(true);
 
@@ -142,7 +142,7 @@ namespace Road
                         child.gameObject.SetActive(false);
                 }
             }
-        }
+        }*/
 
         private IEnumerator CreateRoad()
         {

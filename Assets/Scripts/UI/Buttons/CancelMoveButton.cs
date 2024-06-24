@@ -1,38 +1,39 @@
 using Keeper;
-using UI.Buttons;
 using UnityEngine;
 
-public class CancelMoveButton : AbstractButton
+namespace UI.Buttons
 {
-    [SerializeField] private MovesKeeper _movesKeeper;
-
-    protected override void OnEnable()
+    public class CancelMoveButton : AbstractButton
     {
-        base.OnEnable();
-        _movesKeeper.StepChanged += SetInteractable;
-    }
+        [SerializeField] private MovesKeeper _movesKeeper;
 
-    protected override void OnDisable()
-    {
-        base.OnDisable();
-    }
+        protected override void OnEnable()
+        {
+            base.OnEnable();
+            _movesKeeper.StepChanged += SetInteractable;
+        }
 
-    private void Start()
-    {
-        // Debug.Log("Step Start " + _movesKeeper.CurrentStep);
-        
-        if (_movesKeeper.CurrentStep <= 0)
-            Button.interactable = false;
-    }
+        protected override void OnDisable()
+        {
+            base.OnDisable();
+            _movesKeeper.StepChanged -= SetInteractable;
+        }
 
-    private void SetInteractable(int currentStep)
-    {
-        Button.interactable = currentStep > 0;
-    }
+        private void Start()
+        {
+            if (_movesKeeper.CurrentStep <= 0)
+                Button.interactable = false;
+        }
+
+        private void SetInteractable(int currentStep)
+        {
+            Button.interactable = currentStep > 0;
+        }
     
-    protected override void OnClick()
-    {
-        AudioSource.PlayOneShot(AudioSource.clip);
-        _movesKeeper.CancelLastStep();
+        protected override void OnClick()
+        {
+            AudioSource.PlayOneShot(AudioSource.clip);
+            _movesKeeper.CancelLastStep();
+        }
     }
 }

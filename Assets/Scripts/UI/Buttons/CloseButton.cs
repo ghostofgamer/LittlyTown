@@ -12,7 +12,7 @@ namespace UI.Buttons
             Close();
         }
 
-        public void Close()
+        private void Close()
         {
             _abstractScreen.Close();
         }

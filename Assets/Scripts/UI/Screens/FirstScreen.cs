@@ -1,6 +1,8 @@
 using System.Collections;
+using CameraContent;
 using InitializationContent;
 using SaveAndLoad;
+using UI.Buttons;
 using UnityEngine;
 
 namespace UI.Screens
@@ -14,6 +16,7 @@ namespace UI.Screens
         [SerializeField] private Load _load;
         [SerializeField] private ContinueButton _continueButton;
         [SerializeField] private Initializator _initializator;
+        [SerializeField] private CameraMovement _cameraMovement;
 
         private int _startValue = 0;
         private int _currentValue;
@@ -43,6 +46,7 @@ namespace UI.Screens
             _currentValueActiveMap = _load.Get(ActiveMap + _initializator.Index, _startValue);
             _value = _currentValue > 0 && _currentValueActiveMap > 0;
             _continueButton.gameObject.SetActive(_value);
+            _cameraMovement.ResetZoom();
         }
 
         private IEnumerator SmoothOpen()

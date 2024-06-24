@@ -1,4 +1,3 @@
-using Dragger;
 using InitializationContent;
 using ItemContent;
 using Keeper;
@@ -11,14 +10,9 @@ namespace UI.Buttons
     public class BuyItemButton : AbstractButton
     {
         [SerializeField] private Item _item;
-        [SerializeField] private ItemDragger _itemDragger;
         [SerializeField] private ItemKeeper _itemKeeper;
-        [SerializeField] private Transform _container;
         [SerializeField] private GoldWallet _goldWallet;
-        /*[SerializeField] private int _price;
-        [SerializeField] private float _priceMultiplier;*/
         [SerializeField] private TMP_Text _priceText;
-        [SerializeField]private CloseButton _closeButton;
         [SerializeField]private OpenButton _openButton;
         [SerializeField]private Initializator _initializator;
 
@@ -36,10 +30,8 @@ namespace UI.Buttons
             
             _goldWallet.DecreaseValue(_item.Price);
             Item item = Instantiate(_item, _initializator.CurrentMap.ItemsContainer);
-            // _closeButton.Close();
             _openButton.Open();
             _itemKeeper.SetTemporaryItem(item);
-            // _itemDragger.SetTemporaryItem(item);
             _item.IncreasePrice();
             Show();
         }

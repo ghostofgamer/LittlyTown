@@ -27,6 +27,8 @@ namespace ItemContent
         
         public event Action Deactivated;
 
+        public int StartPrice => _startPrice;
+
         public bool IsBigHouse => _isBigHouse;
 
         public FlightScore FlightScore => _flightScore;
@@ -81,16 +83,19 @@ namespace ItemContent
 
         public void SetPrice(int price)
         {
+            Debug.Log("SetPrice");
             Price = price;
         }
 
         public void IncreasePrice()
         {
+            Debug.Log("SetIncreasePrice");
             Price = Mathf.RoundToInt(Price * _priceMultiplier);
         }
 
         public void SetInitialPrice()
         {
+            Debug.Log("SetInitialPrice");
             Price = _startPrice;
         }
     }

@@ -9,7 +9,6 @@ namespace UI.Buttons
     public class ReplacementPositionButton : AbstractButton
     {
         [SerializeField] private PositionMatcher _positionMatcher;
-        [SerializeField] private BulldozerButton _bulldozerButton;
         [SerializeField] private ReplacementPosition _replacementPosition;
         [SerializeField] private Image _icon;
         [SerializeField] private Image _imageBackGroundButton;
@@ -20,21 +19,16 @@ namespace UI.Buttons
 
         private bool _isActivated = false;
 
-        public event Action ReplaceActivated;
-        public event Action ReplaceDeactivated;
-
         protected override void OnEnable()
         {
             base.OnEnable();
             _replacementPosition.PositionsChanged += OnClick;
-            // _bulldozerButton.RemovalActivated += Deactivation;
         }
 
         protected override void OnDisable()
         {
             base.OnDisable();
             _replacementPosition.PositionsChanged -= OnClick;
-            // _bulldozerButton.RemovalActivated -= Deactivation;
         }
 
         protected override void OnClick()
@@ -43,13 +37,11 @@ namespace UI.Buttons
 
             if (_isActivated)
             {
-                ReplaceActivated?.Invoke();
                 _positionMatcher.StopMoveMatch();
                 SetSprite(_blackIcon, _activatedImage);
             }
             else
             {
-                ReplaceDeactivated?.Invoke();
                 Deactivation();
             }
         }

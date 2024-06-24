@@ -1,44 +1,32 @@
 using InitializationContent;
 using MapsContent;
 using SaveAndLoad;
-using UI.Buttons;
+using UI.Screens;
 using UnityEngine;
 
-public class EndButton : AbstractButton
+namespace UI.Buttons
 {
-    private const string ActiveMap = "ActiveMap";
-    private const string ItemStorageSave = "ItemStorageSave";
-
-    [SerializeField] private Save _save;
-    [SerializeField] private Initializator _initializator;
-    [SerializeField] private ChooseMap _chooseMap;
-    [SerializeField] private MapGenerator _mapGenerator;
-    [SerializeField]private StartMap _startMap;
-
-    protected override void OnClick()
+    public class EndButton : AbstractButton
     {
-        _save.SetData(ActiveMap + _initializator.Index, 0);
+        private const string ActiveMap = "ActiveMap";
+        private const string ItemStorageSave = "ItemStorageSave";
 
-        if (PlayerPrefs.HasKey(ItemStorageSave + _initializator.Index))
+        [SerializeField] private Save _save;
+        [SerializeField] private Initializator _initializator;
+        [SerializeField]private StartMap _startMap;
+        [SerializeField] private ChooseMapScreen _chooseMapScreen;
+    
+        protected override void OnClick()
         {
-            PlayerPrefs.DeleteKey(ItemStorageSave + _initializator.Index);
-            Debug.Log("Successfully deleted key: ");
+            _save.SetData(ActiveMap + _initializator.Index, 0);
+
+            if (PlayerPrefs.HasKey(ItemStorageSave + _initializator.Index))
+            {
+                PlayerPrefs.DeleteKey(ItemStorageSave + _initializator.Index);
+            }
+        
+            _startMap.StartCreateWithoutSpawn();
+            _chooseMapScreen.ChangeActivationButton();
         }
-
-        // _initializator.SetIndex(0);
-        // _startMap.StartCreate();
-        _startMap.StartVisualCreate();
-
-        // _chooseMap.ResetMapPosition();
-        
-        
-        
-        /*_mapGenerator.ShowTestFirstMap(_initializator.Territories, _initializator.FinderPositions,
-            _initializator.ItemPositions, _initializator.CurrentMap.RoadsContainer,_initializator.CurrentMap.StartItems);*/
-        
-        // _mapGenerator.GenerationAllMap(_initializator.Index);
-        
-        // _initializator.SetIndex(_initializator.Index);
-        // _chooseMap.SetPosition(0);
     }
 }

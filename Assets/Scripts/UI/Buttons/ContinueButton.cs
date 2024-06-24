@@ -1,66 +1,58 @@
 using CountersContent;
-using Dragger;
 using EnvironmentContent;
 using InitializationContent;
 using ItemPositionContent;
 using Keeper;
-using MapsContent;
 using SaveAndLoad;
-using UI.Buttons;
 using UnityEngine;
 using UpgradesContent;
 
-public class ContinueButton : AbstractButton
+namespace UI.Buttons
 {
-    private const string Map = "Map";
-    private const string CurrentRecordScore = "CurrentRecordScore";
-    
-    [SerializeField] private ItemDragger _itemDragger;
-    [SerializeField] private ItemKeeper _itemKeeper;
-    [SerializeField] private Save _save;
-    [SerializeField] private ItemsStorage _itemsStorage;
-    [SerializeField] private PossibilitiesCounter[] _possibilitiesCounters;
-    [SerializeField] private PackageLittleTown _packageLittleTown;
-    [SerializeField] private Initializator _initializator;
-    [SerializeField]private MovesKeeper _moveKeeper;
-    [SerializeField] private MapActivator _mapActivator;
-    [SerializeField]private VisualItemsDeactivator _visualItemsDeactivator;
-    [SerializeField]private ScoreCounter _scoreCounter;
-    [SerializeField] private Load _load;
-    [SerializeField] private GoldCounter _goldCounter;
-    [SerializeField] private TurnEnvironment _turnEnvironment;
-    [SerializeField] private GameObject _lightHouse;
-    
-    private int _startValue;
-    
-    protected override void OnClick()
+    public class ContinueButton : AbstractButton
     {
-        _save.SetData(Map, _initializator.Index);
-        _initializator.FillLists();
-        _itemsStorage.LoadDataInfo();
-        // _mapActivator.ChangeActivityMaps();
-        _itemKeeper.SetItem(_itemsStorage.SelectSaveItem, _itemsStorage.SelectSaveItem.ItemPosition);
-        // _itemDragger.SelectedObject.gameObject.SetActive(true);
-        _itemKeeper.SwitchOn();
-        _visualItemsDeactivator.SetPositions(_initializator.ItemPositions);
-        _moveKeeper.LoadHistoryData();
-        _scoreCounter.SetCurrentScore(_load.Get(CurrentRecordScore + _initializator.Index, _startValue));
-        _goldCounter.CheckIncome();
-        // _turnEnvironment.SetEnvironment();
-        _turnEnvironment.SetEnvironment(_initializator.CurrentMap.gameObject);
-        
-        _lightHouse.SetActive(_initializator.CurrentMap.IsWaterTilePresent);
-        
-        if (_packageLittleTown.IsActive)
+        private const string Map = "Map";
+        private const string CurrentRecordScore = "CurrentRecordScore";
+   
+        [SerializeField] private ItemKeeper _itemKeeper;
+        [SerializeField] private Save _save;
+        [SerializeField] private ItemsStorage _itemsStorage;
+        [SerializeField] private PossibilitiesCounter[] _possibilitiesCounters;
+        [SerializeField] private PackageLittleTown _packageLittleTown;
+        [SerializeField] private Initializator _initializator;
+        [SerializeField]private MovesKeeper _moveKeeper;
+        [SerializeField]private VisualItemsDeactivator _visualItemsDeactivator;
+        [SerializeField]private ScoreCounter _scoreCounter;
+        [SerializeField] private Load _load;
+        [SerializeField] private GoldCounter _goldCounter;
+        [SerializeField] private TurnEnvironment _turnEnvironment;
+        [SerializeField] private GameObject _lightHouse;
+    
+        private int _startValue;
+    
+        protected override void OnClick()
         {
-            foreach (var possibilitiesCounter in _possibilitiesCounters)
+            _save.SetData(Map, _initializator.Index);
+            _initializator.FillLists();
+            _itemsStorage.LoadDataInfo();
+            _itemKeeper.SetItem(_itemsStorage.SelectSaveItem, _itemsStorage.SelectSaveItem.ItemPosition);
+            _itemKeeper.SwitchOn();
+            _visualItemsDeactivator.SetPositions(_initializator.ItemPositions);
+            _moveKeeper.LoadHistoryData();
+            _scoreCounter.SetCurrentScore(_load.Get(CurrentRecordScore + _initializator.Index, _startValue));
+            _goldCounter.CheckIncome();
+            _turnEnvironment.SetEnvironment(_initializator.CurrentMap.gameObject);
+            _lightHouse.SetActive(_initializator.CurrentMap.IsWaterTilePresent);
+        
+            if (_packageLittleTown.IsActive)
             {
-                Debug.Log("Contiue");
-                possibilitiesCounter.OnIncreaseCount(_packageLittleTown.Amount);
-            }
+                foreach (var possibilitiesCounter in _possibilitiesCounters)
+                {
+                    possibilitiesCounter.OnIncreaseCount(_packageLittleTown.Amount);
+                }
                 
-
-            _packageLittleTown.Activated();
+                _packageLittleTown.Activated();
+            }
         }
     }
 }

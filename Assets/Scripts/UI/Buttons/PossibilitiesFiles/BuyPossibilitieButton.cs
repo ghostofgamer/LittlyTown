@@ -38,18 +38,13 @@ namespace UI.Buttons.PossibilitiesFiles
                 return;
 
             _goldWallet.DecreaseValue(_possibilitiesShopScreen.CurrentPrice);
-            // _closeButton.Close();
             _openButton.Open();
             _movementIcon.StartMove(_possibilitiesShopScreen.CurrentAmount);
 
             if (_possibilitie.Price != _possibilitiesShopScreen.CurrentPrice)
-            {
                 _possibilitie.SetPrice(_possibilitiesShopScreen.CurrentPrice);
-            }
             else
-            {
                 _possibilitie.IncreasePrice();
-            }
         }
 
         private void Show()

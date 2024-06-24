@@ -39,7 +39,7 @@ namespace UI.Screens
             _visualItemsDeactivator.SetPositions(_itemPositions);
             _cameraScrolling.enabled = true;
             _environmentMovement.GoAway();
-            _turnEnvironment.SetEnvironment(_environment);
+            // _turnEnvironment.SetEnvironment(_environment);
             ReturnPosition();
             // _cameraMovement.ZoomOut();
             _cameraMovement.ZoomIn();

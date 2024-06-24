@@ -13,6 +13,7 @@ namespace UI.Screens
         [SerializeField] private BuyPossibilitieButton[] _buyPossibilitieButtonsButtons;
         [SerializeField] private GameObject[] _items;
         [SerializeField] private ScoreCounter _scoreCounter;
+        [SerializeField] private RectTransform[] _gameObjects;
 
         private void Start()
         {
@@ -23,6 +24,10 @@ namespace UI.Screens
             }
             else
             {
+                foreach (var gameObject in _gameObjects)
+                {
+                    gameObject.localScale = new Vector3(0.8f,0.8f,0.8f);
+                }
                 _gridLayoutGroup.constraint = GridLayoutGroup.Constraint.FixedRowCount;
                 _gridLayoutGroup.constraintCount = 1;
             }
