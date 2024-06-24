@@ -19,6 +19,7 @@ namespace MapsContent
         private float _currentStep;
         private float _currentZ;
         private Vector3 _mouseDownPosition;
+        private Vector3 _mouseStartPosition;
         private Vector3 _mouseCurrentPosition;
         private float _sensitivity = 1f;
         private float _mouseDelta;
@@ -26,7 +27,10 @@ namespace MapsContent
         private WaitForSeconds _waitForSeconds = new WaitForSeconds(1f);
         private float _value;
         private Vector3 _position;
-
+        private float _dragDistance;
+        private Vector3 _currentDragPosition;
+        
+        
         public event Action<int> MapChanged;
 
         public bool IsWork => _isWork;
@@ -46,8 +50,11 @@ namespace MapsContent
             if (!_isSwap)
             {
                 _startScrollPosition = transform.position;
+                _mouseStartPosition = Input.mousePosition;
                 _mouseDownPosition = Input.mousePosition;
+                _mouseCurrentPosition = Input.mousePosition;
                   _isWork  = true;
+                  _dragDistance = 0;
             }
 
             _isSwap = true;
@@ -58,15 +65,17 @@ namespace MapsContent
             if (_isWork)
             {
                 _mouseCurrentPosition = Input.mousePosition;
+                _dragDistance = Vector3.Distance(_mouseStartPosition, _mouseCurrentPosition);
+                Debug.Log("value " + _dragDistance);
+            
                 _mouseDelta = -(_mouseCurrentPosition.x - _mouseDownPosition.x);
 
-                if (Mathf.Abs(_mouseDelta) > 13f)
+                if (Mathf.Abs(_mouseDelta) > 16f)
                 {
-                    _value = Mathf.Sign(_mouseDelta) * _sensitivity;
-                    Debug.Log("value " + _value);
+                    _value = Mathf.Sign(_mouseCurrentPosition.x - _mouseDownPosition.x) * _sensitivity;
+                    _value *= -1;
                     _mouseDownPosition = _mouseCurrentPosition;
                     _position = new Vector3(0, 0, _value);
-                    Debug.Log("position " + _position);
                     transform.position += _position * 30 * Time.deltaTime;
                 }
             }
@@ -76,7 +85,29 @@ namespace MapsContent
         {
             if (_isWork)
             {
-                if (Mathf.Abs(_mouseDelta) > 7)
+                if (_dragDistance > 100)
+                {
+                    if (_currentIndex + (int) Mathf.Sign(-((int) Mathf.Sign(_mouseCurrentPosition.x - _mouseStartPosition.x))) > 10 ||
+                        _currentIndex + (int) Mathf.Sign(-((int) Mathf.Sign(_mouseCurrentPosition.x - _mouseStartPosition.x))) < 0)
+                    {
+                        transform.position = _startScrollPosition;
+                        _isWork = false;
+                        _isSwap = false;
+                        return;
+                    }
+                    
+                    _isWork = false;
+                    ChangeMap(-((int) Mathf.Sign(_mouseCurrentPosition.x - _mouseStartPosition.x)));
+                }
+                else
+                {
+                    transform.position = _startScrollPosition;
+                    _isWork = false;
+                    _isSwap = false;
+                }
+                
+                
+                /*if (Mathf.Abs(_mouseDelta) > 7)
                 {
                     if (_currentIndex + (int) Mathf.Sign(_mouseDelta) > 10 ||
                         _currentIndex + (int) Mathf.Sign(_mouseDelta) < 0)
@@ -94,7 +125,7 @@ namespace MapsContent
 
                 transform.position = _startScrollPosition;
                 _isWork = false;
-                _isSwap = false;
+                _isSwap = false;*/
             }
         }
 

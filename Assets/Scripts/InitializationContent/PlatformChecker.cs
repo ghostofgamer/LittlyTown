@@ -27,7 +27,7 @@ namespace InitializationContent
         {
             _currentIndex = Application.isMobilePlatform ? _mobileIndex : _pcIndex;
 
-            if (_currentIndex != _mobileIndex)
+            if (_currentIndex == _mobileIndex)
                 _cameraMovement.Init(_perspectiveValueMobile, _orthographicValueMobile,
                     _perspectiveZoomDownValueMobile, _orthographicSizeZoomOutMobile, _perspectiveZoomUpValueMobile,
                     _orthographicSizeZoomInMobile);

@@ -16,14 +16,14 @@ namespace CameraContent
         private float _orthographicSizeZoomIn = 13f;
         private float _orthographicSizeZoomOut = 10f;
         private float _elapsedTime;
-        private float _duration = 1.5f;
+        private float _duration = 3f;
         private float _currentFOVValue;
         private float _currentSizeValue;
         private Coroutine _coroutine;
         private float _cameraPositionGameSceneY = 24f;
         private float _cameraPositionFirstSceneY = 22.1f;
-        private float _cameraPositionScooseSceneSceneY = 27f;
-        
+        private float _cameraPositionCollectionSceneY = 22.5f;
+        private float _cameraPositionChooseSceneSceneY = 27.1f;
         
         public float StandardOrthographicSize => _standardOrthographicSize;
 
@@ -47,12 +47,12 @@ namespace CameraContent
         
         public void ZoomIn()
         {
-            StartCoroutine(_perspectiveZoomUpValue, _orthographicSizeZoomIn,_cameraPositionGameSceneY);
+            StartCoroutine(_perspectiveZoomUpValue, _orthographicSizeZoomIn,_cameraPositionCollectionSceneY);
         }
 
         public void ZoomOut()
         {
-            StartCoroutine(_perspectiveZoomDownValue, _orthographicSizeZoomOut,_cameraPositionScooseSceneSceneY);
+            StartCoroutine(_perspectiveZoomDownValue, _orthographicSizeZoomOut,_cameraPositionChooseSceneSceneY);
         }
 
         public void ResetZoom()

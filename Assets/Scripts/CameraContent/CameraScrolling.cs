@@ -1,3 +1,4 @@
+using Dragger;
 using UnityEngine;
 
 namespace CameraContent
@@ -5,7 +6,10 @@ namespace CameraContent
     public class CameraScrolling : MonoBehaviour
     {
         [SerializeField] private Camera _camera;
-
+        [SerializeField] private InputItemDragger _inputItemDragger;
+        [SerializeField] private ItemThrower _itemThrower;
+        [SerializeField] private ItemDragger _itemDragger;
+        
         private float _minFov = 30f;
         private float _maxFov = 75f;
         private float _minOrthographicSize = 6f;
@@ -15,7 +19,9 @@ namespace CameraContent
         private float _currentFov;
         private float _currentSize;
         private float _deltaMagnitude;
-        
+        private float _baseSizeOrFOV;
+        private float _baseDistance;
+
         private void Start()
         {
             enabled = false;
@@ -42,32 +48,88 @@ namespace CameraContent
                 }
             }
 
-            if (Input.touchCount == 2)
+            if (Input.touches.Length == 2)
+            {
+                _itemThrower.ReturnPosition();
+                _itemDragger.DisableSelected();
+                _inputItemDragger.enabled = false;
+
+                switch (Input.touches[1].phase)
+                {
+                    case TouchPhase.Began:
+                        if (_camera.orthographic)
+                        {
+                            _baseSizeOrFOV = _camera.orthographicSize;
+                        }
+                        else
+                        {
+                            _baseSizeOrFOV = _camera.fieldOfView;
+                        }
+
+                        _baseDistance = Vector2.Distance(Input.touches[0].position, Input.touches[1].position);
+                        break;
+                    case TouchPhase.Moved:
+                        float currentDistance = Vector2.Distance(Input.touches[0].position, Input.touches[1].position);
+                        float rate = _baseDistance / currentDistance;
+
+                        if (_camera.orthographic)
+                        {
+                            float size = _baseSizeOrFOV * rate;
+                            _camera.orthographicSize = Mathf.Clamp(size, 1f, 21f);
+                        }
+                        else
+                        {
+                            float fov = _baseSizeOrFOV * rate;
+                            _camera.fieldOfView = Mathf.Clamp(fov, 15f, 75f);
+                        }
+
+                        break;
+                }
+            }
+
+            if (Input.touches.Length < 1)
+            {
+                _inputItemDragger.enabled = true;
+            }
+
+            /*if (Input.touchCount == 2)
             {
                 Touch touchZero = Input.GetTouch(0);
                 Touch touchOne = Input.GetTouch(1);
                 Vector2 touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
                 Vector2 touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
                 float prevTouchDeltaMag = Vector2.Distance(touchZeroPrevPos, touchOnePrevPos);
+                Debug.Log("prevTouchDeltaMag" + prevTouchDeltaMag);
                 float touchDeltaMag = Vector2.Distance(touchZero.position, touchOne.position);
+                Debug.Log("touchDeltaMag" + touchDeltaMag);
                 _deltaMagnitude = prevTouchDeltaMag - touchDeltaMag;
                 Camera cam = Camera.main;
-
-                if (cam.orthographic)
+                Debug.Log("_deltaMagnitude" + _deltaMagnitude);
+                float touchDistanceDelta = Mathf.Abs(touchDeltaMag - prevTouchDeltaMag);
+                float minTouchDistanceDelta = 16f;
+                Debug.Log("touchDistanceDelta" + touchDistanceDelta);
+               
+                if (touchDistanceDelta > minTouchDistanceDelta)
                 {
-                    cam.orthographicSize -= _deltaMagnitude * _touchScrollSensitivity;
-                    cam.orthographicSize = Mathf.Clamp(cam.orthographicSize, _minOrthographicSize, _maxOrthographicSize);
-                }
-                else
-                {
-                    cam.fieldOfView -= _deltaMagnitude * _touchScrollSensitivity;
-                    cam.fieldOfView = Mathf.Clamp(cam.fieldOfView, _minFov, _maxFov);
+                    if (cam.orthographic)
+                    {
+                        cam.orthographicSize -= _deltaMagnitude * _touchScrollSensitivity;
+                        cam.orthographicSize = Mathf.Clamp(cam.orthographicSize, _minOrthographicSize,
+                            _maxOrthographicSize);
+                    }
+                    else
+                    {
+                        cam.fieldOfView -= _deltaMagnitude * _touchScrollSensitivity;
+                        cam.fieldOfView = Mathf.Clamp(cam.fieldOfView, _minFov, _maxFov);
+                    }
                 }
             }
             else
             {
                 _deltaMagnitude = 0;
-            }
+            }*/
+
+
             /*if (Input.touchCount == 2)
             {
                 Touch touchZero = Input.GetTouch(0);

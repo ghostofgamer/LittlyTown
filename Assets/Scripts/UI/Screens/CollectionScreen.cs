@@ -32,7 +32,9 @@ namespace UI.Screens
         [SerializeField] private Load _load;
         [SerializeField] private SettingsModes _settingsModes;
         [SerializeField] private ItemThrower _itemThrower;
-
+        [SerializeField] private Save _save;
+        [SerializeField] private TMP_Text _amountBuildingsItemText;
+        
         private int _currentIndex;
         private List<Items> _collectedItems = new List<Items>();
         private int _currentValue;
@@ -42,14 +44,18 @@ namespace UI.Screens
         private void OnEnable()
         {
             _collectionMovement.PositionScrolled += ActivationDescription;
+            _collectionMovement.PositionScrolled += ShowAmountBuildItem;
             _itemThrower.BuildItem += AddItemCollection;
+            _itemThrower.BuildItem += SaveAmountBuildings;
             _merger.ItemMergered += AddItemCollection;
         }
 
         private void OnDisable()
         {
             _collectionMovement.PositionScrolled -= ActivationDescription;
+            _collectionMovement.PositionScrolled -= ShowAmountBuildItem;
             _itemThrower.BuildItem -= AddItemCollection;
+            _itemThrower.BuildItem -= SaveAmountBuildings;
             _merger.ItemMergered -= AddItemCollection;
         }
 
@@ -150,6 +156,20 @@ namespace UI.Screens
                 Show();
                 SaveCollectedItemsToPlayerPrefs();
             }
+        }
+
+        private void ShowAmountBuildItem(int index)
+        {
+            int amount = _load.Get(_allCollectionItems[index].ItemName.ToString(), 0);
+            _amountBuildingsItemText.text = amount.ToString();
+        }
+
+        private void SaveAmountBuildings(Item item)
+        {
+            int amount = _load.Get(item.ItemName.ToString(), 0);
+            amount++;
+           _save.SetData(item.ItemName.ToString(), amount);
+           Debug.Log(amount);
         }
 
         private string SerializeCollectedItemsToJson()

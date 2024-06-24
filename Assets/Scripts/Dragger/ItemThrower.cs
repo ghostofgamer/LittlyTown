@@ -79,7 +79,7 @@ namespace Dragger
             _itemDragger.DisableSelected();
         }
 
-        private void ReturnPosition()
+        public void ReturnPosition()
         {
             _itemKeeper.SelectedObject.transform.position = _itemKeeper.StartPosition.transform.position;
             _itemKeeper.SelectedObject.Init(_itemKeeper.StartPosition);
