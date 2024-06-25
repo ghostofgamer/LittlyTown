@@ -2,7 +2,6 @@ using InitializationContent;
 using SaveAndLoad;
 using UI.Screens;
 using UnityEngine;
-using UnityEngine.UI;
 using Wallets;
 
 namespace UI.Buttons

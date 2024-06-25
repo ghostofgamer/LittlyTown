@@ -6,8 +6,8 @@ namespace UI.Buttons
     public class ReturnGoalScreenGameLevelButton : AbstractButton
     {
         [SerializeField] private AbstractScreen _goalsScreen;
-        [SerializeField]private BlurScreen _blurScreen;
-        
+        [SerializeField] private BlurScreen _blurScreen;
+
         protected override void OnClick()
         {
             _goalsScreen.Close();

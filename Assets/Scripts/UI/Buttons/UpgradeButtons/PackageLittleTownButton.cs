@@ -6,7 +6,7 @@ namespace UI.Buttons.UpgradeButtons
     public class PackageLittleTownButton : UpgradeButton
     {
         [SerializeField] private PackageLittleTown _packageLittleTown;
-        
+
         protected override void OnClick()
         {
             BuyUpgrade();
@@ -16,7 +16,7 @@ namespace UI.Buttons.UpgradeButtons
         {
             if (!TryBuyUpgrade())
                 return;
-            
+
             base.BuyUpgrade();
             _packageLittleTown.PurchasedPackage();
         }

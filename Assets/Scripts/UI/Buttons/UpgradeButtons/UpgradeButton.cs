@@ -12,9 +12,14 @@ namespace UI.Buttons.UpgradeButtons
         [SerializeField] private int _price;
         [SerializeField] private Upgrades _upgradeName;
         [SerializeField] private TMP_Text _priceText;
-        [SerializeField]private UpgradeScreen _upgradeScreen;
-        
+        [SerializeField] private UpgradeScreen _upgradeScreen;
+
         protected Upgrades UpgradeName => _upgradeName;
+
+        public void CheckAvailability()
+        {
+            _priceText.color = _price > _crystalWallet.CurrentValue ? Color.red : Color.white;
+        }
 
         protected virtual void BuyUpgrade()
         {
@@ -26,11 +31,6 @@ namespace UI.Buttons.UpgradeButtons
         protected bool TryBuyUpgrade()
         {
             return _crystalWallet.CurrentValue >= _price;
-        }
-
-        public void CheckAvailability()
-        {
-            _priceText.color = _price > _crystalWallet.CurrentValue ? Color.red : Color.white;
         }
     }
 }

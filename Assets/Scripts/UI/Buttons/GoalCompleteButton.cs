@@ -13,16 +13,17 @@ namespace UI.Buttons
         [SerializeField] private Goal _goal;
 
         private int _reward = 30;
+        private int _value = 1;
 
         protected override void OnClick()
         {
             CompleteGoal();
-             _crystalWallet.IncreaseValue(_reward);
+            _crystalWallet.IncreaseValue(_reward);
         }
 
         public void CompleteGoal()
         {
-            _goal.SetCompleteValue(1);
+            _goal.SetCompleteValue(_value);
             _progressInfo.SetActive(false);
             _completeInfo.SetActive(true);
             _goalsCounter.CompleteGoal();

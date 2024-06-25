@@ -19,6 +19,12 @@ namespace UI.Buttons
             _movesKeeper.StepChanged -= SetInteractable;
         }
 
+        protected override void OnClick()
+        {
+            AudioSource.PlayOneShot(AudioSource.clip);
+            _movesKeeper.CancelLastStep();
+        }
+
         private void Start()
         {
             if (_movesKeeper.CurrentStep <= 0)
@@ -28,12 +34,6 @@ namespace UI.Buttons
         private void SetInteractable(int currentStep)
         {
             Button.interactable = currentStep > 0;
-        }
-    
-        protected override void OnClick()
-        {
-            AudioSource.PlayOneShot(AudioSource.clip);
-            _movesKeeper.CancelLastStep();
         }
     }
 }

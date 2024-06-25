@@ -16,7 +16,7 @@ namespace UI.Buttons.UpgradeButtons
         private int _currentIndex;
 
         public event Action EndlessPurchased;
-        
+
         private void Start()
         {
             _currentIndex = _load.Get(UpgradeName.ToString(), _defaultIndex);
@@ -34,7 +34,7 @@ namespace UI.Buttons.UpgradeButtons
         {
             if (!TryBuyUpgrade())
                 return;
-            
+
             base.BuyUpgrade();
             _save.SetData(UpgradeName.ToString(), _purchasedIndex);
             ClosePurchased();

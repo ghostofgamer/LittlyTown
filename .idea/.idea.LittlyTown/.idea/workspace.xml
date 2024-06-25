@@ -20,11 +20,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="099b8a6d-6b1c-4473-babb-d7d2ffb7e44f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/SettingsButtonContent/ChangeLocalizationButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/SettingsButtonContent/ChangeLocalizationButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/SettingsButtonContent/MixerButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/SettingsButtonContent/MixerButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/SettingsButtonContent/OrthographicButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/SettingsButtonContent/OrthographicButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/SettingsButtonContent/SettingsChangeButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/SettingsButtonContent/SettingsChangeButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/SettingsButtonContent/SnapRotationChangerButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/SettingsButtonContent/SnapRotationChangerButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/AbstractButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/AbstractButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BulldozerButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BulldozerButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BuyItemButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BuyItemButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BuyMapButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BuyMapButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/CancelMoveButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/CancelMoveButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ChooseMapButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ChooseMapButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ContinueButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ContinueButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/UpgradeButtons/EndlessMoveButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/UpgradeButtons/EndlessMoveButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/UpgradeButtons/PackageLittleTownButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/UpgradeButtons/PackageLittleTownButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/UpgradeButtons/UpgradeButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/UpgradeButtons/UpgradeButton.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,19 +188,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/PossibilitiesItemsData.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/Load.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/ItemDropData.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/ItemsStorage.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/SaveData.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/SaveHistoryData.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/StorageItemData.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/ShopItemData.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/SelectItemData.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/GoalContent/SaveGoalData.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/GoalContent/GoalSaver.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SDK/SDKInitialization.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SDK/GameReady.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SpawnContent/DropGenerator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/TutorContent/RestartTutorial.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/TutorContent/ReplaceStage.cs" />
@@ -234,6 +226,19 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/SettingsButtonContent/SettingsChangeButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/SettingsButtonContent/OrthographicButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/SettingsButtonContent/MixerButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/StartBonusesButtons/BonusReplaceButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/StartBonusesButtons/BonusesButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/StartBonusesButtons/BonusBulldozersButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/UpgradeButtons/UpgradeButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/UpgradeButtons/PackageLittleTownButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/UpgradeButtons/EndlessMoveButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/CancelMoveButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BuyMapButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BuyItemButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BulldozerButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/AbstractButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ContinueButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ChooseMapButton.cs" />
       </list>
     </option>
   </component>
@@ -358,7 +363,7 @@
       <workItem from="1719136970153" duration="5000" />
       <workItem from="1719137133779" duration="16763000" />
       <workItem from="1719209511924" duration="23168000" />
-      <workItem from="1719299040921" duration="11308000" />
+      <workItem from="1719299040921" duration="11668000" />
     </task>
     <servers />
   </component>

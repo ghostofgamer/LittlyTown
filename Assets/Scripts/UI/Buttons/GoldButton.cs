@@ -12,13 +12,12 @@ namespace UI.Buttons
         private float _elapsedTime;
         private float _duration = 0.5f;
         private Coroutine _coroutine;
-
         private WaitForSeconds _waitForSeconds = new WaitForSeconds(1.5f);
 
         protected override void OnClick()
         {
             AudioSource.PlayOneShot(AudioSource.clip);
-            
+
             if (_coroutine != null)
                 StopCoroutine(_coroutine);
 

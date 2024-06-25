@@ -14,7 +14,7 @@ namespace UI.Buttons
         [SerializeField] private Sprite _activatedImage;
         [SerializeField] private Sprite _notActivatedImage;
 
-        private bool _isActivated = false;
+        private bool _isActivated;
 
         protected override void OnEnable()
         {
@@ -43,7 +43,7 @@ namespace UI.Buttons
             _imageBackGroundButton.sprite = imageBackGroundButton;
             _icon.sprite = icon;
         }
-        
+
         private void Deactivation()
         {
             _isActivated = false;

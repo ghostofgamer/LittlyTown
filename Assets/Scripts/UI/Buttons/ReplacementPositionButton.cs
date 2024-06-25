@@ -1,5 +1,3 @@
-using System;
-using ItemPositionContent;
 using PossibilitiesContent;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,7 +14,7 @@ namespace UI.Buttons
         [SerializeField] private Sprite _activatedImage;
         [SerializeField] private Sprite _notActivatedImage;
 
-        private bool _isActivated = false;
+        private bool _isActivated;
 
         protected override void OnEnable()
         {
@@ -35,13 +33,9 @@ namespace UI.Buttons
             _isActivated = !_isActivated;
 
             if (_isActivated)
-            {
                 SetSprite(_blackIcon, _activatedImage);
-            }
             else
-            {
                 Deactivation();
-            }
         }
 
         private void SetSprite(Sprite icon, Sprite imageBackGroundButton)

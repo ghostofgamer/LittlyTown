@@ -13,23 +13,23 @@ namespace UI.Buttons
     {
         private const string Map = "Map";
         private const string CurrentRecordScore = "CurrentRecordScore";
-   
+
         [SerializeField] private ItemKeeper _itemKeeper;
         [SerializeField] private Save _save;
         [SerializeField] private ItemsStorage _itemsStorage;
         [SerializeField] private PossibilitiesCounter[] _possibilitiesCounters;
         [SerializeField] private PackageLittleTown _packageLittleTown;
         [SerializeField] private Initializator _initializator;
-        [SerializeField]private MovesKeeper _moveKeeper;
-        [SerializeField]private VisualItemsDeactivator _visualItemsDeactivator;
-        [SerializeField]private ScoreCounter _scoreCounter;
+        [SerializeField] private MovesKeeper _moveKeeper;
+        [SerializeField] private VisualItemsDeactivator _visualItemsDeactivator;
+        [SerializeField] private ScoreCounter _scoreCounter;
         [SerializeField] private Load _load;
         [SerializeField] private GoldCounter _goldCounter;
         [SerializeField] private TurnEnvironment _turnEnvironment;
         [SerializeField] private GameObject _lightHouse;
-    
+
         private int _startValue;
-    
+
         protected override void OnClick()
         {
             _save.SetData(Map, _initializator.Index);
@@ -43,14 +43,12 @@ namespace UI.Buttons
             _goldCounter.CheckIncome();
             _turnEnvironment.SetEnvironment(_initializator.CurrentMap.gameObject);
             _lightHouse.SetActive(_initializator.CurrentMap.IsWaterTilePresent);
-        
+
             if (_packageLittleTown.IsActive)
             {
-                foreach (var possibilitiesCounter in _possibilitiesCounters)
-                {
+                foreach (PossibilitiesCounter possibilitiesCounter in _possibilitiesCounters)
                     possibilitiesCounter.OnIncreaseCount(_packageLittleTown.Amount);
-                }
-                
+
                 _packageLittleTown.Activated();
             }
         }
