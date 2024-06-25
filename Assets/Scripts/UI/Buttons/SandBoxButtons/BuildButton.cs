@@ -12,32 +12,29 @@ namespace UI.Buttons.SandBoxButtons
         [SerializeField] private Sprite _notActiveSprite;
         [SerializeField] private Image _imageButton;
 
-        private float _fullAlpha = 255f;
-        private float _halfAlpha = 150f;
-
         public bool IsActive { get; private set; }
-
-        protected override void OnClick()
-        {
-            AudioSource.PlayOneShot(AudioSource.clip);
-            IsActive = !IsActive;
-        
-            if (IsActive)
-                Activate();
-
-            _buildButtonChanger.Deactivation(_index);
-        }
 
         public void Activate()
         {
             IsActive = true;
             _imageButton.sprite = _activeSprite;
         }
-    
+
         public void Deactivate()
         {
             IsActive = false;
             _imageButton.sprite = _notActiveSprite;
+        }
+
+        protected override void OnClick()
+        {
+            AudioSource.PlayOneShot(AudioSource.clip);
+            IsActive = !IsActive;
+
+            if (IsActive)
+                Activate();
+
+            _buildButtonChanger.Deactivation(_index);
         }
     }
 }

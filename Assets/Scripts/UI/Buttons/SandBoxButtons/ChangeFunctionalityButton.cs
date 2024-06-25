@@ -22,6 +22,23 @@ namespace UI.Buttons.SandBoxButtons
         private bool _isActive;
         private Coroutine _coroutine;
 
+        public void OffActivity()
+        {
+            _isActive = false;
+        }
+
+        public void Deactivation()
+        {
+            if (_builder != null)
+                _builder.enabled = false;
+
+            _buttonImage.sprite = _notActiveButton;
+            _iconImage.color = Color.white;
+
+            if (_content != null)
+                CloseContent();
+        }
+
         protected override void OnClick()
         {
             _isActive = !_isActive;
@@ -48,23 +65,6 @@ namespace UI.Buttons.SandBoxButtons
             }
         }
 
-        public void OffActivity()
-        {
-            _isActive = false;
-        }
-
-        public void Deactivation()
-        {
-            if (_builder != null)
-                _builder.enabled = false;
-
-            _buttonImage.sprite = _notActiveButton;
-            _iconImage.color = Color.white;
-
-            if (_content != null)
-                CloseContent();
-        }
-
         private void Activation()
         {
             if (_builder != null)
@@ -72,7 +72,7 @@ namespace UI.Buttons.SandBoxButtons
                 _builder.enabled = true;
                 _builder.Open();
             }
-        
+
             _buttonImage.sprite = _activeButton;
             _iconImage.color = Color.black;
 
@@ -107,7 +107,7 @@ namespace UI.Buttons.SandBoxButtons
                 _content.anchoredPosition = Vector2.Lerp(startPosition, target, _elapsedTime / _duration);
                 yield return null;
             }
-        
+
             _content.anchoredPosition = target;
         }
     }
