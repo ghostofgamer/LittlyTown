@@ -9,27 +9,27 @@ namespace MapsContent
         [SerializeField] private Initializator _initializator;
         [SerializeField] private ChooseMapButton[] _chooseMapButton;
         [SerializeField] private GameObject[] _goldContentButtons;
-        [SerializeField]private StartMap _startMap;
+        [SerializeField] private StartMap _startMap;
 
         private void OnEnable()
         {
-            _initializator.IndexChanged += ChangeActivityButton;
-            _startMap.MapStarted += ChangeActivityGoldContentButtons;
+            _initializator.IndexChanged += OnChangeActivityButton;
+            _startMap.MapStarted += OnChangeActivityGoldContentButtons;
         }
 
         private void OnDisable()
         {
-            _initializator.IndexChanged -= ChangeActivityButton;
-            _startMap.MapStarted += ChangeActivityGoldContentButtons;
+            _initializator.IndexChanged -= OnChangeActivityButton;
+            _startMap.MapStarted += OnChangeActivityGoldContentButtons;
         }
 
-        private void ChangeActivityButton()
+        private void OnChangeActivityButton()
         {
             foreach (var button in _chooseMapButton)
                 button.gameObject.SetActive(button.Index != _initializator.Index);
         }
 
-        private void ChangeActivityGoldContentButtons()
+        private void OnChangeActivityGoldContentButtons()
         {
             foreach (var button in _goldContentButtons)
                 button.gameObject.SetActive(!_initializator.CurrentMap.IsMapWithoutProfit);

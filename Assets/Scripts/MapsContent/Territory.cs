@@ -9,7 +9,7 @@ namespace MapsContent
 
         public bool IsExpanding => _isExpanding;
 
-        public bool IsOpened { get; private set; } = false;
+        public bool IsOpened { get; private set; }
 
         public void PositionActivation()
         {
@@ -17,9 +17,9 @@ namespace MapsContent
             {
                 positionScaller.gameObject.SetActive(true);
                 positionScaller.ScaleChanged();
-            }  
+            }
         }
-    
+
         public void ShowPositions()
         {
             foreach (var positionScaller in _positionScallers)

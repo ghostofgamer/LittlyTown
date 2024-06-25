@@ -7,11 +7,11 @@ namespace MapsContent
     public class ChooseMap : MonoBehaviour
     {
         [SerializeField] private Vector3 _startResetPosition;
-        [SerializeField] private bool _isWork = false;
+        [SerializeField] private bool _isWork;
 
         private float _step = 46;
         private int _currentIndex;
-        private float _elapsedTime = 0f;
+        private float _elapsedTime;
         private float _duration = 1f;
         private Vector3 _target;
         private Vector3 _currentPosition;
@@ -24,37 +24,36 @@ namespace MapsContent
         private float _sensitivity = 1f;
         private float _mouseDelta;
         private Vector3 _startScrollPosition;
-        private WaitForSeconds _waitForSeconds = new WaitForSeconds(1f);
         private float _value;
         private Vector3 _position;
         private float _dragDistance;
         private Vector3 _currentDragPosition;
-        
-        
-        public event Action<int> MapChanged;
-
-        public bool IsWork => _isWork;
         private bool _isSwap;
+        private float _speed = 30f;
+        private float _factor = 1f;
+        private float _targetDelta = 16f;
+        private float _targetDistance = 100f;
+        private int _maxIndex = 10;
+        private int _minIndex = 0;
+
+        public event Action<int> MapChanged;
 
         private void Update()
         {
-            if(transform.position.x<_startResetPosition.x||transform.position.y<_startResetPosition.y)
-                transform.position = new Vector3(_startResetPosition.x,_startResetPosition.y,transform.position.z);
+            if (transform.position.x < _startResetPosition.x || transform.position.y < _startResetPosition.y)
+                transform.position = new Vector3(_startResetPosition.x, _startResetPosition.y, transform.position.z);
         }
 
         public void SetStartPosition()
         {
-            /*_startScrollPosition = transform.position;
-            _mouseDownPosition = Input.mousePosition;*/
-
             if (!_isSwap)
             {
                 _startScrollPosition = transform.position;
                 _mouseStartPosition = Input.mousePosition;
                 _mouseDownPosition = Input.mousePosition;
                 _mouseCurrentPosition = Input.mousePosition;
-                  _isWork  = true;
-                  _dragDistance = 0;
+                _isWork = true;
+                _dragDistance = 0;
             }
 
             _isSwap = true;
@@ -66,66 +65,44 @@ namespace MapsContent
             {
                 _mouseCurrentPosition = Input.mousePosition;
                 _dragDistance = Vector3.Distance(_mouseStartPosition, _mouseCurrentPosition);
-                Debug.Log("value " + _dragDistance);
-            
                 _mouseDelta = -(_mouseCurrentPosition.x - _mouseDownPosition.x);
 
-                if (Mathf.Abs(_mouseDelta) > 16f)
+                if (Mathf.Abs(_mouseDelta) > _targetDelta)
                 {
                     _value = Mathf.Sign(_mouseCurrentPosition.x - _mouseDownPosition.x) * _sensitivity;
-                    _value *= -1;
+                    _value *= -_factor;
                     _mouseDownPosition = _mouseCurrentPosition;
                     _position = new Vector3(0, 0, _value);
-                    transform.position += _position * 30 * Time.deltaTime;
+                    transform.position += _position * _speed * Time.deltaTime;
                 }
             }
         }
 
-        public void CheckImpulse()
+        public void CheckDragDistance()
         {
             if (_isWork)
             {
-                if (_dragDistance > 100)
+                if (_dragDistance > _targetDistance)
                 {
-                    if (_currentIndex + (int) Mathf.Sign(-((int) Mathf.Sign(_mouseCurrentPosition.x - _mouseStartPosition.x))) > 10 ||
-                        _currentIndex + (int) Mathf.Sign(-((int) Mathf.Sign(_mouseCurrentPosition.x - _mouseStartPosition.x))) < 0)
+                    if (
+                        _currentIndex +
+                        (int) Mathf.Sign(-((int) Mathf.Sign(_mouseCurrentPosition.x - _mouseStartPosition.x))) >
+                        _maxIndex ||
+                        _currentIndex +
+                        (int) Mathf.Sign(-((int) Mathf.Sign(_mouseCurrentPosition.x - _mouseStartPosition.x))) <
+                        _minIndex)
                     {
-                        transform.position = _startScrollPosition;
-                        _isWork = false;
-                        _isSwap = false;
+                        ResetValue();
                         return;
                     }
-                    
+
                     _isWork = false;
                     ChangeMap(-((int) Mathf.Sign(_mouseCurrentPosition.x - _mouseStartPosition.x)));
                 }
                 else
                 {
-                    transform.position = _startScrollPosition;
-                    _isWork = false;
-                    _isSwap = false;
+                    ResetValue();
                 }
-                
-                
-                /*if (Mathf.Abs(_mouseDelta) > 7)
-                {
-                    if (_currentIndex + (int) Mathf.Sign(_mouseDelta) > 10 ||
-                        _currentIndex + (int) Mathf.Sign(_mouseDelta) < 0)
-                    {
-                        transform.position = _startScrollPosition;
-                        _isWork = false;
-                        _isSwap = false;
-                        return;
-                    }
-                    
-                    _isWork = false;
-                    ChangeMap((int) Mathf.Sign(_mouseDelta));
-                    return;
-                }
-
-                transform.position = _startScrollPosition;
-                _isWork = false;
-                _isSwap = false;*/
             }
         }
 
@@ -133,9 +110,9 @@ namespace MapsContent
         {
             _currentIndex += index;
 
-            if (_currentIndex > 10 || _currentIndex < 0)
+            if (_currentIndex > _maxIndex || _currentIndex < _minIndex)
             {
-                _currentIndex = Mathf.Clamp(_currentIndex, 0, 10);
+                _currentIndex = Mathf.Clamp(_currentIndex, _minIndex, _maxIndex);
                 return;
             }
 
@@ -144,22 +121,6 @@ namespace MapsContent
             _currentZ += _currentStep;
             _target = new Vector3(_startPosition.x, _startPosition.y, _currentZ);
             StartCoroutine(MapMove());
-        }
-
-        private IEnumerator MapMove()
-        {
-            _elapsedTime = 0;
-            _currentPosition = transform.position;
-
-            while (_elapsedTime < _duration)
-            {
-                _elapsedTime += Time.deltaTime;
-                transform.position = Vector3.Lerp(_currentPosition, _target, _elapsedTime / _duration);
-                yield return null;
-            }
-
-            transform.position = _target;
-            _isSwap = false;
         }
 
         public void SetPosition(int index)
@@ -182,20 +143,27 @@ namespace MapsContent
             _currentZ = _currentPosition.z;
         }
 
-        /*public void StartWork()
+        private void ResetValue()
         {
-            StartCoroutine(EnableWork());
-        }
-
-        private IEnumerator EnableWork()
-        {
-            yield return _waitForSeconds;
-            _isWork = true;
-        }
-
-        public void StopWork()
-        {
+            transform.position = _startScrollPosition;
             _isWork = false;
-        }*/
+            _isSwap = false;
+        }
+
+        private IEnumerator MapMove()
+        {
+            _elapsedTime = 0;
+            _currentPosition = transform.position;
+
+            while (_elapsedTime < _duration)
+            {
+                _elapsedTime += Time.deltaTime;
+                transform.position = Vector3.Lerp(_currentPosition, _target, _elapsedTime / _duration);
+                yield return null;
+            }
+
+            transform.position = _target;
+            _isSwap = false;
+        }
     }
 }

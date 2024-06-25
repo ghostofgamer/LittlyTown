@@ -11,8 +11,8 @@ namespace MapsContent
         [SerializeField] private Transform _roadsContainer;
         [SerializeField] private int _index;
         [SerializeField] private List<Item> _startItems = new List<Item>();
-        [SerializeField] private bool _isMapWithoutProfit = false;
-        [SerializeField] private bool _isMapExpanding = false;
+        [SerializeField] private bool _isMapWithoutProfit;
+        [SerializeField] private bool _isMapExpanding;
         [SerializeField] private ItemPosition[] _randomPositionWaters;
         [SerializeField] private Territory[] _expandingTerritories;
         [SerializeField] private bool _isWaterRandom;

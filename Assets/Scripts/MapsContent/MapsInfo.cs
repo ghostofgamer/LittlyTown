@@ -7,19 +7,19 @@ namespace MapsContent
     {
         [SerializeField] private GameObject[] _mapInfoObjects;
         [SerializeField] private ChooseMap _chooseMap;
-        [SerializeField]private Records _records;
+        [SerializeField] private Records _records;
 
         private void OnEnable()
         {
-            _chooseMap.MapChanged += ActivatedInfo;
+            _chooseMap.MapChanged += OnActivatedInfo;
         }
 
         private void OnDisable()
         {
-            _chooseMap.MapChanged -= ActivatedInfo;
+            _chooseMap.MapChanged -= OnActivatedInfo;
         }
 
-        public void ActivatedInfo(int index)
+        public void OnActivatedInfo(int index)
         {
             foreach (var mapInfo in _mapInfoObjects)
                 mapInfo.SetActive(false);

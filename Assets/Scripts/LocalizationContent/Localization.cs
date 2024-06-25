@@ -15,9 +15,8 @@ namespace LocalizationContent
         private const string English = "en";
         private const string Russian = "ru";
         private const string Turkish = "tr";
-    
+
         [SerializeField] private LeanLocalization _leanLocalization;
-        [SerializeField] private Save _save;
         [SerializeField] private Load _load;
 
         private string _currentLanguage;

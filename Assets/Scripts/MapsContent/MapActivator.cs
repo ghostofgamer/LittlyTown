@@ -19,7 +19,7 @@ namespace MapsContent
 
         public void ActivateAllMaps()
         {
-            foreach (var map in _maps)
+            foreach (GameObject map in _maps)
                 map.SetActive(true);
         }
     }

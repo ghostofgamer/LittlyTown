@@ -61,7 +61,7 @@ namespace UI.Screens
             _chooseMap.enabled = true;
             // _chooseMap.StartWork();
             _inputChooseMap.StartWork();
-            _mapsInfo.ActivatedInfo(_initializator.Index);
+            _mapsInfo.OnActivatedInfo(_initializator.Index);
             _mapInformation.SetActive(true);
             _mapInformations[_initializator.Index].SetActive(true);
             _mapActivator.ActivateAllMaps();

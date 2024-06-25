@@ -47,19 +47,19 @@ namespace MapsContent
             _save.SetData(LastActiveMap, _selectMap);
             _save.SetData(Map, _initializator.Index);
             _save.SetData(ActiveMap + _initializator.Index, _selectMap);
-        
+
             if (_initializator.Environments[_initializator.Index].GetComponent<Map>().IsMapExpanding)
                 _initializator.ResetTerritory();
             else
                 _initializator.FillLists();
-        
+
             DeactivateItems();
             _visualItemsDeactivator.SetPositions(_initializator.ItemPositions);
             _itemKeeper.ClearAll();
-            
-            foreach (var storage in _storages)
+
+            foreach (Storage storage in _storages)
                 storage.ClearItem();
-            
+
             _moveKeeper.LoadHistoryData();
 
             if (_initializator.CurrentMap.IsMapWithoutProfit)
@@ -77,7 +77,7 @@ namespace MapsContent
             _goldCounter.CheckIncome();
             _scoreCounter.ResetScore();
 
-            foreach (var itemPosition in _initializator.ItemPositions)
+            foreach (ItemPosition itemPosition in _initializator.ItemPositions)
             {
                 itemPosition.ClearingPosition();
                 itemPosition.DisableRoad();
@@ -87,7 +87,7 @@ namespace MapsContent
 
             if (_packageLittleTown.IsActive)
                 _packageLittleTown.Activated();
-        
+
             _turnEnvironment.SetEnvironment(_initializator.CurrentMap.gameObject);
             _mapGenerator.GenerationCurrentMap(_initializator.Territories, _initializator.FinderPositions,
                 _initializator.CurrentMap.StartItems, _initializator.ItemPositions,
@@ -103,11 +103,6 @@ namespace MapsContent
             _mapGenerator.GenerationWithoutSpawn(_initializator.Territories, _initializator.FinderPositions,
                 _initializator.ItemPositions, _initializator.CurrentMap.RoadsContainer,
                 _initializator.CurrentMap.StartItems);
-
-            /*
-            _mapGenerator.TestVisualGeneration(_initializator.Territories, _initializator.FinderPositions,
-                _initializator.CurrentMap.StartItems, _initializator.ItemPositions,
-                _initializator.CurrentMap.ItemsContainer);*/
         }
 
 
@@ -118,17 +113,17 @@ namespace MapsContent
             DeactivateItems();
             _visualItemsDeactivator.SetPositions(_initializator.ItemPositions);
             _itemKeeper.ClearAll();
-        
-            foreach (var storage in _storages)
+
+            foreach (Storage storage in _storages)
                 storage.ClearItem();
-        
+
             _moveKeeper.LoadHistoryData();
             _goldWallet.SetInitialValue();
             _scoreCounter.ResetScore();
-            
-            foreach (var itemPosition in _initializator.ItemPositions)
+
+            foreach (ItemPosition itemPosition in _initializator.ItemPositions)
                 itemPosition.ClearingPosition();
-            
+
             ResetArraysValues();
 
             if (_packageLittleTown.IsActive)
@@ -140,13 +135,13 @@ namespace MapsContent
 
         private void ResetArraysValues()
         {
-            foreach (var item in _items)
+            foreach (Item item in _items)
                 item.SetInitialPrice();
 
-            foreach (var possibility in _possibilities)
+            foreach (Possibilitie possibility in _possibilities)
                 possibility.SetStartPrice();
 
-            foreach (var possibilityCounter in _possibilitiesCounters)
+            foreach (PossibilitiesCounter possibilityCounter in _possibilitiesCounters)
             {
                 possibilityCounter.SetCount();
 
@@ -154,7 +149,7 @@ namespace MapsContent
                     possibilityCounter.OnIncreaseCount(_packageLittleTown.Amount);
             }
         }
-        
+
         private void DeactivateItems()
         {
             foreach (Transform child in _initializator.CurrentMap.RoadsContainer.transform)
