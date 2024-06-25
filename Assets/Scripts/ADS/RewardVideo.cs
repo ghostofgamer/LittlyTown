@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace ADS
 {
-    public abstract class RewardVideo : AD
+    public abstract class RewardVideo : Ad
     {
         [SerializeField] private Button _button;
 

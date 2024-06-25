@@ -11,15 +11,15 @@ namespace DayNightContent
 
         private void OnEnable()
         {
-            _dayNight.TimeDayChanged += ChangeMusic;
+            _dayNight.TimeDayChanged += OnChangeMusic;
         }
 
         private void OnDisable()
         {
-            _dayNight.TimeDayChanged -= ChangeMusic;
+            _dayNight.TimeDayChanged -= OnChangeMusic;
         }
 
-        private void ChangeMusic()
+        private void OnChangeMusic()
         {
             _audioSource.Stop();
             _audioSource.clip = _dayNight.IsNight ? _nightAudioClip : _dayAudioClip;

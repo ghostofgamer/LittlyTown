@@ -9,12 +9,12 @@ namespace GoalContent
 
         private void OnEnable()
         {
-            _itemThrower.BuildItem += ChangeValue;
+            _itemThrower.BuildItem += OnChangeValue;
         }
 
         private void OnDisable()
         {
-            _itemThrower.BuildItem -= ChangeValue;
+            _itemThrower.BuildItem -= OnChangeValue;
         }
     }
 }

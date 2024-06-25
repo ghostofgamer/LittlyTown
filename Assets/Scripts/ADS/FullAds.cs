@@ -2,7 +2,7 @@ using Agava.YandexGames;
 
 namespace ADS
 {
-    public class FullAds : AD
+    public class FullAds : Ad
     {
         public override void Show()
         {

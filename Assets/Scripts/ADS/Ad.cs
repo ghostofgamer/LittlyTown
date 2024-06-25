@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace ADS
 {
-    public abstract class AD : MonoBehaviour
+    public abstract class Ad : MonoBehaviour
     {
         private int _activeValue = 1;
         private int _inactiveValue = 0;

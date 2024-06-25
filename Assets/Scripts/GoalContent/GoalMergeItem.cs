@@ -9,12 +9,12 @@ namespace GoalContent
 
         private void OnEnable()
         {
-            _merge.ItemMergered += ChangeValue;
+            _merge.ItemMergered += OnChangeValue;
         }
 
         private void OnDisable()
         {
-            _merge.ItemMergered -= ChangeValue;
+            _merge.ItemMergered -= OnChangeValue;
         }
     }
 }

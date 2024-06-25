@@ -13,15 +13,15 @@ namespace TutorContent
 
         private void OnEnable()
         {
-            _removalItems.Removed += ActivatedFinalStage;
+            _removalItems.Removed += OnActivatedFinalStage;
         }
 
         private void OnDisable()
         {
-            _removalItems.Removed -= ActivatedFinalStage;
+            _removalItems.Removed -= OnActivatedFinalStage;
         }
 
-        private void ActivatedFinalStage()
+        private void OnActivatedFinalStage()
         {
             if (_coroutine != null)
                 StopCoroutine(_coroutine);

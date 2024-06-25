@@ -62,7 +62,7 @@ namespace GoalContent
                 FinishGoal();
         }
 
-        protected void ChangeValue(Item item)
+        protected void OnChangeValue(Item item)
         {
             if (_currentItem.ItemName != item.ItemName || _currentValue >= _maxValue)
                 return;

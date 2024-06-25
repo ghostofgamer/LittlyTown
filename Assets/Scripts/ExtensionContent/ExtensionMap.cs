@@ -38,12 +38,12 @@ namespace ExtensionContent
 
         private void OnEnable()
         {
-            _merger.ItemMergered += Extension;
+            _merger.ItemMergered += OnExtension;
         }
 
         private void OnDisable()
         {
-            _merger.ItemMergered -= Extension;
+            _merger.ItemMergered -= OnExtension;
         }
 
         public void SearchMap(int index)
@@ -55,7 +55,7 @@ namespace ExtensionContent
             }
         }
 
-        public void ResetMap(Map map,
+        public void ResetMap(
             List<Territory> territory,
             List<ItemPosition> itemPositions,
             List<FinderPositions> finderPositions,
@@ -97,7 +97,7 @@ namespace ExtensionContent
             _index = _load.Get(ExtensionTerritory + _currentMap.Index, 0);
         }
 
-        private void Extension(Item item)
+        private void OnExtension(Item item)
         {
             if (!_initializator.CurrentMap.IsMapExpanding)
                 return;

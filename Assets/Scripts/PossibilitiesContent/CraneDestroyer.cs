@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace PossibilitiesContent
 {
+    [RequireComponent(typeof(BoxCollider), typeof(Item))]
     public class CraneDestroyer : MonoBehaviour
     {
         private Coroutine _coroutine;

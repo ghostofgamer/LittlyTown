@@ -44,20 +44,20 @@ namespace UI.Screens
 
         private void OnEnable()
         {
-            _collectionMovement.PositionScrolled += ActivationDescription;
-            _collectionMovement.PositionScrolled += ShowAmountBuildItem;
-            _itemThrower.BuildItem += AddItemCollection;
-            _itemThrower.BuildItem += SaveAmountBuildings;
-            _merger.ItemMergered += AddItemCollection;
+            _collectionMovement.PositionScrolled += OnActivationDescription;
+            _collectionMovement.PositionScrolled += OnShowAmountBuildItem;
+            _itemThrower.BuildItem += OnAddItemCollection;
+            _itemThrower.BuildItem += OnSaveAmountBuildings;
+            _merger.ItemMergered += OnAddItemCollection;
         }
 
         private void OnDisable()
         {
-            _collectionMovement.PositionScrolled -= ActivationDescription;
-            _collectionMovement.PositionScrolled -= ShowAmountBuildItem;
-            _itemThrower.BuildItem -= AddItemCollection;
-            _itemThrower.BuildItem -= SaveAmountBuildings;
-            _merger.ItemMergered -= AddItemCollection;
+            _collectionMovement.PositionScrolled -= OnActivationDescription;
+            _collectionMovement.PositionScrolled -= OnShowAmountBuildItem;
+            _itemThrower.BuildItem -= OnAddItemCollection;
+            _itemThrower.BuildItem -= OnSaveAmountBuildings;
+            _merger.ItemMergered -= OnAddItemCollection;
         }
 
         private void Start()
@@ -74,7 +74,7 @@ namespace UI.Screens
             LoadCollectedItemsFromPlayerPrefs();
             ShowItems();
             Show();
-            ActivationDescription(0);
+            OnActivationDescription(0);
         }
 
         public override void OnOpen()
@@ -83,7 +83,7 @@ namespace UI.Screens
             _content.SetActive(true);
             Show();
             _camera.orthographic = true;
-            ActivationDescription(_currentIndex);
+            OnActivationDescription(_currentIndex);
             _environmentMovement.GoAway();
             _cameraMovement.ZoomIn();
 
@@ -128,7 +128,7 @@ namespace UI.Screens
             }
         }
 
-        private void ActivationDescription(int index)
+        private void OnActivationDescription(int index)
         {
             _currentIndex = index;
 
@@ -143,7 +143,7 @@ namespace UI.Screens
                 _lockDescription.gameObject.SetActive(true);
         }
 
-        private void AddItemCollection(Item item)
+        private void OnAddItemCollection(Item item)
         {
             if (!CollectedItems.Contains(item.ItemName))
             {
@@ -154,13 +154,13 @@ namespace UI.Screens
             }
         }
 
-        private void ShowAmountBuildItem(int index)
+        private void OnShowAmountBuildItem(int index)
         {
             _amount = _load.Get(_allCollectionItems[index].ItemName.ToString(), 0);
             _amountBuildingsItemText.text = _amount.ToString();
         }
 
-        private void SaveAmountBuildings(Item item)
+        private void OnSaveAmountBuildings(Item item)
         {
             _amount = _load.Get(item.ItemName.ToString(), 0);
             _amount++;

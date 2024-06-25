@@ -13,18 +13,18 @@ namespace UI.Buttons
         protected override void OnEnable()
         {
             base.OnEnable();
-            _dayNight.TimeDayChanged += ChangeImage;
+            _dayNight.TimeDayChanged += OnChangeImage;
         }
 
         protected override void OnDisable()
         {
             base.OnDisable();
-            _dayNight.TimeDayChanged -= ChangeImage;
+            _dayNight.TimeDayChanged -= OnChangeImage;
         }
 
         private void Start()
         {
-            ChangeImage();
+            OnChangeImage();
         }
 
         protected override void OnClick()
@@ -33,7 +33,7 @@ namespace UI.Buttons
             _dayNight.ChangeDayTime();
         }
 
-        private void ChangeImage()
+        private void OnChangeImage()
         {
             if (_dayImage != null)
                 _dayImage.enabled = !_dayNight.IsNight;

@@ -26,7 +26,7 @@ namespace InitializationContent
 
             if (_valueLastMap == 0)
             {
-                _initializator.SetIndex(_valueLastMap);
+                _initializator.OnSetIndex(_valueLastMap);
                 _initializator.FillLists();
                 _mapGenerator.GenerationWithoutSpawn(
                     _initializator.Territories,
@@ -45,7 +45,7 @@ namespace InitializationContent
             }
             else
             {
-                _initializator.SetIndex(_valueCurrentMap);
+                _initializator.OnSetIndex(_valueCurrentMap);
                 _initializator.FillLists();
 
                 for (int i = 0; i < _initializator.AmountMaps; i++)

@@ -21,53 +21,52 @@
   <component name="ChangeListManager">
     <list default="true" id="099b8a6d-6b1c-4473-babb-d7d2ffb7e44f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CameraContent/CameraMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CameraContent/CameraMovement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ADS/AD.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ADS/Ad.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ADS/DoublePossibilityReward.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ADS/DoublePossibilityReward.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ADS/FullAds.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ADS/FullAds.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ADS/RewardVideo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ADS/RewardVideo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BirdContent/BirdSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BirdContent/BirdSpawner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CollectionContent/CollectionMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CollectionContent/CollectionMovement.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/CountersContent/GoldCounter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CountersContent/GoldCounter.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/CountersContent/ScoreSlider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CountersContent/ScoreSlider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DayNightContent/DayNight.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DayNightContent/DayNight.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DayNightContent/BackGroundMusic.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DayNightContent/BackGroundMusic.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Dragger/ItemDragger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Dragger/ItemDragger.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Dragger/ItemThrower.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Dragger/ItemThrower.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enums/Environments.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enums/Environments.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enums/SettingsModes.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enums/SettingsModes.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EnvironmentContent/TurnEnvironment.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EnvironmentContent/TurnEnvironment.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ExtensionContent/ExtensionMap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ExtensionContent/ExtensionMap.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GoalContent/Goal.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GoalContent/Goal.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GoalContent/GoalBuildItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GoalContent/GoalBuildItem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GoalContent/GoalMergeItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GoalContent/GoalMergeItem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GoalContent/GoalRemovalItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GoalContent/GoalRemovalItem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/InitializationContent/Bootstrap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/InitializationContent/Bootstrap.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/InitializationContent/Initializator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/InitializationContent/Initializator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/InitializationContent/PlatformChecker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/InitializationContent/PlatformChecker.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemContent/ItemMoving.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemContent/ItemMoving.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemContent/LightHouseTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemContent/LightHouseTrigger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemPositionContent/ItemPosition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemPositionContent/ItemPosition.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemPositionContent/VisualItemsDeactivator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemPositionContent/VisualItemsDeactivator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemSO/ItemDropDataSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemSO/ItemDropDataSO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Keeper/MovesKeeper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Keeper/MovesKeeper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LocalizationContent/Localization.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LocalizationContent/Localization.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemContent/House.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemContent/House.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Keeper/ItemKeeper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Keeper/ItemKeeper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Keeper/LightHouseKeeper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Keeper/LightHouseKeeper.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/MapsContent/ChooseMap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MapsContent/ChooseMap.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MapsContent/MapGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MapsContent/MapGenerator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/MapsContent/StartMap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MapsContent/StartMap.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/MergeContent/LookMerger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MergeContent/LookMerger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MergeContent/Merger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MergeContent/Merger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MergeContent/MinIndexItemSelector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MergeContent/MinIndexItemSelector.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/CraneDestroyer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/CraneDestroyer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/GoldMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/GoldMovement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/Possibilitie.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/Possibilitie.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/RemovalItems.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/RemovalItems.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/ReplacementPosition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/ReplacementPosition.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Road/RoadGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Road/RoadGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/Builder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/Builder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/EnvironmentBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/EnvironmentBuilder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/ItemBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/ItemBuilder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/SandBoxMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/SandBoxMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/SandBoxStorage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/SandBoxStorage.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/GameStorage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/GameStorage.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/GoalContent/GoalSaver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/GoalContent/GoalSaver.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/PossibilitiesItemsData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/PossibilitiesItemsData.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/SpawnContent/Spawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SpawnContent/Spawner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TutorContent/RestartTutorial.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TutorContent/RestartTutorial.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/GoalCompleteButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/GoalCompleteButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/OpenButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/OpenButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/AbstractScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/AbstractScreen.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TutorContent/BulldozerStage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TutorContent/BulldozerStage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TutorContent/MergeStage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TutorContent/MergeStage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TutorContent/PlaceItemStage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TutorContent/PlaceItemStage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TutorContent/ReplaceStage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TutorContent/ReplaceStage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TutorContent/StorageStage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TutorContent/StorageStage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/CancelMoveButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/CancelMoveButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ContinueButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ContinueButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/DayNightButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/DayNightButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/RotationButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/RotationButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/SettingsButtonContent/ChangeLocalizationButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/SettingsButtonContent/ChangeLocalizationButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/ChooseMapScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/ChooseMapScreen.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/CollectionScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/CollectionScreen.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/SandBoxScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/SandBoxScreen.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/TutorialScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/TutorialScreen.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Wallets/AbstractWallet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Wallets/AbstractWallet.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Wallets/MoneyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Wallets/MoneyInfo.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,7 +182,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Buttons/StartBonusesButtons/BonusesButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ItemPositionContent/VisualItemPosition.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Screens/GameLevelScreen.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ADS/AD.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ADS/Ad.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Buttons/StartBonusesButtons/BonusBulldozersButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Buttons/FinalTutorButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Buttons/StartBonusesButtons/BonusGoldButton.cs" root0="FORCE_HIGHLIGHTING" />
@@ -226,57 +225,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/LanguageScreen.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/SandBoxMoveemnt.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/ShopItemData.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/ItemsStorage.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/MergeContent/LookMerger.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/TutorialScreen.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/CountersContent/GoldCounter.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/OpenButton.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/GoalCompleteButton.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Dragger/ItemThrower.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Wallets/AbstractWallet.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/MergeContent/MinIndexItemSelector.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/MapsContent/ChooseMap.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/ItemContent/LightHouseTrigger.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/CountersContent/ScoreSlider.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/DayNightContent/DayNight.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enums/SettingsModes.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/AbstractScreen.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/Builder.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/ItemSO/ItemDropDataSO.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enums/Environments.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/ItemContent/ItemMoving.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/ItemPositionContent/ItemPosition.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/LocalizationContent/Localization.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GoalContent/Goal.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/SandBoxScreen.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/CollectionScreen.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/ReplacementPosition.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/RemovalItems.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/ItemPositionContent/VisualItemsDeactivator.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/TutorContent/RestartTutorial.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SpawnContent/Spawner.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/GoalContent/GoalSaver.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/SandBoxStorage.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/SandBoxMovement.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/ItemBuilder.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/EnvironmentBuilder.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Road/RoadGenerator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MergeContent/Merger.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/MapsContent/StartMap.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/MapsContent/MapGenerator.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Keeper/MovesKeeper.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/InitializationContent/PlatformChecker.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/InitializationContent/Initializator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/InitializationContent/Bootstrap.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/ExtensionContent/ExtensionMap.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/EnvironmentContent/TurnEnvironment.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Dragger/ItemDragger.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CameraContent/CameraMovement.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/PossibilitiesItemsData.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MapsContent/MapGenerator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Keeper/MovesKeeper.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enums/SoundMixer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enums/SettingsModes.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enums/Items.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enums/Environments.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enums/Languages.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ADS/DoublePossibilityReward.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BirdContent/BirdSpawner.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/CollectionContent/CollectionMovement.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MapsContent/ChooseMap.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MapsContent/StartMap.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/RotationButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/ChooseMapScreen.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Dragger/ItemDragger.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/CraneDestroyer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/GoldMovement.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ItemContent/House.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/Possibilitie.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ADS/Ad.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/CountersContent/GoldCounter.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/CountersContent/ScoreSlider.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/DayNightContent/BackGroundMusic.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ExtensionContent/ExtensionMap.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GoalContent/Goal.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/InitializationContent/Initializator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Keeper/ItemKeeper.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Keeper/LightHouseKeeper.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MergeContent/LookMerger.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/RemovalItems.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/ReplacementPosition.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Road/RoadGenerator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/GoalContent/GoalSaver.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/GameStorage.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/TutorContent/BulldozerStage.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/TutorContent/MergeStage.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/TutorContent/PlaceItemStage.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/TutorContent/ReplaceStage.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/TutorContent/StorageStage.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/SettingsButtonContent/ChangeLocalizationButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/CancelMoveButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/DayNightButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/CollectionScreen.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Wallets/MoneyInfo.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SpawnContent/Spawner.cs" />
       </list>
     </option>
   </component>
@@ -403,7 +402,7 @@
       <workItem from="1719209511924" duration="23168000" />
       <workItem from="1719299040921" duration="13119000" />
       <workItem from="1719317666319" duration="19000" />
-      <workItem from="1719317709441" duration="11442000" />
+      <workItem from="1719317709441" duration="15299000" />
     </task>
     <servers />
   </component>

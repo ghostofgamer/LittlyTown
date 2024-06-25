@@ -34,28 +34,28 @@ namespace CountersContent
 
         private void OnEnable()
         {
-            _moveCounter.StepProfitCompleted += AddGold;
-            _itemThrower.PlaceChanged += CheckIncome;
-            _removalItems.Removed += CheckIncome;
-            _merger.Mergered += CheckIncome;
-            _lightHouseKeeper.CheckCompleted += CheckIncome;
+            _moveCounter.StepProfitCompleted += OnAddGold;
+            _itemThrower.PlaceChanged += OnCheckIncome;
+            _removalItems.Removed += OnCheckIncome;
+            _merger.Mergered += OnCheckIncome;
+            _lightHouseKeeper.CheckCompleted += OnCheckIncome;
         }
 
         private void OnDisable()
         {
-            _moveCounter.StepProfitCompleted -= AddGold;
-            _itemThrower.PlaceChanged -= CheckIncome;
-            _removalItems.Removed -= CheckIncome;
-            _merger.Mergered -= CheckIncome;
-            _lightHouseKeeper.CheckCompleted -= CheckIncome;
+            _moveCounter.StepProfitCompleted -= OnAddGold;
+            _itemThrower.PlaceChanged -= OnCheckIncome;
+            _removalItems.Removed -= OnCheckIncome;
+            _merger.Mergered -= OnCheckIncome;
+            _lightHouseKeeper.CheckCompleted -= OnCheckIncome;
         }
 
-        public void CheckIncome()
+        public void OnCheckIncome()
         {
             StartCoroutine(StartSearchIncome());
         }
 
-        private void AddGold()
+        private void OnAddGold()
         {
             if (_profit > 0)
                 _goldWallet.IncreaseValue(_profit);

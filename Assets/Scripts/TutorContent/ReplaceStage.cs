@@ -14,15 +14,15 @@ namespace TutorContent
 
         private void OnEnable()
         {
-            _replacementPosition.PositionChanging += ActivateRemoveStage;
+            _replacementPosition.PositionChanging += OnActivateRemoveStage;
         }
 
         private void OnDisable()
         {
-            _replacementPosition.PositionChanging -= ActivateRemoveStage;
+            _replacementPosition.PositionChanging -= OnActivateRemoveStage;
         }
 
-        private void ActivateRemoveStage()
+        private void OnActivateRemoveStage()
         {
             if (_coroutine != null)
                 StopCoroutine(_coroutine);

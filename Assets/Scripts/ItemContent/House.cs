@@ -10,23 +10,28 @@ namespace ItemContent
         private Item _item;
         private int _baseIncome;
         private int _maxIncome;
+        private int _factor = 2;
 
         private void Start()
         {
             _item = GetComponent<Item>();
             _baseIncome = _income;
-            _maxIncome = _income * 2;
+            _maxIncome = _income * _factor;
         }
 
         public void IncreaseIncome()
         {
-            _income = _maxIncome;
-            _item.SetGold(_income);
+            SetIncome(_maxIncome);
         }
 
         public void ResetIncome()
         {
-            _income = _baseIncome;
+            SetIncome(_baseIncome);
+        }
+
+        private void SetIncome(int value)
+        {
+            _income = value;
             _item.SetGold(_income);
         }
     }

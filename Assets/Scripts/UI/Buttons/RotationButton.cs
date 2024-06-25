@@ -8,8 +8,6 @@ namespace UI.Buttons
         [SerializeField] private int _index;
         [SerializeField] private TurnEnvironment _turnEnvironment;
 
-        private Quaternion _startRotation;
-
         protected override void OnClick()
         {
             AudioSource.PlayOneShot(AudioSource.clip);

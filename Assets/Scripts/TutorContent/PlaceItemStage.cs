@@ -10,15 +10,15 @@ namespace TutorContent
 
         private void OnEnable()
         {
-            ItemThrower.PlaceChanged += ActivateMergeStage;
+            ItemThrower.PlaceChanged += OnActivateMergeStage;
         }
 
         private void OnDisable()
         {
-            ItemThrower.PlaceChanged -= ActivateMergeStage;
+            ItemThrower.PlaceChanged -= OnActivateMergeStage;
         }
 
-        private void ActivateMergeStage()
+        private void OnActivateMergeStage()
         {
             if (_coroutine != null)
                 StopCoroutine(_coroutine);

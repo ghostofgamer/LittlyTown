@@ -40,7 +40,7 @@ namespace UI.Buttons
             _visualItemsDeactivator.SetPositions(_initializator.ItemPositions);
             _moveKeeper.LoadHistoryData();
             _scoreCounter.SetCurrentScore(_load.Get(CurrentRecordScore + _initializator.Index, _startValue));
-            _goldCounter.CheckIncome();
+            _goldCounter.OnCheckIncome();
             _turnEnvironment.SetEnvironment(_initializator.CurrentMap.gameObject);
             _lightHouse.SetActive(_initializator.CurrentMap.IsWaterTilePresent);
 

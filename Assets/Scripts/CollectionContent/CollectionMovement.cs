@@ -9,8 +9,7 @@ namespace CollectionContent
         private int _currentIndex;
         private float _stepX = -13.63f;
         private float _stepZ = 13.63f;
-        private int _index;
-        private float _elapsedTime = 0f;
+        private float _elapsedTime;
         private float _duration = 0.5f;
         private Vector3 _target;
         private Vector3 _currentPosition;

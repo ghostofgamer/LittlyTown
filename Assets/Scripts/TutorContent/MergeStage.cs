@@ -10,15 +10,15 @@ namespace TutorContent
 
         private void OnEnable()
         {
-            _merger.Mergered += ActivateStoragesStage;
+            _merger.Mergered += OnActivateStoragesStage;
         }
 
         private void OnDisable()
         {
-            _merger.Mergered -= ActivateStoragesStage;
+            _merger.Mergered -= OnActivateStoragesStage;
         }
 
-        private void ActivateStoragesStage()
+        private void OnActivateStoragesStage()
         {
             foreach (var button in _storageButtons)
                 button.SetActive(true);

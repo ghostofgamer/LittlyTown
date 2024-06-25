@@ -10,13 +10,13 @@ namespace UI.Buttons
         protected override void OnEnable()
         {
             base.OnEnable();
-            _movesKeeper.StepChanged += SetInteractable;
+            _movesKeeper.StepChanged += OnSetInteractable;
         }
 
         protected override void OnDisable()
         {
             base.OnDisable();
-            _movesKeeper.StepChanged -= SetInteractable;
+            _movesKeeper.StepChanged -= OnSetInteractable;
         }
 
         protected override void OnClick()
@@ -31,7 +31,7 @@ namespace UI.Buttons
                 Button.interactable = false;
         }
 
-        private void SetInteractable(int currentStep)
+        private void OnSetInteractable(int currentStep)
         {
             Button.interactable = currentStep > 0;
         }

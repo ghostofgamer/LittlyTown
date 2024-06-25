@@ -31,14 +31,14 @@ namespace PossibilitiesContent
 
         private void OnEnable()
         {
-            _deleteButton.RemovalActivated += ActivateWork;
-            _deleteButton.RemovalDeactivated += DeactivateWork;
+            _deleteButton.RemovalActivated += OnActivateWork;
+            _deleteButton.RemovalDeactivated += OnDeactivateWork;
         }
 
         private void OnDisable()
         {
-            _deleteButton.RemovalActivated -= ActivateWork;
-            _deleteButton.RemovalDeactivated -= DeactivateWork;
+            _deleteButton.RemovalActivated -= OnActivateWork;
+            _deleteButton.RemovalDeactivated -= OnDeactivateWork;
         }
 
         private void Start()
@@ -98,12 +98,12 @@ namespace PossibilitiesContent
             }
         }
 
-        private void ActivateWork()
+        private void OnActivateWork()
         {
             IsWorking = true;
         }
 
-        private void DeactivateWork()
+        private void OnDeactivateWork()
         {
             IsWorking = false;
         }

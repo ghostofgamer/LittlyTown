@@ -14,6 +14,11 @@ namespace Road
 {
     public class RoadGenerator : MonoBehaviour
     {
+        private const string ClearTile = "0000";
+        private const string RoadCode = "3333";
+        private const string RoadCodeNumber = "2";
+        private const string TrailCodeNumber = "1";
+
         [SerializeField] private Initializator _initializator;
         [SerializeField] private Spawner _spawner;
         [SerializeField] private Merger _merger;
@@ -56,6 +61,11 @@ namespace Road
         private Dictionary<string, ItemPosition> _tileConfigurations;
         private Coroutine _coroutine;
         private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.1f);
+        private int _minAmountRoads = 1;
+        private int _firstIndex = 1;
+        private int _secondIndex = 1;
+        private int _thirdIndex = 1;
+        private int _zero = 0;
 
         private void OnEnable()
         {
@@ -64,8 +74,8 @@ namespace Road
             _removalItems.Removed += OnGeneration;
             _replacementPosition.PositionsChanged += OnGeneration;
             _merger.Mergered += OnGeneration;
-            _removalItems.ItemRemoved += ClearRoad;
-            _replacementPosition.PositionItemsChanging += ClearRoad;
+            _removalItems.ItemRemoved += OnClearRoad;
+            _replacementPosition.PositionItemsChanging += OnClearRoad;
         }
 
         private void OnDisable()
@@ -75,8 +85,8 @@ namespace Road
             _removalItems.Removed -= OnGeneration;
             _replacementPosition.PositionsChanged -= OnGeneration;
             _merger.Mergered -= OnGeneration;
-            _removalItems.ItemRemoved -= ClearRoad;
-            _replacementPosition.PositionItemsChanging -= ClearRoad;
+            _removalItems.ItemRemoved -= OnClearRoad;
+            _replacementPosition.PositionItemsChanging -= OnClearRoad;
         }
 
         private void Start()
@@ -257,34 +267,34 @@ namespace Road
 
         private string CheckSurroundingTiles(ItemPosition itemPosition)
         {
-            string surroundingTiles = "0000";
+            string surroundingTiles = ClearTile;
 
             if (itemPosition.NorthPosition != null && !itemPosition.NorthPosition.IsBusy &&
                 itemPosition.NorthPosition.gameObject.activeInHierarchy && !itemPosition.NorthPosition.IsWater &&
                 !itemPosition.NorthPosition.IsRoad)
             {
-                surroundingTiles = "1" + surroundingTiles.Substring(1);
+                surroundingTiles = TrailCodeNumber + surroundingTiles.Substring(_firstIndex);
             }
 
             if (itemPosition.WestPosition != null && !itemPosition.WestPosition.IsBusy &&
                 itemPosition.WestPosition.gameObject.activeInHierarchy && !itemPosition.WestPosition.IsWater &&
                 !itemPosition.WestPosition.IsRoad)
             {
-                surroundingTiles = surroundingTiles.Substring(0, 1) + "1" + surroundingTiles.Substring(2);
+                surroundingTiles = surroundingTiles.Substring(_zero, _firstIndex) + TrailCodeNumber + surroundingTiles.Substring(_secondIndex);
             }
 
             if (itemPosition.EastPosition != null && !itemPosition.EastPosition.IsBusy &&
                 itemPosition.EastPosition.gameObject.activeInHierarchy && !itemPosition.EastPosition.IsWater &&
                 !itemPosition.EastPosition.IsRoad)
             {
-                surroundingTiles = surroundingTiles.Substring(0, 2) + "1" + surroundingTiles.Substring(3);
+                surroundingTiles = surroundingTiles.Substring(_zero, _secondIndex) + TrailCodeNumber + surroundingTiles.Substring(_thirdIndex);
             }
 
             if (itemPosition.SouthPosition != null && !itemPosition.SouthPosition.IsBusy &&
                 itemPosition.SouthPosition.gameObject.activeInHierarchy && !itemPosition.SouthPosition.IsWater &&
                 !itemPosition.SouthPosition.IsRoad)
             {
-                surroundingTiles = surroundingTiles.Substring(0, surroundingTiles.Length - 1) + "1";
+                surroundingTiles = surroundingTiles.Substring(_zero, surroundingTiles.Length - _firstIndex) + TrailCodeNumber;
             }
 
             return surroundingTiles;
@@ -292,39 +302,34 @@ namespace Road
 
         private string CheckSurroundingRoadTiles(ItemPosition itemPosition)
         {
-            string surroundingTiles = "3333";
-            int amount = 0;
+            string surroundingTiles = RoadCode;
 
             if (itemPosition.NorthPosition != null && !itemPosition.NorthPosition.IsBusy &&
                 itemPosition.NorthPosition.gameObject.activeInHierarchy && !itemPosition.NorthPosition.IsWater &&
                 itemPosition.NorthPosition.IsRoad)
             {
-                amount++;
-                surroundingTiles = "2" + surroundingTiles.Substring(1);
+                surroundingTiles = RoadCodeNumber + surroundingTiles.Substring(_firstIndex);
             }
 
             if (itemPosition.WestPosition != null && !itemPosition.WestPosition.IsBusy &&
                 itemPosition.WestPosition.gameObject.activeInHierarchy && !itemPosition.WestPosition.IsWater &&
                 itemPosition.WestPosition.IsRoad)
             {
-                amount++;
-                surroundingTiles = surroundingTiles.Substring(0, 1) + "2" + surroundingTiles.Substring(2);
+                surroundingTiles = surroundingTiles.Substring(_zero, _firstIndex) + RoadCodeNumber + surroundingTiles.Substring(_secondIndex);
             }
 
             if (itemPosition.EastPosition != null && !itemPosition.EastPosition.IsBusy &&
                 itemPosition.EastPosition.gameObject.activeInHierarchy && !itemPosition.EastPosition.IsWater &&
                 itemPosition.EastPosition.IsRoad)
             {
-                amount++;
-                surroundingTiles = surroundingTiles.Substring(0, 2) + "2" + surroundingTiles.Substring(3);
+                surroundingTiles = surroundingTiles.Substring(_zero, _secondIndex) + RoadCodeNumber + surroundingTiles.Substring(_thirdIndex);
             }
 
             if (itemPosition.SouthPosition != null && !itemPosition.SouthPosition.IsBusy &&
                 itemPosition.SouthPosition.gameObject.activeInHierarchy && !itemPosition.SouthPosition.IsWater &&
                 itemPosition.SouthPosition.IsRoad)
             {
-                amount++;
-                surroundingTiles = surroundingTiles.Substring(0, surroundingTiles.Length - 1) + "2";
+                surroundingTiles = surroundingTiles.Substring(_zero, surroundingTiles.Length - _firstIndex) + RoadCodeNumber;
             }
 
             return surroundingTiles;
@@ -419,13 +424,13 @@ namespace Road
                 map.gameObject.SetActive(false);
         }
 
-        private void ClearRoad(Item item)
+        private void OnClearRoad(Item item)
         {
             foreach (var road in item.ItemPosition.RoadPositions)
                 road.DisableRoad();
         }
 
-        private void ClearRoad(ItemPosition firstItemPositionItem, ItemPosition secondItemPositionItem)
+        private void OnClearRoad(ItemPosition firstItemPositionItem, ItemPosition secondItemPositionItem)
         {
             foreach (var itemPosition in firstItemPositionItem.RoadPositions)
                 itemPosition.DisableRoad();
@@ -438,14 +443,14 @@ namespace Road
         {
             float value = 0;
 
-            string surroundingTiles = "0000";
+            string surroundingTiles = ClearTile;
 
             if (itemPosition.NorthPosition != null && !itemPosition.NorthPosition.IsBusy &&
                 itemPosition.NorthPosition.gameObject.activeInHierarchy && !itemPosition.NorthPosition.IsWater &&
                 !itemPosition.NorthPosition.IsRoad && itemPosition.NorthPosition.IsTrail)
             {
                 value++;
-                surroundingTiles = "1" + surroundingTiles.Substring(1);
+                surroundingTiles = TrailCodeNumber + surroundingTiles.Substring(_firstIndex);
             }
 
             if (itemPosition.WestPosition != null && !itemPosition.WestPosition.IsBusy &&
@@ -453,7 +458,7 @@ namespace Road
                 !itemPosition.WestPosition.IsRoad && itemPosition.WestPosition.IsTrail)
             {
                 value++;
-                surroundingTiles = surroundingTiles.Substring(0, 1) + "1" + surroundingTiles.Substring(2);
+                surroundingTiles = surroundingTiles.Substring(_zero, _firstIndex) + TrailCodeNumber + surroundingTiles.Substring(_secondIndex);
             }
 
             if (itemPosition.EastPosition != null && !itemPosition.EastPosition.IsBusy &&
@@ -461,7 +466,7 @@ namespace Road
                 !itemPosition.EastPosition.IsRoad && itemPosition.EastPosition.IsTrail)
             {
                 value++;
-                surroundingTiles = surroundingTiles.Substring(0, 2) + "1" + surroundingTiles.Substring(3);
+                surroundingTiles = surroundingTiles.Substring(_zero, _secondIndex) + TrailCodeNumber + surroundingTiles.Substring(_thirdIndex);
             }
 
             if (itemPosition.SouthPosition != null && !itemPosition.SouthPosition.IsBusy &&
@@ -469,12 +474,12 @@ namespace Road
                 !itemPosition.SouthPosition.IsRoad && itemPosition.SouthPosition.IsTrail)
             {
                 value++;
-                surroundingTiles = surroundingTiles.Substring(0, surroundingTiles.Length - 1) + "1";
+                surroundingTiles = surroundingTiles.Substring(_zero, surroundingTiles.Length - _firstIndex) + TrailCodeNumber;
             }
 
-            if (value < 1)
+            if (value < _minAmountRoads)
             {
-                return "0000";
+                return ClearTile;
             }
 
             return surroundingTiles;
@@ -482,7 +487,7 @@ namespace Road
 
         private string CheckSurroundingTilesRoadsSandBox(ItemPosition itemPosition)
         {
-            string surroundingTiles = "3333";
+            string surroundingTiles = RoadCode;
             int amount = 0;
 
             if (itemPosition.NorthPosition != null && !itemPosition.NorthPosition.IsBusy &&
@@ -490,7 +495,7 @@ namespace Road
                 itemPosition.NorthPosition.IsRoad)
             {
                 amount++;
-                surroundingTiles = "2" + surroundingTiles.Substring(1);
+                surroundingTiles = RoadCodeNumber + surroundingTiles.Substring(_firstIndex);
             }
 
             if (itemPosition.WestPosition != null && !itemPosition.WestPosition.IsBusy &&
@@ -498,7 +503,7 @@ namespace Road
                 itemPosition.WestPosition.IsRoad)
             {
                 amount++;
-                surroundingTiles = surroundingTiles.Substring(0, 1) + "2" + surroundingTiles.Substring(2);
+                surroundingTiles = surroundingTiles.Substring(_zero, _firstIndex) + RoadCodeNumber + surroundingTiles.Substring(_secondIndex);
             }
 
             if (itemPosition.EastPosition != null && !itemPosition.EastPosition.IsBusy &&
@@ -506,7 +511,7 @@ namespace Road
                 itemPosition.EastPosition.IsRoad)
             {
                 amount++;
-                surroundingTiles = surroundingTiles.Substring(0, 2) + "2" + surroundingTiles.Substring(3);
+                surroundingTiles = surroundingTiles.Substring(_zero, _secondIndex) + RoadCodeNumber + surroundingTiles.Substring(_thirdIndex);
             }
 
             if (itemPosition.SouthPosition != null && !itemPosition.SouthPosition.IsBusy &&
@@ -514,12 +519,12 @@ namespace Road
                 itemPosition.SouthPosition.IsRoad)
             {
                 amount++;
-                surroundingTiles = surroundingTiles.Substring(0, surroundingTiles.Length - 1) + "2";
+                surroundingTiles = surroundingTiles.Substring(_zero, surroundingTiles.Length - _firstIndex) + RoadCodeNumber;
             }
 
-            if (amount < 1)
+            if (amount < _minAmountRoads)
             {
-                return "0000";
+                return ClearTile;
             }
 
             return surroundingTiles;

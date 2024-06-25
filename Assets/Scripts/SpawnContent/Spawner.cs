@@ -24,13 +24,12 @@ namespace SpawnContent
         private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.165f);
         private Coroutine _coroutine;
         private ItemPosition _position;
-        private int _index;
 
         public event Action ItemCreated;
 
         public event Action PositionsFilled;
 
-        public event Action<ItemPosition, Item> LooksNeighbors;
+        public event Action<ItemPosition, Item> AroundLooking;
 
         private void OnEnable()
         {
@@ -84,7 +83,7 @@ namespace SpawnContent
                 _initializator.CurrentMap.ItemsContainer);
             _itemKeeper.SetItem(item, _position);
             ItemCreated?.Invoke();
-            LooksNeighbors?.Invoke(_position, item);
+            AroundLooking?.Invoke(_position, item);
         }
     }
 }

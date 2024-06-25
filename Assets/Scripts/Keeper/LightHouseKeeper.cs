@@ -17,55 +17,56 @@ namespace Keeper
         [SerializeField] private ItemThrower _itemThrower;
 
         private List<LightHouseTrigger> _lightHouses = new List<LightHouseTrigger>();
-        private Coroutine _coroutine;
+        private LightHouseTrigger _lightHouseTrigger;
+        private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.165f);
 
         public event Action CheckCompleted;
 
         private void OnEnable()
         {
-            _itemThrower.BuildItem += AddLightHouse;
-            _itemThrower.PlaceChanged += CheckHousesAround;
-            _removalItems.ItemRemoved += RemoveLightHouse;
-            _replacementPosition.PositionsChanged += CheckHousesAround;
-            _merger.Mergered += CheckHousesAround;
+            _itemThrower.BuildItem += OnAddLightHouse;
+            _itemThrower.PlaceChanged += OnCheckHousesAround;
+            _removalItems.ItemRemoved += OnRemoveLightHouse;
+            _replacementPosition.PositionsChanged += OnCheckHousesAround;
+            _merger.Mergered += OnCheckHousesAround;
         }
 
         private void OnDisable()
         {
-            _itemThrower.BuildItem -= AddLightHouse;
-            _itemThrower.PlaceChanged -= CheckHousesAround;
-            _removalItems.ItemRemoved -= RemoveLightHouse;
-            _replacementPosition.PositionsChanged -= CheckHousesAround;
-            _merger.Mergered -= CheckHousesAround;
+            _itemThrower.BuildItem -= OnAddLightHouse;
+            _itemThrower.PlaceChanged -= OnCheckHousesAround;
+            _removalItems.ItemRemoved -= OnRemoveLightHouse;
+            _replacementPosition.PositionsChanged -= OnCheckHousesAround;
+            _merger.Mergered -= OnCheckHousesAround;
         }
 
-        private void AddLightHouse(Item item)
+        private void OnAddLightHouse(Item item)
         {
-            LightHouseTrigger lightHouseTrigger = item.GetComponent<LightHouseTrigger>();
+            _lightHouseTrigger = item.GetComponent<LightHouseTrigger>();
 
-            if (lightHouseTrigger != null)
-                _lightHouses.Add(lightHouseTrigger);
+            if (_lightHouseTrigger != null)
+                _lightHouses.Add(_lightHouseTrigger);
         }
 
-        private void RemoveLightHouse(Item item)
+        private void OnRemoveLightHouse(Item item)
         {
-            LightHouseTrigger lightHouseTrigger = item.GetComponent<LightHouseTrigger>();
+            _lightHouseTrigger = item.GetComponent<LightHouseTrigger>();
 
-            if (lightHouseTrigger != null)
+            if (_lightHouseTrigger != null)
             {
-                lightHouseTrigger.RemoveHouses();
-                _lightHouses.Remove(lightHouseTrigger);
+                _lightHouseTrigger.RemoveHouses();
+                _lightHouses.Remove(_lightHouseTrigger);
             }
         }
 
-        private void CheckHousesAround()
+        private void OnCheckHousesAround()
         {
             StartCoroutine(StartLookAround());
         }
 
         private IEnumerator StartLookAround()
         {
-            yield return new WaitForSeconds(0.165f);
+            yield return _waitForSeconds;
 
             foreach (var lightHouse in _lightHouses)
                 lightHouse.LookAround();

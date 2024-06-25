@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 namespace CountersContent
 {
+    [RequireComponent(typeof(ScoreCounter))]
     public class ScoreSlider : MonoBehaviour
     {
         [SerializeField] private Slider _slider;
@@ -21,17 +22,17 @@ namespace CountersContent
 
         private void OnEnable()
         {
-            _scoreCounter.ScoreChanged += AddValue;
+            _scoreCounter.ScoreChanged += OnAddValue;
         }
 
         private void OnDisable()
         {
-            _scoreCounter.ScoreChanged -= AddValue;
+            _scoreCounter.ScoreChanged -= OnAddValue;
         }
 
-        private void AddValue(int currentScore, int targetScore)
+        private void OnAddValue(int currentScore, int targetScore)
         {
-            _scorePercentage = Mathf.RoundToInt(currentScore / (float)targetScore * 100f);
+            _scorePercentage = Mathf.RoundToInt(currentScore / (float) targetScore * 100f);
             _slider.value = _scorePercentage;
             _percentText.text = _slider.value + _percent;
         }

@@ -10,15 +10,15 @@ namespace Wallets
 
         private void OnEnable()
         {
-            _wallet.ValueChanged += ShowPrice;
+            _wallet.ValueChanged += OnShowPrice;
         }
 
         private void OnDisable()
         {
-            _wallet.ValueChanged -= ShowPrice;
+            _wallet.ValueChanged -= OnShowPrice;
         }
 
-        private void ShowPrice()
+        private void OnShowPrice()
         {
             _priceText.text = _wallet.CurrentValue.ToString();
         }

@@ -27,7 +27,11 @@ namespace MergeContent
         private List<ItemPosition> _positions = new List<ItemPosition>();
         private List<Item> _temporaryItems = new List<Item>();
         private Item _temporaryItem;
+        private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.15f);
         private bool _isTryMerge;
+        private int _zero = 0;
+        private int _targetMinMatchedItems = 2;
+        private int _targetMinTemporaryItems = 1;
         private Dictionary<Item, Coroutine> _coroutines = new Dictionary<Item, Coroutine>();
         private Dictionary<Item, List<Item>> _newMatchedItems = new Dictionary<Item, List<Item>>();
         private Dictionary<ItemPosition, ItemPosition> _targetPosition = new Dictionary<ItemPosition, ItemPosition>();
@@ -36,14 +40,14 @@ namespace MergeContent
 
         private void OnEnable()
         {
-            _itemPositionLooker.PlaceLooking += CheckMatches;
-            _spawner.LooksNeighbors += CheckMatches;
+            _itemPositionLooker.PlaceLooking += OnCheckMatches;
+            _spawner.AroundLooking += OnCheckMatches;
         }
 
         private void OnDisable()
         {
-            _itemPositionLooker.PlaceLooking -= CheckMatches;
-            _spawner.LooksNeighbors -= CheckMatches;
+            _itemPositionLooker.PlaceLooking -= OnCheckMatches;
+            _spawner.AroundLooking -= OnCheckMatches;
         }
 
         public void LookAround(ItemPosition itemPosition, Item item)
@@ -58,7 +62,7 @@ namespace MergeContent
                 matchItem.GetComponent<ItemMoving>().StopMove();
         }
 
-        private void CheckMatches(ItemPosition itemPosition, Item item)
+        private void OnCheckMatches(ItemPosition itemPosition, Item item)
         {
             if (itemPosition.IsWater || itemPosition.IsBusy)
             {
@@ -155,26 +159,26 @@ namespace MergeContent
 
         private IEnumerator LookPositions(ItemPosition itemPosition, Item item)
         {
-            yield return new WaitForSeconds(0.15f);
+            yield return _waitForSeconds;
             ActivationLookPositions(itemPosition, item);
             CheckNextLevel();
         }
 
         private IEnumerator LookMerge(ItemPosition itemPosition, Item item)
         {
-            yield return new WaitForSeconds(0.15f);
+            yield return _waitForSeconds;
             ActivationLookPositions(itemPosition, item);
             CheckMatchMerge(itemPosition, item);
         }
 
         private void CheckNextLevel()
         {
-            if (_matchedItems.Count >= 2)
+            if (_matchedItems.Count >= _targetMinMatchedItems)
             {
                 if (_currentItem.ItemName == Items.Crane)
                     _temporaryItems.Clear();
 
-                Item item = _matchedItems[0].NextItem;
+                Item item = _matchedItems[_zero].NextItem;
 
                 foreach (var matchItem in _matchedItems)
                     _completeList.Add(matchItem);
@@ -189,14 +193,14 @@ namespace MergeContent
 
                 _coroutine = StartCoroutine(LookPositions(_currentItemPosition, item));
             }
-            else if (_matchedItems.Count < 2 && _temporaryItems.Count > 1)
+            else if (_matchedItems.Count < _targetMinMatchedItems && _temporaryItems.Count > _targetMinTemporaryItems)
             {
                 SaveNewTemporaryItem();
                 _coroutine = StartCoroutine(LookPositions(_currentItemPosition, _temporaryItem));
             }
             else
             {
-                if (_completeList.Count < 2)
+                if (_completeList.Count < _targetMinMatchedItems)
                     return;
 
                 if (_targetPosition.ContainsKey(_currentItemPosition))
@@ -216,7 +220,7 @@ namespace MergeContent
 
         private void CheckMatchMerge(ItemPosition itemPosition, Item item)
         {
-            if (_newMatchedItems[item].Count >= 2)
+            if (_newMatchedItems[item].Count >= _targetMinMatchedItems)
             {
                 _newMatchedItems[item].Add(item);
                 _merger.MergeItems(itemPosition, _positions, _newMatchedItems[item], item);
@@ -230,7 +234,7 @@ namespace MergeContent
                 if (_targetPosition.ContainsKey(itemPosition))
                     _targetPosition.Remove(itemPosition);
 
-                if (_temporaryItems.Count > 0)
+                if (_temporaryItems.Count > _zero)
                     _temporaryItems.Clear();
 
                 if (_newMatchedItems.ContainsKey(item))
@@ -239,7 +243,7 @@ namespace MergeContent
                     _newMatchedItems.Remove(item);
                 }
             }
-            else if (_newMatchedItems[item].Count < 2 && _temporaryItems.Count > 1)
+            else if (_newMatchedItems[item].Count < _targetMinMatchedItems && _temporaryItems.Count > _targetMinTemporaryItems)
             {
                 if (_coroutines.ContainsKey(_temporaryItem))
                 {

@@ -84,7 +84,7 @@ namespace Dragger
 
             if (_itemKeeper.SelectedObject.ItemName == Items.LightHouse ||
                 _itemKeeper.SelectedObject.ItemName == Items.Crane)
-                _itemKeeper.InstallItemForLastPosition();
+                _itemKeeper.OnInstallItemForLastPosition();
 
             _itemKeeper.ClearSelectedItem();
             LastTrowPosition = itemPosition;

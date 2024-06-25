@@ -15,19 +15,15 @@ namespace PossibilitiesContent
         [SerializeField] private PossibilitiesCounter _positionsCounter;
         [SerializeField] private AudioSource _audioSource;
 
-        private bool _isLooking;
         private int _layerMask;
         private int _layer = 3;
         private Coroutine _coroutine;
-        private Item _selectedObject;
         private float _offset = 3f;
         private bool _firstSelect;
         private ItemPosition _firstItemPosition;
         private ItemPosition _secondItemPosition;
-        private ItemPosition _temporaryItemPosition;
         private Item _firstItem;
         private Item _secondItem;
-        private Item _temporaryItem;
         private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.1f);
         private RaycastHit _hit;
         private Ray _ray;
@@ -43,14 +39,14 @@ namespace PossibilitiesContent
 
         private void OnEnable()
         {
-            _replacementButton.ReplaceActivated += ActivateWork;
-            _replacementButton.ReplaceDeactivated += DeactivateWork;
+            _replacementButton.ReplaceActivated += OnActivateWork;
+            _replacementButton.ReplaceDeactivated += OnDeactivateWork;
         }
 
         private void OnDisable()
         {
-            _replacementButton.ReplaceActivated -= ActivateWork;
-            _replacementButton.ReplaceDeactivated -= DeactivateWork;
+            _replacementButton.ReplaceActivated -= OnActivateWork;
+            _replacementButton.ReplaceDeactivated -= OnDeactivateWork;
         }
 
         private void Start()
@@ -168,12 +164,12 @@ namespace PossibilitiesContent
             item.GetComponent<ItemAnimation>().PositioningAnimation();
         }
 
-        private void ActivateWork()
+        private void OnActivateWork()
         {
             IsWorking = true;
         }
 
-        private void DeactivateWork()
+        private void OnDeactivateWork()
         {
             if (_firstSelect)
             {

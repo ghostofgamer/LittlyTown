@@ -34,9 +34,6 @@ namespace SaveAndLoad
         [SerializeField] private Initializator _initializator;
 
         private Coroutine _coroutine;
-        private Coroutine _coroutineSignal;
-        private Item _selectObject;
-        private Item _temporaryObject;
         private SaveData _saveData;
         private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.165f);
 
@@ -44,12 +41,12 @@ namespace SaveAndLoad
 
         private void OnEnable()
         {
-            _itemKeeper.SelectNewItem += SaveChanges;
+            _itemKeeper.SelectNewItem += OnSaveChanges;
         }
 
         private void OnDisable()
         {
-            _itemKeeper.SelectNewItem -= SaveChanges;
+            _itemKeeper.SelectNewItem -= OnSaveChanges;
         }
 
         public void LoadDataInfo()
@@ -145,7 +142,7 @@ namespace SaveAndLoad
             return _saveData;
         }
 
-        private void SaveChanges()
+        private void OnSaveChanges()
         {
             if (_coroutine != null)
                 StopCoroutine(_coroutine);

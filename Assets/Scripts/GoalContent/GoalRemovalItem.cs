@@ -9,12 +9,12 @@ namespace GoalContent
 
         private void OnEnable()
         {
-            _removalItems.ItemRemoved += ChangeValue;
+            _removalItems.ItemRemoved += OnChangeValue;
         }
 
         private void OnDisable()
         {
-            _removalItems.ItemRemoved -= ChangeValue;
+            _removalItems.ItemRemoved -= OnChangeValue;
         }
     }
 }

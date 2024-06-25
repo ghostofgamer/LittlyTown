@@ -28,12 +28,12 @@ namespace Keeper
 
         private void OnEnable()
         {
-            _lookMerger.NotMerged += InstallItemForLastPosition;
+            _lookMerger.NotMerged += OnInstallItemForLastPosition;
         }
 
         private void OnDisable()
         {
-            _lookMerger.NotMerged -= InstallItemForLastPosition;
+            _lookMerger.NotMerged -= OnInstallItemForLastPosition;
         }
 
         public void SetTemporaryItem(Item item)
@@ -120,7 +120,7 @@ namespace Keeper
             SelectedObject = null;
         }
 
-        public void InstallItemForLastPosition()
+        public void OnInstallItemForLastPosition()
         {
             StartCoroutine(StartSetItem(_itemThrower.LastTrowPosition));
         }

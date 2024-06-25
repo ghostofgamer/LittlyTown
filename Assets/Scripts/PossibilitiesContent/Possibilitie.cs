@@ -16,8 +16,7 @@ namespace PossibilitiesContent
 
         private void Start()
         {
-            Price = _startPrice;
-            PriceChanged?.Invoke(Price);
+            SetStartPrice();
         }
 
         public void IncreasePrice()

@@ -46,15 +46,15 @@ namespace InitializationContent
 
         private void OnEnable()
         {
-            _chooseMap.MapChanged += SetIndex;
+            _chooseMap.MapChanged += OnSetIndex;
         }
 
         private void OnDisable()
         {
-            _chooseMap.MapChanged -= SetIndex;
+            _chooseMap.MapChanged -= OnSetIndex;
         }
 
-        public void SetIndex(int index)
+        public void OnSetIndex(int index)
         {
             _index = index;
             IndexChanged?.Invoke();
@@ -206,7 +206,6 @@ namespace InitializationContent
             if (_initExtension)
             {
                 _extensionMap.ResetMap(
-                    _environments[_index].GetComponent<Map>(),
                     Territories,
                     ItemPositions,
                     FinderPositions,

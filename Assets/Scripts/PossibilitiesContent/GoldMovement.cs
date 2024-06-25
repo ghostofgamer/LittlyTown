@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace PossibilitiesContent
 {
+    [RequireComponent(typeof(CanvasGroup))]
     public class GoldMovement : MonoBehaviour
     {
         [SerializeField] private RectTransform _targetWallet;

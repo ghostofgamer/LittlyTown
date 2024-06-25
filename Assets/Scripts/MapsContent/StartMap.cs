@@ -37,7 +37,6 @@ namespace MapsContent
         [SerializeField] private GameObject _lightHouse;
         [SerializeField] private Save _save;
 
-        private Transform[] _children;
         private int _selectMap = 1;
 
         public event Action MapStarted;
@@ -74,7 +73,7 @@ namespace MapsContent
             }
 
             _lightHouse.SetActive(_initializator.CurrentMap.IsWaterTilePresent);
-            _goldCounter.CheckIncome();
+            _goldCounter.OnCheckIncome();
             _scoreCounter.ResetScore();
 
             foreach (ItemPosition itemPosition in _initializator.ItemPositions)

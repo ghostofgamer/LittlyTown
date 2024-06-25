@@ -13,7 +13,6 @@ namespace BirdContent
         private Coroutine _coroutine;
         private int _indexBird;
         private int _indexPosition;
-        private BirdMovement _currentBird;
 
         private void Start()
         {

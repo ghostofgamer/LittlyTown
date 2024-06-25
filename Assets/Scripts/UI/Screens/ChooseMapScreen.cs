@@ -31,7 +31,6 @@ namespace UI.Screens
 
         private int _startValue = 0;
         private int _saveValue = 1;
-        private int _currentValue;
         private int _openValue;
         private int _value;
 

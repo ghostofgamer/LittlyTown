@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace Dragger
 {
+    [RequireComponent(typeof(ItemPositionLooker))]
     public class ItemDragger : MonoBehaviour
     {
         [SerializeField] private ItemKeeper _itemKeeper;
@@ -13,11 +14,9 @@ namespace Dragger
         private ItemPositionLooker _itemPositionLooker;
         private Plane _objectPlane;
         private float _offset = 1f;
-        private int _layerMaskIgnore;
         private int _layer = 3;
         private float _distance;
         private float _distanceToPlane;
-        private bool _isTemporary;
         private Vector3 _offsetObject;
         private Vector3 _position;
         private Vector3 _mouseWorldPosition;

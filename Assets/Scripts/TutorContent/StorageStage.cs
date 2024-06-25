@@ -14,15 +14,15 @@ namespace TutorContent
 
         private void OnEnable()
         {
-            _storage.StoragePlaceChanged += ActivateReplaceStage;
+            _storage.StoragePlaceChanged += OnActivateReplaceStage;
         }
 
         private void OnDisable()
         {
-            _storage.StoragePlaceChanged -= ActivateReplaceStage;
+            _storage.StoragePlaceChanged -= OnActivateReplaceStage;
         }
 
-        private void ActivateReplaceStage()
+        private void OnActivateReplaceStage()
         {
             if (_coroutine != null)
                 StopCoroutine(_coroutine);

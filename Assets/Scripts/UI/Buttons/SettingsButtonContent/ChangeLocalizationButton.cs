@@ -14,13 +14,13 @@ namespace UI.Buttons.SettingsButtonContent
         protected override void OnEnable()
         {
             base.OnEnable();
-            _localization.LanguageChanged += SetLanguage;
+            _localization.LanguageChanged += OnSetLanguage;
         }
 
         protected override void OnDisable()
         {
             base.OnDisable();
-            _localization.LanguageChanged += SetLanguage;
+            _localization.LanguageChanged += OnSetLanguage;
         }
 
         protected override void OnClick()
@@ -38,7 +38,7 @@ namespace UI.Buttons.SettingsButtonContent
             _imageSelected.gameObject.SetActive(true);
         }
 
-        private void SetLanguage(string language)
+        private void OnSetLanguage(string language)
         {
             if (language == _language)
                 ChangeLanguage();

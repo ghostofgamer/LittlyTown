@@ -27,7 +27,6 @@ namespace MapsContent
         private float _value;
         private Vector3 _position;
         private float _dragDistance;
-        private Vector3 _currentDragPosition;
         private bool _isSwap;
         private float _speed = 30f;
         private float _factor = 1f;
