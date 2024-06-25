@@ -10,7 +10,7 @@ namespace SandBoxContent
 
         private void Start()
         {
-            foreach (var itemPosition in _itemPositions)
+            foreach (ItemPosition itemPosition in _itemPositions)
                 itemPosition.GetComponent<FinderPositions>().FindNeighbor();
 
             _sandBoxStorage.LoadDataInfo();

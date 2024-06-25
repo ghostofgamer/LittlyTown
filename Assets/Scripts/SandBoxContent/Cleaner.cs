@@ -12,9 +12,11 @@ namespace SandBoxContent
         private int _layer = 3;
         private ItemPosition _lastItemPosition;
         private ItemPosition _currentItemPosition;
-    
+        private RaycastHit _hit;
+        private Ray _ray;
+
         public event Action ItemRemoved;
-    
+
         private void Start()
         {
             _layerMask = 1 << _layer;
@@ -25,12 +27,11 @@ namespace SandBoxContent
         {
             if (Input.GetMouseButton(0))
             {
-                RaycastHit hit;
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                _ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-                if (Physics.Raycast(ray, out hit, Mathf.Infinity, _layerMask))
+                if (Physics.Raycast(_ray, out _hit, Mathf.Infinity, _layerMask))
                 {
-                    if (hit.transform.TryGetComponent(out ItemPosition itemPosition))
+                    if (_hit.transform.TryGetComponent(out ItemPosition itemPosition))
                     {
                         if (_currentItemPosition != itemPosition)
                             itemPosition.GetComponent<VisualItemPosition>().ActivateVisual();

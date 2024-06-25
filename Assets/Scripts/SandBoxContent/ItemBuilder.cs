@@ -16,9 +16,9 @@ namespace SandBoxContent
         private Vector3 _newLocalPosition;
         private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.5f);
         private float _minPositionElevationY = 0.59f;
-        
+
         public event Action ItemBuilded;
-    
+
         private void OnEnable()
         {
             StartCoroutine(ActivatedItems());
@@ -26,7 +26,7 @@ namespace SandBoxContent
 
         public void SetItems(Items itemName)
         {
-            foreach (var item in _items)
+            foreach (Item item in _items)
             {
                 if (item.ItemName.ToString() == itemName.ToString())
                     _item = item;
@@ -42,19 +42,23 @@ namespace SandBoxContent
         {
             if (itemPosition.IsBusy)
                 return;
-            
+
             if (_item.ItemName == Items.LightHouse)
             {
                 if (itemPosition.IsElevation)
                 {
-                    _newLocalPosition = new Vector3(itemPosition.transform.localPosition.x, _minPositionElevationY,
+                    _newLocalPosition = new Vector3(
+                        itemPosition.transform.localPosition.x,
+                        _minPositionElevationY,
                         itemPosition.transform.localPosition.z);
                     itemPosition.transform.localPosition = _newLocalPosition;
                 }
 
                 itemPosition.DeactivationAll();
                 itemPosition.ActivationWater();
-                ItemPosition itemPositionTile = Instantiate(TileWater, itemPosition.transform.position,
+                ItemPosition itemPositionTile = Instantiate(
+                    TileWater,
+                    itemPosition.transform.position,
                     Quaternion.identity, RoadContainer);
                 itemPosition.SetRoad(itemPositionTile);
             }
@@ -63,7 +67,9 @@ namespace SandBoxContent
                 if (itemPosition.IsRoad || itemPosition.IsTrail || itemPosition.IsWater)
                 {
                     itemPosition.DeactivationAll();
-                    ItemPosition itemPositionTile = Instantiate(ClearTile, itemPosition.transform.position,
+                    ItemPosition itemPositionTile = Instantiate(
+                        ClearTile,
+                        itemPosition.transform.position,
                         Quaternion.identity, RoadContainer);
                     itemPosition.SetRoad(itemPositionTile);
                 }
@@ -85,7 +91,7 @@ namespace SandBoxContent
             for (int i = 0; i < Container.childCount; i++)
                 items.Add(Container.GetChild(i).GetComponent<Item>());
 
-            foreach (var item in items)
+            foreach (Item item in items)
                 item.Activation();
         }
     }

@@ -7,6 +7,12 @@ namespace SandBoxContent
 {
     public class EnvironmentBuilder : Builder
     {
+        private const string Clear = "ClearTile";
+        private const string Water = "Water";
+        private const string Elevation = "Elevation";
+        private const string Trail = "Trail";
+        private const string Road = "Road";
+
         [SerializeField] private ItemPosition _tileElevation;
 
         private bool _isTileClear;
@@ -24,15 +30,6 @@ namespace SandBoxContent
 
         public ItemPosition IsTileElevation => _tileElevation;
 
-        private void DeactivateEnvironment()
-        {
-            _isTileClear = false;
-            _isTileWater = false;
-            _isTileElevation = false;
-            _isTileTrail = false;
-            _isTileRoad = false;
-        }
-
         public void ChangeEnvironment(Environments environmentName)
         {
             _name = environmentName.ToString();
@@ -40,22 +37,28 @@ namespace SandBoxContent
 
             switch (_name)
             {
-                case "ClearTile":
+                case Clear:
                     _isTileClear = true;
                     break;
-                case "Water":
+                case Water:
                     _isTileWater = true;
                     break;
-                case "Elevation":
+                case Elevation:
                     _isTileElevation = true;
                     break;
-                case "Trail":
+                case Trail:
                     _isTileTrail = true;
                     break;
-                case "Road":
+                case Road:
                     _isTileRoad = true;
                     break;
             }
+        }
+
+        public void CreateWater(ItemPosition itemPosition)
+        {
+            CreateEnvironment(TileWater, itemPosition);
+            itemPosition.ActivationWater();
         }
 
         protected override void FirstChoose()
@@ -105,6 +108,15 @@ namespace SandBoxContent
             EnvironmentBuilded?.Invoke();
         }
 
+        private void DeactivateEnvironment()
+        {
+            _isTileClear = false;
+            _isTileWater = false;
+            _isTileElevation = false;
+            _isTileTrail = false;
+            _isTileRoad = false;
+        }
+
         private void ClearPosition(ItemPosition itemPosition)
         {
             if (itemPosition.IsBusy)
@@ -112,12 +124,6 @@ namespace SandBoxContent
                 itemPosition.Item.gameObject.SetActive(false);
                 itemPosition.ClearingPosition();
             }
-        }
-
-        public void CreateWater(ItemPosition itemPosition)
-        {
-            CreateEnvironment(TileWater, itemPosition);
-            itemPosition.ActivationWater();
         }
 
         private void ChangeElevationPosition(ItemPosition itemPosition)
@@ -139,13 +145,18 @@ namespace SandBoxContent
 
             if (_isTileElevation)
             {
-                _newLocalPosition = new Vector3(itemPosition.transform.localPosition.x, _maxPositionElevationY,
+                _newLocalPosition = new Vector3(
+                    itemPosition.transform.localPosition.x,
+                    _maxPositionElevationY,
                     itemPosition.transform.localPosition.z);
                 itemPosition.transform.localPosition = _newLocalPosition;
-                itemPositionTile = Instantiate(tilePrefab, itemPosition.transform.position,
+                itemPositionTile = Instantiate(
+                    tilePrefab,
+                    itemPosition.transform.position,
                     Quaternion.identity, RoadContainer);
                 itemPositionTile.transform.localPosition = new Vector3(
-                    itemPositionTile.transform.localPosition.x, _positionElevationTileY,
+                    itemPositionTile.transform.localPosition.x,
+                    _positionElevationTileY,
                     itemPositionTile.transform.localPosition.z);
             }
             else

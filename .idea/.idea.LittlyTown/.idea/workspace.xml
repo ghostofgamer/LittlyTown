@@ -20,9 +20,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="099b8a6d-6b1c-4473-babb-d7d2ffb7e44f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PostProcessContent/Blur.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PostProcessContent/Blur.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PostProcessContent/PostProcessChanger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PostProcessContent/PostProcessChanger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PostProcessContent/Vignette.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PostProcessContent/Vignette.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Road/AngularRoad.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Road/AngularRoad.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Road/CrossroadsRoad.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Road/CrossroadsRoad.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Road/EndRoad.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Road/EndRoad.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Road/RoadTile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Road/RoadTile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/Builder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/Builder.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/Cleaner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/Cleaner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/CleanerButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/CleanerButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/EnvironmentBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/EnvironmentBuilder.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/ItemBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/ItemBuilder.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/ItemButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/ItemButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/ItemPositionData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/ItemPositionData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/SandBoxEnvironment.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/SandBoxEnvironment.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/SandBoxEnvironmentChangeButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/SandBoxEnvironmentChangeButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/SandBoxSaveData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/SandBoxSaveData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/SandBoxStorage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/SandBoxStorage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,21 +202,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/EnvironmentContent/EnvironmentMovement.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/ExtensionContent/ExtansionMapInfo.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/ExtensionContent/ExtensionMap.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GoalContent/GoalsCounter.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GoalContent/GoalRemovalItem.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GoalContent/GoalMergeItem.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GoalContent/GoalBuildItem.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GoalContent/GoalAnimation.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GoalContent/Goal.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/InitializationContent/Initializator.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/InitializationContent/Bootstrap.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/ItemContent/TreasureChest.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/ItemContent/LightHouseTrigger.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/ItemContent/ItemMoving.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/ItemContent/ItemAnimation.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ItemContent/Item.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ItemContent/House.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ItemPositionContent/VisualItemPosition.cs" />
@@ -238,6 +238,21 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/PostProcessContent/Vignette.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PostProcessContent/Blur.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PostProcessContent/PostProcessChanger.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Road/RoadTile.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Road/EndRoad.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Road/CrossroadsRoad.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Road/AngularRoad.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/EnvironmentBuilder.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/CleanerButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/Cleaner.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/Builder.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/SandBoxStorage.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/SandBoxSaveData.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/SandBoxEnvironmentChangeButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/SandBoxEnvironment.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/ItemPositionData.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/ItemButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/ItemBuilder.cs" />
       </list>
     </option>
   </component>
@@ -362,7 +377,7 @@
       <workItem from="1719136970153" duration="5000" />
       <workItem from="1719137133779" duration="16763000" />
       <workItem from="1719209511924" duration="23168000" />
-      <workItem from="1719299040921" duration="8058000" />
+      <workItem from="1719299040921" duration="9026000" />
     </task>
     <servers />
   </component>

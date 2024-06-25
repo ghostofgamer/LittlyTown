@@ -25,24 +25,33 @@ namespace SandBoxContent
         private Coroutine _coroutineSave;
         private Coroutine _coroutineLoad;
         private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.5f);
+        private WaitForSeconds _waitForMoment = new WaitForSeconds(1f);
         private float _maxPositionElevationY = 2.1f;
         private float _positionElevationTileY = 4.3f;
 
         private void OnEnable()
         {
-            _environmentBuilder.EnvironmentBuilded += SaveChanges;
-            _itemBuilder.ItemBuilded += SaveChanges;
-            _cleaner.ItemRemoved += SaveChanges;
+            _environmentBuilder.EnvironmentBuilded += OnSaveChanges;
+            _itemBuilder.ItemBuilded += OnSaveChanges;
+            _cleaner.ItemRemoved += OnSaveChanges;
         }
 
         private void OnDisable()
         {
-            _environmentBuilder.EnvironmentBuilded -= SaveChanges;
-            _itemBuilder.ItemBuilded -= SaveChanges;
-            _cleaner.ItemRemoved -= SaveChanges;
+            _environmentBuilder.EnvironmentBuilded -= OnSaveChanges;
+            _itemBuilder.ItemBuilded -= OnSaveChanges;
+            _cleaner.ItemRemoved -= OnSaveChanges;
         }
 
-        private void SaveChanges()
+        public void LoadDataInfo()
+        {
+            if (_coroutineLoad != null)
+                StopCoroutine(_coroutineLoad);
+
+            _coroutineLoad = StartCoroutine(LoadData());
+        }
+
+        private void OnSaveChanges()
         {
             if (_coroutineSave != null)
                 StopCoroutine(_coroutineSave);
@@ -81,19 +90,11 @@ namespace SandBoxContent
             yield return null;
         }
 
-        public void LoadDataInfo()
-        {
-            if (_coroutineLoad != null)
-                StopCoroutine(_coroutineLoad);
-
-            _coroutineLoad = StartCoroutine(LoadData());
-        }
-
         private IEnumerator LoadData()
         {
             SandBoxSaveData sandBoxSaveData = new SandBoxSaveData();
-            List<ItemPosition> _isWaterPosition = new List<ItemPosition>();
-            List<ItemPosition> _isElevationPosition = new List<ItemPosition>();
+            List<ItemPosition> isWaterPosition = new List<ItemPosition>();
+            List<ItemPosition> isElevationPosition = new List<ItemPosition>();
 
             if (PlayerPrefs.HasKey(SandBoxSave))
             {
@@ -107,31 +108,34 @@ namespace SandBoxContent
                         sandBoxSaveData.ItemPositionDatas[i].IsRoad, sandBoxSaveData.ItemPositionDatas[i].IsTrail);
 
                     if (_itemPositions[i].IsWater)
-                        _isWaterPosition.Add(_itemPositions[i]);
+                        isWaterPosition.Add(_itemPositions[i]);
 
                     if (_itemPositions[i].IsElevation)
-                        _isElevationPosition.Add(_itemPositions[i]);
+                        isElevationPosition.Add(_itemPositions[i]);
                 }
 
-                foreach (var waterPosition in _isWaterPosition)
+                foreach (var waterPosition in isWaterPosition)
                     _environmentBuilder.CreateWater(waterPosition);
-                
+
                 yield return _waitForSeconds;
 
-                foreach (var elevationPosition in _isElevationPosition)
+                foreach (var elevationPosition in isElevationPosition)
                 {
                     ItemPosition itemPositionTile;
-                    Vector3 newLocalPosition = new Vector3(elevationPosition.transform.localPosition.x,
+                    Vector3 newLocalPosition = new Vector3(
+                        elevationPosition.transform.localPosition.x,
                         _maxPositionElevationY,
                         elevationPosition.transform.localPosition.z);
                     elevationPosition.transform.localPosition = newLocalPosition;
 
-                    itemPositionTile = Instantiate(_environmentBuilder.IsTileElevation,
+                    itemPositionTile = Instantiate(
+                        _environmentBuilder.IsTileElevation,
                         elevationPosition.transform.position,
                         Quaternion.identity, _roadContainer);
 
                     itemPositionTile.transform.localPosition = new Vector3(
-                        itemPositionTile.transform.localPosition.x, _positionElevationTileY,
+                        itemPositionTile.transform.localPosition.x,
+                        _positionElevationTileY,
                         itemPositionTile.transform.localPosition.z);
 
 
@@ -153,8 +157,7 @@ namespace SandBoxContent
                     }
                 }
 
-                yield return new WaitForSeconds(1f);
-
+                yield return _waitForMoment;
                 _roadGenerator.GenerateSandBoxTrail(_itemPositions, _roadContainer);
             }
         }

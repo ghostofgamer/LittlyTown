@@ -17,12 +17,15 @@ namespace SandBoxContent
         [SerializeField] private Transform _roadContainer;
         [SerializeField] private RoadGenerator _roadGenerator;
         [SerializeField] private BuildButton _buildButton;
-
+        [SerializeField] private Camera _camera;
+        
         private int _layerMask;
         private int _layer = 3;
         private ItemPosition _lastItemPosition;
         private ItemPosition _currentItemPosition;
         private bool _isFirstOpen = true;
+        private RaycastHit _hit;
+        private Ray _ray;
 
         protected Transform Container => _container;
 
@@ -41,10 +44,9 @@ namespace SandBoxContent
 
         private void Update()
         {
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            _ray = _camera.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray))
+            if (Physics.Raycast(_ray))
             {
                 if (EventSystem.current.IsPointerOverGameObject())
                     return;
@@ -52,9 +54,9 @@ namespace SandBoxContent
 
             if (Input.GetMouseButton(0))
             {
-                if (Physics.Raycast(ray, out hit, Mathf.Infinity, _layerMask))
+                if (Physics.Raycast(_ray, out _hit, Mathf.Infinity, _layerMask))
                 {
-                    if (hit.transform.TryGetComponent(out ItemPosition itemPosition))
+                    if (_hit.transform.TryGetComponent(out ItemPosition itemPosition))
                     {
                         if (_currentItemPosition != itemPosition)
                             itemPosition.GetComponent<VisualItemPosition>().ActivateVisual();
@@ -73,15 +75,6 @@ namespace SandBoxContent
             }
         }
 
-        protected void StartRoadGeneration()
-        {
-            _roadGenerator.GenerateSandBoxTrail(_itemPositions, _roadContainer);
-        }
-
-        protected abstract void TakeAction(ItemPosition itemPosition);
-
-        protected abstract void FirstChoose();
-
         public void Open()
         {
             if (!_isFirstOpen)
@@ -90,6 +83,15 @@ namespace SandBoxContent
             _isFirstOpen = false;
             _buildButton.Activate();
             FirstChoose();
+        }
+
+        protected abstract void TakeAction(ItemPosition itemPosition);
+
+        protected abstract void FirstChoose();
+
+        protected void StartRoadGeneration()
+        {
+            _roadGenerator.GenerateSandBoxTrail(_itemPositions, _roadContainer);
         }
     }
 }
