@@ -9,9 +9,9 @@ namespace UI.Screens
         [SerializeField] private BonusesStart _bonusesStart;
         [SerializeField] private BonusesButton[] _bonusesButton;
 
-        public override void Open()
+        public override void OnOpen()
         {
-            base.Open();
+            base.OnOpen();
             _bonusesStart.ResetValue();
 
             foreach (var bonusesButton in _bonusesButton)

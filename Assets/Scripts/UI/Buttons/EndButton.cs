@@ -24,7 +24,7 @@ namespace UI.Buttons
                 PlayerPrefs.DeleteKey(ItemStorageSave + _initializator.Index);
 
             _startMap.StartCreateWithoutSpawn();
-            _chooseMapScreen.ChangeActivationButton();
+            _chooseMapScreen.OnChangeActivationButton();
         }
     }
 }

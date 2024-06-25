@@ -1,5 +1,5 @@
 using CameraContent;
-using Dragger; 
+using Dragger;
 using InitializationContent;
 using UnityEngine;
 
@@ -27,17 +27,11 @@ namespace UI.Screens
             _targetPosition = new Vector3(_startPosition.x, _startPosition.y + _factor, _startPosition.z);
         }
 
-        public override void Open()
+        public override void OnOpen()
         {
-            base.Open();
-            
+            base.OnOpen();
             _cameraMovement.ZoomGameScene();
-            
-            if (_initializator.Index == _indexSceneNotGold)
-                _infoContent.position = _targetPosition;
-            else
-                _infoContent.position = _startPosition;
-
+            _infoContent.position = _initializator.Index == _indexSceneNotGold ? _targetPosition : _startPosition;
             _animator.SetTrigger(OpenAnimation);
             _inputItemDragger.enabled = true;
             _cameraScrolling.enabled = true;

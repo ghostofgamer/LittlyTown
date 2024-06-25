@@ -34,7 +34,7 @@ namespace UI.Buttons
             _screenClose.Close();
 
             if (_abstractScreen != null)
-                _abstractScreen.Open();
+                _abstractScreen.OnOpen();
         }
     }
 }

@@ -15,27 +15,30 @@ namespace UI.Screens
         [SerializeField] private ScoreCounter _scoreCounter;
         [SerializeField] private RectTransform[] _gameObjects;
 
+        private int _constrainCountMax = 4;
+        private int _constrainCountMin = 1;
+        private Vector3 _localScaleItemShopPc = new Vector3(0.8f, 0.8f, 0.8f);
+
         private void Start()
         {
             if (Application.isMobilePlatform)
             {
                 _gridLayoutGroup.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
-                _gridLayoutGroup.constraintCount = 4;
+                _gridLayoutGroup.constraintCount = _constrainCountMax;
             }
             else
             {
-                foreach (var gameObject in _gameObjects)
-                {
-                    gameObject.localScale = new Vector3(0.8f,0.8f,0.8f);
-                }
+                foreach (RectTransform gameObject in _gameObjects)
+                    gameObject.localScale = _localScaleItemShopPc;
+
                 _gridLayoutGroup.constraint = GridLayoutGroup.Constraint.FixedRowCount;
-                _gridLayoutGroup.constraintCount = 1;
+                _gridLayoutGroup.constraintCount = _constrainCountMin;
             }
         }
 
-        public override void Open()
+        public override void OnOpen()
         {
-            base.Open();
+            base.OnOpen();
 
             foreach (var buyItemButton in _buyItemButtons)
                 buyItemButton.Show();
@@ -46,7 +49,7 @@ namespace UI.Screens
 
         private void ShowItems()
         {
-            foreach (var item in _items)
+            foreach (GameObject item in _items)
                 item.SetActive(false);
 
             for (int i = 0; i < _scoreCounter.Factor; i++)
@@ -60,10 +63,10 @@ namespace UI.Screens
 
         private void CheckAvailability()
         {
-            foreach (var buyItemButton in _buyItemButtons)
+            foreach (BuyItemButton buyItemButton in _buyItemButtons)
                 buyItemButton.CheckPossibilityPurchasing();
-            
-            foreach (var buyItemButton in _buyPossibilitieButtonsButtons)
+
+            foreach (BuyPossibilitieButton buyItemButton in _buyPossibilitieButtonsButtons)
                 buyItemButton.CheckPossibilityPurchasing();
         }
     }

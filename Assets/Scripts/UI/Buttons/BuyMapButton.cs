@@ -26,7 +26,7 @@ namespace UI.Buttons
             {
                 _crystalWallet.DecreaseValue(_price);
                 _save.SetData(OpenMap + _initializator.Index, _levelBuyValue);
-                _chooseMapScreen.ChangeActivationButton();
+                _chooseMapScreen.OnChangeActivationButton();
             }
             else
             {

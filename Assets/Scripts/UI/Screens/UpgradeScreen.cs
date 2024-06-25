@@ -7,9 +7,9 @@ namespace UI.Screens
     {
         [SerializeField] private UpgradeButton[] _upgradeButtons;
 
-        public override void Open()
+        public override void OnOpen()
         {
-            base.Open();
+            base.OnOpen();
             CheckPossibilityPurchasing();
         }
 

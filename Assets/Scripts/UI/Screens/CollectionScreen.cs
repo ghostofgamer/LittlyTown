@@ -16,6 +16,7 @@ namespace UI.Screens
     public class CollectionScreen : AbstractScreen
     {
         private const string Opened = "Open";
+        private const string CollectedItem = "CollectedItems";
 
         [SerializeField] private TMP_Text _amountCollectionsItems;
         [SerializeField] private TMP_Text _lockDescription;
@@ -34,12 +35,12 @@ namespace UI.Screens
         [SerializeField] private ItemThrower _itemThrower;
         [SerializeField] private Save _save;
         [SerializeField] private TMP_Text _amountBuildingsItemText;
-        
+
         private int _currentIndex;
-        private List<Items> _collectedItems = new List<Items>();
         private int _currentValue;
-        
-        public List<Items> CollectedItems => _collectedItems;
+        private int _amount;
+
+        public List<Items> CollectedItems { get; private set; } = new List<Items>();
 
         private void OnEnable()
         {
@@ -61,14 +62,14 @@ namespace UI.Screens
 
         private void Start()
         {
-            if (!_collectedItems.Contains(Items.Bush))
-                _collectedItems.Add(Items.Bush);
+            if (!CollectedItems.Contains(Items.Bush))
+                CollectedItems.Add(Items.Bush);
 
-            if (!_collectedItems.Contains(Items.Tree))
-                _collectedItems.Add(Items.Tree);
+            if (!CollectedItems.Contains(Items.Tree))
+                CollectedItems.Add(Items.Tree);
 
-            if (!_collectedItems.Contains(Items.Sawmill))
-                _collectedItems.Add(Items.Sawmill);
+            if (!CollectedItems.Contains(Items.Sawmill))
+                CollectedItems.Add(Items.Sawmill);
 
             LoadCollectedItemsFromPlayerPrefs();
             ShowItems();
@@ -76,9 +77,9 @@ namespace UI.Screens
             ActivationDescription(0);
         }
 
-        public override void Open()
+        public override void OnOpen()
         {
-            base.Open();
+            base.OnOpen();
             _content.SetActive(true);
             Show();
             _camera.orthographic = true;
@@ -86,7 +87,7 @@ namespace UI.Screens
             _environmentMovement.GoAway();
             _cameraMovement.ZoomIn();
 
-            foreach (var item in _itemsContent)
+            foreach (Transform item in _itemsContent)
                 item.GetComponent<Animator>().SetTrigger(Opened);
         }
 
@@ -97,7 +98,6 @@ namespace UI.Screens
 
             if (_currentValue == 0)
             {
-                // _camera.orthographicSize = 6;
                 _camera.orthographicSize = _cameraMovement.StandardOrthographicSize;
                 _camera.orthographic = false;
             }
@@ -115,7 +115,7 @@ namespace UI.Screens
         private void Show()
         {
             _amountCollectionsItems.text =
-                _collectedItems.Count.ToString() + "/" + _allCollectionItems.Count.ToString();
+                CollectedItems.Count + "/" + _allCollectionItems.Count;
         }
 
         private void ShowItems()
@@ -123,11 +123,7 @@ namespace UI.Screens
             for (int i = 0; i < _allCollectionItems.Count; i++)
             {
                 var item = _allCollectionItems[i];
-
-                if (_collectedItems.Contains(item.ItemName))
-                    item.gameObject.SetActive(true);
-                else
-                    item.gameObject.SetActive(false);
+                item.gameObject.SetActive(CollectedItems.Contains(item.ItemName));
                 _lockDescription.gameObject.SetActive(true);
             }
         }
@@ -149,9 +145,9 @@ namespace UI.Screens
 
         private void AddItemCollection(Item item)
         {
-            if (!_collectedItems.Contains(item.ItemName))
+            if (!CollectedItems.Contains(item.ItemName))
             {
-                _collectedItems.Add((item.ItemName));
+                CollectedItems.Add((item.ItemName));
                 ShowItems();
                 Show();
                 SaveCollectedItemsToPlayerPrefs();
@@ -160,37 +156,36 @@ namespace UI.Screens
 
         private void ShowAmountBuildItem(int index)
         {
-            int amount = _load.Get(_allCollectionItems[index].ItemName.ToString(), 0);
-            _amountBuildingsItemText.text = amount.ToString();
+            _amount = _load.Get(_allCollectionItems[index].ItemName.ToString(), 0);
+            _amountBuildingsItemText.text = _amount.ToString();
         }
 
         private void SaveAmountBuildings(Item item)
         {
-            int amount = _load.Get(item.ItemName.ToString(), 0);
-            amount++;
-           _save.SetData(item.ItemName.ToString(), amount);
-           Debug.Log(amount);
+            _amount = _load.Get(item.ItemName.ToString(), 0);
+            _amount++;
+            _save.SetData(item.ItemName.ToString(), _amount);
         }
 
         private string SerializeCollectedItemsToJson()
         {
-            return JsonConvert.SerializeObject(_collectedItems);
+            return JsonConvert.SerializeObject(CollectedItems);
         }
 
         private void DeserializeCollectedItemsFromJson(string json)
         {
-            _collectedItems = JsonConvert.DeserializeObject<List<Items>>(json);
+            CollectedItems = JsonConvert.DeserializeObject<List<Items>>(json);
         }
 
         private void SaveCollectedItemsToPlayerPrefs()
         {
             string json = SerializeCollectedItemsToJson();
-            PlayerPrefs.SetString("CollectedItems", json);
+            PlayerPrefs.SetString(CollectedItem, json);
         }
 
         private void LoadCollectedItemsFromPlayerPrefs()
         {
-            string json = PlayerPrefs.GetString("CollectedItems");
+            string json = PlayerPrefs.GetString(CollectedItem);
 
             if (!string.IsNullOrEmpty(json))
                 DeserializeCollectedItemsFromJson(json);

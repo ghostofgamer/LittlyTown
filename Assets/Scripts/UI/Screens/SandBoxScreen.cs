@@ -33,9 +33,9 @@ namespace UI.Screens
         private float _durationTime = 1f;
         private Vector3 _targetPosition;
 
-        public override void Open()
+        public override void OnOpen()
         {
-            base.Open();
+            base.OnOpen();
             _visualItemsDeactivator.SetPositions(_itemPositions);
             _cameraScrolling.enabled = true;
             _environmentMovement.GoAway();

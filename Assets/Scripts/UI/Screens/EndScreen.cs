@@ -28,9 +28,9 @@ namespace UI.Screens
         private int _maxRecord;
         private int _startValue;
 
-        public override void Open()
+        public override void OnOpen()
         {
-            base.Open();
+            base.OnOpen();
             _fireworkEffect.Play();
             _cameraMovement.ZoomOut();
             _turnEnvironment.StartRotate();

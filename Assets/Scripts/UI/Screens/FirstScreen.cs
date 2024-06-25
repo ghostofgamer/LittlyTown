@@ -24,8 +24,8 @@ namespace UI.Screens
         private int _lastValue;
         private int _currentMapValue;
         private bool _value;
-        private WaitForSeconds _waitForSeconds = new WaitForSeconds(1.65f); 
-        
+        private WaitForSeconds _waitForSeconds = new WaitForSeconds(1.65f);
+
         private void Start()
         {
             _lastValue = _load.Get(LastActiveMap, _startValue);
@@ -39,9 +39,9 @@ namespace UI.Screens
                 StartCoroutine(SmoothOpen());
         }
 
-        public override void Open()
+        public override void OnOpen()
         {
-            base.Open();
+            base.OnOpen();
             _currentValue = _load.Get(LastActiveMap, _startValue);
             _currentValueActiveMap = _load.Get(ActiveMap + _initializator.Index, _startValue);
             _value = _currentValue > 0 && _currentValueActiveMap > 0;
@@ -52,15 +52,7 @@ namespace UI.Screens
         private IEnumerator SmoothOpen()
         {
             yield return _waitForSeconds;
-            Open();
-        }
-
-        private void InitValue()
-        {
-            _currentValue = _load.Get(LastActiveMap, _startValue);
-            _currentValueActiveMap = _load.Get(ActiveMap + _initializator.Index, _startValue);
-            _value = _currentValue > 0 && _currentValueActiveMap > 0;
-            _continueButton.gameObject.SetActive(_value); 
+            OnOpen();
         }
     }
 }

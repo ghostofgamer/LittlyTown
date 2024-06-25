@@ -13,17 +13,17 @@ namespace EndGameContent
 
         private void OnEnable()
         {
-            _spawner.PositionsFilled += Open;
+            _spawner.PositionsFilled += OnOpen;
         }
 
         private void OnDisable()
         {
-            _spawner.PositionsFilled -= Open;
+            _spawner.PositionsFilled -= OnOpen;
         }
 
-        public override void Open()
+        public override void OnOpen()
         {
-            base.Open();
+            base.OnOpen();
             _gameLevelScreen.Close();
             _blur.TurnOn();
         }

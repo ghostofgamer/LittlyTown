@@ -51,7 +51,7 @@ namespace UI.Buttons.PossibilitiesFiles
             }
             else
             {
-                _possibilitiesShopScreen.Open();
+                _possibilitiesShopScreen.OnOpen();
                 _isActivated = false;
             }
         }

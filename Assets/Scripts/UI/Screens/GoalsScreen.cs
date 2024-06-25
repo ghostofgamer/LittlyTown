@@ -13,9 +13,9 @@ namespace UI.Screens
         private Coroutine _coroutineOffButtons;
         private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.1f);
 
-        public override void Open()
+        public override void OnOpen()
         {
-            base.Open();
+            base.OnOpen();
 
             if (_coroutine != null)
                 StopCoroutine(_coroutine);
@@ -46,7 +46,7 @@ namespace UI.Screens
         {
             yield return _waitForSeconds;
 
-            foreach (var button in _buttons)
+            foreach (GameObject button in _buttons)
                 button.SetActive(false);
         }
     }

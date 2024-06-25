@@ -32,7 +32,7 @@ namespace UI.Buttons
             _save.SetData(ActiveMap + _initializator.Index, _selectMap);
             _tutorialScreen.Close();
             _gameLevelScreen.gameObject.SetActive(true);
-            _gameLevelScreen.Open();
+            _gameLevelScreen.OnOpen();
             _scoreCounter.enabled = true;
             _moveCounter.enabled = true;
         }

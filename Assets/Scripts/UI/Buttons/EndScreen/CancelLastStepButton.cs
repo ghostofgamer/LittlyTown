@@ -16,7 +16,7 @@ namespace UI.Buttons.EndScreen
         protected override void OnClick()
         {
             _endPositionScreen.Close();
-            _gameLevelScreen.Open();
+            _gameLevelScreen.OnOpen();
             AudioSource.PlayOneShot(AudioSource.clip);
             _movesKeeper.CancelLastStep();
             _blur.TurnOff();

@@ -11,42 +11,44 @@ namespace UI.Screens.PossibilitiesShopContent
         [SerializeField] private Possibilitie _possibilitie;
         [SerializeField] private TMP_Text _priceText;
         [SerializeField] private TMP_Text _currentAmountText;
-        [SerializeField]private InputItemDragger _inputItemDragger;
+        [SerializeField] private InputItemDragger _inputItemDragger;
         [SerializeField] private GameLevelScreen _gameLevelScreen;
         [SerializeField] private Blur _blur;
-            
-        private int _currentPrice;
+
         private int _basePrice;
-        private int _currentAmount = 1;
+        private int _totalPrice;
+        private int _maxValue;
+        private int _minValue;
+        private int _defaultValue = 1;
 
-        public int CurrentPrice => _currentPrice;
+        public int CurrentPrice { get; private set; }
 
-        public int CurrentAmount => _currentAmount;
+        public int CurrentAmount { get; private set; } = 1;
 
         private void OnEnable()
         {
-            _possibilitie.PriceChanged += ChangePrice;
+            _possibilitie.PriceChanged += OnChangePrice;
         }
 
         private void OnDisable()
         {
-            _possibilitie.PriceChanged -= ChangePrice;
+            _possibilitie.PriceChanged -= OnChangePrice;
         }
 
         private void Start()
         {
             Show();
             _basePrice = _possibilitie.Price;
-            _currentPrice = _basePrice;
+            CurrentPrice = _basePrice;
         }
 
-        public override void Open()
+        public override void OnOpen()
         {
-            base.Open();
+            base.OnOpen();
             _blur.TurnOn();
-            _currentAmount = 1;
+            CurrentAmount = _defaultValue;
             _basePrice = _possibilitie.Price;
-            _currentPrice = _basePrice;
+            CurrentPrice = _basePrice;
             Show();
             _inputItemDragger.enabled = false;
             _gameLevelScreen.Close();
@@ -59,53 +61,53 @@ namespace UI.Screens.PossibilitiesShopContent
             _inputItemDragger.enabled = true;
         }
 
-        private void Show()
-        {
-            _priceText.text = _currentPrice.ToString();
-            _currentAmountText.text = _currentAmount.ToString();
-        }
-
-        private void ChangePrice(int price)
-        {
-            _currentPrice = price;
-            Show();
-        }
-
         public void IncreaseAmount()
         {
-            if (_currentAmount < 10)
+            if (CurrentAmount < _maxValue)
             {
-                _currentAmount++;
+                CurrentAmount++;
                 UpdatePrice();
             }
         }
 
         public void DecreaseAmount()
         {
-            if (_currentAmount > 1)
+            if (CurrentAmount > _minValue)
             {
-                _currentAmount--;
+                CurrentAmount--;
                 UpdatePrice();
             }
         }
 
+        private void Show()
+        {
+            _priceText.text = CurrentPrice.ToString();
+            _currentAmountText.text = CurrentAmount.ToString();
+        }
+
+        private void OnChangePrice(int price)
+        {
+            CurrentPrice = price;
+            Show();
+        }
+
         private void UpdatePrice()
         {
-            _currentPrice = CalculateTotalPrice(_currentAmount);
+            CurrentPrice = CalculateTotalPrice(CurrentAmount);
             Show();
         }
 
         private int CalculateTotalPrice(int amount)
         {
-            int totalPrice = 0;
+            _totalPrice = 0;
 
             for (int i = 1; i <= amount; i++)
             {
-                _currentPrice = Mathf.RoundToInt(_basePrice * Mathf.Pow(_possibilitie.PriceMultiplier, i - 1));
-                totalPrice += _currentPrice;
+                CurrentPrice = Mathf.RoundToInt(_basePrice * Mathf.Pow(_possibilitie.PriceMultiplier, i - 1));
+                _totalPrice += CurrentPrice;
             }
 
-            return totalPrice;
+            return _totalPrice;
         }
     }
 }

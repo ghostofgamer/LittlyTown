@@ -10,17 +10,17 @@ namespace UI.Screens
 
         private void OnEnable()
         {
-            _moveCounter.MoveOver += Open;
+            _moveCounter.MoveOver += OnOpen;
         }
 
         private void OnDisable()
         {
-            _moveCounter.MoveOver -= Open;
+            _moveCounter.MoveOver -= OnOpen;
         }
 
-        public override void Open()
+        public override void OnOpen()
         {
-            base.Open();
+            base.OnOpen();
             _gameLevelScreen.Close();
         }
     }

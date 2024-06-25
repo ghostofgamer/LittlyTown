@@ -9,10 +9,9 @@ namespace UI.Screens
 {
     public class ChooseMapScreen : AbstractScreen
     {
-        private const string LastActiveMap = "LastActiveMap";
         private const string ActiveMap = "ActiveMap";
         private const string OpenMap = "OpenMap";
-    
+
         [SerializeField] private ItemKeeper _itemKeeper;
         [SerializeField] private GameObject _startButton;
         [SerializeField] private GameObject _continueButton;
@@ -31,35 +30,34 @@ namespace UI.Screens
         [SerializeField] private GameObject _closeMapContent;
 
         private int _startValue = 0;
+        private int _saveValue = 1;
         private int _currentValue;
         private int _openValue;
         private int _value;
 
         private void OnEnable()
         {
-            _initializator.IndexChanged += ChangeActivationButton;
+            _initializator.IndexChanged += OnChangeActivationButton;
         }
 
         private void OnDisable()
         {
-            _initializator.IndexChanged -= ChangeActivationButton;
+            _initializator.IndexChanged -= OnChangeActivationButton;
         }
 
         private void Start()
         {
-            _save.SetData(OpenMap + _startValue, 1);
+            _save.SetData(OpenMap + _startValue, _saveValue);
         }
 
-        public override void Open()
+        public override void OnOpen()
         {
-            ChangeActivationButton();
-            base.Open();
+            OnChangeActivationButton();
+            base.OnOpen();
             _itemKeeper.SwitchOff();
             _cameraMovement.ZoomOut();
-            // _cameraMovement.ZoomIn();
             _inputChooseMap.enabled = true;
             _chooseMap.enabled = true;
-            // _chooseMap.StartWork();
             _inputChooseMap.StartWork();
             _mapsInfo.OnActivatedInfo(_initializator.Index);
             _mapInformation.SetActive(true);
@@ -69,17 +67,14 @@ namespace UI.Screens
 
         public override void Close()
         {
-            // _chooseMap.StopWork();
-            // _inputChooseMap.enabled = false;
             _inputChooseMap.StopWork();
             _chooseMap.enabled = false;
             base.Close();
-            // _cameraMovement.ResetZoom();
             _mapInformation.SetActive(false);
             _mapActivator.ChangeActivityMaps();
         }
 
-        public void ChangeActivationButton()
+        public void OnChangeActivationButton()
         {
             _openValue = _load.Get(OpenMap + _initializator.Index, _startValue);
 
@@ -92,7 +87,6 @@ namespace UI.Screens
 
             _openMapContent.SetActive(true);
             _closeMapContent.SetActive(false);
-        
             _value = _load.Get(ActiveMap + _initializator.Index, _startValue);
 
             if (_value > _startValue)

@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using CountersContent;
 using EnvironmentContent;
-using InitializationContent;
 using ItemPositionContent;
 using SaveAndLoad;
 using UnityEngine;
@@ -20,7 +19,7 @@ namespace UI.Screens
         [SerializeField] private VisualItemsDeactivator _visualItemsDeactivator;
         [SerializeField] private List<ItemPosition> _itemPositions = new List<ItemPosition>();
         [SerializeField] private TurnEnvironment _turnEnvironment;
-        [SerializeField]private GameObject _environment;
+        [SerializeField] private GameObject _environment;
         [SerializeField] private ShopItems _shopItems;
 
         private int _defaultIndex = 0;
@@ -61,9 +60,9 @@ namespace UI.Screens
 
             foreach (var button in _gameLevelButtons)
                 button.SetActive(false);
-            
+
             _shopItems.SetStartPrice();
-            Open();
+            OnOpen();
         }
 
         public void ChangeTutorialStage(GameObject closeContent, GameObject openContent)

@@ -23,18 +23,18 @@ namespace UI.Screens
 
         private void OnEnable()
         {
-            _scoreCounter.LevelChanged += Open;
+            _scoreCounter.LevelChanged += OnOpen;
         }
 
         private void OnDisable()
         {
-            _scoreCounter.LevelChanged -= Open;
+            _scoreCounter.LevelChanged -= OnOpen;
         }
 
-        public override void Open()
+        public override void OnOpen()
         {
             ScoreCompleted?.Invoke();
-            base.Open();
+            base.OnOpen();
             _goldButton.DetermineGoldAmount();
             _blur.TurnOn();
             _crystalWallet.IncreaseValue(_reward);

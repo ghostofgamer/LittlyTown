@@ -16,7 +16,7 @@ namespace ADS
         {
             _moveCounter.ReplenishSteps();
             _endMoveScreen.Close();
-            _gameLevelScreen.Open();
+            _gameLevelScreen.OnOpen();
             _spawner.OnCreateItem();
         }
     }
