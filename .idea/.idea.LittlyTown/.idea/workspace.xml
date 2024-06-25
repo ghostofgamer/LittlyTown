@@ -20,16 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="099b8a6d-6b1c-4473-babb-d7d2ffb7e44f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Keeper/MovesKeeper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Keeper/MovesKeeper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/ItemDropData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/ItemDropData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/ItemsStorage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/ItemsStorage.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/Load.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/Load.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/Save.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/Save.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/SaveData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/SaveData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/SaveHistoryData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/SaveHistoryData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/SelectItemData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/SelectItemData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/ShopItemData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/ShopItemData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/StorageItemData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/StorageItemData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SpawnContent/DropGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SpawnContent/DropGenerator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SpawnContent/Spawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SpawnContent/Spawner.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -194,12 +186,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/LocalizationContent/Localization.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/MapsContent/ButtonActivator.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/MapsContent/ChooseMap.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/MapsContent/InputChooseMap.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/MapsContent/Map.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/MapsContent/MapActivator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MapsContent/Territory.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MapsContent/PositionScaller.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MapsContent/StartMap.cs" />
@@ -245,6 +231,12 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/StorageItemData.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/ShopItemData.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/SelectItemData.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/GoalContent/SaveGoalData.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/GoalContent/GoalSaver.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SDK/SDKInitialization.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SDK/GameReady.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SpawnContent/Spawner.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SpawnContent/DropGenerator.cs" />
       </list>
     </option>
   </component>
@@ -369,7 +361,7 @@
       <workItem from="1719136970153" duration="5000" />
       <workItem from="1719137133779" duration="16763000" />
       <workItem from="1719209511924" duration="23168000" />
-      <workItem from="1719299040921" duration="9342000" />
+      <workItem from="1719299040921" duration="9684000" />
     </task>
     <servers />
   </component>

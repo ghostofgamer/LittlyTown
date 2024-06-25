@@ -13,19 +13,19 @@ namespace SpawnContent
         [SerializeField] private Image _image;
         [SerializeField] private List<ItemDropDataSo> _itemDropsSO;
         [SerializeField] private StartMap _startMap;
-    
+
         private int _currentLevel;
         private Item _currentItem;
         private Item _nextItem;
+        private float _randomPoint;
+        private float _totalChance;
+        private float _dropChance;
 
         public ItemDropDataSo ItemDropData { get; private set; }
-        
-        public ItemDropDataSo ItemDropDataNew { get; private set; }
 
         private void Awake()
         {
             _nextItem = _itemDropsSO[0].PrefabItem;
-            ItemDropDataNew = _nextItem.ItemDropDataSo;
             _image.sprite = _itemDropsSO[0].Icon;
         }
 
@@ -71,21 +71,21 @@ namespace SpawnContent
 
         private ItemDropDataSo DropItem()
         {
-            float totalChance = 0f;
+            _totalChance = 0f;
 
             foreach (ItemDropDataSo itemDrop in _itemDropsSO)
             {
-                float dropChance = CalculateDropChance(itemDrop, _currentLevel);
-                totalChance += dropChance;
+                _dropChance = CalculateDropChance(itemDrop, _currentLevel);
+                _totalChance += _dropChance;
             }
 
-            float randomPoint = Random.value * totalChance;
+            _randomPoint = Random.value * _totalChance;
 
             for (int i = 0; i < _itemDropsSO.Count; i++)
             {
-                randomPoint -= CalculateDropChance(_itemDropsSO[i], _currentLevel);
+                _randomPoint -= CalculateDropChance(_itemDropsSO[i], _currentLevel);
 
-                if (randomPoint <= 0)
+                if (_randomPoint <= 0)
                 {
                     _image.sprite = _itemDropsSO[i].Icon;
                     return _itemDropsSO[i];
@@ -97,17 +97,16 @@ namespace SpawnContent
 
         private float CalculateDropChance(ItemDropDataSo itemDrop, int level)
         {
-            float dropChance = itemDrop.BaseDropChance;
-            dropChance += level * itemDrop.LevelIncreaseFactor;
-            dropChance -= level * itemDrop.LevelDecreaseFactor;
-            dropChance = Mathf.Clamp01(dropChance);
-            return dropChance;
+            _dropChance = itemDrop.BaseDropChance;
+            _dropChance += level * itemDrop.LevelIncreaseFactor;
+            _dropChance -= level * itemDrop.LevelDecreaseFactor;
+            _dropChance = Mathf.Clamp01(_dropChance);
+            return _dropChance;
         }
 
         private void Reset()
         {
             _nextItem = _itemDropsSO[0].PrefabItem;
-            ItemDropDataNew = _nextItem.ItemDropDataSo;
             _image.sprite = _itemDropsSO[0].Icon;
         }
     }
