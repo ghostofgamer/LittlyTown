@@ -11,23 +11,25 @@ namespace UI.Buttons.PossibilitiesFiles
         [SerializeField] private Possibilitie _possibilitie;
         [SerializeField] private PossibilitiesShopScreen _possibilitiesShopScreen;
         [SerializeField] private GoldWallet _goldWallet;
-        [SerializeField] private CloseButton _closeButton;
         [SerializeField] private OpenButton _openButton;
         [SerializeField] private MovementIcon _movementIcon;
         [SerializeField] private TMP_Text _possibilitiePriceText;
 
-        private int _currentPrice;
-
         protected override void OnEnable()
         {
             base.OnEnable();
-            _possibilitie.PriceChanged += ChangePrice;
+            _possibilitie.PriceChanged += OnChangePrice;
         }
 
         protected override void OnDisable()
         {
             base.OnDisable();
-            _possibilitie.PriceChanged += ChangePrice;
+            _possibilitie.PriceChanged += OnChangePrice;
+        }
+
+        public void CheckPossibilityPurchasing()
+        {
+            _possibilitiePriceText.color = _possibilitie.Price > _goldWallet.CurrentValue ? Color.red : Color.white;
         }
 
         protected override void OnClick()
@@ -53,18 +55,12 @@ namespace UI.Buttons.PossibilitiesFiles
                 _possibilitiePriceText.text = _possibilitie.Price.ToString();
         }
 
-        private void ChangePrice(int price)
+        private void OnChangePrice(int price)
         {
             if (_possibilitiePriceText == null)
                 return;
 
-            _currentPrice = price;
             Show();
-        }
-
-        public void CheckPossibilityPurchasing()
-        {
-            _possibilitiePriceText.color = _possibilitie.Price > _goldWallet.CurrentValue ? Color.red : Color.white;
         }
     }
 }

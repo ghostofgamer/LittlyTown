@@ -12,7 +12,7 @@ namespace UI.Buttons.EndScreen
         [SerializeField] private EndPositionScreen _endPositionScreen;
         [SerializeField] private GameLevelScreen _gameLevelScreen;
         [SerializeField] private Blur _blur;
-        
+
         protected override void OnClick()
         {
             _endPositionScreen.Close();

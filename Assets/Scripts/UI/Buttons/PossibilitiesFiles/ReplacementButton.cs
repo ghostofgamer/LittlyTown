@@ -7,26 +7,26 @@ namespace UI.Buttons.PossibilitiesFiles
     public class ReplacementButton : AdditionalPossibilitiesButton
     {
         [SerializeField] private ReplacementPosition _replacementPosition;
-        
+
         public event Action ReplaceActivated;
-        
+
         public event Action ReplaceDeactivated;
-        
+
         protected override void OnEnable()
         {
             base.OnEnable();
-            _replacementPosition.PositionsChanged += Deactivation;
+            _replacementPosition.PositionsChanged += OnDeactivation;
         }
 
         protected override void OnDisable()
         {
             base.OnDisable();
-            _replacementPosition.PositionsChanged -= Deactivation;
+            _replacementPosition.PositionsChanged -= OnDeactivation;
         }
 
-        protected override void Deactivation()
+        protected override void OnDeactivation()
         {
-            base.Deactivation();
+            base.OnDeactivation();
             ReplaceDeactivated?.Invoke();
         }
 

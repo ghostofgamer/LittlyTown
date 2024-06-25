@@ -7,7 +7,7 @@ namespace UI.Buttons.PossibilitiesFiles
     public class DeleteButton : AdditionalPossibilitiesButton
     {
         [SerializeField] private RemovalItems _removalItems;
-        
+
         public event Action RemovalActivated;
 
         public event Action RemovalDeactivated;
@@ -15,18 +15,18 @@ namespace UI.Buttons.PossibilitiesFiles
         protected override void OnEnable()
         {
             base.OnEnable();
-            _removalItems.Removed += Deactivation;
+            _removalItems.Removed += OnDeactivation;
         }
 
         protected override void OnDisable()
         {
             base.OnDisable();
-            _removalItems.Removed -= Deactivation;
+            _removalItems.Removed -= OnDeactivation;
         }
 
-        protected override void Deactivation()
+        protected override void OnDeactivation()
         {
-            base.Deactivation();
+            base.OnDeactivation();
             RemovalDeactivated?.Invoke();
         }
 

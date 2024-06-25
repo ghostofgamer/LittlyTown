@@ -27,17 +27,15 @@ namespace UI.Buttons.PossibilitiesFiles
 
         private Item _temporaryItem;
         private ItemPosition _itemPosition;
-        private bool _isActivated = false;
-
-        public bool IsActivated => _isActivated;
+        private bool _isActivated;
 
         protected override void OnClick()
         {
             _isActivated = !_isActivated;
             AudioSource.PlayOneShot(AudioSource.clip);
-            
-            if (_additionalPossibilitiesButton.IsActivated)
-                _additionalPossibilitiesButton.Deactivation();
+
+            if (_additionalPossibilitiesButton._isActivated)
+                _additionalPossibilitiesButton.OnDeactivation();
 
             if (_possibilitiesCounter.PossibilitiesCount > 0)
             {
@@ -48,7 +46,7 @@ namespace UI.Buttons.PossibilitiesFiles
                 }
                 else
                 {
-                    Deactivation();
+                    OnDeactivation();
                 }
             }
             else
@@ -65,21 +63,21 @@ namespace UI.Buttons.PossibilitiesFiles
             SaveTemporaryItem();
         }
 
-        private void SetSprite(Sprite icon, Sprite imageBackGroundButton)
-        {
-            _imageBackGroundButton.sprite = imageBackGroundButton;
-            _icon.sprite = icon;
-        }
-
-        protected virtual void Deactivation()
+        protected virtual void OnDeactivation()
         {
             if (_temporaryItem == null)
                 return;
-            
+
             _openItemStoreButton.enabled = true;
             _isActivated = false;
             ReturnItem();
             SetSprite(_whiteIcon, _notActivatedImage);
+        }
+
+        private void SetSprite(Sprite icon, Sprite imageBackGroundButton)
+        {
+            _imageBackGroundButton.sprite = imageBackGroundButton;
+            _icon.sprite = icon;
         }
 
         private void SaveTemporaryItem()
