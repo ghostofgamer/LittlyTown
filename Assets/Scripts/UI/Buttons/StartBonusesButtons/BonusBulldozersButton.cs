@@ -1,4 +1,3 @@
-
 namespace UI.Buttons.StartBonusesButtons
 {
     public class BonusBulldozersButton : BonusesButton
