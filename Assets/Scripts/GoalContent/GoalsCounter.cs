@@ -57,7 +57,6 @@ namespace GoalContent
             if (_currentGoalsCompleted >= _maxGoalsCompleted)
             {
                 _currentGoalsCompleted = 0;
-                _goalSaver.UnSubscribe();
                 InitializeGoals();
             }
         }

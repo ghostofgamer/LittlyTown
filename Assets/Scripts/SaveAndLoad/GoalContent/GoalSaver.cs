@@ -12,8 +12,6 @@ namespace SaveAndLoad.GoalContent
 
         private SaveGoalData _saveGoalData;
         private int[] _indexes;
-        private Goal _firstGoal;
-        private Goal _secondGoal;
         private List<Goal> _goalList = new List<Goal>();
         private int _firstGoalIndex = 0;
         private int _secondGoalIndex = 1;
@@ -22,12 +20,6 @@ namespace SaveAndLoad.GoalContent
         public int[] Indexes => _indexes;
 
         public SaveGoalData SaveGoalData => _saveGoalData;
-
-        public void UnSubscribe()
-        {
-            _firstGoal.ValueChanged -= OnSaveChanges;
-            _secondGoal.ValueChanged -= OnSaveChanges;
-        }
 
         public void SaveGoals(List<Goal> currentGoals)
         {
@@ -45,11 +37,7 @@ namespace SaveAndLoad.GoalContent
                     currentGoals[_secondGoalIndex].CurrentValue,
                     currentGoals[_secondGoalIndex].CompleteValue),
             };
-
-            _firstGoal = currentGoals[_firstGoalIndex];
-            _secondGoal = currentGoals[_secondGoalIndex];
-            _firstGoal.ValueChanged += OnSaveChanges;
-            _secondGoal.ValueChanged += OnSaveChanges;
+            
             string jsonData = JsonUtility.ToJson(_saveGoalData);
             PlayerPrefs.SetString(SaveGoal, jsonData);
             PlayerPrefs.Save();
@@ -64,20 +52,16 @@ namespace SaveAndLoad.GoalContent
                 _indexes = new int[_maxGoals];
                 _indexes[_firstGoalIndex] = _saveGoalData.FirstGoal.Index;
                 _indexes[_secondGoalIndex] = _saveGoalData.SecondGoal.Index;
-                _firstGoal = _goalsCounter.Goals[_saveGoalData.FirstGoal.Index];
-                _secondGoal = _goalsCounter.Goals[_saveGoalData.SecondGoal.Index];
                 _goalList.Clear();
                 _goalList.Add(_goalsCounter.Goals[_saveGoalData.FirstGoal.Index]);
                 _goalList.Add(_goalsCounter.Goals[_saveGoalData.SecondGoal.Index]);
-                _firstGoal.ValueChanged += OnSaveChanges;
-                _secondGoal.ValueChanged += OnSaveChanges;
                 return true;
             }
 
             return false;
         }
 
-        private void OnSaveChanges()
+        public void SaveChanges()
         {
             _saveGoalData.FirstGoal.Index = _goalList[_firstGoalIndex].Index;
             _saveGoalData.FirstGoal.CurrentValue = _goalList[_firstGoalIndex].CurrentValue;

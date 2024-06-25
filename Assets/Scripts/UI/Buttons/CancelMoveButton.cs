@@ -33,7 +33,20 @@ namespace UI.Buttons
 
         private void OnSetInteractable(int currentStep)
         {
-            Button.interactable = currentStep > 0;
+            if (currentStep > 0)
+                ActivationButton();
+            else
+                DeactivationButton();
+        }
+
+        private void ActivationButton()
+        {
+            Button.interactable = true;
+        }
+
+        private void DeactivationButton()
+        {
+            Button.interactable = false;
         }
     }
 }

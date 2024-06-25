@@ -19,6 +19,14 @@ namespace BirdContent
             ActivateBird();
         }
 
+        public void FinishBird()
+        {
+            if (_coroutine != null)
+                StopCoroutine(_coroutine);
+
+            _coroutine = StartCoroutine(CreateBird());
+        }
+
         private void ActivateBird()
         {
             _indexBird = Random.Range(0, _birdMovements.Length);
@@ -26,17 +34,6 @@ namespace BirdContent
             _birdMovements[_indexBird].transform.position = _spawnPositions[_indexPosition].position;
             _birdMovements[_indexBird].Init(_spawnPositions[_indexPosition]);
             _birdMovements[_indexBird].gameObject.SetActive(true);
-            _birdMovements[_indexBird].BirdFinished += FinishBird;
-        }
-
-        private void FinishBird()
-        {
-            _birdMovements[_indexBird].BirdFinished -= FinishBird;
-
-            if (_coroutine != null)
-                StopCoroutine(_coroutine);
-
-            _coroutine = StartCoroutine(CreateBird());
         }
 
         private IEnumerator CreateBird()

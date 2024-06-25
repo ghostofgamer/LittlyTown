@@ -5,6 +5,8 @@ namespace BirdContent
 {
     public class BirdMovement : MonoBehaviour
     {
+        [SerializeField] private BirdSpawner _birdSpawner;
+
         private Transform[] _points;
         private int _currentPoint;
         private Transform _targetPosition;
@@ -13,8 +15,6 @@ namespace BirdContent
         private float _rotateSpeed = 3f;
         private Vector3 _targetDirection;
         private Quaternion _targetRotation;
-
-        public event Action BirdFinished;
 
         private void Update()
         {
@@ -50,7 +50,7 @@ namespace BirdContent
             if (_currentPoint >= _points.Length)
             {
                 _isFly = false;
-                BirdFinished?.Invoke();
+                _birdSpawner.FinishBird();
                 gameObject.SetActive(false);
             }
             else

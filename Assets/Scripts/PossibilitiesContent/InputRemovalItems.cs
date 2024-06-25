@@ -5,6 +5,7 @@ namespace PossibilitiesContent
     public class InputRemovalItems : MonoBehaviour
     {
         [SerializeField] private RemovalItems _removalItems;
+        [SerializeField] private AnimationRemovalItem _animationRemovalItem;
 
         private bool _isLooking;
 
@@ -17,7 +18,7 @@ namespace PossibilitiesContent
                 _isLooking = true;
 
             if (_isLooking)
-                _removalItems.ActivateAnimation();
+                _animationRemovalItem.ActivateAnimation();
 
             if (Input.GetMouseButtonUp(0))
             {

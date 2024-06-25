@@ -23,7 +23,6 @@ namespace UI.Screens
         private int _currentValueActiveMap;
         private int _lastValue;
         private int _currentMapValue;
-        private bool _value;
         private WaitForSeconds _waitForSeconds = new WaitForSeconds(1.65f);
 
         private void Start()
@@ -32,8 +31,11 @@ namespace UI.Screens
             _currentMapValue = _load.Get(Map, _startValue);
             _currentValue = _load.Get(LastActiveMap, _startValue);
             _currentValueActiveMap = _load.Get(ActiveMap + _currentMapValue, _startValue);
-            _value = _currentValue > 0 && _currentValueActiveMap > 0;
-            _continueButton.gameObject.SetActive(_value);
+            
+            if (TryActivationButton())
+                ActivationContinueButton();
+            else
+                DeactivationContinueButton();
 
             if (_lastValue > 0)
                 StartCoroutine(SmoothOpen());
@@ -44,8 +46,12 @@ namespace UI.Screens
             base.OnOpen();
             _currentValue = _load.Get(LastActiveMap, _startValue);
             _currentValueActiveMap = _load.Get(ActiveMap + _initializator.Index, _startValue);
-            _value = _currentValue > 0 && _currentValueActiveMap > 0;
-            _continueButton.gameObject.SetActive(_value);
+
+            if (TryActivationButton())
+                ActivationContinueButton();
+            else
+                DeactivationContinueButton();
+            
             _cameraMovement.ResetZoom();
         }
 
@@ -53,6 +59,21 @@ namespace UI.Screens
         {
             yield return _waitForSeconds;
             OnOpen();
+        }
+
+        private bool TryActivationButton()
+        {
+            return _currentValue > 0 && _currentValueActiveMap > 0;
+        }
+
+        private void ActivationContinueButton()
+        {
+            _continueButton.gameObject.SetActive(true);
+        }
+
+        private void DeactivationContinueButton()
+        {
+            _continueButton.gameObject.SetActive(false);
         }
     }
 }

@@ -1,5 +1,5 @@
-using System;
 using ItemContent;
+using SaveAndLoad.GoalContent;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,11 +18,10 @@ namespace GoalContent
         [SerializeField] private GameObject _progressInfo;
         [SerializeField] private GameObject _completeInfo;
         [SerializeField] private int _index;
+        [SerializeField] private GoalSaver _goalSaver;
 
         private int _reward;
         private int _scorePercentage;
-
-        public event Action ValueChanged;
 
         public int CompleteValue { get; private set; }
 
@@ -50,7 +49,7 @@ namespace GoalContent
         public void SetCompleteValue(int value)
         {
             CompleteValue = value;
-            ValueChanged?.Invoke();
+            _goalSaver.SaveChanges();
         }
 
         public void SetValue(int currentValue)
@@ -72,8 +71,8 @@ namespace GoalContent
 
             if (_currentValue >= _maxValue)
                 FinishGoal();
-
-            ValueChanged?.Invoke();
+            
+            _goalSaver.SaveChanges();
         }
 
         private void FinishGoal()

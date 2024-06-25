@@ -1185,6 +1185,7 @@
             <e p="MinIndexItemSelector.cs" t="Include" />
           </e>
           <e p="PossibilitiesContent" t="Include">
+            <e p="AnimationRemovalItem.cs" t="Include" />
             <e p="CraneDestroyer.cs" t="Include" />
             <e p="GoldMovement.cs" t="Include" />
             <e p="InputRemovalItems.cs" t="Include" />

@@ -35,6 +35,8 @@ namespace MergeContent
         private Dictionary<Item, Coroutine> _coroutines = new Dictionary<Item, Coroutine>();
         private Dictionary<Item, List<Item>> _newMatchedItems = new Dictionary<Item, List<Item>>();
         private Dictionary<ItemPosition, ItemPosition> _targetPosition = new Dictionary<ItemPosition, ItemPosition>();
+        private Item _item;
+        private Coroutine _currentCoroutine;
 
         public event Action NotMerged;
 
@@ -123,16 +125,16 @@ namespace MergeContent
                     if (!_newMatchedItems.ContainsKey(item))
                         _newMatchedItems.Add(item, new List<Item>());
 
-                    Coroutine coroutine = StartCoroutine(LookMerge(itemPosition, item));
-                    _coroutines.Add(item, coroutine);
+                    _currentCoroutine = StartCoroutine(LookMerge(itemPosition, item));
+                    _coroutines.Add(item, _currentCoroutine);
                 }
                 else
                 {
                     if (!_newMatchedItems.ContainsKey(item))
                         _newMatchedItems.Add(item, new List<Item>());
 
-                    Coroutine coroutine = StartCoroutine(LookMerge(itemPosition, item));
-                    _coroutines.Add(item, coroutine);
+                    _currentCoroutine = StartCoroutine(LookMerge(itemPosition, item));
+                    _coroutines.Add(item, _currentCoroutine);
                 }
             }
         }
@@ -178,7 +180,7 @@ namespace MergeContent
                 if (_currentItem.ItemName == Items.Crane)
                     _temporaryItems.Clear();
 
-                Item item = _matchedItems[_zero].NextItem;
+                _item = _matchedItems[_zero].NextItem;
 
                 foreach (var matchItem in _matchedItems)
                     _completeList.Add(matchItem);
@@ -191,7 +193,7 @@ namespace MergeContent
                 if (_targetPosition.ContainsKey(_currentItemPosition))
                     _targetPosition.Remove(_currentItemPosition);
 
-                _coroutine = StartCoroutine(LookPositions(_currentItemPosition, item));
+                _coroutine = StartCoroutine(LookPositions(_currentItemPosition, _item));
             }
             else if (_matchedItems.Count < _targetMinMatchedItems && _temporaryItems.Count > _targetMinTemporaryItems)
             {
@@ -243,7 +245,8 @@ namespace MergeContent
                     _newMatchedItems.Remove(item);
                 }
             }
-            else if (_newMatchedItems[item].Count < _targetMinMatchedItems && _temporaryItems.Count > _targetMinTemporaryItems)
+            else if (_newMatchedItems[item].Count < _targetMinMatchedItems &&
+                     _temporaryItems.Count > _targetMinTemporaryItems)
             {
                 if (_coroutines.ContainsKey(_temporaryItem))
                 {
@@ -265,8 +268,8 @@ namespace MergeContent
                     _coroutines.Remove(item);
                 }
 
-                Coroutine coroutine = StartCoroutine(LookMerge(itemPosition, _temporaryItem));
-                _coroutines.Add(_temporaryItem, coroutine);
+                _currentCoroutine = StartCoroutine(LookMerge(itemPosition, _temporaryItem));
+                _coroutines.Add(_temporaryItem, _currentCoroutine);
             }
             else
             {

@@ -47,27 +47,6 @@ namespace PossibilitiesContent
             _layerMask = ~_layerMask;
         }
 
-        public void ActivateAnimation()
-        {
-            _ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            if (Physics.Raycast(_ray, out _hit, Mathf.Infinity, _layerMask))
-            {
-                if (_hit.transform.gameObject.TryGetComponent(out ItemPosition itemPosition))
-                {
-                    if (itemPosition.IsBusy && !itemPosition.IsWater)
-                    {
-                        itemPosition.Item.GetComponent<ItemAnimation>().BusyPositionAnimation();
-                        itemPosition.GetComponent<VisualItemPosition>().ActivateVisual();
-                    }
-                    else
-                    {
-                        itemPosition.GetComponent<VisualItemPosition>().ActivateVisual();
-                    }
-                }
-            }
-        }
-
         public void StartRemove()
         {
             if (_coroutine != null)
