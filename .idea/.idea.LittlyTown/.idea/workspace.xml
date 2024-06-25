@@ -20,12 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="099b8a6d-6b1c-4473-babb-d7d2ffb7e44f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MapsContent/MapsInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MapsContent/MapsInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/ButtonResize.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/ButtonResize.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ADButtons/RewardDoublePossibilityButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ADButtons/RewardDoublePossibilityButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/DisappearingAlert.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/DisappearingAlert.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Records.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Records.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Settings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Settings.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/RewardButtons/RewardPossibilityButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/RewardButtons/RewardPossibilityButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/RewardButtons/RewardReplaceButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/RewardButtons/RewardReplaceButton.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,12 +181,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/Road/EndRoad.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Road/CrossroadsRoad.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Road/AngularRoad.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/EnvironmentBuilder.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/CleanerButton.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/Cleaner.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/Builder.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/SandBoxStorage.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SandBoxContent/SandBoxSaveData.cs" />
@@ -226,7 +216,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/CountersContent/ScoreCounter.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SpawnContent/Spawner.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ReplacementPositionButton.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/PossibilitiesFiles/AdditionalPossibilitiesButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Wallets/MoneyInfo.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Wallets/AbstractWallet.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UpgradesContent/PackageLittleTown.cs" />
@@ -236,6 +225,13 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/DisappearingAlert.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/ButtonResize.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ADButtons/RewardDoublePossibilityButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/EndScreen/CancelLastStepButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/PossibilitiesFiles/ReplacementButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/PossibilitiesFiles/DeleteButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/PossibilitiesFiles/BuyPossibilitieButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/PossibilitiesFiles/AdditionalPossibilitiesButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/RewardButtons/RewardReplaceButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/RewardButtons/RewardPossibilityButton.cs" />
       </list>
     </option>
   </component>
@@ -360,7 +356,7 @@
       <workItem from="1719136970153" duration="5000" />
       <workItem from="1719137133779" duration="16763000" />
       <workItem from="1719209511924" duration="23168000" />
-      <workItem from="1719299040921" duration="10651000" />
+      <workItem from="1719299040921" duration="10983000" />
     </task>
     <servers />
   </component>

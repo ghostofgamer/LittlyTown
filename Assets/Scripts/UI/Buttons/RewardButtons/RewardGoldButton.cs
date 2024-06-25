@@ -11,7 +11,7 @@ namespace UI.Buttons.RewardButtons
         [SerializeField] private GoldWallet _goldWallet;
         [SerializeField] private GoldMovement[] _goldMovements;
         [SerializeField] private TMP_Text _goldText;
-        
+
         private int _maxGoldValue = 500;
         private int _minGoldValue = 160;
         private int _currentGoldValue;
@@ -24,7 +24,7 @@ namespace UI.Buttons.RewardButtons
             _currentGoldValue = Random.Range(_minGoldValue, _maxGoldValue);
             _goldText.text = _currentGoldValue.ToString();
         }
-        
+
         protected override void ChangeRewardItem()
         {
             if (_coroutine != null)
