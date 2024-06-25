@@ -9,16 +9,11 @@ namespace ItemPositionContent
         private float _searchRadius = 1.6f;
         private ItemPosition _itemPosition;
         private Vector3 _targetPosition;
+        private float _factor = 0.1f;
 
         private void Awake()
         {
             _itemPosition = GetComponent<ItemPosition>();
-        }
-
-        private void OnDrawGizmosSelected()
-        {
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawWireSphere(transform.position, _searchRadius);
         }
 
         public void FindNeighbor()
@@ -39,19 +34,19 @@ namespace ItemPositionContent
                     _targetPosition = itemPosition.transform.position;
 
                     if (_targetPosition.z > transform.position.z &&
-                        Math.Abs(_targetPosition.x - transform.position.x) < 0.1f)
+                        Math.Abs(_targetPosition.x - transform.position.x) < _factor)
                         northPosition = itemPosition;
 
                     if (_targetPosition.x < transform.position.x &&
-                        Math.Abs(_targetPosition.z - transform.position.z) < 0.1f)
+                        Math.Abs(_targetPosition.z - transform.position.z) < _factor)
                         westPosition = itemPosition;
 
                     if (_targetPosition.x > transform.position.x &&
-                        Math.Abs(_targetPosition.z - transform.position.z) < 0.1f)
+                        Math.Abs(_targetPosition.z - transform.position.z) < _factor)
                         eastPosition = itemPosition;
 
                     if (_targetPosition.z < transform.position.z &&
-                        Math.Abs(_targetPosition.x - transform.position.x) < 0.1f)
+                        Math.Abs(_targetPosition.x - transform.position.x) < _factor)
                         southPosition = itemPosition;
                 }
 

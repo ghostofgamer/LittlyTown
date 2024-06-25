@@ -12,28 +12,30 @@ namespace ItemPositionContent
         private Coroutine _coroutine;
         private float _elapsedTime;
         private Color _color;
+        private float _fullAlpha = 1f;
+        private float _zeroAlpha = 0f;
 
         public void ActivateVisual()
         {
             _visualItemsDeactivator.OnDeactivationVisual();
 
-            if (_visualPosition.color.a < 1f)
+            if (_visualPosition.color.a < _fullAlpha)
             {
                 if (_coroutine != null)
                     StopCoroutine(_coroutine);
 
-                _coroutine = StartCoroutine(Fade(_visualPosition.color.a, 1f));
+                _coroutine = StartCoroutine(Fade(_visualPosition.color.a, _fullAlpha));
             }
         }
 
         public void DeactivateVisual()
         {
-            if (_visualPosition.color.a > 0f)
+            if (_visualPosition.color.a > _zeroAlpha)
             {
                 if (_coroutine != null)
                     StopCoroutine(_coroutine);
 
-                _coroutine = StartCoroutine(Fade(_visualPosition.color.a, 0f));
+                _coroutine = StartCoroutine(Fade(_visualPosition.color.a, _zeroAlpha));
             }
         }
 

@@ -10,28 +10,24 @@ namespace ItemPositionContent
         [SerializeField] private ItemPosition _westPosition;
         [SerializeField] private ItemPosition _eastPosition;
         [SerializeField] private ItemPosition _southPosition;
-        [SerializeField] private bool _isSelected = false;
-        [SerializeField] private bool _isBusy = false;
+        [SerializeField] private bool _isSelected;
+        [SerializeField] private bool _isBusy;
         [SerializeField] private ItemPosition _road;
         [SerializeField] private bool _isWater;
         [SerializeField] private bool _isElevation;
-        [SerializeField] private Transform _container;
         [SerializeField] private LookMerger _lookMerger;
         [SerializeField] private ItemPosition _waterTile;
         [SerializeField] private ItemPosition[] _roadPositions;
 
-        private Item _item;
-        private ItemPosition[] _itemPositions;
-        
-        public bool IsRoad { get; private set; } = false;
+        public bool IsRoad { get; private set; }
 
-        public bool IsTrail { get; private set; } = false;
+        public bool IsTrail { get; private set; }
 
         public ItemPosition[] RoadPositions => _roadPositions;
 
-        public ItemPosition[] ItemPositions => _itemPositions;
+        public ItemPosition[] ItemPositions { get; private set; }
 
-        public Item Item => _item;
+        public Item Item { get; private set; }
 
         public bool IsBusy => _isBusy;
 
@@ -49,18 +45,18 @@ namespace ItemPositionContent
 
         public ItemPosition WestPosition => _westPosition;
 
-        public bool IsReplaceSelected { get; private set; } = false;
+        public bool IsReplaceSelected { get; private set; }
 
         private void Start()
         {
-            _itemPositions = new ItemPosition[4] {_northPosition, _westPosition, _eastPosition, _southPosition};
+            ItemPositions = new[] {_northPosition, _westPosition, _eastPosition, _southPosition};
         }
 
         private void OnTriggerStay(Collider other)
         {
             if (other.TryGetComponent(out Item item) && item.IsActive)
             {
-                _item = item;
+                Item = item;
                 _isBusy = true;
             }
         }
@@ -94,12 +90,12 @@ namespace ItemPositionContent
 
         public void DeliverObject(Item item)
         {
-            _item = item;
-            
+            Item = item;
+
             if (IsRoad)
                 IsRoad = false;
-            
-            _lookMerger.LookAround(this, _item);
+
+            _lookMerger.LookAround(this, Item);
         }
 
         public void SetSelected()
@@ -114,10 +110,10 @@ namespace ItemPositionContent
 
         public void ClearingPosition()
         {
-            if (_item == null)
+            if (Item == null)
                 return;
 
-            _item = null;
+            Item = null;
             _isBusy = false;
 
             if (!IsReplaceSelected)
@@ -130,7 +126,7 @@ namespace ItemPositionContent
             _westPosition = west;
             _eastPosition = east;
             _southPosition = south;
-            _itemPositions = new ItemPosition[4] {_northPosition, _westPosition, _eastPosition, _southPosition};
+            ItemPositions = new[] {_northPosition, _westPosition, _eastPosition, _southPosition};
         }
 
         public void ReplaceSelectedActivate()
