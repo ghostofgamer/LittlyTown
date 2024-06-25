@@ -54,7 +54,7 @@ namespace MergeContent
                 _completeList.Clear();
                 return;
             }
-        
+
             _isTryMerge = false;
             _targetPosition.Clear();
             CheckCoroutine(itemPosition, item);
@@ -75,7 +75,7 @@ namespace MergeContent
 
             if (!_targetPosition.ContainsKey(itemPosition))
                 _targetPosition.Add(itemPosition, itemPosition);
-        
+
             _targetPosition[itemPosition].SetSelected();
 
             if (_currentItem.ItemName == Items.Crane)

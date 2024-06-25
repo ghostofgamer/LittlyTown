@@ -20,12 +20,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="099b8a6d-6b1c-4473-babb-d7d2ffb7e44f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LocalizationContent/Localization.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LocalizationContent/Localization.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MapsContent/ButtonActivator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MapsContent/ButtonActivator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MapsContent/ChooseMap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MapsContent/ChooseMap.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MapsContent/InputChooseMap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MapsContent/InputChooseMap.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MapsContent/Map.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MapsContent/Map.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MapsContent/MapActivator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MapsContent/MapActivator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MergeContent/LookMerger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MergeContent/LookMerger.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MergeContent/Merger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MergeContent/Merger.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MergeContent/MinIndexItemSelector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MergeContent/MinIndexItemSelector.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/CraneDestroyer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/CraneDestroyer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/InputRemovalItems.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/InputRemovalItems.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/InputReplacementIPosition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/InputReplacementIPosition.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/MovementIcon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/MovementIcon.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/Possibilitie.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/Possibilitie.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/PossibilitieBulldozer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/PossibilitieBulldozer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/PossibilitieReplace.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/PossibilitieReplace.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/RemovalItems.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/RemovalItems.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/ReplacementPosition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/ReplacementPosition.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/Storage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/Storage.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -190,23 +198,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/ADS/AD.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BirdContent/BirdSpawner.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BirdContent/BirdMovement.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/CameraContent/CameraMovement.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/CameraContent/CameraScrolling.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/CountersContent/VisualScore.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/CountersContent/ScoreSlider.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/CountersContent/ScoreCounter.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/CountersContent/MoveCounter.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/CountersContent/GoldCounter.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/DayNightContent/DayNight.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/DayNightContent/BackGroundMusic.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Dragger/ItemPositionLooker.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Dragger/ItemThrower.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Dragger/ItemDragger.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Dragger/InputItemDragger.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/EndGameContent/EndPositionScreen.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enums/Upgrades.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enums/SettingsModes.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/EnvironmentContent/TurnEnvironment.cs" />
@@ -241,6 +232,23 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/MapsContent/InputChooseMap.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MapsContent/Map.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MapsContent/MapActivator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MapsContent/Territory.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MapsContent/PositionScaller.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MapsContent/StartMap.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MapsContent/MapsInfo.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MergeContent/MinIndexItemSelector.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MergeContent/Merger.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MergeContent/LookMerger.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/Possibilitie.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/MovementIcon.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/InputReplacementIPosition.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/InputRemovalItems.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/CraneDestroyer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/PossibilitieBulldozer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/PossibilitieReplace.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/Storage.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/ReplacementPosition.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/RemovalItems.cs" />
       </list>
     </option>
   </component>
@@ -365,7 +373,7 @@
       <workItem from="1719136970153" duration="5000" />
       <workItem from="1719137133779" duration="16763000" />
       <workItem from="1719209511924" duration="23168000" />
-      <workItem from="1719299040921" duration="6944000" />
+      <workItem from="1719299040921" duration="7744000" />
     </task>
     <servers />
   </component>

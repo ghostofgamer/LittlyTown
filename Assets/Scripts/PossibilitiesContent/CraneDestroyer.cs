@@ -13,15 +13,15 @@ namespace PossibilitiesContent
 
         private void Start()
         {
-            _boxCollider=GetComponent<BoxCollider>();
+            _boxCollider = GetComponent<BoxCollider>();
             _item = GetComponent<Item>();
         }
 
         public void Destroy()
         {
-            if(_coroutine!=null)
+            if (_coroutine != null)
                 StopCoroutine(_coroutine);
-        
+
             _coroutine = StartCoroutine(StartDestroy());
         }
 

@@ -18,13 +18,14 @@ namespace PossibilitiesContent
         private Vector3 _jumpPosition;
         private Coroutine _coroutine;
         private CanvasGroup _canvasGroup;
-        
+        private float _factor = 1f;
+
         public event Action<int> MovementCompleted;
 
         private void Start()
         {
             _targetPosition = _targetPossibility.localPosition;
-            _jumpPosition = _startPosition + new Vector3(1,1,0) * _jumpHeight;
+            _jumpPosition = _startPosition + new Vector3(_factor, _factor, 0) * _jumpHeight;
             _canvasGroup = GetComponent<CanvasGroup>();
             _canvasGroup.alpha = 0;
         }
@@ -39,11 +40,11 @@ namespace PossibilitiesContent
 
             _coroutine = StartCoroutine(Move(value));
         }
-        
+
         private IEnumerator Move(int value)
         {
             _elapsedTime = 0f;
-            _canvasGroup.alpha = 1;
+            _canvasGroup.alpha = _factor;
             _startPosition = Vector3.zero;
             yield return MoveToPosition(_jumpPosition, _durationJump);
             _startPosition = gameObject.transform.localPosition;
@@ -58,7 +59,8 @@ namespace PossibilitiesContent
                 while (_elapsedTime < duration)
                 {
                     _elapsedTime += Time.deltaTime;
-                    gameObject.transform.localPosition = Vector3.Lerp(_startPosition, targetPosition, _elapsedTime / duration);
+                    gameObject.transform.localPosition =
+                        Vector3.Lerp(_startPosition, targetPosition, _elapsedTime / duration);
                     yield return null;
                 }
             }

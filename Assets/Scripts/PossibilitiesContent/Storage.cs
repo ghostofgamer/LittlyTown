@@ -52,6 +52,29 @@ namespace PossibilitiesContent
             StoragePlaceChanged?.Invoke();
         }
 
+        public void SetItem(Item item)
+        {
+            if (item != null)
+            {
+                _image.gameObject.SetActive(true);
+                _currentItem = item;
+                _temporaryItem = null;
+                _image.sprite = _currentItem.ItemDropDataSo.Icon;
+            }
+            else
+            {
+                _image.gameObject.SetActive(false);
+                CleatItem();
+                _image.sprite = null;
+            }
+        }
+
+        public void ClearItem()
+        {
+            CleatItem();
+            _image.gameObject.SetActive(false);
+        }
+
         private void KeepCurrentItem()
         {
             _currentItem = _itemKeeper.SelectedObject;
@@ -65,29 +88,10 @@ namespace PossibilitiesContent
             _image.sprite = _currentItem.ItemDropDataSo.Icon;
         }
 
-        public void SetItem(Item item)
-        {
-            if (item != null)
-            {
-                _image.gameObject.SetActive(true);
-                _currentItem = item;
-                _temporaryItem = null;
-                _image.sprite = _currentItem.ItemDropDataSo.Icon;
-            }
-            else
-            {
-                _image.gameObject.SetActive(false);
-                _currentItem = null;
-                _temporaryItem = null;
-                _image.sprite = null;
-            }
-        }
-
-        public void ClearItem()
+        private void CleatItem()
         {
             _currentItem = null;
             _temporaryItem = null;
-            _image.gameObject.SetActive(false);
         }
     }
 }

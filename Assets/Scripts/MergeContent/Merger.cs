@@ -40,7 +40,7 @@ namespace MergeContent
             _matchItems = matchItems;
             _currentItem = currentPosition.Item;
 
-            foreach (var item in _matchItems)
+            foreach (Item item in _matchItems)
             {
                 item.Deactivation();
                 item.GetComponent<ItemMoving>().MoveTarget(currentPosition.transform.position);
@@ -54,13 +54,13 @@ namespace MergeContent
         {
             yield return _pauseBeforeMerge;
             ClearPosition();
-            
+
             if (_currentItem.ItemName == Items.Crane)
                 _currentItem = _targetItem[targetItem];
 
             Item item = Instantiate(_targetItem[targetItem].NextItem, currentPosition.transform.position,
                 Quaternion.identity, _initializator.CurrentMap.ItemsContainer);
-            ItemActivation(currentPosition,item);
+            ItemActivation(currentPosition, item);
             yield return _waitForSeconds;
             Merged?.Invoke(_matchPositions.Count, _currentItem.Reward, currentPosition);
             _lookMerger.LookAround(currentPosition, item);
@@ -69,7 +69,7 @@ namespace MergeContent
             ItemMergered?.Invoke(item);
         }
 
-        private void ItemActivation(ItemPosition currentPosition,Item item)
+        private void ItemActivation(ItemPosition currentPosition, Item item)
         {
             if (item.TryGetComponent(out TreasureChest treasureChest))
                 treasureChest.Init(_goldWallet);

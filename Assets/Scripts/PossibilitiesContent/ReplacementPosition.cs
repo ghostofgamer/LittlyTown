@@ -21,7 +21,7 @@ namespace PossibilitiesContent
         private Coroutine _coroutine;
         private Item _selectedObject;
         private float _offset = 3f;
-        private bool _firstSelect = false;
+        private bool _firstSelect;
         private ItemPosition _firstItemPosition;
         private ItemPosition _secondItemPosition;
         private ItemPosition _temporaryItemPosition;
@@ -29,14 +29,17 @@ namespace PossibilitiesContent
         private Item _secondItem;
         private Item _temporaryItem;
         private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.1f);
+        private RaycastHit _hit;
+        private Ray _ray;
+        private Vector3 _position;
 
         public event Action PositionsChanged;
 
         public event Action PositionChanging;
 
         public event Action<ItemPosition, ItemPosition> PositionItemsChanging;
-        
-        public bool IsWorking { get;private  set; }
+
+        public bool IsWorking { get; private set; }
 
         private void OnEnable()
         {
@@ -58,16 +61,15 @@ namespace PossibilitiesContent
 
         public void ActivateVisualPosition()
         {
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            _ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            if ((Physics.Raycast(ray, out hit, Mathf.Infinity, _layerMask)))
+            if ((Physics.Raycast(_ray, out _hit, Mathf.Infinity, _layerMask)))
             {
-                if (hit.transform.gameObject.TryGetComponent(out ItemPosition itemPosition))
+                if (_hit.transform.gameObject.TryGetComponent(out ItemPosition itemPosition))
                     itemPosition.GetComponent<VisualItemPosition>().ActivateVisual();
             }
         }
-        
+
         public void StartReplace()
         {
             if (_coroutine != null)
@@ -78,12 +80,11 @@ namespace PossibilitiesContent
 
         private IEnumerator Replace()
         {
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            _ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            if ((Physics.Raycast(ray, out hit, Mathf.Infinity, _layerMask)))
+            if ((Physics.Raycast(_ray, out _hit, Mathf.Infinity, _layerMask)))
             {
-                if (hit.transform.gameObject.TryGetComponent(out ItemPosition itemPosition))
+                if (_hit.transform.gameObject.TryGetComponent(out ItemPosition itemPosition))
                 {
                     if (!_firstSelect && itemPosition.IsBusy && itemPosition.Item != null)
                         SetFirstPosition(itemPosition);
@@ -143,19 +144,19 @@ namespace PossibilitiesContent
             _firstItem = null;
             _firstItemPosition = null;
             _audioSource.PlayOneShot(_audioSource.clip);
-        }        
-        
-        private void SetFirstPosition(ItemPosition itemPosition )
+        }
+
+        private void SetFirstPosition(ItemPosition itemPosition)
         {
             _firstSelect = true;
             _firstItemPosition = itemPosition;
             _firstItem = itemPosition.Item;
-            Vector3 position = _firstItem.transform.position;
-            position = new Vector3(position.x, position.y + _offset, position.z);
+            _position = _firstItem.transform.position;
+            _position = new Vector3(_position.x, _position.y + _offset, _position.z);
             _firstItem.ClearPosition();
-            _firstItem.transform.position = position;
+            _firstItem.transform.position = _position;
         }
-        
+
         private void ChangePosition(Item item, ItemPosition itemPosition)
         {
             item.ClearPosition();

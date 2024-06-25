@@ -20,7 +20,7 @@ namespace PossibilitiesContent
             PriceChanged?.Invoke(Price);
         }
 
-        public virtual void IncreasePrice()
+        public void IncreasePrice()
         {
             Price = Mathf.RoundToInt(Price * _priceMultiplier);
             PriceChanged?.Invoke(Price);

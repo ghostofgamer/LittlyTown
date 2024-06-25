@@ -5,9 +5,9 @@ namespace PossibilitiesContent
     public class InputReplacementPosition : MonoBehaviour
     {
         [SerializeField] private ReplacementPosition _replacementPosition;
-    
+
         private bool _isLooking;
-    
+
         private void Update()
         {
             if (!_replacementPosition.IsWorking)
@@ -15,7 +15,7 @@ namespace PossibilitiesContent
 
             if (Input.GetMouseButtonDown(0))
                 _isLooking = true;
-            
+
             if (Input.GetMouseButtonUp(0))
             {
                 _isLooking = false;

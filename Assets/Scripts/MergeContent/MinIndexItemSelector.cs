@@ -13,7 +13,7 @@ namespace MergeContent
         public List<Item> GetTemporaryItems(ItemPosition[] itemPositions)
         {
             _temporaryItems.Clear();
-        
+
             foreach (var arroundPosition in itemPositions)
             {
                 if (arroundPosition == null)
@@ -23,9 +23,9 @@ namespace MergeContent
                     _temporaryItems.Add(arroundPosition.Item);
             }
 
-            return _temporaryItems ;
+            return _temporaryItems;
         }
-    
+
         public Item GetItemMinIndex(ItemPosition[] itemPositions)
         {
             return GetItemMinIndex(GetTemporaryItems(itemPositions));

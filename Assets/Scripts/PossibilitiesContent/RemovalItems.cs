@@ -18,6 +18,8 @@ namespace PossibilitiesContent
         private int _layer = 3;
         private Coroutine _coroutine;
         private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.15f);
+        private RaycastHit _hit;
+        private Ray _ray;
 
         public event Action Removed;
 
@@ -47,12 +49,11 @@ namespace PossibilitiesContent
 
         public void ActivateAnimation()
         {
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            _ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            if ((Physics.Raycast(ray, out hit, Mathf.Infinity, _layerMask)))
+            if ((Physics.Raycast(_ray, out _hit, Mathf.Infinity, _layerMask)))
             {
-                if (hit.transform.gameObject.TryGetComponent(out ItemPosition itemPosition))
+                if (_hit.transform.gameObject.TryGetComponent(out ItemPosition itemPosition))
                 {
                     if (itemPosition.IsBusy && !itemPosition.IsWater)
                     {
@@ -77,12 +78,11 @@ namespace PossibilitiesContent
 
         private IEnumerator Remove()
         {
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            _ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            if ((Physics.Raycast(ray, out hit, Mathf.Infinity, _layerMask)))
+            if ((Physics.Raycast(_ray, out _hit, Mathf.Infinity, _layerMask)))
             {
-                if (hit.transform.gameObject.TryGetComponent(out ItemPosition itemPosition) && itemPosition.IsBusy)
+                if (_hit.transform.gameObject.TryGetComponent(out ItemPosition itemPosition) && itemPosition.IsBusy)
                 {
                     ItemRemoved?.Invoke(itemPosition.Item);
                     itemPosition.Item.Deactivation();
