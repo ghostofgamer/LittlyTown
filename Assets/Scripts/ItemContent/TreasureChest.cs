@@ -23,7 +23,8 @@ namespace ItemContent
         {
             if (_rewardText.enabled)
             {
-                _rewardText.transform.LookAt(Camera.main.transform.position);
+                if (Camera.main is not null)
+                    _rewardText.transform.LookAt(Camera.main.transform.position);
                 _rewardText.transform.rotation = Quaternion.LookRotation(-_rewardText.transform.forward);
             }
         }

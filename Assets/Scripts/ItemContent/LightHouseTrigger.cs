@@ -53,7 +53,7 @@ namespace ItemContent
         {
             foreach (var house in _houses)
                 house.ResetIncome();
-            
+
             _houses.Clear();
             _housesToRemove.Clear();
         }

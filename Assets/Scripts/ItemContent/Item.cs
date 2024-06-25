@@ -2,7 +2,6 @@ using System;
 using Enums;
 using ItemPositionContent;
 using ItemSO;
-using TMPro;
 using UI;
 using UnityEngine;
 
@@ -24,7 +23,7 @@ namespace ItemContent
         [SerializeField] private bool _isBigHouse;
 
         public event Action Activated;
-        
+
         public event Action Deactivated;
 
         public int StartPrice => _startPrice;
@@ -83,19 +82,16 @@ namespace ItemContent
 
         public void SetPrice(int price)
         {
-            Debug.Log("SetPrice");
             Price = price;
         }
 
         public void IncreasePrice()
         {
-            Debug.Log("SetIncreasePrice");
             Price = Mathf.RoundToInt(Price * _priceMultiplier);
         }
 
         public void SetInitialPrice()
         {
-            Debug.Log("SetInitialPrice");
             Price = _startPrice;
         }
     }

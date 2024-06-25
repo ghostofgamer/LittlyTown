@@ -11,12 +11,12 @@ namespace ItemContent
         private Coroutine _coroutineCyclically;
         private float _durationMoveTarget = 1f;
         private float _durationMoveCyclically = 0.3f;
-        private float _elapsedTime = 0f;
+        private float _elapsedTime;
         private float _progress;
         private Vector3 _direction;
         private Vector3 _target;
         private float _distanceFactor = 0.35f;
-        private bool _isMoving = false;
+        private bool _isMoving;
 
         public void StopMove()
         {

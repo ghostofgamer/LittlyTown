@@ -1,4 +1,3 @@
-using System;
 using AnimationContent;
 using UnityEngine;
 
@@ -29,7 +28,7 @@ namespace ItemContent
 
             if (_item.IsActive && _item.ItemPosition != null)
                 OnStopAnimation();
-            
+
             if (_item.IsActive)
                 OnStopAnimation();
         }

@@ -20,8 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="099b8a6d-6b1c-4473-babb-d7d2ffb7e44f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ExtensionContent/ExtansionMapInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ExtensionContent/ExtansionMapInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ExtensionContent/ExtensionMap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ExtensionContent/ExtensionMap.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/InitializationContent/Bootstrap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/InitializationContent/Bootstrap.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/InitializationContent/Initializator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/InitializationContent/Initializator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemContent/House.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemContent/House.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemContent/Item.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemContent/Item.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemContent/ItemAnimation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemContent/ItemAnimation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemContent/ItemMoving.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemContent/ItemMoving.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemContent/LightHouseTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemContent/LightHouseTrigger.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemContent/TreasureChest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemContent/TreasureChest.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,20 +193,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/PossibilitiesFiles/DeleteButton.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/PossibilitiesFiles/BuyPossibilitieButton.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/PossibilitiesFiles/AdditionalPossibilitiesButton.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/SandBoxButtons/ChangeFunctionalityButton.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/SandBoxButtons/BuildButton.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/SettingsButtonContent/SnapRotationChangerButton.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/SettingsButtonContent/SettingsChangeButton.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/SettingsButtonContent/OrthographicButton.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/SettingsButtonContent/MixerButton.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/StartBonusesButtons/BonusesButton.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/StartBonusesButtons/BonusBulldozersButton.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/MapsContent/InputChooseMap.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/MapsContent/MapGenerator.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/MapsContent/StartMap.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Road/RoadGenerator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/SandBoxScreen.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/ItemScreen.cs" />
@@ -237,6 +230,20 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/EnvironmentContent/EnvironmentMovement.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ExtensionContent/ExtansionMapInfo.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ExtensionContent/ExtensionMap.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GoalContent/GoalsCounter.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GoalContent/GoalRemovalItem.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GoalContent/GoalMergeItem.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GoalContent/GoalBuildItem.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GoalContent/GoalAnimation.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GoalContent/Goal.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/InitializationContent/Initializator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/InitializationContent/Bootstrap.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ItemContent/TreasureChest.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ItemContent/LightHouseTrigger.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ItemContent/ItemMoving.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ItemContent/ItemAnimation.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ItemContent/Item.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ItemContent/House.cs" />
       </list>
     </option>
   </component>
@@ -361,7 +368,7 @@
       <workItem from="1719136970153" duration="5000" />
       <workItem from="1719137133779" duration="16763000" />
       <workItem from="1719209511924" duration="23168000" />
-      <workItem from="1719299040921" duration="4312000" />
+      <workItem from="1719299040921" duration="5277000" />
     </task>
     <servers />
   </component>

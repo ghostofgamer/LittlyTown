@@ -5,7 +5,7 @@ namespace ItemContent
     [RequireComponent(typeof(Item))]
     public class House : MonoBehaviour
     {
-        [SerializeField ]private int _income = 10;
+        [SerializeField] private int _income = 10;
 
         private Item _item;
         private int _baseIncome;
