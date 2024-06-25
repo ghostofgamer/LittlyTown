@@ -11,16 +11,16 @@ namespace SpawnContent
     public class DropGenerator : MonoBehaviour
     {
         [SerializeField] private Image _image;
-        [SerializeField] private List<ItemDropDataSO> _itemDropsSO;
+        [SerializeField] private List<ItemDropDataSo> _itemDropsSO;
         [SerializeField] private StartMap _startMap;
     
         private int _currentLevel;
         private Item _currentItem;
         private Item _nextItem;
 
-        public ItemDropDataSO ItemDropData { get; private set; }
+        public ItemDropDataSo ItemDropData { get; private set; }
         
-        public ItemDropDataSO ItemDropDataNew { get; private set; }
+        public ItemDropDataSo ItemDropDataNew { get; private set; }
 
         private void Awake()
         {
@@ -69,11 +69,11 @@ namespace SpawnContent
             _currentLevel = 0;
         }
 
-        private ItemDropDataSO DropItem()
+        private ItemDropDataSo DropItem()
         {
             float totalChance = 0f;
 
-            foreach (ItemDropDataSO itemDrop in _itemDropsSO)
+            foreach (ItemDropDataSo itemDrop in _itemDropsSO)
             {
                 float dropChance = CalculateDropChance(itemDrop, _currentLevel);
                 totalChance += dropChance;
@@ -95,7 +95,7 @@ namespace SpawnContent
             return _itemDropsSO[0];
         }
 
-        private float CalculateDropChance(ItemDropDataSO itemDrop, int level)
+        private float CalculateDropChance(ItemDropDataSo itemDrop, int level)
         {
             float dropChance = itemDrop.BaseDropChance;
             dropChance += level * itemDrop.LevelIncreaseFactor;

@@ -75,7 +75,7 @@ namespace Keeper
             StartPosition = itemPosition;
             SelectedObject.transform.position = itemPosition.transform.position;
         }
-        
+
         public void ClearAll()
         {
             if (SelectedObject != null)

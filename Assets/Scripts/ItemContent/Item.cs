@@ -13,7 +13,7 @@ namespace ItemContent
         [SerializeField] private Items _itemName;
         [SerializeField] private Item _nextItem;
         [SerializeField] private int _reward;
-        [SerializeField] private ItemDropDataSO _itemDropDataSo;
+        [SerializeField] private ItemDropDataSo _itemDropDataSo;
         [SerializeField] private bool _isHouse;
         [SerializeField] private bool _isLightHouse;
         [SerializeField] private int _gold;
@@ -48,7 +48,7 @@ namespace ItemContent
 
         public int Gold => _gold;
 
-        public ItemDropDataSO ItemDropDataSo => _itemDropDataSo;
+        public ItemDropDataSo ItemDropDataSo => _itemDropDataSo;
 
         public ItemPosition ItemPosition { get; private set; }
 

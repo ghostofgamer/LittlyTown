@@ -14,7 +14,6 @@ using SpawnContent;
 using UI;
 using UI.Screens;
 using UnityEngine;
-using UnityEngine.UIElements;
 using Wallets;
 
 namespace Keeper
@@ -47,41 +46,27 @@ namespace Keeper
         private int _currentStep = -1;
         private Coroutine _coroutine;
         private SaveData _saveData;
-        private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.1f); 
+        private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.1f);
+        private float _maxCountSaveHistory = 1;
 
         public event Action<int> StepChanged;
 
         public int CurrentStep => _currentStep;
 
-
         private void OnEnable()
         {
-            _itemThrower.StepCompleted += SaveHistory;
-            _completeScoreScreen.ScoreCompleted += ResetSteps;
-            _removalItems.Removing += SaveHistory;
-            _replacementPosition.PositionChanging += SaveHistory;
+            _itemThrower.StepCompleted += OnSaveHistory;
+            _completeScoreScreen.ScoreCompleted += OnResetSteps;
+            _removalItems.Removing += OnSaveHistory;
+            _replacementPosition.PositionChanging += OnSaveHistory;
         }
 
         private void OnDisable()
         {
-            _itemThrower.StepCompleted -= SaveHistory;
-            _completeScoreScreen.ScoreCompleted -= ResetSteps;
-            _removalItems.Removing -= SaveHistory;
-            _replacementPosition.PositionChanging -= SaveHistory;
-        }
-
-        private void SaveHistoryData()
-        {
-            SaveHistoryData saveHistoryData = new SaveHistoryData();
-            saveHistoryData.savesHistory = _savesHistory;
-            string jsonData = JsonUtility.ToJson(saveHistoryData);
-            PlayerPrefs.SetString(SaveHistoryName + _initializator.Index, jsonData);
-            PlayerPrefs.Save();
-        }
-
-        public void ClearList()
-        {
-            _savesHistory.Clear();
+            _itemThrower.StepCompleted -= OnSaveHistory;
+            _completeScoreScreen.ScoreCompleted -= OnResetSteps;
+            _removalItems.Removing -= OnSaveHistory;
+            _replacementPosition.PositionChanging -= OnSaveHistory;
         }
 
         public void LoadHistoryData()
@@ -105,9 +90,34 @@ namespace Keeper
             }
         }
 
-        private void SaveHistory()
+        public void CancelLastStep()
         {
-            if (_savesHistory.Count >= 1)
+            if (_currentStep <= 0)
+                return;
+
+            if (_coroutine != null)
+                StopCoroutine(_coroutine);
+
+            _coroutine = StartCoroutine(StartCancelling());
+        }
+
+        private void SaveHistoryData()
+        {
+            SaveHistoryData saveHistoryData = new SaveHistoryData();
+            saveHistoryData.savesHistory = _savesHistory;
+            string jsonData = JsonUtility.ToJson(saveHistoryData);
+            PlayerPrefs.SetString(SaveHistoryName + _initializator.Index, jsonData);
+            PlayerPrefs.Save();
+        }
+
+        public void ClearList()
+        {
+            _savesHistory.Clear();
+        }
+
+        private void OnSaveHistory()
+        {
+            if (_savesHistory.Count >= _maxCountSaveHistory)
                 _savesHistory.Clear();
 
             SaveData saveDate = _itemsStorage.GetSaveData();
@@ -117,9 +127,9 @@ namespace Keeper
             StepChanged?.Invoke(_currentStep);
         }
 
-        private void SaveHistory(ItemPosition itemPosition)
+        private void OnSaveHistory(ItemPosition itemPosition)
         {
-            if (_savesHistory.Count >= 1)
+            if (_savesHistory.Count >= _maxCountSaveHistory)
                 _savesHistory.Clear();
 
             if (PlayerPrefs.HasKey(ItemStorageSave + _initializator.CurrentMap.Index))
@@ -135,23 +145,12 @@ namespace Keeper
             SaveHistoryData();
         }
 
-        public void CancelLastStep()
-        {
-            if (_currentStep <= 0)
-                return;
-
-            if (_coroutine != null)
-                StopCoroutine(_coroutine);
-
-            _coroutine = StartCoroutine(StartCancelling());
-        }
-
         private IEnumerator StartCancelling()
         {
             if (_itemKeeper.SelectedObject != null)
                 _itemKeeper.SelectedObject.gameObject.SetActive(false);
 
-            foreach (var itemPosition in _initializator.ItemPositions)
+            foreach (ItemPosition itemPosition in _initializator.ItemPositions)
             {
                 if (itemPosition.Item != null)
                 {
@@ -166,14 +165,13 @@ namespace Keeper
             _currentStep--;
             SaveData saveData = _savesHistory[_currentStep];
 
-            foreach (var itemData in saveData.ItemDatas)
+            foreach (ItemData itemData in saveData.ItemDatas)
             {
                 CreateItem(itemData);
                 yield return _waitForSeconds;
             }
 
             InitValues(saveData);
-
             yield return null;
             _roadGenerator.OnGeneration();
             _currentStep = 0;
@@ -198,7 +196,7 @@ namespace Keeper
             _audioSource.PlayOneShot(_audioSource.clip);
         }
 
-        private void InitValues(SaveData  saveData)
+        private void InitValues(SaveData saveData)
         {
             if (saveData.TemporaryItem.ItemName != Items.Empty)
             {
@@ -220,13 +218,13 @@ namespace Keeper
             _itemKeeper.SetItem(selectItem, selectItem.ItemPosition);
             selectItem.gameObject.SetActive(true);
             _goldWallet.SetValue(saveData.GoldValue);
-            
-            foreach (var item in saveData.ItemDatasPrices)
+
+            foreach (ItemData item in saveData.ItemDatasPrices)
                 _shopItems.SetPrice(item.ItemName, item.Price);
-            
+
             _shopItems.SetPricePossibilitie(saveData.PossibilitiesItemsData.PriceBulldozer,
                 saveData.PossibilitiesItemsData.PriceReplace);
-            
+
             if (saveData.StorageItemData.ItemName != Items.Empty)
             {
                 Item storageItem = Instantiate(GetItem(saveData.StorageItemData.ItemName),
@@ -244,10 +242,10 @@ namespace Keeper
             _goldWallet.SetValue(saveData.GoldValue);
             _moveCounter.SetValue(saveData.MoveCount);
         }
-        
+
         private Item GetItem(Items itemName)
         {
-            foreach (var item in _items)
+            foreach (Item item in _items)
             {
                 if (item.ItemName == itemName)
                     return item;
@@ -256,7 +254,7 @@ namespace Keeper
             return null;
         }
 
-        private void ResetSteps()
+        private void OnResetSteps()
         {
             _currentStep = 0;
             StepChanged?.Invoke(_currentStep);

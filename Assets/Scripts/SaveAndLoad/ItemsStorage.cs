@@ -38,7 +38,7 @@ namespace SaveAndLoad
         private Coroutine _coroutineSignal;
         private Item _selectObject;
         private Item _temporaryObject;
-        private ItemDropDataSO _itemDropDataSO;
+        private ItemDropDataSo _itemDropDataSO;
         private SaveData _saveData;
     
         public Item SelectSaveItem { get; private set; }

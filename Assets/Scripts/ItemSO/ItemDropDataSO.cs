@@ -4,7 +4,7 @@ using UnityEngine;
 namespace ItemSO
 {
     [CreateAssetMenu(fileName = "New Item Drop Data", menuName = "Item Drop System/Item Drop Data")]
-    public class ItemDropDataSO : ScriptableObject
+    public class ItemDropDataSo : ScriptableObject
     {
         [SerializeField] private Sprite _icon;
         [SerializeField] private float _baseDropChance;

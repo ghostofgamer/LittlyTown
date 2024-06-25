@@ -20,9 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="099b8a6d-6b1c-4473-babb-d7d2ffb7e44f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemPositionContent/FinderPositions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemPositionContent/FinderPositions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemPositionContent/ItemPosition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemPositionContent/ItemPosition.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemPositionContent/VisualItemPosition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemPositionContent/VisualItemPosition.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemContent/Item.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemContent/Item.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemSO/ItemDropDataSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemSO/ItemDropDataSO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Keeper/ItemKeeper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Keeper/ItemKeeper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Keeper/MovesKeeper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Keeper/MovesKeeper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/ItemsStorage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/ItemsStorage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SpawnContent/DropGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SpawnContent/DropGenerator.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,11 +190,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/GameLevelScreen.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/ChooseMapScreen.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/FirstScreen.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/CollectionScreen.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/MapsContent/ChooseMap.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/InitializationContent/PlatformChecker.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ADS/RewardVideo.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ADS/RewardMove.cs" />
@@ -238,6 +236,11 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/ItemPositionContent/VisualItemPosition.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ItemPositionContent/ItemPosition.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ItemPositionContent/FinderPositions.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ItemSO/ItemDropDataSO.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SpawnContent/DropGenerator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/ItemsStorage.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Keeper/MovesKeeper.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Keeper/ItemKeeper.cs" />
       </list>
     </option>
   </component>
@@ -362,7 +365,7 @@
       <workItem from="1719136970153" duration="5000" />
       <workItem from="1719137133779" duration="16763000" />
       <workItem from="1719209511924" duration="23168000" />
-      <workItem from="1719299040921" duration="5641000" />
+      <workItem from="1719299040921" duration="6379000" />
     </task>
     <servers />
   </component>
