@@ -24,7 +24,11 @@ namespace CameraContent
         private float _cameraPositionFirstSceneY = 22.1f;
         private float _cameraPositionCollectionSceneY = 22.5f;
         private float _cameraPositionChooseSceneSceneY = 27.1f;
-        
+        private Vector3 _startPosition;
+        private Vector3 _targetPosition;
+        private float _perspectiveZoomGameScene = 50f;
+        private float _orthographicZoomGameScene = 10f;
+
         public float StandardOrthographicSize => _standardOrthographicSize;
 
         public void Init(int fovPerspective, int sizeOrthographic, int perspectiveZoomDownValue,
@@ -42,40 +46,40 @@ namespace CameraContent
 
         public void ZoomGameScene()
         {
-            StartCoroutine(50, 10,_cameraPositionGameSceneY);
+            StartCoroutine(_perspectiveZoomGameScene, _orthographicZoomGameScene, _cameraPositionGameSceneY);
         }
-        
+
         public void ZoomIn()
         {
-            StartCoroutine(_perspectiveZoomUpValue, _orthographicSizeZoomIn,_cameraPositionCollectionSceneY);
+            StartCoroutine(_perspectiveZoomUpValue, _orthographicSizeZoomIn, _cameraPositionCollectionSceneY);
         }
 
         public void ZoomOut()
         {
-            StartCoroutine(_perspectiveZoomDownValue, _orthographicSizeZoomOut,_cameraPositionChooseSceneSceneY);
+            StartCoroutine(_perspectiveZoomDownValue, _orthographicSizeZoomOut, _cameraPositionChooseSceneSceneY);
         }
 
         public void ResetZoom()
         {
-            StartCoroutine(_standardPerspectiveFOV, _standardOrthographicSize,_cameraPositionFirstSceneY);
+            StartCoroutine(_standardPerspectiveFOV, _standardOrthographicSize, _cameraPositionFirstSceneY);
         }
 
-        private void StartCoroutine(float perspectiveFovValue, float orthographicSizeValue,float positionY)
+        private void StartCoroutine(float perspectiveFovValue, float orthographicSizeValue, float positionY)
         {
             if (_coroutine != null)
                 StopCoroutine(_coroutine);
 
-            _coroutine = StartCoroutine(!_camera.orthographic
-                ? StartChangeZoom(perspectiveFovValue,positionY)
-                : StartChangeZoom(orthographicSizeValue,positionY));
+            _coroutine = StartCoroutine(!_camera.orthographic ? StartChangeZoom(perspectiveFovValue, positionY) : StartChangeZoom(orthographicSizeValue, positionY));
         }
 
-        private IEnumerator StartChangeZoom(float targetValue,float positionY)
+        private IEnumerator StartChangeZoom(float targetValue, float positionY)
         {
             _openButton.enabled = false;
             _elapsedTime = 0;
             _currentFOVValue = _camera.fieldOfView;
             _currentSizeValue = _camera.orthographicSize;
+            _startPosition = _camera.transform.position;
+            _targetPosition = new Vector3(_startPosition.x, positionY, _startPosition.z);
 
             while (_elapsedTime < _duration)
             {
@@ -86,10 +90,7 @@ namespace CameraContent
                 else
                     _camera.orthographicSize = Mathf.Lerp(_currentSizeValue, targetValue, _elapsedTime / _duration);
 
-                Vector3 startPosition = _camera.transform.position;
-                Vector3 targetPosition = new Vector3(startPosition.x,positionY,startPosition.z);
-                _camera.transform.position = Vector3.Lerp(startPosition,targetPosition,_elapsedTime / _duration);
-                
+                _camera.transform.position = Vector3.Lerp(_startPosition, _targetPosition, _elapsedTime / _duration);
                 yield return null;
             }
 
