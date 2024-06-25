@@ -83,7 +83,7 @@ namespace ExtensionContent
             }
 
             _initializator.SetPositions(_targetItemPositions);
-            _roadGenerator.TestGeneration(_targetItemPositions, _initializator.CurrentMap.RoadsContainer,
+            _roadGenerator.GenerationRoad(_targetItemPositions, _initializator.CurrentMap.RoadsContainer,
                 _initializator.CurrentMap);
             _index++;
             _extensionMapMovement.ChangePosition(_index, _currentMap.Mover);

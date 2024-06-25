@@ -16,7 +16,7 @@ namespace UI.Buttons
 
         [SerializeField] private ItemKeeper _itemKeeper;
         [SerializeField] private Save _save;
-        [SerializeField] private ItemsStorage _itemsStorage;
+        [SerializeField] private GameStorage _gameStorage;
         [SerializeField] private PossibilitiesCounter[] _possibilitiesCounters;
         [SerializeField] private PackageLittleTown _packageLittleTown;
         [SerializeField] private Initializator _initializator;
@@ -34,8 +34,8 @@ namespace UI.Buttons
         {
             _save.SetData(Map, _initializator.Index);
             _initializator.FillLists();
-            _itemsStorage.LoadDataInfo();
-            _itemKeeper.SetItem(_itemsStorage.SelectSaveItem, _itemsStorage.SelectSaveItem.ItemPosition);
+            _gameStorage.LoadDataInfo();
+            _itemKeeper.SetItem(_gameStorage.SelectSaveItem, _gameStorage.SelectSaveItem.ItemPosition);
             _itemKeeper.SwitchOn();
             _visualItemsDeactivator.SetPositions(_initializator.ItemPositions);
             _moveKeeper.LoadHistoryData();

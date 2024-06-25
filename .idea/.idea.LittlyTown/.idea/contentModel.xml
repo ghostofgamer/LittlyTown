@@ -1220,10 +1220,12 @@
             <e p="ItemPositiondata.cs" t="Include" />
             <e p="sandBoxEnvironment.cs" t="Include" />
             <e p="SandBoxEnvironmentChangeButton.cs" t="Include" />
+            <e p="SandBoxMovement.cs" t="Include" />
             <e p="SandBoxSaveData.cs" t="Include" />
             <e p="SandBoxStorage.cs" t="Include" />
           </e>
           <e p="SaveAndLoad" t="Include">
+            <e p="GameStorage.cs" t="Include" />
             <e p="GoalContent" t="Include">
               <e p="GoalData.cs" t="Include" />
               <e p="GoalSaver.cs" t="Include" />
@@ -1231,14 +1233,12 @@
             </e>
             <e p="ItemData.cs" t="Include" />
             <e p="ItemDropData.cs" t="Include" />
-            <e p="ItemsStorage.cs" t="Include" />
             <e p="Load.cs" t="Include" />
             <e p="PossibilitiesItemsData.cs" t="Include" />
             <e p="Save.cs" t="Include" />
             <e p="SaveData.cs" t="Include" />
             <e p="SaveHistoryData.cs" t="Include" />
             <e p="SelectItemData.cs" t="Include" />
-            <e p="ShopItemData.cs" t="Include" />
             <e p="StorageItemData.cs" t="Include" />
           </e>
           <e p="SDK" t="Include">
@@ -1315,7 +1315,6 @@
                 <e p="SettingsChangeButton.cs" t="Include" />
                 <e p="SnapRotationChangerButton.cs" t="Include" />
               </e>
-              <e p="SettingsContent" t="Include" />
               <e p="StartBonusesButtons" t="Include">
                 <e p="BonusBulldozersButton.cs" t="Include" />
                 <e p="BonusesButton.cs" t="Include" />

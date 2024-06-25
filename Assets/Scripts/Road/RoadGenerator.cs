@@ -16,13 +16,11 @@ namespace Road
     {
         [SerializeField] private Initializator _initializator;
         [SerializeField] private Spawner _spawner;
-        [SerializeField] private ItemPosition[] _itemPositions;
         [SerializeField] private Merger _merger;
-        [SerializeField] private Transform _container;
         [SerializeField] private RemovalItems _removalItems;
         [SerializeField] private ReplacementPosition _replacementPosition;
-
-        [Header("Tiles")] [SerializeField] private ItemPosition _angularTileUpRight;
+        [Header("Tiles")]
+        [SerializeField] private ItemPosition _angularTileUpRight;
         [SerializeField] private ItemPosition _angularTileUpLeft;
         [SerializeField] private ItemPosition _angularTileDownLeft;
         [SerializeField] private ItemPosition _angularTileDownRight;
@@ -38,7 +36,6 @@ namespace Road
         [SerializeField] private ItemPosition _crossroadsTileLeft;
         [SerializeField] private ItemPosition _crossroadsTileRight;
         [SerializeField] private ItemPosition _crossroadsTileDown;
-
         [SerializeField] private ItemPosition _roadTileGrey;
         [SerializeField] private ItemPosition _roadTileUpRight;
         [SerializeField] private ItemPosition _roadTileUpLeft;
@@ -130,19 +127,46 @@ namespace Road
             _coroutine = StartCoroutine(CreateRoad());
         }
 
-        /*public void DeactivateRoad()
+        public void GenerationRoad(List<ItemPosition> itemPositions, Transform container, Map map)
         {
-            Transform[] children = _container.GetComponentsInChildren<Transform>(true);
+            StartCoroutine(CreateRoadAnotherMap(itemPositions, container, map));
+        }
 
-            if (children.Length > 0)
+        public void GenerateSandBoxTrail(ItemPosition[] itemPositions, Transform container)
+        {
+            List<ItemPosition> positionsTrail = new List<ItemPosition>();
+
+            foreach (var itemPosition in itemPositions)
             {
-                foreach (Transform child in children)
-                {
-                    if (child != _container.transform && child.GetComponent<RoadTile>())
-                        child.gameObject.SetActive(false);
-                }
+                if (itemPosition.IsTrail)
+                    positionsTrail.Add(itemPosition);
             }
-        }*/
+
+            List<ItemPosition> positionsRoad = new List<ItemPosition>();
+
+            foreach (var itemPosition in itemPositions)
+            {
+                if (itemPosition.IsRoad)
+                    positionsRoad.Add(itemPosition);
+            }
+
+            foreach (var position in positionsTrail)
+            {
+                string trail = CheckSurroundingTilesSandBox(position);
+                ItemPosition selectedTile =
+                    Instantiate(_tileConfigurations[trail], position.transform.position, container.rotation, container);
+                position.SetRoad(selectedTile);
+            }
+
+            foreach (var position in positionsRoad)
+            {
+                string trail = CheckSurroundingTilesRoadsSandBox(position);
+                ItemPosition selectedTile =
+                    Instantiate(_tileConfigurations[trail], position.transform.position, container.rotation, container);
+
+                position.SetRoad(selectedTile);
+            }
+        }
 
         private IEnumerator CreateRoad()
         {
@@ -151,7 +175,6 @@ namespace Road
 
             foreach (ItemPosition itemPosition in _initializator.ItemPositions)
             {
-
                 if (itemPosition.IsWater || itemPosition.IsElevation)
                     continue;
 
@@ -301,12 +324,7 @@ namespace Road
             return surroundingTiles;
         }
 
-        public void TestGeneration(List<ItemPosition> itemPositions, Transform container, Map map)
-        {
-            StartCoroutine(TestCreateRoad(itemPositions, container, map));
-        }
-
-        private IEnumerator TestCreateRoad(List<ItemPosition> itemPositions, Transform container, Map map)
+        private IEnumerator CreateRoadAnotherMap(List<ItemPosition> itemPositions, Transform container, Map map)
         {
             yield return _waitForSeconds;
             List<ItemPosition> positions = new List<ItemPosition>();
@@ -399,42 +417,6 @@ namespace Road
 
             foreach (var itemPosition in secondItemPositionItem.RoadPositions)
                 itemPosition.DisableRoad();
-        }
-
-        public void GenerateSandBoxTrail(ItemPosition[] itemPositions, Transform container)
-        {
-            List<ItemPosition> positionsTrail = new List<ItemPosition>();
-
-            foreach (var itemPosition in itemPositions)
-            {
-                if (itemPosition.IsTrail)
-                    positionsTrail.Add(itemPosition);
-            }
-
-            List<ItemPosition> positionsRoad = new List<ItemPosition>();
-
-            foreach (var itemPosition in itemPositions)
-            {
-                if (itemPosition.IsRoad)
-                    positionsRoad.Add(itemPosition);
-            }
-
-            foreach (var position in positionsTrail)
-            {
-                string trail = CheckSurroundingTilesSandBox(position);
-                ItemPosition selectedTile =
-                    Instantiate(_tileConfigurations[trail], position.transform.position, container.rotation, container);
-                position.SetRoad(selectedTile);
-            }
-
-            foreach (var position in positionsRoad)
-            {
-                string trail = CheckSurroundingTilesRoadsSandBox(position);
-                ItemPosition selectedTile =
-                    Instantiate(_tileConfigurations[trail], position.transform.position, container.rotation, container);
-
-                position.SetRoad(selectedTile);
-            }
         }
 
         private string CheckSurroundingTilesSandBox(ItemPosition itemPosition)

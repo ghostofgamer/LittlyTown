@@ -46,6 +46,18 @@ namespace MergeContent
             _spawner.LooksNeighbors -= CheckMatches;
         }
 
+        public void LookAround(ItemPosition itemPosition, Item item)
+        {
+            _isTryMerge = true;
+            CheckCoroutine(itemPosition, item);
+        }
+
+        public void StopMoveMatch()
+        {
+            foreach (var matchItem in _completeList)
+                matchItem.GetComponent<ItemMoving>().StopMove();
+        }
+
         private void CheckMatches(ItemPosition itemPosition, Item item)
         {
             if (itemPosition.IsWater || itemPosition.IsBusy)
@@ -57,12 +69,6 @@ namespace MergeContent
 
             _isTryMerge = false;
             _targetPosition.Clear();
-            CheckCoroutine(itemPosition, item);
-        }
-
-        public void LookAround(ItemPosition itemPosition, Item item)
-        {
-            _isTryMerge = true;
             CheckCoroutine(itemPosition, item);
         }
 
@@ -317,12 +323,6 @@ namespace MergeContent
                     arroundPosition.Item.ItemName.Equals(item.ItemName))
                     ActivationLookPositions(arroundPosition, item);
             }
-        }
-
-        public void StopMoveMatch()
-        {
-            foreach (var matchItem in _completeList)
-                matchItem.GetComponent<ItemMoving>().StopMove();
         }
 
         private void ClearLists()

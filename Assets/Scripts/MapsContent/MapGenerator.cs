@@ -20,10 +20,8 @@ namespace MapsContent
 
         [SerializeField] private Transform[] _environments;
         [SerializeField] private Initializator _initializator;
-        [SerializeField] private Territory[] _territorys;
         [SerializeField] private Item[] _items;
         [SerializeField] private RoadGenerator _roadGenerator;
-        [SerializeField] private FinderPositions[] _finderPositions;
         [SerializeField] private Spawner _spawner;
         [SerializeField] private ExtensionMap _extensionMap;
 
@@ -34,7 +32,6 @@ namespace MapsContent
         private WaitForSeconds _waitForSecondsMoment = new WaitForSeconds(0.1f);
         private List<ItemPosition> _clearPositions;
         private int _randomIndex;
-
 
         public void GenerateMap(int index)
         {
@@ -85,40 +82,6 @@ namespace MapsContent
                 _environments[index].GetComponent<Map>());
         }
 
-        /*
-        public void Generation()
-        {
-            foreach (var territory in _territorys)
-            {
-                territory.gameObject.SetActive(false);
-                _roadGenerator.DeactivateRoad();
-            }
-
-            StartCoroutine(StartGenerationTerritory());
-        }
-
-        private IEnumerator StartGenerationTerritory()
-        {
-            foreach (var territory in _territorys)
-            {
-                territory.gameObject.SetActive(true);
-                territory.PositionActivation();
-                yield return _waitForSeconds;
-            }
-
-            yield return null;
-
-            foreach (var finderPosition in _finderPositions)
-                finderPosition.FindNeighbor();
-
-            yield return _waitForSecondsMoment;
-            _roadGenerator.OnGeneration();
-            yield return _waitForSecondsMoment;
-            _spawner.OnCreateItem();
-            yield return _waitForSeconds;
-        }
-        */
-
         public void GenerationWithoutSpawn(List<Territory> territories, List<FinderPositions> finderPositions,
             List<ItemPosition> itemPositions, Transform container, List<Item> startItems)
         {
@@ -151,7 +114,7 @@ namespace MapsContent
                 finderPosition.FindNeighbor();
 
             yield return _waitForSecondsMoment;
-            _roadGenerator.TestGeneration(itemPositions, container, _initializator.CurrentMap);
+            _roadGenerator.GenerationRoad(itemPositions, container, _initializator.CurrentMap);
         }
 
         public void FastMapGeneration(List<Territory> territories, List<FinderPositions> finderPositions,
@@ -168,7 +131,7 @@ namespace MapsContent
 
             if (PlayerPrefs.HasKey(ItemStorageSave + map.Index))
             {
-                LoadItems(saveData,map);
+                LoadItems(saveData, map);
             }
             else
             {
@@ -196,7 +159,7 @@ namespace MapsContent
                 }
             }
 
-            _roadGenerator.TestGeneration(itemPositions, container, map);
+            _roadGenerator.GenerationRoad(itemPositions, container, map);
         }
 
 
@@ -237,7 +200,7 @@ namespace MapsContent
             }
 
             yield return _waitForSecondsMoment;
-            _roadGenerator.TestGeneration(_initializator.ItemPositions, _initializator.CurrentMap.RoadsContainer,
+            _roadGenerator.GenerationRoad(_initializator.ItemPositions, _initializator.CurrentMap.RoadsContainer,
                 _initializator.CurrentMap);
             yield return _waitForSecondsMoment;
             _spawner.OnCreateItem();
@@ -253,44 +216,6 @@ namespace MapsContent
 
             return null;
         }
-
-        /*public void TestVisualGeneration(List<Territory> territories, List<FinderPositions> finderPositions,
-            List<Item> startItems,
-            List<ItemPosition> itemPositions, Transform container)
-        {
-            foreach (var territory in territories)
-                territory.gameObject.SetActive(false);
-
-            StartCoroutine(StartTestVisualGenerationTerritory(territories, finderPositions, startItems, itemPositions,
-                container));
-        }
-
-        private IEnumerator StartTestVisualGenerationTerritory(List<Territory> territories,
-            List<FinderPositions> finderPositions,
-            List<Item> startItems,
-            List<ItemPosition> itemPositions, Transform container)
-        {
-            foreach (var territory in territories)
-            {
-                PositionActivation(territory);
-                yield return _waitForSeconds;
-            }
-
-            yield return null;
-
-            foreach (var item in startItems)
-            {
-                ArrangeItems(itemPositions, item, container);
-                yield return null;
-            }
-
-            foreach (var finderPosition in finderPositions)
-                finderPosition.FindNeighbor();
-
-            yield return _waitForSecondsMoment;
-            _roadGenerator.TestGeneration(_initializator.ItemPositions, _initializator.CurrentMap.RoadsContainer,
-                _initializator.CurrentMap);
-        }*/
 
         private void PositionActivation(Territory territory)
         {
@@ -311,7 +236,7 @@ namespace MapsContent
             newItem.Activation();
         }
 
-        private void LoadItems(SaveData saveData,Map map)
+        private void LoadItems(SaveData saveData, Map map)
         {
             string jsonData = PlayerPrefs.GetString(ItemStorageSave + map.Index);
             saveData = JsonUtility.FromJson<SaveData>(jsonData);

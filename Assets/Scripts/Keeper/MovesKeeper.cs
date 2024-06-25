@@ -25,7 +25,7 @@ namespace Keeper
 
         [SerializeField] private Initializator _initializator;
         [SerializeField] private ItemKeeper _itemKeeper;
-        [SerializeField] private ItemsStorage _itemsStorage;
+        [SerializeField] private GameStorage _gameStorage;
         [SerializeField] private Item[] _items;
         [SerializeField] private PossibilitiesCounter _replaceCounter;
         [SerializeField] private PossibilitiesCounter _bulldozerCounter;
@@ -120,7 +120,7 @@ namespace Keeper
             if (_savesHistory.Count >= _maxCountSaveHistory)
                 _savesHistory.Clear();
 
-            SaveData saveDate = _itemsStorage.GetSaveData();
+            SaveData saveDate = _gameStorage.GetSaveData();
             _savesHistory.Add(saveDate);
             _currentStep = _savesHistory.Count;
             SaveHistoryData();

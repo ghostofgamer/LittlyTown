@@ -22,9 +22,9 @@ namespace InitializationContent
         private List<Territory> _extensionFilterTerritories = new List<Territory>();
         private int _index;
         private bool _initExtension;
-        
+
         public event Action IndexChanged;
-        
+
         public int Index => _index;
 
         public int AmountMaps { get; private set; }
@@ -73,14 +73,11 @@ namespace InitializationContent
                 return;
             }
 
-            ItemPositions = new List<ItemPosition>();
-            Territories = new List<Territory>();
-            FinderPositions = new List<FinderPositions>();
-
-        
+            CreateNewLists();
             CurrentMap = _environments[_index].GetComponent<Map>();
             Territory[] territories = _environments[_index].GetComponentsInChildren<Territory>(true);
-            FinderPositions[] finderPositionScripts = _environments[_index].GetComponentsInChildren<FinderPositions>(true);
+            FinderPositions[] finderPositionScripts =
+                _environments[_index].GetComponentsInChildren<FinderPositions>(true);
             ItemPosition[] itemPositions = _environments[_index].GetComponentsInChildren<ItemPosition>(true);
 
             foreach (var territory in territories)
@@ -105,96 +102,9 @@ namespace InitializationContent
             }
         }
 
-        private void ExtensionFillLists()
-        {
-            ItemPositions = new List<ItemPosition>();
-            Territories = new List<Territory>();
-            FinderPositions = new List<FinderPositions>();
-            _extensionFilterTerritories = new List<Territory>();
-            
-            CurrentMap = _environments[_index].GetComponent<Map>();
-
-            Territory[] territories = _environments[_index].GetComponentsInChildren<Territory>(true);
-
-            foreach (var territory in territories)
-            {
-                if (territory.IsExpanding)
-                {
-                    _extensionFilterTerritories.Add(territory);
-                }
-            }
-
-            int amount = _load.Get(ExtensionTerritory + CurrentMap.Index, 0);
-
-            for (int i = 0; i < amount; i++)
-            {
-                _extensionFilterTerritories[i].EnableOpened();
-            }
-
-            foreach (var territory in territories)
-            {
-                if (territory.IsExpanding && !territory.IsOpened)
-                {
-                    continue;
-                }
-
-                if (!Territories.Contains(territory) && !territory.IsExpanding ||
-                    !Territories.Contains(territory) && territory.IsOpened)
-                {
-                    Territories.Add(territory);
-                }
-            }
-
-            foreach (Territory territory in Territories)
-            {
-                FinderPositions[] finderPositionsInTerritory =
-                    territory.gameObject.GetComponentsInChildren<FinderPositions>(true);
-
-                foreach (FinderPositions finder in finderPositionsInTerritory)
-                {
-                    if (!FinderPositions.Contains(finder))
-                    {
-                        FinderPositions.Add(finder);
-                    }
-                }
-            }
-
-            foreach (Territory territory in Territories)
-            {
-                ItemPosition[] itemPositions = territory.gameObject.GetComponentsInChildren<ItemPosition>(true);
-
-
-                foreach (ItemPosition itemPosition in itemPositions)
-                {
-                    if (!itemPosition.enabled)
-                        continue;
-
-                    if (!ItemPositions.Contains(itemPosition))
-                    {
-                        ItemPositions.Add(itemPosition);
-                    }
-                }
-            }
-
-            if (_environments[_index].GetComponent<Map>().IsMapExpanding)
-            {
-                _extensionMap.SetMap(_environments[_index].GetComponent<Map>());
-                _extensionMap.ContinueMap(Territories,
-                    ItemPositions, FinderPositions, _extensionFilterTerritories);
-            }
-
-            if (_initExtension)
-            {
-                _extensionMap.ResetMap(_environments[_index].GetComponent<Map>(), Territories,
-                    ItemPositions, FinderPositions, _extensionFilterTerritories);
-                _initExtension = false;
-            }
-        }
-
         public void SetPositions(List<ItemPosition> positions)
         {
             ItemPositions = positions;
-
             _visualItemsDeactivator.SetPositions(ItemPositions);
         }
 
@@ -220,6 +130,82 @@ namespace InitializationContent
 
             _initExtension = true;
             ExtensionFillLists();
+        }
+
+        private void CreateNewLists()
+        {
+            ItemPositions = new List<ItemPosition>();
+            Territories = new List<Territory>();
+            FinderPositions = new List<FinderPositions>();
+        }
+
+        private void ExtensionFillLists()
+        {
+            CreateNewLists();
+            _extensionFilterTerritories = new List<Territory>();
+            CurrentMap = _environments[_index].GetComponent<Map>();
+            Territory[] territories = _environments[_index].GetComponentsInChildren<Territory>(true);
+
+            foreach (var territory in territories)
+            {
+                if (territory.IsExpanding)
+                    _extensionFilterTerritories.Add(territory);
+            }
+
+            int amount = _load.Get(ExtensionTerritory + CurrentMap.Index, 0);
+
+            for (int i = 0; i < amount; i++)
+                _extensionFilterTerritories[i].EnableOpened();
+
+            foreach (var territory in territories)
+            {
+                if (territory.IsExpanding && !territory.IsOpened)
+                    continue;
+
+                if (!Territories.Contains(territory) && !territory.IsExpanding ||
+                    !Territories.Contains(territory) && territory.IsOpened)
+                    Territories.Add(territory);
+            }
+
+            foreach (Territory territory in Territories)
+            {
+                FinderPositions[] finderPositionsInTerritory =
+                    territory.gameObject.GetComponentsInChildren<FinderPositions>(true);
+
+                foreach (FinderPositions finder in finderPositionsInTerritory)
+                {
+                    if (!FinderPositions.Contains(finder))
+                        FinderPositions.Add(finder);
+                }
+            }
+
+            foreach (Territory territory in Territories)
+            {
+                ItemPosition[] itemPositions = territory.gameObject.GetComponentsInChildren<ItemPosition>(true);
+
+                foreach (ItemPosition itemPosition in itemPositions)
+                {
+                    if (!itemPosition.enabled)
+                        continue;
+
+                    if (!ItemPositions.Contains(itemPosition))
+                        ItemPositions.Add(itemPosition);
+                }
+            }
+
+            if (_environments[_index].GetComponent<Map>().IsMapExpanding)
+            {
+                _extensionMap.SetMap(_environments[_index].GetComponent<Map>());
+                _extensionMap.ContinueMap(Territories,
+                    ItemPositions, FinderPositions, _extensionFilterTerritories);
+            }
+
+            if (_initExtension)
+            {
+                _extensionMap.ResetMap(_environments[_index].GetComponent<Map>(), Territories,
+                    ItemPositions, FinderPositions, _extensionFilterTerritories);
+                _initExtension = false;
+            }
         }
     }
 }
