@@ -11,20 +11,22 @@ namespace BirdContent
         private bool _isFly;
         private float _speed = 3f;
         private float _rotateSpeed = 3f;
+        private Vector3 _targetDirection;
+        private Quaternion _targetRotation;
 
         public event Action BirdFinished;
-    
+
         private void Update()
         {
             if (!_isFly)
                 return;
-        
+
             transform.position = Vector3.MoveTowards(transform.position, _targetPosition.position, Time.deltaTime * _speed);
-            Vector3 targetDirection = _targetPosition.position - transform.position;
-            targetDirection.Normalize();
-            Quaternion newRotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(targetDirection), _rotateSpeed * Time.deltaTime);
-            transform.rotation = newRotation;
-        
+            _targetDirection = _targetPosition.position - transform.position;
+            _targetDirection.Normalize();
+            _targetRotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(_targetDirection), _rotateSpeed * Time.deltaTime);
+            transform.rotation = _targetRotation;
+
             if (transform.position == _targetPosition.position)
                 NextPoint();
         }
@@ -32,7 +34,7 @@ namespace BirdContent
         public void Init(Transform path)
         {
             _points = new Transform[path.childCount];
-        
+
             for (int i = 0; i < _points.Length; i++)
                 _points[i] = path.GetChild(i);
 

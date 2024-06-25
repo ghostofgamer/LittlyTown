@@ -6,7 +6,7 @@ namespace BirdContent
     public class BirdSpawner : MonoBehaviour
     {
         private readonly WaitForSeconds WaitForSeconds = new WaitForSeconds(5f);
-        
+
         [SerializeField] private BirdMovement[] _birdMovements;
         [SerializeField] private Transform[] _spawnPositions;
 
