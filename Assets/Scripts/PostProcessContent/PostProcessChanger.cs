@@ -7,25 +7,18 @@ namespace PostProcessContent
     public abstract class PostProcessChanger : MonoBehaviour
     {
         [SerializeField] private PostProcessVolume _postProcessVolume;
-        [SerializeField]private float _defaultValue;
+        [SerializeField] private float _defaultValue;
         [SerializeField] private float _targetValue;
-        
+
         private float _elapsedTime;
         private float _duration = 0.5f;
         private Coroutine _coroutine;
-        
+
         protected PostProcessVolume PostProcessVolume => _postProcessVolume;
 
         protected float DefaultValue => _defaultValue;
 
         protected float CurrentValue { get; private set; }
-
-        protected abstract void ChangeValue();
-
-        protected void SetValue(float value)
-        {
-            CurrentValue = value;
-        }
 
         public virtual void TurnOn()
         {
@@ -41,6 +34,13 @@ namespace PostProcessContent
                 StopCoroutine(_coroutine);
 
             _coroutine = StartCoroutine(ChangeValue(CurrentValue, _defaultValue));
+        }
+
+        protected abstract void ChangeValue();
+
+        protected void SetValue(float value)
+        {
+            CurrentValue = value;
         }
 
         private IEnumerator ChangeValue(float start, float end)

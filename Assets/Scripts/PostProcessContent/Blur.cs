@@ -8,17 +8,12 @@ namespace PostProcessContent
         [SerializeField] private Vignette _vignette;
 
         private DepthOfField _depthOfField;
-        
+
         private void Start()
         {
             _depthOfField = PostProcessVolume.profile.GetSetting<DepthOfField>();
             PostProcessVolume.weight = DefaultValue;
             SetValue(DefaultValue);
-        }
-
-        protected override void ChangeValue()
-        {
-            PostProcessVolume.weight = CurrentValue;
         }
 
         public override void TurnOn()
@@ -33,6 +28,11 @@ namespace PostProcessContent
             base.TurnOff();
             _depthOfField.active = false;
             _vignette.TurnOff();
+        }
+
+        protected override void ChangeValue()
+        {
+            PostProcessVolume.weight = CurrentValue;
         }
     }
 }
