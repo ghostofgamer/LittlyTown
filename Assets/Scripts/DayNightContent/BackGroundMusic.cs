@@ -6,8 +6,8 @@ namespace DayNightContent
     {
         [SerializeField] private AudioSource _audioSource;
         [SerializeField] private DayNight _dayNight;
-        [SerializeField]private AudioClip _dayAudioClip;
-        [SerializeField]private AudioClip _nightAudioClip;
+        [SerializeField] private AudioClip _dayAudioClip;
+        [SerializeField] private AudioClip _nightAudioClip;
 
         private void OnEnable()
         {

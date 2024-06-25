@@ -20,10 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="099b8a6d-6b1c-4473-babb-d7d2ffb7e44f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CountersContent/MoveCounter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CountersContent/MoveCounter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CountersContent/ScoreCounter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CountersContent/ScoreCounter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CountersContent/ScoreSlider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CountersContent/ScoreSlider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CountersContent/VisualScore.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CountersContent/VisualScore.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DayNightContent/BackGroundMusic.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DayNightContent/BackGroundMusic.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DayNightContent/DayNight.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DayNightContent/DayNight.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,9 +186,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ContinueButton.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/CloseButton.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ChooseMapButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ReplacementPositionButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/GoldButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/FreeCrystallButton.cs" />
@@ -239,6 +234,9 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/CountersContent/ScoreSlider.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CountersContent/ScoreCounter.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CountersContent/MoveCounter.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/CountersContent/GoldCounter.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/DayNightContent/DayNight.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/DayNightContent/BackGroundMusic.cs" />
       </list>
     </option>
   </component>
@@ -363,7 +361,7 @@
       <workItem from="1719136970153" duration="5000" />
       <workItem from="1719137133779" duration="16763000" />
       <workItem from="1719209511924" duration="23168000" />
-      <workItem from="1719299040921" duration="2480000" />
+      <workItem from="1719299040921" duration="2988000" />
     </task>
     <servers />
   </component>

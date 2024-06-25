@@ -43,6 +43,10 @@ namespace DayNightContent
         private int _night = 0;
         private int _currentValue;
         private Bloom _bloom;
+        private float _nightGradientValue = 1f;
+        private float _dayGradientValue = 0f;
+        private float _startGrassGradientValue;
+
 
         public event Action TimeDayChanged;
 
@@ -65,16 +69,17 @@ namespace DayNightContent
             if (_coroutine != null)
                 StopCoroutine(_coroutine);
 
-            _coroutine = StartCoroutine(IsNight
-                ? StartChange(_currentY, _nightValue, _currentIntensity, _nightIntensity)
-                : StartChange(_currentY, _dayValue, _currentIntensity, _dayIntensity));
+            _coroutine = StartCoroutine(
+                IsNight
+                    ? StartChange(_currentY, _nightValue, _currentIntensity, _nightIntensity)
+                    : StartChange(_currentY, _dayValue, _currentIntensity, _dayIntensity));
         }
 
         private IEnumerator StartChange(float start, float target, float startIntensity, float targetIntensity)
         {
             _elapsedTime = 0;
-            _targetGradientValue = IsNight ? 1f : 0f;
-            float startGrassGradientValue = _currentGradientValue;
+            _targetGradientValue = IsNight ? _nightGradientValue : _dayGradientValue;
+            _startGrassGradientValue = _currentGradientValue;
 
             while (_elapsedTime < _duration)
             {
@@ -84,8 +89,7 @@ namespace DayNightContent
                 _light.intensity = _currentIntensity;
                 _currentY = angle;
                 _light.transform.rotation = Quaternion.Euler(_xValue, angle, 0);
-                _currentGradientValue =
-                    Mathf.Lerp(startGrassGradientValue, _targetGradientValue, _elapsedTime / _duration);
+                _currentGradientValue = Mathf.Lerp(_startGrassGradientValue, _targetGradientValue, _elapsedTime / _duration);
                 SetColor();
                 yield return null;
             }
@@ -113,7 +117,7 @@ namespace DayNightContent
             _light.transform.rotation = Quaternion.Euler(_xValue, value == _day ? _dayValue : _nightValue, 0);
             _currentY = value == _day ? _dayValue : _nightValue;
             _currentIntensity = _light.intensity;
-            _currentGradientValue = IsNight ? 1 : 0;
+            _currentGradientValue = IsNight ? _nightGradientValue : _dayGradientValue;
             SetColor();
             _bloom.active = value != _day;
             TimeDayChanged?.Invoke();
