@@ -19,7 +19,17 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="099b8a6d-6b1c-4473-babb-d7d2ffb7e44f" name="Default Changelist" comment="" />
+    <list default="true" id="099b8a6d-6b1c-4473-babb-d7d2ffb7e44f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/indexLayout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ADS/AD.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ADS/AD.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ADS/CrystalReward.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ADS/CrystalReward.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ADS/DoublePossibilityReward.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ADS/DoublePossibilityReward.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ADS/RewardMove.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ADS/RewardMove.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ADS/RewardVideo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ADS/RewardVideo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CameraContent/CameraScrolling.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CameraContent/CameraScrolling.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -183,12 +193,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/ShopItems.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/TutorialScreen.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/InitializationContent/Bootstrap.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/InitializationContent/Initializator.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Keeper/MovesKeeper.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BulldozerButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BuyItemButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/BuyMapButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/CancelMoveButton.cs" />
@@ -234,6 +238,12 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/InitializationContent/PlatformChecker.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Dragger/ItemThrower.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CameraContent/CameraScrolling.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ADS/RewardVideo.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ADS/RewardMove.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ADS/DoublePossibilityReward.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ADS/CrystalReward.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ADS/AD.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ADS/FullAds.cs" />
       </list>
     </option>
   </component>
@@ -358,6 +368,7 @@
       <workItem from="1719136970153" duration="5000" />
       <workItem from="1719137133779" duration="16763000" />
       <workItem from="1719209511924" duration="23168000" />
+      <workItem from="1719299040921" duration="784000" />
     </task>
     <servers />
   </component>
@@ -458,9 +469,9 @@
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
     <state x="616" y="238" key="run.anything.popup/0.0.1920.1032@0.0.1920.1032" timestamp="1719073138651" />
-    <state x="623" y="223" width="672" height="160" key="search.everywhere.popup" timestamp="1719228877899">
+    <state x="623" y="223" width="672" height="160" key="search.everywhere.popup" timestamp="1719299492439">
       <screen x="0" y="0" width="1920" height="1032" />
     </state>
-    <state x="623" y="223" width="672" height="160" key="search.everywhere.popup/0.0.1920.1032@0.0.1920.1032" timestamp="1719228877899" />
+    <state x="623" y="223" width="672" height="160" key="search.everywhere.popup/0.0.1920.1032@0.0.1920.1032" timestamp="1719299492439" />
   </component>
 </project>

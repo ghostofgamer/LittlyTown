@@ -6,8 +6,8 @@ namespace ADS
 {
     public abstract class RewardVideo : AD
     {
-        [SerializeField] private Button _button;   
-        
+        [SerializeField] private Button _button;
+
         public override void Show()
         {
             if (YandexGamesSdk.IsInitialized)

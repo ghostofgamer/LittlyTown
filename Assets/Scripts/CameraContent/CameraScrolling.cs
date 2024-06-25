@@ -46,8 +46,8 @@ namespace CameraContent
                     _currentSize = Mathf.Clamp(_currentSize, _minOrthographicSize, _maxOrthographicSize);
                     _camera.orthographicSize = _currentSize;
                 }
-            }
-
+            } 
+            
             if (Input.touches.Length == 2)
             {
                 _itemThrower.ReturnPosition();

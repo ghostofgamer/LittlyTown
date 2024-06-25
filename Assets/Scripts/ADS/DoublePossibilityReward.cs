@@ -9,7 +9,7 @@ namespace ADS
     {
         [SerializeField] private BonusesStart _bonusesStart;
         [SerializeField] private BonusesButton _bonusesButton;
-        
+
         private int _reward = 2;
         private int _price = 0;
 
