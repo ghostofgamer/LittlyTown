@@ -6,7 +6,6 @@ namespace UI.Buttons.SettingsButtonContent
 {
     public abstract class SettingsChangeButton : AbstractButton
     {
-        [SerializeField] private Settings _settings;
         [SerializeField] private SettingsModes _settingsModes;
         [SerializeField] private Save _save;
         [SerializeField] private Load _load;
@@ -18,13 +17,11 @@ namespace UI.Buttons.SettingsButtonContent
         private int _currentValue;
 
         protected SettingsModes SettingsModes => _settingsModes;
-    
-        protected Settings Settings => _settings;
 
         protected bool IsToggleOn => _isToggleOn;
-    
+
         protected int FirstValue => _firstValue;
-    
+
         protected int SecondValue => _secondValue;
 
         private void Start()

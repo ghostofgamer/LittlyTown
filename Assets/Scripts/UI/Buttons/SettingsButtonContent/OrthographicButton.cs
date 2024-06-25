@@ -6,7 +6,7 @@ namespace UI.Buttons.SettingsButtonContent
     public class OrthographicButton : SettingsChangeButton
     {
         [SerializeField] private Image _toggleImage;
-        [SerializeField] private Camera _camera; 
+        [SerializeField] private Camera _camera;
 
         protected override void ChangeValue()
         {

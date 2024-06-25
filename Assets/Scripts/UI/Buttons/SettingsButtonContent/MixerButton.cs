@@ -8,7 +8,7 @@ namespace UI.Buttons.SettingsButtonContent
     {
         [SerializeField] private Image _toggleImage;
         [SerializeField] private AudioMixerGroup _outputGroup;
-    
+
         protected override void ChangeValue()
         {
             _toggleImage.enabled = IsToggleOn;

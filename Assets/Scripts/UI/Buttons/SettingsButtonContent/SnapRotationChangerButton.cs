@@ -8,6 +8,18 @@ namespace UI.Buttons.SettingsButtonContent
         [SerializeField] private Image _toggleImage;
         [SerializeField] private RotationButton[] _rotationButtons;
 
+        protected override void ChangeValue()
+        {
+            _toggleImage.enabled = IsToggleOn;
+
+            if (IsToggleOn)
+                ActivationButtons();
+            else
+                DeactivationButtons();
+
+            SaveValue();
+        }
+
         private void ActivationButtons()
         {
             foreach (var rotationButton in _rotationButtons)
@@ -18,18 +30,6 @@ namespace UI.Buttons.SettingsButtonContent
         {
             foreach (var rotationButton in _rotationButtons)
                 rotationButton.gameObject.SetActive(false);
-        }
-
-        protected override void ChangeValue()
-        {
-            _toggleImage.enabled = IsToggleOn;
-        
-            if (IsToggleOn)
-                ActivationButtons();
-            else
-                DeactivationButtons();
-
-            SaveValue();
         }
     }
 }
