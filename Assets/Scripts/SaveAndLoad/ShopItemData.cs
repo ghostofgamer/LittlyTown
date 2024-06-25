@@ -6,7 +6,7 @@ namespace SaveAndLoad
     public class ShopItemData
     {
         public List<ItemData> ItemsData;
-    
+
         public ShopItemData()
         {
             ItemsData = new List<ItemData>();

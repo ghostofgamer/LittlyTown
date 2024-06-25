@@ -7,9 +7,9 @@ namespace SaveAndLoad.GoalContent
     public class GoalSaver : MonoBehaviour
     {
         private const string SaveGoal = "SaveGoal";
-        
+
         [SerializeField] private GoalsCounter _goalsCounter;
-        
+
         private SaveGoalData _saveGoalData;
         private GoalData _firsGoalData;
         private GoalData _secondGoalData;
@@ -17,9 +17,9 @@ namespace SaveAndLoad.GoalContent
         private Goal _firstGoal;
         private Goal _secondGoal;
         private List<Goal> _goalList = new List<Goal>();
-        private int _firstGoalIndex=0;
-        private int _secondGoalIndex=1;
-        private int _maxGoals=2;
+        private int _firstGoalIndex = 0;
+        private int _secondGoalIndex = 1;
+        private int _maxGoals = 2;
 
         public int[] Indexes => _indexes;
 
@@ -34,12 +34,14 @@ namespace SaveAndLoad.GoalContent
         public void SaveGoals(List<Goal> currentGoals)
         {
             _goalList = currentGoals;
-        
+
             _saveGoalData = new SaveGoalData
             {
-                FirstGoal = new GoalData(currentGoals[_firstGoalIndex].Index, currentGoals[_firstGoalIndex].CurrentValue, currentGoals[_firstGoalIndex].CompleteValue),
+                FirstGoal = new GoalData(currentGoals[_firstGoalIndex].Index,
+                    currentGoals[_firstGoalIndex].CurrentValue, currentGoals[_firstGoalIndex].CompleteValue),
 
-                SecondGoal = new GoalData(currentGoals[_secondGoalIndex].Index, currentGoals[_secondGoalIndex].CurrentValue, currentGoals[_secondGoalIndex].CompleteValue)
+                SecondGoal = new GoalData(currentGoals[_secondGoalIndex].Index,
+                    currentGoals[_secondGoalIndex].CurrentValue, currentGoals[_secondGoalIndex].CompleteValue)
             };
 
             _firstGoal = currentGoals[_firstGoalIndex];
@@ -81,7 +83,6 @@ namespace SaveAndLoad.GoalContent
             _saveGoalData.SecondGoal.Index = _goalList[_secondGoalIndex].Index;
             _saveGoalData.SecondGoal.CurrentValue = _goalList[_secondGoalIndex].CurrentValue;
             _saveGoalData.SecondGoal.CompleteValue = _goalList[_secondGoalIndex].CompleteValue;
-
             string jsonData = JsonUtility.ToJson(_saveGoalData);
             PlayerPrefs.SetString(SaveGoal, jsonData);
             PlayerPrefs.Save();

@@ -5,6 +5,6 @@ namespace SaveAndLoad
     [System.Serializable]
     public class SaveHistoryData
     {
-        public List<SaveData> savesHistory;
+        public List<SaveData> SavesHistory;
     }
 }

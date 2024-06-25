@@ -4,7 +4,7 @@ using ItemPositionContent;
 namespace SaveAndLoad
 {
     [System.Serializable]
-    public class StorageItemData 
+    public class StorageItemData
     {
         public Items ItemName;
         public ItemPosition ItemPosition;

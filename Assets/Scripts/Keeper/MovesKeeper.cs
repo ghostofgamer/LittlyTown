@@ -78,7 +78,7 @@ namespace Keeper
                 string jsonData = PlayerPrefs.GetString(SaveHistoryName + _initializator.Index);
                 saveHistoryData = JsonUtility.FromJson<SaveHistoryData>(jsonData);
                 _savesHistory.Clear();
-                _savesHistory = saveHistoryData.savesHistory;
+                _savesHistory = saveHistoryData.SavesHistory;
                 _currentStep = _savesHistory.Count;
                 StepChanged?.Invoke(_currentStep);
             }
@@ -104,7 +104,7 @@ namespace Keeper
         private void SaveHistoryData()
         {
             SaveHistoryData saveHistoryData = new SaveHistoryData();
-            saveHistoryData.savesHistory = _savesHistory;
+            saveHistoryData.SavesHistory = _savesHistory;
             string jsonData = JsonUtility.ToJson(saveHistoryData);
             PlayerPrefs.SetString(SaveHistoryName + _initializator.Index, jsonData);
             PlayerPrefs.Save();

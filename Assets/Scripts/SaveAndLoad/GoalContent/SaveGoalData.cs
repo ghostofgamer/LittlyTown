@@ -1,4 +1,3 @@
-
 namespace SaveAndLoad.GoalContent
 {
     [System.Serializable]

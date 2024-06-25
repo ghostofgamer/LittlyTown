@@ -17,7 +17,7 @@ namespace SaveAndLoad
     public class ItemsStorage : MonoBehaviour
     {
         private const string ItemStorageSave = "ItemStorageSave";
-        
+
         [SerializeField] private ItemKeeper _itemKeeper;
         [SerializeField] private Item[] _items;
         [SerializeField] private PossibilitiesCounter _replaceCounter;
@@ -40,7 +40,7 @@ namespace SaveAndLoad
         private Item _temporaryObject;
         private ItemDropDataSo _itemDropDataSO;
         private SaveData _saveData;
-    
+
         public Item SelectSaveItem { get; private set; }
 
         private void OnEnable()
@@ -51,6 +51,95 @@ namespace SaveAndLoad
         private void OnDisable()
         {
             _itemKeeper.SelectNewItem -= SaveChanges;
+        }
+
+
+        public void LoadDataInfo()
+        {
+            SaveData saveData = new SaveData();
+
+            if (PlayerPrefs.HasKey(ItemStorageSave + _initializator.Index))
+            {
+                string jsonData = PlayerPrefs.GetString(ItemStorageSave + _initializator.Index);
+                saveData = JsonUtility.FromJson<SaveData>(jsonData);
+            }
+            else
+            {
+                return;
+            }
+
+            Item selectItem = Instantiate(GetItem(saveData.SelectItemData.ItemName),
+                saveData.SelectItemData.ItemPosition.transform.position,
+                Quaternion.identity, _initializator.CurrentMap.ItemsContainer);
+            selectItem.Init(saveData.SelectItemData.ItemPosition);
+            selectItem.gameObject.SetActive(false);
+            SelectSaveItem = selectItem;
+
+            if (saveData.TemporaryItem.ItemName != Items.Empty)
+            {
+                Item item = Instantiate(GetItem(saveData.TemporaryItem.ItemName),
+                    _initializator.CurrentMap.ItemsContainer);
+                _itemKeeper.SetTemporaryObject(item);
+            }
+            else
+            {
+                _itemKeeper.SetTemporaryObject(null);
+            }
+
+            Debug.Log("load");
+
+            foreach (var item in saveData.ItemDatasPrices)
+                _shopItems.SetPrice(item.ItemName, item.Price);
+
+            _shopItems.SetPricePossibilitie(saveData.PossibilitiesItemsData.PriceBulldozer,
+                saveData.PossibilitiesItemsData.PriceReplace);
+            _dropGenerator.SetItem(saveData.ItemDropData.PrefabItem, saveData.ItemDropData.Icon);
+            _moveCounter.SetValue(saveData.MoveCount);
+            _replaceCounter.SetValue(saveData.ReplaceCount);
+            _bulldozerCounter.SetValue(saveData.BulldozerCount);
+            _goldWallet.SetValue(saveData.GoldValue);
+            _scoreCounter.SetValue(saveData.ScoreValue, saveData.FactorScoreValue);
+
+            if (saveData.StorageItemData.ItemPosition != null || saveData.StorageItemData.ItemName != Items.Empty)
+            {
+                Item storageItem = Instantiate(GetItem(saveData.StorageItemData.ItemName),
+                    _initializator.CurrentMap.ItemsContainer);
+                storageItem.gameObject.SetActive(false);
+                _storage.SetItem(storageItem);
+            }
+            else
+            {
+                _storage.SetItem(null);
+            }
+
+            if (saveData.Storage1ItemData.ItemPosition != null || saveData.Storage1ItemData.ItemName != Items.Empty)
+            {
+                Item storageItem = Instantiate(GetItem(saveData.Storage1ItemData.ItemName),
+                    _initializator.CurrentMap.ItemsContainer);
+                storageItem.gameObject.SetActive(false);
+                _storage1.SetItem(storageItem);
+            }
+            else
+            {
+                _storage1.SetItem(null);
+            }
+
+            if (saveData.Storage2ItemData.ItemPosition != null || saveData.Storage2ItemData.ItemName != Items.Empty)
+            {
+                Item storageItem = Instantiate(GetItem(saveData.Storage2ItemData.ItemName),
+                    _initializator.CurrentMap.ItemsContainer);
+                storageItem.gameObject.SetActive(false);
+                _storage2.SetItem(storageItem);
+            }
+            else
+            {
+                _storage2.SetItem(null);
+            }
+        }
+
+        public SaveData GetSaveData()
+        {
+            return _saveData;
         }
 
         private void SaveChanges()
@@ -122,7 +211,7 @@ namespace SaveAndLoad
             saveData.GoldValue = _goldWallet.CurrentValue;
             saveData.ScoreValue = _scoreCounter.CurrentScore;
             saveData.FactorScoreValue = _scoreCounter.Factor;
-    
+
             if (_storage.CurrentItem != null)
             {
                 saveData.StorageItemData =
@@ -157,91 +246,6 @@ namespace SaveAndLoad
             PlayerPrefs.SetString(ItemStorageSave + _initializator.Index, jsonData);
             PlayerPrefs.Save();
             yield return null;
-        }
-
-
-        public void LoadDataInfo()
-        {
-            SaveData saveData = new SaveData();
-
-            if (PlayerPrefs.HasKey(ItemStorageSave + _initializator.Index))
-            {
-                string jsonData = PlayerPrefs.GetString(ItemStorageSave + _initializator.Index);
-                saveData = JsonUtility.FromJson<SaveData>(jsonData);
-            }
-            else
-            {
-                return;
-            }
-
-            Item selectItem = Instantiate(GetItem(saveData.SelectItemData.ItemName),
-                saveData.SelectItemData.ItemPosition.transform.position,
-                Quaternion.identity, _initializator.CurrentMap.ItemsContainer);
-            selectItem.Init(saveData.SelectItemData.ItemPosition);
-            selectItem.gameObject.SetActive(false);
-            SelectSaveItem = selectItem;
-
-            if (saveData.TemporaryItem.ItemName != Items.Empty)
-            {
-                Item item = Instantiate(GetItem(saveData.TemporaryItem.ItemName), _initializator.CurrentMap.ItemsContainer);
-                _itemKeeper.SetTemporaryObject(item);
-            }
-            else
-            {
-                _itemKeeper.SetTemporaryObject(null);
-            }
-
-            Debug.Log("load");
-            
-            foreach (var item in saveData.ItemDatasPrices)
-                _shopItems.SetPrice(item.ItemName, item.Price);
-        
-            _shopItems.SetPricePossibilitie(saveData.PossibilitiesItemsData.PriceBulldozer,
-                saveData.PossibilitiesItemsData.PriceReplace);
-            _dropGenerator.SetItem(saveData.ItemDropData.PrefabItem, saveData.ItemDropData.Icon);
-            _moveCounter.SetValue(saveData.MoveCount);
-            _replaceCounter.SetValue(saveData.ReplaceCount);
-            _bulldozerCounter.SetValue(saveData.BulldozerCount);
-            _goldWallet.SetValue(saveData.GoldValue);
-            _scoreCounter.SetValue(saveData.ScoreValue, saveData.FactorScoreValue);
-
-            if (saveData.StorageItemData.ItemPosition != null || saveData.StorageItemData.ItemName != Items.Empty)
-            {
-                Item storageItem = Instantiate(GetItem(saveData.StorageItemData.ItemName), _initializator.CurrentMap.ItemsContainer);
-                storageItem.gameObject.SetActive(false);
-                _storage.SetItem(storageItem);
-            }
-            else
-            {
-                _storage.SetItem(null);
-            }
-        
-            if (saveData.Storage1ItemData.ItemPosition != null || saveData.Storage1ItemData.ItemName != Items.Empty)
-            {
-                Item storageItem = Instantiate(GetItem(saveData.Storage1ItemData.ItemName), _initializator.CurrentMap.ItemsContainer);
-                storageItem.gameObject.SetActive(false);
-                _storage1.SetItem(storageItem);
-            }
-            else
-            {
-                _storage1.SetItem(null);
-            }
-        
-            if (saveData.Storage2ItemData.ItemPosition != null || saveData.Storage2ItemData.ItemName != Items.Empty)
-            {
-                Item storageItem = Instantiate(GetItem(saveData.Storage2ItemData.ItemName), _initializator.CurrentMap.ItemsContainer);
-                storageItem.gameObject.SetActive(false);
-                _storage2.SetItem(storageItem);
-            }
-            else
-            {
-                _storage2.SetItem(null);
-            }
-        }
-    
-        public SaveData GetSaveData()
-        {
-            return _saveData;
         }
 
         private Item GetItem(Items itemName)

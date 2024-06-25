@@ -19,13 +19,5 @@ namespace SaveAndLoad
 
             return number;
         }
-        
-        public string Get(string name, string currentName)
-        {
-            if (PlayerPrefs.HasKey(name))
-                return PlayerPrefs.GetString(name);
-
-            return currentName;
-        }
     }
 }

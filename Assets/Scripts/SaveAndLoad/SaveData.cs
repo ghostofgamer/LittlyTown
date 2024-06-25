@@ -20,7 +20,7 @@ namespace SaveAndLoad
         public List<ItemData> ItemDatasPrices;
         public PossibilitiesItemsData PossibilitiesItemsData;
         public ItemData TemporaryItem;
-    
+
         public SaveData()
         {
             ItemDatas = new List<ItemData>();
