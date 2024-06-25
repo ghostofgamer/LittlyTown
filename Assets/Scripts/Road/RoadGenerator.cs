@@ -63,8 +63,8 @@ namespace Road
         private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.1f);
         private int _minAmountRoads = 1;
         private int _firstIndex = 1;
-        private int _secondIndex = 1;
-        private int _thirdIndex = 1;
+        private int _secondIndex = 2;
+        private int _thirdIndex = 3;
         private int _zero = 0;
 
         private void OnEnable()

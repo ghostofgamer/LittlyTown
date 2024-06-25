@@ -140,14 +140,14 @@ namespace MapsContent
         private void ResetArraysValues()
         {
             foreach (Item item in _items)
-                item.SetInitialPrice();
+                item.ResetPrice();
 
             foreach (Possibilitie possibility in _possibilities)
-                possibility.SetStartPrice();
+                possibility.ResetPrice();
 
             foreach (PossibilitiesCounter possibilityCounter in _possibilitiesCounters)
             {
-                possibilityCounter.SetCount();
+                possibilityCounter.ResetCount();
 
                 if (_packageLittleTown.IsActive)
                     possibilityCounter.OnIncreaseCount(_packageLittleTown.Amount);

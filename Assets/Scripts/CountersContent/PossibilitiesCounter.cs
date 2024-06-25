@@ -54,7 +54,7 @@ namespace CountersContent
             Show();
         }
 
-        public void SetCount()
+        public void ResetCount()
         {
             PossibilitiesCount = _startCount;
             Show();

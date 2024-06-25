@@ -42,7 +42,7 @@ namespace SpawnContent
         public Item GetItem()
         {
             _currentItem = _nextItem;
-            ItemDropData = DropItem();
+            ItemDropData = GetDropItem();
             _nextItem = ItemDropData.PrefabItem;
             return _currentItem;
         }
@@ -69,13 +69,13 @@ namespace SpawnContent
             _currentLevel = 0;
         }
 
-        private ItemDropDataSo DropItem()
+        private ItemDropDataSo GetDropItem()
         {
             _totalChance = 0f;
 
             foreach (ItemDropDataSo itemDrop in _itemDropsSO)
             {
-                _dropChance = CalculateDropChance(itemDrop, _currentLevel);
+                _dropChance = GetDropChance(itemDrop, _currentLevel);
                 _totalChance += _dropChance;
             }
 
@@ -83,7 +83,7 @@ namespace SpawnContent
 
             for (int i = 0; i < _itemDropsSO.Count; i++)
             {
-                _randomPoint -= CalculateDropChance(_itemDropsSO[i], _currentLevel);
+                _randomPoint -= GetDropChance(_itemDropsSO[i], _currentLevel);
 
                 if (_randomPoint <= 0)
                 {
@@ -95,7 +95,7 @@ namespace SpawnContent
             return _itemDropsSO[0];
         }
 
-        private float CalculateDropChance(ItemDropDataSo itemDrop, int level)
+        private float GetDropChance(ItemDropDataSo itemDrop, int level)
         {
             _dropChance = itemDrop.BaseDropChance;
             _dropChance += level * itemDrop.LevelIncreaseFactor;

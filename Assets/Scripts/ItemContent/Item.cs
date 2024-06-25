@@ -90,7 +90,7 @@ namespace ItemContent
             Price = Mathf.RoundToInt(Price * _priceMultiplier);
         }
 
-        public void SetInitialPrice()
+        public void ResetPrice()
         {
             Price = _startPrice;
         }
