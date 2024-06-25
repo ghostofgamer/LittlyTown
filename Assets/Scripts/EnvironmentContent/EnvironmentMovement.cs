@@ -15,7 +15,6 @@ namespace EnvironmentContent
         private float _duration = 1f;
         private float _targetDistanceValue = 500f;
         private Coroutine _coroutine;
-
         private bool _isActive;
 
         private void Start()

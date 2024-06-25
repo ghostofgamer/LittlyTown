@@ -20,9 +20,9 @@ namespace EnvironmentContent
         private float _durationReturn = 0.15f;
         private bool _isEndGameRotate;
         private float _speed = 10;
-        private float _angle = 0f;
+        private float _angle;
         private int _step = 90;
-        private bool _isRotating = false;
+        private bool _isRotating;
 
         private void Update()
         {
@@ -31,18 +31,6 @@ namespace EnvironmentContent
 
             if (_isRotating)
                 UpdateRotation();
-        }
-
-        private void UpdateRotation()
-        {
-            _currentEnvironment.transform.rotation = Quaternion.Lerp(_currentEnvironment.transform.rotation,
-                Quaternion.Euler(_target), _speed * Time.deltaTime);
-
-            if (_currentEnvironment.transform.rotation == Quaternion.Euler(_target))
-            {
-                _currentEnvironment.transform.rotation = Quaternion.Euler(_target);
-                _isRotating = false;
-            }
         }
 
         public void ChangeRotation(int index)
@@ -72,6 +60,18 @@ namespace EnvironmentContent
                 StopCoroutine(_coroutineRotate);
 
             _coroutineRotate = StartCoroutine(ReturnRotate());
+        }
+
+        private void UpdateRotation()
+        {
+            _currentEnvironment.transform.rotation = Quaternion.Lerp(_currentEnvironment.transform.rotation,
+                Quaternion.Euler(_target), _speed * Time.deltaTime);
+
+            if (_currentEnvironment.transform.rotation == Quaternion.Euler(_target))
+            {
+                _currentEnvironment.transform.rotation = Quaternion.Euler(_target);
+                _isRotating = false;
+            }
         }
 
         private IEnumerator ReturnRotate()
