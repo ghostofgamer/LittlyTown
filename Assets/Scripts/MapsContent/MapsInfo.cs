@@ -25,7 +25,7 @@ namespace MapsContent
                 mapInfo.SetActive(false);
 
             _mapInfoObjects[index].SetActive(true);
-            _records.Show();
+            _records.OnShow();
         }
     }
 }

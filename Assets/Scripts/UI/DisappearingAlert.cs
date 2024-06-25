@@ -11,9 +11,10 @@ namespace UI
         private WaitForSeconds _waitForSeconds = new WaitForSeconds(1.5f);
         private float _elapsedTime;
         private float _duration = 0.5f;
-        private  float _startAlpha ;
+        private float _startAlpha;
         private float _endAlpha;
         private float _alpha;
+        private float _startValue = 1f;
 
         private void OnEnable()
         {
@@ -31,10 +32,10 @@ namespace UI
         private IEnumerator FadeAlpha()
         {
             yield return _waitForSeconds;
-            _startAlpha = 1f;
+            _startAlpha = _startValue;
             _endAlpha = 0f;
             _elapsedTime = 0f;
-        
+
             while (_elapsedTime < _duration)
             {
                 _elapsedTime += Time.deltaTime;
@@ -42,7 +43,7 @@ namespace UI
                 _canvasGroup.alpha = _alpha;
                 yield return null;
             }
-        
+
             gameObject.SetActive(false);
             _canvasGroup.alpha = _endAlpha;
         }

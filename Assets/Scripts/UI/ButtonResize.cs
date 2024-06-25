@@ -46,7 +46,8 @@ namespace UI
                 float currentWidth = _buttonRectTransform.rect.width;
                 _buttonRectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, target);
                 float newLeftPosition = currentLeftPosition - (target - currentWidth);
-                _buttonRectTransform.anchoredPosition = new Vector2(newLeftPosition, _buttonRectTransform.anchoredPosition.y);
+                _buttonRectTransform.anchoredPosition =
+                    new Vector2(newLeftPosition, _buttonRectTransform.anchoredPosition.y);
                 LayoutRebuilder.ForceRebuildLayoutImmediate(_buttonRectTransform);
             }
         }

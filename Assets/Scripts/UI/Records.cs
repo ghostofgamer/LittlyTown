@@ -14,24 +14,26 @@ namespace UI
         [SerializeField] private Load _load;
         [SerializeField] private Initializator _initializator;
 
+        private int _score;
+
         private void OnEnable()
         {
-            _initializator.IndexChanged += Show;
+            _initializator.IndexChanged += OnShow;
         }
 
         private void OnDisable()
         {
-            _initializator.IndexChanged -= Show;
+            _initializator.IndexChanged -= OnShow;
         }
 
-        public void Show()
+        public void OnShow()
         {
-            int score = _load.Get(MaxRecord + _initializator.Index, 0);
+            _score = _load.Get(MaxRecord + _initializator.Index, 0);
 
-            if (score > 0)
+            if (_score > 0)
             {
                 _recordsContent[_initializator.Index].SetActive(true);
-                _recordsInfo[_initializator.Index].text = score.ToString();
+                _recordsInfo[_initializator.Index].text = _score.ToString();
             }
             else
             {
