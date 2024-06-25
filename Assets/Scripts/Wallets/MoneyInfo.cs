@@ -5,7 +5,7 @@ namespace Wallets
 {
     public class MoneyInfo : MonoBehaviour
     {
-        [SerializeField]private AbstractWallet _wallet;
+        [SerializeField] private AbstractWallet _wallet;
         [SerializeField] private TMP_Text _priceText;
 
         private void OnEnable()

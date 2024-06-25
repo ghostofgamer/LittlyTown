@@ -31,12 +31,12 @@ namespace SpawnContent
 
         private void OnEnable()
         {
-            _startMap.MapStarted += Reset;
+            _startMap.MapStarted += OnReset;
         }
 
         private void OnDisable()
         {
-            _startMap.MapStarted -= Reset;
+            _startMap.MapStarted -= OnReset;
         }
 
         public Item GetItem()
@@ -104,7 +104,7 @@ namespace SpawnContent
             return _dropChance;
         }
 
-        private void Reset()
+        private void OnReset()
         {
             _nextItem = _itemDropsSO[0].PrefabItem;
             _image.sprite = _itemDropsSO[0].Icon;

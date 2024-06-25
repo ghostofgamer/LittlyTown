@@ -8,7 +8,6 @@ namespace UI.Buttons
 {
     public class ReplacementPositionButton : AbstractButton
     {
-        [SerializeField] private PositionMatcher _positionMatcher;
         [SerializeField] private ReplacementPosition _replacementPosition;
         [SerializeField] private Image _icon;
         [SerializeField] private Image _imageBackGroundButton;
@@ -37,7 +36,6 @@ namespace UI.Buttons
 
             if (_isActivated)
             {
-                _positionMatcher.StopMoveMatch();
                 SetSprite(_blackIcon, _activatedImage);
             }
             else

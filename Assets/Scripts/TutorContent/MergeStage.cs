@@ -22,7 +22,7 @@ namespace TutorContent
         {
             foreach (var button in _storageButtons)
                 button.SetActive(true);
-            
+
             DescriptionGoalStage.SetActive(false);
             NextStage.gameObject.SetActive(true);
             NextStage.ShowDescription();

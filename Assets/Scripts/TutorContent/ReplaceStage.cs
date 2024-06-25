@@ -27,10 +27,10 @@ namespace TutorContent
             if (_coroutine != null)
                 StopCoroutine(_coroutine);
 
-            _coroutine = StartCoroutine(Active());
+            _coroutine = StartCoroutine(StartActivate());
         }
 
-        private IEnumerator Active()
+        private IEnumerator StartActivate()
         {
             yield return _waitForSeconds;
             HideItem();

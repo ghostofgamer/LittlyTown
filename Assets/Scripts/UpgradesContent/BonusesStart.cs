@@ -11,10 +11,10 @@ namespace UpgradesContent
         [SerializeField] private GoldWallet _goldWallet;
         [SerializeField] private CrystalWallet _crystalWallet;
 
-        private int _currentAmountBulldozers = 0;
-        private int _currentAmountReplacers = 0;
-        private int _currentAmountGolds = 0;
-        private int _currentAmountPrice = 0;
+        private int _currentAmountBulldozers;
+        private int _currentAmountReplacers;
+        private int _currentAmountGolds;
+        private int _currentAmountPrice;
 
         public void IncreaseAmountBulldozers(int value, int price)
         {

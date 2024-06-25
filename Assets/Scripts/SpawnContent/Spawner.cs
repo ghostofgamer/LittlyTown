@@ -17,7 +17,6 @@ namespace SpawnContent
     {
         [SerializeField] private Initializator _initializator;
         [SerializeField] private ItemKeeper _itemKeeper;
-        [SerializeField] private PositionMatcher _positionMatcher;
         [SerializeField] private MoveCounter _moveCounter;
         [SerializeField] private DropGenerator _dropGenerator;
         [SerializeField] private LookMerger _lookMerger;
@@ -36,13 +35,11 @@ namespace SpawnContent
 
         private void OnEnable()
         {
-            _positionMatcher.NotMerged += OnCreateItem;
             _lookMerger.NotMerged += OnCreateItem;
         }
 
         private void OnDisable()
         {
-            _positionMatcher.NotMerged -= OnCreateItem;
             _lookMerger.NotMerged -= OnCreateItem;
         }
 

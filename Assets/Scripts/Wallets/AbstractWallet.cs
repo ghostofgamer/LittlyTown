@@ -8,15 +8,17 @@ namespace Wallets
     {
         [SerializeField] private int _startValue;
         [SerializeField] private AudioSource _audioSource;
-        [SerializeField]private AudioClip _audioClip;
+        [SerializeField] private AudioClip _audioClip;
 
         private int _currentValue;
         private Coroutine _coroutine;
         private float _elapsedTime;
         private float _duration = 1f;
+        private float _targetValue;
+        private float _firstValue;
         private bool _isLoadValue;
         private bool _isProfit = true;
-        
+
         public event Action ValueChanged;
 
         public int CurrentValue => _currentValue;
@@ -25,14 +27,14 @@ namespace Wallets
         {
             if (_isLoadValue)
                 return;
-            
+
             _currentValue = _startValue;
             ValueChanged?.Invoke();
         }
 
         public virtual void IncreaseValue(int value)
         {
-            if (value <= 0||!_isProfit)
+            if (value <= 0 || !_isProfit)
                 return;
 
             _currentValue += value;
@@ -60,23 +62,6 @@ namespace Wallets
             ValueChanged?.Invoke();
         }
 
-        private IEnumerator SmoothlyChangeValue(int value)
-        {
-            _elapsedTime = 0f;
-
-            float targetValue = _currentValue + value;
-            float startValue = _currentValue;
-            _audioSource.PlayOneShot(_audioClip);
-            
-            while (_elapsedTime < _duration)
-            {
-                _elapsedTime += Time.deltaTime;
-                _currentValue = (int) Mathf.Lerp(startValue, targetValue, _elapsedTime / _duration);
-                ValueChanged?.Invoke();
-                yield return null;
-            }
-        }
-
         public void SetValue(int value)
         {
             _isLoadValue = true;
@@ -94,10 +79,26 @@ namespace Wallets
         {
             _isProfit = false;
         }
-        
+
         public void EnableProfit()
         {
             _isProfit = true;
+        }
+
+        private IEnumerator SmoothlyChangeValue(int value)
+        {
+            _elapsedTime = 0f;
+            _targetValue = _currentValue + value;
+            _firstValue = _currentValue;
+            _audioSource.PlayOneShot(_audioClip);
+
+            while (_elapsedTime < _duration)
+            {
+                _elapsedTime += Time.deltaTime;
+                _currentValue = (int) Mathf.Lerp(_firstValue, _targetValue, _elapsedTime / _duration);
+                ValueChanged?.Invoke();
+                yield return null;
+            }
         }
     }
 }

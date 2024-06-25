@@ -14,7 +14,6 @@ namespace CountersContent
         private const string CurrentRecordScore = "CurrentRecordScore";
 
         [SerializeField] private Merger _merger;
-        [SerializeField] private PositionMatcher _positionMatcher;
         [SerializeField] private TMP_Text _scoreTargetText;
         [SerializeField] private TMP_Text _goalText;
         [SerializeField] private TMP_Text _score;
@@ -47,14 +46,12 @@ namespace CountersContent
         private void OnEnable()
         {
             _merger.Merged += OnAddIncome;
-            _positionMatcher.NotMerged += OnAddGoal;
             _lookMerger.NotMerged += OnAddGoal;
         }
 
         private void OnDisable()
         {
             _merger.Merged -= OnAddIncome;
-            _positionMatcher.NotMerged -= OnAddGoal;
             _lookMerger.NotMerged -= OnAddGoal;
         }
 

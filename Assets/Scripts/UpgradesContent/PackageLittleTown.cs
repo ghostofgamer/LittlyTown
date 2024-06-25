@@ -18,7 +18,7 @@ namespace UpgradesContent
 
         public int Amount { get; private set; } = 3;
 
-        public bool IsActive { get; private set; } = false;
+        public bool IsActive { get; private set; }
 
         private void Start()
         {

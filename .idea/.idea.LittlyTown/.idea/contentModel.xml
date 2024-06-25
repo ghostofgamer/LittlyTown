@@ -1184,8 +1184,6 @@
             <e p="Merger.cs" t="Include" />
             <e p="MinIndexItemSelector.cs" t="Include" />
           </e>
-          <e p="MoveCanceller.cs" t="Include" />
-          <e p="PositionMatcher.cs" t="Include" />
           <e p="PossibilitiesContent" t="Include">
             <e p="CraneDestroyer.cs" t="Include" />
             <e p="GoldMovement.cs" t="Include" />
@@ -1247,15 +1245,9 @@
             <e p="GameReady.cs" t="Include" />
             <e p="SDKInitialization.cs" t="Include" />
           </e>
-          <e p="SoundContent" t="Include" />
           <e p="SpawnContent" t="Include">
             <e p="DropGenerator.cs" t="Include" />
             <e p="Spawner.cs" t="Include" />
-          </e>
-          <e p="Test" t="Include">
-            <e p="Rotater.cs" t="Include" />
-            <e p="ScrollrectMayTest.cs" t="Include" />
-            <e p="TestMerger.cs" t="Include" />
           </e>
           <e p="TutorContent" t="Include">
             <e p="BulldozerStage.cs" t="Include" />
