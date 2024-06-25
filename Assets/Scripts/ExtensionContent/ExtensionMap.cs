@@ -31,7 +31,7 @@ namespace ExtensionContent
         private List<FinderPositions> _targetFinderPositions = new List<FinderPositions>();
         private List<ItemPosition> _targetItemPositions = new List<ItemPosition>();
 
-        private int _index = 0;
+        private int _index;
         private int _randomIndex;
         private int _defaultValue=1;
         private Map _currentMap;

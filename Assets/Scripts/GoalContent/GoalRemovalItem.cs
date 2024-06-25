@@ -5,7 +5,7 @@ namespace GoalContent
 {
     public class GoalRemovalItem : Goal
     {
-        [SerializeField]private RemovalItems _removalItems;
+        [SerializeField] private RemovalItems _removalItems;
 
         private void OnEnable()
         {

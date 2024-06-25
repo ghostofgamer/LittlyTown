@@ -20,10 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="099b8a6d-6b1c-4473-babb-d7d2ffb7e44f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EndGameContent/EndPositionScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EndGameContent/EndPositionScreen.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enums/SettingsModes.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enums/SettingsModes.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enums/Upgrades.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enums/Upgrades.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/UpgradeButtons/UpgradeButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/UpgradeButtons/UpgradeButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ExtensionContent/ExtansionMapInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ExtensionContent/ExtansionMapInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ExtensionContent/ExtensionMap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ExtensionContent/ExtensionMap.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,10 +186,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/StartButton.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ReturnGoalScreenGameLevelButton.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/ADButtons/RewardMoveButton.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/PossibilitiesFiles/ReplacementButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/PossibilitiesFiles/DeleteButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/PossibilitiesFiles/BuyPossibilitieButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/PossibilitiesFiles/AdditionalPossibilitiesButton.cs" />
@@ -239,6 +233,10 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/EndGameContent/EndPositionScreen.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enums/Upgrades.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enums/SettingsModes.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/EnvironmentContent/TurnEnvironment.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/EnvironmentContent/EnvironmentMovement.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ExtensionContent/ExtansionMapInfo.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ExtensionContent/ExtensionMap.cs" />
       </list>
     </option>
   </component>
@@ -363,7 +361,7 @@
       <workItem from="1719136970153" duration="5000" />
       <workItem from="1719137133779" duration="16763000" />
       <workItem from="1719209511924" duration="23168000" />
-      <workItem from="1719299040921" duration="4000000" />
+      <workItem from="1719299040921" duration="4312000" />
     </task>
     <servers />
   </component>

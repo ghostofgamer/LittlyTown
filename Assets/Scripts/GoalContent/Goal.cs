@@ -47,10 +47,19 @@ namespace GoalContent
             Show();
         }
 
-        private void FinishGoal()
+        public void SetCompleteValue(int value)
         {
-            _completeGoalButton.SetActive(true);
-            _sliderInfo.SetActive(false);
+            CompleteValue = value;
+            ValueChanged?.Invoke();
+        }
+
+        public void SetValue(int currentValue)
+        {
+            _currentValue = currentValue;
+            Show();
+
+            if (_currentValue >= _maxValue)
+                FinishGoal();
         }
 
         protected void ChangeValue(Item item)
@@ -67,26 +76,17 @@ namespace GoalContent
             ValueChanged?.Invoke();
         }
 
-        public void SetCompleteValue(int value)
+        private void FinishGoal()
         {
-            CompleteValue = value;
-            ValueChanged?.Invoke();
-        }
-
-        public void SetValue(int currentValue)
-        {
-            _currentValue = currentValue;
-            Show();
-
-            if (_currentValue >= _maxValue)
-                FinishGoal();
+            _completeGoalButton.SetActive(true);
+            _sliderInfo.SetActive(false);
         }
 
         private void Show()
         {
-            _scorePercentage = Mathf.RoundToInt((float) _currentValue / (float) _maxValue * 100f);
+            _scorePercentage = Mathf.RoundToInt(_currentValue / (float) _maxValue * 100f);
             _slider.value = _scorePercentage;
-            _progressText.text = _currentValue.ToString() + " / " + _maxValue.ToString();
+            _progressText.text = _currentValue + " / " + _maxValue;
         }
     }
 }

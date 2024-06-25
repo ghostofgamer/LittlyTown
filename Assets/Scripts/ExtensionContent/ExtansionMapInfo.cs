@@ -7,7 +7,7 @@ namespace ExtensionContent
     public class ExtansionMapInfo : MonoBehaviour
     {
         private const string ExtensionTerritory = "ExtensionTerritory";
-      
+
         [SerializeField] private string[] _informations;
         [SerializeField] private TMP_Text _parameterInfo;
         [SerializeField] private Load _load;
