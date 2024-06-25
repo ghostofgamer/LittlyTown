@@ -11,20 +11,20 @@ namespace CountersContent
         [SerializeField] private ScoreCounter _scoreCounter;
         [SerializeField] private Merger _merger;
         [SerializeField] private Camera _camera;
-    
+
         private Coroutine _coroutine;
         private Item _item;
 
         private void OnEnable()
         {
             _scoreCounter.ScoreIncomeChanged += OnShow;
-            _merger.ItemMergered += SetItem;
+            _merger.ItemMergered += OnSetItem;
         }
 
         private void OnDisable()
         {
             _scoreCounter.ScoreIncomeChanged -= OnShow;
-            _merger.ItemMergered -= SetItem;
+            _merger.ItemMergered -= OnSetItem;
         }
 
         public void ScoreMove(int scoreValue)
@@ -37,10 +37,10 @@ namespace CountersContent
 
         private void OnShow(int score)
         {
-            _item.FlightScore.StartShow(_camera,score);
+            _item.FlightScore.StartShow(_camera, score);
         }
 
-        private void SetItem(Item item)
+        private void OnSetItem(Item item)
         {
             _item = item;
         }

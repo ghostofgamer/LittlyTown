@@ -6,7 +6,6 @@ using SaveAndLoad;
 using SpawnContent;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Advertisements;
 
 namespace CountersContent
 {
@@ -25,15 +24,14 @@ namespace CountersContent
         [SerializeField] private Save _save;
         [SerializeField] private Initializator _initializator;
 
-        private int _currentScore;
         private int _targetScore = 50;
         private int _stepScore = 50;
         private int _defaultTargetScore = 50;
-        private int _scoreIncome = 0;
+        private int _scoreIncome;
         private Vector3 _targetPosition;
         private int _maxRecordScore;
         private int _minFactor = 1;
-        
+
         public event Action<int, int> ScoreChanged;
 
         public event Action LevelChanged;
@@ -44,7 +42,7 @@ namespace CountersContent
 
         public int Factor { get; private set; } = 1;
 
-        public int CurrentScore => _currentScore;
+        public int CurrentScore { get; private set; }
 
         private void OnEnable()
         {
@@ -67,24 +65,24 @@ namespace CountersContent
 
         public void SetValue(int value, int factor)
         {
-            _currentScore = value;
+            CurrentScore = value;
             Factor = factor;
             _targetScore = Factor * _stepScore;
             Show();
             _dropGenerator.NextLevel(Factor);
-            ScoreChanged?.Invoke(_currentScore, _targetScore);
+            ScoreChanged?.Invoke(CurrentScore, _targetScore);
         }
 
         public void ResetScore()
         {
             CurrentScoreRecord = 0;
             _save.SetData(CurrentRecordScore + _initializator.Index, CurrentScoreRecord);
-            _currentScore = 0;
+            CurrentScore = 0;
             _targetScore = _defaultTargetScore;
             Factor = _minFactor;
             _dropGenerator.ResetLevel();
             Show();
-            ScoreChanged?.Invoke(_currentScore, _targetScore);
+            ScoreChanged?.Invoke(CurrentScore, _targetScore);
         }
 
         public void SetCurrentScore(int currentValue)
@@ -105,13 +103,13 @@ namespace CountersContent
             if (_scoreIncome <= 0)
                 return;
 
-            _currentScore += _scoreIncome;
+            CurrentScore += _scoreIncome;
             _visualScore.gameObject.SetActive(true);
-            _visualScore.ScoreMove(_currentScore);
-            ScoreChanged?.Invoke(_currentScore, _targetScore);
+            _visualScore.ScoreMove(CurrentScore);
+            ScoreChanged?.Invoke(CurrentScore, _targetScore);
             ScoreIncomeChanged?.Invoke(_scoreIncome);
 
-            if (_currentScore >= _targetScore)
+            if (CurrentScore >= _targetScore)
             {
                 NextGoal();
                 LevelChanged?.Invoke();
@@ -123,16 +121,16 @@ namespace CountersContent
         private void NextGoal()
         {
             Factor++;
-            _currentScore -= _targetScore;
+            CurrentScore -= _targetScore;
             _targetScore = Factor * _stepScore;
             Show();
             _dropGenerator.NextLevel(Factor);
-            ScoreChanged?.Invoke(_currentScore, _targetScore);
+            ScoreChanged?.Invoke(CurrentScore, _targetScore);
         }
 
         private void Show()
         {
-            _scoreTargetText.text = _goalText.text + " " + _targetScore.ToString() + " " + _score.text;
+            _scoreTargetText.text = _goalText.text + " " + _targetScore + " " + _score.text;
         }
     }
 }

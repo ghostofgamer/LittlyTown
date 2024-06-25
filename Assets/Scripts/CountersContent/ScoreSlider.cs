@@ -16,7 +16,7 @@ namespace CountersContent
         private void Awake()
         {
             _scoreCounter = GetComponent<ScoreCounter>();
-            _percentText.text = _slider.value.ToString() + _percent;
+            _percentText.text = _slider.value + _percent;
         }
 
         private void OnEnable()
@@ -33,7 +33,7 @@ namespace CountersContent
         {
             _scorePercentage = Mathf.RoundToInt(currentScore / (float) targetScore * 100f);
             _slider.value = _scorePercentage;
-            _percentText.text = _slider.value.ToString() + _percent;
+            _percentText.text = _slider.value + _percent;
         }
     }
 }

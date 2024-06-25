@@ -13,19 +13,18 @@ namespace CountersContent
 
         [SerializeField] private float _moveCount;
         [SerializeField] private TMP_Text _moveCountText;
-        [SerializeField] private ItemDragger _itemDragger;
         [SerializeField] private EndlessMoveButton _endlessMoveButton;
         [SerializeField] private GameObject _endless;
         [SerializeField] private GameObject _notEndless;
         [SerializeField] private Load _load;
         [SerializeField] private Save _save;
         [SerializeField] private ItemThrower _itemThrower;
-        
+
         private float _maxValue = 300;
         private float _minValue = 0;
         private int _targetStepProfit = 5;
         private int _currentStep;
-        private bool _isEndless = false;
+        private bool _isEndless;
         private float _startMoveCount = 100;
 
         public event Action MoveOver;
@@ -35,12 +34,6 @@ namespace CountersContent
         public bool IsThereMoves => _moveCount > _minValue || _isEndless;
 
         public float MoveCount => _moveCount;
-
-        private void Start()
-        {
-            _moveCount = _load.Get(StepCount, _startMoveCount);
-            Show();
-        }
 
         private void OnEnable()
         {
@@ -52,6 +45,12 @@ namespace CountersContent
         {
             _itemThrower.PlaceChanged -= OnCountChange;
             _endlessMoveButton.EndlessPurchased -= OnSelectEndlessMoves;
+        }
+
+        private void Start()
+        {
+            _moveCount = _load.Get(StepCount, _startMoveCount);
+            Show();
         }
 
         public void ReplenishSteps()

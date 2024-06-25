@@ -1,7 +1,6 @@
 using System.Collections;
 using Dragger;
 using InitializationContent;
-using ItemPositionContent;
 using Keeper;
 using MergeContent;
 using PossibilitiesContent;
@@ -18,15 +17,15 @@ namespace CountersContent
         [SerializeField] private MoveCounter _moveCounter;
         [SerializeField] private GoldWallet _goldWallet;
         [SerializeField] private Merger _merger;
-        [SerializeField] private ItemDragger _itemDragger;
         [SerializeField] private LightHouseKeeper _lightHouseKeeper;
         [SerializeField] private RemovalItems _removalItems;
         [SerializeField] private Initializator _initializator;
         [SerializeField] private ItemThrower _itemThrower;
-        
+
         private int _profit;
         private int _stepCount;
         private int _currentStep;
+        private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.15f);
 
         private void Awake()
         {
@@ -36,7 +35,6 @@ namespace CountersContent
         private void OnEnable()
         {
             _moveCounter.StepProfitCompleted += AddGold;
-            // _itemDragger.PlaceChanged += CheckIncome;
             _itemThrower.PlaceChanged += CheckIncome;
             _removalItems.Removed += CheckIncome;
             _merger.Mergered += CheckIncome;
@@ -46,7 +44,6 @@ namespace CountersContent
         private void OnDisable()
         {
             _moveCounter.StepProfitCompleted -= AddGold;
-            // _itemDragger.PlaceChanged -= CheckIncome;
             _itemThrower.PlaceChanged -= CheckIncome;
             _removalItems.Removed -= CheckIncome;
             _merger.Mergered -= CheckIncome;
@@ -61,7 +58,7 @@ namespace CountersContent
 
         private void Show()
         {
-            _text.text = _profit.ToString() + " " + _description.text;
+            _text.text = _profit + " " + _description.text;
         }
 
         public void CheckIncome()
@@ -71,7 +68,7 @@ namespace CountersContent
 
         private IEnumerator StartSearchIncome()
         {
-            yield return new WaitForSeconds(0.15f);
+            yield return _waitForSeconds;
             _profit = 0;
 
             foreach (var itemPosition in _initializator.ItemPositions)
