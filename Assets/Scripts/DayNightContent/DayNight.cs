@@ -47,7 +47,6 @@ namespace DayNightContent
         private float _dayGradientValue = 0f;
         private float _startGrassGradientValue;
 
-
         public event Action TimeDayChanged;
 
         public bool IsNight { get; private set; }

@@ -29,8 +29,10 @@ namespace InitializationContent
                 _initializator.SetIndex(_valueLastMap);
                 _initializator.FillLists();
                 _mapGenerator.GenerationWithoutSpawn(
-                    _initializator.Territories, _initializator.FinderPositions,
-                    _initializator.ItemPositions, _initializator.CurrentMap.RoadsContainer,
+                    _initializator.Territories,
+                    _initializator.FinderPositions,
+                    _initializator.ItemPositions,
+                    _initializator.CurrentMap.RoadsContainer,
                     _initializator.CurrentMap.StartItems);
 
                 for (int i = 0; i < _initializator.AmountMaps; i++)

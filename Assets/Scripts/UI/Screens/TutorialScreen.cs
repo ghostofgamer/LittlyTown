@@ -46,6 +46,12 @@ namespace UI.Screens
             SlowOpen();
         }
 
+        public void ChangeTutorialStage(GameObject closeContent, GameObject openContent)
+        {
+            openContent.SetActive(true);
+            closeContent.SetActive(false);
+        }
+
         private void SlowOpen()
         {
             if (_coroutine != null)
@@ -63,12 +69,6 @@ namespace UI.Screens
 
             _shopItems.SetStartPrice();
             OnOpen();
-        }
-
-        public void ChangeTutorialStage(GameObject closeContent, GameObject openContent)
-        {
-            openContent.SetActive(true);
-            closeContent.SetActive(false);
         }
     }
 }

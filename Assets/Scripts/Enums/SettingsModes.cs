@@ -1,11 +1,11 @@
 namespace Enums
 {
-    public enum  SettingsModes
+    public enum SettingsModes
     {
         OrthographicMode,
         Music,
         SFX,
         SnapRotationMode,
-        DayNightMode
+        DayNightMode,
     }
 }

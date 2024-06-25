@@ -24,14 +24,13 @@ namespace SpawnContent
         private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.165f);
         private Coroutine _coroutine;
         private ItemPosition _position;
+        private int _index;
 
         public event Action ItemCreated;
 
         public event Action PositionsFilled;
 
         public event Action<ItemPosition, Item> LooksNeighbors;
-
-        private int _index;
 
         private void OnEnable()
         {
@@ -78,8 +77,11 @@ namespace SpawnContent
             if (_position == null)
                 yield break;
 
-            Item item = Instantiate(_dropGenerator.GetItem(), _position.transform.position,
-                Quaternion.identity, _initializator.CurrentMap.ItemsContainer);
+            Item item = Instantiate(
+                _dropGenerator.GetItem(),
+                _position.transform.position,
+                Quaternion.identity,
+                _initializator.CurrentMap.ItemsContainer);
             _itemKeeper.SetItem(item, _position);
             ItemCreated?.Invoke();
             LooksNeighbors?.Invoke(_position, item);

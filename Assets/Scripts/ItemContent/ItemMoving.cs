@@ -47,7 +47,7 @@ namespace ItemContent
         private IEnumerator StartMoveCyclically(Vector3 targetItemPosition)
         {
             _isMoving = true;
-            
+
             while (_isMoving)
             {
                 _direction = (targetItemPosition - transform.position).normalized;
@@ -56,7 +56,7 @@ namespace ItemContent
 
                 while (_elapsedTime < _durationMoveTarget)
                 {
-                    Move(_target,_durationMoveTarget);
+                    Move(_target, _durationMoveTarget);
                     yield return null;
                 }
 
@@ -71,7 +71,7 @@ namespace ItemContent
 
             while (_elapsedTime < _durationMoveCyclically)
             {
-                Move(targetItemPosition,_durationMoveCyclically);
+                Move(targetItemPosition, _durationMoveCyclically);
                 yield return null;
             }
 
@@ -79,7 +79,7 @@ namespace ItemContent
             gameObject.SetActive(false);
         }
 
-        private void Move(Vector3 targetPosition,float duration)
+        private void Move(Vector3 targetPosition, float duration)
         {
             _progress = _elapsedTime / duration;
             transform.position = Vector3.Lerp(_startPosition, targetPosition, _progress);

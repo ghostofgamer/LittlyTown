@@ -15,9 +15,9 @@ namespace ItemSO
         public Sprite Icon => _icon;
 
         public float BaseDropChance => _baseDropChance;
-        
+
         public float LevelIncreaseFactor => _levelIncreaseFactor;
-        
+
         public float LevelDecreaseFactor => _levelDecreaseFactor;
         
         public Item PrefabItem => _prefabItem;

@@ -63,7 +63,7 @@ namespace PossibilitiesContent
         {
             _ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            if ((Physics.Raycast(_ray, out _hit, Mathf.Infinity, _layerMask)))
+            if (Physics.Raycast(_ray, out _hit, Mathf.Infinity, _layerMask))
             {
                 if (_hit.transform.gameObject.TryGetComponent(out ItemPosition itemPosition))
                     itemPosition.GetComponent<VisualItemPosition>().ActivateVisual();
@@ -82,7 +82,7 @@ namespace PossibilitiesContent
         {
             _ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            if ((Physics.Raycast(_ray, out _hit, Mathf.Infinity, _layerMask)))
+            if (Physics.Raycast(_ray, out _hit, Mathf.Infinity, _layerMask))
             {
                 if (_hit.transform.gameObject.TryGetComponent(out ItemPosition itemPosition))
                 {

@@ -10,8 +10,8 @@ namespace ItemPositionContent
         [SerializeField] private Spawner _spawner;
         [SerializeField] private MoveCounter _moveCounter;
 
-        private  List<VisualItemPosition> _itemPositions = new List<VisualItemPosition>();
-        
+        private List<VisualItemPosition> _itemPositions = new List<VisualItemPosition>();
+
         private void OnEnable()
         {
             _spawner.PositionsFilled += OnDeactivationVisual;
@@ -36,7 +36,7 @@ namespace ItemPositionContent
 
             foreach (var position in itemPositions)
             {
-                if(position.GetComponent<VisualItemPosition>())
+                if (position.GetComponent<VisualItemPosition>())
                     _itemPositions.Add(position.GetComponent<VisualItemPosition>());
             }
         }

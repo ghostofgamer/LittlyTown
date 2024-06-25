@@ -52,7 +52,6 @@ namespace SaveAndLoad
             _itemKeeper.SelectNewItem -= SaveChanges;
         }
 
-
         public void LoadDataInfo()
         {
             SaveData saveData = new SaveData();
@@ -67,16 +66,19 @@ namespace SaveAndLoad
                 return;
             }
 
-            Item selectItem = Instantiate(GetItem(saveData.SelectItemData.ItemName),
+            Item selectItem = Instantiate(
+                GetItem(saveData.SelectItemData.ItemName),
                 saveData.SelectItemData.ItemPosition.transform.position,
-                Quaternion.identity, _initializator.CurrentMap.ItemsContainer);
+                Quaternion.identity,
+                _initializator.CurrentMap.ItemsContainer);
             selectItem.Init(saveData.SelectItemData.ItemPosition);
             selectItem.gameObject.SetActive(false);
             SelectSaveItem = selectItem;
 
             if (saveData.TemporaryItem.ItemName != Items.Empty)
             {
-                Item item = Instantiate(GetItem(saveData.TemporaryItem.ItemName),
+                Item item = Instantiate(
+                    GetItem(saveData.TemporaryItem.ItemName),
                     _initializator.CurrentMap.ItemsContainer);
                 _itemKeeper.SetTemporaryObject(item);
             }
@@ -88,7 +90,8 @@ namespace SaveAndLoad
             foreach (var item in saveData.ItemDatasPrices)
                 _shopItems.SetPrice(item.ItemName, item.Price);
 
-            _shopItems.SetPricePossibilitie(saveData.PossibilitiesItemsData.PriceBulldozer,
+            _shopItems.SetPricePossibilitie(
+                saveData.PossibilitiesItemsData.PriceBulldozer,
                 saveData.PossibilitiesItemsData.PriceReplace);
             _dropGenerator.SetItem(saveData.ItemDropData.PrefabItem, saveData.ItemDropData.Icon);
             _moveCounter.SetValue(saveData.MoveCount);
@@ -99,7 +102,8 @@ namespace SaveAndLoad
 
             if (saveData.StorageItemData.ItemPosition != null || saveData.StorageItemData.ItemName != Items.Empty)
             {
-                Item storageItem = Instantiate(GetItem(saveData.StorageItemData.ItemName),
+                Item storageItem = Instantiate(
+                    GetItem(saveData.StorageItemData.ItemName),
                     _initializator.CurrentMap.ItemsContainer);
                 storageItem.gameObject.SetActive(false);
                 _storage.SetItem(storageItem);
@@ -111,7 +115,8 @@ namespace SaveAndLoad
 
             if (saveData.Storage1ItemData.ItemPosition != null || saveData.Storage1ItemData.ItemName != Items.Empty)
             {
-                Item storageItem = Instantiate(GetItem(saveData.Storage1ItemData.ItemName),
+                Item storageItem = Instantiate(
+                    GetItem(saveData.Storage1ItemData.ItemName),
                     _initializator.CurrentMap.ItemsContainer);
                 storageItem.gameObject.SetActive(false);
                 _storage1.SetItem(storageItem);
@@ -123,7 +128,8 @@ namespace SaveAndLoad
 
             if (saveData.Storage2ItemData.ItemPosition != null || saveData.Storage2ItemData.ItemName != Items.Empty)
             {
-                Item storageItem = Instantiate(GetItem(saveData.Storage2ItemData.ItemName),
+                Item storageItem = Instantiate(
+                    GetItem(saveData.Storage2ItemData.ItemName),
                     _initializator.CurrentMap.ItemsContainer);
                 storageItem.gameObject.SetActive(false);
                 _storage2.SetItem(storageItem);
@@ -155,7 +161,8 @@ namespace SaveAndLoad
 
             if (_itemKeeper.SelectedObject != null)
             {
-                saveData.SelectItemData = new SelectItemData(_itemKeeper.SelectedObject.ItemName,
+                saveData.SelectItemData = new SelectItemData(
+                    _itemKeeper.SelectedObject.ItemName,
                     _itemKeeper.SelectedObject.ItemPosition);
                 SelectSaveItem = _itemKeeper.SelectedObject;
             }

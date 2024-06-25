@@ -17,13 +17,13 @@ namespace Dragger
         private RaycastHit _hit;
         private Ray _ray;
 
-        public ItemPosition LastTrowPosition { get; private set; }
-
         public event Action PlaceChanged;
 
         public event Action<ItemPosition> StepCompleted;
 
         public event Action<Item> BuildItem;
+
+        public ItemPosition LastTrowPosition { get; private set; }
 
         public void ThrowItem()
         {

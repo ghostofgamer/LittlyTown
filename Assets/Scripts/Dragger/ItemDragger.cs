@@ -52,7 +52,8 @@ namespace Dragger
                     _mouseWorldPosition.y = _itemKeeper.SelectedObject.transform.position.y;
                     _itemKeeper.SelectedObject.transform.position = Vector3.Lerp(
                         _itemKeeper.SelectedObject.transform.position,
-                        _mouseWorldPosition + _offsetObject, 16 * Time.deltaTime);
+                        _mouseWorldPosition + _offsetObject,
+                        16 * Time.deltaTime);
                 }
             }
 
@@ -98,7 +99,6 @@ namespace Dragger
                     if (_itemKeeper.SelectedObject.transform.position == _position)
                         IsObjectSelected = true;
                 }
-
                 else if (Physics.Raycast(_ray, out _hit, Mathf.Infinity, LayerMask))
                 {
                     if (_hit.transform.gameObject.TryGetComponent(out ItemPosition itemPosition) &&

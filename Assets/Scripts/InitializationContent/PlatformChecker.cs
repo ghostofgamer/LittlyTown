@@ -28,12 +28,25 @@ namespace InitializationContent
             _currentIndex = Application.isMobilePlatform ? _mobileIndex : _pcIndex;
 
             if (_currentIndex == _mobileIndex)
-                _cameraMovement.Init(_perspectiveValueMobile, _orthographicValueMobile,
-                    _perspectiveZoomDownValueMobile, _orthographicSizeZoomOutMobile, _perspectiveZoomUpValueMobile,
+            {
+                _cameraMovement.Init(
+                    _perspectiveValueMobile,
+                    _orthographicValueMobile,
+                    _perspectiveZoomDownValueMobile,
+                    _orthographicSizeZoomOutMobile,
+                    _perspectiveZoomUpValueMobile,
                     _orthographicSizeZoomInMobile);
+            }
             else
-                _cameraMovement.Init(_perspectiveValuePc, _orthographicValuePc, _perspectiveZoomDownValuePc,
-                    _orthographicSizeZoomOutPc, _perspectiveZoomUpValuePc, _orthographicSizeZoomInPc);
+            {
+                _cameraMovement.Init(
+                    _perspectiveValuePc,
+                    _orthographicValuePc,
+                    _perspectiveZoomDownValuePc,
+                    _orthographicSizeZoomOutPc,
+                    _perspectiveZoomUpValuePc,
+                    _orthographicSizeZoomInPc);
+            }
         }
     }
 }

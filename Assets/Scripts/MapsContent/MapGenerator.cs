@@ -76,50 +76,33 @@ namespace MapsContent
             foreach (var territory in _targetTerritories)
                 territory.gameObject.SetActive(false);
 
-            FastMapGeneration(_targetTerritories, _targetFinderPositions,
+            FastMapGeneration(
+                _targetTerritories,
+                _targetFinderPositions,
                 _environments[index].GetComponent<Map>().RoadsContainer,
-                _targetItemPositions, _environments[index].GetComponent<Map>().StartItems,
+                _targetItemPositions,
+                _environments[index].GetComponent<Map>().StartItems,
                 _environments[index].GetComponent<Map>());
         }
 
-        public void GenerationWithoutSpawn(List<Territory> territories, List<FinderPositions> finderPositions,
-            List<ItemPosition> itemPositions, Transform container, List<Item> startItems)
+        public void GenerationWithoutSpawn(
+            List<Territory> territories,
+            List<FinderPositions> finderPositions,
+            List<ItemPosition> itemPositions,
+            Transform container, List<Item> startItems)
         {
             foreach (var territory in territories)
                 territory.gameObject.SetActive(false);
 
-            StartCoroutine(StartGenerationWithoutSpawn(territories, finderPositions, itemPositions, container,
-                startItems));
+            StartCoroutine(StartGenerationWithoutSpawn(territories, finderPositions, itemPositions, container, startItems));
         }
 
-        private IEnumerator StartGenerationWithoutSpawn(List<Territory> territories,
+        public void FastMapGeneration(
+            List<Territory> territories,
             List<FinderPositions> finderPositions,
-            List<ItemPosition> itemPositions, Transform container, List<Item> startItems)
-        {
-            foreach (var territory in territories)
-            {
-                PositionActivation(territory);
-                yield return _waitForSeconds;
-            }
-
-            yield return null;
-
-            foreach (var item in startItems)
-            {
-                ArrangeItems(itemPositions, item, _initializator.CurrentMap.ItemsContainer);
-                yield return _waitForSecondsMoment;
-            }
-
-            foreach (var finderPosition in finderPositions)
-                finderPosition.FindNeighbor();
-
-            yield return _waitForSecondsMoment;
-            _roadGenerator.GenerationRoad(itemPositions, container, _initializator.CurrentMap);
-        }
-
-        public void FastMapGeneration(List<Territory> territories, List<FinderPositions> finderPositions,
             Transform container,
-            List<ItemPosition> itemPositions, List<Item> startItems, Map map)
+            List<ItemPosition> itemPositions,
+            List<Item> startItems, Map map)
         {
             foreach (var territory in territories)
             {
@@ -138,10 +121,7 @@ namespace MapsContent
                 foreach (var item in startItems)
                 {
                     _clearPositions = new List<ItemPosition>();
-                    _clearPositions = itemPositions
-                        .Where(p => !p.GetComponent<ItemPosition>().IsBusy && !p.GetComponent<ItemPosition>().IsWater &&
-                                    p.GetComponent<ItemPosition>().gameObject.activeSelf)
-                        .ToList();
+                    _clearPositions = itemPositions.Where(p => !p.GetComponent<ItemPosition>().IsBusy && !p.GetComponent<ItemPosition>().IsWater && p.GetComponent<ItemPosition>().gameObject.activeSelf).ToList();
                     _randomIndex = Random.Range(0, _clearPositions.Count);
                     Item newItem = Instantiate(item, map.ItemsContainer);
                     newItem.transform.position = _clearPositions[_randomIndex].transform.position;
@@ -174,10 +154,37 @@ namespace MapsContent
                 container));
         }
 
-        private IEnumerator StartGenerationCurrentMap(List<Territory> territories,
+        private IEnumerator StartGenerationWithoutSpawn(List<Territory> territories,
+            List<FinderPositions> finderPositions,
+            List<ItemPosition> itemPositions, Transform container, List<Item> startItems)
+        {
+            foreach (var territory in territories)
+            {
+                PositionActivation(territory);
+                yield return _waitForSeconds;
+            }
+
+            yield return null;
+
+            foreach (var item in startItems)
+            {
+                ArrangeItems(itemPositions, item, _initializator.CurrentMap.ItemsContainer);
+                yield return _waitForSecondsMoment;
+            }
+
+            foreach (var finderPosition in finderPositions)
+                finderPosition.FindNeighbor();
+
+            yield return _waitForSecondsMoment;
+            _roadGenerator.GenerationRoad(itemPositions, container, _initializator.CurrentMap);
+        }
+
+        private IEnumerator StartGenerationCurrentMap(
+            List<Territory> territories,
             List<FinderPositions> finderPositions,
             List<Item> startItems,
-            List<ItemPosition> itemPositions, Transform container)
+            List<ItemPosition> itemPositions,
+            Transform container)
         {
             foreach (var territory in territories)
             {
@@ -200,7 +207,9 @@ namespace MapsContent
             }
 
             yield return _waitForSecondsMoment;
-            _roadGenerator.GenerationRoad(_initializator.ItemPositions, _initializator.CurrentMap.RoadsContainer,
+            _roadGenerator.GenerationRoad(
+                _initializator.ItemPositions,
+                _initializator.CurrentMap.RoadsContainer,
                 _initializator.CurrentMap);
             yield return _waitForSecondsMoment;
             _spawner.OnCreateItem();
@@ -227,8 +236,8 @@ namespace MapsContent
         {
             _clearPositions = new List<ItemPosition>();
             _clearPositions = itemPositions
-                .Where(p => !p.GetComponent<ItemPosition>().IsBusy && !p.GetComponent<ItemPosition>().IsWater)
-                .ToList();
+                .Where(p => !p.GetComponent<ItemPosition>().IsBusy &&
+                            !p.GetComponent<ItemPosition>().IsWater).ToList();
             _randomIndex = Random.Range(0, _clearPositions.Count);
             Item newItem = Instantiate(item, container);
             newItem.transform.position = _clearPositions[_randomIndex].transform.position;
@@ -247,9 +256,11 @@ namespace MapsContent
                 {
                     if (itemData.ItemName != Items.Crane)
                     {
-                        Item item = Instantiate(GetItem(itemData.ItemName),
+                        Item item = Instantiate(
+                            GetItem(itemData.ItemName),
                             itemData.ItemPosition.transform.position,
-                            Quaternion.identity, map.ItemsContainer);
+                            Quaternion.identity,
+                            map.ItemsContainer);
                         item.Init(itemData.ItemPosition);
                         item.Activation();
                     }

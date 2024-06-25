@@ -89,8 +89,11 @@ namespace MapsContent
                 _packageLittleTown.Activated();
 
             _turnEnvironment.SetEnvironment(_initializator.CurrentMap.gameObject);
-            _mapGenerator.GenerationCurrentMap(_initializator.Territories, _initializator.FinderPositions,
-                _initializator.CurrentMap.StartItems, _initializator.ItemPositions,
+            _mapGenerator.GenerationCurrentMap(
+                _initializator.Territories,
+                _initializator.FinderPositions,
+                _initializator.CurrentMap.StartItems,
+                _initializator.ItemPositions,
                 _initializator.CurrentMap.ItemsContainer);
             _itemKeeper.SwitchOn();
             _bonusesStart.ApplyBonuses();
@@ -100,11 +103,13 @@ namespace MapsContent
         public void StartCreateWithoutSpawn()
         {
             SetStartSettings();
-            _mapGenerator.GenerationWithoutSpawn(_initializator.Territories, _initializator.FinderPositions,
-                _initializator.ItemPositions, _initializator.CurrentMap.RoadsContainer,
+            _mapGenerator.GenerationWithoutSpawn(
+                _initializator.Territories, 
+                _initializator.FinderPositions,
+                _initializator.ItemPositions,
+                _initializator.CurrentMap.RoadsContainer,
                 _initializator.CurrentMap.StartItems);
         }
-
 
         public void SetStartSettings()
         {

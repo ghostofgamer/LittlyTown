@@ -37,7 +37,7 @@ namespace MergeContent
 
             foreach (Item temporaryItem in items)
             {
-                int index = (int) temporaryItem.ItemName;
+                int index = (int)temporaryItem.ItemName;
 
                 if (minIndex > index)
                 {

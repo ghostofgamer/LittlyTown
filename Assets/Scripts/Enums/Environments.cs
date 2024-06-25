@@ -1,11 +1,11 @@
 namespace Enums
 {
-    public enum Environments 
+    public enum Environments
     {
         ClearTile,
         Water,
         Elevation,
         Trail,
-        Road
+        Road,
     }
 }

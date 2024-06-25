@@ -31,7 +31,7 @@ namespace UI.Screens
         {
             if (_coroutine != null)
                 StopCoroutine(_coroutine);
-            
+
             _canvasGroup.alpha = 0;
             _canvasGroup.interactable = false;
             _canvasGroup.blocksRaycasts = false;

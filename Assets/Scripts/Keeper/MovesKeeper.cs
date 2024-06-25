@@ -42,7 +42,7 @@ namespace Keeper
         [SerializeField] private ReplacementPosition _replacementPosition;
         [SerializeField] private RemovalItems _removalItems;
 
-        public List<SaveData> _savesHistory = new List<SaveData>();
+        private List<SaveData> _savesHistory = new List<SaveData>();
         private int _currentStep = -1;
         private Coroutine _coroutine;
         private SaveData _saveData;
@@ -101,6 +101,11 @@ namespace Keeper
             _coroutine = StartCoroutine(StartCancelling());
         }
 
+        public void ClearList()
+        {
+            _savesHistory.Clear();
+        }
+
         private void SaveHistoryData()
         {
             SaveHistoryData saveHistoryData = new SaveHistoryData();
@@ -108,11 +113,6 @@ namespace Keeper
             string jsonData = JsonUtility.ToJson(saveHistoryData);
             PlayerPrefs.SetString(SaveHistoryName + _initializator.Index, jsonData);
             PlayerPrefs.Save();
-        }
-
-        public void ClearList()
-        {
-            _savesHistory.Clear();
         }
 
         private void OnSaveHistory()
@@ -189,8 +189,11 @@ namespace Keeper
 
         private void CreateItem(ItemData itemData)
         {
-            Item item = Instantiate(GetItem(itemData.ItemName), itemData.ItemPosition.transform.position,
-                Quaternion.identity, _initializator.CurrentMap.ItemsContainer);
+            Item item = Instantiate(
+                GetItem(itemData.ItemName),
+                itemData.ItemPosition.transform.position,
+                Quaternion.identity,
+                _initializator.CurrentMap.ItemsContainer);
             item.Init(itemData.ItemPosition);
             item.Activation();
             _audioSource.PlayOneShot(_audioSource.clip);
@@ -200,7 +203,8 @@ namespace Keeper
         {
             if (saveData.TemporaryItem.ItemName != Items.Empty)
             {
-                Item item = Instantiate(GetItem(saveData.TemporaryItem.ItemName),
+                Item item = Instantiate(
+                    GetItem(saveData.TemporaryItem.ItemName),
                     _initializator.CurrentMap.ItemsContainer);
                 _itemKeeper.SetTemporaryObject(item);
             }
@@ -209,9 +213,11 @@ namespace Keeper
                 _itemKeeper.SetTemporaryObject(null);
             }
 
-            Item selectItem = Instantiate(GetItem(saveData.SelectItemData.ItemName),
+            Item selectItem = Instantiate(
+                GetItem(saveData.SelectItemData.ItemName),
                 saveData.SelectItemData.ItemPosition.transform.position,
-                Quaternion.identity, _initializator.CurrentMap.ItemsContainer);
+                Quaternion.identity,
+                _initializator.CurrentMap.ItemsContainer);
 
             _dropGenerator.SetItem(saveData.ItemDropData.PrefabItem, saveData.ItemDropData.Icon);
             selectItem.Init(saveData.SelectItemData.ItemPosition);
@@ -222,12 +228,14 @@ namespace Keeper
             foreach (ItemData item in saveData.ItemDatasPrices)
                 _shopItems.SetPrice(item.ItemName, item.Price);
 
-            _shopItems.SetPricePossibilitie(saveData.PossibilitiesItemsData.PriceBulldozer,
+            _shopItems.SetPricePossibilitie(
+                saveData.PossibilitiesItemsData.PriceBulldozer,
                 saveData.PossibilitiesItemsData.PriceReplace);
 
             if (saveData.StorageItemData.ItemName != Items.Empty)
             {
-                Item storageItem = Instantiate(GetItem(saveData.StorageItemData.ItemName),
+                Item storageItem = Instantiate(
+                    GetItem(saveData.StorageItemData.ItemName),
                     _initializator.CurrentMap.ItemsContainer);
                 storageItem.gameObject.SetActive(false);
                 _storage.SetItem(storageItem);

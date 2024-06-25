@@ -19,8 +19,7 @@ namespace Road
         [SerializeField] private Merger _merger;
         [SerializeField] private RemovalItems _removalItems;
         [SerializeField] private ReplacementPosition _replacementPosition;
-        [Header("Tiles")]
-        [SerializeField] private ItemPosition _angularTileUpRight;
+        [Header("Tiles")] [SerializeField] private ItemPosition _angularTileUpRight;
         [SerializeField] private ItemPosition _angularTileUpLeft;
         [SerializeField] private ItemPosition _angularTileDownLeft;
         [SerializeField] private ItemPosition _angularTileDownRight;
@@ -84,38 +83,38 @@ namespace Road
         {
             _tileConfigurations = new Dictionary<string, ItemPosition>()
             {
-                {"0000", _clearTile},
-                {"1001", _straightTileHorizontal},
-                {"0110", _straightTileVertical},
-                {"1111", _fullCrossroadsTile},
-                {"1000", _endTileUp},
-                {"0100", _endTileLeft},
-                {"0010", _endTileRight},
-                {"0001", _endTileDown},
-                {"1100", _angularTileUpLeft},
-                {"1010", _angularTileUpRight},
-                {"0011", _angularTileDownRight},
-                {"0101", _angularTileDownLeft},
-                {"1110", _crossroadsTileUp},
-                {"1101", _crossroadsTileLeft},
-                {"1011", _crossroadsTileRight},
-                {"0111", _crossroadsTileDown},
-                {"2332", _roadTileHorizontal},
-                {"3223", _roadTileVertical},
-                {"2233", _roadTileUpLeft},
-                {"2323", _roadTileUpRight},
-                {"3322", _roadTileDownRight},
-                {"3232", _roadTileDownLeft},
-                {"3333", _roadTileGrey},
-                {"2333", _endRoadTileDown},
-                {"3233", _endRoadTileRight},
-                {"3323", _endRoadTileLeft},
-                {"3332", _endRoadTileUp},
-                {"2222", _fullRoadTile},
-                {"2223", _crossroadsRoadTileUp},
-                {"2232", _crossroadsRoadTileLeft},
-                {"2322", _crossroadsRoadTileRight},
-                {"3222", _crossroadsRoadTileDown},
+                { "0000", _clearTile },
+                { "1001", _straightTileHorizontal },
+                { "0110", _straightTileVertical },
+                { "1111", _fullCrossroadsTile },
+                { "1000", _endTileUp },
+                { "0100", _endTileLeft },
+                { "0010", _endTileRight },
+                { "0001", _endTileDown },
+                { "1100", _angularTileUpLeft },
+                { "1010", _angularTileUpRight },
+                { "0011", _angularTileDownRight },
+                { "0101", _angularTileDownLeft },
+                { "1110", _crossroadsTileUp },
+                { "1101", _crossroadsTileLeft },
+                { "1011", _crossroadsTileRight },
+                { "0111", _crossroadsTileDown },
+                { "2332", _roadTileHorizontal },
+                { "3223", _roadTileVertical },
+                { "2233", _roadTileUpLeft },
+                { "2323", _roadTileUpRight },
+                { "3322", _roadTileDownRight },
+                { "3232", _roadTileDownLeft },
+                { "3333", _roadTileGrey },
+                { "2333", _endRoadTileDown },
+                { "3233", _endRoadTileRight },
+                { "3323", _endRoadTileLeft },
+                { "3332", _endRoadTileUp },
+                { "2222", _fullRoadTile },
+                { "2223", _crossroadsRoadTileUp },
+                { "2232", _crossroadsRoadTileLeft },
+                { "2322", _crossroadsRoadTileRight },
+                { "3222", _crossroadsRoadTileDown },
             };
         }
 
@@ -181,7 +180,9 @@ namespace Road
                 if (itemPosition.IsBusy && itemPosition.Item.IsBigHouse)
                 {
                     ItemPosition tile =
-                        Instantiate(_roadTileGrey, itemPosition.transform.position,
+                        Instantiate(
+                            _roadTileGrey,
+                            itemPosition.transform.position,
                             _initializator.CurrentMap.RoadsContainer.transform.rotation,
                             _initializator.CurrentMap.RoadsContainer);
 
@@ -205,7 +206,9 @@ namespace Road
                     {
                         string surroundingTiles = CheckSurroundingRoadTiles(roadPosition);
                         ItemPosition selectedTile =
-                            Instantiate(_tileConfigurations[surroundingTiles], roadPosition.transform.position,
+                            Instantiate(
+                                _tileConfigurations[surroundingTiles],
+                                roadPosition.transform.position,
                                 _initializator.CurrentMap.RoadsContainer.transform.rotation,
                                 _initializator.CurrentMap.RoadsContainer);
 
@@ -222,13 +225,14 @@ namespace Road
                 if (!itemPosition.IsBusy && !itemPosition.IsRoad)
                 {
                     string surroundingTiles = CheckSurroundingTiles(itemPosition);
-                    ItemPosition selectedTile = Instantiate(_tileConfigurations[surroundingTiles],
-                        itemPosition.transform.position, _initializator.CurrentMap.RoadsContainer.transform.rotation,
+                    ItemPosition selectedTile = Instantiate(
+                        _tileConfigurations[surroundingTiles],
+                        itemPosition.transform.position,
+                        _initializator.CurrentMap.RoadsContainer.transform.rotation,
                         _initializator.CurrentMap.RoadsContainer);
 
                     itemPosition.SetRoad(selectedTile);
                 }
-
                 else
                 {
                     if (itemPosition.Item != null && itemPosition.Item.IsBigHouse)
@@ -238,7 +242,9 @@ namespace Road
                         continue;
 
                     ItemPosition selectedTile =
-                        Instantiate(_clearTile, itemPosition.transform.position,
+                        Instantiate(
+                            _clearTile,
+                            itemPosition.transform.position,
                             _initializator.CurrentMap.RoadsContainer.transform.rotation,
                             _initializator.CurrentMap.RoadsContainer);
 
@@ -337,7 +343,9 @@ namespace Road
                 if (itemPosition.IsBusy && itemPosition.Item.IsBigHouse)
                 {
                     ItemPosition tile =
-                        Instantiate(_roadTileGrey, itemPosition.transform.position,
+                        Instantiate(
+                            _roadTileGrey,
+                            itemPosition.transform.position,
                             container.transform.rotation,
                             container);
 
@@ -361,7 +369,9 @@ namespace Road
                     {
                         string surroundingTiles = CheckSurroundingRoadTiles(roadPosition);
                         ItemPosition selectedTile =
-                            Instantiate(_tileConfigurations[surroundingTiles], roadPosition.transform.position,
+                            Instantiate(
+                                _tileConfigurations[surroundingTiles],
+                                roadPosition.transform.position,
                                 container.transform.rotation,
                                 container);
 
@@ -378,8 +388,11 @@ namespace Road
                 if (!itemPosition.IsBusy && !itemPosition.IsRoad)
                 {
                     string surroundingTiles = CheckSurroundingTiles(itemPosition);
-                    ItemPosition selectedTile = Instantiate(_tileConfigurations[surroundingTiles],
-                        itemPosition.transform.position, container.transform.rotation, container);
+                    ItemPosition selectedTile = Instantiate(
+                        _tileConfigurations[surroundingTiles],
+                        itemPosition.transform.position,
+                        container.transform.rotation,
+                        container);
                     itemPosition.SetRoad(selectedTile);
                 }
 
@@ -391,9 +404,11 @@ namespace Road
                     if (itemPosition.IsRoad)
                         continue;
 
-                    ItemPosition selectedTile =
-                        Instantiate(_clearTile, itemPosition.transform.position, container.transform.rotation,
-                            container);
+                    ItemPosition selectedTile = Instantiate(
+                        _clearTile,
+                        itemPosition.transform.position,
+                        container.transform.rotation,
+                        container);
                     itemPosition.SetRoad(selectedTile);
                 }
 

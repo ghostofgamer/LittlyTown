@@ -4,6 +4,6 @@ namespace Enums
     {
         English,
         Turkish,
-        Russian
+        Russian,
     }
 }

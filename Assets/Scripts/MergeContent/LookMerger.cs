@@ -189,13 +189,11 @@ namespace MergeContent
 
                 _coroutine = StartCoroutine(LookPositions(_currentItemPosition, item));
             }
-
             else if (_matchedItems.Count < 2 && _temporaryItems.Count > 1)
             {
                 SaveNewTemporaryItem();
                 _coroutine = StartCoroutine(LookPositions(_currentItemPosition, _temporaryItem));
             }
-
             else
             {
                 if (_completeList.Count < 2)

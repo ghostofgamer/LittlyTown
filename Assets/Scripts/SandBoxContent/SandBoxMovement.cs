@@ -17,7 +17,9 @@ namespace SandBoxContent
 
         public void GoOffScreen()
         {
-            _targetPosition = new Vector3(_environment.transform.position.x, _environment.transform.position.y,
+            _targetPosition = new Vector3(
+                _environment.transform.position.x,
+                _environment.transform.position.y,
                 _environment.transform.position.z + _step);
 
             if (_coroutine != null)

@@ -59,7 +59,8 @@ namespace SandBoxContent
                 ItemPosition itemPositionTile = Instantiate(
                     TileWater,
                     itemPosition.transform.position,
-                    Quaternion.identity, RoadContainer);
+                    Quaternion.identity,
+                    RoadContainer);
                 itemPosition.SetRoad(itemPositionTile);
             }
             else
@@ -70,7 +71,8 @@ namespace SandBoxContent
                     ItemPosition itemPositionTile = Instantiate(
                         ClearTile,
                         itemPosition.transform.position,
-                        Quaternion.identity, RoadContainer);
+                        Quaternion.identity,
+                        RoadContainer);
                     itemPosition.SetRoad(itemPositionTile);
                 }
             }

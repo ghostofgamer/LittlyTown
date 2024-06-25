@@ -147,7 +147,7 @@ namespace UI.Screens
         {
             if (!CollectedItems.Contains(item.ItemName))
             {
-                CollectedItems.Add((item.ItemName));
+                CollectedItems.Add(item.ItemName);
                 ShowItems();
                 Show();
                 SaveCollectedItemsToPlayerPrefs();

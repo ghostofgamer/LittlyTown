@@ -30,7 +30,7 @@ namespace UI.Screens
             _environmentMovement.GoAway();
             _sandboxMovement.ReturnPosition();
             _cameraMovement.ZoomIn();
-            _scrollRect.enabled = (!(_scrollbar.size >= 1));
+            _scrollRect.enabled = !(_scrollbar.size >= 1);
             _scrollbar.gameObject.SetActive(!(_scrollbar.size >= 1));
             StartCoroutine(ShowButtons());
         }

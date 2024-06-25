@@ -31,7 +31,7 @@ namespace CountersContent
 
         private void AddValue(int currentScore, int targetScore)
         {
-            _scorePercentage = Mathf.RoundToInt(currentScore / (float) targetScore * 100f);
+            _scorePercentage = Mathf.RoundToInt(currentScore / (float)targetScore * 100f);
             _slider.value = _scorePercentage;
             _percentText.text = _slider.value + _percent;
         }

@@ -53,7 +53,8 @@ namespace TutorContent
             _mapGenerator.GenerationWithoutSpawn(
                 _initializator.Territories,
                 _initializator.FinderPositions,
-                _initializator.ItemPositions, _initializator.CurrentMap.RoadsContainer,
+                _initializator.ItemPositions,
+                _initializator.CurrentMap.RoadsContainer,
                 _initializator.CurrentMap.StartItems);
             _tutorialScreen.StartTutorial();
             _startMap.SetStartSettings();

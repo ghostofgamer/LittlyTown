@@ -12,12 +12,6 @@ namespace UI.Buttons
         [SerializeField] private Blur _blur;
         [SerializeField] private OpenButton _openButton;
 
-        protected override void OnClick()
-        {
-            AudioSource.PlayOneShot(AudioSource.clip);
-            Open();
-        }
-
         public void Open()
         {
             if (_openButton != null)
@@ -35,6 +29,12 @@ namespace UI.Buttons
 
             if (_abstractScreen != null)
                 _abstractScreen.OnOpen();
+        }
+
+        protected override void OnClick()
+        {
+            AudioSource.PlayOneShot(AudioSource.clip);
+            Open();
         }
     }
 }

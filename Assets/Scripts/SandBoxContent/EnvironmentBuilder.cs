@@ -133,7 +133,9 @@ namespace SandBoxContent
 
             if (itemPosition.IsElevation)
             {
-                _newLocalPosition = new Vector3(itemPosition.transform.localPosition.x, _minPositionElevationY,
+                _newLocalPosition = new Vector3(
+                    itemPosition.transform.localPosition.x,
+                    _minPositionElevationY,
                     itemPosition.transform.localPosition.z);
                 itemPosition.transform.localPosition = _newLocalPosition;
             }
@@ -153,7 +155,8 @@ namespace SandBoxContent
                 itemPositionTile = Instantiate(
                     tilePrefab,
                     itemPosition.transform.position,
-                    Quaternion.identity, RoadContainer);
+                    Quaternion.identity,
+                    RoadContainer);
                 itemPositionTile.transform.localPosition = new Vector3(
                     itemPositionTile.transform.localPosition.x,
                     _positionElevationTileY,
@@ -161,8 +164,11 @@ namespace SandBoxContent
             }
             else
             {
-                itemPositionTile = Instantiate(tilePrefab, itemPosition.transform.position,
-                    Quaternion.identity, RoadContainer);
+                itemPositionTile = Instantiate(
+                    tilePrefab,
+                    itemPosition.transform.position,
+                    Quaternion.identity,
+                    RoadContainer);
             }
 
             itemPosition.SetRoad(itemPositionTile);

@@ -77,8 +77,12 @@ namespace SandBoxContent
 
             foreach (var itemPosition in _itemPositions)
             {
-                ItemPositionData itemPositionData = new ItemPositionData(itemPosition.IsWater, itemPosition.IsBusy,
-                    itemPosition.IsElevation, itemPosition.IsTrail, itemPosition.IsRoad);
+                ItemPositionData itemPositionData = new ItemPositionData(
+                    itemPosition.IsWater,
+                    itemPosition.IsBusy,
+                    itemPosition.IsElevation,
+                    itemPosition.IsTrail,
+                    itemPosition.IsRoad);
                 itemPositions.Add(itemPositionData);
             }
 
@@ -103,9 +107,12 @@ namespace SandBoxContent
 
                 for (int i = 0; i < _itemPositions.Length; i++)
                 {
-                    _itemPositions[i].Init(sandBoxSaveData.ItemPositionDatas[i].IsBusy,
-                        sandBoxSaveData.ItemPositionDatas[i].IsElevation, sandBoxSaveData.ItemPositionDatas[i].IsWater,
-                        sandBoxSaveData.ItemPositionDatas[i].IsRoad, sandBoxSaveData.ItemPositionDatas[i].IsTrail);
+                    _itemPositions[i].Init(
+                        sandBoxSaveData.ItemPositionDatas[i].IsBusy,
+                        sandBoxSaveData.ItemPositionDatas[i].IsElevation,
+                        sandBoxSaveData.ItemPositionDatas[i].IsWater,
+                        sandBoxSaveData.ItemPositionDatas[i].IsRoad,
+                        sandBoxSaveData.ItemPositionDatas[i].IsTrail);
 
                     if (_itemPositions[i].IsWater)
                         isWaterPosition.Add(_itemPositions[i]);
@@ -127,18 +134,15 @@ namespace SandBoxContent
                         _maxPositionElevationY,
                         elevationPosition.transform.localPosition.z);
                     elevationPosition.transform.localPosition = newLocalPosition;
-
                     itemPositionTile = Instantiate(
                         _environmentBuilder.IsTileElevation,
                         elevationPosition.transform.position,
-                        Quaternion.identity, _roadContainer);
-
+                        Quaternion.identity,
+                        _roadContainer);
                     itemPositionTile.transform.localPosition = new Vector3(
                         itemPositionTile.transform.localPosition.x,
                         _positionElevationTileY,
                         itemPositionTile.transform.localPosition.z);
-
-
                     elevationPosition.SetRoad(itemPositionTile);
                 }
 
@@ -148,9 +152,11 @@ namespace SandBoxContent
                     {
                         if (itemData.ItemName != Items.Crane)
                         {
-                            Item item = Instantiate(GetItem(itemData.ItemName),
+                            Item item = Instantiate(
+                                GetItem(itemData.ItemName),
                                 itemData.ItemPosition.transform.position,
-                                _itemContainer.transform.rotation, _itemContainer);
+                                _itemContainer.transform.rotation,
+                                _itemContainer);
                             item.Init(itemData.ItemPosition);
                             item.Activation();
                         }

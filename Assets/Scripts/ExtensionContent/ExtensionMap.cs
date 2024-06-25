@@ -33,7 +33,7 @@ namespace ExtensionContent
 
         private int _index;
         private int _randomIndex;
-        private int _defaultValue=1;
+        private int _defaultValue = 1;
         private Map _currentMap;
 
         private void OnEnable()
@@ -44,6 +44,57 @@ namespace ExtensionContent
         private void OnDisable()
         {
             _merger.ItemMergered -= Extension;
+        }
+
+        public void SearchMap(int index)
+        {
+            foreach (var map in _extensionMaps)
+            {
+                if (map.Index == index)
+                    ShowMap(map);
+            }
+        }
+
+        public void ResetMap(Map map,
+            List<Territory> territory,
+            List<ItemPosition> itemPositions,
+            List<FinderPositions> finderPositions,
+            List<Territory> extensionTerritory)
+        {
+            _index = 0;
+            _targetTerritories = territory;
+            _targetFinderPositions = finderPositions;
+            _targetItemPositions = itemPositions;
+            _extensionFilterTerritories = extensionTerritory;
+            _extensionMapMovement.ResetPosition(_currentMap.Mover);
+        }
+
+        public void ContinueMap(
+            List<Territory> territory,
+            List<ItemPosition> itemPositions,
+            List<FinderPositions> finderPositions,
+            List<Territory> extensionTerritory)
+        {
+            _targetTerritories = territory;
+            _targetFinderPositions = finderPositions;
+            _targetItemPositions = itemPositions;
+            _extensionFilterTerritories = extensionTerritory;
+        }
+
+        public void RandomWater(Map map)
+        {
+            foreach (var itemPosition in map.RandomPositionWaters)
+                itemPosition.ResetWater();
+
+            _randomIndex = Random.Range(1, map.RandomPositionWaters.Length);
+            map.RandomPositionWaters[_randomIndex].SetWater();
+            _save.SetData(WaterTile, _randomIndex);
+        }
+
+        public void SetMap(Map map)
+        {
+            _currentMap = map;
+            _index = _load.Get(ExtensionTerritory + _currentMap.Index, 0);
         }
 
         private void Extension(Item item)
@@ -83,20 +134,12 @@ namespace ExtensionContent
             }
 
             _initializator.SetPositions(_targetItemPositions);
-            _roadGenerator.GenerationRoad(_targetItemPositions, _initializator.CurrentMap.RoadsContainer,
+            _roadGenerator.GenerationRoad(
+                _targetItemPositions,
+                _initializator.CurrentMap.RoadsContainer,
                 _initializator.CurrentMap);
             _index++;
             _extensionMapMovement.ChangePosition(_index, _currentMap.Mover);
-        }
-
-
-        public void SearchMap(int index)
-        {
-            foreach (var map in _extensionMaps)
-            {
-                if (map.Index == index)
-                    ShowMap(map);
-            }
         }
 
         private void ShowMap(Map map)
@@ -179,44 +222,12 @@ namespace ExtensionContent
                 territory.gameObject.SetActive(false);
             }
 
-            _mapGenerator.FastMapGeneration(_targetTerritories, _targetFinderPositions, map.RoadsContainer,
-                _targetItemPositions, map.StartItems, map);
-        }
-
-        public void ResetMap(Map map, List<Territory> territory, List<ItemPosition> itemPositions,
-            List<FinderPositions> finderPositions, List<Territory> extensionTerritory)
-        {
-            _index = 0;
-            _targetTerritories = territory;
-            _targetFinderPositions = finderPositions;
-            _targetItemPositions = itemPositions;
-            _extensionFilterTerritories = extensionTerritory;
-            _extensionMapMovement.ResetPosition(_currentMap.Mover);
-        }
-
-        public void ContinueMap(List<Territory> territory, List<ItemPosition> itemPositions,
-            List<FinderPositions> finderPositions, List<Territory> extensionTerritory)
-        {
-            _targetTerritories = territory;
-            _targetFinderPositions = finderPositions;
-            _targetItemPositions = itemPositions;
-            _extensionFilterTerritories = extensionTerritory;
-        }
-
-        public void RandomWater(Map map)
-        {
-            foreach (var itemPosition in map.RandomPositionWaters)
-                itemPosition.ResetWater();
-
-            _randomIndex = Random.Range(1, map.RandomPositionWaters.Length);
-            map.RandomPositionWaters[_randomIndex].SetWater();
-            _save.SetData(WaterTile, _randomIndex);
-        }
-
-        public void SetMap(Map map)
-        {
-            _currentMap = map;
-            _index = _load.Get(ExtensionTerritory + _currentMap.Index, 0);
+            _mapGenerator.FastMapGeneration(_targetTerritories,
+                _targetFinderPositions,
+                map.RoadsContainer,
+                _targetItemPositions,
+                map.StartItems,
+                map);
         }
     }
 }

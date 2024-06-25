@@ -38,7 +38,7 @@ namespace ItemContent
 
             foreach (House house in _houses)
             {
-                if (!((IList) _colliders).Contains(house.GetComponent<Collider>()))
+                if (!((IList)_colliders).Contains(house.GetComponent<Collider>()))
                 {
                     _housesToRemove.Add(house);
                     house.ResetIncome();

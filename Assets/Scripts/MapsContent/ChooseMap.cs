@@ -86,10 +86,10 @@ namespace MapsContent
                 {
                     if (
                         _currentIndex +
-                        (int) Mathf.Sign(-((int) Mathf.Sign(_mouseCurrentPosition.x - _mouseStartPosition.x))) >
+                        (int)Mathf.Sign(-((int)Mathf.Sign(_mouseCurrentPosition.x - _mouseStartPosition.x))) >
                         _maxIndex ||
                         _currentIndex +
-                        (int) Mathf.Sign(-((int) Mathf.Sign(_mouseCurrentPosition.x - _mouseStartPosition.x))) <
+                        (int)Mathf.Sign(-((int)Mathf.Sign(_mouseCurrentPosition.x - _mouseStartPosition.x))) <
                         _minIndex)
                     {
                         ResetValue();
@@ -97,7 +97,7 @@ namespace MapsContent
                     }
 
                     _isWork = false;
-                    ChangeMap(-((int) Mathf.Sign(_mouseCurrentPosition.x - _mouseStartPosition.x)));
+                    ChangeMap(-((int)Mathf.Sign(_mouseCurrentPosition.x - _mouseStartPosition.x)));
                 }
                 else
                 {

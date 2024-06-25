@@ -196,14 +196,21 @@ namespace InitializationContent
             if (_environments[_index].GetComponent<Map>().IsMapExpanding)
             {
                 _extensionMap.SetMap(_environments[_index].GetComponent<Map>());
-                _extensionMap.ContinueMap(Territories,
-                    ItemPositions, FinderPositions, _extensionFilterTerritories);
+                _extensionMap.ContinueMap(
+                    Territories,
+                    ItemPositions,
+                    FinderPositions,
+                    _extensionFilterTerritories);
             }
 
             if (_initExtension)
             {
-                _extensionMap.ResetMap(_environments[_index].GetComponent<Map>(), Territories,
-                    ItemPositions, FinderPositions, _extensionFilterTerritories);
+                _extensionMap.ResetMap(
+                    _environments[_index].GetComponent<Map>(),
+                    Territories,
+                    ItemPositions,
+                    FinderPositions,
+                    _extensionFilterTerritories);
                 _initExtension = false;
             }
         }

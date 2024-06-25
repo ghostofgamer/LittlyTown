@@ -37,11 +37,15 @@ namespace SaveAndLoad.GoalContent
 
             _saveGoalData = new SaveGoalData
             {
-                FirstGoal = new GoalData(currentGoals[_firstGoalIndex].Index,
-                    currentGoals[_firstGoalIndex].CurrentValue, currentGoals[_firstGoalIndex].CompleteValue),
+                FirstGoal = new GoalData(
+                    currentGoals[_firstGoalIndex].Index,
+                    currentGoals[_firstGoalIndex].CurrentValue,
+                    currentGoals[_firstGoalIndex].CompleteValue),
 
-                SecondGoal = new GoalData(currentGoals[_secondGoalIndex].Index,
-                    currentGoals[_secondGoalIndex].CurrentValue, currentGoals[_secondGoalIndex].CompleteValue)
+                SecondGoal = new GoalData(
+                    currentGoals[_secondGoalIndex].Index,
+                    currentGoals[_secondGoalIndex].CurrentValue,
+                    currentGoals[_secondGoalIndex].CompleteValue),
             };
 
             _firstGoal = currentGoals[_firstGoalIndex];

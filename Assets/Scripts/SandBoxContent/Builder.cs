@@ -18,7 +18,7 @@ namespace SandBoxContent
         [SerializeField] private RoadGenerator _roadGenerator;
         [SerializeField] private BuildButton _buildButton;
         [SerializeField] private Camera _camera;
-        
+
         private int _layerMask;
         private int _layer = 3;
         private ItemPosition _lastItemPosition;

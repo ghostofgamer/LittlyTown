@@ -95,7 +95,7 @@ namespace Wallets
             while (_elapsedTime < _duration)
             {
                 _elapsedTime += Time.deltaTime;
-                _currentValue = (int) Mathf.Lerp(_firstValue, _targetValue, _elapsedTime / _duration);
+                _currentValue = (int)Mathf.Lerp(_firstValue, _targetValue, _elapsedTime / _duration);
                 ValueChanged?.Invoke();
                 yield return null;
             }

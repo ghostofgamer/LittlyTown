@@ -6,7 +6,8 @@ namespace SaveAndLoad
         public int PriceBulldozer;
         public int PriceReplace;
 
-        public PossibilitiesItemsData(int bulldozerPrice,
+        public PossibilitiesItemsData(
+            int bulldozerPrice,
             int replacePrice)
         {
             PriceBulldozer = bulldozerPrice;

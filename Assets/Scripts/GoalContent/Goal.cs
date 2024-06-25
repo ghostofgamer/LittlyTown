@@ -84,7 +84,7 @@ namespace GoalContent
 
         private void Show()
         {
-            _scorePercentage = Mathf.RoundToInt(_currentValue / (float) _maxValue * 100f);
+            _scorePercentage = Mathf.RoundToInt(_currentValue / (float)_maxValue * 100f);
             _slider.value = _scorePercentage;
             _progressText.text = _currentValue + " / " + _maxValue;
         }

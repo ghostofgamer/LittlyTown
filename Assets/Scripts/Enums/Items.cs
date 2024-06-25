@@ -22,6 +22,6 @@ namespace Enums
         SkyScrapper,
         VertexVeste,
         SkyHouse,
-        Empty
+        Empty,
     }
 }

@@ -31,8 +31,13 @@ namespace CameraContent
 
         public float StandardOrthographicSize => _standardOrthographicSize;
 
-        public void Init(int fovPerspective, int sizeOrthographic, int perspectiveZoomDownValue,
-            int orthographicSizeZoomOut, int perspectiveZoomUpValue, int orthographicSizeZoomIn)
+        public void Init(
+            int fovPerspective,
+            int sizeOrthographic,
+            int perspectiveZoomDownValue,
+            int orthographicSizeZoomOut,
+            int perspectiveZoomUpValue,
+            int orthographicSizeZoomIn)
         {
             _standardPerspectiveFOV = fovPerspective;
             _camera.fieldOfView = _standardPerspectiveFOV;

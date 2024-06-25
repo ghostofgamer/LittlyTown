@@ -50,6 +50,11 @@ namespace CountersContent
             _lightHouseKeeper.CheckCompleted -= CheckIncome;
         }
 
+        public void CheckIncome()
+        {
+            StartCoroutine(StartSearchIncome());
+        }
+
         private void AddGold()
         {
             if (_profit > 0)
@@ -59,11 +64,6 @@ namespace CountersContent
         private void Show()
         {
             _text.text = _profit + " " + _description.text;
-        }
-
-        public void CheckIncome()
-        {
-            StartCoroutine(StartSearchIncome());
         }
 
         private IEnumerator StartSearchIncome()

@@ -30,8 +30,7 @@ namespace MergeContent
 
         public event Action<Item> ItemMergered;
 
-        public void MergeItems(ItemPosition currentPosition, List<ItemPosition> matchPositions, List<Item> matchItems,
-            Item targetItem)
+        public void MergeItems(ItemPosition currentPosition, List<ItemPosition> matchPositions, List<Item> matchItems, Item targetItem)
         {
             if (!_targetItem.ContainsKey(targetItem))
                 _targetItem.Add(targetItem, targetItem);
@@ -58,8 +57,11 @@ namespace MergeContent
             if (_currentItem.ItemName == Items.Crane)
                 _currentItem = _targetItem[targetItem];
 
-            Item item = Instantiate(_targetItem[targetItem].NextItem, currentPosition.transform.position,
-                Quaternion.identity, _initializator.CurrentMap.ItemsContainer);
+            Item item = Instantiate(
+                _targetItem[targetItem].NextItem,
+                currentPosition.transform.position,
+                Quaternion.identity,
+                _initializator.CurrentMap.ItemsContainer);
             ItemActivation(currentPosition, item);
             yield return _waitForSeconds;
             Merged?.Invoke(_matchPositions.Count, _currentItem.Reward, currentPosition);

@@ -49,7 +49,7 @@ namespace ItemPositionContent
 
         private void Start()
         {
-            ItemPositions = new[] {_northPosition, _westPosition, _eastPosition, _southPosition};
+            ItemPositions = new[] { _northPosition, _westPosition, _eastPosition, _southPosition };
         }
 
         private void OnTriggerStay(Collider other)
@@ -126,7 +126,7 @@ namespace ItemPositionContent
             _westPosition = west;
             _eastPosition = east;
             _southPosition = south;
-            ItemPositions = new[] {_northPosition, _westPosition, _eastPosition, _southPosition};
+            ItemPositions = new[] { _northPosition, _westPosition, _eastPosition, _southPosition };
         }
 
         public void ReplaceSelectedActivate()

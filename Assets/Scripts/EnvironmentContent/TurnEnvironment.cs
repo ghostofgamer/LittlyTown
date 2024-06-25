@@ -37,7 +37,9 @@ namespace EnvironmentContent
         {
             _lookMerger.StopMoveMatch();
             _angle += _step * index;
-            _target = new Vector3(_environments[_initializator.Index].transform.rotation.x, _angle,
+            _target = new Vector3(
+                _environments[_initializator.Index].transform.rotation.x,
+                _angle,
                 _environments[_initializator.Index].transform.rotation.z);
             _isRotating = true;
         }
@@ -64,8 +66,10 @@ namespace EnvironmentContent
 
         private void UpdateRotation()
         {
-            _currentEnvironment.transform.rotation = Quaternion.Lerp(_currentEnvironment.transform.rotation,
-                Quaternion.Euler(_target), _speed * Time.deltaTime);
+            _currentEnvironment.transform.rotation = Quaternion.Lerp(
+                _currentEnvironment.transform.rotation,
+                Quaternion.Euler(_target),
+                _speed * Time.deltaTime);
 
             if (_currentEnvironment.transform.rotation == Quaternion.Euler(_target))
             {
