@@ -8,6 +8,7 @@ namespace Dragger
     public class ItemDragger : MonoBehaviour
     {
         [SerializeField] private ItemKeeper _itemKeeper;
+        [SerializeField] private Camera _camera;
 
         private ItemPositionLooker _itemPositionLooker;
         private Plane _objectPlane;
@@ -15,14 +16,17 @@ namespace Dragger
         private int _layerMaskIgnore;
         private int _layer = 3;
         private float _distance;
+        private float _distanceToPlane;
         private bool _isTemporary;
         private Vector3 _offsetObject;
         private Vector3 _position;
         private Vector3 _mouseWorldPosition;
+        private RaycastHit _hit;
+        private Ray _ray;
 
-        public bool IsObjectSelected { get; private set; } = false;
+        public bool IsObjectSelected { get; private set; }
 
-        public bool IsPositionSelected { get; private set; } = false;
+        public bool IsPositionSelected { get; private set; }
 
         public int LayerMask { get; private set; }
 
@@ -40,25 +44,25 @@ namespace Dragger
 
             if (IsObjectSelected)
             {
-                Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+                _ray = _camera.ScreenPointToRay(Input.mousePosition);
 
-                if (_objectPlane.Raycast(mouseRay, out _distance))
+                if (_objectPlane.Raycast(_ray, out _distance))
                 {
-                    _mouseWorldPosition = mouseRay.GetPoint(_distance);
+                    _mouseWorldPosition = _ray.GetPoint(_distance);
                     _mouseWorldPosition.y = _itemKeeper.SelectedObject.transform.position.y;
-                    _itemKeeper.SelectedObject.transform.position = Vector3.Lerp(_itemKeeper.SelectedObject.transform.position,
+                    _itemKeeper.SelectedObject.transform.position = Vector3.Lerp(
+                        _itemKeeper.SelectedObject.transform.position,
                         _mouseWorldPosition + _offsetObject, 16 * Time.deltaTime);
                 }
             }
 
             if (IsPositionSelected)
             {
-                RaycastHit hit;
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                _ray = _camera.ScreenPointToRay(Input.mousePosition);
 
-                if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask))
+                if (Physics.Raycast(_ray, out _hit, Mathf.Infinity, LayerMask))
                 {
-                    if (hit.transform.gameObject.TryGetComponent(out ItemPosition itemPosition))
+                    if (_hit.transform.gameObject.TryGetComponent(out ItemPosition itemPosition))
                     {
                         if (!itemPosition.IsBusy && !itemPosition.IsWater)
                             _itemKeeper.ChangeStartPosition(itemPosition);
@@ -75,21 +79,19 @@ namespace Dragger
             if (_itemKeeper.SelectedObject == null)
                 return;
 
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            _ray = _camera.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray, out hit))
+            if (Physics.Raycast(_ray, out _hit))
             {
-                if (hit.transform.gameObject.TryGetComponent(out Item item) && !item.IsActive)
+                if (_hit.transform.gameObject.TryGetComponent(out Item item) && !item.IsActive)
                 {
                     _position = _itemKeeper.SelectedObject.transform.position;
                     _position = new Vector3(_position.x, _position.y + _offset, _position.z);
                     _itemKeeper.SelectedObject.transform.position = _position;
                     _objectPlane = new Plane(Vector3.up, _position);
-                    float distanceToPlane;
-                    _objectPlane.Raycast(ray, out distanceToPlane);
-                    _distance = distanceToPlane;
-                    _mouseWorldPosition = ray.GetPoint(_distance);
+                    _objectPlane.Raycast(_ray, out _distanceToPlane);
+                    _distance = _distanceToPlane;
+                    _mouseWorldPosition = _ray.GetPoint(_distance);
                     _offsetObject = _itemKeeper.SelectedObject.transform.position - _mouseWorldPosition;
                     _offsetObject.y = 0;
 
@@ -97,9 +99,9 @@ namespace Dragger
                         IsObjectSelected = true;
                 }
 
-                else if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask))
+                else if (Physics.Raycast(_ray, out _hit, Mathf.Infinity, LayerMask))
                 {
-                    if (hit.transform.gameObject.TryGetComponent(out ItemPosition itemPosition) &&
+                    if (_hit.transform.gameObject.TryGetComponent(out ItemPosition itemPosition) &&
                         !itemPosition.IsBusy)
                     {
                         _objectPlane = new Plane(Vector3.up, _itemKeeper.SelectedObject.transform.position);

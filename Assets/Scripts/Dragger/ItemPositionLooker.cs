@@ -10,9 +10,12 @@ namespace Dragger
     public class ItemPositionLooker : MonoBehaviour
     {
         [SerializeField] private ItemKeeper _itemKeeper;
+        [SerializeField] private Camera _camera;
 
         private ItemPosition _currentLookPosition = null;
         private ItemDragger _itemDragger;
+        private RaycastHit _hit;
+        private Ray _ray;
 
         public event Action<ItemPosition, Item> PlaceLooking;
 
@@ -23,18 +26,17 @@ namespace Dragger
 
         public void LookPosition()
         {
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            _ray = _camera.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, _itemDragger.LayerMask))
+            if (Physics.Raycast(_ray, out _hit, Mathf.Infinity, _itemDragger.LayerMask))
             {
-                if (hit.transform.gameObject.TryGetComponent(out ItemPosition itemPosition))
+                if (_hit.transform.gameObject.TryGetComponent(out ItemPosition itemPosition))
                 {
                     if (_currentLookPosition == itemPosition)
                         return;
 
                     _currentLookPosition = itemPosition;
-                 
+
                     if (_itemDragger.IsObjectSelected)
                         _currentLookPosition.GetComponent<VisualItemPosition>().ActivateVisual();
 

@@ -12,6 +12,10 @@ namespace Dragger
         [SerializeField] private ItemDragger _itemDragger;
         [SerializeField] private ItemKeeper _itemKeeper;
         [SerializeField] private AudioSource _audioSource;
+        [SerializeField] private Camera _camera;
+
+        private RaycastHit _hit;
+        private Ray _ray;
 
         public ItemPosition LastTrowPosition { get; private set; }
 
@@ -26,20 +30,20 @@ namespace Dragger
             if (_itemKeeper.SelectedObject == null)
                 return;
 
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            _ray = _camera.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, _itemDragger.LayerMask))
+            if (Physics.Raycast(_ray, out _hit, Mathf.Infinity, _itemDragger.LayerMask))
             {
-                if (hit.transform.gameObject.TryGetComponent(out ItemPosition itemPosition))
+                if (_hit.transform.gameObject.TryGetComponent(out ItemPosition itemPosition))
                 {
                     if (!itemPosition.IsBusy && !itemPosition.IsWater && !_itemKeeper.SelectedObject.IsLightHouse)
                     {
-                        Throw(itemPosition, hit);
+                        Throw(itemPosition, _hit);
                     }
-                    else if (!itemPosition.IsBusy && itemPosition.IsWater && _itemKeeper.SelectedObject.IsLightHouse)
+                    else if (!itemPosition.IsBusy && itemPosition.IsWater &&
+                             _itemKeeper.SelectedObject.IsLightHouse)
                     {
-                        Throw(itemPosition, hit);
+                        Throw(itemPosition, _hit);
                     }
                     else if (itemPosition.IsBusy && _itemDragger.IsObjectSelected)
                     {
@@ -56,6 +60,14 @@ namespace Dragger
                     ReturnPosition();
                 }
             }
+        }
+
+        public void ReturnPosition()
+        {
+            _itemKeeper.SelectedObject.transform.position = _itemKeeper.StartPosition.transform.position;
+            _itemKeeper.SelectedObject.Init(_itemKeeper.StartPosition);
+            _itemDragger.DisableSelected();
+            _itemKeeper.StartPosition.GetComponent<VisualItemPosition>().ActivateVisual();
         }
 
         private void Throw(ItemPosition itemPosition, RaycastHit hit)
@@ -77,15 +89,6 @@ namespace Dragger
             _itemKeeper.ClearSelectedItem();
             LastTrowPosition = itemPosition;
             _itemDragger.DisableSelected();
-        }
-
-        public void ReturnPosition()
-        {
-            _itemKeeper.SelectedObject.transform.position = _itemKeeper.StartPosition.transform.position;
-            _itemKeeper.SelectedObject.Init(_itemKeeper.StartPosition);
-            _itemDragger.DisableSelected();
-            Debug.Log("LOK");
-            _itemKeeper.StartPosition.GetComponent<VisualItemPosition>().ActivateVisual();
         }
     }
 }

@@ -19,10 +19,10 @@ namespace Dragger
         {
             if (Input.GetMouseButtonDown(0))
                 _itemDragger.SelectItem();
-            
+
             if (Input.GetMouseButtonUp(0))
                 _itemThrower.ThrowItem();
-            
+
             if (_itemDragger.IsObjectSelected || _itemDragger.IsPositionSelected)
                 _itemDragger.DragItem();
         }
