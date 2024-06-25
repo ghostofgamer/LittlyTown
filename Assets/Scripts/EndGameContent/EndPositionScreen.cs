@@ -8,8 +8,8 @@ namespace EndGameContent
     public class EndPositionScreen : AbstractScreen
     {
         [SerializeField] private Spawner _spawner;
-        [SerializeField]private GameLevelScreen _gameLevelScreen;
-        [SerializeField]private Blur _blur;
+        [SerializeField] private GameLevelScreen _gameLevelScreen;
+        [SerializeField] private Blur _blur;
 
         private void OnEnable()
         {
