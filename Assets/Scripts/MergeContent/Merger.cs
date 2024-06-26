@@ -16,7 +16,7 @@ namespace MergeContent
         [SerializeField] private GoldWallet _goldWallet;
         [SerializeField] private AudioSource _audioSource;
         [SerializeField] private Initializator _initializator;
-        [SerializeField]private AnimationMatches _animationMatches;
+        [SerializeField] private AnimationMatches _animationMatches;
 
         private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.1f);
         private WaitForSeconds _pauseBeforeMerge = new WaitForSeconds(0.35f);
@@ -31,7 +31,8 @@ namespace MergeContent
 
         public event Action<Item> ItemMergered;
 
-        public void MergeItems(ItemPosition currentPosition, List<ItemPosition> matchPositions, List<Item> matchItems, Item targetItem)
+        public void MergeItems(ItemPosition currentPosition, List<ItemPosition> matchPositions, List<Item> matchItems,
+            Item targetItem)
         {
             if (!_targetItem.ContainsKey(targetItem))
                 _targetItem.Add(targetItem, targetItem);
@@ -43,7 +44,7 @@ namespace MergeContent
             foreach (Item item in _matchItems)
                 item.Deactivation();
 
-            _animationMatches.StartMoveTarget(_currentItem,currentPosition.transform.position);
+            _animationMatches.StartMoveTarget(_currentItem, currentPosition.transform.position);
             StartCoroutine(MergeActivation(currentPosition, targetItem));
         }
 
