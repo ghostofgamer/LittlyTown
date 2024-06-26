@@ -22,17 +22,12 @@
     <list default="true" id="099b8a6d-6b1c-4473-babb-d7d2ffb7e44f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LittlyTown/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BirdContent/BirdMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BirdContent/BirdMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BirdContent/BirdSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BirdContent/BirdSpawner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GoalContent/Goal.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GoalContent/Goal.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GoalContent/GoalsCounter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GoalContent/GoalsCounter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EnvironmentContent/TurnEnvironment.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EnvironmentContent/TurnEnvironment.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/MergeContent/LookMerger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MergeContent/LookMerger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/InputRemovalItems.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/InputRemovalItems.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/RemovalItems.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/RemovalItems.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/GoalContent/GoalSaver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/GoalContent/GoalSaver.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/AbstractButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/AbstractButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/CancelMoveButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/CancelMoveButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/FirstScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Screens/FirstScreen.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MergeContent/Merger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MergeContent/Merger.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/GameStorage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/GameStorage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/PossibilitiesFiles/AdditionalPossibilitiesButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/PossibilitiesFiles/AdditionalPossibilitiesButton.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,6 +73,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ItemSO/ItemDropDataSO.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ADS/RewardMove.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/TutorContent/ReplaceStage.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/MergeContent/AnimationMatches.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CountersContent/VisualScore.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/GoalContent/GoalSaver.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Buttons/TutorialButton.cs" root0="FORCE_HIGHLIGHTING" />
@@ -192,11 +188,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enums/SettingsModes.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enums/Items.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enums/Environments.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Enums/Languages.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/ADS/DoublePossibilityReward.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CollectionContent/CollectionMovement.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MapsContent/ChooseMap.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MapsContent/StartMap.cs" />
@@ -215,7 +206,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Keeper/ItemKeeper.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Keeper/LightHouseKeeper.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/ReplacementPosition.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/GameStorage.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/TutorContent/BulldozerStage.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/TutorContent/MergeStage.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/TutorContent/PlaceItemStage.cs" />
@@ -231,7 +221,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/Possibilitie.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SpawnContent/DropGenerator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Road/RoadGenerator.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/MergeContent/LookMerger.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/RemovalItems.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/InputRemovalItems.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PossibilitiesContent/AnimationRemovalItem.cs" />
@@ -243,6 +232,13 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Screens/FirstScreen.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/CancelMoveButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/AbstractButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MergeContent/MatchSearcher.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SaveAndLoad/GameStorage.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Buttons/PossibilitiesFiles/AdditionalPossibilitiesButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/EnvironmentContent/TurnEnvironment.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MergeContent/LookMerger.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MergeContent/AnimationMatches.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MergeContent/Merger.cs" />
       </list>
     </option>
   </component>
@@ -370,7 +366,8 @@
       <workItem from="1719299040921" duration="13119000" />
       <workItem from="1719317666319" duration="19000" />
       <workItem from="1719317709441" duration="17558000" />
-      <workItem from="1719351427271" duration="2820000" />
+      <workItem from="1719351427271" duration="3191000" />
+      <workItem from="1719380586778" duration="6770000" />
     </task>
     <servers />
   </component>

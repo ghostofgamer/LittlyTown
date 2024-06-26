@@ -10,7 +10,7 @@ namespace EnvironmentContent
         [SerializeField] private GameObject[] _environments;
         [SerializeField] private GameObject _container;
         [SerializeField] private Initializator _initializator;
-        [SerializeField] private LookMerger _lookMerger;
+        [SerializeField] private AnimationMatches _animationMatches;
 
         private GameObject _currentEnvironment;
         private Vector3 _target;
@@ -35,7 +35,7 @@ namespace EnvironmentContent
 
         public void ChangeRotation(int index)
         {
-            _lookMerger.StopMoveMatch();
+            _animationMatches.StopMoveMatch();
             _angle += _step * index;
             _target = new Vector3(
                 _environments[_initializator.Index].transform.rotation.x,

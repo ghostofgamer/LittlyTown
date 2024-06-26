@@ -24,9 +24,9 @@ namespace SaveAndLoad
         [SerializeField] private GoldWallet _goldWallet;
         [SerializeField] private MoveCounter _moveCounter;
         [SerializeField] private ScoreCounter _scoreCounter;
-        [SerializeField] private Storage _storage;
-        [SerializeField] private Storage _storage1;
-        [SerializeField] private Storage _storage2;
+        [SerializeField] private Storage _firstStorage;
+        [SerializeField] private Storage _secondStorage;
+        [SerializeField] private Storage _thirdStorage;
         [SerializeField] private DropGenerator _dropGenerator;
         [SerializeField] private ShopItems _shopItems;
         [SerializeField] private PossibilitieBulldozer _possibilitieBulldozer;
@@ -103,11 +103,11 @@ namespace SaveAndLoad
                     GetItem(saveData.StorageItemData.ItemName),
                     _initializator.CurrentMap.ItemsContainer);
                 storageItem.gameObject.SetActive(false);
-                _storage.SetItem(storageItem);
+                _firstStorage.SetItem(storageItem);
             }
             else
             {
-                _storage.SetItem(null);
+                _firstStorage.SetItem(null);
             }
 
             if (saveData.Storage1ItemData.ItemPosition != null || saveData.Storage1ItemData.ItemName != Items.Empty)
@@ -116,11 +116,11 @@ namespace SaveAndLoad
                     GetItem(saveData.Storage1ItemData.ItemName),
                     _initializator.CurrentMap.ItemsContainer);
                 storageItem.gameObject.SetActive(false);
-                _storage1.SetItem(storageItem);
+                _secondStorage.SetItem(storageItem);
             }
             else
             {
-                _storage1.SetItem(null);
+                _secondStorage.SetItem(null);
             }
 
             if (saveData.Storage2ItemData.ItemPosition != null || saveData.Storage2ItemData.ItemName != Items.Empty)
@@ -129,11 +129,11 @@ namespace SaveAndLoad
                     GetItem(saveData.Storage2ItemData.ItemName),
                     _initializator.CurrentMap.ItemsContainer);
                 storageItem.gameObject.SetActive(false);
-                _storage2.SetItem(storageItem);
+                _thirdStorage.SetItem(storageItem);
             }
             else
             {
-                _storage2.SetItem(null);
+                _thirdStorage.SetItem(null);
             }
         }
 
@@ -199,14 +199,14 @@ namespace SaveAndLoad
             saveData.GoldValue = _goldWallet.CurrentValue;
             saveData.ScoreValue = _scoreCounter.CurrentScore;
             saveData.FactorScoreValue = _scoreCounter.Factor;
-            saveData.StorageItemData = _storage.CurrentItem != null
-                ? new StorageItemData(_storage.CurrentItem.ItemName, _storage.CurrentItem.ItemPosition)
+            saveData.StorageItemData = _firstStorage.CurrentItem != null
+                ? new StorageItemData(_firstStorage.CurrentItem.ItemName, _firstStorage.CurrentItem.ItemPosition)
                 : new StorageItemData(Items.Empty, null);
-            saveData.Storage1ItemData = _storage1.CurrentItem != null
-                ? new StorageItemData(_storage1.CurrentItem.ItemName, _storage1.CurrentItem.ItemPosition)
+            saveData.Storage1ItemData = _secondStorage.CurrentItem != null
+                ? new StorageItemData(_secondStorage.CurrentItem.ItemName, _secondStorage.CurrentItem.ItemPosition)
                 : new StorageItemData(Items.Empty, null);
-            saveData.Storage2ItemData = _storage2.CurrentItem != null
-                ? new StorageItemData(_storage2.CurrentItem.ItemName, _storage2.CurrentItem.ItemPosition)
+            saveData.Storage2ItemData = _thirdStorage.CurrentItem != null
+                ? new StorageItemData(_thirdStorage.CurrentItem.ItemName, _thirdStorage.CurrentItem.ItemPosition)
                 : new StorageItemData(Items.Empty, null);
 
             string jsonData = JsonUtility.ToJson(saveData);

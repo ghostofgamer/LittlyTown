@@ -23,7 +23,7 @@ namespace UI.Buttons.PossibilitiesFiles
         [SerializeField] private AdditionalPossibilitiesButton _additionalPossibilitiesButton;
         [SerializeField] private PossibilitiesCounter _possibilitiesCounter;
         [SerializeField] private PossibilitiesShopScreen _possibilitiesShopScreen;
-        [SerializeField] private LookMerger _lookMerger;
+        [SerializeField] private AnimationMatches _animationMatches;
 
         private Item _temporaryItem;
         private ItemPosition _itemPosition;
@@ -41,7 +41,7 @@ namespace UI.Buttons.PossibilitiesFiles
             {
                 if (_isActivated)
                 {
-                    _lookMerger.StopMoveMatch();
+                    _animationMatches.StopMoveMatch();
                     Activation();
                 }
                 else

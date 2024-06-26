@@ -1180,6 +1180,7 @@
             <e p="Territory.cs" t="Include" />
           </e>
           <e p="MergeContent" t="Include">
+            <e p="AnimationMatches.cs" t="Include" />
             <e p="LookMerger.cs" t="Include" />
             <e p="Merger.cs" t="Include" />
             <e p="MinIndexItemSelector.cs" t="Include" />
