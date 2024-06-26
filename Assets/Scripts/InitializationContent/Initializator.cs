@@ -162,8 +162,8 @@ namespace InitializationContent
                 if (territory.IsExpanding && !territory.IsOpened)
                     continue;
 
-                if (!Territories.Contains(territory) && !territory.IsExpanding ||
-                    !Territories.Contains(territory) && territory.IsOpened)
+                if ((!Territories.Contains(territory) && !territory.IsExpanding) ||
+                    (!Territories.Contains(territory) && territory.IsOpened))
                     Territories.Add(territory);
             }
 

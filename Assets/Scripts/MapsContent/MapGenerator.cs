@@ -89,7 +89,8 @@ namespace MapsContent
             List<Territory> territories,
             List<FinderPositions> finderPositions,
             List<ItemPosition> itemPositions,
-            Transform container, List<Item> startItems)
+            Transform container,
+            List<Item> startItems)
         {
             foreach (var territory in territories)
                 territory.gameObject.SetActive(false);
@@ -102,7 +103,8 @@ namespace MapsContent
             List<FinderPositions> finderPositions,
             Transform container,
             List<ItemPosition> itemPositions,
-            List<Item> startItems, Map map)
+            List<Item> startItems,
+            Map map)
         {
             foreach (var territory in territories)
             {
@@ -142,21 +144,30 @@ namespace MapsContent
             _roadGenerator.GenerationRoad(itemPositions, container, map);
         }
 
-
-        public void GenerationCurrentMap(List<Territory> territories, List<FinderPositions> finderPositions,
+        public void GenerationCurrentMap(
+            List<Territory> territories,
+            List<FinderPositions> finderPositions,
             List<Item> startItems,
-            List<ItemPosition> itemPositions, Transform container)
+            List<ItemPosition> itemPositions,
+            Transform container)
         {
             foreach (var territory in territories)
                 territory.gameObject.SetActive(false);
 
-            StartCoroutine(StartGenerationCurrentMap(territories, finderPositions, startItems, itemPositions,
+            StartCoroutine(StartGenerationCurrentMap(
+                territories,
+                finderPositions,
+                startItems,
+                itemPositions,
                 container));
         }
 
-        private IEnumerator StartGenerationWithoutSpawn(List<Territory> territories,
+        private IEnumerator StartGenerationWithoutSpawn(
+            List<Territory> territories,
             List<FinderPositions> finderPositions,
-            List<ItemPosition> itemPositions, Transform container, List<Item> startItems)
+            List<ItemPosition> itemPositions,
+            Transform container,
+            List<Item> startItems)
         {
             foreach (var territory in territories)
             {

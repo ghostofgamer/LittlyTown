@@ -400,7 +400,6 @@ namespace Road
                         container);
                     itemPosition.SetRoad(selectedTile);
                 }
-
                 else
                 {
                     if (itemPosition.Item != null && itemPosition.Item.IsBigHouse)

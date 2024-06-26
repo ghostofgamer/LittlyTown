@@ -31,7 +31,7 @@ namespace UI.Screens
             _currentMapValue = _load.Get(Map, _startValue);
             _currentValue = _load.Get(LastActiveMap, _startValue);
             _currentValueActiveMap = _load.Get(ActiveMap + _currentMapValue, _startValue);
-            
+
             if (TryActivationButton())
                 ActivationContinueButton();
             else
@@ -51,7 +51,7 @@ namespace UI.Screens
                 ActivationContinueButton();
             else
                 DeactivationContinueButton();
-            
+
             _cameraMovement.ResetZoom();
         }
 

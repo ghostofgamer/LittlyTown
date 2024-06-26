@@ -71,7 +71,7 @@ namespace GoalContent
 
             if (_currentValue >= _maxValue)
                 FinishGoal();
-            
+
             _goalSaver.SaveChanges();
         }
 

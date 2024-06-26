@@ -37,7 +37,7 @@ namespace SaveAndLoad.GoalContent
                     currentGoals[_secondGoalIndex].CurrentValue,
                     currentGoals[_secondGoalIndex].CompleteValue),
             };
-            
+
             string jsonData = JsonUtility.ToJson(_saveGoalData);
             PlayerPrefs.SetString(SaveGoal, jsonData);
             PlayerPrefs.Save();

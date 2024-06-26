@@ -19,11 +19,11 @@ namespace MergeContent
                 matchItem.MoveCyclically(target);
         }
 
-        public void StartMoveTarget(Item item, Vector3 target )
+        public void StartMoveTarget(Item item, Vector3 target)
         {
             foreach (var matchItem in _lookMerger.ItemsMoving)
                 matchItem.MoveTarget(target);
-            
+
             item.GetComponent<ItemMoving>().MoveTarget(target);
         }
     }

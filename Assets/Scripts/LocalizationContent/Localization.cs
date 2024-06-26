@@ -26,7 +26,7 @@ namespace LocalizationContent
 
         private void Awake()
         {
-#if UNITY_WEBGL&& !UNITY_EDITOR
+#if UNITY_WEBGL && !UNITY_EDITOR
         _autoFoundLanguage = YandexGamesSdk.Environment.i18n.lang;
         _currentLanguage = _load.Get(Language, _autoFoundLanguage);
         SetLanguage(_currentLanguage);

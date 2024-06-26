@@ -103,7 +103,7 @@ namespace MapsContent
         {
             SetStartSettings();
             _mapGenerator.GenerationWithoutSpawn(
-                _initializator.Territories, 
+                _initializator.Territories,
                 _initializator.FinderPositions,
                 _initializator.ItemPositions,
                 _initializator.CurrentMap.RoadsContainer,

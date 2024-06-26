@@ -31,7 +31,10 @@ namespace MergeContent
 
         public event Action<Item> ItemMergered;
 
-        public void MergeItems(ItemPosition currentPosition, List<ItemPosition> matchPositions, List<Item> matchItems,
+        public void MergeItems(
+            ItemPosition currentPosition,
+            List<ItemPosition> matchPositions,
+            List<Item> matchItems,
             Item targetItem)
         {
             if (!_targetItem.ContainsKey(targetItem))

@@ -19,7 +19,7 @@ namespace ItemSO
         public float LevelIncreaseFactor => _levelIncreaseFactor;
 
         public float LevelDecreaseFactor => _levelDecreaseFactor;
-        
+
         public Item PrefabItem => _prefabItem;
     }
 }

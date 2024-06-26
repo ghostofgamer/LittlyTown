@@ -167,8 +167,8 @@ namespace ExtensionContent
                 if (territory.IsExpanding && !territory.IsOpened)
                     continue;
 
-                if (!_targetTerritories.Contains(territory) && !territory.IsExpanding ||
-                    !_targetTerritories.Contains(territory) && territory.IsOpened)
+                if ((!_targetTerritories.Contains(territory) && !territory.IsExpanding) ||
+                    (!_targetTerritories.Contains(territory) && territory.IsOpened))
                     _targetTerritories.Add(territory);
             }
 
@@ -216,13 +216,13 @@ namespace ExtensionContent
                 }
             }
 
-
             foreach (var territory in _targetTerritories)
             {
                 territory.gameObject.SetActive(false);
             }
 
-            _mapGenerator.FastMapGeneration(_targetTerritories,
+            _mapGenerator.FastMapGeneration(
+                _targetTerritories,
                 _targetFinderPositions,
                 map.RoadsContainer,
                 _targetItemPositions,
