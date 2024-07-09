@@ -1,4 +1,5 @@
 using Dragger;
+using UI.Screens;
 using UnityEngine;
 
 namespace CameraContent
@@ -11,6 +12,7 @@ namespace CameraContent
         [SerializeField] private InputItemDragger _inputItemDragger;
         [SerializeField] private ItemThrower _itemThrower;
         [SerializeField] private ItemDragger _itemDragger;
+        [SerializeField] private SandBoxScreen _sandBoxScreen;
 
         private float _minFov = 15f;
         private float _maxFov = 75f;
@@ -88,7 +90,7 @@ namespace CameraContent
                 }
             }
 
-            if (Input.touches.Length < _minTouches)
+            if (Input.touches.Length < _minTouches && !_sandBoxScreen.IsOpen)
             {
                 _inputItemDragger.enabled = true;
             }

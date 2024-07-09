@@ -42,11 +42,13 @@ namespace SaveAndLoad
         private void OnEnable()
         {
             _itemKeeper.SelectNewItem += OnSaveChanges;
+            _goldWallet.ValueChangedCompleted += OnSaveChanges;
         }
 
         private void OnDisable()
         {
             _itemKeeper.SelectNewItem -= OnSaveChanges;
+            _goldWallet.ValueChangedCompleted -= OnSaveChanges;
         }
 
         public void LoadDataInfo()

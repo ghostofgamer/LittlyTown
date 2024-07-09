@@ -1128,6 +1128,9 @@
             <e p="ExtensionMap.cs" t="Include" />
             <e p="ExtensionMapMovement.cs" t="Include" />
           </e>
+          <e p="Focus" t="Include">
+            <e p="ScreenFocus.cs" t="Include" />
+          </e>
           <e p="GoalContent" t="Include">
             <e p="Goal.cs" t="Include" />
             <e p="GoalAnimation.cs" t="Include" />
@@ -1388,6 +1391,7 @@
               <e p="BlockItems" t="Include" />
             </e>
           </e>
+          <e p="Languages" t="Include" />
           <e p="Materials" t="Include" />
           <e p="UI" t="Include" />
         </e>

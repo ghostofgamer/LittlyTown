@@ -19,5 +19,13 @@ namespace SaveAndLoad
 
             return number;
         }
+
+        public string Get(string language, string autoFoundLanguage)
+        {
+            if (PlayerPrefs.HasKey(language))
+                return PlayerPrefs.GetString(language);
+            
+            return autoFoundLanguage;
+        }
     }
 }

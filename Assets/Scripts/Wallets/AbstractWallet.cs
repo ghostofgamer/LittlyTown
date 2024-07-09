@@ -21,6 +21,8 @@ namespace Wallets
 
         public event Action ValueChanged;
 
+        public event Action ValueChangedCompleted;
+
         public int CurrentValue => _currentValue;
 
         protected virtual void Start()
@@ -99,6 +101,8 @@ namespace Wallets
                 ValueChanged?.Invoke();
                 yield return null;
             }
+
+            ValueChangedCompleted?.Invoke();
         }
     }
 }

@@ -16,7 +16,7 @@ namespace CameraContent
         private float _orthographicSizeZoomIn = 13f;
         private float _orthographicSizeZoomOut = 10f;
         private float _elapsedTime;
-        private float _duration = 3f;
+        private float _duration = 1.5f;
         private float _currentFOVValue;
         private float _currentSizeValue;
         private Coroutine _coroutine;

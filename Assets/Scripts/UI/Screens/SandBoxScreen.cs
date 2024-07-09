@@ -22,9 +22,12 @@ namespace UI.Screens
         [SerializeField] private CollectionScreen _collectionScreen;
         [SerializeField] private SandBoxMovement _sandboxMovement;
 
+        public bool IsOpen { get; private set; }
+
         public override void OnOpen()
         {
             base.OnOpen();
+            IsOpen = true;
             _visualItemsDeactivator.SetPositions(_itemPositions);
             _cameraScrolling.enabled = true;
             _environmentMovement.GoAway();
@@ -38,6 +41,8 @@ namespace UI.Screens
         public override void Close()
         {
             base.Close();
+            _cameraScrolling.enabled = false;
+            IsOpen = false;
             _environmentMovement.ReturnPosition();
             _sandboxMovement.GoOffScreen();
             _cameraMovement.ResetZoom();
