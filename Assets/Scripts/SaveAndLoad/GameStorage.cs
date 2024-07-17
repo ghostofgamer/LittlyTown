@@ -8,6 +8,7 @@ using Keeper;
 using PossibilitiesContent;
 using SpawnContent;
 using UI;
+using UI.Screens;
 using UnityEngine;
 using Wallets;
 
@@ -32,6 +33,7 @@ namespace SaveAndLoad
         [SerializeField] private PossibilitieBulldozer _possibilitieBulldozer;
         [SerializeField] private PossibilitieReplace _possibilitieReplace;
         [SerializeField] private Initializator _initializator;
+        [SerializeField] private EndMoveScreen _endMoveScreen;
 
         private Coroutine _coroutine;
         private SaveData _saveData;
@@ -43,12 +45,14 @@ namespace SaveAndLoad
         {
             _itemKeeper.SelectNewItem += OnSaveChanges;
             _goldWallet.ValueChangedCompleted += OnSaveChanges;
+            _endMoveScreen.MoveScreenOpened += OnSaveChanges;
         }
 
         private void OnDisable()
         {
             _itemKeeper.SelectNewItem -= OnSaveChanges;
             _goldWallet.ValueChangedCompleted -= OnSaveChanges;
+            _endMoveScreen.MoveScreenOpened -= OnSaveChanges;
         }
 
         public void LoadDataInfo()
@@ -65,15 +69,22 @@ namespace SaveAndLoad
                 return;
             }
 
-            Item selectItem = Instantiate(
-                GetItem(saveData.SelectItemData.ItemName),
-                saveData.SelectItemData.ItemPosition.transform.position,
-                Quaternion.identity,
-                _initializator.CurrentMap.ItemsContainer);
-            selectItem.Init(saveData.SelectItemData.ItemPosition);
-            selectItem.gameObject.SetActive(false);
-            SelectSaveItem = selectItem;
-
+            if (saveData.SelectItemData.ItemPosition != null)
+            {
+                Item selectItem = Instantiate(
+                    GetItem(saveData.SelectItemData.ItemName),
+                    saveData.SelectItemData.ItemPosition.transform.position,
+                    Quaternion.identity,
+                    _initializator.CurrentMap.ItemsContainer);
+                selectItem.Init(saveData.SelectItemData.ItemPosition);
+                selectItem.gameObject.SetActive(false);
+                SelectSaveItem = selectItem;
+            }
+            else
+            {
+                SelectSaveItem = null;
+            }
+            
             if (saveData.TemporaryItem.ItemName != Items.Empty)
             {
                 Item item = Instantiate(

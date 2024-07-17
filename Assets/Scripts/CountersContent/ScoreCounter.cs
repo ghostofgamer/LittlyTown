@@ -23,9 +23,9 @@ namespace CountersContent
         [SerializeField] private Save _save;
         [SerializeField] private Initializator _initializator;
 
-        private int _targetScore = 50;
-        private int _stepScore = 50;
-        private int _defaultTargetScore = 50;
+        private int _targetScore = 100;
+        private int _stepScore = 100;
+        private int _defaultTargetScore = 100;
         private int _scoreIncome;
         private Vector3 _targetPosition;
         private int _maxRecordScore;

@@ -20,12 +20,12 @@ namespace CountersContent
         [SerializeField] private Save _save;
         [SerializeField] private ItemThrower _itemThrower;
 
-        private float _maxValue = 300;
+        private float _maxValue = 5;
         private float _minValue = 0;
         private int _targetStepProfit = 5;
         private int _currentStep;
         private bool _isEndless;
-        private float _startMoveCount = 100;
+        private float _startMoveCount = 5;
 
         public event Action MoveOver;
 
@@ -57,6 +57,8 @@ namespace CountersContent
         {
             _moveCount = _maxValue;
             Show();
+            _save.SetData(StepCount, _moveCount);
+            Debug.Log("а тут " + _moveCount);
         }
 
         public void SetValue(float value)

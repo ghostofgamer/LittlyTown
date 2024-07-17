@@ -33,8 +33,8 @@ namespace TutorContent
 
         public void ShowItem()
         {
-            _itemKeeper.SelectedObject.gameObject.SetActive(true);
-            _itemKeeper.SelectedObject.ItemPosition.GetComponent<VisualItemPosition>().ActivateVisual();
+            /*_itemKeeper.SelectedObject.gameObject.SetActive(true);
+            _itemKeeper.SelectedObject.ItemPosition.GetComponent<VisualItemPosition>().ActivateVisual();*/
             _inputItemDragger.enabled = true;
         }
 
@@ -51,8 +51,8 @@ namespace TutorContent
 
         protected void HideItem()
         {
-            _itemKeeper.SelectedObject.ItemPosition.GetComponent<VisualItemPosition>().DeactivateVisual();
-            _itemKeeper.SelectedObject.gameObject.SetActive(false);
+            /*_itemKeeper.SelectedObject.ItemPosition.GetComponent<VisualItemPosition>().DeactivateVisual();
+            _itemKeeper.SelectedObject.gameObject.SetActive(false);*/
             _inputItemDragger.enabled = false;
         }
     }

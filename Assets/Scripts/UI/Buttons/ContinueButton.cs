@@ -4,6 +4,8 @@ using InitializationContent;
 using ItemPositionContent;
 using Keeper;
 using SaveAndLoad;
+using SpawnContent;
+using UI.Screens;
 using UnityEngine;
 using UpgradesContent;
 
@@ -27,6 +29,7 @@ namespace UI.Buttons
         [SerializeField] private GoldCounter _goldCounter;
         [SerializeField] private TurnEnvironment _turnEnvironment;
         [SerializeField] private GameObject _lightHouse;
+        [SerializeField] private EndMoveScreen _endMoveScreen;
 
         private int _startValue;
 
@@ -35,8 +38,20 @@ namespace UI.Buttons
             _save.SetData(Map, _initializator.Index);
             _initializator.FillLists();
             _gameStorage.LoadDataInfo();
-            _itemKeeper.SetItem(_gameStorage.SelectSaveItem, _gameStorage.SelectSaveItem.ItemPosition);
-            _itemKeeper.SwitchOn();
+
+            if (_gameStorage.SelectSaveItem != null)
+            {
+                Debug.Log("1");
+                _itemKeeper.SetItem(_gameStorage.SelectSaveItem, _gameStorage.SelectSaveItem.ItemPosition);
+                _itemKeeper.SwitchOn();
+            }
+            else
+            {
+                Debug.Log("3");
+                _itemKeeper.ClearSelectedItem();
+                _endMoveScreen.OnOpen();
+            }
+            
             _visualItemsDeactivator.SetPositions(_initializator.ItemPositions);
             _moveKeeper.LoadHistoryData();
             _scoreCounter.SetCurrentScore(_load.Get(CurrentRecordScore + _initializator.Index, _startValue));

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using CameraContent;
 using CountersContent;
 using EnvironmentContent;
 using ItemPositionContent;
@@ -21,6 +22,7 @@ namespace UI.Screens
         [SerializeField] private TurnEnvironment _turnEnvironment;
         [SerializeField] private GameObject _environment;
         [SerializeField] private ShopItems _shopItems;
+        [SerializeField] private CameraScrolling _cameraScrolling;
 
         private int _defaultIndex = 0;
         private int _currentIndex;
@@ -39,6 +41,7 @@ namespace UI.Screens
 
         public void StartTutorial()
         {
+            _cameraScrolling.enabled = false;
             _visualItemsDeactivator.SetPositions(_itemPositions);
             _turnEnvironment.SetEnvironment(_environment);
             _scoreCounter.enabled = false;

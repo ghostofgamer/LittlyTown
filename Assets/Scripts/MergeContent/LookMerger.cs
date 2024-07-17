@@ -315,7 +315,7 @@ namespace MergeContent
             }
         }
 
-        private void ActivationLookPositions(ItemPosition currentPosition, Item item)
+        /*private void ActivationLookPositions(ItemPosition currentPosition, Item item)
         {
             if (!_newMatchedItems.ContainsKey(item))
                 _newMatchedItems.Add(item, new List<Item>());
@@ -344,6 +344,47 @@ namespace MergeContent
                 if (arroundPosition.Item != null && arroundPosition.Item.NextItem != null &&
                     arroundPosition.Item.ItemName.Equals(item.ItemName))
                     ActivationLookPositions(arroundPosition, item);
+            }
+        }*/
+        
+        private void ActivationLookPositions(ItemPosition currentPosition, Item item)
+        {
+            if (!_newMatchedItems.ContainsKey(item))
+                _newMatchedItems.Add(item, new List<Item>());
+
+            if (_checkedPositions.Contains(currentPosition))
+                return;
+
+            var positionsToCheck = new List<ItemPosition> { currentPosition };
+
+            while (positionsToCheck.Count > 0)
+            {
+                var position = positionsToCheck[0];
+                positionsToCheck.RemoveAt(0);
+
+                if (!position.IsSelected)
+                {
+                    _checkedPositions.Add(position);
+                    _matchedItems.Add(position.Item);
+                    _positions.Add(position);
+
+                    if (_isTryMerge)
+                    {
+                        ItemsMoving.Add(position.Item.GetComponent<ItemMoving>());
+                        _newMatchedItems[item].Add(position.Item);
+                    }
+                }
+
+                foreach (var arroundPosition in position.ItemPositions)
+                {
+                    if (arroundPosition == null)
+                        continue;
+
+                    if (arroundPosition.Item != null && arroundPosition.Item.NextItem != null &&
+                        arroundPosition.Item.ItemName.Equals(item.ItemName) &&
+                        !_checkedPositions.Contains(arroundPosition))
+                        positionsToCheck.Add(arroundPosition);
+                }
             }
         }
 

@@ -1,5 +1,6 @@
 using System.Collections;
 using CameraContent;
+using CountersContent;
 using InitializationContent;
 using SaveAndLoad;
 using UI.Buttons;
@@ -12,11 +13,13 @@ namespace UI.Screens
         private const string LastActiveMap = "LastActiveMap";
         private const string ActiveMap = "ActiveMap";
         private const string Map = "Map";
+        private const string StepCount = "StepCount";
 
         [SerializeField] private Load _load;
         [SerializeField] private ContinueButton _continueButton;
         [SerializeField] private Initializator _initializator;
         [SerializeField] private CameraMovement _cameraMovement;
+        [SerializeField] private GameObject _gameObject;
 
         private int _startValue = 0;
         private int _currentValue;
@@ -39,6 +42,11 @@ namespace UI.Screens
 
             if (_lastValue > 0)
                 StartCoroutine(SmoothOpen());
+
+            /*int moveCount = _load.Get(StepCount, 0);
+            Debug.Log("колличество " + moveCount);
+            if ( moveCount<= 0)
+                _gameObject.SetActive(true);*/
         }
 
         public override void OnOpen()

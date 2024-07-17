@@ -1,4 +1,5 @@
 using CountersContent;
+using MapsContent;
 using SpawnContent;
 using UI.Screens;
 using UnityEngine;
@@ -11,13 +12,19 @@ namespace ADS
         [SerializeField] private EndMoveScreen _endMoveScreen;
         [SerializeField] private Spawner _spawner;
         [SerializeField] private GameLevelScreen _gameLevelScreen;
-
+        [SerializeField] private bool _isStartCreateMap;
+        [SerializeField] private StartMap _startMap;
+        
         protected override void OnReward()
         {
             _moveCounter.ReplenishSteps();
             _endMoveScreen.Close();
             _gameLevelScreen.OnOpen();
-            _spawner.OnCreateItem();
+
+            if (!_isStartCreateMap)
+                _spawner.OnCreateItem();
+            else
+                _startMap.StartCreate();
         }
     }
 }
