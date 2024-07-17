@@ -4,7 +4,6 @@ using InitializationContent;
 using ItemPositionContent;
 using Keeper;
 using SaveAndLoad;
-using SpawnContent;
 using UI.Screens;
 using UnityEngine;
 using UpgradesContent;
@@ -41,13 +40,11 @@ namespace UI.Buttons
 
             if (_gameStorage.SelectSaveItem != null)
             {
-                Debug.Log("1");
                 _itemKeeper.SetItem(_gameStorage.SelectSaveItem, _gameStorage.SelectSaveItem.ItemPosition);
                 _itemKeeper.SwitchOn();
             }
             else
             {
-                Debug.Log("3");
                 _itemKeeper.ClearSelectedItem();
                 _endMoveScreen.OnOpen();
             }

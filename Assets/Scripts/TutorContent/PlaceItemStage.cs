@@ -6,7 +6,7 @@ namespace TutorContent
     public class PlaceItemStage : Stage
     {
         private Coroutine _coroutine;
-        private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.5f);
+        private WaitForSeconds _waitForSeconds = new WaitForSeconds(0.001f);
 
         private void OnEnable()
         {
@@ -20,10 +20,15 @@ namespace TutorContent
 
         private void OnActivateMergeStage()
         {
-            if (_coroutine != null)
+            HideItem();
+            DescriptionGoalStage.SetActive(false);
+            NextStage.gameObject.SetActive(true);
+            NextStage.ShowDescription();
+            gameObject.SetActive(false);
+            /*if (_coroutine != null)
                 StopCoroutine(_coroutine);
 
-            _coroutine = StartCoroutine(Activate());
+            _coroutine = StartCoroutine(Activate());*/
         }
 
         private IEnumerator Activate()

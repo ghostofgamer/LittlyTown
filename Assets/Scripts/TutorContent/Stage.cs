@@ -13,7 +13,6 @@ namespace TutorContent
         [SerializeField] private CanvasGroup _canvasGroup;
         [SerializeField] private InputItemDragger _inputItemDragger;
         [SerializeField] private ItemThrower _itemThrower;
-        [SerializeField] private ItemKeeper _itemKeeper;
 
         protected ItemThrower ItemThrower => _itemThrower;
 
@@ -33,8 +32,6 @@ namespace TutorContent
 
         public void ShowItem()
         {
-            /*_itemKeeper.SelectedObject.gameObject.SetActive(true);
-            _itemKeeper.SelectedObject.ItemPosition.GetComponent<VisualItemPosition>().ActivateVisual();*/
             _inputItemDragger.enabled = true;
         }
 
@@ -51,8 +48,6 @@ namespace TutorContent
 
         protected void HideItem()
         {
-            /*_itemKeeper.SelectedObject.ItemPosition.GetComponent<VisualItemPosition>().DeactivateVisual();
-            _itemKeeper.SelectedObject.gameObject.SetActive(false);*/
             _inputItemDragger.enabled = false;
         }
     }

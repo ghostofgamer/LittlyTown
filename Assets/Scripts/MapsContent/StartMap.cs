@@ -37,8 +37,6 @@ namespace MapsContent
         [SerializeField] private TurnEnvironment _turnEnvironment;
         [SerializeField] private GameObject _lightHouse;
         [SerializeField] private Save _save;
-        [SerializeField]private MoveCounter _moveCounter;
-        [SerializeField]private EndMoveScreen _endMoveScreen;
 
         private int _selectMap = 1;
 
@@ -46,12 +44,6 @@ namespace MapsContent
 
         public void StartCreate()
         {
-            /*if (_moveCounter.MoveCount <= 0)
-            {
-                _endMoveScreen.OnOpen();
-                return;
-            }*/
-            
             _save.SetData(LastActiveMap, _selectMap);
             _save.SetData(Map, _initializator.Index);
             _save.SetData(ActiveMap + _initializator.Index, _selectMap);

@@ -14,7 +14,7 @@ namespace ADS
         [SerializeField] private GameLevelScreen _gameLevelScreen;
         [SerializeField] private bool _isStartCreateMap;
         [SerializeField] private StartMap _startMap;
-        
+
         protected override void OnReward()
         {
             _moveCounter.ReplenishSteps();
