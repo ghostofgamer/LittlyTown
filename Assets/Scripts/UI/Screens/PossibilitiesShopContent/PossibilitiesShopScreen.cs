@@ -17,7 +17,7 @@ namespace UI.Screens.PossibilitiesShopContent
 
         private int _basePrice;
         private int _totalPrice;
-        private int _maxValue;
+        private int _maxValue = 5;
         private int _minValue;
         private int _defaultValue = 1;
 

@@ -23,7 +23,7 @@ namespace UI.Buttons
             if (PlayerPrefs.HasKey(ItemStorageSave + _initializator.Index))
                 PlayerPrefs.DeleteKey(ItemStorageSave + _initializator.Index);
 
-            _startMap.StartCreateWithoutSpawn();
+            // _startMap.StartCreateWithoutSpawn();
             _chooseMapScreen.OnChangeActivationButton();
         }
     }
