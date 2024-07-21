@@ -5,6 +5,7 @@ using Enums;
 using InitializationContent;
 using ItemContent;
 using ItemPositionContent;
+using Unity.VisualScripting;
 using UnityEngine;
 using Wallets;
 
@@ -23,6 +24,7 @@ namespace MergeContent
         private Item _currentItem;
         private List<ItemPosition> _matchPositions = new List<ItemPosition>();
         private List<Item> _matchItems = new List<Item>();
+        private List<ItemMoving> _itemMovings = new List<ItemMoving>();
         private Dictionary<Item, Item> _targetItem = new Dictionary<Item, Item>();
 
         public event Action<int, int, ItemPosition> Merged;
@@ -43,11 +45,15 @@ namespace MergeContent
             _matchPositions = matchPositions;
             _matchItems = matchItems;
             _currentItem = currentPosition.Item;
-
+            _itemMovings = new List<ItemMoving>();
+            
+            foreach (Item item in _matchItems)
+                _itemMovings.Add(item.GetComponent<ItemMoving>());
+            
             foreach (Item item in _matchItems)
                 item.Deactivation();
 
-            _animationMatches.StartMoveTarget(_currentItem, currentPosition.transform.position);
+            _animationMatches.StartMoveTarget(_currentItem, currentPosition.transform.position,_itemMovings);
             StartCoroutine(MergeActivation(currentPosition, targetItem));
         }
 

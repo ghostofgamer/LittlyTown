@@ -95,7 +95,7 @@ namespace MergeContent
                 _temporaryItems.Clear();
                 _temporaryItems = _minIndexItemSelector.GetTemporaryItems(_currentItemPosition.ItemPositions);
                 _temporaryItem = _minIndexItemSelector.GetItemMinIndex(_currentItemPosition.ItemPositions);
-
+                
                 if (_temporaryItem != null)
                     ChoosePathSearchMatches(_temporaryItem, itemPosition);
                 else if (_isTryMerge && _temporaryItem == null)

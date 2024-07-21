@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using ItemContent;
 using UnityEngine;
 
@@ -19,10 +20,17 @@ namespace MergeContent
                 matchItem.MoveCyclically(target);
         }
 
-        public void StartMoveTarget(Item item, Vector3 target)
+        public void StartMoveTarget(Item item, Vector3 target,List<ItemMoving>itemMoving)
         {
-            foreach (var matchItem in _lookMerger.ItemsMoving)
+            
+            foreach (var matchItem in itemMoving)
                 matchItem.MoveTarget(target);
+            
+            /*foreach (var matchItem in _lookMerger.ItemsMoving)
+                matchItem.MoveTarget(target);*/
+            
+            foreach (var matchItem in itemMoving)
+                Debug.Log(matchItem.name);
 
             item.GetComponent<ItemMoving>().MoveTarget(target);
         }

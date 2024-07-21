@@ -13,7 +13,6 @@ namespace UI.Buttons
 
         [SerializeField] private Save _save;
         [SerializeField] private Initializator _initializator;
-        [SerializeField] private StartMap _startMap;
         [SerializeField] private ChooseMapScreen _chooseMapScreen;
 
         protected override void OnClick()
@@ -22,8 +21,7 @@ namespace UI.Buttons
 
             if (PlayerPrefs.HasKey(ItemStorageSave + _initializator.Index))
                 PlayerPrefs.DeleteKey(ItemStorageSave + _initializator.Index);
-
-            // _startMap.StartCreateWithoutSpawn();
+            
             _chooseMapScreen.OnChangeActivationButton();
         }
     }

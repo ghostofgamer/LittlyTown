@@ -23,7 +23,7 @@ namespace UI.Screens
 
         private void Start()
         {
-            _startPosition = _infoContent.position;
+            // _startPosition = _infoContent.position;
             _targetPosition = new Vector3(_startPosition.x, _startPosition.y + _factor, _startPosition.z);
         }
 
@@ -31,7 +31,7 @@ namespace UI.Screens
         {
             base.OnOpen();
             _cameraMovement.ZoomGameScene();
-            _infoContent.position = _initializator.Index == _indexSceneNotGold ? _targetPosition : _startPosition;
+            // _infoContent.position = _initializator.Index == _indexSceneNotGold ? _targetPosition : _startPosition;
             _animator.SetTrigger(OpenAnimation);
             _inputItemDragger.enabled = true;
             _cameraScrolling.enabled = true;

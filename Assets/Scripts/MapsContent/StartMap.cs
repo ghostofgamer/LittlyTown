@@ -37,6 +37,7 @@ namespace MapsContent
         [SerializeField] private TurnEnvironment _turnEnvironment;
         [SerializeField] private GameObject _lightHouse;
         [SerializeField] private Save _save;
+        [SerializeField] private GameObject _goldProfit;
 
         private int _selectMap = 1;
 
@@ -66,11 +67,13 @@ namespace MapsContent
             {
                 _goldWallet.SetInitialValue();
                 _goldWallet.DisableProfit();
+                _goldProfit.SetActive(false);
             }
             else
             {
                 _goldWallet.SetInitialValue();
                 _goldWallet.EnableProfit();
+                _goldProfit.SetActive(true);
             }
 
             _lightHouse.SetActive(_initializator.CurrentMap.IsWaterTilePresent);
