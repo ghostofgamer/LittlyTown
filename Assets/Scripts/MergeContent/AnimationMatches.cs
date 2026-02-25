@@ -25,12 +25,6 @@ namespace MergeContent
             
             foreach (var matchItem in itemMoving)
                 matchItem.MoveTarget(target);
-            
-            /*foreach (var matchItem in _lookMerger.ItemsMoving)
-                matchItem.MoveTarget(target);*/
-            
-            foreach (var matchItem in itemMoving)
-                Debug.Log(matchItem.name);
 
             item.GetComponent<ItemMoving>().MoveTarget(target);
         }

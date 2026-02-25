@@ -95,7 +95,7 @@ namespace MergeContent
                 _temporaryItems.Clear();
                 _temporaryItems = _minIndexItemSelector.GetTemporaryItems(_currentItemPosition.ItemPositions);
                 _temporaryItem = _minIndexItemSelector.GetItemMinIndex(_currentItemPosition.ItemPositions);
-                
+
                 if (_temporaryItem != null)
                     ChoosePathSearchMatches(_temporaryItem, itemPosition);
                 else if (_isTryMerge && _temporaryItem == null)
@@ -176,6 +176,7 @@ namespace MergeContent
 
         private void LookMatchesCount()
         {
+            Debug.Log("lookMatches");
             if (_matchedItems.Count >= _targetMinMatchedItems)
             {
                 LookAroundNextLevelItem();
@@ -227,6 +228,9 @@ namespace MergeContent
 
         private void SeeHowManyMatchesFound(ItemPosition itemPosition, Item item)
         {
+            // itemPosition.DeactivationSelected();
+            Debug.Log("MergeCount " + _newMatchedItems[item].Count + " " +  item.name);
+            
             if (_newMatchedItems[item].Count >= _targetMinMatchedItems)
                 SendMatchesMerge(itemPosition, item);
             else if (_newMatchedItems[item].Count < _targetMinMatchedItems &&
@@ -346,19 +350,111 @@ namespace MergeContent
                     ActivationLookPositions(arroundPosition, item);
             }
         }*/
-        
+
+        /*private void ActivationLookPositions(ItemPosition currentPosition, Item item)
+        {
+            _checkedPositions.Clear();
+            // _newMatchedItems.Clear();
+            Debug.Log("Item " + item.name);
+            Debug.Log("currentPosition " + currentPosition.name);
+            /*if (!_newMatchedItems.ContainsKey(item))
+                _newMatchedItems.Add(item, new List<Item>());#1#
+
+            /*if (_checkedPositions.Contains(currentPosition))
+                return;
+            
+            if (!currentPosition.IsSelected)
+            {
+                _checkedPositions.Add(currentPosition);
+                _matchedItems.Add(currentPosition.Item);
+                _positions.Add(currentPosition);
+
+                if (_isTryMerge)
+                {
+                    ItemsMoving.Add(currentPosition.Item.GetComponent<ItemMoving>());
+                    _newMatchedItems[item].Add(currentPosition.Item);
+                }
+            }
+
+            foreach (var arroundPosition in currentPosition.ItemPositions)
+            {
+                if (arroundPosition == null)
+                    continue;
+
+                if (arroundPosition.Item != null && arroundPosition.Item.NextItem != null &&
+                    arroundPosition.Item.ItemName.Equals(item.ItemName))
+                    ActivationLookPositions(arroundPosition, item);
+            }#1#
+        }*/
+
+
         private void ActivationLookPositions(ItemPosition currentPosition, Item item)
         {
+            _newMatchedItems.Clear();
+            int value = 0;
             if (!_newMatchedItems.ContainsKey(item))
                 _newMatchedItems.Add(item, new List<Item>());
 
+            /*if (_checkedPositions.Contains(currentPosition))
+                return;*/
+            var positionsToCheck = new Queue<ItemPosition>();
+            positionsToCheck.Enqueue(currentPosition);
+            Debug.Log("currentPosition" + currentPosition.name);
+            
+            if (!_checkedPositions.Contains(currentPosition))
+                _checkedPositions.Add(currentPosition);
+
+            while (positionsToCheck.Count > 0 )
+            {
+                // value++;
+                /*Debug.Log("value" + value);
+                Debug.Log("While" + positionsToCheck.Count);
+                Debug.Log("_checkedPositions" + _checkedPositions.Count);*/
+                var position = positionsToCheck.Dequeue();
+
+                if (!position.IsSelected)
+                {
+                    _checkedPositions.Add(position);
+                    _matchedItems.Add(position.Item);
+                    _positions.Add(position);
+                    // Debug.Log("NotSelectedPos " + position.name);
+                    if (_isTryMerge)
+                    {
+                        ItemsMoving.Add(position.Item.GetComponent<ItemMoving>());
+                        _newMatchedItems[item].Add(position.Item);
+                        Debug.Log("_newMatchedItems" + _newMatchedItems[item] + " ??? " +item.name+  " }}} " + position.Item);
+                    }
+                }
+
+                foreach (var arroundPosition in position.ItemPositions)
+                {
+                    if (arroundPosition == null)
+                        continue;
+
+                    if (arroundPosition.Item != null && arroundPosition.Item.NextItem != null &&
+                        arroundPosition.Item.ItemName.Equals(item.ItemName) &&
+                        !_checkedPositions.Contains(arroundPosition) && !positionsToCheck.Contains(arroundPosition))
+                    {
+                        // Debug.Log("Enqueue" + arroundPosition.name);
+                        positionsToCheck.Enqueue(arroundPosition);
+                    }
+                }
+            }
+        }
+
+        /*private void ActivationLookPositions(ItemPosition currentPosition, Item item)
+        {
+            if (!_newMatchedItems.ContainsKey(item))
+                _newMatchedItems.Add(item, new List<Item>());
+            Debug.Log("111");
             if (_checkedPositions.Contains(currentPosition))
                 return;
-
+            Debug.Log("333");
             var positionsToCheck = new List<ItemPosition> { currentPosition };
 
             while (positionsToCheck.Count > 0)
             {
+                Debug.Log("While");
                 var position = positionsToCheck[0];
                 positionsToCheck.RemoveAt(0);
 
@@ -386,7 +482,7 @@ namespace MergeContent
                         positionsToCheck.Add(arroundPosition);
                 }
             }
-        }
+        }*/
 
         private void ClearLists()
         {

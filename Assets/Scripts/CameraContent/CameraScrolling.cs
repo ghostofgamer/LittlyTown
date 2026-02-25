@@ -13,6 +13,7 @@ namespace CameraContent
         [SerializeField] private ItemThrower _itemThrower;
         [SerializeField] private ItemDragger _itemDragger;
         [SerializeField] private SandBoxScreen _sandBoxScreen;
+        [SerializeField] private CompleteScoreScreen _completeScoreScreen;
 
         private float _minFov = 15f;
         private float _maxFov = 75f;
@@ -90,7 +91,7 @@ namespace CameraContent
                 }
             }
 
-            if (Input.touches.Length < _minTouches && !_sandBoxScreen.IsOpen)
+            if (Input.touches.Length < _minTouches && !_sandBoxScreen.IsOpen&&!_completeScoreScreen.IsOpen)
             {
                 _inputItemDragger.enabled = true;
             }

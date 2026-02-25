@@ -222,10 +222,10 @@ namespace SaveAndLoad
                 ? new StorageItemData(_thirdStorage.CurrentItem.ItemName, _thirdStorage.CurrentItem.ItemPosition)
                 : new StorageItemData(Items.Empty, null);
 
-            string jsonData = JsonUtility.ToJson(saveData);
-            PlayerPrefs.SetString(ItemStorageSave + _initializator.Index, jsonData);
-            PlayerPrefs.Save();
-            yield return null;
+                string jsonData = JsonUtility.ToJson(saveData);
+                PlayerPrefs.SetString(ItemStorageSave + _initializator.Index, jsonData);
+                PlayerPrefs.Save();
+                yield return null;
         }
 
         private Item GetItem(Items itemName)

@@ -21,6 +21,7 @@ namespace UI.Screens
         [SerializeField] private List<ItemPosition> _itemPositions = new List<ItemPosition>();
         [SerializeField] private TurnEnvironment _turnEnvironment;
         [SerializeField] private GameObject _environment;
+        [SerializeField] private GameObject _lightHouse;
         [SerializeField] private ShopItems _shopItems;
         [SerializeField] private CameraScrolling _cameraScrolling;
 
@@ -28,7 +29,7 @@ namespace UI.Screens
         private int _currentIndex;
         private Coroutine _coroutine;
         private WaitForSeconds _waitForSeconds = new WaitForSeconds(1.5f);
-
+        
         private void Start()
         {
             _currentIndex = _load.Get(LastActiveMap, _defaultIndex);
@@ -46,6 +47,7 @@ namespace UI.Screens
             _turnEnvironment.SetEnvironment(_environment);
             _scoreCounter.enabled = false;
             _moveCounter.enabled = false;
+            _lightHouse.SetActive(false);
             SlowOpen();
         }
 

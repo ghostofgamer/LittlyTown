@@ -54,6 +54,11 @@ namespace MapsContent
             else
                 _initializator.FillLists();
 
+            foreach (var itemPosition in _initializator.ItemPositions)
+            {
+                itemPosition.DeactivationSelected();
+            }
+            
             DeactivateItems();
             _visualItemsDeactivator.SetPositions(_initializator.ItemPositions);
             _itemKeeper.ClearAll();

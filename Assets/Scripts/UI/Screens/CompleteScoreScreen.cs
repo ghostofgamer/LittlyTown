@@ -21,6 +21,8 @@ namespace UI.Screens
 
         public event Action ScoreCompleted;
 
+        public bool IsOpen { get; private set; }
+
         private void OnEnable()
         {
             _scoreCounter.LevelChanged += OnOpen;
@@ -33,6 +35,7 @@ namespace UI.Screens
 
         public override void OnOpen()
         {
+            IsOpen = true;
             ScoreCompleted?.Invoke();
             base.OnOpen();
             _goldButton.DetermineGoldAmount();
@@ -44,6 +47,7 @@ namespace UI.Screens
 
         public override void Close()
         {
+            IsOpen = false;
             base.Close();
             _blur.TurnOff();
             _inputItemDragger.enabled = true;

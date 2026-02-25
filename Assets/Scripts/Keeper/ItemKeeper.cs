@@ -136,7 +136,9 @@ namespace Keeper
                     ItemPosition newPosition = _spawner.GetPosition();
 
                     if (newPosition != null)
+                    {
                         ChangeSelectItem(newPosition);
+                    }
                 }
                 else
                 {

@@ -81,13 +81,13 @@ namespace Dragger
             BuildItem?.Invoke(_itemKeeper.SelectedObject);
             itemPosition.DeliverObject(_itemKeeper.SelectedObject);
             PlaceChanged?.Invoke();
+            LastTrowPosition = itemPosition;
 
             if (_itemKeeper.SelectedObject.ItemName == Items.LightHouse ||
                 _itemKeeper.SelectedObject.ItemName == Items.Crane)
                 _itemKeeper.OnInstallItemForLastPosition();
 
             _itemKeeper.ClearSelectedItem();
-            LastTrowPosition = itemPosition;
             _itemDragger.DisableSelected();
         }
     }
