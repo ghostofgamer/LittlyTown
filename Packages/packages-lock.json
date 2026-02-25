@@ -14,6 +14,13 @@
       "dependencies": {},
       "hash": "faf20595c0f18f4a471e6b27fbd5fbf5fd05d7a2"
     },
+    "com.google.external-dependency-manager": {
+      "version": "https://github.com/googlesamples/unity-jar-resolver.git?path=upm",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "38f31affdc54bf7ed0ffb8b97f3444395912a398"
+    },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
       "depth": 0,
@@ -281,6 +288,15 @@
         "com.unity.modules.jsonserialize": "1.0.0"
       },
       "url": "https://packages.unity.com"
+    },
+    "io.appmetrica.analytics": {
+      "version": "https://github.com/appmetrica/appmetrica-unity-plugin.git#v6.7.0",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.google.external-dependency-manager": "1.2.183"
+      },
+      "hash": "493dce822b0588da81c102db1a21648daebf7aa8"
     },
     "com.unity.modules.accessibility": {
       "version": "1.0.0",

@@ -1,6 +1,5 @@
 using System;
 using AppMetricaContent;
-using Assets.Scripts.ADS;
 using Io.AppMetrica;
 using UnityEngine;
 using YandexMobileAds;

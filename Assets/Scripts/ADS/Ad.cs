@@ -29,5 +29,10 @@ namespace ADS
             Time.timeScale = value;
             AudioListener.volume = value;
         }
+        
+        protected virtual void OnError(string error)
+        {
+            Debug.LogError($"Ad error: {error}");
+        }
     }
 }
